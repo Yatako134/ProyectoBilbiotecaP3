@@ -24,10 +24,9 @@ public class PrestamoImpl implements PrestamoDAO{
         parametrosSalida.put(1, Types.INTEGER); // id_prestamo OUT
         parametrosEntrada.put(2, objeto.getFecha_de_prestamo());
         parametrosEntrada.put(3, objeto.getFecha_vencimiento());
-        parametrosEntrada.put(4, objeto.getFecha_devolucion());
-        parametrosEntrada.put(5, objeto.getEstado().name());
-        parametrosEntrada.put(6, objeto.getEjemplar().getIdEjemplar());
-        parametrosEntrada.put(7, objeto.getUsuario().getId_usuario());
+        parametrosEntrada.put(4, objeto.getEstado().name());
+        parametrosEntrada.put(5, objeto.getEjemplar().getIdEjemplar());
+        parametrosEntrada.put(6, objeto.getUsuario().getId_usuario());
 
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_PRESTAMO", parametrosEntrada, parametrosSalida);
         objeto.setIdPrestamo((int) parametrosSalida.get(1));
@@ -42,10 +41,9 @@ public class PrestamoImpl implements PrestamoDAO{
         parametrosEntrada.put(1, objeto.getIdPrestamo());
         parametrosEntrada.put(2, objeto.getFecha_de_prestamo());
         parametrosEntrada.put(3, objeto.getFecha_vencimiento());
-        parametrosEntrada.put(4, objeto.getFecha_devolucion());
-        parametrosEntrada.put(5, objeto.getEstado().name());
-        parametrosEntrada.put(6, objeto.getEjemplar().getIdEjemplar());
-        parametrosEntrada.put(7, objeto.getUsuario().getId_usuario());
+        parametrosEntrada.put(4, objeto.getEstado().name());
+        parametrosEntrada.put(5, objeto.getEjemplar().getIdEjemplar());
+        parametrosEntrada.put(6, objeto.getUsuario().getId_usuario());
 
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_PRESTAMO", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificación del préstamo");
@@ -54,12 +52,9 @@ public class PrestamoImpl implements PrestamoDAO{
 
     @Override
     public int eliminar(int idObjeto) {
-        Map<Integer, Object> parametrosEntrada = new HashMap<>();
-        parametrosEntrada.put(1, idObjeto);
-
-        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_PRESTAMO", parametrosEntrada, null);
-        System.out.println("Se ha eliminado el préstamo");
-        return resultado;
+        
+        return 0;
+        
     }
 
     @Override

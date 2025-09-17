@@ -38,7 +38,11 @@ public class RolImpl implements RolDAO{
 
     @Override
     public int eliminar(int idObjeto) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idObjeto);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_ROL", parametrosEntrada, null);
+        System.out.println("Se ha realizado la eliminacion del rol");
+        return resultado;
     }
 
     @Override
@@ -65,7 +69,7 @@ public class RolImpl implements RolDAO{
     @Override
     public ArrayList<Rol> listarTodos() {
          ArrayList<Rol> listaRoles = new ArrayList<>();
-        ResultSet rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ROLES", null); // SP que devuelve todos los roles
+        ResultSet rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ROLES_TODOS", null); // SP que devuelve todos los roles
         try {
             while (rs.next()) {
                 Rol rol = new Rol();
