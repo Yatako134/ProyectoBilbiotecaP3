@@ -1,0 +1,17 @@
+biblioteca\gestionPrestamo\dao\PrestamoDAO.class
+biblioteca\gestionUsuario\dao\UsuarioDAO.class
+biblioteca\gestionUsuario\mysql\RolImpl.class
+biblioteca\gestionMaterial\dao\MaterialBibliograficoDAO.class
+biblioteca\gestionMaterial\mysql\EjemplarImpl.class
+biblioteca\gestionUsuario\dao\RolDAO.class
+biblioteca\gestionUsuario\mysql\UsuarioImpl.class
+biblioteca\gestionMaterial\dao\EjemplarDAO.class
+biblioteca\dao\IDAO.class
+biblioteca\gestionMaterial\mysql\BibliotecaImpl.class
+biblioteca\gestionMaterial\mysql\MaterialBibliograficoImpl.class
+biblioteca\gestionMaterial\dao\BibliotecaDAO.class
+biblioteca\gestionMaterial\mysql\ContribuyenteImpl.class
+biblioteca\gestionPrestamo\dao\SancionDAO.class
+biblioteca\gestionPrestamo\mysql\PrestamoImpl.class
+biblioteca\gestionPrestamo\mysql\SancionImpl.class
+biblioteca\gestionMaterial\dao\ContribuyenteDAO.class
