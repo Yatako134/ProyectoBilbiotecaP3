@@ -95,7 +95,33 @@ public class UsuarioImpl implements UsuarioDAO{
 
     @Override
     public ArrayList<Usuario> listarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_USUARIOS", null); // Suponiendo que tu SP se llama LISTAR_USUARIOS
+        System.out.println("Leyendo todos los usuarios...");
+        try {
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId_usuario(rs.getInt("id_usuario"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setPrimer_apellido(rs.getString("primer_apellido"));
+                usuario.setSegundo_apellido(rs.getString("segundo_apellido"));
+                usuario.setDOI(rs.getString("DOI"));
+                usuario.setCodigo(rs.getInt("codigo"));
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuario.setCorreo(rs.getString("correo"));
+                usuario.setTelefono(rs.getString("telefono"));
+                usuario.setActiva(rs.getBoolean("activo"));
+                usuario.setId_rol(rs.getInt("id_rol"));
+                // Si quieres, también podrías inicializar la lista de préstamos aquí: usuario.setPrestamos(new ArrayList<>());
+
+                listaUsuarios.add(usuario);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return listaUsuarios;
     }
     
 }

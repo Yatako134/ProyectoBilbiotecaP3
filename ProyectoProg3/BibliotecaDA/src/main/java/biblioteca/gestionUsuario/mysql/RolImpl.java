@@ -64,7 +64,21 @@ public class RolImpl implements RolDAO{
 
     @Override
     public ArrayList<Rol> listarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         ArrayList<Rol> listaRoles = new ArrayList<>();
+        ResultSet rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ROLES", null); // SP que devuelve todos los roles
+        try {
+            while (rs.next()) {
+                Rol rol = new Rol();
+                rol.setId_rol(rs.getInt("id_rol"));
+                rol.setTipo(rs.getString("tipo"));
+                listaRoles.add(rol);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return listaRoles;
     }
     
 }
