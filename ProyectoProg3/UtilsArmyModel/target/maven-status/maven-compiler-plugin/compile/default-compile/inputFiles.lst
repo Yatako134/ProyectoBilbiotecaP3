@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\YO_usuario\Desktop\P3\ProyectoBilbiotecaP3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Articulo.java
 D:\YO_usuario\Desktop\P3\ProyectoBilbiotecaP3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Biblioteca.java
 D:\YO_usuario\Desktop\P3\ProyectoBilbiotecaP3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Contribuyente.java
@@ -16,3 +17,23 @@ D:\YO_usuario\Desktop\P3\ProyectoBilbiotecaP3\ProyectoProg3\UtilsArmyModel\src\m
 D:\YO_usuario\Desktop\P3\ProyectoBilbiotecaP3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\Tipo_sancion.java
 D:\YO_usuario\Desktop\P3\ProyectoBilbiotecaP3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\usuarios\model\Rol.java
 D:\YO_usuario\Desktop\P3\ProyectoBilbiotecaP3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\usuarios\model\Usuario.java
+=======
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Articulo.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Biblioteca.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Contribuyente.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Editorial.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Ejemplar.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\EstadoEjemplar.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\EstadoMaterial.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Libro.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\MaterialBibliografico.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Tesis.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\TipoContribuyente.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\EstadoPrestamo.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\EstadoSancion.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\Prestamo.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\Sancion.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\Tipo_sancion.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\usuarios\model\Rol.java
+C:\Prog3\ProyectoProg3\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\usuarios\model\Usuario.java
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f

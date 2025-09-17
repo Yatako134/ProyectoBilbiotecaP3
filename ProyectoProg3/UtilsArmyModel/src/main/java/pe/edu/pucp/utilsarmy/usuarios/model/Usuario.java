@@ -36,6 +36,27 @@ public class Usuario {
         prestamos=new ArrayList<Prestamo>();
         //this.rol_usuario = rol_usuario;
     }
+<<<<<<< HEAD
+=======
+    public Usuario(int id,String nombre, String primer_apellido, String segundo_apellido, String DOI,
+            int codigo,String correo, String contrasena, String telefono,int rol){
+        this.id_usuario=id;
+        this.nombre = nombre;
+        this.primer_apellido = primer_apellido;
+        this.segundo_apellido = segundo_apellido;
+        this.DOI = DOI;
+        this.codigo=codigo;
+        this.correo = correo;
+        this.contrasena = contrasena;
+        //this.username = username;
+        this.telefono = telefono;
+        this.id_rol=rol;
+        
+        prestamos=new ArrayList<Prestamo>();
+        //this.rol_usuario = rol_usuario;
+    }
+    
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
     public Usuario() {
         prestamos=new ArrayList<Prestamo>();
     }

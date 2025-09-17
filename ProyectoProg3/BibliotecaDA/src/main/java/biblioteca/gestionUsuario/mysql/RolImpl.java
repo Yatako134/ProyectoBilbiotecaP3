@@ -38,7 +38,15 @@ public class RolImpl implements RolDAO{
 
     @Override
     public int eliminar(int idObjeto) {
+<<<<<<< HEAD
         throw new UnsupportedOperationException("Not supported yet.");
+=======
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idObjeto);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_ROL", parametrosEntrada, null);
+        System.out.println("Se ha realizado la eliminacion del rol");
+        return resultado;
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
     }
 
     @Override
@@ -64,7 +72,25 @@ public class RolImpl implements RolDAO{
 
     @Override
     public ArrayList<Rol> listarTodos() {
+<<<<<<< HEAD
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+=======
+         ArrayList<Rol> listaRoles = new ArrayList<>();
+        ResultSet rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ROLES_TODOS", null); // SP que devuelve todos los roles
+        try {
+            while (rs.next()) {
+                Rol rol = new Rol();
+                rol.setId_rol(rs.getInt("id_rol"));
+                rol.setTipo(rs.getString("tipo"));
+                listaRoles.add(rol);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return listaRoles;
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
     }
     
 }

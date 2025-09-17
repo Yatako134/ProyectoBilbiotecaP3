@@ -11,7 +11,11 @@ public class Articulo extends MaterialBibliografico {
     }
 
     public Articulo(String ISSN, String revista, int volumen, int numero, int idMaterial, int numero_copias, String titulo, int anho_publicacion, int numero_paginas, EstadoMaterial estado, String clasificacion_tematica, boolean activo, String idioma, Editorial editorial) {
+<<<<<<< HEAD
         super(idMaterial, titulo, anho_publicacion, numero_paginas, estado, clasificacion_tematica, activo, idioma, editorial);
+=======
+        super(idMaterial, numero_copias, titulo, anho_publicacion, numero_paginas, estado, clasificacion_tematica, activo, idioma, editorial);
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
         this.ISSN = ISSN;
         this.revista = revista;
         this.volumen = volumen;

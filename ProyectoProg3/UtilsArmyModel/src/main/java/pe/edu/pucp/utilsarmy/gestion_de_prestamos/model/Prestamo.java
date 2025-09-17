@@ -16,15 +16,27 @@ public class Prestamo {
     private Usuario usuario;
     public Prestamo() {
         ejemplar = new Ejemplar();
+<<<<<<< HEAD
     }
 
     public Prestamo(int idPrestamo, Date fecha_de_prestamo, Date fecha_vencimiento, 
             EstadoPrestamo estado, Ejemplar ejemplar) {
         this.idPrestamo = idPrestamo;
+=======
+        usuario =  new Usuario();
+    }
+
+    public Prestamo( Date fecha_de_prestamo, Date fecha_vencimiento, 
+            EstadoPrestamo estado, Ejemplar ejemplar,Usuario usuario) {
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
         this.fecha_de_prestamo = fecha_de_prestamo;
         this.fecha_vencimiento = fecha_vencimiento;
         this.estado = estado;
         this.ejemplar = ejemplar;
+<<<<<<< HEAD
+=======
+        this.usuario=usuario;
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
     }
     
     

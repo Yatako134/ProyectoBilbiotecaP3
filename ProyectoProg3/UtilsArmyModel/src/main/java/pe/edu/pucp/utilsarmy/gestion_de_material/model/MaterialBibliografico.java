@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public class MaterialBibliografico {
     private int idMaterial;
+<<<<<<< HEAD
+=======
+    private int numero_copias;
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
     private String titulo;
     private int anho_publicacion;
     private int numero_paginas;
@@ -11,7 +15,12 @@ public class MaterialBibliografico {
     private String clasificacion_tematica;
     private boolean activo;
     private String idioma;
+<<<<<<< HEAD
    
+=======
+    
+
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
     private Editorial editorial;
     private ArrayList<Contribuyente> contribuyentes;
     private ArrayList<Ejemplar> ejemplares;
@@ -22,11 +31,19 @@ public class MaterialBibliografico {
         this.ejemplares = new ArrayList<>();   
     }
 
+<<<<<<< HEAD
     public MaterialBibliografico(int idMaterial, String titulo,
+=======
+    public MaterialBibliografico(int idMaterial, int numero_copias, String titulo,
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
             int anho_publicacion, int numero_paginas, EstadoMaterial estado, 
             String clasificacion_tematica, boolean activo, String idioma, 
             Editorial editorial) {
         this.idMaterial = idMaterial;
+<<<<<<< HEAD
+=======
+        this.numero_copias = numero_copias;
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
         this.titulo = titulo;
         this.anho_publicacion = anho_publicacion;
         this.numero_paginas = numero_paginas;
@@ -47,7 +64,17 @@ public class MaterialBibliografico {
         this.idMaterial = idMaterial;
     }
 
+<<<<<<< HEAD
  
+=======
+    public int getNumero_copias() {
+        return numero_copias;
+    }
+
+    public void setNumero_copias(int numero_copias) {
+        this.numero_copias = numero_copias;
+    }
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
 
     public String getTitulo() {
         return titulo;

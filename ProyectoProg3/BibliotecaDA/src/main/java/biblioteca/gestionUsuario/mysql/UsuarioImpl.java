@@ -43,17 +43,28 @@ public class UsuarioImpl implements UsuarioDAO{
         parametrosEntrada.put(2, objeto.getNombre());
         parametrosEntrada.put(3, objeto.getPrimer_apellido());
         parametrosEntrada.put(4, objeto.getSegundo_apellido());
+<<<<<<< HEAD
         parametrosEntrada.put(5, objeto.getCodigo());
         parametrosEntrada.put(6, objeto.getDOI());
         parametrosEntrada.put(7, objeto.getCorreo());
         parametrosEntrada.put(8, objeto.getContrasena());
+=======
+        parametrosEntrada.put(5, objeto.getDOI());
+        parametrosEntrada.put(6, objeto.getCodigo());
+        parametrosEntrada.put(7, objeto.getContrasena());
+        parametrosEntrada.put(8, objeto.getCorreo());
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
         parametrosEntrada.put(9, objeto.getTelefono());
         parametrosEntrada.put(10, objeto.getId_rol());
         parametrosEntrada.put(11, objeto.isActiva());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_USUARIO", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion del usuario");
+<<<<<<< HEAD
         return resultado;    
     }
+=======
+        return resultado;    }
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
 
     @Override
     public int eliminar(int idObjeto) {
@@ -96,7 +107,37 @@ public class UsuarioImpl implements UsuarioDAO{
 
     @Override
     public ArrayList<Usuario> listarTodos() {
+<<<<<<< HEAD
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+=======
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_USUARIOS", null); // Suponiendo que tu SP se llama LISTAR_USUARIOS
+        System.out.println("Leyendo todos los usuarios...");
+        try {
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId_usuario(rs.getInt("id_usuario"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setPrimer_apellido(rs.getString("primer_apellido"));
+                usuario.setSegundo_apellido(rs.getString("segundo_apellido"));
+                usuario.setDOI(rs.getString("DOI"));
+                usuario.setCodigo(rs.getInt("codigo"));
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuario.setCorreo(rs.getString("correo"));
+                usuario.setTelefono(rs.getString("telefono"));
+                usuario.setActiva(rs.getBoolean("activo"));
+                usuario.setId_rol(rs.getInt("id_rol"));
+                // Si quieres, también podrías inicializar la lista de préstamos aquí: usuario.setPrestamos(new ArrayList<>());
+
+                listaUsuarios.add(usuario);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return listaUsuarios;
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
     }
     
 }

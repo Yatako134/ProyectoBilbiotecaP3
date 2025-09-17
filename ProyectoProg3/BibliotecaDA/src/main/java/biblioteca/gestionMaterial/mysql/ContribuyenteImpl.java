@@ -1,6 +1,7 @@
 
 package biblioteca.gestionMaterial.mysql;
 
+<<<<<<< HEAD
 import biblioteca.gestionMaterial.dao.ContribuyenteDAO;
 import biblioteca.config.DBManager;
 import java.sql.ResultSet;
@@ -109,5 +110,8 @@ public class ContribuyenteImpl implements ContribuyenteDAO{
         }
         return contribuyentes;
     }
+=======
+public class ContribuyenteImpl {
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
     
 }

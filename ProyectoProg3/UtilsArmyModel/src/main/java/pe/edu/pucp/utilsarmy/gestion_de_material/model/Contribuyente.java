@@ -7,19 +7,31 @@ public class Contribuyente {
     private String segundo_apellido;
     private String seudonimo;
     private TipoContribuyente tipo_contribuyente;
+<<<<<<< HEAD
     private int id_material;
     public Contribuyente(){}
 
     public Contribuyente(int idContribuyente, String nombre, String primer_apellido, String segundo_apellido, String seudonimo, TipoContribuyente tipo_contribuyente,int id_material) {
+=======
+    
+    public Contribuyente(){}
+
+    public Contribuyente(int idContribuyente, String nombre, String primer_apellido, String segundo_apellido, String seudonimo, TipoContribuyente tipo_contribuyente) {
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
         this.idContribuyente = idContribuyente;
         this.nombre = nombre;
         this.primer_apellido = primer_apellido;
         this.segundo_apellido = segundo_apellido;
         this.seudonimo = seudonimo;
         this.tipo_contribuyente = tipo_contribuyente;
+<<<<<<< HEAD
         this.id_material = id_material;
     }
     
+=======
+    }
+
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
     public int getIdContribuyente() {
         return idContribuyente;
     }
@@ -32,6 +44,7 @@ public class Contribuyente {
         return nombre;
     }
 
+<<<<<<< HEAD
     public int getId_material() {
         return id_material;
     }
@@ -40,6 +53,8 @@ public class Contribuyente {
         this.id_material = id_material;
     }
 
+=======
+>>>>>>> e7cbe2292fd3facda28e5c7f4ace312400b5509f
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
