@@ -3,6 +3,7 @@ package pe.edu.pucp.utilsarmy.gestion_de_prestamos.model;
 
 import java.util.Date;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
+import pe.edu.pucp.utilsarmy.usuarios.model.Usuario;
 
 public class Prestamo {
 
@@ -12,7 +13,7 @@ public class Prestamo {
     private Date fecha_devolucion;
     private EstadoPrestamo estado;
     private Ejemplar ejemplar;
-
+    private Usuario usuario;
     public Prestamo() {
         ejemplar = new Ejemplar();
     }
@@ -55,24 +56,14 @@ public class Prestamo {
     public void setFecha_de_prestamo(Date fecha_de_prestamo) {
         this.fecha_de_prestamo = fecha_de_prestamo;
     }
-
-    /**
-     * @return the fecha_vencimiento
-     */
     public Date getFecha_vencimiento() {
         return fecha_vencimiento;
     }
 
-    /**
-     * @param fecha_vencimiento the fecha_vencimiento to set
-     */
     public void setFecha_vencimiento(Date fecha_vencimiento) {
         this.fecha_vencimiento = fecha_vencimiento;
     }
 
-    /**
-     * @return the fecha_devolucion
-     */
     public Date getFecha_devolucion() {
         return fecha_devolucion;
     }
@@ -110,6 +101,14 @@ public class Prestamo {
      */
     public void setEjemplar(Ejemplar ejemplar) {
         this.ejemplar = ejemplar;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }
