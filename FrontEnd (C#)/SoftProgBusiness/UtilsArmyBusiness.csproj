@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{785B9E99-F803-450D-A7E0-5D49AE87AF56}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SoftProgBusiness</RootNamespace>
+    <AssemblyName>SoftProgBusiness</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\IBaseBO.cs" />
+    <Compile Include="GestMaterial\BOI\ArticuloBOImpl.cs" />
+    <Compile Include="GestMaterial\BOI\BibliotecaBOImpl.cs" />
+    <Compile Include="GestMaterial\BOI\ContribuyenteBOImpl.cs" />
+    <Compile Include="GestMaterial\BOI\EditorialBOImpl.cs" />
+    <Compile Include="GestMaterial\BOI\EjemplarBOImpl.cs" />
+    <Compile Include="GestMaterial\BOI\LibroBOImpl.cs" />
+    <Compile Include="GestMaterial\BOI\MaterialBOImpl.cs" />
+    <Compile Include="GestMaterial\BOI\TesisBOImpl.cs" />
+    <Compile Include="GestMaterial\BO\IArticuloBO.cs" />
+    <Compile Include="GestMaterial\BO\IBibliotecaBO.cs" />
+    <Compile Include="GestMaterial\BO\IContribuyenteBO.cs" />
+    <Compile Include="GestMaterial\BO\IEditorialBO.cs" />
+    <Compile Include="GestMaterial\BO\IEjemplarBO.cs" />
+    <Compile Include="GestMaterial\BO\ILibroBO.cs" />
+    <Compile Include="GestMaterial\BO\IMaterialBO.cs" />
+    <Compile Include="GestMaterial\BO\ITesisBO.cs" />
+    <Compile Include="GestPrestamos\BOI\PrestamoBOImpl.cs" />
+    <Compile Include="GestPrestamos\BOI\SancionBOImpl.cs" />
+    <Compile Include="GestPrestamos\BO\IPrestamoBO.cs" />
+    <Compile Include="GestPrestamos\BO\ISancionBO.cs" />
+    <Compile Include="GestUsuarios\BOI\RolBOImpl.cs" />
+    <Compile Include="GestUsuarios\BOI\UsuarioBOImpl.cs" />
+    <Compile Include="GestUsuarios\BO\IRolBO.cs" />
+    <Compile Include="GestUsuarios\BO\IUsuarioBO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SoftProgModel\UtilsArmyModel.csproj">
+      <Project>{9F5EE0CD-1B4E-4B38-9933-9D3C388E195A}</Project>
+      <Name>UtilsArmyModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SoftProgPersistance\UtilsArmyPersistance.csproj">
+      <Project>{C9DAAB7D-3BE7-42D9-92DA-C1953D032285}</Project>
+      <Name>UtilsArmyPersistance</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

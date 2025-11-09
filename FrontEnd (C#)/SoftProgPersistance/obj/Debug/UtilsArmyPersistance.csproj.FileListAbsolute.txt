@@ -1,0 +1,42 @@
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\obj\Debug\UtilsArmyPersistance.csproj.AssemblyReference.cache
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\obj\Debug\UtilsArmyPersistance.csproj.CoreCompileInputs.cache
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\obj\Debug\SoftProgPersistance.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\obj\Debug\SoftProgPersistance.pdb
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgPersistance.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgPersistance.pdb
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\bin\Debug\MySql.Data.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgDBManager.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgModel.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\bin\Debug\System.Memory.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgDBManager.pdb
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgModel.pdb
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgPersistance\obj\Debug\UtilsArm.EDDDD29D.Up2Date
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgPersistance.dll
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgPersistance.pdb
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\MySql.Data.dll
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgDBManager.dll
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgModel.dll
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\System.Memory.dll
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgDBManager.pdb
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgModel.pdb
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\obj\Debug\UtilsArmyPersistance.csproj.AssemblyReference.cache
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\obj\Debug\UtilsArmyPersistance.csproj.CoreCompileInputs.cache
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\obj\Debug\UtilsArm.EDDDD29D.Up2Date
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\obj\Debug\SoftProgPersistance.dll
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\obj\Debug\SoftProgPersistance.pdb
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgPersistance.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgPersistance.pdb
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\MySql.Data.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgDBManager.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgModel.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\System.Memory.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgDBManager.pdb
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\bin\Debug\SoftProgModel.pdb
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\obj\Debug\UtilsArmyPersistance.csproj.AssemblyReference.cache
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\obj\Debug\UtilsArmyPersistance.csproj.CoreCompileInputs.cache
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\obj\Debug\UtilsArm.EDDDD29D.Up2Date
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\obj\Debug\SoftProgPersistance.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgPersistance\obj\Debug\SoftProgPersistance.pdb

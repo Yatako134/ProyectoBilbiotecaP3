@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C9DAAB7D-3BE7-42D9-92DA-C1953D032285}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SoftProgPersistance</RootNamespace>
+    <AssemblyName>SoftProgPersistance</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAO\IDAO.cs" />
+    <Compile Include="GestMaterial\DAO\ArticuloDAO.cs" />
+    <Compile Include="GestMaterial\DAO\BibliotecaDAO.cs" />
+    <Compile Include="GestMaterial\DAO\ContribuyenteDAO.cs" />
+    <Compile Include="GestMaterial\DAO\EditorialDAO.cs" />
+    <Compile Include="GestMaterial\DAO\EjemplarDAO.cs" />
+    <Compile Include="GestMaterial\DAO\LibroDAO.cs" />
+    <Compile Include="GestMaterial\DAO\MaterialDAO.cs" />
+    <Compile Include="GestMaterial\DAO\TesisDAO.cs" />
+    <Compile Include="GestMaterial\Impl\ArticuloImpl.cs" />
+    <Compile Include="GestMaterial\Impl\BibliotecaImpl.cs" />
+    <Compile Include="GestMaterial\Impl\ContribuyenteImpl.cs" />
+    <Compile Include="GestMaterial\Impl\EditorialImpl.cs" />
+    <Compile Include="GestMaterial\Impl\EjemplarImpl.cs" />
+    <Compile Include="GestMaterial\Impl\LibroImpl.cs" />
+    <Compile Include="GestMaterial\Impl\MaterialImpl.cs" />
+    <Compile Include="GestMaterial\Impl\TesisImpl.cs" />
+    <Compile Include="GestPrestamos\DAO\PrestamoDAO.cs" />
+    <Compile Include="GestPrestamos\DAO\SancionDAO.cs" />
+    <Compile Include="GestPrestamos\Impl\PrestamoImpl.cs" />
+    <Compile Include="GestPrestamos\Impl\SancionImpl.cs" />
+    <Compile Include="GestUsuarios\DAO\RolDAO.cs" />
+    <Compile Include="GestUsuarios\DAO\UsuarioDAO.cs" />
+    <Compile Include="GestUsuarios\Impl\RolImpl.cs" />
+    <Compile Include="GestUsuarios\Impl\UsuarioImpl.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SoftProgDBManager\UtilsArmyDBManager.csproj">
+      <Project>{9beb81fc-e3f8-4002-adbf-b6ee606d2990}</Project>
+      <Name>UtilsArmyDBManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SoftProgModel\UtilsArmyModel.csproj">
+      <Project>{9f5ee0cd-1b4e-4b38-9933-9d3c388e195a}</Project>
+      <Name>UtilsArmyModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

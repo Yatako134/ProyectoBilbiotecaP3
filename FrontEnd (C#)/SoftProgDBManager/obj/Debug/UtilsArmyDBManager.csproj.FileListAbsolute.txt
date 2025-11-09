@@ -1,0 +1,30 @@
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgDBManager\bin\Debug\SoftProgDBManager.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgDBManager\bin\Debug\SoftProgDBManager.pdb
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgDBManager\bin\Debug\MySql.Data.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgDBManager\bin\Debug\System.Memory.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgDBManager\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgDBManager\obj\Debug\UtilsArmyDBManager.csproj.AssemblyReference.cache
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgDBManager\obj\Debug\UtilsArmyDBManager.csproj.CoreCompileInputs.cache
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgDBManager\obj\Debug\UtilsArm.90568140.Up2Date
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgDBManager\obj\Debug\SoftProgDBManager.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC#\SoftProgDBManager\obj\Debug\SoftProgDBManager.pdb
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\bin\Debug\SoftProgDBManager.dll
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\bin\Debug\SoftProgDBManager.pdb
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\bin\Debug\MySql.Data.dll
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\bin\Debug\System.Memory.dll
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\obj\Debug\UtilsArmyDBManager.csproj.AssemblyReference.cache
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\obj\Debug\UtilsArmyDBManager.csproj.CoreCompileInputs.cache
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\obj\Debug\UtilsArm.90568140.Up2Date
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\obj\Debug\SoftProgDBManager.dll
+C:\Users\renat\Downloads\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\obj\Debug\SoftProgDBManager.pdb
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\bin\Debug\SoftProgDBManager.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\bin\Debug\SoftProgDBManager.pdb
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\bin\Debug\MySql.Data.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\bin\Debug\System.Memory.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\obj\Debug\UtilsArmyDBManager.csproj.AssemblyReference.cache
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\obj\Debug\UtilsArmyDBManager.csproj.CoreCompileInputs.cache
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\obj\Debug\UtilsArm.90568140.Up2Date
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\obj\Debug\SoftProgDBManager.dll
+C:\Users\Asus\OneDrive\Escritorio\UtilsArmyC# (2)\UtilsArmyC#\UtilsArmyC#\SoftProgDBManager\obj\Debug\SoftProgDBManager.pdb

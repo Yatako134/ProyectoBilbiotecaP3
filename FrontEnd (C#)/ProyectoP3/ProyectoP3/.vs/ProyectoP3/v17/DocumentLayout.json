@@ -1,0 +1,169 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\proyectop3\\home.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|solutionrelative:proyectop3\\home.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\proyectop3\\listarreporte.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|solutionrelative:proyectop3\\listarreporte.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\proyectop3\\busquedamaterialaspx.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|solutionrelative:proyectop3\\busquedamaterialaspx.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|c:\\users\\renat\\downloads\\proyectop3\\proyectop3\\proyectop3\\busquedamaterialaspx.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|solutionrelative:proyectop3\\busquedamaterialaspx.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\proyectop3\\busquedamaterialaspx.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|solutionrelative:proyectop3\\busquedamaterialaspx.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\proyectop3\\historialprestamos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|solutionrelative:proyectop3\\historialprestamos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\proyectop3\\gestmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|solutionrelative:proyectop3\\gestmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\proyectop3\\gestusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|solutionrelative:proyectop3\\gestusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\proyectop3\\fonts\\css\\custom.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{0D152288-8318-447D-B5F5-18B2E91946E3}|ProyectoP3\\ProyectoP3.csproj|solutionrelative:proyectop3\\fonts\\css\\custom.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "custom.css",
+              "DocumentMoniker": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\Fonts\\css\\custom.css",
+              "RelativeDocumentMoniker": "ProyectoP3\\Fonts\\css\\custom.css",
+              "ToolTip": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\Fonts\\css\\custom.css",
+              "RelativeToolTip": "ProyectoP3\\Fonts\\css\\custom.css",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAqwFgAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-26T07:08:19.412Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BusquedaMaterialaspx.aspx.designer.cs",
+              "DocumentMoniker": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\BusquedaMaterialaspx.aspx.designer.cs",
+              "RelativeDocumentMoniker": "ProyectoP3\\BusquedaMaterialaspx.aspx.designer.cs",
+              "ToolTip": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\BusquedaMaterialaspx.aspx.designer.cs",
+              "RelativeToolTip": "ProyectoP3\\BusquedaMaterialaspx.aspx.designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T01:26:25.129Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BusquedaMaterialaspx.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\BusquedaMaterialaspx.aspx.cs",
+              "RelativeDocumentMoniker": "ProyectoP3\\BusquedaMaterialaspx.aspx.cs",
+              "ToolTip": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\BusquedaMaterialaspx.aspx.cs",
+              "RelativeToolTip": "ProyectoP3\\BusquedaMaterialaspx.aspx.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T01:12:58.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Home.Master",
+              "DocumentMoniker": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\Home.Master",
+              "RelativeDocumentMoniker": "ProyectoP3\\Home.Master",
+              "ToolTip": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\Home.Master",
+              "RelativeToolTip": "ProyectoP3\\Home.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-26T06:26:27.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ListarReporte.aspx",
+              "DocumentMoniker": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\ListarReporte.aspx",
+              "RelativeDocumentMoniker": "ProyectoP3\\ListarReporte.aspx",
+              "ToolTip": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\ListarReporte.aspx",
+              "RelativeToolTip": "ProyectoP3\\ListarReporte.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-26T06:49:18.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HistorialPrestamos.aspx",
+              "DocumentMoniker": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\HistorialPrestamos.aspx",
+              "RelativeDocumentMoniker": "ProyectoP3\\HistorialPrestamos.aspx",
+              "ToolTip": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\HistorialPrestamos.aspx",
+              "RelativeToolTip": "ProyectoP3\\HistorialPrestamos.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-26T06:48:51.174Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GestUsuarios.aspx",
+              "DocumentMoniker": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\GestUsuarios.aspx",
+              "RelativeDocumentMoniker": "ProyectoP3\\GestUsuarios.aspx",
+              "ToolTip": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\GestUsuarios.aspx",
+              "RelativeToolTip": "ProyectoP3\\GestUsuarios.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-26T06:48:36.898Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GestMaterial.aspx",
+              "DocumentMoniker": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\GestMaterial.aspx",
+              "RelativeDocumentMoniker": "ProyectoP3\\GestMaterial.aspx",
+              "ToolTip": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\GestMaterial.aspx",
+              "RelativeToolTip": "ProyectoP3\\GestMaterial.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-26T06:48:19.697Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BusquedaMaterialaspx.aspx",
+              "DocumentMoniker": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\BusquedaMaterialaspx.aspx",
+              "RelativeDocumentMoniker": "ProyectoP3\\BusquedaMaterialaspx.aspx",
+              "ToolTip": "C:\\Users\\renat\\Downloads\\ProyectoP3\\ProyectoP3\\ProyectoP3\\BusquedaMaterialaspx.aspx",
+              "RelativeToolTip": "ProyectoP3\\BusquedaMaterialaspx.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-26T06:34:50.45Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
