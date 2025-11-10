@@ -1,21 +1,23 @@
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\ArticuloBO.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\BibliotecaBO.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\ContribuyenteBO.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\EjemplarBO.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\LibroBO.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\TesisBO.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\ArticuloBOImpl.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\BibliotecaBOImpl.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\ContribuyenteBOImpl.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\EjemplarBOImpl.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\LibroBOImpl.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\TesisBOImpl.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionPrestamo\bo\PrestamoBO.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionPrestamo\bo\SancionBO.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionPrestamo\boImpl\PrestamoBOImpl.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionPrestamo\boImpl\SancionBOImpl.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\bo\RolBO.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\bo\UsuarioBO.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\boImpl\RolBOImpl.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\boImpl\UsuarioBOImpl.java
-D:\YO_usuario\Desktop\ProyectoWebJava\ProyectoProg3_JAVA\ProyectoProg3\ProyectoProg3\BibliotecaBusiness\src\main\java\biblioteca\ibo\IBO.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\ArticuloBO.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\BibliotecaBO.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\ContribuyenteBO.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\EjemplarBO.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\LibroBO.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\MaterialBiblioBO.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\TesisBO.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\ArticuloBOImpl.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\BibliotecaBOImpl.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\ContribuyenteBOImpl.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\EjemplarBOImpl.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\LibroBOImpl.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\MaterialBiblioBOImpl.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\TesisBOImpl.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionPrestamo\bo\PrestamoBO.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionPrestamo\bo\SancionBO.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionPrestamo\boImpl\PrestamoBOImpl.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionPrestamo\boImpl\SancionBOImpl.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\bo\RolBO.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\bo\UsuarioBO.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\boImpl\RolBOImpl.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\boImpl\UsuarioBOImpl.java
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\ibo\IBO.java

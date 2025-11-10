@@ -101,5 +101,41 @@ public class ContribuyenteImpl implements ContribuyenteDAO{
         }
         return contribuyentes;
     }
-    
+    @Override
+    public ArrayList<Contribuyente> listar_autores_por_material(int id_material) {
+        ArrayList<Contribuyente> contribuyentes = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, id_material);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_AUTORES_POR_MATERIAL", parametrosEntrada);
+        System.out.println("Lectura de autores...");
+        try{
+            while(rs.next()){
+                if(contribuyentes == null) contribuyentes = new ArrayList<>();
+                Contribuyente contribuyente = new Contribuyente();
+                contribuyente.setIdContribuyente(rs.getInt("id_contribuyente"));
+                contribuyente.setNombre(rs.getString("nombre"));
+                contribuyente.setPrimer_apellido(rs.getString("primer_apellido"));
+                contribuyente.setSegundo_apellido(rs.getString("segundo_apellido"));
+                contribuyente.setSeudonimo(rs.getString("seudonimo"));
+                contribuyente.setTipo_contribuyente(TipoContribuyente.valueOf(rs.getString("tipo_contribuyente")));
+                contribuyentes.add(contribuyente);
+      
+            }
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return contribuyentes;
+    }
+
+    @Override
+    public int asignar_contribuyente(int id_material, int id_contribuyente) {
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, id_material);
+        parametrosEntrada.put(2, id_contribuyente);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ASIGNAR_CONTRIBUYENTE", parametrosEntrada, null);
+        System.out.println("Se ha realizado la asinación del contribuyente");
+        return resultado;
+    }
 }

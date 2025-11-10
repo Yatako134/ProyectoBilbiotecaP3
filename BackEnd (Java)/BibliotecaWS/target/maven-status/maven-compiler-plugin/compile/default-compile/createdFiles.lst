@@ -1,11 +1,12 @@
-biblioteca\services\gestionMaterial\ConstribuyenteWS.class
-biblioteca\services\gestionUsuario\UsuarioWS.class
+biblioteca\services\gestionMaterial\MaterialWS.class
 biblioteca\services\gestionMaterial\BibliotecaWS.class
 biblioteca\services\gestionMaterial\TesisWS.class
+biblioteca\services\gestionMaterial\LibroWS.class
+biblioteca\services\gestionMaterial\ConstribuyenteWS.class
+biblioteca\services\gestionUsuario\UsuarioWS.class
 biblioteca\services\gestionMaterial\ArticuloWS.class
 biblioteca\services\gestionPrestamo\PrestamoWS.class
 biblioteca\services\gestionUsuario\RolWS.class
 biblioteca\services\PruebaWS.class
 biblioteca\services\gestionMaterial\EjemplarWS.class
-biblioteca\services\gestionMaterial\LibroWS.class
 biblioteca\services\gestionPrestamo\SancionWS.class

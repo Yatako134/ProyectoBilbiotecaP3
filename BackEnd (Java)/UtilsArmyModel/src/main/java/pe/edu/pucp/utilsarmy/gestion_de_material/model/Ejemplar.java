@@ -5,7 +5,6 @@ public class Ejemplar {
     private EstadoEjemplar estado;
     private String ubicacion;
     private Biblioteca blibioteca;
-    //private int id_biblioteca;
     private boolean activo;
     
     public Ejemplar() {
@@ -16,7 +15,6 @@ public class Ejemplar {
            int id_biblioteca, boolean activo, int id_material) {
         this.estado = estado;
         this.ubicacion = ubicacion;
-//        this.id_biblioteca = id_biblioteca;
         this.blibioteca=biblioteca;
         this.activo = activo;
         this.id_material=id_material;
@@ -101,19 +99,5 @@ public class Ejemplar {
         this.blibioteca = blibioteca;
     }
 
-    /**
-     * @return the id_biblioteca
-     */
-//    public int getId_biblioteca() {
-//        return id_biblioteca;
-//    }
-//
-//    /**
-//     * @param id_biblioteca the id_biblioteca to set
-//     */
-//    public void setId_biblioteca(int id_biblioteca) {
-//        this.id_biblioteca = id_biblioteca;
-//    }
-    
     
 }

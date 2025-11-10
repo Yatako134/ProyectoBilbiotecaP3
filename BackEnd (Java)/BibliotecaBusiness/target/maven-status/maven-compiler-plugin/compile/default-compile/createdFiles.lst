@@ -1,7 +1,9 @@
 biblioteca\gestionMaterial\boImpl\LibroBOImpl.class
 biblioteca\gestionPrestamo\bo\SancionBO.class
 biblioteca\gestionMaterial\boImpl\ArticuloBOImpl.class
+biblioteca\gestionMaterial\boImpl\MaterialBiblioBOImpl.class
 biblioteca\gestionPrestamo\boImpl\SancionBOImpl.class
+biblioteca\gestionMaterial\bo\MaterialBiblioBO.class
 biblioteca\gestionUsuario\bo\RolBO.class
 biblioteca\gestionMaterial\boImpl\BibliotecaBOImpl.class
 biblioteca\gestionUsuario\boImpl\RolBOImpl.class

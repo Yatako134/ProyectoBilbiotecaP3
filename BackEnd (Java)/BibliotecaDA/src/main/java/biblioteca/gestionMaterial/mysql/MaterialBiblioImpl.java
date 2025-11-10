@@ -3,6 +3,9 @@ package biblioteca.gestionMaterial.mysql;
 
 import biblioteca.config.DBManager;
 import biblioteca.gestionMaterial.dao.ArticuloDAO;
+import biblioteca.gestionMaterial.dao.BibliotecaDAO;
+import biblioteca.gestionMaterial.dao.ContribuyenteDAO;
+import biblioteca.gestionMaterial.dao.EjemplarDAO;
 import biblioteca.gestionMaterial.dao.LibroDAO;
 import biblioteca.gestionMaterial.dao.MaterialBiblioDAO;
 import biblioteca.gestionMaterial.dao.TesisDAO;
@@ -19,6 +22,7 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoEjemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoMaterial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Libro;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.TipoMaterial;
 
 public class MaterialBiblioImpl implements MaterialBiblioDAO{
      private ResultSet rs;
@@ -27,11 +31,16 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
     private LibroDAO librobo;
     private ArticuloDAO articulobo;
     private TesisDAO tesisbo;
-        
+    private ContribuyenteDAO contBO;
+    private EjemplarDAO ejemBO;
+    private BibliotecaDAO bibBO;
     public MaterialBiblioImpl() {
         librobo = new Librolmpl();
         tesisbo = new Tesislmpl();
         articulobo = new Articulolmpl();
+        contBO = new ContribuyenteImpl();
+        ejemBO = new EjemplarImpl();
+        bibBO = new BibliotecaImpl();
     }
     
     @Override
@@ -196,7 +205,90 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
 
     @Override
     public ArrayList<MaterialBibliografico> listarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<MaterialBibliografico> materiales = null;
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_MATERIALES_TODOS", null);
+        System.out.println("Lectura de materiales...");
+        try {
+            while (rs.next()) {
+                if (materiales == null) {
+                    materiales = new ArrayList<>();
+                }
+                MaterialBibliografico material = new MaterialBibliografico();
+                material.setIdMaterial(rs.getInt("id_material"));
+                material.setTitulo(rs.getString("titulo"));
+                material.setAnho_publicacion(rs.getInt("anho_publicacion"));
+                material.setNumero_paginas(rs.getInt("numero_paginas"));
+                material.setEstado(EstadoMaterial.valueOf(rs.getString("estado")));
+                material.setClasificacion_tematica(rs.getString("clasificacion_tematica"));
+                material.setIdioma(rs.getString("idioma"));
+                material.setTipo(TipoMaterial.valueOf(rs.getString("tipo")));
+                materiales.add(material);
+            }
+            for (MaterialBibliografico m : materiales) {
+                ArrayList<Contribuyente> contribuyentes = contBO.listar_autores_por_material(m.getIdMaterial());
+                m.setContribuyentes(contribuyentes);
+                m.FormatoAutores();
+                
+                ArrayList<Ejemplar> ejemplares = ejemBO.listar_disponibles_por_material(m.getIdMaterial());
+                m.setEjemplares(ejemplares);
+                if(ejemplares!=null)m.setCantidadDisponible(ejemplares.size());
+                else m.setCantidadDisponible(0);
+                ArrayList<Biblioteca> bibliotecas = bibBO.listar_bibliotecas_por_material(m.getIdMaterial());
+                m.setBibliotecas(bibliotecas);
+                m.FormatoBibliotecas();
+                
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return materiales;
+    }
+
+    @Override
+    public ArrayList<MaterialBibliografico> listar_busqueda(String _parametro) {
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, _parametro);
+        ArrayList<MaterialBibliografico> materiales = null;
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_MATERIALES_BUSQUEDA", parametrosEntrada);
+        System.out.println("Lectura de materiales...");
+        try {
+            while (rs.next()) {
+                if (materiales == null) {
+                    materiales = new ArrayList<>();
+                }
+                MaterialBibliografico material = new MaterialBibliografico();
+                material.setIdMaterial(rs.getInt("id_material"));
+                material.setTitulo(rs.getString("titulo"));
+                material.setAnho_publicacion(rs.getInt("anho_publicacion"));
+                material.setNumero_paginas(rs.getInt("numero_paginas"));
+                material.setEstado(EstadoMaterial.valueOf(rs.getString("estado")));
+                material.setClasificacion_tematica(rs.getString("clasificacion_tematica"));
+                material.setIdioma(rs.getString("idioma"));
+                material.setTipo(TipoMaterial.valueOf(rs.getString("tipo")));
+                materiales.add(material);
+            }
+            for (MaterialBibliografico m : materiales) {
+                ArrayList<Contribuyente> contribuyentes = contBO.listar_autores_por_material(m.getIdMaterial());
+                m.setContribuyentes(contribuyentes);
+                m.FormatoAutores();
+                
+                ArrayList<Ejemplar> ejemplares = ejemBO.listar_disponibles_por_material(m.getIdMaterial());
+                m.setEjemplares(ejemplares);
+                if(ejemplares!=null)m.setCantidadDisponible(ejemplares.size());
+                else m.setCantidadDisponible(0);
+                ArrayList<Biblioteca> bibliotecas = bibBO.listar_bibliotecas_por_material(m.getIdMaterial());
+                m.setBibliotecas(bibliotecas);
+                m.FormatoBibliotecas();
+                
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return materiales;
     }
     
 }

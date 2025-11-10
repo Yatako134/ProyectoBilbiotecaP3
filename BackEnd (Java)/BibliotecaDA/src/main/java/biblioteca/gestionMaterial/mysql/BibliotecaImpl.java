@@ -99,5 +99,28 @@ public class BibliotecaImpl implements BibliotecaDAO{
         }
         return bibliotecas;
     }
+
+    @Override
+    public ArrayList<Biblioteca> listar_bibliotecas_por_material(int _id_material) {
+        ArrayList<Biblioteca> bibliotecas = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, _id_material);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_BIBLIOTECAS_DE_MATERIAL", parametrosEntrada);
+        System.out.println("Lectura de bibliotecas...");
+        try{
+            while(rs.next()){
+                if(bibliotecas == null) bibliotecas = new ArrayList<>();
+                Biblioteca bio = new Biblioteca();
+                bio.setNombre(rs.getString("nombre"));
+                bibliotecas.add(bio);
+      
+            }
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return bibliotecas;
+    }
     
 }

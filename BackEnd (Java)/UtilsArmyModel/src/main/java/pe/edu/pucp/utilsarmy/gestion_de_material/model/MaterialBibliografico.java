@@ -1,8 +1,10 @@
 package pe.edu.pucp.utilsarmy.gestion_de_material.model;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class MaterialBibliografico {
+
     private int idMaterial;
     private String titulo;
     private int anho_publicacion;
@@ -11,23 +13,27 @@ public class MaterialBibliografico {
     private String clasificacion_tematica;
     private boolean activo;
     private String idioma;
-   
+
     private Editorial editorial;
     private ArrayList<Contribuyente> contribuyentes;
     private ArrayList<Ejemplar> ejemplares;
-
+    private ArrayList<Biblioteca> bibliotecas;
     private String autoresTexto;
-    
-    public MaterialBibliografico(){
+    private String bibliotecasTexto;
+    private TipoMaterial tipo;
+    private int cantidadDisponible;
+    public MaterialBibliografico() {
         this.editorial = new Editorial();
         this.contribuyentes = new ArrayList<>();
-        this.ejemplares = new ArrayList<>();   
+        this.ejemplares = new ArrayList<>();
+        this.bibliotecas = new ArrayList<>();
     }
 
-    public MaterialBibliografico( String titulo,
-            int anho_publicacion, int numero_paginas, EstadoMaterial estado, 
-            String clasificacion_tematica, boolean activo, String idioma, 
+    public MaterialBibliografico(String titulo,
+            int anho_publicacion, int numero_paginas, EstadoMaterial estado,
+            String clasificacion_tematica, boolean activo, String idioma,
             Editorial editorial) {
+       
         this.titulo = titulo;
         this.anho_publicacion = anho_publicacion;
         this.numero_paginas = numero_paginas;
@@ -47,8 +53,6 @@ public class MaterialBibliografico {
     public void setIdMaterial(int idMaterial) {
         this.idMaterial = idMaterial;
     }
-
- 
 
     public String getTitulo() {
         return titulo;
@@ -137,11 +141,58 @@ public class MaterialBibliografico {
     public void setAutoresTexto(String autoresTexto) {
         this.autoresTexto = autoresTexto;
     }
-   
-    
 
-    
-    
-    
-    
+    public void FormatoAutores() {
+        if (contribuyentes == null || contribuyentes.isEmpty()) {
+            autoresTexto = "No registrados";
+        } else {
+            autoresTexto = contribuyentes.stream()
+                    .map(a -> a.getNombre() + " " + a.getPrimer_apellido())
+                    .collect(Collectors.joining(", "));
+        }
+
+    }
+    public void FormatoBibliotecas() {
+        if (bibliotecas == null || bibliotecas.isEmpty()) {
+            bibliotecasTexto = "No hay bibliotecas con este material";
+        } else {
+            bibliotecasTexto = bibliotecas.stream()
+                    .map(a -> a.getNombre())
+                    .collect(Collectors.joining(", "));
+        }
+
+    }
+
+    public TipoMaterial getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoMaterial tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getCantidadDisponible() {
+        return cantidadDisponible;
+    }
+
+    public void setCantidadDisponible(int cantidadDisponible) {
+        this.cantidadDisponible = cantidadDisponible;
+    }
+
+    public ArrayList<Biblioteca> getBibliotecas() {
+        return bibliotecas;
+    }
+
+    public void setBibliotecas(ArrayList<Biblioteca> bibliotecas) {
+        this.bibliotecas = bibliotecas;
+    }
+
+    public String getBibliotecasTexto() {
+        return bibliotecasTexto;
+    }
+
+    public void setBibliotecasTexto(String bibliotecasTexto) {
+        this.bibliotecasTexto = bibliotecasTexto;
+    }
+
 }

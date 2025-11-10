@@ -1,6 +1,7 @@
 pe\edu\pucp\utilsarmy\gestion_de_material\model\Contribuyente.class
 pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\Prestamo.class
 pe\edu\pucp\utilsarmy\usuarios\model\Rol.class
+pe\edu\pucp\utilsarmy\gestion_de_material\model\TipoMaterial.class
 pe\edu\pucp\utilsarmy\gestion_de_material\model\Biblioteca.class
 pe\edu\pucp\utilsarmy\gestion_de_material\model\Articulo.class
 pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\Tipo_sancion.class

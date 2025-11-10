@@ -4,6 +4,7 @@ biblioteca\gestionUsuario\dao\UsuarioDAO.class
 biblioteca\gestionMaterial\dao\TesisDAO.class
 biblioteca\gestionUsuario\mysql\RolImpl.class
 biblioteca\gestionMaterial\dao\LibroDAO.class
+biblioteca\gestionMaterial\dao\MaterialBiblioDAO.class
 biblioteca\gestionMaterial\mysql\EjemplarImpl.class
 biblioteca\gestionUsuario\dao\RolDAO.class
 biblioteca\gestionUsuario\mysql\UsuarioImpl.class
@@ -11,6 +12,7 @@ biblioteca\gestionMaterial\dao\EjemplarDAO.class
 biblioteca\dao\IDAO.class
 biblioteca\gestionMaterial\mysql\BibliotecaImpl.class
 biblioteca\gestionMaterial\dao\BibliotecaDAO.class
+biblioteca\gestionMaterial\mysql\MaterialBiblioImpl.class
 biblioteca\gestionMaterial\mysql\ContribuyenteImpl.class
 biblioteca\gestionPrestamo\dao\SancionDAO.class
 biblioteca\gestionMaterial\mysql\Tesislmpl.class

@@ -19,4 +19,6 @@ public interface MaterialBiblioDAO extends IDAO<MaterialBibliografico>{
 
     // Obtiene los ejemplares disponibles de un material en una biblioteca
     ArrayList<Ejemplar> obtenerEjemplaresDisponibles(int idMaterial, int idBiblioteca);
+    
+    ArrayList<MaterialBibliografico> listar_busqueda(String _parametro);
 }

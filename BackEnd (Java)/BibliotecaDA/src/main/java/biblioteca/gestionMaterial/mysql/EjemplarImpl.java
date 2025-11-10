@@ -87,7 +87,7 @@ private ResultSet rs;
     public ArrayList<Ejemplar> listarTodos() {
         ArrayList<Ejemplar> ejemplares = null;
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_EJEMPLARES_TODOS", null);
-        System.out.println("Lectura de préstamos...");
+        System.out.println("Lectura de ejemplares...");
         try {
             while (rs.next()) {
                 if (ejemplares == null) ejemplares = new ArrayList<>();
@@ -113,5 +113,38 @@ private ResultSet rs;
         }
         return ejemplares;
     }
+
+    @Override
+    public ArrayList<Ejemplar> listar_disponibles_por_material(int _id_material) {
+        ArrayList<Ejemplar> ejemplares = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, _id_material);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_EJEMPLARES_DISPONIBLES_POR_MATERIAL", parametrosEntrada);
+        System.out.println("Lectura de ejemplares...");
+        try {
+            while (rs.next()) {
+                if (ejemplares == null) ejemplares = new ArrayList<>();
+                Ejemplar e = new Ejemplar();
+
+                e = new Ejemplar();
+                e.setIdEjemplar(rs.getInt("id_ejemplar"));
+                e.setId_material(rs.getInt("id_material"));
+                e.setUbicacion(rs.getString("ubicacion"));
+                Biblioteca b=new Biblioteca();
+                b.setIdBiblioteca(rs.getInt("id_biblioteca"));
+                e.setBlibioteca(b);
+                
+                String estadoStr = rs.getString("estado");
+                e.setEstado(EstadoEjemplar.valueOf(estadoStr.toUpperCase()));
+                ejemplares.add(e);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return ejemplares;
+    }
+    
 
 }
