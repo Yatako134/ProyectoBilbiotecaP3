@@ -16,6 +16,8 @@ public class MaterialBibliografico {
     private ArrayList<Contribuyente> contribuyentes;
     private ArrayList<Ejemplar> ejemplares;
 
+    private String autoresTexto;
+    
     public MaterialBibliografico(){
         this.editorial = new Editorial();
         this.contribuyentes = new ArrayList<>();
@@ -126,6 +128,14 @@ public class MaterialBibliografico {
 
     public void setEjemplares(ArrayList<Ejemplar> ejemplares) {
         this.ejemplares = ejemplares;
+    }
+
+    public String getAutoresTexto() {
+        return autoresTexto;
+    }
+
+    public void setAutoresTexto(String autoresTexto) {
+        this.autoresTexto = autoresTexto;
     }
    
     
