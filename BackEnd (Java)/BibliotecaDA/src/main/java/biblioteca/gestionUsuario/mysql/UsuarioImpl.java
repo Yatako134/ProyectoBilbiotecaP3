@@ -128,12 +128,11 @@ public class UsuarioImpl implements UsuarioDAO{
         }
         return users;
     }
-<<<<<<< HEAD
+
 	
-	@Override
-=======
+
+
     @Override
->>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0
     public Usuario obtenerUsuarioxCodigo(int codigo) {
         Usuario usuario = null;
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
@@ -201,10 +200,6 @@ public class UsuarioImpl implements UsuarioDAO{
         }
         return cantidad_prestamos_vigentes;
     }
-<<<<<<< HEAD
-    
-=======
->>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0
     
     
 }
