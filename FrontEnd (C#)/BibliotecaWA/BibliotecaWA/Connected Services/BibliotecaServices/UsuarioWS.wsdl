@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gestionUsuario.services.biblioteca/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="UsuarioWS" targetNamespace="http://gestionUsuario.services.biblioteca/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/UsuarioWS?xsd=1" namespace="http://gestionUsuario.services.biblioteca/" />
+    </xsd:schema>
+  </types>
+  <message name="obtenerUsuarioxCodigo">
+    <part name="parameters" element="tns:obtenerUsuarioxCodigo" />
+  </message>
+  <message name="obtenerUsuarioxCodigoResponse">
+    <part name="parameters" element="tns:obtenerUsuarioxCodigoResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="listarUsuarios">
+    <part name="parameters" element="tns:listarUsuarios" />
+  </message>
+  <message name="listarUsuariosResponse">
+    <part name="parameters" element="tns:listarUsuariosResponse" />
+  </message>
+  <message name="eliminarUsuario">
+    <part name="parameters" element="tns:eliminarUsuario" />
+  </message>
+  <message name="eliminarUsuarioResponse">
+    <part name="parameters" element="tns:eliminarUsuarioResponse" />
+  </message>
+  <message name="insertarUsuario">
+    <part name="parameters" element="tns:insertarUsuario" />
+  </message>
+  <message name="insertarUsuarioResponse">
+    <part name="parameters" element="tns:insertarUsuarioResponse" />
+  </message>
+  <message name="modificarUsuario">
+    <part name="parameters" element="tns:modificarUsuario" />
+  </message>
+  <message name="modificarUsuarioResponse">
+    <part name="parameters" element="tns:modificarUsuarioResponse" />
+  </message>
+  <message name="obtenerUsuarioPorId">
+    <part name="parameters" element="tns:obtenerUsuarioPorId" />
+  </message>
+  <message name="obtenerUsuarioPorIdResponse">
+    <part name="parameters" element="tns:obtenerUsuarioPorIdResponse" />
+  </message>
+  <message name="obtener_prestamos_vigentesxUsuario">
+    <part name="parameters" element="tns:obtener_prestamos_vigentesxUsuario" />
+  </message>
+  <message name="obtener_prestamos_vigentesxUsuarioResponse">
+    <part name="parameters" element="tns:obtener_prestamos_vigentesxUsuarioResponse" />
+  </message>
+  <portType name="UsuarioWS">
+    <operation name="obtenerUsuarioxCodigo">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioxCodigoRequest" message="tns:obtenerUsuarioxCodigo" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioxCodigoResponse" message="tns:obtenerUsuarioxCodigoResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioxCodigo/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarUsuarios">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/listarUsuariosRequest" message="tns:listarUsuarios" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/listarUsuariosResponse" message="tns:listarUsuariosResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/listarUsuarios/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="eliminarUsuario">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/eliminarUsuarioRequest" message="tns:eliminarUsuario" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/eliminarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="insertarUsuario">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/insertarUsuarioRequest" message="tns:insertarUsuario" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/insertarUsuarioResponse" message="tns:insertarUsuarioResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/insertarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="modificarUsuario">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/modificarUsuarioRequest" message="tns:modificarUsuario" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/modificarUsuarioResponse" message="tns:modificarUsuarioResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/modificarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerUsuarioPorId">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioPorIdRequest" message="tns:obtenerUsuarioPorId" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioPorIdResponse" message="tns:obtenerUsuarioPorIdResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioPorId/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtener_prestamos_vigentesxUsuario">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtener_prestamos_vigentesxUsuarioRequest" message="tns:obtener_prestamos_vigentesxUsuario" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtener_prestamos_vigentesxUsuarioResponse" message="tns:obtener_prestamos_vigentesxUsuarioResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtener_prestamos_vigentesxUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="UsuarioWSPortBinding" type="tns:UsuarioWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="obtenerUsuarioxCodigo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarUsuarios">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="eliminarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="insertarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="modificarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerUsuarioPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtener_prestamos_vigentesxUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="UsuarioWS">
+    <port name="UsuarioWSPort" binding="tns:UsuarioWSPortBinding">
+      <soap:address location="http://localhost:8080/BibliotecaWS/UsuarioWS" />
+    </port>
+  </service>
+</definitions>

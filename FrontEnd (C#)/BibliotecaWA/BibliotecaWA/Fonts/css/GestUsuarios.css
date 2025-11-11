@@ -1,0 +1,178 @@
+/* ==== ENLACE ACTIVO DEL MENÚ ==== */
+.mynav a.active {
+    background-color: #006deb !important; /* Azul claro */
+    color: #ffffff !important;
+    font-weight: 500;
+    border-radius: 10px; /* bordes un poco más suaves */
+    padding-top: 12px; /* más alto en vertical */
+    padding-bottom: 12px; /* más alto en vertical */
+    padding-left: 14px;
+    padding-right: 12px;
+    transition: all 0.3s ease; /* animación suave */
+}
+
+    /* Ícono blanco cuando está activo */
+    .mynav a.active i {
+        color: #ffffff !important;
+    }
+
+/* Efecto al pasar el mouse: un poco más oscuro */
+.mynav a:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+    color: #ffffff !important;
+}
+
+.btn-disabled {
+    opacity: 0.6;
+    pointer-events: none; /* no permite clics visualmente */
+}
+
+.btn-enabled {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* === TABLA PRINCIPAL - GESTION USUARIOS === */
+.table-custom {
+    border-collapse: separate !important;
+    border-spacing: 0 10px;
+    width: 100%;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+    .table-custom thead th {
+        background-color: #f7f9fc;
+        color: #555;
+        font-weight: 600;
+        border: none;
+        text-transform: uppercase;
+        font-size: 13px;
+        padding: 12px;
+    }
+
+    .table-custom tbody tr {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        transition: all 0.2s ease-in-out;
+    }
+
+        .table-custom tbody tr:hover {
+            transform: scale(1.01);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+    .table-custom td {
+        border: none;
+        padding: 14px 12px;
+        vertical-align: middle;
+        color: #444;
+    }
+
+        .table-custom td:first-child {
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
+
+        .table-custom td:last-child {
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+/* === BOTONES === */
+.btnOpciones {
+    background: none;
+    border: none;
+    color: #444;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+    .btnOpciones:hover {
+        color: #0d6efd;
+    }
+
+/* === PAGINADOR === */
+.paginador .btn-outline-primary {
+    border: none;           /* quita el borde */
+    background-color: transparent; /* fondo transparente */
+    color: #555;            /* color del texto */
+    border-radius: 10px;    /* opcional, para esquinas suaves */
+}
+
+    .paginador .btn-outline-primary:hover {
+        background-color: #f5faff;
+        color: #006deb;
+    }
+
+
+/* Página activa modificada */
+.btn-pagina-activa {
+    background-color: #f5faff !important; /* fondo azul muy claro */
+    color: #006deb !important; /* texto azul */
+    border: none !important; /* sin borde */
+}
+
+/* Página activa */
+.btn-pagina-activa {
+    background-color: #0d6efd !important;
+    color: #fff !important;
+}
+
+/* Dropdown cantidad */
+.form-select-sm {
+    border-radius: 8px;
+    border-color: #d0d7e3;
+}
+
+
+
+
+
+/* CSS del contenedor de gestion de usuarios */
+
+.tabla-container {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+}
+
+/* MODIFICACION DEL TAMAÑO DE LAS CABECERAS */
+.table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    font-size: 16px; /* Tamaño de letra de encabezado */
+    padding: 12px 30px; /* Espaciado de las celdas del encabezado */
+    text-align: center;
+}
+
+/* Celdas de tabla */
+.table td {
+    padding: 8px 60px; /* Espaciado de las celdas */
+    font-size: 16px; /* Tamaño de letra de las celdas */
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+
+
+/* tabla*/
+
+
+.tabla-header h2 {
+    font: #252f4a;
+    color: #333;
+}
+
+.tabla-busqueda input.form-control {
+    border-radius: 8px 8px 8px 8px;
+}
+
+.tabla-busqueda .btn {
+    margin: 4px;
+    background-color: #f5faff;
+    border-radius: 8px 8px 8px 8px;
+}
+
+
