@@ -14,9 +14,81 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 @WebService(serviceName = "MaterialWS")
 public class MaterialWS {
 
-    MaterialBiblioBOImpl materialBO;
+    private MaterialBiblioBOImpl materialBO;
+	
+	public MaterialWS(){
+		materialBO = new MaterialBiblioBOImpl();
+	}
 
-    @WebMethod(operationName = "ListarTodos")
+    @WebMethod(operationName = "obtenerPorId")
+    public MaterialBibliografico obtenerPorId(@WebParam(name = "id") int id) {
+        MaterialBibliografico material = null;
+        try {
+            material = materialBO.obtenerPorId(id);
+        } catch (Exception ex) {
+            System.out.println("ERROR en obtenerPorId: " + ex.getMessage());
+        }
+        return material;
+    }
+
+    @WebMethod(operationName = "buscarEjemplares")
+    public ArrayList<Ejemplar> buscarEjemplares(@WebParam(name = "idMaterial") int id) {
+        ArrayList<Ejemplar> ejemplares = new ArrayList<>();
+        try {
+            ejemplares = materialBO.buscarEjemplares(id);
+            if (ejemplares == null) {
+                ejemplares = new ArrayList<>();
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR en buscarEjemplares: " + ex.getMessage());
+        }
+        return ejemplares;
+    }
+
+    @WebMethod(operationName = "buscarContribuyentes")
+    public ArrayList<Contribuyente> buscarContribuyentes(@WebParam(name = "idMaterial") int id) {
+        ArrayList<Contribuyente> contribuyentes = new ArrayList<>();
+        try {
+            contribuyentes = materialBO.buscarContribuyente(id);
+            if (contribuyentes == null) {
+                contribuyentes = new ArrayList<>();
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR en buscarContribuyentes: " + ex.getMessage());
+        }
+        return contribuyentes;
+    }
+
+    @WebMethod(operationName = "buscarEditoriales")
+    public ArrayList<Editorial> buscarEditoriales(@WebParam(name = "idMaterial") int id) {
+         ArrayList<Editorial> editoriales = new ArrayList<>();
+        try {
+            editoriales = materialBO.buscarEditorial(id);
+            if (editoriales == null) {
+                editoriales = new ArrayList<>();
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR en buscarEditoriales: " + ex.getMessage());
+        }
+        return editoriales;
+    }
+
+    @WebMethod(operationName = "obtenerEjemplaresDisponibles")
+    public ArrayList<Ejemplar> obtenerEjemplaresDisponibles(
+            @WebParam(name = "idMaterial") int idMaterial,
+            @WebParam(name = "idBiblioteca") int idBiblioteca) {
+         ArrayList<Ejemplar> ejemplares = new ArrayList<>();
+        try {
+            ejemplares = materialBO.obtenerEjemplaresDisponibles(idMaterial, idBiblioteca);
+            if (ejemplares == null) {
+                ejemplares = new ArrayList<>();
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR en obtenerEjemplaresDisponibles: " + ex.getMessage());
+        }
+        return ejemplares;
+    }
+     @WebMethod(operationName = "ListarTodos")
     public ArrayList<MaterialBibliografico> listarTodos() {
         materialBO = new MaterialBiblioBOImpl();
         ArrayList<MaterialBibliografico> materiales = null;
@@ -67,73 +139,4 @@ public class MaterialWS {
         return materiales;
     }
 	
-	@WebMethod(operationName = "obtenerPorId")
-    public MaterialBibliografico obtenerPorId(@WebParam(name = "id") int id) {
-        MaterialBibliografico material = null;
-        try {
-            material = bomaterial.obtenerPorId(id);
-        } catch (Exception ex) {
-            System.out.println("ERROR en obtenerPorId: " + ex.getMessage());
-        }
-        return material;
-    }
-
-    @WebMethod(operationName = "buscarEjemplares")
-    public ArrayList<Ejemplar> buscarEjemplares(@WebParam(name = "idMaterial") int id) {
-        ArrayList<Ejemplar> ejemplares = new ArrayList<>();
-        try {
-            ejemplares = bomaterial.buscarEjemplares(id);
-            if (ejemplares == null) {
-                ejemplares = new ArrayList<>();
-            }
-        } catch (Exception ex) {
-            System.out.println("ERROR en buscarEjemplares: " + ex.getMessage());
-        }
-        return ejemplares;
-    }
-
-    @WebMethod(operationName = "buscarContribuyentes")
-    public ArrayList<Contribuyente> buscarContribuyentes(@WebParam(name = "idMaterial") int id) {
-        ArrayList<Contribuyente> contribuyentes = new ArrayList<>();
-        try {
-            contribuyentes = bomaterial.buscarContribuyente(id);
-            if (contribuyentes == null) {
-                contribuyentes = new ArrayList<>();
-            }
-        } catch (Exception ex) {
-            System.out.println("ERROR en buscarContribuyentes: " + ex.getMessage());
-        }
-        return contribuyentes;
-    }
-
-    @WebMethod(operationName = "buscarEditoriales")
-    public ArrayList<Editorial> buscarEditoriales(@WebParam(name = "idMaterial") int id) {
-         ArrayList<Editorial> editoriales = new ArrayList<>();
-        try {
-            editoriales = bomaterial.buscarEditorial(id);
-            if (editoriales == null) {
-                editoriales = new ArrayList<>();
-            }
-        } catch (Exception ex) {
-            System.out.println("ERROR en buscarEditoriales: " + ex.getMessage());
-        }
-        return editoriales;
-    }
-
-    @WebMethod(operationName = "obtenerEjemplaresDisponibles")
-    public ArrayList<Ejemplar> obtenerEjemplaresDisponibles(
-            @WebParam(name = "idMaterial") int idMaterial,
-            @WebParam(name = "idBiblioteca") int idBiblioteca) {
-         ArrayList<Ejemplar> ejemplares = new ArrayList<>();
-        try {
-            ejemplares = bomaterial.obtenerEjemplaresDisponibles(idMaterial, idBiblioteca);
-            if (ejemplares == null) {
-                ejemplares = new ArrayList<>();
-            }
-        } catch (Exception ex) {
-            System.out.println("ERROR en obtenerEjemplaresDisponibles: " + ex.getMessage());
-        }
-        return ejemplares;
-    }
-
 }

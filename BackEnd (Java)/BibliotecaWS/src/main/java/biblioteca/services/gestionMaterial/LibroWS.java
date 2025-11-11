@@ -1,13 +1,20 @@
 
 package biblioteca.services.gestionMaterial;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0
 import biblioteca.gestionMaterial.boImpl.LibroBOImpl;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Libro;
+<<<<<<< HEAD
+=======
+
+>>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0
 @WebService(serviceName = "LibroWS")
 public class LibroWS {
 

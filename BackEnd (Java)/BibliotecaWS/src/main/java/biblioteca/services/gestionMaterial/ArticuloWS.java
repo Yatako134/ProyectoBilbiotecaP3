@@ -1,6 +1,9 @@
 package biblioteca.services.gestionMaterial;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0
 import biblioteca.gestionMaterial.boImpl.ArticuloBOImpl;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;

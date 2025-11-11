@@ -4,6 +4,16 @@
   <xs:element name="BusquedaResponse" type="tns:BusquedaResponse" />
   <xs:element name="ListarTodos" type="tns:ListarTodos" />
   <xs:element name="ListarTodosResponse" type="tns:ListarTodosResponse" />
+  <xs:element name="buscarContribuyentes" type="tns:buscarContribuyentes" />
+  <xs:element name="buscarContribuyentesResponse" type="tns:buscarContribuyentesResponse" />
+  <xs:element name="buscarEditoriales" type="tns:buscarEditoriales" />
+  <xs:element name="buscarEditorialesResponse" type="tns:buscarEditorialesResponse" />
+  <xs:element name="buscarEjemplares" type="tns:buscarEjemplares" />
+  <xs:element name="buscarEjemplaresResponse" type="tns:buscarEjemplaresResponse" />
+  <xs:element name="obtenerEjemplaresDisponibles" type="tns:obtenerEjemplaresDisponibles" />
+  <xs:element name="obtenerEjemplaresDisponiblesResponse" type="tns:obtenerEjemplaresDisponiblesResponse" />
+  <xs:element name="obtenerPorId" type="tns:obtenerPorId" />
+  <xs:element name="obtenerPorIdResponse" type="tns:obtenerPorIdResponse" />
   <xs:complexType name="Busqueda">
     <xs:sequence>
       <xs:element minOccurs="0" name="_titulo_autor" type="xs:string" />
@@ -37,8 +47,19 @@
   <xs:complexType name="biblioteca">
     <xs:sequence>
       <xs:element name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ejemplares" nillable="true" type="tns:ejemplar" />
       <xs:element name="idBiblioteca" type="xs:int" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ejemplar">
+    <xs:sequence>
+      <xs:element name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="blibioteca" type="tns:biblioteca" />
+      <xs:element minOccurs="0" name="estado" type="tns:estadoEjemplar" />
+      <xs:element name="idEjemplar" type="xs:int" />
+      <xs:element name="id_material" type="xs:int" />
       <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -58,14 +79,24 @@
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="ejemplar">
+  <xs:complexType name="obtenerPorId">
     <xs:sequence>
-      <xs:element name="activo" type="xs:boolean" />
-      <xs:element minOccurs="0" name="blibioteca" type="tns:biblioteca" />
-      <xs:element minOccurs="0" name="estado" type="tns:estadoEjemplar" />
-      <xs:element name="idEjemplar" type="xs:int" />
-      <xs:element name="id_material" type="xs:int" />
-      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+      <xs:element name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:materialBibliografico" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEditoriales">
+    <xs:sequence>
+      <xs:element name="idMaterial" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEditorialesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:editorial" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ListarTodos">
@@ -76,19 +107,50 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:materialBibliografico" />
     </xs:sequence>
   </xs:complexType>
-  <xs:simpleType name="tipoContribuyente">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="AUTOR" />
-      <xs:enumeration value="EDITOR" />
-      <xs:enumeration value="ILUSTRADOR" />
-    </xs:restriction>
-  </xs:simpleType>
+  <xs:complexType name="buscarContribuyentes">
+    <xs:sequence>
+      <xs:element name="idMaterial" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarContribuyentesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:contribuyente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEjemplares">
+    <xs:sequence>
+      <xs:element name="idMaterial" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEjemplaresResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerEjemplaresDisponibles">
+    <xs:sequence>
+      <xs:element name="idMaterial" type="xs:int" />
+      <xs:element name="idBiblioteca" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerEjemplaresDisponiblesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:simpleType name="estadoEjemplar">
     <xs:restriction base="xs:string">
       <xs:enumeration value="DISPONIBLE" />
       <xs:enumeration value="PRESTADO" />
       <xs:enumeration value="EN_REPARACION" />
       <xs:enumeration value="NO_DISPONIBLE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoContribuyente">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AUTOR" />
+      <xs:enumeration value="EDITOR" />
+      <xs:enumeration value="ILUSTRADOR" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="estadoMaterial">

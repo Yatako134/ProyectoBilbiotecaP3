@@ -1,10 +1,13 @@
 package pe.edu.pucp.utilsarmy.gestion_de_material.model;
 
+import java.util.ArrayList;
+
 public class Biblioteca {
     private int idBiblioteca;
     private String nombre;
     private String ubicacion;
     private boolean activo;
+    private ArrayList<Ejemplar> ejemplares;
 
     public Biblioteca( String nombre, String ubicacion, boolean activo) {
         this.nombre = nombre;
@@ -15,6 +18,15 @@ public class Biblioteca {
     public Biblioteca() {
     }
 
+    public ArrayList<Ejemplar> getEjemplares() {
+        return ejemplares;
+    }
+
+    public void setEjemplares(ArrayList<Ejemplar> ejemplares) {
+        this.ejemplares = ejemplares;
+    }
+
+    
     public int getIdBiblioteca() {
         return idBiblioteca;
     }

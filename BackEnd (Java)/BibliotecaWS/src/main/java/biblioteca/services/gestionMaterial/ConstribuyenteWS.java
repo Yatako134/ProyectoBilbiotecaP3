@@ -7,6 +7,10 @@ import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Contribuyente;
+<<<<<<< HEAD
+=======
+
+>>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0
 @WebService(serviceName = "ConstribuyenteWS")
 public class ConstribuyenteWS {
 

@@ -11,7 +11,11 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.Tesis;
 @WebService(serviceName = "TesisWS")
 public class TesisWS {
 
+<<<<<<< HEAD
    private TesisBOImpl tesisbo;
+=======
+    private TesisBOImpl tesisbo;
+>>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0
 
     @WebMethod(operationName = "insertarTesis")
     public int insertarTesis(@WebParam(name = "tesis") Tesis tesis) {

@@ -11,6 +11,7 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.Biblioteca;
 @WebService(serviceName = "BibliotecaWS")
 public class BibliotecaWS {
     BibliotecaBO bibBO;
+<<<<<<< HEAD
 	
 	
 	@WebMethod(operationName = "insertarBiblioteca")
@@ -19,6 +20,16 @@ public class BibliotecaWS {
         try {
             bibliotecabo = new BibliotecaBOImpl();
             resultado = bibliotecabo.insertar(biblioteca);
+=======
+    
+    
+    @WebMethod(operationName = "insertarBiblioteca")
+    public int insertarMaterial(@WebParam(name = "material") Biblioteca biblioteca) {
+        int resultado = 0;
+        try {
+            bibBO = new BibliotecaBOImpl();
+            resultado = bibBO.insertar(biblioteca);
+>>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -27,8 +38,13 @@ public class BibliotecaWS {
 
     @WebMethod(operationName = "modificarBiblioteca")
     public int modificarMaterial(@WebParam(name = "material") Biblioteca biblioteca) throws Exception {
+<<<<<<< HEAD
         bibliotecabo = new BibliotecaBOImpl();
         return bibliotecabo.modificar(biblioteca);
+=======
+        bibBO = new BibliotecaBOImpl();
+        return bibBO.modificar(biblioteca);
+>>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0
     }
     @WebMethod(operationName = "ListarTodas")
     public ArrayList<Biblioteca> listar_bibliotecas_todas() {
@@ -42,6 +58,7 @@ public class BibliotecaWS {
         }
         return bibliotecas;
     }
+<<<<<<< HEAD
 	
 	@WebMethod(operationName = "obtenerBibliotecaPorId")
     public Biblioteca obtenerMaterialPorId(@WebParam(name = "idMaterial") int idMaterial) throws Exception {
@@ -49,6 +66,15 @@ public class BibliotecaWS {
         try {
             bibliotecabo = new BibliotecaBOImpl();
             material = bibliotecabo.obtenerPorId(idMaterial);
+=======
+    
+    @WebMethod(operationName = "obtenerBibliotecaPorId")
+    public Biblioteca obtenerMaterialPorId(@WebParam(name = "idMaterial") int idMaterial) throws Exception {
+        Biblioteca material = null;
+        try {
+            bibBO = new BibliotecaBOImpl();
+            material = bibBO.obtenerPorId(idMaterial);
+>>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -59,8 +85,13 @@ public class BibliotecaWS {
     public int eliminarMaterial(@WebParam(name = "idMaterial") int idMaterial) throws Exception {
         int resultado = 0;
         try {
+<<<<<<< HEAD
             bibliotecabo = new BibliotecaBOImpl();
             resultado = bibliotecabo.eliminar(idMaterial);
+=======
+            bibBO = new BibliotecaBOImpl();
+            resultado = bibBO.eliminar(idMaterial);
+>>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
