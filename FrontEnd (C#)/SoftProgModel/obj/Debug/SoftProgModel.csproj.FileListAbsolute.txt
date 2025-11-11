@@ -1,6 +1,0 @@
-D:\YO_usuario\Desktop\SoftProg\SoftProg\SoftProgModel\bin\Debug\SoftProgModel.dll
-D:\YO_usuario\Desktop\SoftProg\SoftProg\SoftProgModel\bin\Debug\SoftProgModel.pdb
-D:\YO_usuario\Desktop\SoftProg\SoftProg\SoftProgModel\obj\Debug\SoftProgModel.csproj.AssemblyReference.cache
-D:\YO_usuario\Desktop\SoftProg\SoftProg\SoftProgModel\obj\Debug\SoftProgModel.csproj.CoreCompileInputs.cache
-D:\YO_usuario\Desktop\SoftProg\SoftProg\SoftProgModel\obj\Debug\SoftProgModel.dll
-D:\YO_usuario\Desktop\SoftProg\SoftProg\SoftProgModel\obj\Debug\SoftProgModel.pdb
