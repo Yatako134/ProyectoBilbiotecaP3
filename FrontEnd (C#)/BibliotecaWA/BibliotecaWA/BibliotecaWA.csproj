@@ -74,6 +74,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="AdministrarUsuarios.aspx" />
+    <Content Include="BusquedaMaterialaspx.aspx" />
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.biblioteca.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -87,9 +88,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.helloResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.helloResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.insertarRolResponse.datasource">
@@ -128,7 +126,28 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.rol.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.usuario.datasource">
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.BusquedaAvanzadaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarPrestamosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarSancionesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.prestamo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.sancion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.usuario1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">
@@ -282,6 +301,13 @@
     </Compile>
     <Compile Include="AdministrarUsuarios.aspx.designer.cs">
       <DependentUpon>AdministrarUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BusquedaMaterialaspx.aspx.cs">
+      <DependentUpon>BusquedaMaterialaspx.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BusquedaMaterialaspx.aspx.designer.cs">
+      <DependentUpon>BusquedaMaterialaspx.aspx</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\BibliotecaServices\Reference.cs">
       <AutoGen>True</AutoGen>

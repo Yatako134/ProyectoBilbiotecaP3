@@ -880,21 +880,49 @@ BEGIN
 END $$
 
 
-DELIMITER $
 
+DELIMITER $
 CREATE PROCEDURE LISTAR_MATERIALES_TODOS()
 BEGIN
-    SELECT id_material, titulo, anho_publicacion, numero_paginas, estado, clasificacion_tematica, idioma, tipo
-    FROM MaterialBibliografico
-    WHERE activo = 1;
-END$
-DELIMITER $
-CREATE PROCEDURE LISTAR_AUTORES_POR_MATERIAL(IN _id_material INT)
-BEGIN
-    SELECT c.id_contribuyente, c.nombre, c.primer_apellido, c.segundo_apellido, c.seudonimo, c.tipo_contribuyente
-    FROM Contribuyente c, Contribuyente_Material m
-    WHERE m.id_material = _id_material and m.id_contribuyente = c.id_contribuyente and c.tipo_contribuyente = 'AUTOR';
-END$
+    SELECT 
+        m.id_material,
+        m.titulo,
+        m.anho_publicacion,
+        m.numero_paginas,
+        m.estado,
+        m.clasificacion_tematica,
+        m.idioma,
+        m.tipo,
+        -- Concatenamos los autores en una sola columna, si no hay autores mostramos un mensaje
+        IFNULL(
+            NULLIF(
+                GROUP_CONCAT(
+                    CONCAT(
+                        IFNULL(c.nombre, ''), 
+                        CASE WHEN c.nombre IS NOT NULL AND c.nombre <> '' THEN ' ' ELSE '' END,
+                        c.primer_apellido, ' ', c.segundo_apellido
+                    ) SEPARATOR ', '
+                ), ''
+            ), 'No hay autores registrados'
+        ) AS `autores`,
+        -- Concatenamos los nombres de bibliotecas donde hay ejemplares disponibles, sin repetir
+        IFNULL(
+            NULLIF(
+                GROUP_CONCAT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN b.nombre END SEPARATOR ', '), 
+                ''
+            ), 'No hay ejemplares disponibles para préstamo'
+        ) AS `bibliotecas`,
+        -- Contamos los ejemplares disponibles
+        COUNT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN e.id_ejemplar END) AS `ejemplares_disponibles`
+    FROM MaterialBibliografico m
+    LEFT JOIN Contribuyente_Material cm ON m.id_material = cm.id_material
+    LEFT JOIN Contribuyente c ON cm.id_contribuyente = c.id_contribuyente AND c.tipo_contribuyente = 'AUTOR'
+    LEFT JOIN Ejemplar e ON m.id_material = e.id_material AND e.activo = 1
+    LEFT JOIN Biblioteca b ON e.id_biblioteca = b.id_biblioteca AND b.activo = 1
+    WHERE m.activo = 1
+    GROUP BY 
+        m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.idioma, m.tipo;
+END $
 
 DELIMITER $
 CREATE PROCEDURE LISTAR_BIBLIOTECAS_DE_MATERIAL
@@ -1005,18 +1033,59 @@ BEGIN
     WHERE id_material = _id_material;
 END$$
 
-DELIMITER ;
-CREATE PROCEDURE LISTAR_MATERIALES_BUSQUEDA(IN _titulo_autor VARCHAR(150)) 
-SELECT DISTINCT m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas,
-m.estado, m.clasificacion_tematica, m.activo, m.idioma, m.tipo
-FROM MaterialBibliografico m, Contribuyente c, Contribuyente_Material x
-WHERE m.titulo LIKE CONCAT('%',_titulo_autor,'%') OR (m.id_material=x.id_material and 
-x.id_contribuyente = c.id_contribuyente and c.tipo_contribuyente = 'AUTOR' and (c.nombre LIKE CONCAT('%',_titulo_autor,'%') OR
-c.primer_apellido LIKE CONCAT('%',_titulo_autor,'%') OR c.segundo_apellido LIKE CONCAT('%',_titulo_autor,'%')  OR
-c.seudonimo LIKE CONCAT('%',_titulo_autor,'%') ))
-ORDER BY (m.estado = 'DISPONIBLE') DESC, m.titulo ASC;
+DELIMITER $
+
+
+CREATE PROCEDURE LISTAR_MATERIALES_BUSQUEDA(IN _titulo_autor VARCHAR(150))
+BEGIN
+    SELECT 
+        m.id_material,
+        m.titulo,
+        m.anho_publicacion,
+        m.numero_paginas,
+        m.estado,
+        m.clasificacion_tematica,
+        m.idioma,
+        m.tipo,
+        IFNULL(
+            NULLIF(
+                GROUP_CONCAT(
+                    CONCAT(
+                        IFNULL(c.nombre, ''), 
+                        CASE WHEN c.nombre IS NOT NULL AND c.nombre <> '' THEN ' ' ELSE '' END,
+                        IFNULL(c.primer_apellido, ''), ' ', IFNULL(c.segundo_apellido, '')
+                    ) SEPARATOR ', '
+                ), ''
+            ), 'No hay autores registrados'
+        ) AS autores,
+        IFNULL(
+            NULLIF(
+                GROUP_CONCAT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN b.nombre END SEPARATOR ', '), 
+                ''
+            ), 'No hay ejemplares disponibles en ninguna biblioteca'
+        ) AS bibliotecas,
+        COUNT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN e.id_ejemplar END) AS ejemplares_disponibles
+    FROM MaterialBibliografico m
+    LEFT JOIN Contribuyente_Material cm ON m.id_material = cm.id_material
+    LEFT JOIN Contribuyente c ON cm.id_contribuyente = c.id_contribuyente AND c.tipo_contribuyente = 'AUTOR'
+    LEFT JOIN Ejemplar e ON m.id_material = e.id_material AND e.activo = 1
+    LEFT JOIN Biblioteca b ON e.id_biblioteca = b.id_biblioteca AND b.activo = 1
+    WHERE m.activo = 1
+      AND (
+          m.titulo LIKE CONCAT('%', _titulo_autor, '%')
+          OR c.nombre LIKE CONCAT('%', _titulo_autor, '%')
+          OR c.primer_apellido LIKE CONCAT('%', _titulo_autor, '%')
+          OR c.segundo_apellido LIKE CONCAT('%', _titulo_autor, '%')
+          OR c.seudonimo LIKE CONCAT('%', _titulo_autor, '%')
+      )
+    GROUP BY 
+        m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, 
+        m.estado, m.clasificacion_tematica, m.idioma, m.tipo
+    ORDER BY (m.estado = 'DISPONIBLE') DESC, m.titulo ASC;
+END $
 
 DELIMITER $$
+
 CREATE PROCEDURE LISTAR_MATERIALES_BUSQUEDA_AVANZADA(
     IN _titulo VARCHAR(150),
     IN _tipo_contribuyente VARCHAR(20),
@@ -1029,26 +1098,41 @@ CREATE PROCEDURE LISTAR_MATERIALES_BUSQUEDA_AVANZADA(
     IN _disponibilidad VARCHAR(20)
 )
 BEGIN
-    SELECT DISTINCT 
+    SELECT 
         m.id_material,
         m.titulo,
         m.anho_publicacion,
         m.numero_paginas,
         m.estado,
         m.clasificacion_tematica,
-        m.activo,
         m.idioma,
-        m.tipo
+        m.tipo,
+        IFNULL(
+            NULLIF(
+                GROUP_CONCAT(
+                    CONCAT(
+                        IFNULL(c.nombre, ''), 
+                        CASE WHEN c.nombre IS NOT NULL AND c.nombre <> '' THEN ' ' ELSE '' END,
+                        IFNULL(c.primer_apellido, ''), ' ', IFNULL(c.segundo_apellido, '')
+                    ) SEPARATOR ', '
+                ), ''
+            ), 'No hay autores registrados'
+        ) AS autores,
+        IFNULL(
+            NULLIF(
+                GROUP_CONCAT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN b.nombre END SEPARATOR ', '), 
+                ''
+            ), 'No hay ejemplares disponibles en ninguna biblioteca'
+        ) AS bibliotecas,
+        COUNT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN e.id_ejemplar END) AS ejemplares_disponibles
     FROM MaterialBibliografico m
     LEFT JOIN Contribuyente_Material cm ON m.id_material = cm.id_material
     LEFT JOIN Contribuyente c ON cm.id_contribuyente = c.id_contribuyente
-    LEFT JOIN Ejemplar e ON e.id_material = m.id_material
-    LEFT JOIN Biblioteca b ON e.id_biblioteca = b.id_biblioteca
+    LEFT JOIN Ejemplar e ON e.id_material = m.id_material AND e.activo = 1
+    LEFT JOIN Biblioteca b ON e.id_biblioteca = b.id_biblioteca AND b.activo = 1
     WHERE 
-        -- Título
-        (_titulo IS NULL OR m.titulo LIKE CONCAT('%', _titulo, '%'))
-        
-        -- Contribuyente (solo si nombre_contribuyente no es NULL)
+        m.activo = 1
+        AND (_titulo IS NULL OR m.titulo LIKE CONCAT('%', _titulo, '%'))
         AND (
             _nombre_contribuyente IS NULL
             OR (
@@ -1061,24 +1145,16 @@ BEGIN
                 )
             )
         )
-
-        -- Tema o clasificación temática
         AND (_tema IS NULL OR m.clasificacion_tematica LIKE CONCAT('%', _tema, '%'))
-        
-        -- Rango de años
         AND (_fecha_desde IS NULL OR m.anho_publicacion >= _fecha_desde)
         AND (_fecha_hasta IS NULL OR m.anho_publicacion <= _fecha_hasta)
-        
-        -- Tipo de material
         AND (_tipo_material IS NULL OR m.tipo = _tipo_material)
-        
-        -- Biblioteca
         AND (_nombre_biblioteca IS NULL OR b.nombre LIKE CONCAT('%', _nombre_biblioteca, '%'))
-        
-        -- Estado del material
         AND (_disponibilidad IS NULL OR m.estado = _disponibilidad)
-        
+    GROUP BY 
+        m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, 
+        m.estado, m.clasificacion_tematica, m.idioma, m.tipo
     ORDER BY 
         (m.estado = 'DISPONIBLE') DESC,
         m.titulo ASC;
-END$$
+END $$

@@ -5,21 +5,36 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/SancionWS?xsd=1" namespace="http://gestionPrestamo.services.biblioteca/" />
     </xsd:schema>
   </types>
-  <message name="hello">
-    <part name="parameters" element="tns:hello" />
+  <message name="listarSanciones">
+    <part name="parameters" element="tns:listarSanciones" />
   </message>
-  <message name="helloResponse">
-    <part name="parameters" element="tns:helloResponse" />
+  <message name="listarSancionesResponse">
+    <part name="parameters" element="tns:listarSancionesResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="listarSancionesPorUsuario">
+    <part name="parameters" element="tns:listarSancionesPorUsuario" />
+  </message>
+  <message name="listarSancionesPorUsuarioResponse">
+    <part name="parameters" element="tns:listarSancionesPorUsuarioResponse" />
   </message>
   <portType name="SancionWS">
-    <operation name="hello">
-      <input wsam:Action="http://gestionPrestamo.services.biblioteca/SancionWS/helloRequest" message="tns:hello" />
-      <output wsam:Action="http://gestionPrestamo.services.biblioteca/SancionWS/helloResponse" message="tns:helloResponse" />
+    <operation name="listarSanciones">
+      <input wsam:Action="http://gestionPrestamo.services.biblioteca/SancionWS/listarSancionesRequest" message="tns:listarSanciones" />
+      <output wsam:Action="http://gestionPrestamo.services.biblioteca/SancionWS/listarSancionesResponse" message="tns:listarSancionesResponse" />
+      <fault wsam:Action="http://gestionPrestamo.services.biblioteca/SancionWS/listarSanciones/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarSancionesPorUsuario">
+      <input wsam:Action="http://gestionPrestamo.services.biblioteca/SancionWS/listarSancionesPorUsuarioRequest" message="tns:listarSancionesPorUsuario" />
+      <output wsam:Action="http://gestionPrestamo.services.biblioteca/SancionWS/listarSancionesPorUsuarioResponse" message="tns:listarSancionesPorUsuarioResponse" />
+      <fault wsam:Action="http://gestionPrestamo.services.biblioteca/SancionWS/listarSancionesPorUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
   </portType>
   <binding name="SancionWSPortBinding" type="tns:SancionWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="hello">
+    <operation name="listarSanciones">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -27,6 +42,21 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarSancionesPorUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
     </operation>
   </binding>
   <service name="SancionWS">
