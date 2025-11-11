@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Articulo.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Biblioteca.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Contribuyente.java
@@ -18,24 +17,3 @@ C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\Ba
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\Tipo_sancion.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\usuarios\model\Rol.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\usuarios\model\Usuario.java
-=======
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Articulo.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Biblioteca.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Contribuyente.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Editorial.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Ejemplar.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\EstadoEjemplar.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\EstadoMaterial.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Libro.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\MaterialBibliografico.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\Tesis.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\TipoContribuyente.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_material\model\TipoMaterial.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\EstadoPrestamo.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\EstadoSancion.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\Prestamo.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\Sancion.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\gestion_de_prestamos\model\Tipo_sancion.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\usuarios\model\Rol.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\UtilsArmyModel\src\main\java\pe\edu\pucp\utilsarmy\usuarios\model\Usuario.java
->>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\dao\IDAO.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\dao\ArticuloDAO.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\dao\BibliotecaDAO.java
@@ -22,28 +21,3 @@ C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\Ba
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionUsuario\dao\UsuarioDAO.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionUsuario\mysql\RolImpl.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionUsuario\mysql\UsuarioImpl.java
-=======
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\dao\IDAO.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\dao\ArticuloDAO.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\dao\BibliotecaDAO.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\dao\ContribuyenteDAO.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\dao\EjemplarDAO.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\dao\LibroDAO.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\dao\MaterialBiblioDAO.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\dao\TesisDAO.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\mysql\Articulolmpl.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\mysql\BibliotecaImpl.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\mysql\ContribuyenteImpl.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\mysql\EjemplarImpl.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\mysql\Librolmpl.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\mysql\MaterialBiblioImpl.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionMaterial\mysql\Tesislmpl.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionPrestamo\dao\PrestamoDAO.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionPrestamo\dao\SancionDAO.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionPrestamo\mysql\PrestamoImpl.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionPrestamo\mysql\SancionImpl.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionUsuario\dao\RolDAO.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionUsuario\dao\UsuarioDAO.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionUsuario\mysql\RolImpl.java
-C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaDA\src\main\java\biblioteca\gestionUsuario\mysql\UsuarioImpl.java
->>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0
