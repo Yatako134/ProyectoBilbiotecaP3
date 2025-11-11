@@ -11,32 +11,27 @@ namespace BibliotecaWA
 {
     public partial class DetalleMaterial : System.Web.UI.Page
     {
-        //    private ILibroBO librobo;
-        //    private BindingList<Libro> libros;
-        //    private Libro libro;
-        //private IBibliotecaBO ibbo;
-        //private Biblioteca biblioteca;
-        //private ILibroBO librobo;
-        //private BindingList<Libro> libros;
-        //private Libro libro;
-        private IBibliotecaBO ibbo;
-        private Biblioteca biblioteca;
-        private MaterialBibliografico materialBibliografico;
-        private IMaterialBiblioBO materialBiblioBO;
+        private BibliotecaWSClient ibbo;
+        private biblioteca biblioteca;
+        private materialBibliografico materialBibliografico;
+        private MaterialWSClient materialBiblioBO;
+        private LibroWSClient librobo;
+        private TesisWSClient tesisbo;
+        private ArticuloWSClient articulobo;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             //librobo = new LibroBOImpl();
-            ibbo = new BibliotecaBOImpl();
-            biblioteca = new Biblioteca();
-            materialBiblioBO = new MaterialBiblioBOImpl();
-            materialBibliografico = new MaterialBibliografico();
+            ibbo = new BibliotecaWSClient();
+            biblioteca = new biblioteca();
+            materialBiblioBO = new MaterialWSClient();
+            materialBibliografico = new materialBibliografico();
             if (!IsPostBack)
             {
                 string idMaterial = Request.QueryString["id"];
                 // Cargar lista de bibliotecas en el dropdown
                 // Cargar lista de bibliotecas en el dropdown
-                ddlbibliotecas.DataSource = ibbo.listarTodos();
+                ddlbibliotecas.DataSource = ibbo.ListarTodas();
                 ddlbibliotecas.DataTextField = "Nombre";
                 ddlbibliotecas.DataValueField = "IdBiblioteca";
                 ddlbibliotecas.DataBind();
@@ -48,108 +43,140 @@ namespace BibliotecaWA
 
 
                 // Cargar el libro (solo una vez)
-                materialBibliografico = materialBiblioBO.obtenerPorId(2);
+                materialBibliografico = materialBiblioBO.obtenerPorId(Convert.ToInt32(idMaterial));
                 //libros = new BindingList<Libro>(librobo.listarTodos());
                 //materialBibliografico = libros.Single(x => x.IdMaterial == 1);
                 Session["material"] = materialBibliografico;
 
 
-                txtTitulo.Text = materialBibliografico.Titulo;
-                txtTema.Text = materialBibliografico.Clasificacion_tematica;
-                TextAnhioPubli.Text = materialBibliografico.Anho_publicacion.ToString();
-                txtIdioma.Text = materialBibliografico.Idioma;
-                TextNroPaginas.Text = materialBibliografico.Numero_paginas.ToString();
-                materialBibliografico.Ejemplares = materialBiblioBO.buscarEjemplares(materialBibliografico.IdMaterial);
-                if (materialBibliografico.Ejemplares != null) TextNroEjemplares.Text = materialBibliografico.Ejemplares.Count.ToString();
+                txtTitulo.Text = materialBibliografico.titulo;
+                txtTema.Text = materialBibliografico.clasificacion_tematica;
+                TextAnhioPubli.Text = materialBibliografico.anho_publicacion.ToString();
+                txtIdioma.Text = materialBibliografico.idioma;
+                TextNroPaginas.Text = materialBibliografico.numero_paginas.ToString();
+                materialBibliografico.ejemplares = materialBiblioBO.buscarEjemplares(materialBibliografico.idMaterial);
+                if (materialBibliografico.ejemplares != null) TextNroEjemplares.Text = materialBibliografico.ejemplares.Length.ToString();
                 else TextNroEjemplares.Text = "0";
-                txtTipoMaterial.Text = materialBibliografico.Tipo.ToString();
-                TextNroPaginas.Text = materialBibliografico.Numero_paginas.ToString();
+                txtTipoMaterial.Text = materialBibliografico.tipo.ToString();
+                TextNroPaginas.Text = materialBibliografico.numero_paginas.ToString();
 
-                if (materialBibliografico is Libro libro)
+                this.DataBind();
+
+
+                switch (materialBibliografico.tipo.ToString().ToUpper())
                 {
-                    TextISBN.Text = libro.ISBNP;
-                    txtEdicion.Text = libro.Edicion;
-                    // Ocultar campos de tesis
-                    TextInstitucionPublicacion.Visible = false;
-                    lblInstitucionPublicacion.Visible = false;
-                    TextEspecialidad.Visible = false;
-                    lblEspecialidad.Visible = false;
-                    TextAsesor.Visible = false;
-                    lblAsesor.Visible = false;
-                    TextGrado.Visible = false;
-                    lblGrado.Visible = false;
+                    case "LIBRO":
+                        librobo = new LibroWSClient();
+                        libro lib = librobo.obtenerLibroPorId(materialBibliografico.idMaterial);
+                        if (lib != null)
+                        {
+                            TextISBN.Text = lib.ISBN;
+                            txtEdicion.Text = lib.edicion;
+                        }
 
-                    // Ocultar campos de artículo
-                    TextISSN.Visible = false;
-                    lblISSN.Visible = false;
-                    TextRevista.Visible = false;
-                    lblRevista.Visible = false;
-                    TextVolumen.Visible = false;
-                    lblVolumen.Visible = false;
-                    TextNumero.Visible = false;
-                    lblNumero.Visible = false;
+                        // Ocultar campos de tesis
+                        TextInstitucionPublicacion.Visible = false;
+                        lblInstitucionPublicacion.Visible = false;
+                        TextEspecialidad.Visible = false;
+                        lblEspecialidad.Visible = false;
+                        TextAsesor.Visible = false;
+                        lblAsesor.Visible = false;
+                        TextGrado.Visible = false;
+                        lblGrado.Visible = false;
+
+                        // Ocultar campos de artículo
+                        TextISSN.Visible = false;
+                        lblISSN.Visible = false;
+                        TextRevista.Visible = false;
+                        lblRevista.Visible = false;
+                        TextVolumen.Visible = false;
+                        lblVolumen.Visible = false;
+                        TextNumero.Visible = false;
+                        lblNumero.Visible = false;
+                        break;
+
+                    case "TESIS":
+                        tesisbo = new TesisWSClient();
+                        tesis tes = tesisbo.obtenerTesisPorId(materialBibliografico.idMaterial);
+                        if (tes != null)
+                        {
+                            TextInstitucionPublicacion.Text = tes.institucionPublicacion;
+                            TextEspecialidad.Text = tes.especialidad;
+                            TextAsesor.Text = tes.asesor;
+                            TextGrado.Text = tes.grado;
+                        }
+
+                        // Ocultar campos de libro
+                        TextISBN.Visible = false;
+                        lblISBN.Visible = false;
+                        txtEdicion.Visible = false;
+                        lblEdicion.Visible = false;
+
+                        // Ocultar campos de artículo
+                        TextISSN.Visible = false;
+                        lblISSN.Visible = false;
+                        TextRevista.Visible = false;
+                        lblRevista.Visible = false;
+                        TextVolumen.Visible = false;
+                        lblVolumen.Visible = false;
+                        TextNumero.Visible = false;
+                        lblNumero.Visible = false;
+                        break;
+
+                    case "ARTICULO":
+                        articulobo = new ArticuloWSClient();
+                        articulo art = articulobo.obtenerArticuloPorId(materialBibliografico.idMaterial);
+                        if (art != null)
+                        {
+                            TextISSN.Text = art.ISSN;
+                            TextRevista.Text = art.revista;
+                            TextVolumen.Text = art.volumen.ToString();
+                            TextNumero.Text = art.numero.ToString();
+                        }
+
+                        // Ocultar campos de libro
+                        TextISBN.Visible = false;
+                        lblISBN.Visible = false;
+                        txtEdicion.Visible = false;
+                        lblEdicion.Visible = false;
+
+                        // Ocultar campos de tesis
+                        TextInstitucionPublicacion.Visible = false;
+                        lblInstitucionPublicacion.Visible = false;
+                        TextEspecialidad.Visible = false;
+                        lblEspecialidad.Visible = false;
+                        TextAsesor.Visible = false;
+                        lblAsesor.Visible = false;
+                        TextGrado.Visible = false;
+                        lblGrado.Visible = false;
+                        break;
+
+                    default:
+                        // Si no se reconoce el tipo, ocultar todo lo específico
+                        TextISBN.Visible = false;
+                        lblISBN.Visible = false;
+                        txtEdicion.Visible = false;
+                        lblEdicion.Visible = false;
+                        TextInstitucionPublicacion.Visible = false;
+                        lblInstitucionPublicacion.Visible = false;
+                        TextEspecialidad.Visible = false;
+                        lblEspecialidad.Visible = false;
+                        TextAsesor.Visible = false;
+                        lblAsesor.Visible = false;
+                        TextGrado.Visible = false;
+                        lblGrado.Visible = false;
+                        TextISSN.Visible = false;
+                        lblISSN.Visible = false;
+                        TextRevista.Visible = false;
+                        lblRevista.Visible = false;
+                        TextVolumen.Visible = false;
+                        lblVolumen.Visible = false;
+                        TextNumero.Visible = false;
+                        lblNumero.Visible = false;
+                        break;
                 }
-                else if (materialBibliografico is Tesis tesis)
-                {
-                    TextInstitucionPublicacion.Text = tesis.InstitucionPublicacion.ToString();
-                    TextEspecialidad.Text = tesis.Especialidad.ToString();
-                    TextAsesor.Text = tesis.Asesor;
-                    TextGrado.Text = tesis.Grado;
-
-                    // Ocultar campos de libro
-                    TextISBN.Visible = false;
-                    lblISBN.Visible = false;
-                    txtEdicion.Visible = false;
-                    lblEdicion.Visible = false;
-
-                    // Ocultar campos de artículo
-                    TextISSN.Visible = false;
-                    lblISSN.Visible = false;
-                    TextRevista.Visible = false;
-                    lblRevista.Visible = false;
-                    TextVolumen.Visible = false;
-                    lblVolumen.Visible = false;
-                    TextNumero.Visible = false;
-                    lblNumero.Visible = false;
-                }
-                else if (materialBibliografico is Articulo articulo)
-                {
-                    TextISSN.Text = articulo.ISSNP;
-                    TextRevista.Text = articulo.Revista;
-                    TextVolumen.Text = articulo.Volumen.ToString();
-                    TextNumero.Text = articulo.Numero.ToString();
-
-
-                    // Ocultar campos de libro
-                    TextISBN.Visible = false;
-                    lblISBN.Visible = false;
-                    txtEdicion.Visible = false;
-                    lblEdicion.Visible = false;
-
-                    // Ocultar campos de tesis
-                    TextInstitucionPublicacion.Visible = false;
-                    lblInstitucionPublicacion.Visible = false;
-                    TextEspecialidad.Visible = false;
-                    lblEspecialidad.Visible = false;
-                    TextAsesor.Visible = false;
-                    lblAsesor.Visible = false;
-                    TextGrado.Visible = false;
-                    lblGrado.Visible = false;
-                }
-                //// Mostrar sus datos
-                //txtTitulo.Text = libro.Titulo;
-                //txtTema.Text = libro.Clasificacion_tematica;
-                //TextAnhioPubli.Text = libro.Anho_publicacion.ToString();
-                //txtIdioma.Text = libro.Idioma;
-                //TextNroPaginas.Text = libro.Numero_paginas.ToString();
-                //TextISBN.Text = libro.ISBNP;
-                //libro.Ejemplares = librobo.buscarEjemplares(libro.IdMaterial);
-                //TextNroEjemplares.Text = libro.Ejemplares.Count.ToString();
-                //txtTipoMaterial.Text = libro.Tipo.ToString();
-                //txtEdicion.Text = libro.Edicion;
-                // Cargar ejemplares iniciales
-                ActualizarEstado(materialBibliografico.Estado.ToString());
-                CargarEjemplares(materialBibliografico.IdMaterial);
+                ActualizarEstado(materialBibliografico.estado.ToString());
+                CargarEjemplares(materialBibliografico.idMaterial);
                 CargarContribuyentes();
                 CargarEditoriales();
                 Deshabilitar();
@@ -160,12 +187,12 @@ namespace BibliotecaWA
 
         private void CargarEditoriales()
         {
-            BindingList<Editorial> es = new BindingList<Editorial>();
-            es = materialBiblioBO.buscarEditorial(materialBibliografico.IdMaterial);
+            BindingList<editorial> es;
+            es = new BindingList<editorial>(materialBiblioBO.buscarEditoriales(materialBibliografico.idMaterial));
             if (es != null && es.Count > 0)
             {
                 // Mostrar solo el primer contribuyente en el label
-                lblEditorial1.InnerText = $"{es[0].Nombre}";
+                lblEditorial1.InnerText = $"{es[0].nombre}";
 
                 // Llenar el modal con todos los contribuyentes
                 rptEditoriales.DataSource = es;
@@ -179,13 +206,13 @@ namespace BibliotecaWA
 
         private void CargarContribuyentes()
         {
-            BindingList<Contribuyente> cs = new BindingList<Contribuyente>();
-            cs = materialBiblioBO.buscarContribuyente(materialBibliografico.IdMaterial);
+            BindingList<contribuyente> cs;
+            cs = new BindingList<contribuyente>(materialBiblioBO.buscarContribuyentes(materialBibliografico.idMaterial));
             Session["contribuyentes"] = cs;
             if (cs != null && cs.Count > 0)
             {
                 // Mostrar solo el primer contribuyente en el label
-                lblContribuyente.InnerText = $"{cs[0].Nombre + " " + cs[0].Primer_apellido + " " + cs[0].Segundo_apellido} ({cs[0].Tipo_contribuyente.ToString().ToLower()})";
+                lblContribuyente.InnerText = $"{cs[0].nombre + " " + cs[0].primer_apellido + " " + cs[0].segundo_apellido} ({cs[0].tipo_contribuyente.ToString().ToLower()})";
 
                 // Llenar el modal con todos los contribuyentes
                 rptContribuyentes.DataSource = cs;
@@ -231,38 +258,49 @@ namespace BibliotecaWA
         {
             // 1️⃣ Obtener todas las bibliotecas existentes
 
-            BindingList<Biblioteca> listaBibliotecas = ibbo.listarTodos();
+            BindingList<biblioteca> listaBibliotecas = new BindingList<biblioteca>(ibbo.ListarTodas());
             // 2️⃣ Obtener todos los ejemplares del libro, cada ejemplar ya incluye su biblioteca
             var ejemplares = materialBiblioBO.buscarEjemplares(id);
+
+            List<biblioteca> listaBibliotecasFinal = new List<biblioteca>();
 
             // 3️⃣ Recorrer cada ejemplar y agruparlos por biblioteca
             foreach (var ejemplar in ejemplares)
             {
-                int idBiblio = ejemplar.Biblioteca.IdBiblioteca;
+                int idBiblio = ejemplar.blibioteca.idBiblioteca;
 
                 // Buscar si la biblioteca ya está en la lista
-                var bibliotecaExistente = listaBibliotecas
-                    .FirstOrDefault(b => b.IdBiblioteca == idBiblio);
+                //var bibliotecaExistente = listaBibliotecas
+                //    .FirstOrDefault(b => b.idBiblioteca == idBiblio);
+                var bibliotecaExistente = listaBibliotecasFinal
+                    .FirstOrDefault(b => b.idBiblioteca == idBiblio);
 
                 // Si no existe, crearla y agregarla a la lista
                 if (bibliotecaExistente == null)
                 {
-                    bibliotecaExistente = new Biblioteca
+                    bibliotecaExistente = new biblioteca
                     {
-                        IdBiblioteca = idBiblio,
-                        Nombre = ejemplar.Biblioteca.Nombre
+                        idBiblioteca = idBiblio,
+                        nombre = ejemplar.blibioteca.nombre
+
                     };
-                    bibliotecaExistente.Ejemplares = new BindingList<Ejemplar>();
-                    listaBibliotecas.Add(bibliotecaExistente);
+                    bibliotecaExistente.ejemplares = new ejemplar[] { };
+                    listaBibliotecasFinal.Add(bibliotecaExistente);
                 }
 
-                // Agregar el ejemplar a la biblioteca correspondiente
-                bibliotecaExistente.Ejemplares.Add(new Ejemplar
+                var listaTemp = bibliotecaExistente.ejemplares.ToList();
+                listaTemp.Add(new BibliotecaWA.BibliotecaServices.ejemplar
                 {
-                    IdEjemplar = ejemplar.IdEjemplar,
-                    Ubicacion = ejemplar.Ubicacion,
-                    Estado = ejemplar.Estado
+                    idEjemplar = ejemplar.idEjemplar,
+                    ubicacion = ejemplar.ubicacion,
+                    estado = ejemplar.estado // si es enum SOAP
                 });
+
+                // Convertimos de nuevo a array para asignar a la propiedad SOAP
+                bibliotecaExistente.ejemplares = listaTemp.ToArray();
+
+                rptBibliotecas.DataSource = listaBibliotecasFinal.ToArray();
+                rptBibliotecas.DataBind();
             }
 
             // 4️⃣ Contar ejemplares disponibles y prestados por biblioteca
@@ -282,7 +320,7 @@ namespace BibliotecaWA
         }
         protected void btnPrestar_Click(object sender, EventArgs e)
         {
-            biblioteca = ibbo.obtenerPorId(int.Parse(ddlbibliotecas.SelectedValue));
+            biblioteca = ibbo.obtenerBibliotecaPorId(int.Parse(ddlbibliotecas.SelectedValue));
             Session["biblioteca"] = biblioteca;
             Response.Redirect("Prestamo.aspx");
         }
@@ -300,8 +338,8 @@ namespace BibliotecaWA
 
         protected void ddlbibliotecas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            materialBibliografico = (MaterialBibliografico)Session["material"];
-            int idMaterial = materialBibliografico.IdMaterial;
+            materialBibliografico = (materialBibliografico)Session["material"];
+            int idMaterial = materialBibliografico.idMaterial;
             int idBibliotecaSeleccionada;
 
             // Si no hay selección, mostramos todas
@@ -312,20 +350,21 @@ namespace BibliotecaWA
             }
 
             idBibliotecaSeleccionada = int.Parse(ddlbibliotecas.SelectedValue);
-            biblioteca = ibbo.obtenerPorId(idBibliotecaSeleccionada);
+            biblioteca = ibbo.obtenerBibliotecaPorId(idBibliotecaSeleccionada);
             // Filtrar ejemplares del libro por biblioteca seleccionada
             var ejemplares = materialBiblioBO.buscarEjemplares(idMaterial)
-                                    .Where(x => x.Biblioteca.IdBiblioteca == idBibliotecaSeleccionada)
+                                    .Where(x => x.blibioteca.idBiblioteca == idBibliotecaSeleccionada)
                                     .ToList();
 
-            var bibliotecaSeleccionada = new Biblioteca
+
+            var bibliotecaSeleccionada = new biblioteca
             {
-                IdBiblioteca = idBibliotecaSeleccionada,
-                Nombre = ibbo.listarTodos().First(b => b.IdBiblioteca == idBibliotecaSeleccionada).Nombre,
-                Ejemplares = new BindingList<Ejemplar>(ejemplares)
+                idBiblioteca = idBibliotecaSeleccionada,
+                nombre = ibbo.ListarTodas().First(b => b.idBiblioteca == idBibliotecaSeleccionada).nombre,
+                ejemplares = ejemplares.ToArray()
             };
 
-            rptBibliotecas.DataSource = new List<Biblioteca> { bibliotecaSeleccionada };
+            rptBibliotecas.DataSource = new List<biblioteca> { bibliotecaSeleccionada };
             rptBibliotecas.DataBind();
         }
 

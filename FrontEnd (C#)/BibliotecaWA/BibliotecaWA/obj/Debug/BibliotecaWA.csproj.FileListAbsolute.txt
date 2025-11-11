@@ -57,3 +57,5 @@ D:\YO_usuario\Desktop\P3\FrontEnd (C#)\BibliotecaWA\BibliotecaWA\obj\Debug\Bibli
 D:\YO_usuario\Desktop\P3\FrontEnd (C#)\BibliotecaWA\BibliotecaWA\obj\Debug\Bibliote.4EA83C7F.Up2Date
 D:\YO_usuario\Desktop\P3\FrontEnd (C#)\BibliotecaWA\BibliotecaWA\obj\Debug\BibliotecaWA.dll
 D:\YO_usuario\Desktop\P3\FrontEnd (C#)\BibliotecaWA\BibliotecaWA\obj\Debug\BibliotecaWA.pdb
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\FrontEnd (C#)\BibliotecaWA\BibliotecaWA\obj\Debug\BibliotecaWA.csproj.AssemblyReference.cache
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\FrontEnd (C#)\BibliotecaWA\BibliotecaWA\obj\Debug\BibliotecaWA.csproj.CoreCompileInputs.cache

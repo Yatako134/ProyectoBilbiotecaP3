@@ -129,6 +129,76 @@ public class UsuarioImpl implements UsuarioDAO{
         }
         return users;
     }
+
+    @Override
+    public Usuario obtenerUsuarioxCodigo(int codigo) {
+        Usuario usuario = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, codigo);
+
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura(
+                "sp_obtener_usuario_por_codigo", parametrosEntrada);
+
+        try {
+            if (rs.next()) {
+                usuario = new Usuario();
+                if (rs.getObject("id_usuario") != null)
+                    usuario.setId_usuario(rs.getInt("id_usuario"));
+                if (rs.getObject("codigo_universitario") != null)
+                    usuario.setCodigo(rs.getInt("codigo_universitario"));
+                if (rs.getObject("nombre") != null)
+                    usuario.setNombre(rs.getString("nombre"));
+                if (rs.getObject("primer_apellido") != null)
+                    usuario.setPrimer_apellido(rs.getString("primer_apellido"));
+                if (rs.getObject("segundo_apellido") != null)
+                    usuario.setSegundo_apellido(rs.getString("segundo_apellido"));
+                if (rs.getObject("DOI") != null)
+                    usuario.setDOI(rs.getString("DOI"));
+                if (rs.getObject("correo") != null)
+                    usuario.setCorreo(rs.getString("correo"));
+                if (rs.getObject("numero_de_telefono") != null)
+                    usuario.setTelefono(rs.getString("numero_de_telefono"));
+
+                Rol rol = new Rol();
+                if (rs.getObject("id_rol") != null)
+                    rol.setId_rol(rs.getInt("id_rol"));
+                if (rs.getObject("cantidad_de_dias_por_prestamo") != null)
+                    rol.setCantidad_de_dias_por_prestamo(rs.getInt("cantidad_de_dias_por_prestamo"));
+                if (rs.getObject("rol") != null)
+                    rol.setTipo(rs.getString("rol"));
+                if (rs.getObject("limite_prestamos") != null)
+                    rol.setLimite_prestamo(rs.getInt("limite_prestamos"));
+
+                usuario.setRol_usuario(rol);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR en obtenerUsuarioPorCodigo: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+
+        return usuario;
+    }
+
+    @Override
+    public int prestamos_vigentesxUsuario(int idUsuario) {
+        int cantidad_prestamos_vigentes=0;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idUsuario);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("SP_CONTAR_PRESTAMOS_VIGENTES_POR_USUARIO", parametrosEntrada);
+//        System.out.println("Lectura de usuarios...");
+        try{
+            if(rs.next()){
+                cantidad_prestamos_vigentes=rs.getInt("cantidad_prestamos_vigentes");
+            }
+        }catch(SQLException ex){
+            System.out.println("ERROR: " + ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return cantidad_prestamos_vigentes;
+    }
+    
     
     
 }

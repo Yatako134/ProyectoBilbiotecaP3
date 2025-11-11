@@ -1,15 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://gestionMaterial.services.biblioteca/" targetNamespace="http://gestionMaterial.services.biblioteca/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="hello" type="tns:hello" />
-  <xs:element name="helloResponse" type="tns:helloResponse" />
-  <xs:complexType name="hello">
+  <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="eliminarEjemplar" type="tns:eliminarEjemplar" />
+  <xs:element name="eliminarEjemplarResponse" type="tns:eliminarEjemplarResponse" />
+  <xs:element name="insertarEjemplar" type="tns:insertarEjemplar" />
+  <xs:element name="insertarEjemplarResponse" type="tns:insertarEjemplarResponse" />
+  <xs:element name="listarEjemplaresTodos" type="tns:listarEjemplaresTodos" />
+  <xs:element name="listarEjemplaresTodosResponse" type="tns:listarEjemplaresTodosResponse" />
+  <xs:element name="modificarEjemplar" type="tns:modificarEjemplar" />
+  <xs:element name="modificarEjemplarResponse" type="tns:modificarEjemplarResponse" />
+  <xs:element name="obtenerEjemplarPorId" type="tns:obtenerEjemplarPorId" />
+  <xs:element name="obtenerEjemplarPorIdResponse" type="tns:obtenerEjemplarPorIdResponse" />
+  <xs:complexType name="eliminarEjemplar">
     <xs:sequence>
-      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element name="idEjemplar" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="helloResponse">
+  <xs:complexType name="eliminarEjemplarResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string" />
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerEjemplarPorId">
+    <xs:sequence>
+      <xs:element name="idEjemplar" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerEjemplarPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:ejemplar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ejemplar">
+    <xs:sequence>
+      <xs:element name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="blibioteca" type="tns:biblioteca" />
+      <xs:element minOccurs="0" name="estado" type="tns:estadoEjemplar" />
+      <xs:element name="idEjemplar" type="xs:int" />
+      <xs:element name="id_material" type="xs:int" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="biblioteca">
+    <xs:sequence>
+      <xs:element name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ejemplares" nillable="true" type="tns:ejemplar" />
+      <xs:element name="idBiblioteca" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarEjemplar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ejemplar" type="tns:ejemplar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarEjemplarResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarEjemplaresTodos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarEjemplaresTodosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarEjemplar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ejemplar" type="tns:ejemplar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarEjemplarResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="estadoEjemplar">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DISPONIBLE" />
+      <xs:enumeration value="PRESTADO" />
+      <xs:enumeration value="EN_REPARACION" />
+      <xs:enumeration value="NO_DISPONIBLE" />
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>

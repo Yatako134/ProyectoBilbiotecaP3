@@ -11,36 +11,38 @@ namespace BibliotecaWA
 {
     public partial class Prestamo : System.Web.UI.Page
     {
-        private IUsuarioBO usuarioBO;
-        private Usuario usuario;
+        private UsuarioWSClient usuarioBO;
+        private BibliotecaWA.BibliotecaServices.usuario usuario;
         //private Biblioteca biblioteca;
         //private Libro libro;
         //private ILibroBO libroBO;
-        private IBibliotecaBO ibbo;
-        private Biblioteca biblioteca;
-        private MaterialBibliografico materialBibliografico;
-        private IMaterialBiblioBO materialBiblioBO;
+        private BibliotecaWSClient ibbo;
+        private biblioteca biblioteca;
+        private materialBibliografico materialBiblio;
+        private MaterialWSClient materialBiblioBO;
+        private PrestamoWSClient prestamobo;
         protected void Page_Load(object sender, EventArgs e)
         {
-            usuarioBO = new UsuarioBOImpl();
-            materialBiblioBO = new MaterialBiblioBOImpl();
+            usuarioBO = new UsuarioWSClient();
+            materialBiblioBO = new MaterialWSClient();
+            //usuarioBO;
             if (!IsPostBack)
             {
-                txtFechaPrestamo.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm");
-                materialBibliografico = new MaterialBibliografico();
-                biblioteca = (Biblioteca)Session["biblioteca"];
-                materialBibliografico = (MaterialBibliografico)Session["material"];
-                lblTitulo.Text = materialBibliografico.Titulo;
+                txtFechaPrestamo.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm ");
+                materialBiblio = new materialBibliografico();
+                biblioteca = (biblioteca)Session["biblioteca"];
+                materialBiblio = (materialBibliografico)Session["material"];
+                lblTitulo.Text = materialBiblio.titulo;
                 //lblAutor.Text = libro.;
-                lblAnio.Text = materialBibliografico.Anho_publicacion.ToString();
-                lblTema.InnerText = materialBibliografico.Clasificacion_tematica;
-                lblEstado.InnerText = materialBibliografico.Estado.ToString();
-                lblTipo.InnerText = materialBibliografico.Tipo.ToString();
-                BindingList<Contribuyente> c = new BindingList<Contribuyente>();
-                c = (BindingList<Contribuyente>)Session["contribuyentes"];
+                lblAnio.Text = materialBiblio.anho_publicacion.ToString();
+                lblTema.InnerText = materialBiblio.clasificacion_tematica;
+                lblEstado.InnerText = materialBiblio.estado.ToString();
+                lblTipo.InnerText = materialBiblio.tipo.ToString();
+                BindingList<contribuyente> c = new BindingList<contribuyente>();
+                c = (BindingList<contribuyente>)Session["contribuyentes"];
 
-                lblAutor.Text = c[0].Nombre + " " + c[0].Primer_apellido + " " + c[0].Segundo_apellido;
-                lblBiblioteca.Text = biblioteca.Nombre;
+                lblAutor.Text = c[0].nombre + " " + c[0].primer_apellido + " " + c[0].segundo_apellido;
+                lblBiblioteca.Text = biblioteca.nombre;
                 cargarDatosBiblioteca();
             }
 
@@ -48,15 +50,15 @@ namespace BibliotecaWA
 
         private void cargarDatosBiblioteca()
         {
-            MaterialBibliografico m = (MaterialBibliografico)Session["material"];
-            Biblioteca b = (Biblioteca)Session["biblioteca"];
-            BindingList<Ejemplar> e = new BindingList<Ejemplar>();
+            materialBibliografico m = (materialBibliografico)Session["material"];
+            biblioteca b = (biblioteca)Session["biblioteca"];
+            //ejemplar[]/* e =*/ new BindingList<Ejemplar>();
 
-            e = materialBiblioBO.ObtenerEjemplaresDisponibles(materialBibliografico.IdMaterial, b.IdBiblioteca);
+            ejemplar[] e = materialBiblioBO.obtenerEjemplaresDisponibles(materialBiblio.idMaterial, b.idBiblioteca);
 
-            lblCodigoEjemplar.Text = e[0].IdEjemplar.ToString();
-            lblUbicacionEjemplar.Text = e[0].Ubicacion.ToString();
-            if (e[0].Estado.ToString().Equals("DISPONIBLE"))
+            lblCodigoEjemplar.Text = e[0].idEjemplar.ToString();
+            lblUbicacionEjemplar.Text = e[0].ubicacion.ToString();
+            if (e[0].estado.ToString().Equals("DISPONIBLE"))
             {
                 lblEstadoEjemplar.InnerHtml = "Disponible";
                 lblEstadoEjemplar.Attributes["class"] = "badge rounded-pill bg-success px-3 py-2";
@@ -83,12 +85,42 @@ namespace BibliotecaWA
 
         protected void btnSolicitarPrestamo_Click(object sender, EventArgs e)
         {
-            MaterialBibliografico m = (MaterialBibliografico)Session["material"];
-            string tituloMaterial = m.Titulo;
-            Usuario usuario = (Usuario)Session["usuario"];
-            string nombreUsuario = usuario.Nombre.ToString() + " " + usuario.Primer_apellido.ToString() + " " + usuario.Segundo_apellido.ToString();
+            materialBibliografico m = (materialBibliografico)Session["material"];
+            string tituloMaterial = m.titulo;
+            string script;
 
-            string script = $"mostrarModalConfirmacion('{nombreUsuario}', '{tituloMaterial}');";
+            usuario usuario = (usuario)Session["usuario"];
+            // Validar que haya usuario seleccionado
+            if (Session["usuario"] == null)
+            {
+                script = "mostrarAlerta('Debe seleccionar un usuario antes de registrar el préstamo.');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertaUsuario", script, true);
+                return;
+            }
+            // Recuperar usuario y validar límites
+            usuario = (usuario)Session["usuario"];
+            int prestamosVigentes = usuarioBO.obtener_prestamos_vigentesxUsuario(usuario.id_usuario);
+            int limitePrestamos = usuario.rol_usuario.limite_prestamo;
+
+            if (prestamosVigentes >= limitePrestamos)
+            {
+                script = $"mostrarAlerta('El usuario {usuario.nombre} ya alcanzó su límite de préstamos ({limitePrestamos}).');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertaLimite", script, true);
+                return;
+            }
+            string nombreUsuario = usuario.nombre.ToString() + " " + usuario.primer_apellido.ToString() + " " + usuario.segundo_apellido.ToString();
+
+            // Validar que haya ejemplar disponible
+            m = (materialBibliografico)Session["material"];
+            biblioteca b = (biblioteca)Session["biblioteca"];
+            ejemplar[] ejemplares = materialBiblioBO.obtenerEjemplaresDisponibles(m.idMaterial, b.idBiblioteca);
+            if (ejemplares == null || ejemplares.Length == 0)
+            {
+                script = "mostrarAlerta('No hay ejemplares disponibles para este material.');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertaEjemplar", script, true);
+                return;
+            }
+            script = $"mostrarModalConfirmacion('{nombreUsuario}', '{tituloMaterial}');";
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalConfirmacion", script, true);
 
         }
@@ -104,18 +136,22 @@ namespace BibliotecaWA
             if (string.IsNullOrEmpty(codigo))
                 return;
 
-            usuario = usuarioBO.ObtenerUsuarioxCodigo(Int32.Parse(codigo));
+            usuario = usuarioBO.obtenerUsuarioxCodigo(Int32.Parse(codigo));
+
             if (usuario == null) return;
+
             Session["usuario"] = usuario;
 
-            string NombreCompleto = usuario.Nombre + " " + usuario.Segundo_apellido + " " + usuario.Primer_apellido;
+            string NombreCompleto = usuario.nombre + " " + usuario.segundo_apellido + " " + usuario.primer_apellido;
             txtNombre.Text = NombreCompleto;
-            txtTipoUsuario.Text = usuario.Rol_usuario.Tipo;
-            txtLimiteDias.Text = usuario.Rol_usuario.Cantidad_de_dias_por_prestamo.ToString();
-            int dias = usuario.Rol_usuario.Cantidad_de_dias_por_prestamo;
+            txtTipoUsuario.Text = usuario.rol_usuario.tipo;
+            txtLimiteDias.Text = usuario.rol_usuario.cantidad_de_dias_por_prestamo.ToString();
+            txtLimitePrestamo.Text = usuario.rol_usuario.limite_prestamo.ToString();
+            txtPrestamosVigentes.Text = usuarioBO.obtener_prestamos_vigentesxUsuario(usuario.id_usuario).ToString();
+            int dias = usuario.rol_usuario.cantidad_de_dias_por_prestamo;
             DateTime fechaPrestamo = DateTime.Now;
             DateTime fechaVencimiento = fechaPrestamo.AddDays(dias);
-            txtFechaVencimiento.Text = fechaVencimiento.ToString("yyyy-MM-dd hh:mm");
+            txtFechaVencimiento.Text = fechaVencimiento.ToString("yyyy-MM-dd HH:mm");
         }
     }
 }

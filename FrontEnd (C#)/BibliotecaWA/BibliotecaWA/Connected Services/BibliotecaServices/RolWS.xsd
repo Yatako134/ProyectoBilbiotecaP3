@@ -41,6 +41,7 @@
       <xs:element name="activo" type="xs:boolean" />
       <xs:element name="cantidad_de_dias_por_prestamo" type="xs:int" />
       <xs:element name="id_rol" type="xs:int" />
+      <xs:element name="limite_prestamo" type="xs:int" />
       <xs:element minOccurs="0" name="tipo" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

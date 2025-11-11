@@ -249,9 +249,9 @@
                                             <div><strong>Ubicación:</strong> <%# Eval("Ubicacion") %></div>
                                             <div>
                                                 <strong>Estado:</strong>
-                                                <span class='<%# GetEstadoCss(Eval("Estado").ToString()) %>'>
-                                                    <%# Eval("Estado") %>
-                                                </span>
+                                               <span class='<%# ((BibliotecaWA.DetalleMaterial)Page).GetEstadoCss(Eval("estado").ToString()) %>'>
+                                                   <%# Eval("estado") %>
+                                               </span>
                                             </div>
                                         </div>
                                     </ItemTemplate>
