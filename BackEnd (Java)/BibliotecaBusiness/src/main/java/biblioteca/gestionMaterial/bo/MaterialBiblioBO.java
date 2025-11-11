@@ -14,4 +14,8 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
  */
 public interface MaterialBiblioBO extends IBO<MaterialBibliografico>{
     ArrayList<MaterialBibliografico> listar_busqueda(String _parametro);
+     ArrayList<MaterialBibliografico> listar_busqueda_avanzada
+        (String _titulo, String _tipo_contribuyente, String _nombre_contribuyente,
+                String _tema, Integer _fecha_desde, Integer _fecha_hasta, 
+                String _tipo_material, String _biblioteca, String _disponibilidad);
 }

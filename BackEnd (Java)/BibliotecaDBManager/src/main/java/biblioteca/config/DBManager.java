@@ -127,6 +127,11 @@ public class DBManager {
         for (Map.Entry<Integer, Object> entry : parametros.entrySet()) {
             Integer key = entry.getKey();
             Object value = entry.getValue();
+            if (value == null) {
+            // Define el tipo SQL correcto según el parámetro (usa VARCHAR por defecto)
+            cs.setNull(key, java.sql.Types.VARCHAR);
+            continue;
+        }
             switch (value) {
                 case Integer entero -> cs.setInt(key, entero);
                 case String cadena -> cs.setString(key, cadena);

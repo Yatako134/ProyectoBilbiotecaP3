@@ -290,5 +290,61 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
         }
         return materiales;
     }
+
+    @Override
+    public ArrayList<MaterialBibliografico> listar_busqueda_avanzada(String _titulo, 
+            String _tipo_contribuyente, String _nombre_contribuyente, 
+            String _tema, Integer _fecha_desde, Integer _fecha_hasta, 
+            String _tipo_material, String _biblioteca, String _disponibilidad) {
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, _titulo);
+        parametrosEntrada.put(2, _tipo_contribuyente);
+        parametrosEntrada.put(3, _nombre_contribuyente);
+        parametrosEntrada.put(4, _tema);
+        parametrosEntrada.put(5, _fecha_desde);
+        parametrosEntrada.put(6, _fecha_hasta);
+        parametrosEntrada.put(7, _tipo_material);
+        parametrosEntrada.put(8, _biblioteca);
+        parametrosEntrada.put(9, _disponibilidad);
+        ArrayList<MaterialBibliografico> materiales = null;
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_MATERIALES_BUSQUEDA_AVANZADA", parametrosEntrada);
+        System.out.println("Lectura de materiales...");
+        try {
+            while (rs.next()) {
+                if (materiales == null) {
+                    materiales = new ArrayList<>();
+                }
+                MaterialBibliografico material = new MaterialBibliografico();
+                material.setIdMaterial(rs.getInt("id_material"));
+                material.setTitulo(rs.getString("titulo"));
+                material.setAnho_publicacion(rs.getInt("anho_publicacion"));
+                material.setNumero_paginas(rs.getInt("numero_paginas"));
+                material.setEstado(EstadoMaterial.valueOf(rs.getString("estado")));
+                material.setClasificacion_tematica(rs.getString("clasificacion_tematica"));
+                material.setIdioma(rs.getString("idioma"));
+                material.setTipo(TipoMaterial.valueOf(rs.getString("tipo")));
+                materiales.add(material);
+            }
+            for (MaterialBibliografico m : materiales) {
+                ArrayList<Contribuyente> contribuyentes = contBO.listar_autores_por_material(m.getIdMaterial());
+                m.setContribuyentes(contribuyentes);
+                m.FormatoAutores();
+                
+                ArrayList<Ejemplar> ejemplares = ejemBO.listar_disponibles_por_material(m.getIdMaterial());
+                m.setEjemplares(ejemplares);
+                if(ejemplares!=null)m.setCantidadDisponible(ejemplares.size());
+                else m.setCantidadDisponible(0);
+                ArrayList<Biblioteca> bibliotecas = bibBO.listar_bibliotecas_por_material(m.getIdMaterial());
+                m.setBibliotecas(bibliotecas);
+                m.FormatoBibliotecas();
+                
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return materiales;
+    }
     
 }

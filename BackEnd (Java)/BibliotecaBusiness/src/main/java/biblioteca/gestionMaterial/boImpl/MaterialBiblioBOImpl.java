@@ -53,5 +53,14 @@ public class MaterialBiblioBOImpl implements MaterialBiblioBO{
     public ArrayList<MaterialBibliografico> listar_busqueda(String _parametro) {
         return matDao.listar_busqueda(_parametro);
     }
+
+    @Override
+    public ArrayList<MaterialBibliografico> listar_busqueda_avanzada
+        (String _titulo, String _tipo_contribuyente, 
+                String _nombre_contribuyente, String _tema, 
+                Integer _fecha_desde, Integer _fecha_hasta, 
+                String _tipo_material, String _biblioteca, String _disponibilidad) {
+        return matDao.listar_busqueda_avanzada(_titulo, _tipo_contribuyente, _nombre_contribuyente, _tema, _fecha_desde, _fecha_hasta, _tipo_material, _biblioteca, _disponibilidad);
+    }
     
 }
