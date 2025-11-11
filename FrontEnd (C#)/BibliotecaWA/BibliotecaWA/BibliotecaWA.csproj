@@ -74,8 +74,6 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="AdministrarUsuarios.aspx" />
-    <Content Include="BusquedaMaterial.aspx" />
-    <Content Include="BusquedaMaterialUSUARIO.aspx" />
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.biblioteca.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -177,7 +175,6 @@
     <Content Include="Content\Images\file.png" />
     <Content Include="Content\Images\logo2.png" />
     <Content Include="Content\Images\tesis.png" />
-    <Content Include="DetalleMaterial.aspx" />
     <Content Include="Fonts\css\AdminUsuarios.css" />
     <Content Include="Fonts\css\all.css" />
     <Content Include="Fonts\css\all.min.css" />
@@ -208,17 +205,12 @@
     <Content Include="Fonts\css\v4-shims.min.css" />
     <Content Include="Fonts\css\v5-font-face.css" />
     <Content Include="Fonts\css\v5-font-face.min.css" />
-    <Content Include="GestMaterial.aspx" />
     <Content Include="GestUsuarios.aspx" />
-    <Content Include="HistorialPrestamos.aspx" />
     <Content Include="Images\article.png" />
     <Content Include="Images\book.png" />
     <Content Include="Images\file.png" />
     <Content Include="Images\logo2.png" />
     <Content Include="Images\tesis.png" />
-    <Content Include="ListarReporte.aspx" />
-    <Content Include="MiHistorialUSUARIO.aspx" />
-    <Content Include="Prestamo.aspx" />
     <Content Include="Scripts\activarMenu.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -291,38 +283,10 @@
     <Compile Include="AdministrarUsuarios.aspx.designer.cs">
       <DependentUpon>AdministrarUsuarios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BusquedaMaterial.aspx.cs">
-      <DependentUpon>BusquedaMaterial.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BusquedaMaterial.aspx.designer.cs">
-      <DependentUpon>BusquedaMaterial.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BusquedaMaterialUSUARIO.aspx.cs">
-      <DependentUpon>BusquedaMaterialUSUARIO.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BusquedaMaterialUSUARIO.aspx.designer.cs">
-      <DependentUpon>BusquedaMaterialUSUARIO.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Connected Services\BibliotecaServices\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="DetalleMaterial.aspx.cs">
-      <DependentUpon>DetalleMaterial.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DetalleMaterial.aspx.designer.cs">
-      <DependentUpon>DetalleMaterial.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GestMaterial.aspx.cs">
-      <DependentUpon>GestMaterial.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GestMaterial.aspx.designer.cs">
-      <DependentUpon>GestMaterial.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestUsuarios.aspx.cs">
       <DependentUpon>GestUsuarios.aspx</DependentUpon>
@@ -331,40 +295,12 @@
     <Compile Include="GestUsuarios.aspx.designer.cs">
       <DependentUpon>GestUsuarios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="HistorialPrestamos.aspx.cs">
-      <DependentUpon>HistorialPrestamos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="HistorialPrestamos.aspx.designer.cs">
-      <DependentUpon>HistorialPrestamos.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Home.Master.cs">
       <DependentUpon>Home.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Home.Master.designer.cs">
       <DependentUpon>Home.Master</DependentUpon>
-    </Compile>
-    <Compile Include="ListarReporte.aspx.cs">
-      <DependentUpon>ListarReporte.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ListarReporte.aspx.designer.cs">
-      <DependentUpon>ListarReporte.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MiHistorialUSUARIO.aspx.cs">
-      <DependentUpon>MiHistorialUSUARIO.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MiHistorialUSUARIO.aspx.designer.cs">
-      <DependentUpon>MiHistorialUSUARIO.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Prestamo.aspx.cs">
-      <DependentUpon>Prestamo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Prestamo.aspx.designer.cs">
-      <DependentUpon>Prestamo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
