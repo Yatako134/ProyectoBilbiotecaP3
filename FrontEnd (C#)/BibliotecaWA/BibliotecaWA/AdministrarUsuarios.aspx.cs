@@ -11,18 +11,18 @@ namespace BibliotecaWA
 {
     public partial class AdministrarUsuarios : System.Web.UI.Page
     {
-        private UsuarioBOImpl bousuario = new UsuarioBOImpl();
-        private RolBOImpl borol = new RolBOImpl();
-        private Usuario usuarioActual;
+        private UsuarioWSClient bousuario = new UsuarioWSClient();
+        private RolWSClient borol = new RolWSClient();
+        private usuario usuarioActual;
         private string modo;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                // 🔹 Recuperamos el modo desde QueryString o usamos "ver" por defecto
+                //  Recuperamos el modo desde QueryString o usamos "ver" por defecto
                 modo = Request.QueryString["modo"]?.ToLower() ?? "ver";
-                Session["modoUsuario"] = modo; // guardar en sesión
+                Session["modoUsuario"] = modo; // guardar en sesion
 
                 int idUsuario = 0;
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]))
@@ -37,23 +37,24 @@ namespace BibliotecaWA
                     LblGuia.Text = "Registro de usuario";
                     PrepararRegistro();
 
-                    // Botón llama al modal
+                    // Boton llama al modal
                     btnAccion.OnClientClick = "actualizarModal(); return false;";
                 }
                 else
                 {
-                    usuarioActual = bousuario.obtenerPorId(idUsuario);
+
+                    usuarioActual = bousuario.obtenerUsuarioPorId(idUsuario);
                     if (usuarioActual == null) return;
 
-                    txtCodigo.Text = usuarioActual.Codigo_universitario.ToString();
-                    txtDNI.Text = usuarioActual.DOI1.ToString();
-                    txtNombre.Text = usuarioActual.Nombre;
-                    txtPrimerApellido.Text = usuarioActual.Primer_apellido;
-                    txtSegundoApellido.Text = usuarioActual.Segundo_apellido;
-                    txtCorreo.Text = usuarioActual.Correo;
-                    txtContrasena.Text = usuarioActual.Contrasena;
-                    txtTelefono.Text = usuarioActual.Numero_de_telefono;
-                    ddlRol.SelectedValue = usuarioActual.Rol_usuario.Id_rol.ToString();
+                    txtCodigo.Text = usuarioActual.codigo.ToString();
+                    txtDNI.Text = usuarioActual.DOI.ToString();
+                    txtNombre.Text = usuarioActual.nombre;
+                    txtPrimerApellido.Text = usuarioActual.primer_apellido;
+                    txtSegundoApellido.Text = usuarioActual.segundo_apellido;
+                    txtCorreo.Text = usuarioActual.correo;
+                    txtContrasena.Text = usuarioActual.contrasena;
+                    txtTelefono.Text = usuarioActual.telefono;
+                    ddlRol.SelectedValue = usuarioActual.rol_usuario.id_rol.ToString();
 
                     if (modo == "ver")
                     {
@@ -69,7 +70,7 @@ namespace BibliotecaWA
                         btnAccion.Text = "Guardar Cambios";
                         HabilitarEdicion();
 
-                        // Botón hace postback normal en edición
+                        // Boton hace postback normal en edicion
                         btnAccion.OnClientClick = "";
                     }
 
@@ -78,9 +79,9 @@ namespace BibliotecaWA
             }
             else
             {
-                // 🔹 Recuperamos el modo y usuario en postbacks
+                //  Recuperamos el modo y usuario en postbacks
                 modo = Session["modoUsuario"]?.ToString() ?? "ver";
-                usuarioActual = Session["usuarioActual"] as Usuario;
+                usuarioActual = Session["usuarioActual"] as usuario;
             }
         }
 
@@ -90,7 +91,7 @@ namespace BibliotecaWA
 
         private void CargarRoles()
         {
-            BindingList<Rol> roles = borol.listarTodos();
+            BindingList<rol> roles = new BindingList<rol>(borol.listarRoles());
             ddlRol.DataSource = roles;
             ddlRol.DataTextField = "Tipo";
             ddlRol.DataValueField = "Id_rol";
@@ -143,33 +144,33 @@ namespace BibliotecaWA
 
             if (modo == "registrar")
             {
-                Usuario nuevo = new Usuario
+                usuario nuevo = new usuario
                 {
-                    Codigo_universitario = int.Parse(txtCodigo.Text),
-                    DOI1 = int.Parse(txtDNI.Text),
-                    Nombre = txtNombre.Text,
-                    Primer_apellido = txtPrimerApellido.Text,
-                    Segundo_apellido = txtSegundoApellido.Text,
-                    Correo = txtCorreo.Text,
-                    Contrasena = txtContrasena.Text,
-                    Numero_de_telefono = txtTelefono.Text,
-                    Rol_usuario = borol.listarTodos().ToList().Find(r => r.Id_rol.ToString() == ddlRol.SelectedValue)
+                    codigo = int.Parse(txtCodigo.Text),
+                    DOI = txtDNI.Text,
+                    nombre = txtNombre.Text,
+                    primer_apellido = txtPrimerApellido.Text,
+                    segundo_apellido = txtSegundoApellido.Text,
+                    correo = txtCorreo.Text,
+                    contrasena = txtContrasena.Text,
+                    telefono = txtTelefono.Text,
+                    rol_usuario = new BindingList<rol>(borol.listarRoles()).ToList().Find(r => r.id_rol.ToString() == ddlRol.SelectedValue)
                 };
-                bousuario.insertar(nuevo);
+                bousuario.insertarUsuario(nuevo);
             }
             else if (modo == "editar" && usuarioActual != null)
             {
-                usuarioActual.Codigo_universitario = int.Parse(txtCodigo.Text);
-                usuarioActual.DOI1 = int.Parse(txtDNI.Text);
-                usuarioActual.Nombre = txtNombre.Text;
-                usuarioActual.Primer_apellido = txtPrimerApellido.Text;
-                usuarioActual.Segundo_apellido = txtSegundoApellido.Text;
-                usuarioActual.Correo = txtCorreo.Text;
-                usuarioActual.Contrasena = txtContrasena.Text;
-                usuarioActual.Numero_de_telefono = txtTelefono.Text;
-                usuarioActual.Rol_usuario = borol.listarTodos().ToList().Find(r => r.Id_rol.ToString() == ddlRol.SelectedValue);
+                usuarioActual.codigo = int.Parse(txtCodigo.Text);
+                usuarioActual.DOI = txtDNI.Text;
+                usuarioActual.nombre = txtNombre.Text;
+                usuarioActual.primer_apellido = txtPrimerApellido.Text;
+                usuarioActual.segundo_apellido = txtSegundoApellido.Text;
+                usuarioActual.correo = txtCorreo.Text;
+                usuarioActual.contrasena = txtContrasena.Text;
+                usuarioActual.telefono = txtTelefono.Text;
+                usuarioActual.rol_usuario = new BindingList<rol>(borol.listarRoles()).ToList().Find(r => r.id_rol.ToString() == ddlRol.SelectedValue);
 
-                bousuario.modificar(usuarioActual);
+                bousuario.modificarUsuario(usuarioActual);
             }
 
             Response.Redirect("GestUsuarios.aspx");
