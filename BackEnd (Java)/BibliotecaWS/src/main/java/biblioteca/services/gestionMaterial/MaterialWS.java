@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/WebServices/WebService.java to edit this template
+ */
 package biblioteca.services.gestionMaterial;
 
 import biblioteca.gestionMaterial.boImpl.MaterialBiblioBOImpl;
@@ -11,40 +14,13 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.Editorial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 
+/**
+ *
+ * @author renat
+ */
 @WebService(serviceName = "MaterialWS")
 public class MaterialWS {
     MaterialBiblioBOImpl materialBO;
-    
-    
-     @WebMethod(operationName = "ListarTodos")
-    public ArrayList<MaterialBibliografico> listarTodos() {
-        materialBO = new MaterialBiblioBOImpl();
-        ArrayList<MaterialBibliografico> materiales = null;
-        try{
-        
-        materiales = materialBO.listarTodos();
-        return materiales;
-        }
-        catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-        return materiales;
-    }
-    @WebMethod(operationName = "Busqueda")
-    public ArrayList<MaterialBibliografico> listar_por_busqueda(@WebParam(name ="_titulo_autor")
-    String _parametro) {
-        materialBO = new MaterialBiblioBOImpl();
-        ArrayList<MaterialBibliografico> materiales = null;
-        try{
-        
-        materiales = materialBO.listar_busqueda(_parametro);
-        return materiales;
-        }
-        catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-        return materiales;
-    }
     
     @WebMethod(operationName = "obtenerPorId")
     public MaterialBibliografico obtenerPorId(@WebParam(name = "id") int id) {
@@ -113,5 +89,34 @@ public class MaterialWS {
             System.out.println("ERROR en obtenerEjemplaresDisponibles: " + ex.getMessage());
         }
         return ejemplares;
+    }
+     @WebMethod(operationName = "ListarTodos")
+    public ArrayList<MaterialBibliografico> listarTodos() {
+        materialBO = new MaterialBiblioBOImpl();
+        ArrayList<MaterialBibliografico> materiales = null;
+        try{
+        
+        materiales = materialBO.listarTodos();
+        return materiales;
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return materiales;
+    }
+    @WebMethod(operationName = "Busqueda")
+    public ArrayList<MaterialBibliografico> listar_por_busqueda(@WebParam(name ="_titulo_autor")
+    String _parametro) {
+        materialBO = new MaterialBiblioBOImpl();
+        ArrayList<MaterialBibliografico> materiales = null;
+        try{
+        
+        materiales = materialBO.listar_busqueda(_parametro);
+        return materiales;
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return materiales;
     }
 }

@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Biblioteca;
 @WebService(serviceName = "BibliotecaWS")
 public class BibliotecaWS {
-    private BibliotecaBO bibBO;
+    BibliotecaBO bibBO;
+    
     
     @WebMethod(operationName = "insertarBiblioteca")
     public int insertarMaterial(@WebParam(name = "material") Biblioteca biblioteca) {

@@ -41,7 +41,7 @@ public class UsuarioWS {
     public ArrayList<Usuario> listarUsuarios() throws Exception {
         return usuarioBO.listarTodos();
     }
-     @WebMethod(operationName = "obtenerUsuarioxCodigo")
+    @WebMethod(operationName = "obtenerUsuarioxCodigo")
     public Usuario obtenerUsuarioxCodigo(int codigo) throws Exception {
         return usuarioBO.obtenerUsuarioxCodigo(codigo);
     }

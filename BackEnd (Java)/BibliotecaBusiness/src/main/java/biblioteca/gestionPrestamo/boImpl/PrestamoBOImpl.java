@@ -43,5 +43,10 @@ public class PrestamoBOImpl implements PrestamoBO{
     public void validar(Prestamo objeto) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public ArrayList<Prestamo> listarPorUsuario(int idUsuario) {
+        return daoPrestamo.listarPorUsuario(idUsuario);
+    }
     
 }

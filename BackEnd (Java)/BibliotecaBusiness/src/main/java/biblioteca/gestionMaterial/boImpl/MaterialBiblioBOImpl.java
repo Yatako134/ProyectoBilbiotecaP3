@@ -15,7 +15,6 @@ public class MaterialBiblioBOImpl implements MaterialBiblioBO{
     public MaterialBiblioBOImpl(){
         matDao = new MaterialBiblioImpl();
     }
-	
     @Override
     public int insertar(MaterialBibliografico objeto) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -33,7 +32,7 @@ public class MaterialBiblioBOImpl implements MaterialBiblioBO{
 
     @Override
     public MaterialBibliografico obtenerPorId(int idObjeto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return matDao.obtenerPorId(idObjeto);
     }
 
     @Override

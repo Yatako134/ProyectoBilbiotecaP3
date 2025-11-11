@@ -29,9 +29,8 @@ public class UsuarioImpl implements UsuarioDAO{
         parametrosEntrada.put(6, objeto.getDOI());
         parametrosEntrada.put(7, objeto.getCorreo());
         parametrosEntrada.put(8, objeto.getContrasena());
-        parametrosEntrada.put(9, objeto.getCorreo());
-        parametrosEntrada.put(10, objeto.getTelefono());
-        parametrosEntrada.put(11, objeto.getRol_usuario().getId_rol());
+        parametrosEntrada.put(9, objeto.getTelefono());
+        parametrosEntrada.put(10, objeto.getRol_usuario().getId_rol());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_USUARIO", parametrosEntrada, parametrosSalida);
         objeto.setId_usuario((int) parametrosSalida.get(1));
         System.out.println("Se ha realizado el registro del usuario");
@@ -42,13 +41,13 @@ public class UsuarioImpl implements UsuarioDAO{
     public int modificar(Usuario objeto) {
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, objeto.getId_usuario());
-        parametrosEntrada.put(2, objeto.getNombre());
-        parametrosEntrada.put(3, objeto.getPrimer_apellido());
-        parametrosEntrada.put(4, objeto.getSegundo_apellido());
-        parametrosEntrada.put(5, objeto.getDOI());
-        parametrosEntrada.put(6, objeto.getCodigo());
-        parametrosEntrada.put(7, objeto.getContrasena());
-        parametrosEntrada.put(8, objeto.getCorreo());
+        parametrosEntrada.put(2, objeto.getCodigo());
+        parametrosEntrada.put(3, objeto.getNombre());
+        parametrosEntrada.put(4, objeto.getPrimer_apellido());
+        parametrosEntrada.put(5, objeto.getSegundo_apellido());
+        parametrosEntrada.put(6, objeto.getDOI());
+        parametrosEntrada.put(7, objeto.getCorreo());
+        parametrosEntrada.put(8, objeto.getContrasena());
         parametrosEntrada.put(9, objeto.getTelefono());
         parametrosEntrada.put(10, objeto.getRol_usuario().getId_rol());
         //parametrosEntrada.put(11, objeto.isActiva());
@@ -129,7 +128,6 @@ public class UsuarioImpl implements UsuarioDAO{
         }
         return users;
     }
-
     @Override
     public Usuario obtenerUsuarioxCodigo(int codigo) {
         Usuario usuario = null;
@@ -198,7 +196,6 @@ public class UsuarioImpl implements UsuarioDAO{
         }
         return cantidad_prestamos_vigentes;
     }
-    
     
     
 }

@@ -763,6 +763,24 @@ BEGIN
     FROM Prestamo;
 END$
 
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_PRESTAMOS_X_USUARIO`(
+    IN p_id_usuario INT
+)
+BEGIN
+    SELECT 
+        id_prestamo,
+        fecha_de_prestamo,
+        fecha_vencimiento,
+        fecha_devolucion,
+        estado,
+        id_ejemplar,
+        id_usuario
+    FROM Prestamo
+    WHERE id_usuario = p_id_usuario;
+END $$
+
+
 DELIMITER $
 CREATE PROCEDURE INSERTAR_SANCION(
     OUT _id_sancion INT,
@@ -842,6 +860,24 @@ BEGIN
     fecha_fin, justificacion, estado, id_prestamo
     FROM Sancion;
 END$
+
+DELIMITER $$
+
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_SANCIONES_X_USUARIO`(IN p_id_usuario INT)
+BEGIN
+    SELECT 
+        s.id_sancion,
+        s.tipo_sancion,
+        s.duracion_dias,
+        s.fecha_inicio,
+        s.fecha_fin,
+        s.justificacion,
+        s.estado,
+        s.id_prestamo
+    FROM Sancion s
+    INNER JOIN Prestamo p ON s.id_prestamo = p.id_prestamo
+    WHERE p.id_usuario = p_id_usuario;
+END $$
 
 
 DELIMITER $
@@ -979,3 +1015,70 @@ x.id_contribuyente = c.id_contribuyente and c.tipo_contribuyente = 'AUTOR' and (
 c.primer_apellido LIKE CONCAT('%',_titulo_autor,'%') OR c.segundo_apellido LIKE CONCAT('%',_titulo_autor,'%')  OR
 c.seudonimo LIKE CONCAT('%',_titulo_autor,'%') ))
 ORDER BY (m.estado = 'DISPONIBLE') DESC, m.titulo ASC;
+
+DELIMITER $$
+CREATE PROCEDURE LISTAR_MATERIALES_BUSQUEDA_AVANZADA(
+    IN _titulo VARCHAR(150),
+    IN _tipo_contribuyente VARCHAR(20),
+    IN _nombre_contribuyente VARCHAR(60),
+    IN _tema VARCHAR(100),
+    IN _fecha_desde INT,
+    IN _fecha_hasta INT,
+    IN _tipo_material VARCHAR(20),
+    IN _nombre_biblioteca VARCHAR(80),
+    IN _disponibilidad VARCHAR(20)
+)
+BEGIN
+    SELECT DISTINCT 
+        m.id_material,
+        m.titulo,
+        m.anho_publicacion,
+        m.numero_paginas,
+        m.estado,
+        m.clasificacion_tematica,
+        m.activo,
+        m.idioma,
+        m.tipo
+    FROM MaterialBibliografico m
+    LEFT JOIN Contribuyente_Material cm ON m.id_material = cm.id_material
+    LEFT JOIN Contribuyente c ON cm.id_contribuyente = c.id_contribuyente
+    LEFT JOIN Ejemplar e ON e.id_material = m.id_material
+    LEFT JOIN Biblioteca b ON e.id_biblioteca = b.id_biblioteca
+    WHERE 
+        -- Título
+        (_titulo IS NULL OR m.titulo LIKE CONCAT('%', _titulo, '%'))
+        
+        -- Contribuyente (solo si nombre_contribuyente no es NULL)
+        AND (
+            _nombre_contribuyente IS NULL
+            OR (
+                (_tipo_contribuyente IS NULL OR c.tipo_contribuyente = _tipo_contribuyente)
+                AND (
+                    c.nombre LIKE CONCAT('%', _nombre_contribuyente, '%')
+                    OR c.primer_apellido LIKE CONCAT('%', _nombre_contribuyente, '%')
+                    OR c.segundo_apellido LIKE CONCAT('%', _nombre_contribuyente, '%')
+                    OR c.seudonimo LIKE CONCAT('%', _nombre_contribuyente, '%')
+                )
+            )
+        )
+
+        -- Tema o clasificación temática
+        AND (_tema IS NULL OR m.clasificacion_tematica LIKE CONCAT('%', _tema, '%'))
+        
+        -- Rango de años
+        AND (_fecha_desde IS NULL OR m.anho_publicacion >= _fecha_desde)
+        AND (_fecha_hasta IS NULL OR m.anho_publicacion <= _fecha_hasta)
+        
+        -- Tipo de material
+        AND (_tipo_material IS NULL OR m.tipo = _tipo_material)
+        
+        -- Biblioteca
+        AND (_nombre_biblioteca IS NULL OR b.nombre LIKE CONCAT('%', _nombre_biblioteca, '%'))
+        
+        -- Estado del material
+        AND (_disponibilidad IS NULL OR m.estado = _disponibilidad)
+        
+    ORDER BY 
+        (m.estado = 'DISPONIBLE') DESC,
+        m.titulo ASC;
+END$$

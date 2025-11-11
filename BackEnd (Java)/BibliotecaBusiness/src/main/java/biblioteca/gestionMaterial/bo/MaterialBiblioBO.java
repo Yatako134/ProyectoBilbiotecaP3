@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package biblioteca.gestionMaterial.bo;
 
 import biblioteca.ibo.IBO;
@@ -11,13 +8,9 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.Editorial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 
-/**
- *
- * @author renat
- */
 public interface MaterialBiblioBO extends IBO<MaterialBibliografico>{
     ArrayList<MaterialBibliografico> listar_busqueda(String _parametro);
-	ArrayList<Ejemplar> buscarEjemplares(int id);
+    ArrayList<Ejemplar> buscarEjemplares(int id);
 
     // Busca contribuyentes por ID
     ArrayList<Contribuyente> buscarContribuyente(int id);

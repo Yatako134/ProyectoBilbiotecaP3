@@ -42,7 +42,6 @@ public class UsuarioBOImpl implements UsuarioBO{
     public void validar(Usuario objeto) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
     @Override
     public Usuario obtenerUsuarioxCodigo(int codigo) {
         return daoUsuario.obtenerUsuarioxCodigo(codigo);
@@ -53,5 +52,4 @@ public class UsuarioBOImpl implements UsuarioBO{
         
         return daoUsuario.prestamos_vigentesxUsuario(idUsuario);
     }
-    
 }
