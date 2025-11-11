@@ -763,6 +763,24 @@ BEGIN
     FROM Prestamo;
 END$
 
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_PRESTAMOS_X_USUARIO`(
+    IN p_id_usuario INT
+)
+BEGIN
+    SELECT 
+        id_prestamo,
+        fecha_de_prestamo,
+        fecha_vencimiento,
+        fecha_devolucion,
+        estado,
+        id_ejemplar,
+        id_usuario
+    FROM Prestamo
+    WHERE id_usuario = p_id_usuario;
+END $$
+
+
 DELIMITER $
 CREATE PROCEDURE INSERTAR_SANCION(
     OUT _id_sancion INT,
@@ -842,6 +860,24 @@ BEGIN
     fecha_fin, justificacion, estado, id_prestamo
     FROM Sancion;
 END$
+
+DELIMITER $$
+
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_SANCIONES_X_USUARIO`(IN p_id_usuario INT)
+BEGIN
+    SELECT 
+        s.id_sancion,
+        s.tipo_sancion,
+        s.duracion_dias,
+        s.fecha_inicio,
+        s.fecha_fin,
+        s.justificacion,
+        s.estado,
+        s.id_prestamo
+    FROM Sancion s
+    INNER JOIN Prestamo p ON s.id_prestamo = p.id_prestamo
+    WHERE p.id_usuario = p_id_usuario;
+END $$
 
 
 DELIMITER $
