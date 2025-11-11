@@ -42,5 +42,10 @@ private final SancionDAO daoSancion;
     public void validar(Sancion objeto) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public ArrayList<Sancion> listarPorUsuario(int idUsuario) {
+        return daoSancion.listarPorUsuario(idUsuario);
+    }
     
 }
