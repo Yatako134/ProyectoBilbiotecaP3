@@ -84,7 +84,7 @@ BEGIN
         anho_publicacion,numero_paginas,estado,clasificacion_tematica,activo,idioma, tipo
     )
     VALUES(
-        _titulo,_anho_publicacion,_numero_paginas,'DISPONIBLE',_clasificacion_tematica,1,_idioma,'LIBRO'
+        _titulo,_anho_publicacion,_numero_paginas,'NO_DISPONIBLE',_clasificacion_tematica,1,_idioma,'LIBRO'
     );
     SET _id_libro = @@last_insert_id;
     INSERT INTO Libro(id_libro, ISBN, edicion)
@@ -173,7 +173,7 @@ BEGIN
         anho_publicacion,numero_paginas,estado,clasificacion_tematica,activo,idioma, tipo
     )
     VALUES(
-        _titulo,_anho_publicacion,_numero_paginas,'DISPONIBLE',_clasificacion_tematica,1,_idioma,'ARTICULO'
+        _titulo,_anho_publicacion,_numero_paginas,'NO_DISPONIBLE',_clasificacion_tematica,1,_idioma,'ARTICULO'
     );
     SET _id_articulo = @@last_insert_id;
     INSERT INTO Articulo(id_articulo, ISSN, revista, volumen, numero)
@@ -264,7 +264,7 @@ BEGIN
         anho_publicacion,numero_paginas,estado,clasificacion_tematica,activo,idioma, tipo
     )
     VALUES(
-        _titulo,_anho_publicacion,_numero_paginas,'DISPONIBLE',_clasificacion_tematica,1,_idioma,'TESIS'
+        _titulo,_anho_publicacion,_numero_paginas,'NO_DISPONIBLE',_clasificacion_tematica,1,_idioma,'TESIS'
     );
     SET _id_tesis = @@last_insert_id;
     INSERT INTO Tesis(id_tesis, especialidad, asesor, 
@@ -623,6 +623,11 @@ BEGIN
     VALUES(_id_material, 'DISPONIBLE', _ubicacion, 1, _id_biblioteca);
     
     SET _id_ejemplar = @@last_insert_id;  
+
+    UPDATE MaterialBibliografico 
+    SET estado = 'DISPONIBLE'
+    WHERE id_material = _id_material;
+
 END$
 
 -- MODIFICAR
@@ -965,3 +970,12 @@ BEGIN
 END$$
 
 DELIMITER ;
+CREATE PROCEDURE LISTAR_MATERIALES_BUSQUEDA(IN _titulo_autor VARCHAR(150)) 
+SELECT DISTINCT m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas,
+m.estado, m.clasificacion_tematica, m.activo, m.idioma, m.tipo
+FROM MaterialBibliografico m, Contribuyente c, Contribuyente_Material x
+WHERE m.titulo LIKE CONCAT('%',_titulo_autor,'%') OR (m.id_material=x.id_material and 
+x.id_contribuyente = c.id_contribuyente and c.tipo_contribuyente = 'AUTOR' and (c.nombre LIKE CONCAT('%',_titulo_autor,'%') OR
+c.primer_apellido LIKE CONCAT('%',_titulo_autor,'%') OR c.segundo_apellido LIKE CONCAT('%',_titulo_autor,'%')  OR
+c.seudonimo LIKE CONCAT('%',_titulo_autor,'%') ))
+ORDER BY (m.estado = 'DISPONIBLE') DESC, m.titulo ASC;
