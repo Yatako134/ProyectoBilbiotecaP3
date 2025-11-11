@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Sancion;
 
 public class SancionBOImpl implements SancionBO{
-private final SancionDAO daoSancion;
+    private final SancionDAO daoSancion;
 
     public SancionBOImpl() {
         daoSancion = new SancionImpl();

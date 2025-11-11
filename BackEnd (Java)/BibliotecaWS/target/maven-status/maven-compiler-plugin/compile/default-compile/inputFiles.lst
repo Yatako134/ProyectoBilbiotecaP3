@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionMaterial\ArticuloWS.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionUsuario\RolWS.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionPrestamo\SancionWS.java
@@ -10,3 +11,17 @@ C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\Ba
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\PruebaWS.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionMaterial\BibliotecaWS.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionMaterial\MaterialWS.java
+=======
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionMaterial\EjemplarWS.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionMaterial\BibliotecaWS.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionUsuario\UsuarioWS.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionPrestamo\PrestamoWS.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\PruebaWS.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionMaterial\TesisWS.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionPrestamo\SancionWS.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionMaterial\LibroWS.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionMaterial\ArticuloWS.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionMaterial\ConstribuyenteWS.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionUsuario\RolWS.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaWS\src\main\java\biblioteca\services\gestionMaterial\MaterialWS.java
+>>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0

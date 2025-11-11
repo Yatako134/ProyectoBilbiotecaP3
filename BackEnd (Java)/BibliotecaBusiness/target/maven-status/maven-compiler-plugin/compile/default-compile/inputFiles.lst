@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\ArticuloBO.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\BibliotecaBO.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\ContribuyenteBO.java
@@ -21,3 +22,28 @@ C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\Ba
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\boImpl\RolBOImpl.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\boImpl\UsuarioBOImpl.java
 C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\ibo\IBO.java
+=======
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\ArticuloBO.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\BibliotecaBO.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\ContribuyenteBO.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\EjemplarBO.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\LibroBO.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\MaterialBiblioBO.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\bo\TesisBO.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\ArticuloBOImpl.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\BibliotecaBOImpl.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\ContribuyenteBOImpl.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\EjemplarBOImpl.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\LibroBOImpl.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\MaterialBiblioBOImpl.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionMaterial\boImpl\TesisBOImpl.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionPrestamo\bo\PrestamoBO.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionPrestamo\bo\SancionBO.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionPrestamo\boImpl\PrestamoBOImpl.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionPrestamo\boImpl\SancionBOImpl.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\bo\RolBO.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\bo\UsuarioBO.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\boImpl\RolBOImpl.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\gestionUsuario\boImpl\UsuarioBOImpl.java
+C:\Repo_TA_Prog3\ProyectoBilbiotecaP3\BackEnd (Java)\BibliotecaBusiness\src\main\java\biblioteca\ibo\IBO.java
+>>>>>>> dbafd2528623e73d02b773112e815ec8c2a853d0
