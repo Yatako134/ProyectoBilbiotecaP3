@@ -319,4 +319,54 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
         return materiales;
     }
     
+    @Override
+    public int ContarEjemplares(int idMaterial) {
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idMaterial);
+        int cant = 0;
+        ResultSet rs = DBManager.getInstance().ejecutarProcedimientoLectura("CONTAR_EJEMPLARES_ASIGNADOS_POR_MATERIAL", parametrosEntrada);
+
+        try {
+            while (rs.next()) {
+                cant = rs.getInt("cantidad_ejemplares");
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+
+        return cant;
+    }
+
+    @Override
+    public ArrayList<MaterialBibliografico> listartodosnormal() {
+        ArrayList<MaterialBibliografico> materiales = null;
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_MATERIALES_TODOS", null);
+        System.out.println("Lectura de materiales...");
+        try {
+            while (rs.next()) {
+                if (materiales == null) {
+                    materiales = new ArrayList<>();
+                }
+                MaterialBibliografico material = new MaterialBibliografico();
+                material.setIdMaterial(rs.getInt("id_material"));
+                material.setTitulo(rs.getString("titulo"));
+                material.setAnho_publicacion(rs.getInt("anho_publicacion"));
+                material.setNumero_paginas(rs.getInt("numero_paginas"));
+                material.setEstado(EstadoMaterial.valueOf(rs.getString("estado")));
+                material.setClasificacion_tematica(rs.getString("clasificacion_tematica"));
+                material.setIdioma(rs.getString("idioma"));
+                material.setTipo(TipoMaterial.valueOf(rs.getString("tipo")));
+                materiales.add(material);
+            }
+            
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return materiales;
+    }
+    
 }

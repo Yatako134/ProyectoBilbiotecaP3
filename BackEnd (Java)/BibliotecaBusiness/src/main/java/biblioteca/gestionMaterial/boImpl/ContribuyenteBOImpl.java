@@ -16,7 +16,7 @@ public class ContribuyenteBOImpl implements ContribuyenteBO{
     
     @Override
     public int insertar(Contribuyente objeto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return contDao.insertar(objeto);
     }
 
     @Override

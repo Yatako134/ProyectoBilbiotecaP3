@@ -1,15 +1,19 @@
-
 package biblioteca.services.gestionMaterial;
 
 import biblioteca.gestionMaterial.boImpl.TesisBOImpl;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Tesis;
 
 @WebService(serviceName = "TesisWS")
 public class TesisWS {
+
+    public TesisWS() {
+        tesisbo = new TesisBOImpl();
+    }
 
     private TesisBOImpl tesisbo;
 
@@ -26,7 +30,7 @@ public class TesisWS {
     }
 
     @WebMethod(operationName = "modificarTesis")
-    public int modificarTesis(@WebParam(name = "tesis") Tesis tesis) throws Exception {
+    public int modificarTesis(@WebParam(name = "tesis") Tesis tesis) throws Exception{
         tesisbo = new TesisBOImpl();
         return tesisbo.modificar(tesis);
     }

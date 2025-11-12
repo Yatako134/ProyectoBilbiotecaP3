@@ -25,14 +25,14 @@ public class Tesislmpl implements TesisDAO{
         parametrosEntrada.put(2, objeto.getTitulo());
         parametrosEntrada.put(3, objeto.getAnho_publicacion());
         parametrosEntrada.put(4, objeto.getNumero_paginas());
-        parametrosEntrada.put(5, objeto.getEstado().toString());
-        parametrosEntrada.put(6, objeto.getClasificacion_tematica());
-        parametrosEntrada.put(7, objeto.isActivo());
-        parametrosEntrada.put(8, objeto.getIdioma());
-        parametrosEntrada.put(9, objeto.getEspecialidad());
-        parametrosEntrada.put(10, objeto.getAsesor());
-        parametrosEntrada.put(11, objeto.getGrado());
-        parametrosEntrada.put(12, objeto.getInstitucionPublicacion());
+        
+        parametrosEntrada.put(5, objeto.getClasificacion_tematica());
+        
+        parametrosEntrada.put(6, objeto.getIdioma());
+        parametrosEntrada.put(7, objeto.getEspecialidad());
+        parametrosEntrada.put(8, objeto.getAsesor());
+        parametrosEntrada.put(9, objeto.getGrado());
+        parametrosEntrada.put(10, objeto.getInstitucionPublicacion());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_TESIS", parametrosEntrada, parametrosSalida);
         objeto.setIdMaterial((int) parametrosSalida.get(1));
         System.out.println("Se ha realizado el registro del tesis");

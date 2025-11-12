@@ -2,6 +2,7 @@
 package biblioteca.main;
 import biblioteca.config.DBManager;
 import biblioteca.config.Encriptamiento;
+import biblioteca.gestionMaterial.boImpl.ContribuyenteBOImpl;
 import biblioteca.gestionMaterial.mysql.BibliotecaImpl;
 import biblioteca.gestionMaterial.mysql.EjemplarImpl;
 import biblioteca.gestionMaterial.mysql.Librolmpl;
@@ -18,12 +19,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Biblioteca;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.Contribuyente;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Editorial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoEjemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoMaterial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Libro;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Tesis;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.TipoContribuyente;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.EstadoPrestamo;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Prestamo;
 import pe.edu.pucp.utilsarmy.usuarios.model.Rol;
@@ -161,9 +164,17 @@ public class Principal {
 //            System.out.println(pr.getFecha_de_prestamo());
 //        }
 //        
-        String contra = Encriptamiento.encriptar("Prog3_BD_20223397", "jGwZUx4lOJZj8wXav7Sknw==");
-        UsuarioBOImpl bouser = new UsuarioBOImpl();
-        ArrayList<Usuario> usuarios = bouser.listarTodos();
-        DBManager.getInstance().getConnection();
+
+        ContribuyenteBOImpl contribo = new ContribuyenteBOImpl();
+        
+        Contribuyente cons = new Contribuyente();
+        cons.setNombre("agua0");
+        cons.setPrimer_apellido("agua1");
+        cons.setSegundo_apellido("agua2");
+        cons.setSeudonimo("aguaseu");
+        cons.setTipo_contribuyente(TipoContribuyente.AUTOR);
+        contribo.insertar(cons);
+        
+        
     }
 }

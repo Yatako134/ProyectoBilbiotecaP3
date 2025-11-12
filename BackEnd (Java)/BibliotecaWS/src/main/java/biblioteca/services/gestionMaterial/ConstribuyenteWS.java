@@ -5,25 +5,17 @@ import biblioteca.gestionMaterial.boImpl.ContribuyenteBOImpl;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.Contribuyente;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.TipoContribuyente;
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Contribuyente;
+
 
 @WebService(serviceName = "ConstribuyenteWS")
 public class ConstribuyenteWS {
 
     private ContribuyenteBOImpl contribuyentebo;
 
-    @WebMethod(operationName = "insertarContribuyente")
-    public int insertarContribuyente(@WebParam(name = "contribuyente") Contribuyente contribuyente) {
-        int resultado = 0;
-        try {
-            contribuyentebo = new ContribuyenteBOImpl();
-            resultado = contribuyentebo.insertar(contribuyente);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        return resultado;
-    }
 
     @WebMethod(operationName = "modificarContribuyente")
     public int modificarContribuyente(@WebParam(name = "contribuyente") Contribuyente contribuyente) throws Exception {
@@ -71,4 +63,36 @@ public class ConstribuyenteWS {
         }
         return resultado;
     }
+    /*
+    @WebMethod(operationName = "insertarContribuyente")
+    public int insertarContribuyente(@WebParam(name = "contribuyente") Contribuyente contribuyente) throws Exception {
+        return contribuyenteBO.insertar(contribuyente);
+    }
+    */
+    
+    @WebMethod(operationName = "insertarContribuyente")
+public int insertarContribuyente(
+    @WebParam(name = "nombre") String nombre,
+    @WebParam(name = "primerApellido") String primerApellido, 
+    @WebParam(name = "segundoApellido") String segundoApellido,
+    @WebParam(name = "seudonimo") String seudonimo,
+    @WebParam(name = "tipoContribuyente") String tipoContribuyenteStr) throws Exception {
+    // Crear objeto Contribuyente
+    Contribuyente contribuyente = new Contribuyente();
+    contribuyente.setNombre(nombre);
+    contribuyente.setPrimer_apellido(primerApellido);
+    contribuyente.setSegundo_apellido(segundoApellido);
+    contribuyente.setSeudonimo(seudonimo);
+    contribuyente.setTipo_contribuyente(TipoContribuyente.valueOf(tipoContribuyenteStr));
+    
+    return contribuyentebo.insertar(contribuyente);
+}
+    
+    
+    @WebMethod(operationName = "asignarContribuyente")
+    public int asignarContribuyente(@WebParam(name = "idcontribuyente") int idcontribuyente,
+            @WebParam(name = "idmaterial") int idmaterial) throws Exception {
+        return contribuyentebo.asignar_contribuyente(idcontribuyente,idmaterial);
+    }
+    
 }

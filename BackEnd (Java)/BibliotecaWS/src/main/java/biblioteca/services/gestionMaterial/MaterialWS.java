@@ -22,6 +22,9 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 public class MaterialWS {
 
     MaterialBiblioBOImpl materialBO;
+    public MaterialWS() {
+         materialBO = new MaterialBiblioBOImpl();
+    }
 
 	 @WebMethod(operationName = "obtenerPorId")
     public MaterialBibliografico obtenerPorId(@WebParam(name = "id") int id) {
@@ -140,5 +143,15 @@ public class MaterialWS {
             System.out.println(ex.getMessage());
         }
         return materiales;
+    }
+        
+    @WebMethod(operationName = "ContarMateriales")
+    public int ContarMateriales(@WebParam(name ="idmat")
+    int idmat) {
+        return materialBO.ContarEjemplares(idmat);
+    }
+    @WebMethod(operationName = "ListarMaterialesNormal")
+    public ArrayList<MaterialBibliografico> ListarMaterialesNormal() {
+        return materialBO.listartodosnormal();
     }
 }

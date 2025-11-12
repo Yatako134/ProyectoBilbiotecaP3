@@ -14,7 +14,7 @@ public class BibliotecaWS {
 	
 	
 	@WebMethod(operationName = "insertarBiblioteca")
-    public int insertarMaterial(@WebParam(name = "material") Biblioteca biblioteca) {
+    public int insertarMaterial(@WebParam(name = "biblioteca") Biblioteca biblioteca) {
         int resultado = 0;
         try {
             bibBO = new BibliotecaBOImpl();
@@ -26,7 +26,7 @@ public class BibliotecaWS {
     }
 
     @WebMethod(operationName = "modificarBiblioteca")
-    public int modificarMaterial(@WebParam(name = "material") Biblioteca biblioteca) throws Exception {
+    public int modificarMaterial(@WebParam(name = "biblioteca") Biblioteca biblioteca) throws Exception {
         bibBO = new BibliotecaBOImpl();
         return bibBO.modificar(biblioteca);
     }

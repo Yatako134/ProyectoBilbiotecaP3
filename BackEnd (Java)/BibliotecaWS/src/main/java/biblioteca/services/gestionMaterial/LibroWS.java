@@ -10,8 +10,11 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.Libro;
 
 @WebService(serviceName = "LibroWS")
 public class LibroWS {
-
     private LibroBOImpl librobo;
+    public LibroWS() {
+         librobo = new LibroBOImpl();
+     }
+    
 
     @WebMethod(operationName = "insertarLibro")
     public int insertarLibro(@WebParam(name = "libro") Libro libro) {
@@ -70,4 +73,5 @@ public class LibroWS {
         }
         return resultado;
     }
+    
 }

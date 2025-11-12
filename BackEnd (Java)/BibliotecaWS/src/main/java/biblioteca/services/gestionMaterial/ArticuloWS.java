@@ -9,6 +9,11 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.Articulo;
 @WebService(serviceName = "ArticuloWS")
 public class ArticuloWS {
 
+    public ArticuloWS() {
+         articulobo = new ArticuloBOImpl();
+     }
+    
+
     private ArticuloBOImpl articulobo;
 
     @WebMethod(operationName = "insertarArticulo")

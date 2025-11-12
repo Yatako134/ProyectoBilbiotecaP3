@@ -25,7 +25,7 @@ public class ContribuyenteImpl implements ContribuyenteDAO{
         parametrosEntrada.put(3, contribuyente.getPrimer_apellido());
         parametrosEntrada.put(4, contribuyente.getSegundo_apellido());
         parametrosEntrada.put(5, contribuyente.getSeudonimo());
-        parametrosEntrada.put(6, contribuyente.getTipo_contribuyente());
+        parametrosEntrada.put(6, contribuyente.getTipo_contribuyente().name());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_CONTRIBUYENTE", parametrosEntrada, parametrosSalida);
         contribuyente.setIdContribuyente((int) parametrosSalida.get(1));
         System.out.println("Se ha realizado el registro del contribuyente");
