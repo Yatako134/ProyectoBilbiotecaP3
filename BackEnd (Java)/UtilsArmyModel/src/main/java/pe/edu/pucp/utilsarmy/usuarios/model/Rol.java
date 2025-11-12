@@ -7,7 +7,7 @@ public class Rol {
     private String tipo;
     private int cantidad_de_dias_por_prestamo;
     private boolean activo;
-    
+    private int limite_prestamo;
     public Rol() {
     }
 
@@ -17,7 +17,13 @@ public class Rol {
         this.activo = activo;
     }
 
-    
+    public int getLimite_prestamo() {
+        return limite_prestamo;
+    }
+
+    public void setLimite_prestamo(int limite_prestamo) {
+        this.limite_prestamo = limite_prestamo;
+    }
     /**
      * @return the id_rol
      */

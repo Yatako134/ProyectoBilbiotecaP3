@@ -5,7 +5,7 @@ public class Biblioteca {
     private String nombre;
     private String ubicacion;
     private boolean activo;
-
+	private ArrayList<Ejemplar> ejemplares;
     public Biblioteca( String nombre, String ubicacion, boolean activo) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
@@ -22,7 +22,13 @@ public class Biblioteca {
     public void setIdBiblioteca(int idBiblioteca) {
         this.idBiblioteca = idBiblioteca;
     }
+	public ArrayList<Ejemplar> getEjemplares() {
+        return ejemplares;
+    }
 
+    public void setEjemplares(ArrayList<Ejemplar> ejemplares) {
+        this.ejemplares = ejemplares;
+    }
     public String getNombre() {
         return nombre;
     }

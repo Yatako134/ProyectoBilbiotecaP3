@@ -21,12 +21,9 @@ public class PrestamoImpl implements PrestamoDAO{
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
         Map<Integer, Object> parametrosSalida = new HashMap<>();
         
-        parametrosSalida.put(1, Types.INTEGER); // id_prestamo OUT
-        parametrosEntrada.put(2, objeto.getFecha_de_prestamo());
-        parametrosEntrada.put(3, objeto.getFecha_vencimiento());
-        parametrosEntrada.put(4, objeto.getEstado().name());
-        parametrosEntrada.put(5, objeto.getEjemplar().getIdEjemplar());
-        parametrosEntrada.put(6, objeto.getUsuario().getId_usuario());
+        parametrosSalida.put(1, Types.INTEGER); //
+        parametrosEntrada.put(2, objeto.getEjemplar().getIdEjemplar());
+        parametrosEntrada.put(3, objeto.getUsuario().getId_usuario());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_PRESTAMO", parametrosEntrada, parametrosSalida);
         objeto.setIdPrestamo((int) parametrosSalida.get(1));
         System.out.println("Se ha realizado el registro del préstamo");

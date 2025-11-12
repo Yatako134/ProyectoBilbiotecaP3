@@ -13,6 +13,16 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
  * @author renat
  */
 public interface MaterialBiblioBO extends IBO<MaterialBibliografico>{
+	 ArrayList<Ejemplar> buscarEjemplares(int id);
+
+    // Busca contribuyentes por ID
+    ArrayList<Contribuyente> buscarContribuyente(int id);
+
+    // Busca editoriales por ID
+    ArrayList<Editorial> buscarEditorial(int id);
+
+    // Obtiene los ejemplares disponibles de un material en una biblioteca
+    ArrayList<Ejemplar> obtenerEjemplaresDisponibles(int idMaterial, int idBiblioteca);
     ArrayList<MaterialBibliografico> listar_busqueda(String _parametro);
      ArrayList<MaterialBibliografico> listar_busqueda_avanzada
         (String _titulo, String _tipo_contribuyente, String _nombre_contribuyente,
