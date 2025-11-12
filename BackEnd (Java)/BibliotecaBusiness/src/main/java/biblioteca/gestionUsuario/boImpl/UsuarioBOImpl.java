@@ -52,4 +52,9 @@ public class UsuarioBOImpl implements UsuarioBO{
         
         return daoUsuario.prestamos_vigentesxUsuario(idUsuario);
     }
+
+    @Override
+    public int verificar(Usuario usuario) {
+        return daoUsuario.verificar(usuario);
+    }
 }

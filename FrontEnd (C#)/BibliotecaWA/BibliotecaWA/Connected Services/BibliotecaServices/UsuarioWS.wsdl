@@ -14,23 +14,23 @@
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
   </message>
+  <message name="insertarUsuario">
+    <part name="parameters" element="tns:insertarUsuario" />
+  </message>
+  <message name="insertarUsuarioResponse">
+    <part name="parameters" element="tns:insertarUsuarioResponse" />
+  </message>
   <message name="modificarUsuario">
     <part name="parameters" element="tns:modificarUsuario" />
   </message>
   <message name="modificarUsuarioResponse">
     <part name="parameters" element="tns:modificarUsuarioResponse" />
   </message>
-  <message name="listarUsuarios">
-    <part name="parameters" element="tns:listarUsuarios" />
+  <message name="obtenerUsuarioxCodigo">
+    <part name="parameters" element="tns:obtenerUsuarioxCodigo" />
   </message>
-  <message name="listarUsuariosResponse">
-    <part name="parameters" element="tns:listarUsuariosResponse" />
-  </message>
-  <message name="insertarUsuario">
-    <part name="parameters" element="tns:insertarUsuario" />
-  </message>
-  <message name="insertarUsuarioResponse">
-    <part name="parameters" element="tns:insertarUsuarioResponse" />
+  <message name="obtenerUsuarioxCodigoResponse">
+    <part name="parameters" element="tns:obtenerUsuarioxCodigoResponse" />
   </message>
   <message name="eliminarUsuario">
     <part name="parameters" element="tns:eliminarUsuario" />
@@ -44,11 +44,17 @@
   <message name="obtenerUsuarioPorIdResponse">
     <part name="parameters" element="tns:obtenerUsuarioPorIdResponse" />
   </message>
-  <message name="obtenerUsuarioxCodigo">
-    <part name="parameters" element="tns:obtenerUsuarioxCodigo" />
+  <message name="listarUsuarios">
+    <part name="parameters" element="tns:listarUsuarios" />
   </message>
-  <message name="obtenerUsuarioxCodigoResponse">
-    <part name="parameters" element="tns:obtenerUsuarioxCodigoResponse" />
+  <message name="listarUsuariosResponse">
+    <part name="parameters" element="tns:listarUsuariosResponse" />
+  </message>
+  <message name="verificarCuenta">
+    <part name="parameters" element="tns:verificarCuenta" />
+  </message>
+  <message name="verificarCuentaResponse">
+    <part name="parameters" element="tns:verificarCuentaResponse" />
   </message>
   <portType name="UsuarioWS">
     <operation name="obtener_prestamos_vigentesxUsuario">
@@ -56,20 +62,20 @@
       <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtener_prestamos_vigentesxUsuarioResponse" message="tns:obtener_prestamos_vigentesxUsuarioResponse" />
       <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtener_prestamos_vigentesxUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
+    <operation name="insertarUsuario">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/insertarUsuarioRequest" message="tns:insertarUsuario" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/insertarUsuarioResponse" message="tns:insertarUsuarioResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/insertarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
     <operation name="modificarUsuario">
       <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/modificarUsuarioRequest" message="tns:modificarUsuario" />
       <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/modificarUsuarioResponse" message="tns:modificarUsuarioResponse" />
       <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/modificarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="listarUsuarios">
-      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/listarUsuariosRequest" message="tns:listarUsuarios" />
-      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/listarUsuariosResponse" message="tns:listarUsuariosResponse" />
-      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/listarUsuarios/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="insertarUsuario">
-      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/insertarUsuarioRequest" message="tns:insertarUsuario" />
-      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/insertarUsuarioResponse" message="tns:insertarUsuarioResponse" />
-      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/insertarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    <operation name="obtenerUsuarioxCodigo">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioxCodigoRequest" message="tns:obtenerUsuarioxCodigo" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioxCodigoResponse" message="tns:obtenerUsuarioxCodigoResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioxCodigo/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="eliminarUsuario">
       <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/eliminarUsuarioRequest" message="tns:eliminarUsuario" />
@@ -81,10 +87,15 @@
       <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioPorIdResponse" message="tns:obtenerUsuarioPorIdResponse" />
       <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="obtenerUsuarioxCodigo">
-      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioxCodigoRequest" message="tns:obtenerUsuarioxCodigo" />
-      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioxCodigoResponse" message="tns:obtenerUsuarioxCodigoResponse" />
-      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioxCodigo/Fault/Exception" name="Exception" message="tns:Exception" />
+    <operation name="listarUsuarios">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/listarUsuariosRequest" message="tns:listarUsuarios" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/listarUsuariosResponse" message="tns:listarUsuariosResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/listarUsuarios/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="verificarCuenta">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/verificarCuentaRequest" message="tns:verificarCuenta" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/verificarCuentaResponse" message="tns:verificarCuentaResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/verificarCuenta/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
   </portType>
   <binding name="UsuarioWSPortBinding" type="tns:UsuarioWS">
@@ -101,6 +112,18 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
+    <operation name="insertarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
     <operation name="modificarUsuario">
       <soap:operation soapAction="" />
       <input>
@@ -113,19 +136,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="listarUsuarios">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
-    <operation name="insertarUsuario">
+    <operation name="obtenerUsuarioxCodigo">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -161,7 +172,19 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="obtenerUsuarioxCodigo">
+    <operation name="listarUsuarios">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="verificarCuenta">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

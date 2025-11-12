@@ -295,6 +295,9 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.verificarCuentaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -376,7 +379,9 @@
     <Content Include="Images\book.png" />
     <Content Include="Images\file.png" />
     <Content Include="Images\logo2.png" />
+    <Content Include="Images\portada.png" />
     <Content Include="Images\tesis.png" />
+    <Content Include="InicioSesion.aspx" />
     <Content Include="MiHistorial.aspx" />
     <Content Include="Prestamo.aspx" />
     <Content Include="RegistrarMaterial.aspx" />
@@ -508,6 +513,13 @@
     </Compile>
     <Compile Include="HomeEstudiante.Master.designer.cs">
       <DependentUpon>HomeEstudiante.Master</DependentUpon>
+    </Compile>
+    <Compile Include="InicioSesion.aspx.cs">
+      <DependentUpon>InicioSesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InicioSesion.aspx.designer.cs">
+      <DependentUpon>InicioSesion.aspx</DependentUpon>
     </Compile>
     <Compile Include="MiHistorial.aspx.cs">
       <DependentUpon>MiHistorial.aspx</DependentUpon>

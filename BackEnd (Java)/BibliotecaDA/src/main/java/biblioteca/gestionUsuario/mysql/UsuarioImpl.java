@@ -196,5 +196,25 @@ public class UsuarioImpl implements UsuarioDAO{
         }
         return cantidad_prestamos_vigentes;
     }
+
+    @Override
+    public int verificar(Usuario usuario) {
+        int resultado=0;
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, usuario.getCorreo());
+        parametrosEntrada.put(2, usuario.getContrasena());
+        rs=DBManager.getInstance().ejecutarProcedimientoLectura("VERIFICAR_CUENTA", parametrosEntrada);
+        try{
+        if(rs.next()){
+                resultado=rs.getInt("id_usuario");
+            }
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        System.out.println("Se esta verificando la cuenta del usuario...");
+        return resultado;
+    }
     
 }

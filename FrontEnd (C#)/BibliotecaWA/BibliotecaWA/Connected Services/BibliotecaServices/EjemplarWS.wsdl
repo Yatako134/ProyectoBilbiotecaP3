@@ -5,21 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/EjemplarWS?xsd=1" namespace="http://gestionMaterial.services.biblioteca/" />
     </xsd:schema>
   </types>
-  <message name="modificarEjemplar">
-    <part name="parameters" element="tns:modificarEjemplar" />
-  </message>
-  <message name="modificarEjemplarResponse">
-    <part name="parameters" element="tns:modificarEjemplarResponse" />
-  </message>
-  <message name="Exception">
-    <part name="fault" element="tns:Exception" />
-  </message>
-  <message name="obtenerEjemplarPorId">
-    <part name="parameters" element="tns:obtenerEjemplarPorId" />
-  </message>
-  <message name="obtenerEjemplarPorIdResponse">
-    <part name="parameters" element="tns:obtenerEjemplarPorIdResponse" />
-  </message>
   <message name="insertarEjemplar">
     <part name="parameters" element="tns:insertarEjemplar" />
   </message>
@@ -32,6 +17,21 @@
   <message name="listarEjemplaresTodosResponse">
     <part name="parameters" element="tns:listarEjemplaresTodosResponse" />
   </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="obtenerEjemplarPorId">
+    <part name="parameters" element="tns:obtenerEjemplarPorId" />
+  </message>
+  <message name="obtenerEjemplarPorIdResponse">
+    <part name="parameters" element="tns:obtenerEjemplarPorIdResponse" />
+  </message>
+  <message name="modificarEjemplar">
+    <part name="parameters" element="tns:modificarEjemplar" />
+  </message>
+  <message name="modificarEjemplarResponse">
+    <part name="parameters" element="tns:modificarEjemplarResponse" />
+  </message>
   <message name="eliminarEjemplar">
     <part name="parameters" element="tns:eliminarEjemplar" />
   </message>
@@ -39,16 +39,6 @@
     <part name="parameters" element="tns:eliminarEjemplarResponse" />
   </message>
   <portType name="EjemplarWS">
-    <operation name="modificarEjemplar">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/modificarEjemplarRequest" message="tns:modificarEjemplar" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/modificarEjemplarResponse" message="tns:modificarEjemplarResponse" />
-      <fault wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/modificarEjemplar/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="obtenerEjemplarPorId">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/obtenerEjemplarPorIdRequest" message="tns:obtenerEjemplarPorId" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/obtenerEjemplarPorIdResponse" message="tns:obtenerEjemplarPorIdResponse" />
-      <fault wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/obtenerEjemplarPorId/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
     <operation name="insertarEjemplar">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/insertarEjemplarRequest" message="tns:insertarEjemplar" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/insertarEjemplarResponse" message="tns:insertarEjemplarResponse" />
@@ -58,6 +48,16 @@
       <output wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/listarEjemplaresTodosResponse" message="tns:listarEjemplaresTodosResponse" />
       <fault wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/listarEjemplaresTodos/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
+    <operation name="obtenerEjemplarPorId">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/obtenerEjemplarPorIdRequest" message="tns:obtenerEjemplarPorId" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/obtenerEjemplarPorIdResponse" message="tns:obtenerEjemplarPorIdResponse" />
+      <fault wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/obtenerEjemplarPorId/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="modificarEjemplar">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/modificarEjemplarRequest" message="tns:modificarEjemplar" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/modificarEjemplarResponse" message="tns:modificarEjemplarResponse" />
+      <fault wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/modificarEjemplar/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
     <operation name="eliminarEjemplar">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/eliminarEjemplarRequest" message="tns:eliminarEjemplar" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/EjemplarWS/eliminarEjemplarResponse" message="tns:eliminarEjemplarResponse" />
@@ -66,7 +66,16 @@
   </portType>
   <binding name="EjemplarWSPortBinding" type="tns:EjemplarWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="modificarEjemplar">
+    <operation name="insertarEjemplar">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarEjemplaresTodos">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -90,16 +99,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="insertarEjemplar">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarEjemplaresTodos">
+    <operation name="modificarEjemplar">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

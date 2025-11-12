@@ -50,7 +50,7 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
         parametrosEntrada.put(1, id);
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("EJEMPLARES_BIBLIOTECA", parametrosEntrada);
         try{
-            if(rs.next()){
+            while(rs.next()){
                 if(ejemplares == null) ejemplares = new ArrayList<>();
                 Ejemplar e = new Ejemplar();
                 e.setIdEjemplar(rs.getInt("id_ejemplar"));

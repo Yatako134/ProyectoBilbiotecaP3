@@ -51,4 +51,16 @@ public class UsuarioWS {
     public int obtener_prestamos_vigentesxUsuario(int codigo) throws Exception {
         return usuarioBO.prestamos_vigentesxUsuario(codigo);
     }
+    
+    @WebMethod(operationName = "verificarCuenta")
+    public int verificarCuenta(@WebParam(name = "cuenta") Usuario usuario) throws Exception {
+        int resultado=0;
+        try{
+            usuarioBO=new UsuarioBOImpl();
+            resultado=usuarioBO.verificar(usuario);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
 }

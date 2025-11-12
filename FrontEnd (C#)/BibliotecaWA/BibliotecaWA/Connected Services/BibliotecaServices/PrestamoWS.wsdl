@@ -5,27 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/PrestamoWS?xsd=1" namespace="http://gestionPrestamo.services.biblioteca/" />
     </xsd:schema>
   </types>
-  <message name="listarPrestamos">
-    <part name="parameters" element="tns:listarPrestamos" />
-  </message>
-  <message name="listarPrestamosResponse">
-    <part name="parameters" element="tns:listarPrestamosResponse" />
-  </message>
-  <message name="Exception">
-    <part name="fault" element="tns:Exception" />
-  </message>
-  <message name="obtenerPrestamoPorId">
-    <part name="parameters" element="tns:obtenerPrestamoPorId" />
-  </message>
-  <message name="obtenerPrestamoPorIdResponse">
-    <part name="parameters" element="tns:obtenerPrestamoPorIdResponse" />
-  </message>
-  <message name="modificarPrestamo">
-    <part name="parameters" element="tns:modificarPrestamo" />
-  </message>
-  <message name="modificarPrestamoResponse">
-    <part name="parameters" element="tns:modificarPrestamoResponse" />
-  </message>
   <message name="insertarPrestamo">
     <part name="parameters" element="tns:insertarPrestamo" />
   </message>
@@ -38,28 +17,34 @@
   <message name="listarPrestamosPorUsuarioResponse">
     <part name="parameters" element="tns:listarPrestamosPorUsuarioResponse" />
   </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="listarPrestamos">
+    <part name="parameters" element="tns:listarPrestamos" />
+  </message>
+  <message name="listarPrestamosResponse">
+    <part name="parameters" element="tns:listarPrestamosResponse" />
+  </message>
+  <message name="modificarPrestamo">
+    <part name="parameters" element="tns:modificarPrestamo" />
+  </message>
+  <message name="modificarPrestamoResponse">
+    <part name="parameters" element="tns:modificarPrestamoResponse" />
+  </message>
   <message name="eliminarPrestamo">
     <part name="parameters" element="tns:eliminarPrestamo" />
   </message>
   <message name="eliminarPrestamoResponse">
     <part name="parameters" element="tns:eliminarPrestamoResponse" />
   </message>
+  <message name="obtenerPrestamoPorId">
+    <part name="parameters" element="tns:obtenerPrestamoPorId" />
+  </message>
+  <message name="obtenerPrestamoPorIdResponse">
+    <part name="parameters" element="tns:obtenerPrestamoPorIdResponse" />
+  </message>
   <portType name="PrestamoWS">
-    <operation name="listarPrestamos">
-      <input wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamosRequest" message="tns:listarPrestamos" />
-      <output wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamosResponse" message="tns:listarPrestamosResponse" />
-      <fault wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamos/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="obtenerPrestamoPorId">
-      <input wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/obtenerPrestamoPorIdRequest" message="tns:obtenerPrestamoPorId" />
-      <output wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/obtenerPrestamoPorIdResponse" message="tns:obtenerPrestamoPorIdResponse" />
-      <fault wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/obtenerPrestamoPorId/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="modificarPrestamo">
-      <input wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/modificarPrestamoRequest" message="tns:modificarPrestamo" />
-      <output wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/modificarPrestamoResponse" message="tns:modificarPrestamoResponse" />
-      <fault wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/modificarPrestamo/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
     <operation name="insertarPrestamo">
       <input wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/insertarPrestamoRequest" message="tns:insertarPrestamo" />
       <output wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/insertarPrestamoResponse" message="tns:insertarPrestamoResponse" />
@@ -69,15 +54,39 @@
       <output wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamosPorUsuarioResponse" message="tns:listarPrestamosPorUsuarioResponse" />
       <fault wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamosPorUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
+    <operation name="listarPrestamos">
+      <input wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamosRequest" message="tns:listarPrestamos" />
+      <output wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamosResponse" message="tns:listarPrestamosResponse" />
+      <fault wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamos/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="modificarPrestamo">
+      <input wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/modificarPrestamoRequest" message="tns:modificarPrestamo" />
+      <output wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/modificarPrestamoResponse" message="tns:modificarPrestamoResponse" />
+      <fault wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/modificarPrestamo/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
     <operation name="eliminarPrestamo">
       <input wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/eliminarPrestamoRequest" message="tns:eliminarPrestamo" />
       <output wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/eliminarPrestamoResponse" message="tns:eliminarPrestamoResponse" />
       <fault wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/eliminarPrestamo/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
+    <operation name="obtenerPrestamoPorId">
+      <input wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/obtenerPrestamoPorIdRequest" message="tns:obtenerPrestamoPorId" />
+      <output wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/obtenerPrestamoPorIdResponse" message="tns:obtenerPrestamoPorIdResponse" />
+      <fault wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/obtenerPrestamoPorId/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
   </portType>
   <binding name="PrestamoWSPortBinding" type="tns:PrestamoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="listarPrestamos">
+    <operation name="insertarPrestamo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarPrestamosPorUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -89,7 +98,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="obtenerPrestamoPorId">
+    <operation name="listarPrestamos">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -113,16 +122,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="insertarPrestamo">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarPrestamosPorUsuario">
+    <operation name="eliminarPrestamo">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -134,7 +134,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="eliminarPrestamo">
+    <operation name="obtenerPrestamoPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

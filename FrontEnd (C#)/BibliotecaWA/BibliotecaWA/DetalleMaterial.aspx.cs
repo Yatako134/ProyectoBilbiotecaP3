@@ -186,21 +186,25 @@ namespace BibliotecaWA
 
         private void CargarEditoriales()
         {
-            BindingList<editorial> es;
-            es = new BindingList<editorial>(materialBiblioBO.buscarEditoriales(materialBibliografico.idMaterial));
-            if (es != null && es.Count > 0)
-            {
-                // Mostrar solo el primer contribuyente en el label
-                lblEditorial1.InnerText = $"{es[0].nombre}";
+            var listaEditoriales = materialBiblioBO.buscarEditoriales(materialBibliografico.idMaterial);
 
-                // Llenar el modal con todos los contribuyentes
-                rptEditoriales.DataSource = es;
-                rptEditoriales.DataBind();
-            }
-            else
+            // Validar si la lista es nula o está vacía
+            if (listaEditoriales == null || !listaEditoriales.Any())
             {
                 lblEditorial1.InnerText = "Sin editoriales registrados";
+                rptEditoriales.DataSource = null;
+                rptEditoriales.DataBind();
+                return;
             }
+
+            BindingList<editorial> es = new BindingList<editorial>(listaEditoriales);
+
+            // Mostrar solo el primer editorial
+            lblEditorial1.InnerText = es[0].nombre;
+
+            // Llenar el modal con todos los editoriales
+            rptEditoriales.DataSource = es;
+            rptEditoriales.DataBind();
         }
 
         private void CargarContribuyentes()
@@ -338,6 +342,8 @@ namespace BibliotecaWA
         protected void ddlbibliotecas_SelectedIndexChanged(object sender, EventArgs e)
         {
             materialBibliografico = (materialBibliografico)Session["material"];
+
+
             int idMaterial = materialBibliografico.idMaterial;
             int idBibliotecaSeleccionada;
 
