@@ -14,12 +14,6 @@
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
   </message>
-  <message name="modificarRol">
-    <part name="parameters" element="tns:modificarRol" />
-  </message>
-  <message name="modificarRolResponse">
-    <part name="parameters" element="tns:modificarRolResponse" />
-  </message>
   <message name="insertarRol">
     <part name="parameters" element="tns:insertarRol" />
   </message>
@@ -31,6 +25,12 @@
   </message>
   <message name="eliminarRolResponse">
     <part name="parameters" element="tns:eliminarRolResponse" />
+  </message>
+  <message name="modificarRol">
+    <part name="parameters" element="tns:modificarRol" />
+  </message>
+  <message name="modificarRolResponse">
+    <part name="parameters" element="tns:modificarRolResponse" />
   </message>
   <message name="obtenerRolPorId">
     <part name="parameters" element="tns:obtenerRolPorId" />
@@ -44,11 +44,6 @@
       <output wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/listarRolesResponse" message="tns:listarRolesResponse" />
       <fault wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/listarRoles/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="modificarRol">
-      <input wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/modificarRolRequest" message="tns:modificarRol" />
-      <output wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/modificarRolResponse" message="tns:modificarRolResponse" />
-      <fault wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/modificarRol/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
     <operation name="insertarRol">
       <input wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/insertarRolRequest" message="tns:insertarRol" />
       <output wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/insertarRolResponse" message="tns:insertarRolResponse" />
@@ -58,6 +53,11 @@
       <input wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/eliminarRolRequest" message="tns:eliminarRol" />
       <output wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/eliminarRolResponse" message="tns:eliminarRolResponse" />
       <fault wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/eliminarRol/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="modificarRol">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/modificarRolRequest" message="tns:modificarRol" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/modificarRolResponse" message="tns:modificarRolResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/modificarRol/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="obtenerRolPorId">
       <input wsam:Action="http://gestionUsuario.services.biblioteca/RolWS/obtenerRolPorIdRequest" message="tns:obtenerRolPorId" />
@@ -79,18 +79,6 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="modificarRol">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
     <operation name="insertarRol">
       <soap:operation soapAction="" />
       <input>
@@ -104,6 +92,18 @@
       </fault>
     </operation>
     <operation name="eliminarRol">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="modificarRol">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

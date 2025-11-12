@@ -6,6 +6,9 @@ package biblioteca.gestionMaterial.bo;
 
 import biblioteca.ibo.IBO;
 import java.util.ArrayList;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.Contribuyente;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.Editorial;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 
 /**

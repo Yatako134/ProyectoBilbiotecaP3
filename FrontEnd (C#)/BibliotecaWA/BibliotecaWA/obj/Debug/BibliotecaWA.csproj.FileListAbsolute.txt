@@ -175,3 +175,5 @@ D:\YO_usuario\Desktop\P3\ProyectoBilbiotecaP3\FrontEnd (C#)\BibliotecaWA\Bibliot
 D:\YO_usuario\Desktop\P3\ProyectoBilbiotecaP3\FrontEnd (C#)\BibliotecaWA\BibliotecaWA\obj\Debug\Bibliote.4EA83C7F.Up2Date
 D:\YO_usuario\Desktop\P3\ProyectoBilbiotecaP3\FrontEnd (C#)\BibliotecaWA\BibliotecaWA\obj\Debug\BibliotecaWA.dll
 D:\YO_usuario\Desktop\P3\ProyectoBilbiotecaP3\FrontEnd (C#)\BibliotecaWA\BibliotecaWA\obj\Debug\BibliotecaWA.pdb
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\FrontEnd (C#)\BibliotecaWA\BibliotecaWA\obj\Debug\BibliotecaWA.csproj.AssemblyReference.cache
+C:\Users\renat\OneDrive\Documentos\TRABAJO_PROGRAMACION3\ProyectoBilbiotecaP3\FrontEnd (C#)\BibliotecaWA\BibliotecaWA\obj\Debug\BibliotecaWA.csproj.CoreCompileInputs.cache

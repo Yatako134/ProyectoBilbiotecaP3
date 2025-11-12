@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/ArticuloWS?xsd=1" namespace="http://gestionMaterial.services.biblioteca/" />
     </xsd:schema>
   </types>
+  <message name="insertarArticulo">
+    <part name="parameters" element="tns:insertarArticulo" />
+  </message>
+  <message name="insertarArticuloResponse">
+    <part name="parameters" element="tns:insertarArticuloResponse" />
+  </message>
   <message name="eliminarArticulo">
     <part name="parameters" element="tns:eliminarArticulo" />
   </message>
@@ -13,12 +19,6 @@
   </message>
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
-  </message>
-  <message name="obtenerArticuloPorId">
-    <part name="parameters" element="tns:obtenerArticuloPorId" />
-  </message>
-  <message name="obtenerArticuloPorIdResponse">
-    <part name="parameters" element="tns:obtenerArticuloPorIdResponse" />
   </message>
   <message name="modificarArticulo">
     <part name="parameters" element="tns:modificarArticulo" />
@@ -32,22 +32,21 @@
   <message name="listarArticulosTodosResponse">
     <part name="parameters" element="tns:listarArticulosTodosResponse" />
   </message>
-  <message name="insertarArticulo">
-    <part name="parameters" element="tns:insertarArticulo" />
+  <message name="obtenerArticuloPorId">
+    <part name="parameters" element="tns:obtenerArticuloPorId" />
   </message>
-  <message name="insertarArticuloResponse">
-    <part name="parameters" element="tns:insertarArticuloResponse" />
+  <message name="obtenerArticuloPorIdResponse">
+    <part name="parameters" element="tns:obtenerArticuloPorIdResponse" />
   </message>
   <portType name="ArticuloWS">
+    <operation name="insertarArticulo">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/insertarArticuloRequest" message="tns:insertarArticulo" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/insertarArticuloResponse" message="tns:insertarArticuloResponse" />
+    </operation>
     <operation name="eliminarArticulo">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/eliminarArticuloRequest" message="tns:eliminarArticulo" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/eliminarArticuloResponse" message="tns:eliminarArticuloResponse" />
       <fault wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/eliminarArticulo/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="obtenerArticuloPorId">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/obtenerArticuloPorIdRequest" message="tns:obtenerArticuloPorId" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/obtenerArticuloPorIdResponse" message="tns:obtenerArticuloPorIdResponse" />
-      <fault wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/obtenerArticuloPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="modificarArticulo">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/modificarArticuloRequest" message="tns:modificarArticulo" />
@@ -59,14 +58,15 @@
       <output wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/listarArticulosTodosResponse" message="tns:listarArticulosTodosResponse" />
       <fault wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/listarArticulosTodos/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="insertarArticulo">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/insertarArticuloRequest" message="tns:insertarArticulo" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/insertarArticuloResponse" message="tns:insertarArticuloResponse" />
+    <operation name="obtenerArticuloPorId">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/obtenerArticuloPorIdRequest" message="tns:obtenerArticuloPorId" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/obtenerArticuloPorIdResponse" message="tns:obtenerArticuloPorIdResponse" />
+      <fault wsam:Action="http://gestionMaterial.services.biblioteca/ArticuloWS/obtenerArticuloPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
   </portType>
   <binding name="ArticuloWSPortBinding" type="tns:ArticuloWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="eliminarArticulo">
+    <operation name="insertarArticulo">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -74,11 +74,8 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
     </operation>
-    <operation name="obtenerArticuloPorId">
+    <operation name="eliminarArticulo">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -114,7 +111,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="insertarArticulo">
+    <operation name="obtenerArticuloPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -122,6 +119,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
     </operation>
   </binding>
   <service name="ArticuloWS">

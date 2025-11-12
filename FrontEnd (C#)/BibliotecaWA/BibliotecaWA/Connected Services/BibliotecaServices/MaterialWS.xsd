@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://gestionMaterial.services.biblioteca/" targetNamespace="http://gestionMaterial.services.biblioteca/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="Busqueda" type="tns:Busqueda" />
+  <xs:element name="BusquedaAvanzada" type="tns:BusquedaAvanzada" />
+  <xs:element name="BusquedaAvanzadaResponse" type="tns:BusquedaAvanzadaResponse" />
   <xs:element name="BusquedaResponse" type="tns:BusquedaResponse" />
   <xs:element name="ListarTodos" type="tns:ListarTodos" />
   <xs:element name="ListarTodosResponse" type="tns:ListarTodosResponse" />
@@ -99,14 +101,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:editorial" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="ListarTodos">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="ListarTodosResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:materialBibliografico" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="buscarContribuyentes">
     <xs:sequence>
       <xs:element name="idMaterial" type="xs:int" />
@@ -115,6 +109,32 @@
   <xs:complexType name="buscarContribuyentesResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:contribuyente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ListarTodos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="ListarTodosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:materialBibliografico" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusquedaAvanzada">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Titulo" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo_contribuyente" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre_contribuyente" type="xs:string" />
+      <xs:element minOccurs="0" name="Tema" type="xs:string" />
+      <xs:element minOccurs="0" name="Fecha_desde" type="xs:int" />
+      <xs:element minOccurs="0" name="Fecha_hasta" type="xs:int" />
+      <xs:element minOccurs="0" name="Tipo_de_material" type="xs:string" />
+      <xs:element minOccurs="0" name="Biblioteca" type="xs:string" />
+      <xs:element minOccurs="0" name="Disponibilidad" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusquedaAvanzadaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:materialBibliografico" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="buscarEjemplares">

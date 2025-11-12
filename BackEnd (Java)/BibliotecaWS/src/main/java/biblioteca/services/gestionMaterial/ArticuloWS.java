@@ -1,8 +1,11 @@
 package biblioteca.services.gestionMaterial;
 
+import biblioteca.gestionMaterial.boImpl.ArticuloBOImpl;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+import java.util.ArrayList;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.Articulo;
 @WebService(serviceName = "ArticuloWS")
 public class ArticuloWS {
 

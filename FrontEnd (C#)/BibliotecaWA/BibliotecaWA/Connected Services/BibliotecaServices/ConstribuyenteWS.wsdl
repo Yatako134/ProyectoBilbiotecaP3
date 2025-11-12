@@ -11,6 +11,12 @@
   <message name="eliminarContribuyenteResponse">
     <part name="parameters" element="tns:eliminarContribuyenteResponse" />
   </message>
+  <message name="modificarContribuyente">
+    <part name="parameters" element="tns:modificarContribuyente" />
+  </message>
+  <message name="modificarContribuyenteResponse">
+    <part name="parameters" element="tns:modificarContribuyenteResponse" />
+  </message>
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
   </message>
@@ -26,12 +32,6 @@
   <message name="obtenerContribuyentePorIdResponse">
     <part name="parameters" element="tns:obtenerContribuyentePorIdResponse" />
   </message>
-  <message name="modificarContribuyente">
-    <part name="parameters" element="tns:modificarContribuyente" />
-  </message>
-  <message name="modificarContribuyenteResponse">
-    <part name="parameters" element="tns:modificarContribuyenteResponse" />
-  </message>
   <message name="insertarContribuyente">
     <part name="parameters" element="tns:insertarContribuyente" />
   </message>
@@ -42,7 +42,11 @@
     <operation name="eliminarContribuyente">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/eliminarContribuyenteRequest" message="tns:eliminarContribuyente" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/eliminarContribuyenteResponse" message="tns:eliminarContribuyenteResponse" />
-      <fault wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/eliminarContribuyente/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="modificarContribuyente">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/modificarContribuyenteRequest" message="tns:modificarContribuyente" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/modificarContribuyenteResponse" message="tns:modificarContribuyenteResponse" />
+      <fault wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/modificarContribuyente/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="listarContribuyentesTodos">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/listarContribuyentesTodosRequest" message="tns:listarContribuyentesTodos" />
@@ -53,11 +57,6 @@
       <input wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/obtenerContribuyentePorIdRequest" message="tns:obtenerContribuyentePorId" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/obtenerContribuyentePorIdResponse" message="tns:obtenerContribuyentePorIdResponse" />
       <fault wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/obtenerContribuyentePorId/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="modificarContribuyente">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/modificarContribuyenteRequest" message="tns:modificarContribuyente" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/modificarContribuyenteResponse" message="tns:modificarContribuyenteResponse" />
-      <fault wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/modificarContribuyente/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="insertarContribuyente">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/insertarContribuyenteRequest" message="tns:insertarContribuyente" />
@@ -74,6 +73,15 @@
       <output>
         <soap:body use="literal" />
       </output>
+    </operation>
+    <operation name="modificarContribuyente">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
       <fault name="Exception">
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
@@ -91,18 +99,6 @@
       </fault>
     </operation>
     <operation name="obtenerContribuyentePorId">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
-    <operation name="modificarContribuyente">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

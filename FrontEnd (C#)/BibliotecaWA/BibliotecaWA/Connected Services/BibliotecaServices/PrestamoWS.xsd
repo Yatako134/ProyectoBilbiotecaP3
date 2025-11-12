@@ -1,15 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://gestionPrestamo.services.biblioteca/" targetNamespace="http://gestionPrestamo.services.biblioteca/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="hello" type="tns:hello" />
-  <xs:element name="helloResponse" type="tns:helloResponse" />
-  <xs:complexType name="hello">
+  <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="listarPrestamos" type="tns:listarPrestamos" />
+  <xs:element name="listarPrestamosPorUsuario" type="tns:listarPrestamosPorUsuario" />
+  <xs:element name="listarPrestamosPorUsuarioResponse" type="tns:listarPrestamosPorUsuarioResponse" />
+  <xs:element name="listarPrestamosResponse" type="tns:listarPrestamosResponse" />
+  <xs:complexType name="listarPrestamosPorUsuario">
     <xs:sequence>
-      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element name="idUsuario" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="helloResponse">
+  <xs:complexType name="listarPrestamosPorUsuarioResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:prestamo" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="prestamo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ejemplar" type="tns:ejemplar" />
+      <xs:element minOccurs="0" name="estado" type="tns:estadoPrestamo" />
+      <xs:element minOccurs="0" name="fecha_de_prestamo" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha_devolucion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha_vencimiento" type="xs:dateTime" />
+      <xs:element name="idPrestamo" type="xs:int" />
+      <xs:element minOccurs="0" name="usuario" type="tns:usuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ejemplar">
+    <xs:sequence>
+      <xs:element name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="blibioteca" type="tns:biblioteca" />
+      <xs:element minOccurs="0" name="estado" type="tns:estadoEjemplar" />
+      <xs:element name="idEjemplar" type="xs:int" />
+      <xs:element name="id_material" type="xs:int" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="biblioteca">
+    <xs:sequence>
+      <xs:element name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ejemplares" nillable="true" type="tns:ejemplar" />
+      <xs:element name="idBiblioteca" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element name="activa" type="xs:boolean" />
+      <xs:element name="codigo" type="xs:int" />
+      <xs:element minOccurs="0" name="contrasena" type="xs:string" />
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+      <xs:element minOccurs="0" name="DOI" type="xs:string" />
+      <xs:element name="id_usuario" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="primer_apellido" type="xs:string" />
+      <xs:element minOccurs="0" name="rol_usuario" type="tns:rol" />
+      <xs:element minOccurs="0" name="segundo_apellido" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="rol">
+    <xs:sequence>
+      <xs:element name="activo" type="xs:boolean" />
+      <xs:element name="cantidad_de_dias_por_prestamo" type="xs:int" />
+      <xs:element name="id_rol" type="xs:int" />
+      <xs:element name="limite_prestamo" type="xs:int" />
+      <xs:element minOccurs="0" name="tipo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPrestamos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarPrestamosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:prestamo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="estadoEjemplar">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DISPONIBLE" />
+      <xs:enumeration value="PRESTADO" />
+      <xs:enumeration value="EN_REPARACION" />
+      <xs:enumeration value="NO_DISPONIBLE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="estadoPrestamo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="VIGENTE" />
+      <xs:enumeration value="FINALIZADO" />
+      <xs:enumeration value="RETRASADO" />
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>

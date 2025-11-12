@@ -1,9 +1,12 @@
 
 package biblioteca.services.gestionMaterial;
 
+import biblioteca.gestionMaterial.boImpl.LibroBOImpl;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+import java.util.ArrayList;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.Libro;
 
 @WebService(serviceName = "LibroWS")
 public class LibroWS {

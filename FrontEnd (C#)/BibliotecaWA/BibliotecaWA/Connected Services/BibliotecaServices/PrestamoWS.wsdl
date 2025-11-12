@@ -5,21 +5,36 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/PrestamoWS?xsd=1" namespace="http://gestionPrestamo.services.biblioteca/" />
     </xsd:schema>
   </types>
-  <message name="hello">
-    <part name="parameters" element="tns:hello" />
+  <message name="listarPrestamosPorUsuario">
+    <part name="parameters" element="tns:listarPrestamosPorUsuario" />
   </message>
-  <message name="helloResponse">
-    <part name="parameters" element="tns:helloResponse" />
+  <message name="listarPrestamosPorUsuarioResponse">
+    <part name="parameters" element="tns:listarPrestamosPorUsuarioResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="listarPrestamos">
+    <part name="parameters" element="tns:listarPrestamos" />
+  </message>
+  <message name="listarPrestamosResponse">
+    <part name="parameters" element="tns:listarPrestamosResponse" />
   </message>
   <portType name="PrestamoWS">
-    <operation name="hello">
-      <input wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/helloRequest" message="tns:hello" />
-      <output wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/helloResponse" message="tns:helloResponse" />
+    <operation name="listarPrestamosPorUsuario">
+      <input wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamosPorUsuarioRequest" message="tns:listarPrestamosPorUsuario" />
+      <output wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamosPorUsuarioResponse" message="tns:listarPrestamosPorUsuarioResponse" />
+      <fault wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamosPorUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarPrestamos">
+      <input wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamosRequest" message="tns:listarPrestamos" />
+      <output wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamosResponse" message="tns:listarPrestamosResponse" />
+      <fault wsam:Action="http://gestionPrestamo.services.biblioteca/PrestamoWS/listarPrestamos/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
   </portType>
   <binding name="PrestamoWSPortBinding" type="tns:PrestamoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="hello">
+    <operation name="listarPrestamosPorUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -27,6 +42,21 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarPrestamos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
     </operation>
   </binding>
   <service name="PrestamoWS">

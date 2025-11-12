@@ -1,5 +1,7 @@
 package pe.edu.pucp.utilsarmy.gestion_de_material.model;
 
+import java.util.ArrayList;
+
 public class Biblioteca {
     private int idBiblioteca;
     private String nombre;

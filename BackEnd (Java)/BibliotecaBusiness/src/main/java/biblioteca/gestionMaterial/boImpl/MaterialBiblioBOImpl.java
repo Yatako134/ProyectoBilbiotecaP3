@@ -8,6 +8,9 @@ import biblioteca.gestionMaterial.bo.MaterialBiblioBO;
 import biblioteca.gestionMaterial.dao.MaterialBiblioDAO;
 import biblioteca.gestionMaterial.mysql.MaterialBiblioImpl;
 import java.util.ArrayList;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.Contribuyente;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.Editorial;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 
 /**

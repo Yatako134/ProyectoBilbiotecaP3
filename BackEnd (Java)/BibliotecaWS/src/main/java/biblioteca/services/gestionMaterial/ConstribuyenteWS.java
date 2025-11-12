@@ -1,9 +1,12 @@
 
 package biblioteca.services.gestionMaterial;
 
+import biblioteca.gestionMaterial.boImpl.ContribuyenteBOImpl;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+import java.util.ArrayList;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.Contribuyente;
 
 @WebService(serviceName = "ConstribuyenteWS")
 public class ConstribuyenteWS {
@@ -57,13 +60,15 @@ public class ConstribuyenteWS {
     }
 
     @WebMethod(operationName = "eliminarContribuyente")
-    public int eliminarContribuyente(@WebParam(name = "idContribuyente") int idContribuyente) throws Exception {
+    public int eliminarContribuyente(@WebParam(name = "idContribuyente") int idContribuyente) {
         int resultado = 0;
         try {
             contribuyentebo = new ContribuyenteBOImpl();
             resultado = contribuyentebo.eliminar(idContribuyente);
+            return resultado;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        return res
+        return resultado;
+    }
 }
