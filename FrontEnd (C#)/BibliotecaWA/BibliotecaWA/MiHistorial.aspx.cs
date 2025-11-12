@@ -87,7 +87,7 @@ namespace ProyectoP3
 
             boprestamo = new PrestamoWSClient();
             BindingList<prestamo> prestamos;
-            prestamos = new BindingList<prestamo>(boprestamo.listarPrestamos());
+            prestamos = new BindingList<prestamo>(boprestamo.listarPrestamosPorUsuario(1)); //usuario = 1
             gvPrestamos.DataSource = prestamos;
             gvPrestamos.DataBind();
 
@@ -108,7 +108,7 @@ namespace ProyectoP3
 
             bosancion = new SancionWSClient();
             BindingList<sancion> sanciones;
-            sanciones = new BindingList<sancion>(bosancion.listarSanciones());
+            sanciones = new BindingList<sancion>(bosancion.listarSancionesPorUsuario(1)); //usuario = 1
             gvSanciones.DataSource = sanciones;
             gvSanciones.DataBind();
 
