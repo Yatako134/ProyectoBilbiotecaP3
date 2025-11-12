@@ -419,7 +419,7 @@ BEGIN
     )
     VALUES(
         _codigo_universitario, _nombre,_primer_apellido, _segundo_apellido,_DOI,
-        _contrasena,_correo,_numero_de_telefono,1, _id_rol);
+        MD5(_contrasena),_correo,_numero_de_telefono,1, _id_rol);
     
     SET _id_usuario = @@last_insert_id;
 END$
@@ -447,7 +447,7 @@ BEGIN
         segundo_apellido = _segundo_apellido,
         DOI = _DOI,
         correo = _correo,
-        contrasena = _contrasena,
+        contrasena = MD5(_contrasena),
         numero_de_telefono = _numero_de_telefono,
         id_rol = _id_rol
     WHERE id_usuario = _id_usuario;
@@ -893,36 +893,54 @@ BEGIN
         m.clasificacion_tematica,
         m.idioma,
         m.tipo,
-        -- Concatenamos los autores en una sola columna, si no hay autores mostramos un mensaje
+        
         IFNULL(
             NULLIF(
                 GROUP_CONCAT(
-                    CONCAT(
+                    DISTINCT CONCAT(
                         IFNULL(c.nombre, ''), 
-                        CASE WHEN c.nombre IS NOT NULL AND c.nombre <> '' THEN ' ' ELSE '' END,
-                        c.primer_apellido, ' ', c.segundo_apellido
+                        CASE 
+                            WHEN c.nombre IS NOT NULL AND c.nombre <> '' THEN ' ' 
+                            ELSE '' 
+                        END,
+                        IFNULL(c.primer_apellido, ''), ' ', IFNULL(c.segundo_apellido, '')
                     ) SEPARATOR ', '
                 ), ''
             ), 'No hay autores registrados'
-        ) AS `autores`,
-        -- Concatenamos los nombres de bibliotecas donde hay ejemplares disponibles, sin repetir
+        ) AS autores,
+        
         IFNULL(
             NULLIF(
-                GROUP_CONCAT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN b.nombre END SEPARATOR ', '), 
-                ''
+                GROUP_CONCAT(
+                    DISTINCT CASE 
+                        WHEN e.estado = 'DISPONIBLE' THEN b.nombre 
+                        ELSE NULL 
+                    END SEPARATOR ', '
+                ), ''
             ), 'No hay ejemplares disponibles para préstamo'
-        ) AS `bibliotecas`,
-        -- Contamos los ejemplares disponibles
-        COUNT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN e.id_ejemplar END) AS `ejemplares_disponibles`
+        ) AS bibliotecas,
+        
+        COUNT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN e.id_ejemplar END) AS ejemplares_disponibles
+        
     FROM MaterialBibliografico m
-    LEFT JOIN Contribuyente_Material cm ON m.id_material = cm.id_material
-    LEFT JOIN Contribuyente c ON cm.id_contribuyente = c.id_contribuyente AND c.tipo_contribuyente = 'AUTOR'
-    LEFT JOIN Ejemplar e ON m.id_material = e.id_material AND e.activo = 1
-    LEFT JOIN Biblioteca b ON e.id_biblioteca = b.id_biblioteca AND b.activo = 1
+    LEFT JOIN Contribuyente_Material cm 
+        ON m.id_material = cm.id_material
+    LEFT JOIN Contribuyente c 
+        ON cm.id_contribuyente = c.id_contribuyente 
+        AND c.tipo_contribuyente = 'AUTOR'
+    LEFT JOIN Ejemplar e 
+        ON m.id_material = e.id_material 
+        AND e.activo = 1
+    LEFT JOIN Biblioteca b 
+        ON e.id_biblioteca = b.id_biblioteca 
+        AND b.activo = 1
     WHERE m.activo = 1
     GROUP BY 
-        m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.idioma, m.tipo;
+        m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, 
+        m.estado, m.clasificacion_tematica, m.idioma, m.tipo
+    ORDER BY ejemplares_disponibles DESC, m.titulo ASC;  -- primero por disponibilidad, luego por título
 END $
+DELIMITER ;
 
 DELIMITER $
 CREATE PROCEDURE LISTAR_BIBLIOTECAS_DE_MATERIAL
@@ -1029,7 +1047,7 @@ CREATE PROCEDURE SP_OBTENER_TIPO_MATERIAL (
 )
 BEGIN
     SELECT tipo
-    FROM UtilsArmy.MaterialBibliografico
+    FROM MaterialBibliografico
     WHERE id_material = _id_material;
 END$$
 
