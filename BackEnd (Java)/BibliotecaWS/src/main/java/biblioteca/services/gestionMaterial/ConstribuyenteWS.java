@@ -16,6 +16,10 @@ public class ConstribuyenteWS {
 
     private ContribuyenteBOImpl contribuyentebo;
 
+    public ConstribuyenteWS() {
+        contribuyentebo = new ContribuyenteBOImpl();
+    }
+
 
     @WebMethod(operationName = "modificarContribuyente")
     public int modificarContribuyente(@WebParam(name = "contribuyente") Contribuyente contribuyente) throws Exception {
