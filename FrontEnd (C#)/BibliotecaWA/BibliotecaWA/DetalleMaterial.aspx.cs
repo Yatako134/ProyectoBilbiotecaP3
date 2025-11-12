@@ -59,7 +59,7 @@ namespace BibliotecaWA
                 txtTipoMaterial.Text = materialBibliografico.tipo.ToString();
                 TextNroPaginas.Text = materialBibliografico.numero_paginas.ToString();
 
-                this.DataBind();
+             
 
 
                 switch (materialBibliografico.tipo.ToString().ToUpper())
@@ -313,7 +313,7 @@ namespace BibliotecaWA
             //}
 
             // 5️⃣ Vincular la lista al Repeater para mostrarla en la interfaz
-            rptBibliotecas.DataSource = listaBibliotecas;
+            rptBibliotecas.DataSource = listaBibliotecasFinal;
             rptBibliotecas.DataBind();
 
         }
