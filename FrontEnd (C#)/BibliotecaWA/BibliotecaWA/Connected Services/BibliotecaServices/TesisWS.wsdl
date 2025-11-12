@@ -26,17 +26,17 @@
   <message name="listarTesisTodosResponse">
     <part name="parameters" element="tns:listarTesisTodosResponse" />
   </message>
-  <message name="obtenerTesisPorId">
-    <part name="parameters" element="tns:obtenerTesisPorId" />
-  </message>
-  <message name="obtenerTesisPorIdResponse">
-    <part name="parameters" element="tns:obtenerTesisPorIdResponse" />
-  </message>
   <message name="eliminarTesis">
     <part name="parameters" element="tns:eliminarTesis" />
   </message>
   <message name="eliminarTesisResponse">
     <part name="parameters" element="tns:eliminarTesisResponse" />
+  </message>
+  <message name="obtenerTesisPorId">
+    <part name="parameters" element="tns:obtenerTesisPorId" />
+  </message>
+  <message name="obtenerTesisPorIdResponse">
+    <part name="parameters" element="tns:obtenerTesisPorIdResponse" />
   </message>
   <portType name="TesisWS">
     <operation name="insertarTesis">
@@ -53,15 +53,15 @@
       <output wsam:Action="http://gestionMaterial.services.biblioteca/TesisWS/listarTesisTodosResponse" message="tns:listarTesisTodosResponse" />
       <fault wsam:Action="http://gestionMaterial.services.biblioteca/TesisWS/listarTesisTodos/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="obtenerTesisPorId">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/TesisWS/obtenerTesisPorIdRequest" message="tns:obtenerTesisPorId" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/TesisWS/obtenerTesisPorIdResponse" message="tns:obtenerTesisPorIdResponse" />
-      <fault wsam:Action="http://gestionMaterial.services.biblioteca/TesisWS/obtenerTesisPorId/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
     <operation name="eliminarTesis">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/TesisWS/eliminarTesisRequest" message="tns:eliminarTesis" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/TesisWS/eliminarTesisResponse" message="tns:eliminarTesisResponse" />
       <fault wsam:Action="http://gestionMaterial.services.biblioteca/TesisWS/eliminarTesis/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerTesisPorId">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/TesisWS/obtenerTesisPorIdRequest" message="tns:obtenerTesisPorId" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/TesisWS/obtenerTesisPorIdResponse" message="tns:obtenerTesisPorIdResponse" />
+      <fault wsam:Action="http://gestionMaterial.services.biblioteca/TesisWS/obtenerTesisPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
   </portType>
   <binding name="TesisWSPortBinding" type="tns:TesisWS">
@@ -99,7 +99,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="obtenerTesisPorId">
+    <operation name="eliminarTesis">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -111,7 +111,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="eliminarTesis">
+    <operation name="obtenerTesisPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

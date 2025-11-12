@@ -13,7 +13,7 @@
   <xs:element name="obtenerBibliotecaPorIdResponse" type="tns:obtenerBibliotecaPorIdResponse" />
   <xs:complexType name="insertarBiblioteca">
     <xs:sequence>
-      <xs:element minOccurs="0" name="material" type="tns:biblioteca" />
+      <xs:element minOccurs="0" name="biblioteca" type="tns:biblioteca" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="biblioteca">
@@ -75,7 +75,7 @@
   </xs:complexType>
   <xs:complexType name="modificarBiblioteca">
     <xs:sequence>
-      <xs:element minOccurs="0" name="material" type="tns:biblioteca" />
+      <xs:element minOccurs="0" name="biblioteca" type="tns:biblioteca" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarBibliotecaResponse">

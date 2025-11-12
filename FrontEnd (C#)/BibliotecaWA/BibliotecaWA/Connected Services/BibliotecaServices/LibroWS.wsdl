@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/LibroWS?xsd=1" namespace="http://gestionMaterial.services.biblioteca/" />
     </xsd:schema>
   </types>
-  <message name="obtenerLibroPorId">
-    <part name="parameters" element="tns:obtenerLibroPorId" />
+  <message name="modificarLibro">
+    <part name="parameters" element="tns:modificarLibro" />
   </message>
-  <message name="obtenerLibroPorIdResponse">
-    <part name="parameters" element="tns:obtenerLibroPorIdResponse" />
+  <message name="modificarLibroResponse">
+    <part name="parameters" element="tns:modificarLibroResponse" />
   </message>
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
@@ -20,17 +20,17 @@
   <message name="eliminarLibroResponse">
     <part name="parameters" element="tns:eliminarLibroResponse" />
   </message>
-  <message name="modificarLibro">
-    <part name="parameters" element="tns:modificarLibro" />
-  </message>
-  <message name="modificarLibroResponse">
-    <part name="parameters" element="tns:modificarLibroResponse" />
-  </message>
   <message name="listarLibrosTodos">
     <part name="parameters" element="tns:listarLibrosTodos" />
   </message>
   <message name="listarLibrosTodosResponse">
     <part name="parameters" element="tns:listarLibrosTodosResponse" />
+  </message>
+  <message name="obtenerLibroPorId">
+    <part name="parameters" element="tns:obtenerLibroPorId" />
+  </message>
+  <message name="obtenerLibroPorIdResponse">
+    <part name="parameters" element="tns:obtenerLibroPorIdResponse" />
   </message>
   <message name="insertarLibro">
     <part name="parameters" element="tns:insertarLibro" />
@@ -39,25 +39,25 @@
     <part name="parameters" element="tns:insertarLibroResponse" />
   </message>
   <portType name="LibroWS">
-    <operation name="obtenerLibroPorId">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/obtenerLibroPorIdRequest" message="tns:obtenerLibroPorId" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/obtenerLibroPorIdResponse" message="tns:obtenerLibroPorIdResponse" />
-      <fault wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/obtenerLibroPorId/Fault/Exception" name="Exception" message="tns:Exception" />
+    <operation name="modificarLibro">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/modificarLibroRequest" message="tns:modificarLibro" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/modificarLibroResponse" message="tns:modificarLibroResponse" />
+      <fault wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/modificarLibro/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="eliminarLibro">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/eliminarLibroRequest" message="tns:eliminarLibro" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/eliminarLibroResponse" message="tns:eliminarLibroResponse" />
       <fault wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/eliminarLibro/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="modificarLibro">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/modificarLibroRequest" message="tns:modificarLibro" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/modificarLibroResponse" message="tns:modificarLibroResponse" />
-      <fault wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/modificarLibro/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
     <operation name="listarLibrosTodos">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/listarLibrosTodosRequest" message="tns:listarLibrosTodos" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/listarLibrosTodosResponse" message="tns:listarLibrosTodosResponse" />
       <fault wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/listarLibrosTodos/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerLibroPorId">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/obtenerLibroPorIdRequest" message="tns:obtenerLibroPorId" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/obtenerLibroPorIdResponse" message="tns:obtenerLibroPorIdResponse" />
+      <fault wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/obtenerLibroPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="insertarLibro">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/LibroWS/insertarLibroRequest" message="tns:insertarLibro" />
@@ -66,7 +66,7 @@
   </portType>
   <binding name="LibroWSPortBinding" type="tns:LibroWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="obtenerLibroPorId">
+    <operation name="modificarLibro">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -90,7 +90,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="modificarLibro">
+    <operation name="listarLibrosTodos">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -102,7 +102,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="listarLibrosTodos">
+    <operation name="obtenerLibroPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

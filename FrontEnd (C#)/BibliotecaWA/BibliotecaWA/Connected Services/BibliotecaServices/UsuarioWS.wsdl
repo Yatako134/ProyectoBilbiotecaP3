@@ -20,18 +20,6 @@
   <message name="modificarUsuarioResponse">
     <part name="parameters" element="tns:modificarUsuarioResponse" />
   </message>
-  <message name="eliminarUsuario">
-    <part name="parameters" element="tns:eliminarUsuario" />
-  </message>
-  <message name="eliminarUsuarioResponse">
-    <part name="parameters" element="tns:eliminarUsuarioResponse" />
-  </message>
-  <message name="obtenerUsuarioPorId">
-    <part name="parameters" element="tns:obtenerUsuarioPorId" />
-  </message>
-  <message name="obtenerUsuarioPorIdResponse">
-    <part name="parameters" element="tns:obtenerUsuarioPorIdResponse" />
-  </message>
   <message name="listarUsuarios">
     <part name="parameters" element="tns:listarUsuarios" />
   </message>
@@ -43,6 +31,18 @@
   </message>
   <message name="insertarUsuarioResponse">
     <part name="parameters" element="tns:insertarUsuarioResponse" />
+  </message>
+  <message name="eliminarUsuario">
+    <part name="parameters" element="tns:eliminarUsuario" />
+  </message>
+  <message name="eliminarUsuarioResponse">
+    <part name="parameters" element="tns:eliminarUsuarioResponse" />
+  </message>
+  <message name="obtenerUsuarioPorId">
+    <part name="parameters" element="tns:obtenerUsuarioPorId" />
+  </message>
+  <message name="obtenerUsuarioPorIdResponse">
+    <part name="parameters" element="tns:obtenerUsuarioPorIdResponse" />
   </message>
   <message name="obtenerUsuarioxCodigo">
     <part name="parameters" element="tns:obtenerUsuarioxCodigo" />
@@ -61,16 +61,6 @@
       <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/modificarUsuarioResponse" message="tns:modificarUsuarioResponse" />
       <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/modificarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="eliminarUsuario">
-      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/eliminarUsuarioRequest" message="tns:eliminarUsuario" />
-      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse" />
-      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/eliminarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="obtenerUsuarioPorId">
-      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioPorIdRequest" message="tns:obtenerUsuarioPorId" />
-      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioPorIdResponse" message="tns:obtenerUsuarioPorIdResponse" />
-      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioPorId/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
     <operation name="listarUsuarios">
       <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/listarUsuariosRequest" message="tns:listarUsuarios" />
       <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/listarUsuariosResponse" message="tns:listarUsuariosResponse" />
@@ -80,6 +70,16 @@
       <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/insertarUsuarioRequest" message="tns:insertarUsuario" />
       <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/insertarUsuarioResponse" message="tns:insertarUsuarioResponse" />
       <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/insertarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="eliminarUsuario">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/eliminarUsuarioRequest" message="tns:eliminarUsuario" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/eliminarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerUsuarioPorId">
+      <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioPorIdRequest" message="tns:obtenerUsuarioPorId" />
+      <output wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioPorIdResponse" message="tns:obtenerUsuarioPorIdResponse" />
+      <fault wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="obtenerUsuarioxCodigo">
       <input wsam:Action="http://gestionUsuario.services.biblioteca/UsuarioWS/obtenerUsuarioxCodigoRequest" message="tns:obtenerUsuarioxCodigo" />
@@ -113,30 +113,6 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="eliminarUsuario">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
-    <operation name="obtenerUsuarioPorId">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
     <operation name="listarUsuarios">
       <soap:operation soapAction="" />
       <input>
@@ -150,6 +126,30 @@
       </fault>
     </operation>
     <operation name="insertarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="eliminarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerUsuarioPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -4,6 +4,10 @@
   <xs:element name="BusquedaAvanzada" type="tns:BusquedaAvanzada" />
   <xs:element name="BusquedaAvanzadaResponse" type="tns:BusquedaAvanzadaResponse" />
   <xs:element name="BusquedaResponse" type="tns:BusquedaResponse" />
+  <xs:element name="ContarMateriales" type="tns:ContarMateriales" />
+  <xs:element name="ContarMaterialesResponse" type="tns:ContarMaterialesResponse" />
+  <xs:element name="ListarMaterialesNormal" type="tns:ListarMaterialesNormal" />
+  <xs:element name="ListarMaterialesNormalResponse" type="tns:ListarMaterialesNormalResponse" />
   <xs:element name="ListarTodos" type="tns:ListarTodos" />
   <xs:element name="ListarTodosResponse" type="tns:ListarTodosResponse" />
   <xs:element name="buscarContribuyentes" type="tns:buscarContribuyentes" />
@@ -119,6 +123,34 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:contribuyente" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="ListarMaterialesNormal">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="ListarMaterialesNormalResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:materialBibliografico" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContarMateriales">
+    <xs:sequence>
+      <xs:element name="idmat" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContarMaterialesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEjemplares">
+    <xs:sequence>
+      <xs:element name="idMaterial" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEjemplaresResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="BusquedaAvanzada">
     <xs:sequence>
       <xs:element minOccurs="0" name="Titulo" type="xs:string" />
@@ -135,16 +167,6 @@
   <xs:complexType name="BusquedaAvanzadaResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:materialBibliografico" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="buscarEjemplares">
-    <xs:sequence>
-      <xs:element name="idMaterial" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="buscarEjemplaresResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="obtenerEjemplaresDisponibles">
@@ -169,8 +191,8 @@
   <xs:simpleType name="tipoContribuyente">
     <xs:restriction base="xs:string">
       <xs:enumeration value="AUTOR" />
+      <xs:enumeration value="TRADUCTOR" />
       <xs:enumeration value="EDITOR" />
-      <xs:enumeration value="ILUSTRADOR" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="estadoMaterial">

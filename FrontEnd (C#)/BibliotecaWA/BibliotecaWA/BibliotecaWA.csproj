@@ -286,6 +286,15 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.usuario1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.ContarMaterialesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -361,6 +370,7 @@
     <Content Include="Fonts\css\v4-shims.min.css" />
     <Content Include="Fonts\css\v5-font-face.css" />
     <Content Include="Fonts\css\v5-font-face.min.css" />
+    <Content Include="GestMaterial.aspx" />
     <Content Include="GestUsuarios.aspx" />
     <Content Include="Images\article.png" />
     <Content Include="Images\book.png" />
@@ -369,6 +379,7 @@
     <Content Include="Images\tesis.png" />
     <Content Include="MiHistorial.aspx" />
     <Content Include="Prestamo.aspx" />
+    <Content Include="RegistrarMaterial.aspx" />
     <Content Include="Scripts\activarMenu.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -470,6 +481,13 @@
     <Compile Include="DetalleMaterial.aspx.designer.cs">
       <DependentUpon>DetalleMaterial.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GestMaterial.aspx.cs">
+      <DependentUpon>GestMaterial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestMaterial.aspx.designer.cs">
+      <DependentUpon>GestMaterial.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GestUsuarios.aspx.cs">
       <DependentUpon>GestUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -506,6 +524,13 @@
       <DependentUpon>Prestamo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrarMaterial.aspx.cs">
+      <DependentUpon>RegistrarMaterial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarMaterial.aspx.designer.cs">
+      <DependentUpon>RegistrarMaterial.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

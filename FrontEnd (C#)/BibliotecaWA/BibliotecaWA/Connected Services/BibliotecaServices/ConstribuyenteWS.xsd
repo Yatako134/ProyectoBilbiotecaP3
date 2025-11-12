@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://gestionMaterial.services.biblioteca/" targetNamespace="http://gestionMaterial.services.biblioteca/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="asignarContribuyente" type="tns:asignarContribuyente" />
+  <xs:element name="asignarContribuyenteResponse" type="tns:asignarContribuyenteResponse" />
   <xs:element name="eliminarContribuyente" type="tns:eliminarContribuyente" />
   <xs:element name="eliminarContribuyenteResponse" type="tns:eliminarContribuyenteResponse" />
   <xs:element name="insertarContribuyente" type="tns:insertarContribuyente" />
@@ -11,6 +13,22 @@
   <xs:element name="modificarContribuyenteResponse" type="tns:modificarContribuyenteResponse" />
   <xs:element name="obtenerContribuyentePorId" type="tns:obtenerContribuyentePorId" />
   <xs:element name="obtenerContribuyentePorIdResponse" type="tns:obtenerContribuyentePorIdResponse" />
+  <xs:complexType name="asignarContribuyente">
+    <xs:sequence>
+      <xs:element name="idcontribuyente" type="xs:int" />
+      <xs:element name="idmaterial" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="asignarContribuyenteResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarContribuyentesTodos">
     <xs:sequence />
   </xs:complexType>
@@ -27,11 +45,6 @@
       <xs:element minOccurs="0" name="segundo_apellido" type="xs:string" />
       <xs:element minOccurs="0" name="seudonimo" type="xs:string" />
       <xs:element minOccurs="0" name="tipo_contribuyente" type="tns:tipoContribuyente" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="Exception">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="message" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="obtenerContribuyentePorId">
@@ -66,7 +79,11 @@
   </xs:complexType>
   <xs:complexType name="insertarContribuyente">
     <xs:sequence>
-      <xs:element minOccurs="0" name="contribuyente" type="tns:contribuyente" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="primerApellido" type="xs:string" />
+      <xs:element minOccurs="0" name="segundoApellido" type="xs:string" />
+      <xs:element minOccurs="0" name="seudonimo" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoContribuyente" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarContribuyenteResponse">
@@ -77,8 +94,8 @@
   <xs:simpleType name="tipoContribuyente">
     <xs:restriction base="xs:string">
       <xs:enumeration value="AUTOR" />
+      <xs:enumeration value="TRADUCTOR" />
       <xs:enumeration value="EDITOR" />
-      <xs:enumeration value="ILUSTRADOR" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

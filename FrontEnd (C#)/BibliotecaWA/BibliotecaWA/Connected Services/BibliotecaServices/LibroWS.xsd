@@ -140,8 +140,8 @@
   <xs:simpleType name="tipoContribuyente">
     <xs:restriction base="xs:string">
       <xs:enumeration value="AUTOR" />
+      <xs:enumeration value="TRADUCTOR" />
       <xs:enumeration value="EDITOR" />
-      <xs:enumeration value="ILUSTRADOR" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="estadoMaterial">
