@@ -37,7 +37,7 @@
             <!-- Listado -->
             <ul class="mynav nav nav-pills flex-column mb-auto">
                 <li class="nav-item mb-1">
-                    <a href="BusquedaMaterial.aspx"><i class="fa-solid fa-book-open" style="margin-right: 10px;"></i>Búsqueda y préstamos</a>
+                    <a href="BusquedaMaterialas.aspx"><i class="fa-solid fa-book-open" style="margin-right: 10px;"></i>Búsqueda y préstamos</a>
                 </li>
                 <li class="nav-item mb-1">
                     <a href="GestMaterial.aspx"><i class="fa-solid fa-table-cells-large" style="margin-right: 10px;"></i>Gestión de materiales</a>

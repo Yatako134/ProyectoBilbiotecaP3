@@ -348,7 +348,6 @@
     <Content Include="Images\file.png" />
     <Content Include="Images\logo2.png" />
     <Content Include="Images\tesis.png" />
-    <Content Include="Prestamo.aspx" />
     <Content Include="Scripts\activarMenu.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -455,13 +454,6 @@
     </Compile>
     <Compile Include="Home.Master.designer.cs">
       <DependentUpon>Home.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Prestamo.aspx.cs">
-      <DependentUpon>Prestamo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Prestamo.aspx.designer.cs">
-      <DependentUpon>Prestamo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

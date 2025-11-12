@@ -11,6 +11,12 @@
   <message name="eliminarContribuyenteResponse">
     <part name="parameters" element="tns:eliminarContribuyenteResponse" />
   </message>
+  <message name="insertarContribuyente">
+    <part name="parameters" element="tns:insertarContribuyente" />
+  </message>
+  <message name="insertarContribuyenteResponse">
+    <part name="parameters" element="tns:insertarContribuyenteResponse" />
+  </message>
   <message name="modificarContribuyente">
     <part name="parameters" element="tns:modificarContribuyente" />
   </message>
@@ -20,47 +26,41 @@
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
   </message>
-  <message name="listarContribuyentesTodos">
-    <part name="parameters" element="tns:listarContribuyentesTodos" />
-  </message>
-  <message name="listarContribuyentesTodosResponse">
-    <part name="parameters" element="tns:listarContribuyentesTodosResponse" />
-  </message>
   <message name="obtenerContribuyentePorId">
     <part name="parameters" element="tns:obtenerContribuyentePorId" />
   </message>
   <message name="obtenerContribuyentePorIdResponse">
     <part name="parameters" element="tns:obtenerContribuyentePorIdResponse" />
   </message>
-  <message name="insertarContribuyente">
-    <part name="parameters" element="tns:insertarContribuyente" />
+  <message name="listarContribuyentesTodos">
+    <part name="parameters" element="tns:listarContribuyentesTodos" />
   </message>
-  <message name="insertarContribuyenteResponse">
-    <part name="parameters" element="tns:insertarContribuyenteResponse" />
+  <message name="listarContribuyentesTodosResponse">
+    <part name="parameters" element="tns:listarContribuyentesTodosResponse" />
   </message>
   <portType name="ConstribuyenteWS">
     <operation name="eliminarContribuyente">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/eliminarContribuyenteRequest" message="tns:eliminarContribuyente" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/eliminarContribuyenteResponse" message="tns:eliminarContribuyenteResponse" />
     </operation>
+    <operation name="insertarContribuyente">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/insertarContribuyenteRequest" message="tns:insertarContribuyente" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/insertarContribuyenteResponse" message="tns:insertarContribuyenteResponse" />
+    </operation>
     <operation name="modificarContribuyente">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/modificarContribuyenteRequest" message="tns:modificarContribuyente" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/modificarContribuyenteResponse" message="tns:modificarContribuyenteResponse" />
       <fault wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/modificarContribuyente/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="listarContribuyentesTodos">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/listarContribuyentesTodosRequest" message="tns:listarContribuyentesTodos" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/listarContribuyentesTodosResponse" message="tns:listarContribuyentesTodosResponse" />
-      <fault wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/listarContribuyentesTodos/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="obtenerContribuyentePorId">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/obtenerContribuyentePorIdRequest" message="tns:obtenerContribuyentePorId" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/obtenerContribuyentePorIdResponse" message="tns:obtenerContribuyentePorIdResponse" />
       <fault wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/obtenerContribuyentePorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="insertarContribuyente">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/insertarContribuyenteRequest" message="tns:insertarContribuyente" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/insertarContribuyenteResponse" message="tns:insertarContribuyenteResponse" />
+    <operation name="listarContribuyentesTodos">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/listarContribuyentesTodosRequest" message="tns:listarContribuyentesTodos" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/listarContribuyentesTodosResponse" message="tns:listarContribuyentesTodosResponse" />
+      <fault wsam:Action="http://gestionMaterial.services.biblioteca/ConstribuyenteWS/listarContribuyentesTodos/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
   </portType>
   <binding name="ConstribuyenteWSPortBinding" type="tns:ConstribuyenteWS">
@@ -74,7 +74,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarContribuyente">
+    <operation name="insertarContribuyente">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -82,11 +82,8 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
     </operation>
-    <operation name="listarContribuyentesTodos">
+    <operation name="modificarContribuyente">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -110,7 +107,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="insertarContribuyente">
+    <operation name="listarContribuyentesTodos">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -118,6 +115,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
     </operation>
   </binding>
   <service name="ConstribuyenteWS">
