@@ -5,6 +5,18 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/MaterialWS?xsd=1" namespace="http://gestionMaterial.services.biblioteca/" />
     </xsd:schema>
   </types>
+  <message name="ListarTodos">
+    <part name="parameters" element="tns:ListarTodos" />
+  </message>
+  <message name="ListarTodosResponse">
+    <part name="parameters" element="tns:ListarTodosResponse" />
+  </message>
+  <message name="obtenerPorId">
+    <part name="parameters" element="tns:obtenerPorId" />
+  </message>
+  <message name="obtenerPorIdResponse">
+    <part name="parameters" element="tns:obtenerPorIdResponse" />
+  </message>
   <message name="BusquedaAvanzada">
     <part name="parameters" element="tns:BusquedaAvanzada" />
   </message>
@@ -17,11 +29,11 @@
   <message name="obtenerEjemplaresDisponiblesResponse">
     <part name="parameters" element="tns:obtenerEjemplaresDisponiblesResponse" />
   </message>
-  <message name="buscarEditoriales">
-    <part name="parameters" element="tns:buscarEditoriales" />
+  <message name="buscarEjemplares">
+    <part name="parameters" element="tns:buscarEjemplares" />
   </message>
-  <message name="buscarEditorialesResponse">
-    <part name="parameters" element="tns:buscarEditorialesResponse" />
+  <message name="buscarEjemplaresResponse">
+    <part name="parameters" element="tns:buscarEjemplaresResponse" />
   </message>
   <message name="Busqueda">
     <part name="parameters" element="tns:Busqueda" />
@@ -35,25 +47,21 @@
   <message name="buscarContribuyentesResponse">
     <part name="parameters" element="tns:buscarContribuyentesResponse" />
   </message>
-  <message name="buscarEjemplares">
-    <part name="parameters" element="tns:buscarEjemplares" />
+  <message name="buscarEditoriales">
+    <part name="parameters" element="tns:buscarEditoriales" />
   </message>
-  <message name="buscarEjemplaresResponse">
-    <part name="parameters" element="tns:buscarEjemplaresResponse" />
-  </message>
-  <message name="obtenerPorId">
-    <part name="parameters" element="tns:obtenerPorId" />
-  </message>
-  <message name="obtenerPorIdResponse">
-    <part name="parameters" element="tns:obtenerPorIdResponse" />
-  </message>
-  <message name="ListarTodos">
-    <part name="parameters" element="tns:ListarTodos" />
-  </message>
-  <message name="ListarTodosResponse">
-    <part name="parameters" element="tns:ListarTodosResponse" />
+  <message name="buscarEditorialesResponse">
+    <part name="parameters" element="tns:buscarEditorialesResponse" />
   </message>
   <portType name="MaterialWS">
+    <operation name="ListarTodos">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/ListarTodosRequest" message="tns:ListarTodos" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/ListarTodosResponse" message="tns:ListarTodosResponse" />
+    </operation>
+    <operation name="obtenerPorId">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/obtenerPorIdRequest" message="tns:obtenerPorId" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/obtenerPorIdResponse" message="tns:obtenerPorIdResponse" />
+    </operation>
     <operation name="BusquedaAvanzada">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/BusquedaAvanzadaRequest" message="tns:BusquedaAvanzada" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/BusquedaAvanzadaResponse" message="tns:BusquedaAvanzadaResponse" />
@@ -62,9 +70,9 @@
       <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/obtenerEjemplaresDisponiblesRequest" message="tns:obtenerEjemplaresDisponibles" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/obtenerEjemplaresDisponiblesResponse" message="tns:obtenerEjemplaresDisponiblesResponse" />
     </operation>
-    <operation name="buscarEditoriales">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarEditorialesRequest" message="tns:buscarEditoriales" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarEditorialesResponse" message="tns:buscarEditorialesResponse" />
+    <operation name="buscarEjemplares">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarEjemplaresRequest" message="tns:buscarEjemplares" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarEjemplaresResponse" message="tns:buscarEjemplaresResponse" />
     </operation>
     <operation name="Busqueda">
       <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/BusquedaRequest" message="tns:Busqueda" />
@@ -74,21 +82,31 @@
       <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarContribuyentesRequest" message="tns:buscarContribuyentes" />
       <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarContribuyentesResponse" message="tns:buscarContribuyentesResponse" />
     </operation>
-    <operation name="buscarEjemplares">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarEjemplaresRequest" message="tns:buscarEjemplares" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarEjemplaresResponse" message="tns:buscarEjemplaresResponse" />
-    </operation>
-    <operation name="obtenerPorId">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/obtenerPorIdRequest" message="tns:obtenerPorId" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/obtenerPorIdResponse" message="tns:obtenerPorIdResponse" />
-    </operation>
-    <operation name="ListarTodos">
-      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/ListarTodosRequest" message="tns:ListarTodos" />
-      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/ListarTodosResponse" message="tns:ListarTodosResponse" />
+    <operation name="buscarEditoriales">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarEditorialesRequest" message="tns:buscarEditoriales" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarEditorialesResponse" message="tns:buscarEditorialesResponse" />
     </operation>
   </portType>
   <binding name="MaterialWSPortBinding" type="tns:MaterialWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="ListarTodos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="BusquedaAvanzada">
       <soap:operation soapAction="" />
       <input>
@@ -107,7 +125,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="buscarEditoriales">
+    <operation name="buscarEjemplares">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -134,25 +152,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="buscarEjemplares">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="obtenerPorId">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="ListarTodos">
+    <operation name="buscarEditoriales">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

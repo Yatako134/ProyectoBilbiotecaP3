@@ -22,7 +22,7 @@ namespace BibliotecaWA
                 borol = new RolWSClient();
 
                 Session["roles"] = new BindingList<rol>(borol.listarRoles());
-                Session["usuarios"] = new BindingList<usuario>(bousuario.listarUsuarios());
+                Session["usuarios"] = new BindingList<usuario1>(bousuario.listarUsuarios());
 
                 CargarUsuarios();
 
@@ -31,7 +31,7 @@ namespace BibliotecaWA
 
         private void CargarUsuarios()
         {
-            BindingList<usuario> usuarios = (BindingList<usuario>)Session["usuarios"];
+            BindingList<usuario1> usuarios = (BindingList<usuario1>)Session["usuarios"];
 
             dgvUsuario.DataSource = usuarios;
             dgvUsuario.DataBind();
@@ -43,7 +43,7 @@ namespace BibliotecaWA
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                usuario user = (usuario)e.Row.DataItem;
+                usuario1 user = (usuario1)e.Row.DataItem;
                 BindingList<rol> roles = (BindingList<rol>)Session["roles"];
 
                 e.Row.Cells[0].Text = user.codigo.ToString();
@@ -130,7 +130,7 @@ namespace BibliotecaWA
             bousuario = new UsuarioWSClient();
             bousuario.eliminarUsuario(idUsuario);
 
-            BindingList<usuario> usuarios = new BindingList<usuario>(bousuario.listarUsuarios());
+            BindingList<usuario1> usuarios = new BindingList<usuario1>(bousuario.listarUsuarios());
             Session["usuarios"] = usuarios;
             CargarUsuarios();
         }
@@ -138,7 +138,7 @@ namespace BibliotecaWA
         // ======= CONTADOR Y PAGINADOR =======
         private void ActualizarContador()
         {
-            int total = ((BindingList<usuario>)Session["usuarios"]).Count;
+            int total = ((BindingList<usuario1>)Session["usuarios"]).Count;
             int mostrados = dgvUsuario.Rows.Count;
             lblResultados.Text = $"Mostrando {mostrados} de {total} usuarios";
         }

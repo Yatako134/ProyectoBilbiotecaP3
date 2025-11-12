@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://gestionPrestamo.services.biblioteca/" targetNamespace="http://gestionPrestamo.services.biblioteca/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="eliminarPrestamo" type="tns:eliminarPrestamo" />
+  <xs:element name="eliminarPrestamoResponse" type="tns:eliminarPrestamoResponse" />
+  <xs:element name="insertarPrestamo" type="tns:insertarPrestamo" />
+  <xs:element name="insertarPrestamoResponse" type="tns:insertarPrestamoResponse" />
   <xs:element name="listarPrestamos" type="tns:listarPrestamos" />
   <xs:element name="listarPrestamosPorUsuario" type="tns:listarPrestamosPorUsuario" />
   <xs:element name="listarPrestamosPorUsuarioResponse" type="tns:listarPrestamosPorUsuarioResponse" />
   <xs:element name="listarPrestamosResponse" type="tns:listarPrestamosResponse" />
-  <xs:complexType name="listarPrestamosPorUsuario">
+  <xs:element name="modificarPrestamo" type="tns:modificarPrestamo" />
+  <xs:element name="modificarPrestamoResponse" type="tns:modificarPrestamoResponse" />
+  <xs:element name="obtenerPrestamoPorId" type="tns:obtenerPrestamoPorId" />
+  <xs:element name="obtenerPrestamoPorIdResponse" type="tns:obtenerPrestamoPorIdResponse" />
+  <xs:complexType name="obtenerPrestamoPorId">
     <xs:sequence>
-      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element name="name" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarPrestamosPorUsuarioResponse">
+  <xs:complexType name="obtenerPrestamoPorIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:prestamo" />
+      <xs:element minOccurs="0" name="return" type="tns:prestamo" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="prestamo">
@@ -74,12 +82,52 @@
       <xs:element minOccurs="0" name="message" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="eliminarPrestamo">
+    <xs:sequence>
+      <xs:element name="name" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarPrestamoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarPrestamo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="tns:prestamo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarPrestamoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPrestamosPorUsuario">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPrestamosPorUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:prestamo" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarPrestamos">
     <xs:sequence />
   </xs:complexType>
   <xs:complexType name="listarPrestamosResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:prestamo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarPrestamo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="tns:prestamo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarPrestamoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="estadoEjemplar">

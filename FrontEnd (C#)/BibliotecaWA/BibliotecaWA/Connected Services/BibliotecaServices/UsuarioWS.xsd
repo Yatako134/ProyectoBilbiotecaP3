@@ -11,6 +11,10 @@
   <xs:element name="modificarUsuarioResponse" type="tns:modificarUsuarioResponse" />
   <xs:element name="obtenerUsuarioPorId" type="tns:obtenerUsuarioPorId" />
   <xs:element name="obtenerUsuarioPorIdResponse" type="tns:obtenerUsuarioPorIdResponse" />
+  <xs:element name="obtenerUsuarioxCodigo" type="tns:obtenerUsuarioxCodigo" />
+  <xs:element name="obtenerUsuarioxCodigoResponse" type="tns:obtenerUsuarioxCodigoResponse" />
+  <xs:element name="obtener_prestamos_vigentesxUsuario" type="tns:obtener_prestamos_vigentesxUsuario" />
+  <xs:element name="obtener_prestamos_vigentesxUsuarioResponse" type="tns:obtener_prestamos_vigentesxUsuarioResponse" />
   <xs:complexType name="listarUsuarios">
     <xs:sequence />
   </xs:complexType>
@@ -48,14 +52,14 @@
       <xs:element minOccurs="0" name="message" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtenerUsuarioPorId">
+  <xs:complexType name="obtener_prestamos_vigentesxUsuario">
     <xs:sequence>
-      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element name="arg0" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtenerUsuarioPorIdResponse">
+  <xs:complexType name="obtener_prestamos_vigentesxUsuarioResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:usuario" />
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarUsuario">
@@ -68,6 +72,16 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="obtenerUsuarioPorId">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerUsuarioPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usuario" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="insertarUsuario">
     <xs:sequence>
       <xs:element minOccurs="0" name="usuario" type="tns:usuario" />
@@ -76,6 +90,16 @@
   <xs:complexType name="insertarUsuarioResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerUsuarioxCodigo">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerUsuarioxCodigoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usuario" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarUsuario">

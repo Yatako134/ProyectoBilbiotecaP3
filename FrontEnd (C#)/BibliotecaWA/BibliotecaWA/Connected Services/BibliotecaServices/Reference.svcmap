@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="3faf3a48-f7bf-42a5-8b12-a24a9b3086f0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="e869901d-8d88-4890-adc3-bcc40e065874" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,29 +22,29 @@
     <MetadataSource Address="http://localhost:8080/BibliotecaWS/referencias.disco" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ConstribuyenteWS.wsdl" MetadataType="Wsdl" ID="fa28d946-0ea8-4c8f-a330-95fd221b7b03" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/ConstribuyenteWS?WSDL" />
-    <MetadataFile FileName="LibroWS.wsdl" MetadataType="Wsdl" ID="188b0718-04ea-4012-96e6-917b4401f5f0" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/LibroWS?WSDL" />
-    <MetadataFile FileName="UsuarioWS.xsd" MetadataType="Schema" ID="9bb87f83-484c-403b-b97e-3b9c01c453b6" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/UsuarioWS?xsd=1" />
-    <MetadataFile FileName="BibliotecaWS.wsdl" MetadataType="Wsdl" ID="05b089ae-d09e-4969-963a-623c3db9a936" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/BibliotecaWS?WSDL" />
-    <MetadataFile FileName="RolWS.wsdl" MetadataType="Wsdl" ID="a31bf882-a9af-44b4-8848-2bbdab48f72f" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/RolWS?WSDL" />
-    <MetadataFile FileName="BibliotecaWS.xsd" MetadataType="Schema" ID="ab3fe2c3-b6e2-4460-a807-d7db5789d6b0" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/BibliotecaWS?xsd=1" />
-    <MetadataFile FileName="TesisWS.xsd" MetadataType="Schema" ID="1b9d8cc4-e5c1-4150-b784-fd62153007d7" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/TesisWS?xsd=1" />
-    <MetadataFile FileName="EjemplarWS.wsdl" MetadataType="Wsdl" ID="dcddbab5-59f9-427b-9600-19fe77d2e308" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/EjemplarWS?WSDL" />
-    <MetadataFile FileName="RolWS.xsd" MetadataType="Schema" ID="4c2d1c63-a533-4305-b152-1656a5bac9d9" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/RolWS?xsd=1" />
-    <MetadataFile FileName="SancionWS.wsdl" MetadataType="Wsdl" ID="f6081444-081b-4a8c-8a1c-bd608c446c8e" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/SancionWS?WSDL" />
-    <MetadataFile FileName="MaterialWS.wsdl" MetadataType="Wsdl" ID="da60d1e3-87be-4787-94c0-1959aa208a58" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/MaterialWS?WSDL" />
-    <MetadataFile FileName="referencias.disco" MetadataType="Disco" ID="1eed184f-3992-40fc-b9d2-6e70dd93bbc8" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/referencias.disco" />
-    <MetadataFile FileName="ArticuloWS.xsd" MetadataType="Schema" ID="a05a6dc2-0080-42e3-88e8-eee70bfb3826" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/ArticuloWS?xsd=1" />
-    <MetadataFile FileName="SancionWS.xsd" MetadataType="Schema" ID="7a64725c-7155-47a7-9936-9d9273c2e337" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/SancionWS?xsd=1" />
-    <MetadataFile FileName="ConstribuyenteWS.xsd" MetadataType="Schema" ID="2f9ce746-9640-4282-9d24-e4e0ae621220" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/ConstribuyenteWS?xsd=1" />
-    <MetadataFile FileName="EjemplarWS.xsd" MetadataType="Schema" ID="7592488d-9936-47fe-a950-6eda2e0dfa51" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/EjemplarWS?xsd=1" />
-    <MetadataFile FileName="PrestamoWS.wsdl" MetadataType="Wsdl" ID="2999a928-c996-4af6-82df-d459474bca6f" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/PrestamoWS?WSDL" />
-    <MetadataFile FileName="MaterialWS.xsd" MetadataType="Schema" ID="5a498503-acbc-4bca-af05-73ca6177b31d" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/MaterialWS?xsd=1" />
-    <MetadataFile FileName="TesisWS.wsdl" MetadataType="Wsdl" ID="243412bc-bfef-4fe2-a0be-a8e691958b0f" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/TesisWS?WSDL" />
-    <MetadataFile FileName="LibroWS.xsd" MetadataType="Schema" ID="431a3196-452b-4695-b039-53209d701b07" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/LibroWS?xsd=1" />
-    <MetadataFile FileName="PrestamoWS.xsd" MetadataType="Schema" ID="97d1bbf6-75e2-42ba-8442-b8f57716d2a6" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/PrestamoWS?xsd=1" />
-    <MetadataFile FileName="ArticuloWS.wsdl" MetadataType="Wsdl" ID="3901685c-3470-49b7-b10c-e722224d9ab4" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/ArticuloWS?WSDL" />
-    <MetadataFile FileName="UsuarioWS.wsdl" MetadataType="Wsdl" ID="94bfbf34-2f65-4004-95f0-1f40182f3f08" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/UsuarioWS?WSDL" />
+    <MetadataFile FileName="ConstribuyenteWS.wsdl" MetadataType="Wsdl" ID="8f87c4af-7766-4118-8655-2f7f47dc07ae" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/ConstribuyenteWS?WSDL" />
+    <MetadataFile FileName="LibroWS.wsdl" MetadataType="Wsdl" ID="efffa5d8-5fef-4c47-a3b7-04c702a5ec19" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/LibroWS?WSDL" />
+    <MetadataFile FileName="UsuarioWS.xsd" MetadataType="Schema" ID="b6de0dee-3111-4b5f-afb4-bd4295f744e7" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/UsuarioWS?xsd=1" />
+    <MetadataFile FileName="BibliotecaWS.wsdl" MetadataType="Wsdl" ID="94c63d8c-96d9-41ff-b445-2127bd806d13" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/BibliotecaWS?WSDL" />
+    <MetadataFile FileName="RolWS.wsdl" MetadataType="Wsdl" ID="f2acd9b8-aedb-4f58-a827-5fc9da73f7bc" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/RolWS?WSDL" />
+    <MetadataFile FileName="BibliotecaWS.xsd" MetadataType="Schema" ID="0f446a28-6343-482a-a785-ad29f32bcb0d" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/BibliotecaWS?xsd=1" />
+    <MetadataFile FileName="TesisWS.xsd" MetadataType="Schema" ID="446f2c18-4e0f-4581-84bb-1e374095e204" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/TesisWS?xsd=1" />
+    <MetadataFile FileName="EjemplarWS.wsdl" MetadataType="Wsdl" ID="040b6074-d187-46c7-a50e-c0118c9c0f41" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/EjemplarWS?WSDL" />
+    <MetadataFile FileName="RolWS.xsd" MetadataType="Schema" ID="3a2c1ec8-89a2-40e7-bf90-d300ccb81624" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/RolWS?xsd=1" />
+    <MetadataFile FileName="SancionWS.wsdl" MetadataType="Wsdl" ID="2486b238-df72-40fa-bdfd-211721e881a4" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/SancionWS?WSDL" />
+    <MetadataFile FileName="MaterialWS.wsdl" MetadataType="Wsdl" ID="1227147c-e68b-4fac-a8c7-6a46bbf16a86" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/MaterialWS?WSDL" />
+    <MetadataFile FileName="referencias.disco" MetadataType="Disco" ID="3d990e1f-c727-41fb-91d6-cad615880259" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/referencias.disco" />
+    <MetadataFile FileName="ArticuloWS.xsd" MetadataType="Schema" ID="ff43e25a-a088-4c1d-b3b8-902c4cd7dfc4" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/ArticuloWS?xsd=1" />
+    <MetadataFile FileName="SancionWS.xsd" MetadataType="Schema" ID="556125c0-39ff-42ab-96a7-90ebd3d21bdf" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/SancionWS?xsd=1" />
+    <MetadataFile FileName="ConstribuyenteWS.xsd" MetadataType="Schema" ID="2d76a547-b454-4ae5-b8ba-5137e319b35f" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/ConstribuyenteWS?xsd=1" />
+    <MetadataFile FileName="EjemplarWS.xsd" MetadataType="Schema" ID="ce34e456-72f8-4b40-bf1e-3383bb868c80" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/EjemplarWS?xsd=1" />
+    <MetadataFile FileName="PrestamoWS.wsdl" MetadataType="Wsdl" ID="9d02fa1e-5bcb-485d-893d-03b7faab8c7d" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/PrestamoWS?WSDL" />
+    <MetadataFile FileName="MaterialWS.xsd" MetadataType="Schema" ID="62c90596-6aba-4009-a026-de17661e1655" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/MaterialWS?xsd=1" />
+    <MetadataFile FileName="TesisWS.wsdl" MetadataType="Wsdl" ID="279d87a2-771c-4691-919a-7cd23ff0cb8d" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/TesisWS?WSDL" />
+    <MetadataFile FileName="LibroWS.xsd" MetadataType="Schema" ID="9e9bc77f-6ddd-406f-94e8-993df77e37ca" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/LibroWS?xsd=1" />
+    <MetadataFile FileName="PrestamoWS.xsd" MetadataType="Schema" ID="80a6be0a-8d89-4279-bcea-f285670849bb" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/PrestamoWS?xsd=1" />
+    <MetadataFile FileName="ArticuloWS.wsdl" MetadataType="Wsdl" ID="d66ea087-cddc-4aec-9ce8-9ef2ee8f67f8" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/ArticuloWS?WSDL" />
+    <MetadataFile FileName="UsuarioWS.wsdl" MetadataType="Wsdl" ID="9f0a3df3-4914-4b2f-b12a-6e77257f9cc4" SourceId="1" SourceUrl="http://localhost:8080/BibliotecaWS/UsuarioWS?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package biblioteca.gestionMaterial.boImpl;
 
 import biblioteca.gestionMaterial.bo.MaterialBiblioBO;
@@ -13,10 +10,6 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.Editorial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 
-/**
- *
- * @author renat
- */
 public class MaterialBiblioBOImpl implements MaterialBiblioBO{
     MaterialBiblioDAO matDao;
     public MaterialBiblioBOImpl(){
@@ -46,22 +39,22 @@ public class MaterialBiblioBOImpl implements MaterialBiblioBO{
     }
     @Override
     public int insertar(MaterialBibliografico objeto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return matDao.insertar(objeto);
     }
 
     @Override
     public int modificar(MaterialBibliografico objeto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return matDao.modificar(objeto);
     }
 
     @Override
     public int eliminar(int idObjeto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return matDao.eliminar(idObjeto);
     }
 
     @Override
     public MaterialBibliografico obtenerPorId(int idObjeto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return matDao.obtenerPorId(idObjeto);
     }
 
     @Override

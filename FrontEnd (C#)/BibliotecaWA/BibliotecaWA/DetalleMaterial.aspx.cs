@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 namespace BibliotecaWA
 {
     public partial class DetalleMaterial : System.Web.UI.Page
@@ -60,7 +59,7 @@ namespace BibliotecaWA
                 txtTipoMaterial.Text = materialBibliografico.tipo.ToString();
                 TextNroPaginas.Text = materialBibliografico.numero_paginas.ToString();
 
-                this.DataBind();
+             
 
 
                 switch (materialBibliografico.tipo.ToString().ToUpper())
@@ -314,7 +313,7 @@ namespace BibliotecaWA
             //}
 
             // 5️⃣ Vincular la lista al Repeater para mostrarla en la interfaz
-            rptBibliotecas.DataSource = listaBibliotecas;
+            rptBibliotecas.DataSource = listaBibliotecasFinal;
             rptBibliotecas.DataBind();
 
         }

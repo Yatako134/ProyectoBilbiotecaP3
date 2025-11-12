@@ -6,31 +6,25 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BibliotecaWA.BibliotecaServices;
-using SoftProgBusiness.GestMaterial.BO;
-using SoftProgBusiness.GestMaterial.BOI;
-using SoftProgBusiness.GestUsuarios.BO;
-using SoftProgBusiness.GestUsuarios.BOI;
-using SoftProgModel.GestMaterial;
-using SoftProgModel.GestUsuarios;
 
 namespace BibliotecaWA
 {
     public partial class Prestamo : System.Web.UI.Page
     {
-		 private UsuarioWSClient usuarioBO;
-        private ProyectoP3.BibliotecaServices.usuario1 usuario;
+        private UsuarioWSClient usuarioBO;
+        private BibliotecaWA.BibliotecaServices.usuario1 usuario;
         //private Biblioteca biblioteca;
         //private Libro libro;
         //private ILibroBO libroBO;
         private BibliotecaWSClient ibbo;
         private biblioteca biblioteca;
         private materialBibliografico materialBiblio;
-        private MaterialBibliograficoWSClient materialBiblioBO;
+        private MaterialWSClient materialBiblioBO;
         private PrestamoWSClient prestamobo;
         protected void Page_Load(object sender, EventArgs e)
         {
-			usuarioBO = new UsuarioWSClient();
-            materialBiblioBO = new MaterialBibliograficoWSClient();
+            usuarioBO = new UsuarioWSClient();
+            materialBiblioBO = new MaterialWSClient();
             if (!IsPostBack)
             {
                 txtFechaPrestamo.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm ");
@@ -41,8 +35,8 @@ namespace BibliotecaWA
                 //lblAutor.Text = libro.;
                 lblAnio.Text = materialBiblio.anho_publicacion.ToString();
                 lblTema.InnerText = materialBiblio.clasificacion_tematica;
-                lblEstado.InnerText= materialBiblio.estado.ToString();   
-                lblTipo.InnerText= materialBiblio.tipo.ToString();    
+                lblEstado.InnerText = materialBiblio.estado.ToString();
+                lblTipo.InnerText = materialBiblio.tipo.ToString();
                 BindingList<contribuyente> c = new BindingList<contribuyente>();
                 c = (BindingList<contribuyente>)Session["contribuyentes"];
 
@@ -50,8 +44,10 @@ namespace BibliotecaWA
                 lblBiblioteca.Text = biblioteca.nombre;
                 cargarDatosBiblioteca();
             }
+            
         }
-		private void cargarDatosBiblioteca()
+
+        private void cargarDatosBiblioteca()
         {
             materialBibliografico m = (materialBibliografico)Session["material"];
             biblioteca b = (biblioteca)Session["biblioteca"];
@@ -71,10 +67,11 @@ namespace BibliotecaWA
                 lblEstadoEjemplar.InnerHtml = "Prestado";
                 lblEstadoEjemplar.Attributes["class"] = "badge rounded-pill bg-danger px-3 py-2";
             }
-           // lblEstadoEjemplar.InnerText = e[0].Estado.ToString();   
+            // lblEstadoEjemplar.InnerText = e[0].Estado.ToString();   
 
 
         }
+
         public string GetEstadoCss(string estado)
         {
             switch (estado)
@@ -111,7 +108,7 @@ namespace BibliotecaWA
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertaLimite", script, true);
                 return;
             }
-            string nombreUsuario = usuario.nombre.ToString()+" "+usuario.primer_apellido.ToString()+" "+usuario.segundo_apellido.ToString();
+            string nombreUsuario = usuario.nombre.ToString() + " " + usuario.primer_apellido.ToString() + " " + usuario.segundo_apellido.ToString();
 
             // Validar que haya ejemplar disponible
             m = (materialBibliografico)Session["material"];
@@ -127,6 +124,7 @@ namespace BibliotecaWA
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalConfirmacion", script, true);
 
         }
+
         protected void btnConfirmarPrestamo_Click(object sender, EventArgs e)
         {
             // Crear objeto préstamo
@@ -138,7 +136,7 @@ namespace BibliotecaWA
 
             usuario1 usuarioSesion = (usuario1)Session["usuario"];
 
-            ProyectoP3.BibliotecaServices.usuario usuarioPrestamo = new ProyectoP3.BibliotecaServices.usuario();
+            BibliotecaWA.BibliotecaServices.usuario usuarioPrestamo = new BibliotecaWA.BibliotecaServices.usuario();
             usuarioPrestamo.id_usuario = usuarioSesion.id_usuario;
             p.usuario = usuarioPrestamo;
 
@@ -156,8 +154,6 @@ namespace BibliotecaWA
             string script = $"mostrarModalPrestamoExitoso('{codigoPrestamo:D5}');";
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", script, true);
         }
-
-
         protected void btnContinuar_Click(object sender, EventArgs e)
         {
 
@@ -182,7 +178,7 @@ namespace BibliotecaWA
             txtTipoUsuario.Text = usuario.rol_usuario.tipo;
             txtLimiteDias.Text = usuario.rol_usuario.cantidad_de_dias_por_prestamo.ToString();
             txtLimitePrestamo.Text = usuario.rol_usuario.limite_prestamo.ToString();
-            txtPrestamosVigentes.Text=usuarioBO.obtener_prestamos_vigentesxUsuario(usuario.id_usuario).ToString();
+            txtPrestamosVigentes.Text = usuarioBO.obtener_prestamos_vigentesxUsuario(usuario.id_usuario).ToString();
             int dias = usuario.rol_usuario.cantidad_de_dias_por_prestamo;
             DateTime fechaPrestamo = DateTime.Now;
             DateTime fechaVencimiento = fechaPrestamo.AddDays(dias);

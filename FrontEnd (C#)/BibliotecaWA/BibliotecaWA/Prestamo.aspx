@@ -96,6 +96,7 @@
                         <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" ReadOnly="true" Enabled="false"></asp:TextBox>
                     </div>
                 </div>
+
                 <!-- FILA 2: Tipo usuario + Límite días + Fecha préstamo -->
                 <div class="row mb-3">
                     <div class="col-md-6 d-flex align-items-center">
@@ -106,7 +107,7 @@
                     </div>
                     <div class="col-md-6 d-flex align-items-center">
                         <asp:Label runat="server" Text="Préstamos vigentes" CssClass="form-label m-2"
-                            Style="white-space: nowrap;"></asp:Label>
+                           Style="white-space: nowrap;" ></asp:Label>
                         <asp:TextBox ID="txtPrestamosVigentes" runat="server" CssClass="form-control"
                             Style="white-space: nowrap;"></asp:TextBox>
                     </div>
@@ -121,8 +122,8 @@
                     <div class="col-md-6 d-flex align-items-center">
                         <asp:Label runat="server" Text="Límite de préstamos" CssClass="form-label me-2 "
                             Style="white-space: nowrap;"></asp:Label>
-                        <asp:TextBox ID="txtLimitePrestamo" runat="server" CssClass="form-control"
-                            ReadOnly="true" Style="white-space: nowrap;"></asp:TextBox>
+                        <asp:TextBox ID="txtLimitePrestamo" runat="server" CssClass="form-control" 
+                            ReadOnly="true" Style="white-space: nowrap;" ></asp:TextBox>
                     </div>
                 </div>
 
@@ -132,7 +133,7 @@
                     <div class="col-md-6 d-flex align-items-center">
                         <asp:Label runat="server" Text="Fecha de préstamo" CssClass="form-label me-2"
                             Style="white-space: nowrap;"></asp:Label>
-                        <asp:TextBox ID="txtFechaPrestamo" runat="server" CssClass="form-control"
+                        <asp:TextBox ID="txtFechaPrestamo" runat="server" CssClass="form-control" 
                             ReadOnly="true" Style="white-space: nowrap;"></asp:TextBox>
                     </div>
                 </div>
@@ -141,19 +142,19 @@
                         <asp:Label runat="server" Text="Fecha de vencimiento" CssClass="form-label me-2"
                             Style="white-space: nowrap;"></asp:Label>
                         <asp:TextBox ID="txtFechaVencimiento" runat="server" CssClass="form-control me-3"
-                            ReadOnly="true" Style="width: 180px; display: inline-block;"></asp:TextBox>
-
+                            ReadOnly="true" Style="width:180px; display:inline-block;"></asp:TextBox>
+                        
                         <span class="text-danger small ms-2" style="white-space: nowrap;">
                             <i class="fa-solid fa-circle-exclamation me-1"></i>
                             Si no se devuelve a tiempo, se aplicará la sanción correspondiente.
                         </span>
                     </div>
-
+                    
                     <!-- ALERTA 
-                            <div class="alert alert-danger small mb-3">
-                                <i class="fa-solid fa-circle-exclamation"></i>
-                                Si no se devuelve a tiempo, se aplicará la sanción correspondiente.
-                            </div>-->
+                    <div class="alert alert-danger small mb-3">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        Si no se devuelve a tiempo, se aplicará la sanción correspondiente.
+                    </div>-->
                 </div>
 
 
@@ -184,6 +185,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Modal genérico de alerta -->
         <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">

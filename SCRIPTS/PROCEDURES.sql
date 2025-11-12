@@ -1158,3 +1158,17 @@ BEGIN
         (m.estado = 'DISPONIBLE') DESC,
         m.titulo ASC;
 END $$
+
+DELIMITER $$
+
+CREATE PROCEDURE SP_CONTAR_PRESTAMOS_VIGENTES_POR_USUARIO (
+    IN _id_usuario INT
+)
+BEGIN
+    SELECT COUNT(*) AS cantidad_prestamos_vigentes
+    FROM Prestamo p
+    WHERE p.id_usuario = _id_usuario
+      AND p.estado = 'VIGENTE';
+END $$
+
+DELIMITER ;
