@@ -69,85 +69,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdministrarUsuarios.aspx" />
+    <Content Include="BusquedaMaterialas.aspx" />
     <None Include="Connected Services\BibliotecaServices\ArticuloWS.wsdl" />
     <None Include="Connected Services\BibliotecaServices\ArticuloWS.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="AdministrarUsuarios.aspx" />
-    <Content Include="BusquedaMaterialas.aspx" />
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.biblioteca.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.BusquedaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.eliminarRolResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.eliminarUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.insertarRolResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.insertarUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarRolesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.ListarTodasResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.ListarTodosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarUsuariosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.materialBibliografico.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.modificarRolResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.modificarUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.rol.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.BusquedaAvanzadaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarPrestamosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarSancionesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.prestamo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.sancion.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.usuario1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.articulo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.biblioteca.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.buscarContribuyentesResponse.datasource">
@@ -157,6 +88,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.buscarEjemplaresResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.BusquedaAvanzadaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.BusquedaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.contribuyente.datasource">
@@ -183,7 +120,16 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.eliminarLibroResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.eliminarPrestamoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.eliminarRolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.eliminarTesisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.eliminarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.insertarArticuloResponse.datasource">
@@ -201,7 +147,16 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.insertarLibroResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.insertarPrestamoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.insertarRolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.insertarTesisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.insertarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.libro.datasource">
@@ -219,7 +174,34 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarLibrosTodosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarPrestamosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarRolesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarSancionesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarTesisTodosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.ListarTodasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.ListarTodosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarUsuariosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.materialBibliografico.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.modificarArticuloResponse.datasource">
@@ -237,7 +219,16 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.modificarLibroResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.modificarPrestamoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.modificarRolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.modificarTesisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.modificarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdResponse.datasource">
@@ -261,10 +252,37 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtenerPorIdResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtenerTesisPorIdResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtenerUsuarioxCodigoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.prestamo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.rol.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.sancion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.tesis.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.usuario1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">
@@ -348,6 +366,7 @@
     <Content Include="Images\file.png" />
     <Content Include="Images\logo2.png" />
     <Content Include="Images\tesis.png" />
+    <Content Include="Prestamo.aspx" />
     <Content Include="Scripts\activarMenu.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -375,6 +394,7 @@
     <Content Include="Fonts\webfonts\fa-thin-100.woff2" />
     <Content Include="Fonts\webfonts\fa-v4compatibility.ttf" />
     <Content Include="Fonts\webfonts\fa-v4compatibility.woff2" />
+    <Content Include="Home.Master" />
     <None Include="Connected Services\BibliotecaServices\BibliotecaWS.wsdl" />
     <None Include="Connected Services\BibliotecaServices\BibliotecaWS.xsd">
       <SubType>Designer</SubType>
@@ -399,7 +419,6 @@
     <None Include="Connected Services\BibliotecaServices\UsuarioWS.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Home.Master" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -454,6 +473,13 @@
     </Compile>
     <Compile Include="Home.Master.designer.cs">
       <DependentUpon>Home.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Prestamo.aspx.cs">
+      <DependentUpon>Prestamo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Prestamo.aspx.designer.cs">
+      <DependentUpon>Prestamo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

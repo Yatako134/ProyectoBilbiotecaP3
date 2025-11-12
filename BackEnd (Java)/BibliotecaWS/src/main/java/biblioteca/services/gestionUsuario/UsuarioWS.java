@@ -41,4 +41,14 @@ public class UsuarioWS {
     public ArrayList<Usuario> listarUsuarios() throws Exception {
         return usuarioBO.listarTodos();
     }
+    
+    @WebMethod(operationName = "obtenerUsuarioxCodigo")
+    public Usuario obtenerUsuarioxCodigo(int codigo) throws Exception {
+        return usuarioBO.obtenerUsuarioxCodigo(codigo);
+    }
+    
+    @WebMethod(operationName = "obtener_prestamos_vigentesxUsuario")
+    public int obtener_prestamos_vigentesxUsuario(int codigo) throws Exception {
+        return usuarioBO.prestamos_vigentesxUsuario(codigo);
+    }
 }
