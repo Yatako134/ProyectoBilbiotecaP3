@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gestionMaterial.services.biblioteca/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="MaterialWS" targetNamespace="http://gestionMaterial.services.biblioteca/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/MaterialWS?xsd=1" namespace="http://gestionMaterial.services.biblioteca/" />
+    </xsd:schema>
+  </types>
+  <message name="obtenerEjemplaresDisponibles">
+    <part name="parameters" element="tns:obtenerEjemplaresDisponibles" />
+  </message>
+  <message name="obtenerEjemplaresDisponiblesResponse">
+    <part name="parameters" element="tns:obtenerEjemplaresDisponiblesResponse" />
+  </message>
+  <message name="obtenerPorId">
+    <part name="parameters" element="tns:obtenerPorId" />
+  </message>
+  <message name="obtenerPorIdResponse">
+    <part name="parameters" element="tns:obtenerPorIdResponse" />
+  </message>
+  <message name="ListarTodos">
+    <part name="parameters" element="tns:ListarTodos" />
+  </message>
+  <message name="ListarTodosResponse">
+    <part name="parameters" element="tns:ListarTodosResponse" />
+  </message>
+  <message name="buscarEjemplares">
+    <part name="parameters" element="tns:buscarEjemplares" />
+  </message>
+  <message name="buscarEjemplaresResponse">
+    <part name="parameters" element="tns:buscarEjemplaresResponse" />
+  </message>
+  <message name="Busqueda">
+    <part name="parameters" element="tns:Busqueda" />
+  </message>
+  <message name="BusquedaResponse">
+    <part name="parameters" element="tns:BusquedaResponse" />
+  </message>
+  <message name="buscarEditoriales">
+    <part name="parameters" element="tns:buscarEditoriales" />
+  </message>
+  <message name="buscarEditorialesResponse">
+    <part name="parameters" element="tns:buscarEditorialesResponse" />
+  </message>
+  <message name="buscarContribuyentes">
+    <part name="parameters" element="tns:buscarContribuyentes" />
+  </message>
+  <message name="buscarContribuyentesResponse">
+    <part name="parameters" element="tns:buscarContribuyentesResponse" />
+  </message>
+  <portType name="MaterialWS">
+    <operation name="obtenerEjemplaresDisponibles">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/obtenerEjemplaresDisponiblesRequest" message="tns:obtenerEjemplaresDisponibles" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/obtenerEjemplaresDisponiblesResponse" message="tns:obtenerEjemplaresDisponiblesResponse" />
+    </operation>
+    <operation name="obtenerPorId">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/obtenerPorIdRequest" message="tns:obtenerPorId" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/obtenerPorIdResponse" message="tns:obtenerPorIdResponse" />
+    </operation>
+    <operation name="ListarTodos">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/ListarTodosRequest" message="tns:ListarTodos" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/ListarTodosResponse" message="tns:ListarTodosResponse" />
+    </operation>
+    <operation name="buscarEjemplares">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarEjemplaresRequest" message="tns:buscarEjemplares" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarEjemplaresResponse" message="tns:buscarEjemplaresResponse" />
+    </operation>
+    <operation name="Busqueda">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/BusquedaRequest" message="tns:Busqueda" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/BusquedaResponse" message="tns:BusquedaResponse" />
+    </operation>
+    <operation name="buscarEditoriales">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarEditorialesRequest" message="tns:buscarEditoriales" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarEditorialesResponse" message="tns:buscarEditorialesResponse" />
+    </operation>
+    <operation name="buscarContribuyentes">
+      <input wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarContribuyentesRequest" message="tns:buscarContribuyentes" />
+      <output wsam:Action="http://gestionMaterial.services.biblioteca/MaterialWS/buscarContribuyentesResponse" message="tns:buscarContribuyentesResponse" />
+    </operation>
+  </portType>
+  <binding name="MaterialWSPortBinding" type="tns:MaterialWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="obtenerEjemplaresDisponibles">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ListarTodos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarEjemplares">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Busqueda">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarEditoriales">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarContribuyentes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="MaterialWS">
+    <port name="MaterialWSPort" binding="tns:MaterialWSPortBinding">
+      <soap:address location="http://localhost:8080/BibliotecaWS/MaterialWS" />
+    </port>
+  </service>
+</definitions>

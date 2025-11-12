@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://gestionMaterial.services.biblioteca/" targetNamespace="http://gestionMaterial.services.biblioteca/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="eliminarLibro" type="tns:eliminarLibro" />
+  <xs:element name="eliminarLibroResponse" type="tns:eliminarLibroResponse" />
+  <xs:element name="insertarLibro" type="tns:insertarLibro" />
+  <xs:element name="insertarLibroResponse" type="tns:insertarLibroResponse" />
+  <xs:element name="listarLibrosTodos" type="tns:listarLibrosTodos" />
+  <xs:element name="listarLibrosTodosResponse" type="tns:listarLibrosTodosResponse" />
+  <xs:element name="modificarLibro" type="tns:modificarLibro" />
+  <xs:element name="modificarLibroResponse" type="tns:modificarLibroResponse" />
+  <xs:element name="obtenerLibroPorId" type="tns:obtenerLibroPorId" />
+  <xs:element name="obtenerLibroPorIdResponse" type="tns:obtenerLibroPorIdResponse" />
+  <xs:complexType name="listarLibrosTodos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarLibrosTodosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:libro" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="libro">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:materialBibliografico">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="edicion" type="xs:string" />
+          <xs:element minOccurs="0" name="ISBN" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="materialBibliografico">
+    <xs:sequence>
+      <xs:element name="activo" type="xs:boolean" />
+      <xs:element name="anho_publicacion" type="xs:int" />
+      <xs:element minOccurs="0" name="autoresTexto" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="bibliotecas" nillable="true" type="tns:biblioteca" />
+      <xs:element minOccurs="0" name="bibliotecasTexto" type="xs:string" />
+      <xs:element name="cantidadDisponible" type="xs:int" />
+      <xs:element minOccurs="0" name="clasificacion_tematica" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="contribuyentes" nillable="true" type="tns:contribuyente" />
+      <xs:element minOccurs="0" name="editorial" type="tns:editorial" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ejemplares" nillable="true" type="tns:ejemplar" />
+      <xs:element minOccurs="0" name="estado" type="tns:estadoMaterial" />
+      <xs:element name="idMaterial" type="xs:int" />
+      <xs:element minOccurs="0" name="idioma" type="xs:string" />
+      <xs:element name="numero_paginas" type="xs:int" />
+      <xs:element minOccurs="0" name="tipo" type="tns:tipoMaterial" />
+      <xs:element minOccurs="0" name="titulo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="biblioteca">
+    <xs:sequence>
+      <xs:element name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ejemplares" nillable="true" type="tns:ejemplar" />
+      <xs:element name="idBiblioteca" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ejemplar">
+    <xs:sequence>
+      <xs:element name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="blibioteca" type="tns:biblioteca" />
+      <xs:element minOccurs="0" name="estado" type="tns:estadoEjemplar" />
+      <xs:element name="idEjemplar" type="xs:int" />
+      <xs:element name="id_material" type="xs:int" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="contribuyente">
+    <xs:sequence>
+      <xs:element name="idContribuyente" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="primer_apellido" type="xs:string" />
+      <xs:element minOccurs="0" name="segundo_apellido" type="xs:string" />
+      <xs:element minOccurs="0" name="seudonimo" type="xs:string" />
+      <xs:element minOccurs="0" name="tipo_contribuyente" type="tns:tipoContribuyente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="editorial">
+    <xs:sequence>
+      <xs:element name="idEditorial" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarLibro">
+    <xs:sequence>
+      <xs:element name="idLibro" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarLibroResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarLibro">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="libro" type="tns:libro" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarLibroResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarLibro">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="libro" type="tns:libro" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarLibroResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerLibroPorId">
+    <xs:sequence>
+      <xs:element name="idLibro" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerLibroPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:libro" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="estadoEjemplar">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DISPONIBLE" />
+      <xs:enumeration value="PRESTADO" />
+      <xs:enumeration value="EN_REPARACION" />
+      <xs:enumeration value="NO_DISPONIBLE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoContribuyente">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AUTOR" />
+      <xs:enumeration value="EDITOR" />
+      <xs:enumeration value="ILUSTRADOR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="estadoMaterial">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DISPONIBLE" />
+      <xs:enumeration value="NO_DISPONIBLE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoMaterial">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LIBRO" />
+      <xs:enumeration value="TESIS" />
+      <xs:enumeration value="ARTICULO" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
