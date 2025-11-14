@@ -283,9 +283,6 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.tesis.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.usuario1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -296,6 +293,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.verificarCuentaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.usuario.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">

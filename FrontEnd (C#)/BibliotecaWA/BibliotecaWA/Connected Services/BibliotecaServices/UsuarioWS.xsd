@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://gestionUsuario.services.biblioteca/" targetNamespace="http://gestionUsuario.services.biblioteca/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="pe.edu.pucp.utilsarmy.services" targetNamespace="pe.edu.pucp.utilsarmy.services" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="Exception" type="tns:Exception" />
   <xs:element name="eliminarUsuario" type="tns:eliminarUsuario" />
   <xs:element name="eliminarUsuarioResponse" type="tns:eliminarUsuarioResponse" />

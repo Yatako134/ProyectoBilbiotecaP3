@@ -8,7 +8,7 @@ import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Tesis;
 
-@WebService(serviceName = "TesisWS")
+@WebService(serviceName = "TesisWS", targetNamespace = "pe.edu.pucp.utilsarmy.services")
 public class TesisWS {
 
     public TesisWS() {

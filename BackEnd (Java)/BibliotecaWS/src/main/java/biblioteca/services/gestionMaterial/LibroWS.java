@@ -8,7 +8,7 @@ import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Libro;
 
-@WebService(serviceName = "LibroWS")
+@WebService(serviceName = "LibroWS", targetNamespace = "pe.edu.pucp.utilsarmy.services")
 public class LibroWS {
     private LibroBOImpl librobo;
     public LibroWS() {

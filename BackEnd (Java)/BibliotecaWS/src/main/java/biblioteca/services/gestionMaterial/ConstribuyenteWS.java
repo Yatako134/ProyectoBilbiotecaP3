@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Contribuyente;
 
 
-@WebService(serviceName = "ConstribuyenteWS")
+@WebService(serviceName = "ConstribuyenteWS", targetNamespace = "pe.edu.pucp.utilsarmy.services")
 public class ConstribuyenteWS {
 
     private ContribuyenteBOImpl contribuyentebo;

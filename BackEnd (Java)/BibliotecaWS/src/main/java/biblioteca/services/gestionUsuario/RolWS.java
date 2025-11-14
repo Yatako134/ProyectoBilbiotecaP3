@@ -9,7 +9,7 @@ import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.usuarios.model.Rol;
 
-@WebService(serviceName = "RolWS")
+@WebService(serviceName = "RolWS", targetNamespace = "pe.edu.pucp.utilsarmy.services")
 public class RolWS {
     private RolBOImpl rolboimpl;
 

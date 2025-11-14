@@ -13,7 +13,7 @@ namespace BibliotecaWA
     {
         private UsuarioWSClient bousuario = new UsuarioWSClient();
         private RolWSClient borol = new RolWSClient();
-        private usuario1 usuarioActual;
+        private usuario usuarioActual;
         private string modo;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,9 +32,9 @@ namespace BibliotecaWA
 
                 if (modo == "registrar")
                 {
-                    lblTitulo.Text = "Registro de nuevo usuario1";
-                    btnAccion.Text = "Agregar usuario1";
-                    LblGuia.Text = "Registro de usuario1";
+                    lblTitulo.Text = "Registro de nuevo usuario";
+                    btnAccion.Text = "Agregar usuario";
+                    LblGuia.Text = "Registro de usuario";
                     PrepararRegistro();
 
                     // Boton llama al modal
@@ -58,15 +58,15 @@ namespace BibliotecaWA
 
                     if (modo == "ver")
                     {
-                        lblTitulo.Text = "Detalle de usuario1";
-                        LblGuia.Text = "Detalle de usuario1";
+                        lblTitulo.Text = "Detalle de usuario";
+                        LblGuia.Text = "Detalle de usuario";
                         btnAccion.Visible = false;
                         HabilitarSoloLectura();
                     }
                     else if (modo == "editar")
                     {
-                        lblTitulo.Text = "Modificación del usuario1";
-                        LblGuia.Text = "Modificación de usuario1";
+                        lblTitulo.Text = "Modificación del usuario";
+                        LblGuia.Text = "Modificación de usuario";
                         btnAccion.Text = "Guardar Cambios";
                         HabilitarEdicion();
 
@@ -79,9 +79,9 @@ namespace BibliotecaWA
             }
             else
             {
-                //  Recuperamos el modo y usuario1 en postbacks
+                //  Recuperamos el modo y usuario en postbacks
                 modo = Session["modoUsuario"]?.ToString() ?? "ver";
-                usuarioActual = Session["usuarioActual"] as usuario1;
+                usuarioActual = Session["usuarioActual"] as usuario;
             }
         }
 
@@ -144,7 +144,7 @@ namespace BibliotecaWA
 
             if (modo == "registrar")
             {
-                usuario1 nuevo = new usuario1
+                usuario nuevo = new usuario
                 {
                     codigo = int.Parse(txtCodigo.Text),
                     DOI = txtDNI.Text,

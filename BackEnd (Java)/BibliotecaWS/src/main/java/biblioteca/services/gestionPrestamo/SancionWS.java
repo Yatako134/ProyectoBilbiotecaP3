@@ -8,7 +8,7 @@ import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Sancion;
 
-@WebService(serviceName = "SancionWS")
+@WebService(serviceName = "SancionWS", targetNamespace = "pe.edu.pucp.utilsarmy.services")
 public class SancionWS {
     
     private SancionBOImpl sancionboimpl;

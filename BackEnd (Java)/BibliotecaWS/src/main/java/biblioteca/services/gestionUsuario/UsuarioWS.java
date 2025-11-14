@@ -8,7 +8,7 @@ import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.usuarios.model.Usuario;
 
-@WebService(serviceName = "UsuarioWS")
+@WebService(serviceName = "UsuarioWS", targetNamespace = "pe.edu.pucp.utilsarmy.services")
 public class UsuarioWS {
 
     private UsuarioBOImpl usuarioBO;

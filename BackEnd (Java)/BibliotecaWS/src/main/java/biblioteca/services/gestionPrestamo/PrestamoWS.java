@@ -8,7 +8,7 @@ import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Prestamo;
 
-@WebService(serviceName = "PrestamoWS")
+@WebService(serviceName = "PrestamoWS", targetNamespace = "pe.edu.pucp.utilsarmy.services")
 public class PrestamoWS {
     
     private PrestamoBOImpl prestamoboimpl;

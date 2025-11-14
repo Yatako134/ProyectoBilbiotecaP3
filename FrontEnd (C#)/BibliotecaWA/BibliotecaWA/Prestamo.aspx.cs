@@ -12,7 +12,7 @@ namespace BibliotecaWA
     public partial class Prestamo : System.Web.UI.Page
     {
         private UsuarioWSClient usuarioBO;
-        private BibliotecaWA.BibliotecaServices.usuario1 usuario;
+        private BibliotecaWA.BibliotecaServices.usuario usuario;
         //private Biblioteca biblioteca;
         //private Libro libro;
         //private ILibroBO libroBO;
@@ -89,7 +89,7 @@ namespace BibliotecaWA
             string tituloMaterial = m.titulo;
             string script;
 
-            usuario1 usuario = (usuario1)Session["usuario"];
+            usuario usuario = (usuario)Session["usuario"];
             // Validar que haya usuario seleccionado
             if (Session["usuario"] == null)
             {
@@ -98,7 +98,7 @@ namespace BibliotecaWA
                 return;
             }
             // Recuperar usuario y validar límites
-            usuario = (usuario1)Session["usuario"];
+            usuario = (usuario)Session["usuario"];
             int prestamosVigentes = usuarioBO.obtener_prestamos_vigentesxUsuario(usuario.id_usuario);
             int limitePrestamos = usuario.rol_usuario.limite_prestamo;
 
@@ -134,7 +134,7 @@ namespace BibliotecaWA
             m = (materialBibliografico)Session["material"];
             biblioteca b = (biblioteca)Session["biblioteca"];
 
-            usuario1 usuarioSesion = (usuario1)Session["usuario"];
+            usuario usuarioSesion = (usuario)Session["usuario"];
 
             BibliotecaWA.BibliotecaServices.usuario usuarioPrestamo = new BibliotecaWA.BibliotecaServices.usuario();
             usuarioPrestamo.id_usuario = usuarioSesion.id_usuario;
@@ -142,7 +142,7 @@ namespace BibliotecaWA
 
 
             ejemplar[] ej = materialBiblioBO.obtenerEjemplaresDisponibles(m.idMaterial, b.idBiblioteca);
-            ejemplar1 ejemplar = new ejemplar1();
+            ejemplar ejemplar = new ejemplar();
             ejemplar.idEjemplar = ej[0].idEjemplar;
             p.ejemplar = ejemplar;
 

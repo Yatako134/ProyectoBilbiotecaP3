@@ -6,7 +6,7 @@ import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Articulo;
-@WebService(serviceName = "ArticuloWS")
+@WebService(serviceName = "ArticuloWS", targetNamespace = "pe.edu.pucp.utilsarmy.services")
 public class ArticuloWS {
 
     public ArticuloWS() {

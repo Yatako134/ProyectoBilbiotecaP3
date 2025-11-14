@@ -11,7 +11,7 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.Editorial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 
-@WebService(serviceName = "MaterialWS")
+@WebService(serviceName = "MaterialWS", targetNamespace = "pe.edu.pucp.utilsarmy.services")
 public class MaterialWS {
 
     MaterialBiblioBOImpl materialBO;

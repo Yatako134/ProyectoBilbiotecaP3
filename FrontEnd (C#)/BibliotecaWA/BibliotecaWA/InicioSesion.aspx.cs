@@ -29,7 +29,7 @@ namespace BibliotecaWA
             lblMensaje.Text = "";
 
             // Crear objeto para usuario
-            usuario1 us = new usuario1();
+            usuario us = new usuario();
             us.correo = txtUsername.Text;
             us.contrasena = txtPassword.Text;
 

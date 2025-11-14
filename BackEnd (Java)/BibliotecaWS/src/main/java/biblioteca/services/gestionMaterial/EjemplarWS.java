@@ -8,7 +8,7 @@ import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 
-@WebService(serviceName = "EjemplarWS")
+@WebService(serviceName = "EjemplarWS", targetNamespace = "pe.edu.pucp.utilsarmy.services")
 public class EjemplarWS {
 
     private EjemplarBOImpl ejemplarbo;
