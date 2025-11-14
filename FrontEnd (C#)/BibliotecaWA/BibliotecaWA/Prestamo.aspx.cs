@@ -136,9 +136,7 @@ namespace BibliotecaWA
 
             usuario usuarioSesion = (usuario)Session["usuario"];
 
-            BibliotecaWA.BibliotecaServices.usuario usuarioPrestamo = new BibliotecaWA.BibliotecaServices.usuario();
-            usuarioPrestamo.id_usuario = usuarioSesion.id_usuario;
-            p.usuario = usuarioPrestamo;
+            p.usuario = usuarioSesion;
 
 
             ejemplar[] ej = materialBiblioBO.obtenerEjemplaresDisponibles(m.idMaterial, b.idBiblioteca);
@@ -171,8 +169,8 @@ namespace BibliotecaWA
 
             if (usuario == null) return;
 
-            Session["usuario"] = usuario;
 
+            Session["usuario"] = usuario;
             string NombreCompleto = usuario.nombre + " " + usuario.segundo_apellido + " " + usuario.primer_apellido;
             txtNombre.Text = NombreCompleto;
             txtTipoUsuario.Text = usuario.rol_usuario.tipo;

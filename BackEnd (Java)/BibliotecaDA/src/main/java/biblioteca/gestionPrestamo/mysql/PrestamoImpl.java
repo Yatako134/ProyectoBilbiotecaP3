@@ -37,9 +37,10 @@ public class PrestamoImpl implements PrestamoDAO{
         parametrosEntrada.put(1, objeto.getIdPrestamo());
         parametrosEntrada.put(2, objeto.getFecha_de_prestamo());
         parametrosEntrada.put(3, objeto.getFecha_vencimiento());
-        parametrosEntrada.put(4, objeto.getEstado().name());
-        parametrosEntrada.put(5, objeto.getEjemplar().getIdEjemplar());
-        parametrosEntrada.put(6, objeto.getUsuario().getId_usuario());
+        parametrosEntrada.put(4, objeto.getFecha_devolucion());
+        parametrosEntrada.put(5, objeto.getEstado().name());
+        parametrosEntrada.put(6, objeto.getEjemplar().getIdEjemplar());
+        parametrosEntrada.put(7, objeto.getUsuario().getId_usuario());
 
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_PRESTAMO", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificación del préstamo");
@@ -70,7 +71,7 @@ public class PrestamoImpl implements PrestamoDAO{
                 prestamo.setIdPrestamo(rs.getInt("id_prestamo"));
                 prestamo.setFecha_de_prestamo(rs.getTimestamp("fecha_de_prestamo"));
                 prestamo.setFecha_vencimiento(rs.getTimestamp("fecha_vencimiento"));
-
+                prestamo.setFecha_devolucion(rs.getTimestamp("fecha_devolucion"));
                 String estadoStr = rs.getString("estado");
                 prestamo.setEstado(EstadoPrestamo.valueOf(estadoStr.toUpperCase()));
 
@@ -104,7 +105,7 @@ public class PrestamoImpl implements PrestamoDAO{
                 p.setIdPrestamo(rs.getInt("id_prestamo"));
                 p.setFecha_de_prestamo(rs.getTimestamp("fecha_de_prestamo"));
                 p.setFecha_vencimiento(rs.getTimestamp("fecha_vencimiento"));
-
+                p.setFecha_devolucion(rs.getTimestamp("fecha_devolucion"));
                 String estadoStr = rs.getString("estado");
                 p.setEstado(EstadoPrestamo.valueOf(estadoStr.toUpperCase()));
 
@@ -142,7 +143,8 @@ public class PrestamoImpl implements PrestamoDAO{
                 p.setIdPrestamo(rs.getInt("id_prestamo"));
                 p.setFecha_de_prestamo(rs.getTimestamp("fecha_de_prestamo"));
                 p.setFecha_vencimiento(rs.getTimestamp("fecha_vencimiento"));
-
+                p.setFecha_devolucion(rs.getTimestamp("fecha_devolucion"));
+                
                 String estadoStr = rs.getString("estado");
                 p.setEstado(EstadoPrestamo.valueOf(estadoStr.toUpperCase()));
 

@@ -1,0 +1,227 @@
+﻿using BibliotecaWA.BibliotecaServices;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace BibliotecaWA
+{
+    public partial class HistorialPrestamos : System.Web.UI.Page
+    {
+        private PrestamoWSClient boprestamo;
+        private SancionWSClient bosancion;
+        private UsuarioWSClient bousuario;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                bosancion = new SancionWSClient();
+                boprestamo = new PrestamoWSClient();
+                bousuario = new UsuarioWSClient();
+
+
+
+                BindingList <prestamo> prestamos = new BindingList<prestamo>(boprestamo.listarPrestamos());
+                Session["sanciones"] = new BindingList<sancion>(bosancion.listarSanciones());
+
+                foreach (prestamo presta in prestamos)
+                {
+                    usuario user = bousuario.obtenerUsuarioPorId(presta.usuario.id_usuario);
+                    presta.usuario = user;
+                }
+
+                Session["prestamos"] = prestamos;
+
+                CargarPrestamos(); 
+
+                // Botón seleccionado (al iniciar: Préstamos) -> azul suave
+                btnPrestamos.CssClass = "btn btn-sm btn-primary me-1";
+
+                // Botón no seleccionado mantiene estilo original (sin sombreado)
+                btnSanciones.CssClass = "btn btn-sm btn-outline-secondary";
+            }
+        }
+
+        protected void btnPrestamos_Click(object sender, EventArgs e)
+        {
+            pnlPrestamos.Visible = true;
+            pnlSanciones.Visible = false;
+
+            // Prestamos activo (azul suave)
+            btnPrestamos.CssClass = "btn btn-sm btn-primary me-1";
+
+            // Sanciones vuelve al estilo original (sin sombreado)
+            btnSanciones.CssClass = "btn btn-sm btn-outline-secondary";
+
+
+            CargarPrestamos();
+        }
+
+        protected void btnSanciones_Click(object sender, EventArgs e)
+        {
+            pnlPrestamos.Visible = false;
+            pnlSanciones.Visible = true;
+
+            // Prestamos vuelve al estilo original (sin sombreado)
+            btnPrestamos.CssClass = "btn btn-sm btn-outline-secondary";
+
+            // Sanciones activo (azul suave)
+            btnSanciones.CssClass = "btn btn-sm btn-primary me-1";
+
+            CargarSanciones();
+        }
+
+        private void CargarPrestamos()
+        {
+            BindingList<prestamo> prestamos = (BindingList<prestamo>)Session["prestamos"];
+            gvPrestamos.DataSource = prestamos;
+            gvPrestamos.DataBind();
+            ActualizarContador();
+
+        }
+
+        protected void dgvPrestamo_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                bousuario = new UsuarioWSClient();
+                prestamo presta = (prestamo)e.Row.DataItem;
+                e.Row.Cells[0].Text = presta.idPrestamo.ToString();
+                e.Row.Cells[1].Text = presta.usuario.codigo.ToString();
+                e.Row.Cells[2].Text = presta.fecha_de_prestamo.ToString("d 'de' MMM, yyyy");
+                e.Row.Cells[3].Text = presta.fecha_vencimiento.ToString("d 'de' MMM, yyyy");
+                e.Row.Cells[4].Text = (presta.fecha_devolucion == DateTime.MinValue) ? "-" : presta.fecha_devolucion.ToString("d 'de' MMM, yyyy");
+            }
+        }
+
+        private void ActualizarContador()
+        {
+            int total = ((BindingList<prestamo>)Session["prestamos"]).Count;
+            int mostrados = gvPrestamos.Rows.Count;
+            lblResultados.Text = $"Mostrando {mostrados} de {total} usuarios";
+        }
+
+        private void CargarSanciones()
+        {
+
+            bosancion = new SancionWSClient();
+            BindingList<sancion> sanciones;
+            sanciones = new BindingList<sancion>(bosancion.listarSanciones()); 
+            gvSanciones.DataSource = sanciones;
+            gvSanciones.DataBind();
+        }
+
+        protected string GetEstadoHtml(object estadoObj)
+        {
+            if (estadoObj == null) return string.Empty;
+
+            string estado = estadoObj.ToString().Trim().ToLower();
+
+            // Valores por defecto de estilo
+            string clases = "fw-bold text-uppercase small rounded px-2 py-1";
+            string texto = estado.ToUpper();
+
+            switch (estado)
+            {
+                case "vigente":
+                    clases = $"{clases} border border-success text-success bg-light"; // fondo claro
+                    texto = "VIGENTE";
+                    break;
+
+                case "atrasado":
+                    clases = $"{clases} border border-danger text-danger bg-light"; // fondo claro
+                    texto = "ATRASADO";
+                    break;
+
+                case "finalizado":
+                case "finalizada":
+                case "finalizadoa":
+                    clases = $"{clases} border border-dark text-dark bg-light"; // fondo claro
+                    texto = "FINALIZADO";
+                    break;
+
+                default:
+                    clases = $"{clases} border border-danger text-danger bg-light";
+                    texto = estado.ToUpper();
+                    break;
+            }
+
+            // Retornamos HTML inline (el GridView lo renderiza como HTML)
+            return $"<span class=\"{HttpUtility.HtmlAttributeEncode(clases)}\">{HttpUtility.HtmlEncode(texto)}</span>";
+        }
+        protected void GridView_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblEstado = (Label)e.Row.FindControl("lblEstado");
+                if (lblEstado != null)
+                {
+                    string estado = lblEstado.Text.Trim().ToLower();
+
+                    lblEstado.CssClass = "estado-label ";
+
+                    if (estado == "vigente")
+                        lblEstado.CssClass += "estado-vigente";
+                    else if (estado == "atrasado")
+                        lblEstado.CssClass += "estado-atrasado";
+                    else if (estado == "finalizado")
+                        lblEstado.CssClass += "estado-finalizado";
+                }
+            }
+        }
+        // Prestamos
+        protected void gvPrestamos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvPrestamos.PageIndex = e.NewPageIndex;
+            CargarPrestamos(); // Recargar datos con el nuevo índice
+        }
+
+        protected void ddlCantidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            gvPrestamos.PageSize = int.Parse(ddlCantidad.SelectedValue);
+            CargarPrestamos();
+        }
+
+        // ======= BOTONES DE OPCIONES =======
+        protected void btnVer_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(hfPrestamoSeleccionado.Value);
+            Response.Redirect($"AdministrarUsuarios.aspx?id={id}&modo=ver");
+        }
+
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(hfPrestamoSeleccionado.Value);
+            Response.Redirect($"AdministrarUsuarios.aspx?id={id}&modo=editar");
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(hfPrestamoSeleccionado.Value);
+            PrestamoWSClient boprestamo = new PrestamoWSClient();
+            boprestamo.eliminarPrestamo(id);
+
+            BindingList<prestamo> prestamos = new BindingList<prestamo>(boprestamo.listarPrestamos());
+            Session["prestamos"] = prestamos;
+            CargarPrestamos();
+        }
+
+        // Sanciones
+        protected void gvSanciones_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvSanciones.PageIndex = e.NewPageIndex;
+            CargarSanciones();
+        }
+
+        protected void ddlPageSizeSanciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            gvSanciones.PageSize = int.Parse(ddlPageSizeSanciones.SelectedValue);
+            gvSanciones.PageIndex = 0;
+            CargarSanciones();
+        }
+    }
+}

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="BusquedaMaterialas.aspx.cs" Inherits="BibliotecaWA.BusquedaMaterialas" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_Title" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Scripts" runat="server">
@@ -18,112 +19,112 @@
             <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control flex-grow-1 me-2" Placeholder="Ingrese título o autor" MaxLength="150"></asp:TextBox>
             <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary me-2" Text="Buscar" OnClick="btnBuscar_Click" />
             <!-- Botón de búsqueda avanzada -->
-<asp:Button ID="btnBusquedaAvanzada"
-    runat="server"
-    Text="Búsqueda Avanzada"
-    CssClass="btn btn-light text-primary border-primary"
-    data-bs-toggle="modal"
-    data-bs-target="#modalBusquedaAvanzada"
-    OnClientClick="return false;" />
-    
+            <asp:Button ID="btnBusquedaAvanzada"
+                runat="server"
+                Text="Búsqueda Avanzada"
+                CssClass="btn btn-light text-primary border-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#modalBusquedaAvanzada"
+                OnClientClick="return false;" />
 
-<!-- Modal de Búsqueda Avanzada -->
-<!-- Modal de Búsqueda Avanzada -->
-<div class="modal fade" id="modalBusquedaAvanzada" tabindex="-1" aria-labelledby="tituloModalBusquedaAvanzada" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
 
-      <!-- Cabecera -->
-      <div class="modal-header">
-        <h5 class="modal-title fw-bold" id="tituloModalBusquedaAvanzada">Búsqueda Avanzada</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
+            <!-- Modal de Búsqueda Avanzada -->
+            <!-- Modal de Búsqueda Avanzada -->
+            <div class="modal fade" id="modalBusquedaAvanzada" tabindex="-1" aria-labelledby="tituloModalBusquedaAvanzada" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
 
-      <!-- Cuerpo -->
-      <div class="modal-body">
+                        <!-- Cabecera -->
+                        <div class="modal-header">
+                            <h5 class="modal-title fw-bold" id="tituloModalBusquedaAvanzada">Búsqueda Avanzada</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
 
-        <!-- Título -->
-        <div class="mb-3">
-          <label class="form-label">Título</label>
-          <asp:TextBox ID="txtTituloAvanzado" runat="server" CssClass="form-control" />
-        </div>
+                        <!-- Cuerpo -->
+                        <div class="modal-body">
 
-        <!-- Tipo de contribuyente + Nombre -->
-        <div class="row mb-3">
-          <div class="col-5">
-            <label class="form-label">Tipo de contribuyente</label>
-            <asp:DropDownList ID="ddlContribuyente" runat="server" CssClass="form-select">
-              <asp:ListItem>AUTOR</asp:ListItem>
-              <asp:ListItem>TRADUCTOR</asp:ListItem>
-              <asp:ListItem>EDITOR</asp:ListItem>
-            </asp:DropDownList>
-          </div>
-          <div class="col-7">
-            <label class="form-label">Nombre</label>
-            <asp:TextBox ID="txtNombreContribuyente" runat="server" CssClass="form-control" />
-          </div>
-        </div>
+                            <!-- Título -->
+                            <div class="mb-3">
+                                <label class="form-label">Título</label>
+                                <asp:TextBox ID="txtTituloAvanzado" runat="server" CssClass="form-control" />
+                            </div>
 
-        <!-- Tema -->
-        <div class="mb-3">
-          <label class="form-label">Tema</label>
-          <asp:TextBox ID="txtTema" runat="server" CssClass="form-control" />
-        </div>
+                            <!-- Tipo de contribuyente + Nombre -->
+                            <div class="row mb-3">
+                                <div class="col-5">
+                                    <label class="form-label">Tipo de contribuyente</label>
+                                    <asp:DropDownList ID="ddlContribuyente" runat="server" CssClass="form-select">
+                                        <asp:ListItem>AUTOR</asp:ListItem>
+                                        <asp:ListItem>TRADUCTOR</asp:ListItem>
+                                        <asp:ListItem>EDITOR</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                                <div class="col-7">
+                                    <label class="form-label">Nombre</label>
+                                    <asp:TextBox ID="txtNombreContribuyente" runat="server" CssClass="form-control" />
+                                </div>
+                            </div>
 
-        <!-- Años -->
-        <div class="row">
-          <div class="col">
-            <label class="form-label">Año de publicación (desde)</label>
-            <asp:TextBox ID="txtAnioDesde" runat="server" CssClass="form-control" TextMode="Number" />
-          </div>
-          <div class="col">
-            <label class="form-label">Año de publicación (hasta)</label>
-            <asp:TextBox ID="txtAnioHasta" runat="server" CssClass="form-control" TextMode="Number" />
-          </div>
-        </div>
+                            <!-- Tema -->
+                            <div class="mb-3">
+                                <label class="form-label">Tema</label>
+                                <asp:TextBox ID="txtTema" runat="server" CssClass="form-control" />
+                            </div>
 
-        <!-- Tipo de material -->
-        <div class="mt-3">
-          <label class="form-label">Tipo de material</label>
-          <asp:DropDownList ID="ddlTipoMaterial" runat="server" CssClass="form-select">
-              <asp:ListItem>--Seleccione el material--</asp:ListItem>
-            <asp:ListItem>Libro</asp:ListItem>
-            <asp:ListItem>Artículo</asp:ListItem>
-            <asp:ListItem>Tesis</asp:ListItem>
-          </asp:DropDownList>
-        </div>
+                            <!-- Años -->
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label">Año de publicación (desde)</label>
+                                    <asp:TextBox ID="txtAnioDesde" runat="server" CssClass="form-control" TextMode="Number" />
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Año de publicación (hasta)</label>
+                                    <asp:TextBox ID="txtAnioHasta" runat="server" CssClass="form-control" TextMode="Number" />
+                                </div>
+                            </div>
 
-        <!-- Biblioteca -->
-        <div class="mt-3">
-          <label class="form-label">Biblioteca</label>
-          <asp:DropDownList ID="ddlBiblioteca" runat="server" CssClass="form-select">
-          </asp:DropDownList>
-        </div>
+                            <!-- Tipo de material -->
+                            <div class="mt-3">
+                                <label class="form-label">Tipo de material</label>
+                                <asp:DropDownList ID="ddlTipoMaterial" runat="server" CssClass="form-select">
+                                    <asp:ListItem>--Seleccione el material--</asp:ListItem>
+                                    <asp:ListItem>Libro</asp:ListItem>
+                                    <asp:ListItem>Artículo</asp:ListItem>
+                                    <asp:ListItem>Tesis</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
 
-        <!-- Disponibilidad -->
-        <div class="mt-3">
-          <label class="form-label">Disponibilidad</label>
-          <asp:DropDownList ID="ddlDisponibilidad" runat="server" CssClass="form-select">
-              <asp:ListItem>--Seleccione--</asp:ListItem>
-            <asp:ListItem>DISPONIBLE</asp:ListItem>
-            <asp:ListItem>NO_DISPONIBLE</asp:ListItem>
-          </asp:DropDownList>
-        </div>
+                            <!-- Biblioteca -->
+                            <div class="mt-3">
+                                <label class="form-label">Biblioteca</label>
+                                <asp:DropDownList ID="ddlBiblioteca" runat="server" CssClass="form-select">
+                                </asp:DropDownList>
+                            </div>
 
-      </div>
+                            <!-- Disponibilidad -->
+                            <div class="mt-3">
+                                <label class="form-label">Disponibilidad</label>
+                                <asp:DropDownList ID="ddlDisponibilidad" runat="server" CssClass="form-select">
+                                    <asp:ListItem>--Seleccione--</asp:ListItem>
+                                    <asp:ListItem>DISPONIBLE</asp:ListItem>
+                                    <asp:ListItem>NO_DISPONIBLE</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
 
-      <!-- Pie -->
-         <!-- Pie -->
-      <div class="modal-footer d-flex justify-content-end">
+                        </div>
 
-  <!-- Botón Cancelar -->
-  <button type="button" class="btn border border-primary text-primary fw-bold bg-white me-2" data-bs-dismiss="modal">
-    Cancelar
-  </button>
+                        <!-- Pie -->
+                        <!-- Pie -->
+                        <div class="modal-footer d-flex justify-content-end">
 
-  <!-- Botón Limpiar -->
-<button type="button" class="btn btn-light text-primary fw-bold d-flex align-items-center justify-content-center gap-1 border border-info me-2"
-        onclick="
+                            <!-- Botón Cancelar -->
+                            <button type="button" class="btn border border-primary text-primary fw-bold bg-white me-2" data-bs-dismiss="modal">
+                                Cancelar
+                            </button>
+
+                            <!-- Botón Limpiar -->
+                            <button type="button" class="btn btn-light text-primary fw-bold d-flex align-items-center justify-content-center gap-1 border border-info me-2"
+                                onclick="
             document.getElementById('<%= txtTituloAvanzado.ClientID %>').value = '';
             document.getElementById('<%= txtNombreContribuyente.ClientID %>').value = '';
             document.getElementById('<%= txtTema.ClientID %>').value = '';
@@ -134,18 +135,18 @@
             document.getElementById('<%= ddlBiblioteca.ClientID %>').selectedIndex = 0;
             document.getElementById('<%= ddlDisponibilidad.ClientID %>').selectedIndex = 0;
         ">
-    Limpiar
-</button>
-  
+                                Limpiar
+                            </button>
 
-  <!-- Botón Buscar -->
-  <asp:Button ID="btnBuscarAvanzado" runat="server" CssClass="btn btn-primary text-white fw-bold" Text="Buscar" OnClick="btnBuscarAvanzado_Click" />
 
-</div>
+                            <!-- Botón Buscar -->
+                            <asp:Button ID="btnBuscarAvanzado" runat="server" CssClass="btn btn-primary text-white fw-bold" Text="Buscar" OnClick="btnBuscarAvanzado_Click" />
 
-    </div>
-  </div>
-</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
         </div>
 
@@ -218,14 +219,17 @@
             </div>
         </div>
     </div>
-    <asp:Label ID="lblMensaje" runat="server" 
-    Text=""
-    Visible="false"
-    Style="color: #6c757d; text-align: center; display: block; font-weight: bold;">
-</asp:Label>
+    <asp:Label ID="lblMensaje" runat="server"
+        Text=""
+        Visible="false"
+        Style="color: #6c757d; text-align: center; display: block; font-weight: bold;">
+    </asp:Label>
     <!-- Estilos extra -->
     <style>
-        .table tr > td { border: none !important; }
+        .table tr > td {
+            border: none !important;
+        }
+
         .gridview-pager {
             display: flex;
             justify-content: space-between;

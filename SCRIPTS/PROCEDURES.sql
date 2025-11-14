@@ -1190,3 +1190,38 @@ BEGIN
 END $$
 
 DELIMITER ;
+
+--VERIFICAR CUENTA
+DELIMITER $
+CREATE PROCEDURE VERIFICAR_CUENTA(
+	IN _correo VARCHAR(100),
+	IN _contrasena VARCHAR(40)
+)
+BEGIN
+	SELECT * FROM Usuario WHERE correo=_correo AND contrasena=MD5(_contrasena);
+END$
+
+
+-- MODIFICAR
+DELIMITER $
+CREATE PROCEDURE MODIFICAR_PRESTAMO(
+    IN _id_prestamo INT,
+    IN _fecha_de_prestamo datetime,
+    IN _fecha_vencimiento datetime,
+    IN _fecha_devolucion datetime,
+    IN _estado ENUM('VIGENTE', 'FINALIZADO', 'RETRASADO'),
+    IN _id_ejemplar INT,
+    IN _id_usuario INT
+)
+BEGIN
+    UPDATE Prestamo
+    SET 
+        fecha_de_prestamo = _fecha_de_prestamo,
+        fecha_vencimiento = _fecha_vencimiento,
+        fecha_devolucion = _fecha_devolucion,
+        estado = _estado,
+        id_ejemplar = _id_ejemplar,
+        id_usuario = _id_usuario
+    WHERE id_prestamo = _id_prestamo;
+END$
+

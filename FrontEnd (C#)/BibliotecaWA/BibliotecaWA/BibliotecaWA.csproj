@@ -375,6 +375,7 @@
     <Content Include="Fonts\css\v5-font-face.min.css" />
     <Content Include="GestMaterial.aspx" />
     <Content Include="GestUsuarios.aspx" />
+    <Content Include="HistorialPrestamos.aspx" />
     <Content Include="Images\article.png" />
     <Content Include="Images\book.png" />
     <Content Include="Images\file.png" />
@@ -499,6 +500,13 @@
     </Compile>
     <Compile Include="GestUsuarios.aspx.designer.cs">
       <DependentUpon>GestUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialPrestamos.aspx.cs">
+      <DependentUpon>HistorialPrestamos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HistorialPrestamos.aspx.designer.cs">
+      <DependentUpon>HistorialPrestamos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.Master.cs">
       <DependentUpon>Home.Master</DependentUpon>
