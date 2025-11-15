@@ -19,7 +19,8 @@ CREATE TABLE Rol(
 	id_rol INT AUTO_INCREMENT PRIMARY KEY,
 	tipo VARCHAR(30) NOT NULL UNIQUE,
     cantidad_de_dias_por_prestamo INT NOT NULL,
-    activo BOOLEAN DEFAULT TRUE
+    activo BOOLEAN DEFAULT TRUE,
+	limite_prestamos INT NOT NULL
 )ENGINE=InnoDB;
 
 CREATE TABLE Usuario (
