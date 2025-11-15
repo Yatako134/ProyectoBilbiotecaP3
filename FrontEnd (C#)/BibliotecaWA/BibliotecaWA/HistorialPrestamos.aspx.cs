@@ -13,7 +13,7 @@ namespace BibliotecaWA
     {
         private PrestamoWSClient boprestamo;
         private SancionWSClient bosancion;
-        private UsuarioWSClient bousuario;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,19 +21,11 @@ namespace BibliotecaWA
             {
                 bosancion = new SancionWSClient();
                 boprestamo = new PrestamoWSClient();
-                bousuario = new UsuarioWSClient();
-
                 prestamo[] prest = boprestamo.listarPrestamos();
                 sancion[] saci = bosancion.listarSanciones(); 
 
                 if(prest != null)
                 {
-                    foreach (prestamo presta in prest)
-                    {
-                        usuario user = bousuario.obtenerUsuarioPorId(presta.usuario.id_usuario);
-                        presta.usuario = user;
-                    }
-
                     Session["prestamos"] = new BindingList<prestamo>(prest);
                 }
                 if (saci != null)
@@ -94,7 +86,6 @@ namespace BibliotecaWA
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                bousuario = new UsuarioWSClient();
                 prestamo presta = (prestamo)e.Row.DataItem;
                 e.Row.Cells[0].Text = presta.idPrestamo.ToString();
                 e.Row.Cells[1].Text = presta.usuario.codigo.ToString();
@@ -108,8 +99,6 @@ namespace BibliotecaWA
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 
-
-                bousuario = new UsuarioWSClient();
                 sancion san = (sancion)e.Row.DataItem;
                 e.Row.Cells[0].Text = san.id_sancion.ToString();
                 e.Row.Cells[1].Text = san.prestamo.usuario.codigo.ToString();

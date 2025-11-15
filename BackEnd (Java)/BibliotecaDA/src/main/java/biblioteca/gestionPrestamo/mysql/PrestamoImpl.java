@@ -114,7 +114,7 @@ public class PrestamoImpl implements PrestamoDAO{
                 p.setEjemplar(ejemplar);
 
                 Usuario usuario = new Usuario();
-                usuario.setId_usuario(rs.getInt("id_usuario"));
+                usuario.setCodigo(rs.getInt("codigo_universitario"));
                 p.setUsuario(usuario);
 
                 prestamos.add(p);
