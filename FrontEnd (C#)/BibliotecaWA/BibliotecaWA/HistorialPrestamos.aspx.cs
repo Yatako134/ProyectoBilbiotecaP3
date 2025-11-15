@@ -23,18 +23,24 @@ namespace BibliotecaWA
                 boprestamo = new PrestamoWSClient();
                 bousuario = new UsuarioWSClient();
 
+                prestamo[] prest = boprestamo.listarPrestamos();
+                sancion[] saci = bosancion.listarSanciones(); 
 
-
-                BindingList <prestamo> prestamos = new BindingList<prestamo>(boprestamo.listarPrestamos());
-                Session["sanciones"] = new BindingList<sancion>(bosancion.listarSanciones());
-
-                foreach (prestamo presta in prestamos)
+                if(prest != null)
                 {
-                    usuario user = bousuario.obtenerUsuarioPorId(presta.usuario.id_usuario);
-                    presta.usuario = user;
-                }
+                    foreach (prestamo presta in prest)
+                    {
+                        usuario user = bousuario.obtenerUsuarioPorId(presta.usuario.id_usuario);
+                        presta.usuario = user;
+                    }
 
-                Session["prestamos"] = prestamos;
+                    Session["prestamos"] = new BindingList<prestamo>(prest);
+                }
+                if (saci != null)
+                {
+                    Session["sanciones"] = new BindingList<sancion>(saci);
+                }
+                
 
                 CargarPrestamos(); 
 
@@ -114,23 +120,28 @@ namespace BibliotecaWA
         }
         private void ActualizarContador()
         {
-            int total = ((BindingList<prestamo>)Session["prestamos"]).Count;
+            int total = 0;
+            if(((BindingList<prestamo>)Session["prestamos"]) != null)
+            {
+                total = ((BindingList<prestamo>)Session["prestamos"]).Count;
+            }
+            
             int mostrados = gvPrestamos.Rows.Count;
             lblResultados.Text = $"Mostrando {mostrados} de {total} usuarios";
         }
         private void ActualizarContadorSancion()
         {
-            int total = ((BindingList<sancion>)Session["Sanciones"]).Count;
+            int total = 0;
+            if (((BindingList<sancion>)Session["Sanciones"]) != null)
+            {
+                total = ((BindingList<sancion>)Session["Sanciones"]).Count;
+            }
             int mostrados = gvSanciones.Rows.Count;
             LabelSancion.Text = $"Mostrando {mostrados} de {total} usuarios";
         }
         private void CargarSanciones()
         {
-
-            bosancion = new SancionWSClient();
-            BindingList<sancion> sanciones;
-            sanciones = new BindingList<sancion>(bosancion.listarSanciones());
-            Session["Sanciones"] = sanciones;
+            BindingList<sancion> sanciones  = (BindingList<sancion>)Session["sanciones"];
             gvSanciones.DataSource = sanciones;
             gvSanciones.DataBind();
             ActualizarContadorSancion();
@@ -230,6 +241,12 @@ namespace BibliotecaWA
             Session["prestamos"] = prestamos;
             CargarPrestamos();
         }
+
+        protected void btnBuscarPrestamo_Click(object sender, EventArgs e)
+        {
+            // Aquí haces la búsqueda
+        }
+        
 
         // Sanciones
         protected void gvSanciones_PageIndexChanging(object sender, GridViewPageEventArgs e)
