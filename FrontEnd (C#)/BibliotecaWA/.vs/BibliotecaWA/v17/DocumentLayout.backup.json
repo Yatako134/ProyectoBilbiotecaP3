@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "D:\\YO_usuario\\Desktop\\p3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|d:\\yo_usuario\\desktop\\p3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\historialprestamos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\historialprestamos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|d:\\yo_usuario\\desktop\\p3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\gestusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\gestusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|d:\\yo_usuario\\desktop\\p3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\historialprestamos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\historialprestamos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|d:\\yo_usuario\\desktop\\p3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\administrarusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\administrarusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|d:\\yo_usuario\\desktop\\p3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\administrarusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\administrarusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|d:\\yo_usuario\\desktop\\p3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\gestusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\gestusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HistorialPrestamos.aspx",
-              "DocumentMoniker": "D:\\YO_usuario\\Desktop\\p3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HistorialPrestamos.aspx",
-              "RelativeDocumentMoniker": "BibliotecaWA\\HistorialPrestamos.aspx",
-              "ToolTip": "D:\\YO_usuario\\Desktop\\p3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HistorialPrestamos.aspx",
-              "RelativeToolTip": "BibliotecaWA\\HistorialPrestamos.aspx",
+              "DocumentIndex": 1,
+              "Title": "AdministrarUsuarios.aspx",
+              "DocumentMoniker": "D:\\YO_usuario\\Desktop\\p3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx",
+              "RelativeDocumentMoniker": "BibliotecaWA\\AdministrarUsuarios.aspx",
+              "ToolTip": "D:\\YO_usuario\\Desktop\\p3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx*",
+              "RelativeToolTip": "BibliotecaWA\\AdministrarUsuarios.aspx*",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-15T20:49:00.597Z",
+              "WhenOpened": "2025-11-15T21:16:06.518Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HistorialPrestamos.aspx.cs",
-              "DocumentMoniker": "D:\\YO_usuario\\Desktop\\p3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HistorialPrestamos.aspx.cs",
-              "RelativeDocumentMoniker": "BibliotecaWA\\HistorialPrestamos.aspx.cs",
-              "ToolTip": "D:\\YO_usuario\\Desktop\\p3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HistorialPrestamos.aspx.cs",
-              "RelativeToolTip": "BibliotecaWA\\HistorialPrestamos.aspx.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAEwBgAAAAQAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "AdministrarUsuarios.aspx.cs",
+              "DocumentMoniker": "D:\\YO_usuario\\Desktop\\p3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\AdministrarUsuarios.aspx.cs",
+              "ToolTip": "D:\\YO_usuario\\Desktop\\p3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\AdministrarUsuarios.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T20:48:09.968Z",
+              "WhenOpened": "2025-11-15T21:16:05.199Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GestUsuarios.aspx.cs",
+              "DocumentMoniker": "D:\\YO_usuario\\Desktop\\p3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestUsuarios.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\GestUsuarios.aspx.cs",
+              "ToolTip": "D:\\YO_usuario\\Desktop\\p3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestUsuarios.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\GestUsuarios.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T21:07:27.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GestUsuarios.aspx",
+              "DocumentMoniker": "D:\\YO_usuario\\Desktop\\p3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestUsuarios.aspx",
+              "RelativeDocumentMoniker": "BibliotecaWA\\GestUsuarios.aspx",
+              "ToolTip": "D:\\YO_usuario\\Desktop\\p3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestUsuarios.aspx",
+              "RelativeToolTip": "BibliotecaWA\\GestUsuarios.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-15T21:02:30.645Z",
               "EditorCaption": ""
             }
           ]

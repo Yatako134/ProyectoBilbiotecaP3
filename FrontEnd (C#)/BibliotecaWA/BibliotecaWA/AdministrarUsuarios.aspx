@@ -11,6 +11,58 @@
         .form-group { margin-bottom: 15px; }
         .btn-right { float: right; margin-top: 20px; }
     </style>
+
+    <script>
+        function soloOchoEnteros(e, input) {
+            var key = e.key;
+            if (!/^[0-9]$/.test(key) && key !== "Backspace") {
+                e.preventDefault();
+                return;
+            }
+            if (input.value.length >= 8 && key !== "Backspace") {
+                e.preventDefault();
+            }
+        }
+    </script>
+
+    <script>
+        function soloLetras(e) {
+            var key = e.key;
+
+            // Permite solo letras, espacios y tildes
+            if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ ]$/.test(key)) {
+                e.preventDefault();
+            }
+        }
+    </script>
+
+    <script>
+        function soloEnteros(e) {
+            var key = e.key;
+
+            // Solo permitir números del 0 al 9
+            if (!/^[0-9]$/.test(key)) {
+                e.preventDefault();
+            }
+        }
+    </script>
+
+    <script>
+        function solo8Alfanumericos(e, input) {
+            var key = e.key;
+
+            // Solo permitir letras, números y espacio
+            if (!/^[A-Za-z0-9]$/.test(key)) {
+                e.preventDefault();
+                return;
+            }
+
+            // Limitar a 8 caracteres
+            if (input.value.length >= 8) {
+                e.preventDefault();
+            }
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
@@ -40,11 +92,21 @@
                 </div>
                 <div class="col-md-4">
                     <label for="txtCodigo" class="form-label-admiUsuarios">Código</label>
-                    <asp:TextBox ID="txtCodigo" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtCodigo" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="solo8Alfanumericos(event, this)"></asp:TextBox>
+
+                    <asp:RequiredFieldValidator ControlToValidate="txtCodigo" ErrorMessage="Código requerido" runat="server" ForeColor="Red" />
                 </div>
                 <div class="col-md-4">
                     <label for="txtDNI" class="form-label-admiUsuarios">DNI</label>
-                    <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloOchoEnteros(event, this)"></asp:TextBox>
+                    <asp:RegularExpressionValidator
+                        ID="revDocumento"
+                        runat="server"
+                        ControlToValidate="txtDNI"
+                        ValidationExpression="^\d{8}$"
+                        ErrorMessage="Debe contener exactamente 8 dígitos"
+                        ForeColor="Red">
+                    </asp:RegularExpressionValidator>
                 </div>
             </div>
 
@@ -52,27 +114,49 @@
             <div class="row g-0 mt-3">
                 <div class="col-md-12">
                     <label for="txtNombre" class="form-label-admiUsuarios">Nombre(s)</label>
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
+
+                    <asp:RequiredFieldValidator ControlToValidate="txtNombre" ErrorMessage="Nombre requerido" runat="server" ForeColor="Red" />
+
                 </div>
                 <div class="col-md-12">
                     <label for="txtPrimerApellido" class="form-label-admiUsuarios">Primer Apellido</label>
-                    <asp:TextBox ID="txtPrimerApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtPrimerApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
+
+                    <asp:RequiredFieldValidator ControlToValidate="txtPrimerApellido" ErrorMessage="Primer apellido requerido" runat="server" ForeColor="Red"/>
+
                 </div>
                 <div class="col-md-12">
                     <label for="txtSegundoApellido" class="form-label-admiUsuarios">Segundo Apellido</label>
-                    <asp:TextBox ID="txtSegundoApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtSegundoApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
+
+                    <asp:RequiredFieldValidator ControlToValidate="txtSegundoApellido" ErrorMessage="Segundo apellido requerido" runat="server" ForeColor="Red"/>
                 </div>
                 <div class="col-md-12">
                     <label for="txtCorreo" class="form-label-admiUsuarios">Correo</label>
                     <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:RegularExpressionValidator
+                        ID="revCorreo"
+                        runat="server"
+                        ControlToValidate="txtCorreo"
+                        ValidationExpression="^[A-Za-z0-9._%+-]+@example\.com$"
+                        ErrorMessage="El formato debe ser nombre@example.com"
+                        ForeColor="Red">
+                    </asp:RegularExpressionValidator>
+  
                 </div>
                 <div class="col-md-12">
                     <label for="txtContrasena" class="form-label-admiUsuarios">Contraseña</label>
                     <asp:TextBox ID="txtContrasena" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+
+                    <asp:RequiredFieldValidator ControlToValidate="txtContrasena" ErrorMessage="Contraseña requerida" runat="server" ForeColor="Red"/>
+
                 </div>
                 <div class="col-md-12">
                     <label for="txtTelefono" class="form-label-admiUsuarios">Teléfono</label>
-                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloEnteros(event)"></asp:TextBox>
+
+                    <asp:RequiredFieldValidator ControlToValidate="txtTelefono" ErrorMessage="Telefono requerido" runat="server" ForeColor="Red"/>
                 </div>
             </div>
 
