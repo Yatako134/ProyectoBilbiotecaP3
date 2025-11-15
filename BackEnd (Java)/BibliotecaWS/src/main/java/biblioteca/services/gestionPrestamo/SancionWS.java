@@ -25,5 +25,9 @@ public class SancionWS {
     @WebMethod(operationName = "listarSancionesPorUsuario")
     public ArrayList<Sancion> listarSancionesPorUsuario(@WebParam(name = "idUsuario") int idUsuario) throws Exception {
         return sancionboimpl.listarPorUsuario(idUsuario);
-    }    
+    }
+    @WebMethod(operationName = "BusquedaSanciones")
+    public ArrayList<Sancion> buscarSanciones(@WebParam(name = "codigo_universitario") int _codigo_universitario) throws Exception {
+        return sancionboimpl.listar_busqueda_usuario(_codigo_universitario);
+    }
 }

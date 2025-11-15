@@ -20,6 +20,12 @@
   <message name="listarSancionesPorUsuarioResponse">
     <part name="parameters" element="tns:listarSancionesPorUsuarioResponse" />
   </message>
+  <message name="BusquedaSanciones">
+    <part name="parameters" element="tns:BusquedaSanciones" />
+  </message>
+  <message name="BusquedaSancionesResponse">
+    <part name="parameters" element="tns:BusquedaSancionesResponse" />
+  </message>
   <portType name="SancionWS">
     <operation name="listarSanciones">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesRequest" message="tns:listarSanciones" />
@@ -30,6 +36,11 @@
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesPorUsuarioRequest" message="tns:listarSancionesPorUsuario" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesPorUsuarioResponse" message="tns:listarSancionesPorUsuarioResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesPorUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="BusquedaSanciones">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesRequest" message="tns:BusquedaSanciones" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesResponse" message="tns:BusquedaSancionesResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSanciones/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
   </portType>
   <binding name="SancionWSPortBinding" type="tns:SancionWS">
@@ -47,6 +58,18 @@
       </fault>
     </operation>
     <operation name="listarSancionesPorUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="BusquedaSanciones">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

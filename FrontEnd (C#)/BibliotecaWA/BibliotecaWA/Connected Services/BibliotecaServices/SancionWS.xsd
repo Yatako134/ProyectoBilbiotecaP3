@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="pe.edu.pucp.utilsarmy.services" targetNamespace="pe.edu.pucp.utilsarmy.services" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="BusquedaSanciones" type="tns:BusquedaSanciones" />
+  <xs:element name="BusquedaSancionesResponse" type="tns:BusquedaSancionesResponse" />
   <xs:element name="Exception" type="tns:Exception" />
   <xs:element name="listarSanciones" type="tns:listarSanciones" />
   <xs:element name="listarSancionesPorUsuario" type="tns:listarSancionesPorUsuario" />
@@ -91,6 +93,16 @@
     <xs:sequence />
   </xs:complexType>
   <xs:complexType name="listarSancionesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusquedaSanciones">
+    <xs:sequence>
+      <xs:element name="codigo_universitario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusquedaSancionesResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
     </xs:sequence>

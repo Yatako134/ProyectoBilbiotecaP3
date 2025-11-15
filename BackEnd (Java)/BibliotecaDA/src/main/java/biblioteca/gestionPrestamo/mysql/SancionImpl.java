@@ -192,4 +192,52 @@ public class SancionImpl implements SancionDAO{
         System.out.println("📋 Total sanciones leídas para usuario " + idUsuario + ": " + (sanciones == null ? 0 : sanciones.size()));
         return sanciones;
     }
+
+    @Override
+    public ArrayList<Sancion> listar_busqueda_usuario(int codigo_universitario) {
+        ArrayList<Sancion> sanciones = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, codigo_universitario);
+    rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_SANCIONES_BUSQUEDA_CODIGO_UNIVERSITARIO", parametrosEntrada);
+    System.out.println("Lectura de sanciones...");
+    try {
+        while (rs.next()) {
+            if (sanciones == null) sanciones = new ArrayList<>();
+            Sancion s = new Sancion();
+
+            s.setId_sancion(rs.getInt("id_sancion"));
+
+            // Enum Tipo_sancion
+            String tipo = rs.getString("tipo_sancion");
+            s.setTipo_sancion(Tipo_sancion.valueOf(tipo.toUpperCase()));
+
+            s.setDuracion_dias(rs.getInt("duracion_dias"));
+            s.setFecha_inicio(rs.getDate("fecha_inicio"));
+            s.setFecha_fin(rs.getDate("fecha_fin"));
+            s.setJustificacion(rs.getString("justificacion"));
+
+            // Enum EstadoSancion
+            String estadoStr = rs.getString("estado");
+            s.setEstado(EstadoSancion.valueOf(estadoStr.toUpperCase()));
+
+//            s.setActivo(rs.getBoolean("activo"));
+            
+            Usuario u = new Usuario();
+            u.setCodigo(rs.getInt("codigo_universitario"));
+            // Relación con Prestamo
+            Prestamo p = new Prestamo();
+            p.setIdPrestamo(rs.getInt("id_prestamo"));
+            p.setUsuario(u);
+            s.setPrestamo(p);
+            
+            
+            sanciones.add(s);
+        }
+    } catch (SQLException ex) {
+        System.out.println("ERROR: " + ex.getMessage());
+    } finally {
+        DBManager.getInstance().cerrarConexion();
+    }
+    return sanciones;
+    }
 }
