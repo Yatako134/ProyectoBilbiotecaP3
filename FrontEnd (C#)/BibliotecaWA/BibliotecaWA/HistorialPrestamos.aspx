@@ -45,7 +45,7 @@
                 <div class="tabla-busqueda d-flex align-items-center p-3 border-bottom bg-white gap-2">
 
                     <asp:Label ID="lblResultados" runat="server" CssClass="flex-shrink-0 me-3 ColorLetras"></asp:Label>
-                    <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control bg-light flex-grow-1" placeholder=" Buscar por usuario..." />
+                    <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control bg-light flex-grow-1" placeholder=" Buscar por usuario..." TextMode ="Number" />
                     <asp:LinkButton ID="btnBuscarPrestamo"
                         runat="server"
                         CssClass="btn btn-sm btn-primary btnBuscarFix"
