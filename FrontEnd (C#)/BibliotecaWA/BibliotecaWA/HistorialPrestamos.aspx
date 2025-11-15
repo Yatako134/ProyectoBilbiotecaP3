@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="HistorialPrestamos.aspx.cs" Inherits="BibliotecaWA.HistorialPrestamos" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_Title" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Scripts" runat="server">
@@ -34,7 +35,7 @@
             </div>
         </div>
 
-         <!-- === CONTENEDOR UNIFICADO === -->
+        <!-- === CONTENEDOR UNIFICADO === -->
         <asp:Panel ID="pnlPrestamos" runat="server" CssClass="tabla-container shadow-sm rounded-4 overflow-hidden">
             <!-- Grid con scroll -->
 
@@ -94,6 +95,24 @@
 
                 </div>
             </div>
+            <!-- === BARRA INFERIOR === -->
+            <div class="tabla-footer d-flex justify-content-between align-items-center p-3 bg-light">
+
+                <div class="d-flex align-items-center">
+                    <label for="ddlCantidad" class="me-2">Show</label>
+                    <asp:DropDownList ID="ddlCantidad" runat="server" AutoPostBack="true"
+                        CssClass="form-select form-select-sm w-auto"
+                        OnSelectedIndexChanged="ddlCantidad_SelectedIndexChanged">
+                        <asp:ListItem Text="5" Value="5" />
+                        <asp:ListItem Text="10" Value="10" Selected="True" />
+                        <asp:ListItem Text="25" Value="25" />
+                        <asp:ListItem Text="50" Value="50" />
+                        <asp:ListItem Text="100" Value="100" />
+                    </asp:DropDownList>
+                    <span class="ms-2">per page</span>
+                </div>
+
+            </div>
         </asp:Panel>
 
         <!-- === MENU OPCIONES  === -->
@@ -109,24 +128,7 @@
             </button>
         </div>
 
-         <!-- === BARRA INFERIOR === -->
-        <div class="tabla-footer d-flex justify-content-between align-items-center p-3 bg-light">
 
-            <div class="d-flex align-items-center">
-                <label for="ddlCantidad" class="me-2">Show</label>
-                <asp:DropDownList ID="ddlCantidad" runat="server" AutoPostBack="true"
-                    CssClass="form-select form-select-sm w-auto"
-                    OnSelectedIndexChanged="ddlCantidad_SelectedIndexChanged">
-                    <asp:ListItem Text="5" Value="5" />
-                    <asp:ListItem Text="10" Value="10" Selected="True" />
-                    <asp:ListItem Text="25" Value="25" />
-                    <asp:ListItem Text="50" Value="50" />
-                    <asp:ListItem Text="100" Value="100" />
-                </asp:DropDownList>
-                <span class="ms-2">per page</span>
-            </div>
-
-        </div>
 
         <!-- === SCRIPT MENU OPCIONES === -->
         <script>
@@ -183,60 +185,157 @@
 
 
 
+        <div class="tabla-container shadow-sm rounded-4 overflow-hidden">
 
+            <!-- Panel de Sanciones -->
+            <asp:Panel ID="pnlSanciones" runat="server" Visible="false" CssClass="d-flex flex-column">
+                <div class="tabla-container shadow-sm rounded-4 overflow-hidden ">
+                    <!-- HiddenField requerido por el menú -->
+                    <asp:HiddenField ID="HiddenField1" runat="server" ClientIDMode="Static" />
 
-
-        <!-- Panel de Sanciones -->
-        <asp:Panel ID="pnlSanciones" runat="server" Visible="false" CssClass="d-flex flex-column" Style="height: 500px;">
-            <div style="overflow-y: auto; flex: 1 1 auto;">
-                <asp:GridView ID="gvSanciones" runat="server"
-                    AutoGenerateColumns="False"
-                    AllowPaging="true" PageSize="8"
-                    CssClass="table table-hover table-responsive table-striped text-center align-middle text-secondary small"
-                    OnPageIndexChanging="gvSanciones_PageIndexChanging">
-                    <Columns>
-                        <asp:BoundField HeaderText="Código" />
-                        <asp:BoundField HeaderText="Usuario" />
-                        <asp:BoundField HeaderText="Fecha de inicio" />
-                        <asp:BoundField HeaderText="Fecha de vencimiento" />
-                        <asp:BoundField HeaderText="Fecha de devolucion" />
-                        <asp:TemplateField HeaderText="Sanción">
-                            <ItemTemplate>
-                                <%# Eval("Estado").ToString() == "RETRASADO" ? "Sí" : "No" %>
-                            </ItemTemplate>
-                            <ItemStyle CssClass="align-middle text-center" Width="70px" />
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Estado">
-                            <ItemTemplate>
-                                <%# GetEstadoHtml(Eval("Estado")) %>
-                            </ItemTemplate>
-                            <ItemStyle CssClass="align-middle text-center" Width="120px" />
-                        </asp:TemplateField>
-
-                    </Columns>
-                </asp:GridView>
-            </div>
-
-            <!-- Contenedor de paginación al fondo -->
-            <div style="margin-top: auto; padding-top: 10px; border-top: 1px solid #ddd;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        Mostrar
-                        <asp:DropDownList ID="ddlPageSizeSanciones" runat="server" AutoPostBack="true"
-                            CssClass="form-select d-inline-block w-auto"
-                            OnSelectedIndexChanged="ddlPageSizeSanciones_SelectedIndexChanged">
-                            <asp:ListItem Text="5" Value="5" />
-                            <asp:ListItem Text="10" Value="10" />
-                            <asp:ListItem Text="20" Value="20" />
-                        </asp:DropDownList>
-                        por página
+                    <div class="tabla-busqueda d-flex align-items-center p-3 border-bottom bg-white gap-2">
+                        <asp:Label ID="LabelSancion" runat="server" CssClass="flex-shrink-0 me-3 ColorLetras"></asp:Label>
+                        <asp:TextBox ID="TextBoxSancion" runat="server" CssClass="form-control bg-light flex-grow-1" placeholder=" Buscar por usuario..." />
+                        <asp:LinkButton ID="btnBuscarSancion"
+    runat="server"
+    CssClass="btn btn-sm btn-primary btnBuscarFix"
+    OnClick="btnBuscarSancion_Click"
+    UseSubmitBehavior="false">
+    <i class="fa-solid fa-magnifying-glass"></i>
+</asp:LinkButton>
                     </div>
-                    <div>
-                        <asp:Label ID="lblPaginaInfoSanciones" runat="server" Text=""></asp:Label>
+
+                    <asp:GridView ID="gvSanciones" runat="server"
+                        AutoGenerateColumns="False"
+                        AllowPaging="true" PageSize="8"
+                        CssClass="table table-borderless text-center align-middle m-0"
+                        OnPageIndexChanging="gvSanciones_PageIndexChanging"
+                        OnRowDataBound="dgvSanciones_RowDataBound"
+                        PagerSettings-Visible="False">
+
+                        <Columns>
+                            <asp:BoundField HeaderText="Código" />
+                            <asp:BoundField HeaderText="Usuario" />
+                            <asp:BoundField HeaderText="Préstamo">
+                                <ItemStyle CssClass="me-5" />
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Fecha de inicio" />
+                            <asp:BoundField HeaderText="Fecha de vencimiento" />
+                            <asp:TemplateField HeaderText="Estado">
+                                <ItemTemplate>
+                                    <%# GetEstadoHtml(Eval("estado")) %>
+                                </ItemTemplate>
+                                <ItemStyle CssClass="align-middle text-center" Width="120px" />
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="">
+                                <ItemTemplate>
+                                    <a href="#" class="btn btn-link btnOpciones text-dark fs-4"
+                                        onclick='abrirMenuOpcionesSanciones(<%# Eval("id_sancion") %>, this); return false;'>⋮</a>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+
+                    </asp:GridView>
+                </div>
+                <!-- Paginación inferior -->
+                <div class="tabla-footer d-flex justify-content-between align-items-center p-3 bg-light">
+                    <div class="d-flex align-items-center">
+                        <label for="ddlCantidadSancion" class="me-2">Show</label>
+                        <asp:DropDownList ID="ddlCantidadSancion" runat="server" AutoPostBack="true"
+                            CssClass="form-select form-select-sm w-auto"
+                            OnSelectedIndexChanged="ddlCantidadSancion_SelectedIndexChanged">
+                            <asp:ListItem Text="5" Value="5" />
+                            <asp:ListItem Text="10" Value="10" Selected="True" />
+                            <asp:ListItem Text="25" Value="25" />
+                            <asp:ListItem Text="50" Value="50" />
+                            <asp:ListItem Text="100" Value="100" />
+                        </asp:DropDownList>
+                        <span class="ms-2">per page</span>
                     </div>
                 </div>
-            </div>
-        </asp:Panel>
+
+            </asp:Panel>
+        </div>
+        <asp:Button ID="btnVerSancion" runat="server" OnClick="btnVerSancion_Click" Style="display: none" />
+        <asp:Button ID="btnEditarSancion" runat="server" OnClick="btnEditarSancion_Click" Style="display: none" />
+        <asp:Button ID="btnEliminarSancion" runat="server" OnClick="btnEliminarSancion_Click" Style="display: none" />
+        <!-- Menú de opciones de sanciones -->
+        <div id="menuOpcionesSanciones" class="menu-opciones" style="display: none;">
+            <button type="button" class="opcion" onclick="__doPostBack('<%= btnVerSancion.UniqueID %>', '')">
+                <i class="fa-solid fa-eye me-2 text-primary"></i>Ver detalle
+            </button>
+            <button type="button" class="opcion" onclick="__doPostBack('<%= btnEditarSancion.UniqueID %>', '')">
+                <i class="fa-solid fa-pen me-2 text-secondary"></i>Editar
+            </button>
+            <button type="button" class="opcion eliminar" onclick="__doPostBack('<%= btnEliminarSancion.UniqueID %>', '')">
+                <i class="fa-solid fa-trash me-2 text-danger"></i>Eliminar
+            </button>
+        </div>
+
+        <script>
+            (function () {
+
+                let menuAbierto = null;
+
+                window.abrirMenuOpcionesSanciones = function (idSancion, elemento) {
+
+                    const menu = document.getElementById('menuOpcionesSanciones');
+                    const hidden = document.getElementById('HiddenField1');
+
+                    if (!menu || !hidden) return;
+
+                    if (menuAbierto && menuAbierto !== menu)
+                        menuAbierto.style.display = 'none';
+
+                    hidden.value = idSancion;
+
+                    const rect = elemento.getBoundingClientRect();
+                    const menuWidth = 200;
+
+                    let left = rect.right + window.scrollX + 8;
+                    const maxLeft = window.scrollX + window.innerWidth - menuWidth - 8;
+
+                    if (left > maxLeft)
+                        left = Math.max(window.scrollX + 8, rect.left + window.scrollX - menuWidth - 8);
+
+                    let top = rect.bottom + window.scrollY + 6;
+
+                    menu.style.position = 'absolute';
+                    menu.style.top = top + 'px';
+                    menu.style.left = left + 'px';
+                    menu.style.display = 'block';
+                    menu.style.zIndex = 99999;
+
+                    menuAbierto = menu;
+                };
+
+
+                // Cerrar haciendo click fuera
+                document.addEventListener('click', function (e) {
+                    const menu = document.getElementById('menuOpcionesSanciones');
+                    if (!menu) return;
+                    if (menu.style.display !== 'block') return;
+
+                    if (e.target.closest('.btnOpciones') ||
+                        e.target.closest('#menuOpcionesSanciones')) return;
+
+                    menu.style.display = 'none';
+                    menuAbierto = null;
+                });
+
+
+                // Cerrar con ESC
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') {
+                        const menu = document.getElementById('menuOpcionesSanciones');
+                        if (menu) menu.style.display = 'none';
+                        menuAbierto = null;
+                    }
+                });
+
+            })();
+        </script>
     </div>
 </asp:Content>
 

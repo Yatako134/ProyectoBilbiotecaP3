@@ -123,6 +123,42 @@ namespace BibliotecaWA
         protected global::System.Web.UI.WebControls.Panel pnlSanciones;
 
         /// <summary>
+        /// Control HiddenField1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
+
+        /// <summary>
+        /// Control LabelSancion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelSancion;
+
+        /// <summary>
+        /// Control TextBoxSancion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxSancion;
+
+        /// <summary>
+        /// Control btnBuscarSancion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnBuscarSancion;
+
+        /// <summary>
         /// Control gvSanciones.
         /// </summary>
         /// <remarks>
@@ -132,21 +168,39 @@ namespace BibliotecaWA
         protected global::System.Web.UI.WebControls.GridView gvSanciones;
 
         /// <summary>
-        /// Control ddlPageSizeSanciones.
+        /// Control ddlCantidadSancion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPageSizeSanciones;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCantidadSancion;
 
         /// <summary>
-        /// Control lblPaginaInfoSanciones.
+        /// Control btnVerSancion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPaginaInfoSanciones;
+        protected global::System.Web.UI.WebControls.Button btnVerSancion;
+
+        /// <summary>
+        /// Control btnEditarSancion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEditarSancion;
+
+        /// <summary>
+        /// Control btnEliminarSancion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEliminarSancion;
     }
 }

@@ -129,12 +129,16 @@ public class SancionImpl implements SancionDAO{
             s.setEstado(EstadoSancion.valueOf(estadoStr.toUpperCase()));
 
 //            s.setActivo(rs.getBoolean("activo"));
-
+            
+            Usuario u = new Usuario();
+            u.setCodigo(rs.getInt("codigo_universitario"));
             // Relación con Prestamo
             Prestamo p = new Prestamo();
             p.setIdPrestamo(rs.getInt("id_prestamo"));
+            p.setUsuario(u);
             s.setPrestamo(p);
-
+            
+            
             sanciones.add(s);
         }
     } catch (SQLException ex) {

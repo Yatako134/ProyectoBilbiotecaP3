@@ -797,9 +797,9 @@ BEGIN
     SET _fecha_inicio = NOW();
 	SET _fecha_fin = date_add(_fecha_inicio, INTERVAL _duracion_dias DAY);
 	INSERT INTO Sancion(tipo_sancion, duracion_dias, fecha_inicio, fecha_fin,
-    justificacion, estado, activo, id_prestamo)
+    justificacion, estado, id_prestamo)
     VALUES (_tipo_sancion, _duracion_dias, _fecha_inicio, _fecha_fin, _justificacion,
-    'VIGENTE', 1, _id_prestamo);
+    'VIGENTE', _id_prestamo);
     SET _id_sancion = @@last_insert_id;
     
 END$
@@ -857,9 +857,10 @@ DELIMITER $
 -- OBTENER_PRESTAMO_X_ID
 CREATE PROCEDURE LISTAR_SANCIONES_TODAS()
 BEGIN
-    SELECT id_sancion, tipo_sancion, duracion_dias, fecha_inicio,
-    fecha_fin, justificacion, estado, id_prestamo
-    FROM Sancion;
+    SELECT s.id_sancion, s.tipo_sancion, s.duracion_dias, s.fecha_inicio,
+    s.fecha_fin, s.justificacion, s.estado, s.id_prestamo, u.codigo_universitario
+    FROM Sancion s, Prestamo p, Usuario u
+    WHERE s.id_prestamo = p.id_prestamo and u.id_usuario = p.id_usuario;
 END$
 
 DELIMITER $$

@@ -97,22 +97,43 @@ namespace BibliotecaWA
                 e.Row.Cells[4].Text = (presta.fecha_devolucion == DateTime.MinValue) ? "-" : presta.fecha_devolucion.ToString("d 'de' MMM, yyyy");
             }
         }
+        protected void dgvSanciones_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                
 
+                bousuario = new UsuarioWSClient();
+                sancion san = (sancion)e.Row.DataItem;
+                e.Row.Cells[0].Text = san.id_sancion.ToString();
+                e.Row.Cells[1].Text = san.prestamo.usuario.codigo.ToString();
+                e.Row.Cells[2].Text = san.prestamo.idPrestamo.ToString();
+                e.Row.Cells[3].Text = san.fecha_inicio.ToString("d 'de' MMM, yyyy");
+                e.Row.Cells[4].Text = san.fecha_fin.ToString("d 'de' MMM, yyyy");
+            }
+        }
         private void ActualizarContador()
         {
             int total = ((BindingList<prestamo>)Session["prestamos"]).Count;
             int mostrados = gvPrestamos.Rows.Count;
             lblResultados.Text = $"Mostrando {mostrados} de {total} usuarios";
         }
-
+        private void ActualizarContadorSancion()
+        {
+            int total = ((BindingList<sancion>)Session["Sanciones"]).Count;
+            int mostrados = gvSanciones.Rows.Count;
+            LabelSancion.Text = $"Mostrando {mostrados} de {total} usuarios";
+        }
         private void CargarSanciones()
         {
 
             bosancion = new SancionWSClient();
             BindingList<sancion> sanciones;
-            sanciones = new BindingList<sancion>(bosancion.listarSanciones()); 
+            sanciones = new BindingList<sancion>(bosancion.listarSanciones());
+            Session["Sanciones"] = sanciones;
             gvSanciones.DataSource = sanciones;
             gvSanciones.DataBind();
+            ActualizarContadorSancion();
         }
 
         protected string GetEstadoHtml(object estadoObj)
@@ -216,12 +237,29 @@ namespace BibliotecaWA
             gvSanciones.PageIndex = e.NewPageIndex;
             CargarSanciones();
         }
-
-        protected void ddlPageSizeSanciones_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlCantidadSancion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            gvSanciones.PageSize = int.Parse(ddlPageSizeSanciones.SelectedValue);
-            gvSanciones.PageIndex = 0;
+            gvSanciones.PageSize = int.Parse(ddlCantidadSancion.SelectedValue);
             CargarSanciones();
+        }
+
+        protected void btnVerSancion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEditarSancion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEliminarSancion_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnBuscarSancion_Click(object sender, EventArgs e)
+        {
+            // Aquí haces la búsqueda
         }
     }
 }
