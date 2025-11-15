@@ -26,12 +26,6 @@
   <message name="eliminarPrestamoResponse">
     <part name="parameters" element="tns:eliminarPrestamoResponse" />
   </message>
-  <message name="obtenerPrestamoPorId">
-    <part name="parameters" element="tns:obtenerPrestamoPorId" />
-  </message>
-  <message name="obtenerPrestamoPorIdResponse">
-    <part name="parameters" element="tns:obtenerPrestamoPorIdResponse" />
-  </message>
   <message name="insertarPrestamo">
     <part name="parameters" element="tns:insertarPrestamo" />
   </message>
@@ -43,6 +37,12 @@
   </message>
   <message name="listarPrestamosPorUsuarioResponse">
     <part name="parameters" element="tns:listarPrestamosPorUsuarioResponse" />
+  </message>
+  <message name="obtenerPrestamoPorId">
+    <part name="parameters" element="tns:obtenerPrestamoPorId" />
+  </message>
+  <message name="obtenerPrestamoPorIdResponse">
+    <part name="parameters" element="tns:obtenerPrestamoPorIdResponse" />
   </message>
   <portType name="PrestamoWS">
     <operation name="modificarPrestamo">
@@ -60,11 +60,6 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/eliminarPrestamoResponse" message="tns:eliminarPrestamoResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/eliminarPrestamo/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="obtenerPrestamoPorId">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdRequest" message="tns:obtenerPrestamoPorId" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdResponse" message="tns:obtenerPrestamoPorIdResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorId/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
     <operation name="insertarPrestamo">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/insertarPrestamoRequest" message="tns:insertarPrestamo" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/insertarPrestamoResponse" message="tns:insertarPrestamoResponse" />
@@ -73,6 +68,11 @@
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosPorUsuarioRequest" message="tns:listarPrestamosPorUsuario" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosPorUsuarioResponse" message="tns:listarPrestamosPorUsuarioResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosPorUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerPrestamoPorId">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdRequest" message="tns:obtenerPrestamoPorId" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdResponse" message="tns:obtenerPrestamoPorIdResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
   </portType>
   <binding name="PrestamoWSPortBinding" type="tns:PrestamoWS">
@@ -113,7 +113,16 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="obtenerPrestamoPorId">
+    <operation name="insertarPrestamo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarPrestamosPorUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -125,16 +134,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="insertarPrestamo">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarPrestamosPorUsuario">
+    <operation name="obtenerPrestamoPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -20,7 +20,9 @@ namespace BibliotecaWA
         {
             if (!IsPostBack)
             {
+                ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
                 //  Recuperamos el modo desde QueryString o usamos "ver" por defecto
+
                 modo = Request.QueryString["modo"]?.ToLower() ?? "ver";
                 Session["modoUsuario"] = modo; // guardar en sesion
 
