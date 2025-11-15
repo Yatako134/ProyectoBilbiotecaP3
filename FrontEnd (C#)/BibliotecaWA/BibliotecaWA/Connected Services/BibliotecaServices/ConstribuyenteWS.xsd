@@ -5,14 +5,22 @@
   <xs:element name="asignarContribuyenteResponse" type="tns:asignarContribuyenteResponse" />
   <xs:element name="eliminarContribuyente" type="tns:eliminarContribuyente" />
   <xs:element name="eliminarContribuyenteResponse" type="tns:eliminarContribuyenteResponse" />
+  <xs:element name="eliminar_relacion_material_contribuyente" type="tns:eliminar_relacion_material_contribuyente" />
+  <xs:element name="eliminar_relacion_material_contribuyenteResponse" type="tns:eliminar_relacion_material_contribuyenteResponse" />
   <xs:element name="insertarContribuyente" type="tns:insertarContribuyente" />
   <xs:element name="insertarContribuyenteResponse" type="tns:insertarContribuyenteResponse" />
   <xs:element name="listarContribuyentesTodos" type="tns:listarContribuyentesTodos" />
   <xs:element name="listarContribuyentesTodosResponse" type="tns:listarContribuyentesTodosResponse" />
+  <xs:element name="listar_autores_por_material" type="tns:listar_autores_por_material" />
+  <xs:element name="listar_autores_por_materialResponse" type="tns:listar_autores_por_materialResponse" />
+  <xs:element name="listar_contribuyentes_por_material" type="tns:listar_contribuyentes_por_material" />
+  <xs:element name="listar_contribuyentes_por_materialResponse" type="tns:listar_contribuyentes_por_materialResponse" />
   <xs:element name="modificarContribuyente" type="tns:modificarContribuyente" />
   <xs:element name="modificarContribuyenteResponse" type="tns:modificarContribuyenteResponse" />
   <xs:element name="obtenerContribuyentePorId" type="tns:obtenerContribuyentePorId" />
   <xs:element name="obtenerContribuyentePorIdResponse" type="tns:obtenerContribuyentePorIdResponse" />
+  <xs:element name="tiene_otras_relaciones" type="tns:tiene_otras_relaciones" />
+  <xs:element name="tiene_otras_relacionesResponse" type="tns:tiene_otras_relacionesResponse" />
   <xs:complexType name="asignarContribuyente">
     <xs:sequence>
       <xs:element name="idcontribuyente" type="xs:int" />
@@ -47,6 +55,16 @@
       <xs:element minOccurs="0" name="tipo_contribuyente" type="tns:tipoContribuyente" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="listar_contribuyentes_por_material">
+    <xs:sequence>
+      <xs:element name="id_material" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listar_contribuyentes_por_materialResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:contribuyente" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="obtenerContribuyentePorId">
     <xs:sequence>
       <xs:element name="idContribuyente" type="xs:int" />
@@ -55,6 +73,16 @@
   <xs:complexType name="obtenerContribuyentePorIdResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:contribuyente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listar_autores_por_material">
+    <xs:sequence>
+      <xs:element name="id_material" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listar_autores_por_materialResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:contribuyente" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarContribuyente">
@@ -67,12 +95,13 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarContribuyente">
+  <xs:complexType name="eliminar_relacion_material_contribuyente">
     <xs:sequence>
-      <xs:element name="idContribuyente" type="xs:int" />
+      <xs:element name="id_material" type="xs:int" />
+      <xs:element name="id_contribuyente" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarContribuyenteResponse">
+  <xs:complexType name="eliminar_relacion_material_contribuyenteResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
@@ -89,6 +118,27 @@
   <xs:complexType name="insertarContribuyenteResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarContribuyente">
+    <xs:sequence>
+      <xs:element name="idContribuyente" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarContribuyenteResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tiene_otras_relaciones">
+    <xs:sequence>
+      <xs:element name="id_contribuyente" type="xs:int" />
+      <xs:element name="id_material_excluir" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tiene_otras_relacionesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="tipoContribuyente">
