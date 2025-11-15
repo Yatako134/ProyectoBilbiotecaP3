@@ -1274,6 +1274,7 @@ END$
 
 DELIMITER ;
 
+DELIMITER $
 CREATE PROCEDURE OBTENER_MATERIAL_X_ID(IN _id_material INT)
 BEGIN
     SELECT id_material, titulo, anho_publicacion, numero_paginas, estado, clasificacion_tematica, idioma, tipo
