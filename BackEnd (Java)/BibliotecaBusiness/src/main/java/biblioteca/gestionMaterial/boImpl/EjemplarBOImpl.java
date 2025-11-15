@@ -43,5 +43,10 @@ private final EjemplarDAO daoEjemplar;
     public void validar(Ejemplar objeto) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public ArrayList<Ejemplar> listar_disponibles_por_material(int _id_material) {
+        return daoEjemplar.listar_disponibles_por_material(_id_material);
+    }
     
 }

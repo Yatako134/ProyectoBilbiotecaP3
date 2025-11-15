@@ -48,7 +48,11 @@ public class ContribuyenteImpl implements ContribuyenteDAO{
     
     @Override
     public int eliminar(int idContribuyente) {
-        return -1;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idContribuyente);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_CONTRIBUYENTE", parametrosEntrada, null);
+        System.out.println("Se ha realizado la eliminacion del contribuyente");
+        return resultado;
     }
     
     @Override
@@ -137,5 +141,53 @@ public class ContribuyenteImpl implements ContribuyenteDAO{
         int resultado = DBManager.getInstance().ejecutarProcedimiento("ASIGNAR_CONTRIBUYENTE", parametrosEntrada, null);
         System.out.println("Se ha realizado la asinación del contribuyente");
         return resultado;
+    }
+
+    @Override
+    public int eliminar_relacion_material_contribuyente(int id_material, int id_contribuyente) {
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, id_material);
+        parametrosEntrada.put(2, id_contribuyente);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_RELACION_MATERIAL_CONTRIBUYENTE", parametrosEntrada, null);
+        System.out.println("Se ha realizado la eliminacion de la relacion del material con el contribuyente");
+        return resultado;
+    }
+
+    @Override
+    public boolean tiene_otras_relaciones(int id_contribuyente, int id_material_excluir) {
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, id_contribuyente);
+        parametrosEntrada.put(2, id_material_excluir);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("CONTAR_RELACIONES_CONTRIBUYENTE", parametrosEntrada, null);
+        System.out.println("Se ha realizado la eliminacion del contribuyente");
+        return resultado > 0;
+    }
+
+    @Override
+    public ArrayList<Contribuyente> listar_contribuyentes_por_material(int id_material) {
+        ArrayList<Contribuyente> contribuyentes = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, id_material);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_CONTRIBUYENTES_POR_MATERIAL", parametrosEntrada);
+        System.out.println("Lectura de contribuyentes...");
+        try{
+            while(rs.next()){
+                if(contribuyentes == null) contribuyentes = new ArrayList<>();
+                Contribuyente contribuyente = new Contribuyente();
+                contribuyente.setIdContribuyente(rs.getInt("id_contribuyente"));
+                contribuyente.setNombre(rs.getString("nombre"));
+                contribuyente.setPrimer_apellido(rs.getString("primer_apellido"));
+                contribuyente.setSegundo_apellido(rs.getString("segundo_apellido"));
+                contribuyente.setSeudonimo(rs.getString("seudonimo"));
+                contribuyente.setTipo_contribuyente(TipoContribuyente.valueOf(rs.getString("tipo_contribuyente")));
+                contribuyentes.add(contribuyente);
+      
+            }
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return contribuyentes;
     }
 }

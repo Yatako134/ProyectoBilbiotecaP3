@@ -5,12 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/BibliotecaWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
-  <message name="ListarTodas">
-    <part name="parameters" element="tns:ListarTodas" />
-  </message>
-  <message name="ListarTodasResponse">
-    <part name="parameters" element="tns:ListarTodasResponse" />
-  </message>
   <message name="obtenerBibliotecaPorId">
     <part name="parameters" element="tns:obtenerBibliotecaPorId" />
   </message>
@@ -19,12 +13,6 @@
   </message>
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
-  </message>
-  <message name="insertarBiblioteca">
-    <part name="parameters" element="tns:insertarBiblioteca" />
-  </message>
-  <message name="insertarBibliotecaResponse">
-    <part name="parameters" element="tns:insertarBibliotecaResponse" />
   </message>
   <message name="eliminarBiblioteca">
     <part name="parameters" element="tns:eliminarBiblioteca" />
@@ -38,19 +26,23 @@
   <message name="modificarBibliotecaResponse">
     <part name="parameters" element="tns:modificarBibliotecaResponse" />
   </message>
+  <message name="ListarTodas">
+    <part name="parameters" element="tns:ListarTodas" />
+  </message>
+  <message name="ListarTodasResponse">
+    <part name="parameters" element="tns:ListarTodasResponse" />
+  </message>
+  <message name="insertarBiblioteca">
+    <part name="parameters" element="tns:insertarBiblioteca" />
+  </message>
+  <message name="insertarBibliotecaResponse">
+    <part name="parameters" element="tns:insertarBibliotecaResponse" />
+  </message>
   <portType name="BibliotecaWS">
-    <operation name="ListarTodas">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/ListarTodasRequest" message="tns:ListarTodas" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/ListarTodasResponse" message="tns:ListarTodasResponse" />
-    </operation>
     <operation name="obtenerBibliotecaPorId">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/obtenerBibliotecaPorIdRequest" message="tns:obtenerBibliotecaPorId" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/obtenerBibliotecaPorIdResponse" message="tns:obtenerBibliotecaPorIdResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/obtenerBibliotecaPorId/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="insertarBiblioteca">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaRequest" message="tns:insertarBiblioteca" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaResponse" message="tns:insertarBibliotecaResponse" />
     </operation>
     <operation name="eliminarBiblioteca">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/eliminarBibliotecaRequest" message="tns:eliminarBiblioteca" />
@@ -62,18 +54,17 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/modificarBibliotecaResponse" message="tns:modificarBibliotecaResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/modificarBiblioteca/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
+    <operation name="ListarTodas">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/ListarTodasRequest" message="tns:ListarTodas" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/ListarTodasResponse" message="tns:ListarTodasResponse" />
+    </operation>
+    <operation name="insertarBiblioteca">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaRequest" message="tns:insertarBiblioteca" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaResponse" message="tns:insertarBibliotecaResponse" />
+    </operation>
   </portType>
   <binding name="BibliotecaWSPortBinding" type="tns:BibliotecaWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="ListarTodas">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="obtenerBibliotecaPorId">
       <soap:operation soapAction="" />
       <input>
@@ -85,15 +76,6 @@
       <fault name="Exception">
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
-    </operation>
-    <operation name="insertarBiblioteca">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
     </operation>
     <operation name="eliminarBiblioteca">
       <soap:operation soapAction="" />
@@ -118,6 +100,24 @@
       <fault name="Exception">
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
+    </operation>
+    <operation name="ListarTodas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarBiblioteca">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
     </operation>
   </binding>
   <service name="BibliotecaWS">
