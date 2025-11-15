@@ -23,26 +23,22 @@ namespace BibliotecaWA
                 boprestamo = new PrestamoWSClient();
                 bousuario = new UsuarioWSClient();
 
-
-                BindingList<prestamo> prestamos = new BindingList<prestamo>();
-                BindingList<sancion> saciones = new BindingList<sancion>();
-
                 prestamo[] prest = boprestamo.listarPrestamos();
                 sancion[] saci = bosancion.listarSanciones(); 
 
                 if(prest != null)
                 {
-                    foreach (prestamo presta in prestamos)
+                    foreach (prestamo presta in prest)
                     {
                         usuario user = bousuario.obtenerUsuarioPorId(presta.usuario.id_usuario);
                         presta.usuario = user;
                     }
 
-                    Session["prestamos"] = new BindingList<prestamo>(prestamos);
+                    Session["prestamos"] = new BindingList<prestamo>(prest);
                 }
-                if (saciones != null)
+                if (saci != null)
                 {
-                    Session["sanciones"] = new BindingList<sancion>(saciones);
+                    Session["sanciones"] = new BindingList<sancion>(saci);
                 }
                 
 
@@ -136,7 +132,7 @@ namespace BibliotecaWA
         private void ActualizarContadorSancion()
         {
             int total = 0;
-            if (((BindingList<prestamo>)Session["prestamos"]) != null)
+            if (((BindingList<sancion>)Session["Sanciones"]) != null)
             {
                 total = ((BindingList<sancion>)Session["Sanciones"]).Count;
             }
