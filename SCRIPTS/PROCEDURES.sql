@@ -494,7 +494,7 @@ CREATE PROCEDURE INSERTAR_CONTRIBUYENTE(
     IN _primer_apellido VARCHAR(60),
     IN _segundo_apellido VARCHAR(60),
     IN _seudonimo VARCHAR(60),
-    IN _tipo_contribuyente ENUM('AUTOR', 'EDITOR', 'ILUSTRADOR')
+    IN _tipo_contribuyente ENUM('AUTOR', 'EDITOR', 'TRADUCTOR')
 )
 BEGIN
     INSERT INTO Contribuyente(nombre,primer_apellido,segundo_apellido,seudonimo,tipo_contribuyente)
@@ -511,7 +511,7 @@ CREATE PROCEDURE MODIFICAR_CONTRIBUYENTE(
     IN _primer_apellido VARCHAR(60),
     IN _segundo_apellido VARCHAR(60),
     IN _seudonimo VARCHAR(60),
-    IN _tipo_contribuyente ENUM('AUTOR', 'EDITOR', 'ILUSTRADOR')
+    IN _tipo_contribuyente ENUM('AUTOR', 'EDITOR', 'TRADUCTOR')
 )
 BEGIN
     UPDATE Contribuyente
@@ -523,6 +523,7 @@ BEGIN
         tipo_contribuyente = _tipo_contribuyente
     WHERE id_contribuyente = _id_contribuyente;
 END$
+
 
 -- BUSCAR POR ID
 DELIMITER $
@@ -1223,5 +1224,80 @@ BEGIN
         id_ejemplar = _id_ejemplar,
         id_usuario = _id_usuario
     WHERE id_prestamo = _id_prestamo;
+END$
+
+
+DELIMITER $
+
+CREATE PROCEDURE ELIMINAR_RELACION_MATERIAL_CONTRIBUYENTE(
+    IN _id_material INT,
+    IN _id_contribuyente INT
+)
+BEGIN
+    DELETE FROM Contribuyente_Material 
+    WHERE id_material = _id_material 
+    AND id_contribuyente = _id_contribuyente;
+END$
+
+DELIMITER ;
+
+DELIMITER $
+
+CREATE PROCEDURE ELIMINAR_CONTRIBUYENTE(
+    IN _id_contribuyente INT
+)
+BEGIN
+    -- Primero eliminamos las relaciones
+    DELETE FROM Contribuyente_Material 
+    WHERE id_contribuyente = _id_contribuyente;
+    
+    -- Luego eliminamos el contribuyente
+    DELETE FROM Contribuyente 
+    WHERE id_contribuyente = _id_contribuyente;
+END$
+
+DELIMITER ;
+
+
+DELIMITER $
+
+CREATE PROCEDURE CONTAR_RELACIONES_CONTRIBUYENTE(
+    IN _id_contribuyente INT,
+    IN _excluir_material INT
+)
+BEGIN
+    SELECT COUNT(*) AS total_relaciones
+    FROM Contribuyente_Material 
+    WHERE id_contribuyente = _id_contribuyente 
+    AND id_material != _excluir_material;
+END$
+
+DELIMITER ;
+
+CREATE PROCEDURE OBTENER_MATERIAL_X_ID(IN _id_material INT)
+BEGIN
+    SELECT id_material, titulo, anho_publicacion, numero_paginas, estado, clasificacion_tematica, idioma, tipo
+    FROM MaterialBibliografico
+    WHERE id_material = _id_material;
+END$
+
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_EJEMPLARES_DISPONIBLES_POR_MATERIAL
+(IN _id_material INT)
+BEGIN
+SELECT  id_ejemplar, id_material, estado, ubicacion, activo, id_biblioteca
+FROM Ejemplar
+WHERE id_material = _id_material and activo = 1 and estado = 'DISPONIBLE';
+END$
+
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_EJEMPLARES_POR_MATERIAL
+(IN _id_material INT)
+BEGIN
+SELECT  id_ejemplar, id_material, estado, ubicacion, activo, id_biblioteca
+FROM Ejemplar
+WHERE id_material = _id_material and activo = 1;
 END$
 
