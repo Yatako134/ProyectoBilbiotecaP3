@@ -23,7 +23,6 @@ public class ConstribuyenteWS {
 
     @WebMethod(operationName = "modificarContribuyente")
     public int modificarContribuyente(@WebParam(name = "contribuyente") Contribuyente contribuyente) throws Exception {
-        contribuyentebo = new ContribuyenteBOImpl();
         return contribuyentebo.modificar(contribuyente);
     }
 
@@ -67,15 +66,10 @@ public class ConstribuyenteWS {
         }
         return resultado;
     }
-    /*
-    @WebMethod(operationName = "insertarContribuyente")
-    public int insertarContribuyente(@WebParam(name = "contribuyente") Contribuyente contribuyente) throws Exception {
-        return contribuyenteBO.insertar(contribuyente);
-    }
-    */
+
     
     @WebMethod(operationName = "insertarContribuyente")
-public int insertarContribuyente(
+    public int insertarContribuyente(
     @WebParam(name = "nombre") String nombre,
     @WebParam(name = "primerApellido") String primerApellido, 
     @WebParam(name = "segundoApellido") String segundoApellido,
@@ -98,5 +92,29 @@ public int insertarContribuyente(
             @WebParam(name = "idmaterial") int idmaterial) throws Exception {
         return contribuyentebo.asignar_contribuyente(idcontribuyente,idmaterial);
     }
+    
+    @WebMethod(operationName = "listar_autores_por_material")
+    public ArrayList<Contribuyente> listar_autores_por_material(@WebParam(name = "id_material") int id_material)throws Exception {
+        return contribuyentebo.listar_autores_por_material(id_material);
+    }
+
+    @WebMethod(operationName = "eliminar_relacion_material_contribuyente")
+    public int eliminar_relacion_material_contribuyente(@WebParam(name = "id_material") int id_material,
+            @WebParam(name = "id_contribuyente") int id_contribuyente) throws Exception{
+        return contribuyentebo.eliminar_relacion_material_contribuyente(id_material,id_contribuyente);
+    }
+
+    @WebMethod(operationName = "tiene_otras_relaciones")
+    public boolean tiene_otras_relaciones(@WebParam(name = "id_contribuyente")int id_contribuyente,
+            @WebParam(name = "id_material_excluir") int id_material_excluir)throws Exception {
+        return contribuyentebo.tiene_otras_relaciones(id_contribuyente,id_material_excluir);
+    }
+
+    @WebMethod(operationName = "listar_contribuyentes_por_material")
+    public ArrayList<Contribuyente> listar_contribuyentes_por_material(@WebParam(name = "id_material")int id_material)throws Exception {
+        return contribuyentebo.listar_contribuyentes_por_material(id_material);
+    }
+    
+    
     
 }
