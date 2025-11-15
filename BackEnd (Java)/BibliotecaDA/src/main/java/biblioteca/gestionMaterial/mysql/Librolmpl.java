@@ -13,6 +13,7 @@ import javax.naming.spi.DirStateFactory;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoMaterial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Libro;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Libro;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.TipoMaterial;
 
 public class Librolmpl implements LibroDAO{
     
@@ -85,6 +86,7 @@ public class Librolmpl implements LibroDAO{
                 libro.setISBN(rs.getString("ISBN"));
                 libro.setEdicion(rs.getString("edicion"));
                 libro.setEstado(EstadoMaterial.valueOf(rs.getString("estado")));
+                libro.setTipo(TipoMaterial.LIBRO);
             }
         }catch(SQLException ex){
             System.out.println("ERROR: " + ex.getMessage());

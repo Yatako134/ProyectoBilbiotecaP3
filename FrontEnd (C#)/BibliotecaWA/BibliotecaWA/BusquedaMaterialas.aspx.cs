@@ -45,15 +45,21 @@ namespace BibliotecaWA
             materialBO = new MaterialWSClient();
             listaMateriales = new BindingList<materialBibliografico>(materialBO.ListarTodos());
             materialBibliografico m;
+            Session["materiales"] = listaMateriales;
             gvResultados.DataSource = listaMateriales;
             gvResultados.DataBind();
-
+            ActualizarContador();
             int total = listaMateriales.Count;
             int inicio = gvResultados.PageIndex * gvResultados.PageSize + 1;
             int fin = Math.Min((gvResultados.PageIndex + 1) * gvResultados.PageSize, total);
             lblPaginaInfo.Text = $"{inicio}-{fin} de {total}";
         }
-
+        private void ActualizarContador()
+        {
+            int total = ((BindingList<materialBibliografico>)Session["materiales"]).Count;
+            int mostrados = gvResultados.Rows.Count;
+            LabelBusqueda.Text = $"Mostrando {mostrados} de {total} usuarios";
+        }
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             if (materialBO == null) materialBO = new MaterialWSClient();

@@ -16,6 +16,7 @@
 
         <!-- Panel superior -->
         <div class="d-flex align-items-center mb-3">
+            <asp:Label ID="LabelBusqueda" runat="server" CssClass="flex-shrink-0 me-3 ColorLetras"></asp:Label>
             <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control flex-grow-1 me-2" Placeholder="Ingrese título o autor" MaxLength="150"></asp:TextBox>
             <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary me-2" Text="Buscar" OnClick="btnBuscar_Click" />
             <!-- Botón de búsqueda avanzada -->

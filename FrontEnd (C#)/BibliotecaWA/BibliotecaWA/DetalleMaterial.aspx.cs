@@ -268,44 +268,46 @@ namespace BibliotecaWA
             List<biblioteca> listaBibliotecasFinal = new List<biblioteca>();
 
             // 3️⃣ Recorrer cada ejemplar y agruparlos por biblioteca
-            foreach (var ejemplar in ejemplares)
+            if (ejemplares != null)
             {
-                int idBiblio = ejemplar.blibioteca.idBiblioteca;
-
-                // Buscar si la biblioteca ya está en la lista
-                //var bibliotecaExistente = listaBibliotecas
-                //    .FirstOrDefault(b => b.idBiblioteca == idBiblio);
-                var bibliotecaExistente = listaBibliotecasFinal
-                    .FirstOrDefault(b => b.idBiblioteca == idBiblio);
-
-                // Si no existe, crearla y agregarla a la lista
-                if (bibliotecaExistente == null)
+                foreach (var ejemplar in ejemplares)
                 {
-                    bibliotecaExistente = new biblioteca
+                    int idBiblio = ejemplar.blibioteca.idBiblioteca;
+
+                    // Buscar si la biblioteca ya está en la lista
+                    //var bibliotecaExistente = listaBibliotecas
+                    //    .FirstOrDefault(b => b.idBiblioteca == idBiblio);
+                    var bibliotecaExistente = listaBibliotecasFinal
+                        .FirstOrDefault(b => b.idBiblioteca == idBiblio);
+
+                    // Si no existe, crearla y agregarla a la lista
+                    if (bibliotecaExistente == null)
                     {
-                        idBiblioteca = idBiblio,
-                        nombre = ejemplar.blibioteca.nombre
+                        bibliotecaExistente = new biblioteca
+                        {
+                            idBiblioteca = idBiblio,
+                            nombre = ejemplar.blibioteca.nombre
 
-                    };
-                    bibliotecaExistente.ejemplares = new ejemplar[] { };
-                    listaBibliotecasFinal.Add(bibliotecaExistente);
+                        };
+                        bibliotecaExistente.ejemplares = new ejemplar[] { };
+                        listaBibliotecasFinal.Add(bibliotecaExistente);
+                    }
+
+                    var listaTemp = bibliotecaExistente.ejemplares.ToList();
+                    listaTemp.Add(new BibliotecaWA.BibliotecaServices.ejemplar
+                    {
+                        idEjemplar = ejemplar.idEjemplar,
+                        ubicacion = ejemplar.ubicacion,
+                        estado = ejemplar.estado // si es enum SOAP
+                    });
+
+                    // Convertimos de nuevo a array para asignar a la propiedad SOAP
+                    bibliotecaExistente.ejemplares = listaTemp.ToArray();
+
+                    rptBibliotecas.DataSource = listaBibliotecasFinal.ToArray();
+                    rptBibliotecas.DataBind();
                 }
-
-                var listaTemp = bibliotecaExistente.ejemplares.ToList();
-                listaTemp.Add(new BibliotecaWA.BibliotecaServices.ejemplar
-                {
-                    idEjemplar = ejemplar.idEjemplar,
-                    ubicacion = ejemplar.ubicacion,
-                    estado = ejemplar.estado // si es enum SOAP
-                });
-
-                // Convertimos de nuevo a array para asignar a la propiedad SOAP
-                bibliotecaExistente.ejemplares = listaTemp.ToArray();
-
-                rptBibliotecas.DataSource = listaBibliotecasFinal.ToArray();
-                rptBibliotecas.DataBind();
             }
-
             // 4️⃣ Contar ejemplares disponibles y prestados por biblioteca
             //foreach (var biblioteca in listaBibliotecas)
             //{

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoMaterial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Articulo;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.TipoMaterial;
 
 public class Articulolmpl implements ArticuloDAO{
     
@@ -75,7 +76,7 @@ public class Articulolmpl implements ArticuloDAO{
         try{
             if(rs.next()){
                 articulo = new Articulo();
-                articulo.setIdMaterial(rs.getInt("id_material"));
+                articulo.setIdMaterial(rs.getInt("id_articulo"));
                 articulo.setTitulo(rs.getString("titulo"));
                 articulo.setAnho_publicacion(rs.getInt("anho_publicacion"));
                 articulo.setNumero_paginas(rs.getInt("numero_paginas"));
@@ -87,6 +88,7 @@ public class Articulolmpl implements ArticuloDAO{
                 articulo.setRevista(rs.getString("revista"));
                 articulo.setVolumen(rs.getInt("volumen"));
                 articulo.setNumero(rs.getInt("numero"));
+                articulo.setTipo(TipoMaterial.ARTICULO);
             }
         }catch(SQLException ex){
             System.out.println("ERROR: " + ex.getMessage());
@@ -105,7 +107,7 @@ public class Articulolmpl implements ArticuloDAO{
             while(rs.next()){
                 if(articulos == null) articulos = new ArrayList<>();
                 Articulo e = new Articulo();
-                e.setIdMaterial(rs.getInt("id_material"));
+                e.setIdMaterial(rs.getInt("id_articulo"));
                 e.setTitulo(rs.getString("titulo"));
                 e.setAnho_publicacion(rs.getInt("anho_publicacion"));
                 e.setNumero_paginas(rs.getInt("numero_paginas"));
