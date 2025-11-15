@@ -46,6 +46,13 @@
 
                     <asp:Label ID="lblResultados" runat="server" CssClass="flex-shrink-0 me-3 ColorLetras"></asp:Label>
                     <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control bg-light flex-grow-1" placeholder=" Buscar por usuario..." />
+                    <asp:LinkButton ID="btnBuscarPrestamo"
+                        runat="server"
+                        CssClass="btn btn-sm btn-primary btnBuscarFix"
+                        OnClick="btnBuscarPrestamo_Click"
+                        UseSubmitBehavior="false">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </asp:LinkButton>
 
                 </div>
 
@@ -197,12 +204,12 @@
                         <asp:Label ID="LabelSancion" runat="server" CssClass="flex-shrink-0 me-3 ColorLetras"></asp:Label>
                         <asp:TextBox ID="TextBoxSancion" runat="server" CssClass="form-control bg-light flex-grow-1" placeholder=" Buscar por usuario..." />
                         <asp:LinkButton ID="btnBuscarSancion"
-    runat="server"
-    CssClass="btn btn-sm btn-primary btnBuscarFix"
-    OnClick="btnBuscarSancion_Click"
-    UseSubmitBehavior="false">
-    <i class="fa-solid fa-magnifying-glass"></i>
-</asp:LinkButton>
+                            runat="server"
+                            CssClass="btn btn-sm btn-primary btnBuscarFix"
+                            OnClick="btnBuscarSancion_Click"
+                            UseSubmitBehavior="false">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </asp:LinkButton>
                     </div>
 
                     <asp:GridView ID="gvSanciones" runat="server"
