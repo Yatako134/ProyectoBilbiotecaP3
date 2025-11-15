@@ -325,6 +325,13 @@ namespace BibliotecaWA
         }
         protected void btnPrestar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(ddlbibliotecas.SelectedValue))
+            {
+                // Ejecutar el modal desde el servidor
+                ScriptManager.RegisterStartupScript(this, this.GetType(),
+                    "MostrarModal", "mostrarModalSeleccionarBiblioteca();", true);
+                return;
+            }
             biblioteca = ibbo.obtenerBibliotecaPorId(int.Parse(ddlbibliotecas.SelectedValue));
             Session["biblioteca"] = biblioteca;
             Response.Redirect("Prestamo.aspx");

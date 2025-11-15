@@ -469,6 +469,7 @@
     <Content Include="Scripts\UtilsArmy\Contribuyentes.js" />
     <Content Include="Scripts\UtilsArmy\Editoriales.js" />
     <Content Include="Scripts\UtilsArmy\MensajeExito.js" />
+    <Content Include="Scripts\UtilsArmy\MostrarSeleccionBiblio.js" />
     <Content Include="Scripts\UtilsArmy\SolicitarPrestamo.js" />
     <Content Include="Scripts\UtilsArmy\ValidacionesPrestamo.js" />
     <Content Include="Scripts\validarCampos.js" />
