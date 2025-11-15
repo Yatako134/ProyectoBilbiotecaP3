@@ -1303,3 +1303,23 @@ FROM Ejemplar
 WHERE id_material = _id_material and activo = 1;
 END$
 
+DELIMITER $
+CREATE PROCEDURE LISTAR_SANCIONES_BUSQUEDA_CODIGO_UNIVERSITARIO
+(IN _codigo_universitario INT)
+
+BEGIN
+	SELECT s.id_sancion, s.tipo_sancion, s.duracion_dias, s.fecha_inicio,
+    s.fecha_fin, s.justificacion, s.estado, s.id_prestamo, u.codigo_universitario
+    FROM Sancion s, Prestamo p, Usuario u
+    WHERE s.id_prestamo = p.id_prestamo and u.id_usuario = p.id_usuario and u.codigo_universitario LIKE CONCAT('%', _codigo_universitario , '%');
+END $
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_PRESTAMO_BUSQUEDA_CODIGO_UNIVERSITARIO
+(IN _codigo_universitario INT)
+
+BEGIN
+	 SELECT p.id_prestamo, p.fecha_de_prestamo, p.fecha_vencimiento,
+	p.fecha_devolucion, p.estado, p.id_ejemplar, u.codigo_universitario
+    FROM Prestamo p JOIN Usuario u ON u.id_usuario = p.id_usuario and u.codigo_universitario LIKE CONCAT('%', _codigo_universitario , '%');
+END $

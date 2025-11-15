@@ -24,25 +24,29 @@ namespace BibliotecaWA
                 bousuario = new UsuarioWSClient();
 
                 prestamo[] prest = boprestamo.listarPrestamos();
-                sancion[] saci = bosancion.listarSanciones(); 
-
+                sancion[] saci = bosancion.listarSanciones();
                 if(prest != null)
                 {
-                    foreach (prestamo presta in prest)
-                    {
-                        usuario user = bousuario.obtenerUsuarioPorId(presta.usuario.id_usuario);
-                        presta.usuario = user;
-                    }
 
                     Session["prestamos"] = new BindingList<prestamo>(prest);
+                }
+                else
+                {
+                    LabelMensajePrestamo.Text = "No hay prestamos que mostrar.";
+                    LabelMensajePrestamo.Visible = true;
                 }
                 if (saci != null)
                 {
                     Session["sanciones"] = new BindingList<sancion>(saci);
                 }
-                
+                else
+                {
+                    lblMensaje.Text = "No hay sanciones que mostrar.";
+                    lblMensaje.Visible = true;
+                }
 
-                CargarPrestamos(); 
+                    CargarPrestamos();
+                CargarSanciones();
 
                 // Botón seleccionado (al iniciar: Préstamos) -> azul suave
                 btnPrestamos.CssClass = "btn btn-sm btn-primary me-1";
@@ -276,7 +280,22 @@ namespace BibliotecaWA
         }
         protected void btnBuscarSancion_Click(object sender, EventArgs e)
         {
-            // Aquí haces la búsqueda
+            bosancion = new SancionWSClient();
+            TextBoxSancion.ToString();
+            sancion[] sanciones = bosancion.listarSanciones();
+            sanciones = null;
+            if (sanciones != null)
+            {
+                Session["sanciones"] = new BindingList<sancion>(sanciones);
+            }
+            else
+            {
+                Session["sanciones"] = new BindingList<sancion>();
+                lblMensaje.Text = "No hay resultados de búsqueda.";
+                lblMensaje.Visible = true;
+            }
+
+            CargarSanciones();
         }
     }
 }

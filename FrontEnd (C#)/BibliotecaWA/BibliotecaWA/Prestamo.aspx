@@ -18,7 +18,7 @@
                 </h2>
             </div>
             <div class="card-body d-flex">
-                <img src="images/book.png" class="img-thumbnail me-4" style="width: 120px; height: 140px;" />
+                <img src="images/book.png" class="img-thumbnail me-4" style="width: 180px; height: 180px;" />
                 <div>
                     <h5 class="card-title mb-1">
                         <asp:Label ID="lblTitulo" runat="server"></asp:Label>

@@ -123,6 +123,15 @@ namespace BibliotecaWA
         protected global::System.Web.UI.WebControls.DropDownList ddlCantidad;
 
         /// <summary>
+        /// Control LabelMensajePrestamo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelMensajePrestamo;
+
+        /// <summary>
         /// Control pnlSanciones.
         /// </summary>
         /// <remarks>
@@ -184,6 +193,15 @@ namespace BibliotecaWA
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCantidadSancion;
+
+        /// <summary>
+        /// Control lblMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensaje;
 
         /// <summary>
         /// Control btnVerSancion.

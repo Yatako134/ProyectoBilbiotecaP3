@@ -120,6 +120,11 @@
                 </div>
 
             </div>
+            <asp:Label ID="LabelMensajePrestamo" runat="server"
+                Text=""
+                Visible="false"
+                Style="color: #6c757d; text-align: center; display: block; font-weight: bold;">
+            </asp:Label>
         </asp:Panel>
 
         <!-- === MENU OPCIONES  === -->
@@ -202,7 +207,7 @@
 
                     <div class="tabla-busqueda d-flex align-items-center p-3 border-bottom bg-white gap-2">
                         <asp:Label ID="LabelSancion" runat="server" CssClass="flex-shrink-0 me-3 ColorLetras"></asp:Label>
-                        <asp:TextBox ID="TextBoxSancion" runat="server" CssClass="form-control bg-light flex-grow-1" placeholder=" Buscar por usuario..." />
+                        <asp:TextBox ID="TextBoxSancion" runat="server" CssClass="form-control bg-light flex-grow-1" placeholder=" Buscar por usuario..." TextMode ="NUMBER" />
                         <asp:LinkButton ID="btnBuscarSancion"
                             runat="server"
                             CssClass="btn btn-sm btn-primary btnBuscarFix"
@@ -261,7 +266,11 @@
                         <span class="ms-2">per page</span>
                     </div>
                 </div>
-
+                <asp:Label ID="lblMensaje" runat="server"
+                    Text=""
+                    Visible="false"
+                    Style="color: #6c757d; text-align: center; display: block; font-weight: bold;">
+                </asp:Label>
             </asp:Panel>
         </div>
         <asp:Button ID="btnVerSancion" runat="server" OnClick="btnVerSancion_Click" Style="display: none" />

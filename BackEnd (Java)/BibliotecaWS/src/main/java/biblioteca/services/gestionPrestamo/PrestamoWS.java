@@ -40,7 +40,10 @@ public class PrestamoWS {
     public ArrayList<Prestamo> listarPrestamos() throws Exception {
         return prestamoboimpl.listarTodos();
     }
-    
+    @WebMethod(operationName = "buscarPrestamos")
+    public ArrayList<Prestamo> buscarPrestamos (@WebParam(name = "codigo")int _codigo_universitario) throws Exception {
+        return prestamoboimpl.listar_busqueda_usuario(_codigo_universitario);
+    }
     @WebMethod(operationName = "listarPrestamosPorUsuario")
     public ArrayList<Prestamo> listarPrestamosPorUsuario(@WebParam(name = "idUsuario") int idUsuario) throws Exception {
         return prestamoboimpl.listarPorUsuario(idUsuario);
