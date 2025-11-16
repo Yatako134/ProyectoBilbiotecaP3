@@ -1424,6 +1424,7 @@ CREATE PROCEDURE Obtener_Sanciones_Usuario (
 )
 BEGIN
     SELECT 
+		s.id_sancion,
         p.fecha_vencimiento,
         s.justificacion
     FROM Prestamo p
