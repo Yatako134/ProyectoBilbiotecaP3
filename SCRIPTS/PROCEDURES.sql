@@ -1277,13 +1277,67 @@ END$
 DELIMITER ;
 
 DELIMITER $
+
 CREATE PROCEDURE OBTENER_MATERIAL_X_ID(IN _id_material INT)
 BEGIN
-    SELECT id_material, titulo, anho_publicacion, numero_paginas, estado, clasificacion_tematica, idioma, tipo
-    FROM MaterialBibliografico
-    WHERE id_material = _id_material;
-END$
-
+    SELECT 
+        m.id_material,
+        m.titulo,
+        m.anho_publicacion,
+        m.numero_paginas,
+        m.estado,
+        m.clasificacion_tematica,
+        m.idioma,
+        m.tipo,
+        
+        -- Autores corregido para no generar coma al inicio
+        IFNULL(
+    GROUP_CONCAT(
+        DISTINCT 
+        CASE 
+            WHEN c.nombre IS NOT NULL AND c.nombre <> '' THEN 
+                TRIM(CONCAT_WS(' ', c.nombre, c.primer_apellido, c.segundo_apellido))
+            ELSE NULL
+        END
+        ORDER BY c.nombre, c.primer_apellido, c.segundo_apellido
+        SEPARATOR ', '
+    ), 'No hay autores registrados'
+) AS autores,
+        
+        -- Bibliotecas
+        IFNULL(
+            NULLIF(
+                GROUP_CONCAT(
+                    DISTINCT CASE 
+                        WHEN e.estado = 'DISPONIBLE' THEN b.nombre 
+                        ELSE NULL 
+                    END SEPARATOR ', '
+                ), ''
+            ), 'No hay ejemplares disponibles para préstamo'
+        ) AS bibliotecas,
+        
+        -- Cantidad de ejemplares disponibles
+        COUNT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN e.id_ejemplar END) AS ejemplares_disponibles
+        
+    FROM MaterialBibliografico m
+    LEFT JOIN Contribuyente_Material cm 
+        ON m.id_material = cm.id_material
+    LEFT JOIN Contribuyente c 
+        ON cm.id_contribuyente = c.id_contribuyente 
+        AND c.tipo_contribuyente = 'AUTOR'
+    LEFT JOIN Ejemplar e 
+        ON m.id_material = e.id_material 
+        AND e.activo = 1
+    LEFT JOIN Biblioteca b 
+        ON e.id_biblioteca = b.id_biblioteca 
+        AND b.activo = 1
+    WHERE m.activo = 1
+      AND m.id_material = _id_material
+    GROUP BY 
+        m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, 
+        m.estado, m.clasificacion_tematica, m.idioma, m.tipo
+    ORDER BY ejemplares_disponibles DESC, m.titulo ASC;
+END $
 
 DELIMITER $
 CREATE PROCEDURE LISTAR_EJEMPLARES_DISPONIBLES_POR_MATERIAL

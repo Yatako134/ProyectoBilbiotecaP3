@@ -202,7 +202,7 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
                 return null;
         }
     }
-
+    
     @Override
     public ArrayList<MaterialBibliografico> listarTodos() {
         ArrayList<MaterialBibliografico> materiales = null;
@@ -367,6 +367,36 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
             DBManager.getInstance().cerrarConexion();
         }
         return materiales;
+    }
+
+    @Override
+    public MaterialBibliografico obtener_por_id_solo_material(int idMaterial) {
+        MaterialBibliografico material = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idMaterial);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_MATERIAL_X_ID", parametrosEntrada);
+        System.out.println("Lectura de material...");
+        try{
+            if(rs.next()){
+                material = new MaterialBibliografico();
+                material.setIdMaterial(rs.getInt("id_material"));
+                material.setTitulo(rs.getString("titulo"));
+                material.setAnho_publicacion(rs.getInt("anho_publicacion"));
+                material.setNumero_paginas(rs.getInt("numero_paginas"));
+                material.setEstado(EstadoMaterial.valueOf(rs.getString("estado")));
+                material.setClasificacion_tematica(rs.getString("clasificacion_tematica"));
+                material.setIdioma(rs.getString("idioma"));
+                material.setTipo(TipoMaterial.valueOf(rs.getString("tipo")));
+                material.setAutoresTexto(rs.getString("autores"));
+                material.setBibliotecasTexto(rs.getString("bibliotecas"));
+                material.setCantidadDisponible(rs.getInt("ejemplares_disponibles"));
+            }
+        }catch(SQLException ex){
+            System.out.println("ERROR: " + ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return material;
     }
     
 }

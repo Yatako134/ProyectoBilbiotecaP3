@@ -220,7 +220,7 @@ namespace BibliotecaWA
         protected void btnVer_Click(object sender, EventArgs e)
         {
             int id = int.Parse(hfPrestamoSeleccionado.Value);
-            Response.Redirect($"AdministrarUsuarios.aspx?id={id}&modo=ver");
+            Response.Redirect($"DetallePrestamo_Sancion.aspx?id={id}&modo=ver");
         }
 
         protected void btnEditar_Click(object sender, EventArgs e)

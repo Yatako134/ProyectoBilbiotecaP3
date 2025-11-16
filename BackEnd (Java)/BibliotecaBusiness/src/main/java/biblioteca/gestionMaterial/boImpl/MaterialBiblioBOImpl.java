@@ -93,4 +93,9 @@ public class MaterialBiblioBOImpl implements MaterialBiblioBO{
     public ArrayList<MaterialBibliografico> listartodosnormal() {
         return matDao.listartodosnormal();
     }
+
+    @Override
+    public MaterialBibliografico obtener_por_id_solo_material(int idMaterial) {
+        return matDao.obtener_por_id_solo_material(idMaterial);
+    }
 }
