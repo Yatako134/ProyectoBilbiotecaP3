@@ -10,4 +10,5 @@ public interface UsuarioDAO extends IDAO<Usuario>{
     int prestamos_vigentesxUsuario(int idUsuario);
     int verificar(Usuario usuario);
      ArrayList<Usuario> listarPorPanelBusqueda(String filtro);
+     ArrayList<Usuario> listarTodosDelSistema();
 }

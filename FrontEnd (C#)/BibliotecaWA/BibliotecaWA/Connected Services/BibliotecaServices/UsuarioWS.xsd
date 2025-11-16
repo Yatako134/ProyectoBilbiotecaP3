@@ -7,6 +7,8 @@
   <xs:element name="insertarUsuarioResponse" type="tns:insertarUsuarioResponse" />
   <xs:element name="listarPorPanelBusqueda" type="tns:listarPorPanelBusqueda" />
   <xs:element name="listarPorPanelBusquedaResponse" type="tns:listarPorPanelBusquedaResponse" />
+  <xs:element name="listarTodosDelSistema" type="tns:listarTodosDelSistema" />
+  <xs:element name="listarTodosDelSistemaResponse" type="tns:listarTodosDelSistemaResponse" />
   <xs:element name="listarUsuarios" type="tns:listarUsuarios" />
   <xs:element name="listarUsuariosResponse" type="tns:listarUsuariosResponse" />
   <xs:element name="modificarUsuario" type="tns:modificarUsuario" />
@@ -19,12 +21,10 @@
   <xs:element name="obtener_prestamos_vigentesxUsuarioResponse" type="tns:obtener_prestamos_vigentesxUsuarioResponse" />
   <xs:element name="verificarCuenta" type="tns:verificarCuenta" />
   <xs:element name="verificarCuentaResponse" type="tns:verificarCuentaResponse" />
-  <xs:complexType name="listarPorPanelBusqueda">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="filtro" type="xs:string" />
-    </xs:sequence>
+  <xs:complexType name="listarTodosDelSistema">
+    <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="listarPorPanelBusquedaResponse">
+  <xs:complexType name="listarTodosDelSistemaResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:usuario" />
     </xs:sequence>
@@ -51,6 +51,16 @@
       <xs:element name="id_rol" type="xs:int" />
       <xs:element name="limite_prestamo" type="xs:int" />
       <xs:element minOccurs="0" name="tipo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPorPanelBusqueda">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="filtro" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPorPanelBusquedaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:usuario" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarUsuarios">

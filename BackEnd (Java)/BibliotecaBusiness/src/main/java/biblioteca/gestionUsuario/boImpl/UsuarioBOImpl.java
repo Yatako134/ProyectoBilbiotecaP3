@@ -62,4 +62,9 @@ public class UsuarioBOImpl implements UsuarioBO{
     public ArrayList<Usuario> listarPorPanelBusqueda(String filtro) {
         return daoUsuario.listarPorPanelBusqueda(filtro);
     }
+    
+    @Override
+    public ArrayList<Usuario> listarTodosDelSistema(){
+        return daoUsuario.listarTodosDelSistema();
+    }
 }

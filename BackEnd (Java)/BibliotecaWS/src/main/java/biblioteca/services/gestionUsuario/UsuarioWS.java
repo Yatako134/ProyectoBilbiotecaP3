@@ -68,4 +68,9 @@ public class UsuarioWS {
     public ArrayList<Usuario> listarPorPanelBusqueda(@WebParam(name = "filtro")String filtro) {
         return usuarioBO.listarPorPanelBusqueda(filtro);
     }
+    
+    @WebMethod(operationName = "listarTodosDelSistema")
+    public ArrayList<Usuario> listarTodosDelSistema(){
+        return usuarioBO.listarTodosDelSistema();
+    }
 }

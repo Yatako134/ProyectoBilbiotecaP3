@@ -62,6 +62,12 @@
   <message name="listarPorPanelBusquedaResponse">
     <part name="parameters" element="tns:listarPorPanelBusquedaResponse" />
   </message>
+  <message name="listarTodosDelSistema">
+    <part name="parameters" element="tns:listarTodosDelSistema" />
+  </message>
+  <message name="listarTodosDelSistemaResponse">
+    <part name="parameters" element="tns:listarTodosDelSistemaResponse" />
+  </message>
   <portType name="UsuarioWS">
     <operation name="obtener_prestamos_vigentesxUsuario">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuarioRequest" message="tns:obtener_prestamos_vigentesxUsuario" />
@@ -106,6 +112,10 @@
     <operation name="listarPorPanelBusqueda">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarPorPanelBusquedaRequest" message="tns:listarPorPanelBusqueda" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarPorPanelBusquedaResponse" message="tns:listarPorPanelBusquedaResponse" />
+    </operation>
+    <operation name="listarTodosDelSistema">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarTodosDelSistemaRequest" message="tns:listarTodosDelSistema" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarTodosDelSistemaResponse" message="tns:listarTodosDelSistemaResponse" />
     </operation>
   </portType>
   <binding name="UsuarioWSPortBinding" type="tns:UsuarioWS">
@@ -207,6 +217,15 @@
       </fault>
     </operation>
     <operation name="listarPorPanelBusqueda">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarTodosDelSistema">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

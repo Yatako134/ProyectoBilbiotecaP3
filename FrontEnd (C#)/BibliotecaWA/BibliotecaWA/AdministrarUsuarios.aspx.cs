@@ -147,7 +147,7 @@ namespace BibliotecaWA
             modo = Session["modoUsuario"]?.ToString() ?? "ver";
 
 
-            usuario[] usuarios = bousuario.listarUsuarios();
+            usuario[] usuarios = bousuario.listarTodosDelSistema();
 
             // Validaciones
             List<string> errores = new List<string>();

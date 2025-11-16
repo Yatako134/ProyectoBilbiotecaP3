@@ -1399,3 +1399,14 @@ BEGIN
 END $$
 
 DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE ListarTodosUsuariosDelSistema(
+)
+BEGIN
+    SELECT *
+    FROM Usuario;
+END $$
+
+DELIMITER ;
+
