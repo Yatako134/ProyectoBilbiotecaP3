@@ -54,11 +54,27 @@ namespace BibliotecaWA
 
                 rol rolEncontrado = roles.FirstOrDefault(r => r.id_rol == user.rol_usuario.id_rol);
                 string tipoRol = rolEncontrado != null ? rolEncontrado.tipo : "Sin rol";
+                Label lblRol = e.Row.FindControl("lblRol") as Label;
+                string claseColor = ""; // default
 
-                // 🔹 Mostrar el rol con contorno azul
-                e.Row.Cells[5].Text = $"<span class='contorno-rol'>{tipoRol}</span>";
+                switch (tipoRol.ToLower())
+                {
+                    case "docente":
+                        claseColor = "rol-rojo";
+                        break;
+                    case "estudiante":
+                        claseColor = "rol-verde";
+                        break;
+                    case "bibliotecario":
+                        claseColor = "rol-azul";
+                        break;
+                        // puedes agregar más tipos aquí
+                }
+                lblRol.CssClass = "contorno-rol " + claseColor;
+                lblRol.Text = tipoRol;
 
-                // 🔹 Permitir que se renderice el HTML
+
+                // Permitir que se renderice el HTML
                 e.Row.Cells[5].Attributes["style"] = "white-space: nowrap;";
 
                 // Configurar el botón de opciones

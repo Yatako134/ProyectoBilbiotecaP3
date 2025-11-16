@@ -90,7 +90,7 @@
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="Tipo">
+                        <asp:TemplateField HeaderText="Tipo" ItemStyle-Width="120px"  ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
                                 <asp:Label ID="lblRol" runat="server" CssClass="contorno-rol"></asp:Label>
                             </ItemTemplate>

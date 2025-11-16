@@ -73,7 +73,9 @@ namespace BibliotecaWA
                         HabilitarEdicion();
 
                         // Boton hace postback normal en edicion
-                        btnAccion.OnClientClick = "";
+                        btnAccion.CssClass = "btn btn-primary";   // quitar 'inactivo'
+                        btnAccion.Enabled = true;                 // por si acaso
+                        btnAccion.OnClientClick = "";             // sin modal
                     }
 
                     Session["usuarioActual"] = usuarioActual;
@@ -144,6 +146,38 @@ namespace BibliotecaWA
             //  Usamos el modo desde Session (ya persistido)
             modo = Session["modoUsuario"]?.ToString() ?? "ver";
 
+
+            usuario[] usuarios = bousuario.listarUsuarios();
+
+            // Validaciones
+            List<string> errores = new List<string>();
+
+            if (usuarios.Any(u => u.DOI == txtDNI.Text && (modo == "registrar" || u.id_usuario != usuarioActual.id_usuario)))
+                errores.Add("El DNI ya está registrado.");
+
+            if (usuarios.Any(u => u.correo == txtCorreo.Text && (modo == "registrar" || u.id_usuario != usuarioActual.id_usuario)))
+                errores.Add("El correo ya está registrado.");
+
+            if (usuarios.Any(u => u.codigo == int.Parse(txtCodigo.Text) && (modo == "registrar" || u.id_usuario != usuarioActual.id_usuario)))
+                errores.Add("El código ya está registrado.");
+
+            //  SI HAY ERRORES, MOSTRAR MODAL
+            if (errores.Count > 0)
+            {
+                string titulo = $"ERROR AL {(modo == "registrar" ? "REGISTRAR" : "EDITAR")}";
+                string mensaje = string.Join("<br>", errores);
+
+                // Escapar comillas simples para evitar romper el script JS
+                titulo = titulo.Replace("'", "\\'");
+                mensaje = mensaje.Replace("'", "\\'");
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarError",
+                    $"mostrarError('{titulo}', '{mensaje}');", true);
+
+                return;
+            }
+
+
             if (modo == "registrar")
             {
                 usuario nuevo = new usuario
@@ -158,6 +192,8 @@ namespace BibliotecaWA
                     telefono = txtTelefono.Text,
                     rol_usuario = new BindingList<rol>(borol.listarRoles()).ToList().Find(r => r.id_rol.ToString() == ddlRol.SelectedValue)
                 };
+
+
                 bousuario.insertarUsuario(nuevo);
             }
             else if (modo == "editar" && usuarioActual != null)
