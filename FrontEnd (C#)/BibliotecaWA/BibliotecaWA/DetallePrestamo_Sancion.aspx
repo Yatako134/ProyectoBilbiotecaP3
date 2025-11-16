@@ -83,12 +83,12 @@
     <div class="card shadow-sm mb-3">
         <div>
             <div class="card-header" style="background-color: #f5faff;">
-                <h5 class="mb-0">Información de biblioteca</h5>
+                <asp:Label ID="lblBiblioteca" runat="server" CssClass="fw-normal mb-0"></asp:Label>
             </div>
             <div class="card-body">
                 <p class="mb-1">
-                    <strong>Nombre:</strong>
-                    <asp:Label ID="lblNombreBiblioteca" runat="server" CssClass="fw-normal"></asp:Label>
+                    <strong>Código:</strong>
+                    <asp:Label ID="lblCodEjem" runat="server" CssClass="fw-normal mb-0"></asp:Label>
                 </p>
                 <p class="mb-1">
                     <strong>Ubicacion:</strong>
@@ -130,6 +130,89 @@
                         Style="pointer-events: none; cursor: not-allowed;"></asp:TextBox>
                 </div>
             </div>
+
+
+
+            <asp:Panel ID="PanelEditarSancion" runat="server" Visible="false" CssClass="mb-3">
+                <div class="sancion-row">
+                    <div class="row mb-3">
+                        <div class="col-md-6 mb-2">
+                            <label class="form-label">Fecha de inicio de la sanción</label>
+                            <asp:Label ID="LabelInicioFecha" runat="server" CssClass="form-control bg-light"></asp:Label>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <label class="form-label">Fecha de fin de la sanción</label>
+                            <asp:Label ID="LabelFinFecha" runat="server" CssClass="form-control bg-light"></asp:Label>
+                        </div>
+                    </div>
+                    <!-- Tipo -->
+                    <div class="row mb-3">
+            <div class="col-md-6 mb-2">
+                <label class="form-label">Tipo de sanción</label>
+
+                <asp:DropDownList ID="ddlTipoSancionUnica" runat="server" CssClass="form-control">
+                    <asp:ListItem Text="Entrega tardía" Value="Entrega tardía"></asp:ListItem>
+                    <asp:ListItem Text="Daño de material" Value="Daño de material"></asp:ListItem>
+                </asp:DropDownList>
+
+            </div>
+
+            <!-- Días -->
+            <div class="col-md-6 mb-2">
+                <label class="form-label">Duración (días)</label>
+                <asp:TextBox ID="txtDuracionUnica" runat="server" CssClass="form-control" TextMode ="Number"
+                    placeholder="Ingrese duración"></asp:TextBox>
+            </div>
+        </div>
+
+        <!-- Justificación -->
+        <div class="mb-3">
+            <label class="form-label">Justificación</label>
+            <asp:TextBox ID="txtJustificacionUnica" runat="server"
+                CssClass="form-control" TextMode="MultiLine" Rows="3"
+                placeholder="Ingrese la justificación"></asp:TextBox>
+        </div>
+    </div>
+</asp:Panel>
+
+
+
+
+
+
+
+            <asp:Panel ID="pnlSancionUnica" runat="server" Visible="false" CssClass="sancion-row">
+
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-2">
+                        <label class="form-label">Fecha de inicio de la sanción</label>
+                        <asp:Label ID="lblFechaIni" runat="server" CssClass="form-control bg-light"></asp:Label>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <label class="form-label">Fecha de fin de la sanción</label>
+                        <asp:Label ID="lblFechaFin" runat="server" CssClass="form-control bg-light"></asp:Label>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-2">
+                        <label class="form-label">Tipo de sanción</label>
+                        <asp:Label ID="lblTipoSancion" runat="server" CssClass="form-control bg-light"></asp:Label>
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+                        <label class="form-label">Duración (días)</label>
+                        <asp:Label ID="lblDuracion" runat="server" CssClass="form-control bg-light"></asp:Label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Justificación</label>
+                    <asp:Label ID="lblJustificacion" runat="server" CssClass="form-control bg-light"></asp:Label>
+                </div>
+
+            </asp:Panel>
+
 
 
 

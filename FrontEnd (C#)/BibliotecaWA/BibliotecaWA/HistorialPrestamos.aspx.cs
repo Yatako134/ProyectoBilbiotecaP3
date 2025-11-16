@@ -283,17 +283,24 @@ namespace BibliotecaWA
 
         protected void btnVerSancion_Click(object sender, EventArgs e)
         {
-
+            int id = int.Parse(HiddenField1.Value);
+            Response.Redirect($"DetallePrestamo_Sancion.aspx?id={id}&modo=verSancion");
         }
 
         protected void btnEditarSancion_Click(object sender, EventArgs e)
         {
-
+            int id = int.Parse(HiddenField1.Value);
+            Response.Redirect($"DetallePrestamo_Sancion.aspx?id={id}&modo=editarSancion");
         }
 
         protected void btnEliminarSancion_Click(object sender, EventArgs e)
         {
-
+            bosancion = new SancionWSClient();
+            int id = int.Parse(HiddenField1.Value);
+            bosancion.finalizar_sancion(id);
+            sancion[] sanciones = bosancion.listarSanciones();
+            Session["sanciones"] = new BindingList<sancion>(sanciones);
+            CargarSanciones();
         }
         protected void btnBuscarSancion_Click(object sender, EventArgs e)
         {

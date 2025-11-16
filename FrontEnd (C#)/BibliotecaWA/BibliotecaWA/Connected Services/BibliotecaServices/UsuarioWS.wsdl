@@ -5,20 +5,14 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/UsuarioWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
-  <message name="eliminarUsuario">
-    <part name="parameters" element="tns:eliminarUsuario" />
+  <message name="obtener_prestamos_vigentesxUsuario">
+    <part name="parameters" element="tns:obtener_prestamos_vigentesxUsuario" />
   </message>
-  <message name="eliminarUsuarioResponse">
-    <part name="parameters" element="tns:eliminarUsuarioResponse" />
+  <message name="obtener_prestamos_vigentesxUsuarioResponse">
+    <part name="parameters" element="tns:obtener_prestamos_vigentesxUsuarioResponse" />
   </message>
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
-  </message>
-  <message name="verificarCuenta">
-    <part name="parameters" element="tns:verificarCuenta" />
-  </message>
-  <message name="verificarCuentaResponse">
-    <part name="parameters" element="tns:verificarCuentaResponse" />
   </message>
   <message name="listarPorPanelBusqueda">
     <part name="parameters" element="tns:listarPorPanelBusqueda" />
@@ -26,17 +20,23 @@
   <message name="listarPorPanelBusquedaResponse">
     <part name="parameters" element="tns:listarPorPanelBusquedaResponse" />
   </message>
-  <message name="insertarUsuario">
-    <part name="parameters" element="tns:insertarUsuario" />
-  </message>
-  <message name="insertarUsuarioResponse">
-    <part name="parameters" element="tns:insertarUsuarioResponse" />
-  </message>
   <message name="modificarUsuario">
     <part name="parameters" element="tns:modificarUsuario" />
   </message>
   <message name="modificarUsuarioResponse">
     <part name="parameters" element="tns:modificarUsuarioResponse" />
+  </message>
+  <message name="listarUsuarios">
+    <part name="parameters" element="tns:listarUsuarios" />
+  </message>
+  <message name="listarUsuariosResponse">
+    <part name="parameters" element="tns:listarUsuariosResponse" />
+  </message>
+  <message name="insertarUsuario">
+    <part name="parameters" element="tns:insertarUsuario" />
+  </message>
+  <message name="insertarUsuarioResponse">
+    <part name="parameters" element="tns:insertarUsuarioResponse" />
   </message>
   <message name="obtenerUsuarioPorId">
     <part name="parameters" element="tns:obtenerUsuarioPorId" />
@@ -56,42 +56,42 @@
   <message name="obtenerUsuarioxCodigoResponse">
     <part name="parameters" element="tns:obtenerUsuarioxCodigoResponse" />
   </message>
-  <message name="listarUsuarios">
-    <part name="parameters" element="tns:listarUsuarios" />
+  <message name="eliminarUsuario">
+    <part name="parameters" element="tns:eliminarUsuario" />
   </message>
-  <message name="listarUsuariosResponse">
-    <part name="parameters" element="tns:listarUsuariosResponse" />
+  <message name="eliminarUsuarioResponse">
+    <part name="parameters" element="tns:eliminarUsuarioResponse" />
   </message>
-  <message name="obtener_prestamos_vigentesxUsuario">
-    <part name="parameters" element="tns:obtener_prestamos_vigentesxUsuario" />
+  <message name="verificarCuenta">
+    <part name="parameters" element="tns:verificarCuenta" />
   </message>
-  <message name="obtener_prestamos_vigentesxUsuarioResponse">
-    <part name="parameters" element="tns:obtener_prestamos_vigentesxUsuarioResponse" />
+  <message name="verificarCuentaResponse">
+    <part name="parameters" element="tns:verificarCuentaResponse" />
   </message>
   <portType name="UsuarioWS">
-    <operation name="eliminarUsuario">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuarioRequest" message="tns:eliminarUsuario" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="verificarCuenta">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/verificarCuentaRequest" message="tns:verificarCuenta" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/verificarCuentaResponse" message="tns:verificarCuentaResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/verificarCuenta/Fault/Exception" name="Exception" message="tns:Exception" />
+    <operation name="obtener_prestamos_vigentesxUsuario">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuarioRequest" message="tns:obtener_prestamos_vigentesxUsuario" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuarioResponse" message="tns:obtener_prestamos_vigentesxUsuarioResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="listarPorPanelBusqueda">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarPorPanelBusquedaRequest" message="tns:listarPorPanelBusqueda" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarPorPanelBusquedaResponse" message="tns:listarPorPanelBusquedaResponse" />
     </operation>
-    <operation name="insertarUsuario">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/insertarUsuarioRequest" message="tns:insertarUsuario" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/insertarUsuarioResponse" message="tns:insertarUsuarioResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/insertarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
     <operation name="modificarUsuario">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/modificarUsuarioRequest" message="tns:modificarUsuario" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/modificarUsuarioResponse" message="tns:modificarUsuarioResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/modificarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarUsuarios">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarUsuariosRequest" message="tns:listarUsuarios" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarUsuariosResponse" message="tns:listarUsuariosResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarUsuarios/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="insertarUsuario">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/insertarUsuarioRequest" message="tns:insertarUsuario" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/insertarUsuarioResponse" message="tns:insertarUsuarioResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/insertarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="obtenerUsuarioPorId">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioPorIdRequest" message="tns:obtenerUsuarioPorId" />
@@ -107,32 +107,20 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioxCodigoResponse" message="tns:obtenerUsuarioxCodigoResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioxCodigo/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="listarUsuarios">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarUsuariosRequest" message="tns:listarUsuarios" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarUsuariosResponse" message="tns:listarUsuariosResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarUsuarios/Fault/Exception" name="Exception" message="tns:Exception" />
+    <operation name="eliminarUsuario">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuarioRequest" message="tns:eliminarUsuario" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="obtener_prestamos_vigentesxUsuario">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuarioRequest" message="tns:obtener_prestamos_vigentesxUsuario" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuarioResponse" message="tns:obtener_prestamos_vigentesxUsuarioResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    <operation name="verificarCuenta">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/verificarCuentaRequest" message="tns:verificarCuenta" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/verificarCuentaResponse" message="tns:verificarCuentaResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/verificarCuenta/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
   </portType>
   <binding name="UsuarioWSPortBinding" type="tns:UsuarioWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="eliminarUsuario">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
-    <operation name="verificarCuenta">
+    <operation name="obtener_prestamos_vigentesxUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -153,7 +141,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarUsuario">
+    <operation name="modificarUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -165,7 +153,19 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="modificarUsuario">
+    <operation name="listarUsuarios">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="insertarUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -210,7 +210,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="listarUsuarios">
+    <operation name="eliminarUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -222,7 +222,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="obtener_prestamos_vigentesxUsuario">
+    <operation name="verificarCuenta">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -44,6 +44,21 @@ namespace BibliotecaWA
                 string id = Request.QueryString["id"];
                 string modo = Request.QueryString["modo"];
                 MostrarDetalle(modo);
+                int id_sancion;
+                int id_prestamo;
+                sancion sanc = null;
+                if (modo.Equals("verSancion") || modo.Equals("editarSancion"))
+                {
+                    id_sancion = int.Parse(id);
+                    sanc = sancionBo.obtener_por_id(id_sancion);
+                    id_prestamo = sanc.prestamo.idPrestamo;
+                }
+                else { id_prestamo = int.Parse(id); }
+                prestamo prestamo = prestBO.obtenerPrestamoPorId(id_prestamo);
+                int id_ejemplar = prestamo.ejemplar.idEjemplar;
+                ejemplar ejemp = ejemBO.obtenerEjemplarPorId(id_ejemplar);
+                int id_material = ejemp.id_material;
+                materialBibliografico material = mateBO.ObtenerSoloMaterial(id_material);
                 if (modo.Equals("ver"))
                 {
                     lblCabecera.Text = "Detalle de préstamo";
@@ -51,17 +66,36 @@ namespace BibliotecaWA
                     lblMensajePersonalizado.Text = "⚠️ Si no se devuelve a tiempo, se le aplicará la sanción correspondiente.";
                 }
                 else
-                {
+                if(modo.Equals("editar")){
                     lblCabeceraInf.Text = "Modificacion de préstamo";
                     lblCabecera.Text = "Modificacion de préstamo";
 
                 }
-                int id_prestamo = int.Parse(id);
-                prestamo prestamo = prestBO.obtenerPrestamoPorId(id_prestamo);
-                int id_ejemplar = prestamo.ejemplar.idEjemplar;
-                ejemplar ejemp = ejemBO.obtenerEjemplarPorId(id_ejemplar);
-                int id_material = ejemp.id_material;
-                materialBibliografico material = mateBO.ObtenerSoloMaterial(id_material);
+                else if (modo.Equals("verSancion"))
+                {
+                    lblCabeceraInf.Text = "Detalle de sanción";
+                    lblCabecera.Text = "Detalle de sanción";
+                    if(sanc.tipo_sancion.ToString() == "ENTREGA_TARDIA")
+                    {
+                        lblTipoSancion.Text = "Entrega tardía";
+                    }
+                    else
+                    {
+                        lblTipoSancion.Text = "Daño del material";
+                    }
+                        lblDuracion.Text = sanc.duracion_dias.ToString();
+                    lblJustificacion.Text = sanc.justificacion.ToString();
+                    lblFechaIni.Text = sanc.fecha_inicio.ToString("dd/MM/yyyy - hh:mm tt");
+                    lblFechaFin.Text = sanc.fecha_fin.ToString("dd/MM/yyyy - hh:mm tt");
+                }
+                else
+                {
+                    lblCabeceraInf.Text = "Modificación de sanción";
+                    lblCabecera.Text = "Modificacion de sanción";
+                    LabelInicioFecha.Text = sanc.fecha_inicio.ToString("dd/MM/yyyy - hh:mm tt");
+                    LabelFinFecha.Text = sanc.fecha_fin.ToString("dd/MM/yyyy - hh:mm tt");
+                }
+                    
 
                 lblTitulo.Text = material.titulo;
                 lblAutor.Text = material.autoresTexto;
@@ -74,8 +108,9 @@ namespace BibliotecaWA
 
                 biblioteca biblio = biblioBo.obtenerBibliotecaPorId(ejemp.blibioteca.idBiblioteca);
 
-                lblNombreBiblioteca.Text = biblio.nombre;
-                lblLocacion.Text = biblio.ubicacion;
+                lblBiblioteca.Text = biblio.nombre;
+                lblLocacion.Text = ejemp.ubicacion.ToString();
+                lblCodEjem.Text = ejemp.idEjemplar.ToString();
 
                 usuario usuario = userBO.obtenerUsuarioxCodigo(prestamo.usuario.codigo);
 
@@ -88,6 +123,8 @@ namespace BibliotecaWA
 
                 txtCodigo.Text = usuario.codigo.ToString();
                 txtNombre.Text = usuario.nombre + " " + usuario.primer_apellido + " " + usuario.segundo_apellido;
+
+                
             }
 
         }
@@ -127,6 +164,19 @@ namespace BibliotecaWA
                 pnlFilaEditar.Visible = false;
                 pnlBotonGuardar.Visible = false;
             }
+            else if(modo == "verSancion")
+            {
+                pnlSancionUnica.Visible = true;
+                pnlFilaEditar.Visible = false;
+                pnlBotonGuardar.Visible = false;
+            }
+            else if (modo == "editarSancion")
+            {
+                pnlSancionUnica.Visible = false;
+                PanelEditarSancion.Visible = true;
+                pnlBotonGuardar.Visible = true;
+
+            }
         }
 
         protected void cvFecha_ServerValidate(object source, ServerValidateEventArgs args)
@@ -150,48 +200,76 @@ namespace BibliotecaWA
 
         protected void btnGuardarCambios_Click(object sender, EventArgs e)
         {
-            // Lista para almacenar todas las sanciones
-            var sanciones = new List<sancion>();
-
-            // Iterar sobre los campos enviados
-            foreach (string key in Request.Form.AllKeys)
+            string modo = Request.QueryString["modo"];
+            if (modo == "editar")
             {
-                if (key.StartsWith("txtTipoSancion_"))
+                // Lista para almacenar todas las sanciones
+                var sanciones = new List<sancion>();
+
+                // Iterar sobre los campos enviados
+
+                foreach (string key in Request.Form.AllKeys)
                 {
-                    string suffix = key.Substring("txtTipoSancion_".Length);
-                    string tipo = Request.Form[key];
-                    string duracionKey = "txtDuracion_" + suffix;
-                    string justificacionKey = "txtJustificacion_" + suffix;
+                    if (key.StartsWith("txtTipoSancion_"))
+                    {
+                        string suffix = key.Substring("txtTipoSancion_".Length);
+                        string tipo = Request.Form[key];
+                        string duracionKey = "txtDuracion_" + suffix;
+                        string justificacionKey = "txtJustificacion_" + suffix;
 
-                    string duracion = Request.Form[duracionKey];
-                    string justificacion = Request.Form[justificacionKey];
-                    sancion sanci = new sancion();
+                        string duracion = Request.Form[duracionKey];
+                        string justificacion = Request.Form[justificacionKey];
+                        sancion sanci = new sancion();
 
-                    // Asignar tipo de sanción desde string al enum
-                    sanci.tipo_sancion = (tipoSancion)Enum.Parse(typeof(tipoSancion), tipo);
+                        // Asignar tipo de sanción desde string al enum
+                        sanci.tipo_sancion = (tipoSancion)Enum.Parse(typeof(tipoSancion), tipo);
 
-                    // Convertir duración a entero
-                    sanci.duracion_dias = Convert.ToInt32(duracion);
+                        // Convertir duración a entero
+                        sanci.duracion_dias = Convert.ToInt32(duracion);
 
-                    // Convertir fechas desde los Labels a DateTime usando el formato exacto
-                    string fechaInicioStr = lblFechaPrestamo.Text.Split('-')[0].Trim();
-                    sanci.fecha_fin = DateTime.Parse(txtFechaDevo.Text);
-                    sanci.fecha_inicio = DateTime.Parse(fechaInicioStr);
+                        // Convertir fechas desde los Labels a DateTime usando el formato exacto
+                        string fechaInicioStr = lblFechaPrestamo.Text.Split('-')[0].Trim();
+                        sanci.fecha_fin = DateTime.Parse(txtFechaDevo.Text);
+                        sanci.fecha_inicio = DateTime.Parse(fechaInicioStr);
 
 
-                    // Asignar justificación y estado
-                    sanci.justificacion = justificacion;
-                    sanci.estado = estadoSancion.VIGENTE;
+                        // Asignar justificación y estado
+                        sanci.justificacion = justificacion;
+                        sanci.estado = estadoSancion.VIGENTE;
 
-                    string id = Request.QueryString["id"];
-                    sanci.prestamo.idPrestamo = Convert.ToInt32(id);
-                    sanciones.Add(sanci);
-                    // falta implementar en la bd
+                        string id = Request.QueryString["id"];
+                        sanci.prestamo.idPrestamo = Convert.ToInt32(id);
+                        sanciones.Add(sanci);
+                        // falta implementar en la bd
 
+                    }
                 }
-            }
 
-            Response.Redirect("HistorialPrestamos.aspx");
+                Response.Redirect("HistorialPrestamos.aspx");
+            }
+            else
+            {
+                string id = Request.QueryString["id"];
+                int id_sancion = int.Parse(id);
+                sancion sancionModificada = new sancion();
+                sancionModificada.id_sancion = id_sancion;
+                sancionModificada.justificacion = txtJustificacionUnica.Text;
+                sancionModificada.duracion_dias = int.Parse(txtDuracionUnica.Text);
+                string tipo = ddlTipoSancionUnica.SelectedValue;
+                string tipoAMod;
+                if(tipo == "Daño de material")
+                {
+                    tipoAMod = tipoSancion.DANHO.ToString();
+                }
+                else
+                {
+                    tipoAMod = tipoSancion.ENTREGA_TARDIA.ToString();
+                }
+                sancionBo = new SancionWSClient();
+                sancionBo.modificar_sancion(sancionModificada, tipoAMod);
+                Response.Redirect("HistorialPrestamos.aspx");
+            }
+            
         }
 
     }
