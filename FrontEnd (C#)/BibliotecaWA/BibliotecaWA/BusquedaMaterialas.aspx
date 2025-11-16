@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="BusquedaMaterialas.aspx.cs" Inherits="BibliotecaWA.BusquedaMaterialas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_Title" runat="server">
+    Busqueda de Material
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Scripts" runat="server">
 </asp:Content>

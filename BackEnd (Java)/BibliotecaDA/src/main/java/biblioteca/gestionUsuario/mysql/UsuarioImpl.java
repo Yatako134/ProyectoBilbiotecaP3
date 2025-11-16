@@ -3,12 +3,14 @@ package biblioteca.gestionUsuario.mysql;
 
 import biblioteca.config.DBManager;
 import biblioteca.gestionUsuario.dao.UsuarioDAO;
+import java.awt.image.SampleModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Sancion;
 import pe.edu.pucp.utilsarmy.usuarios.model.Rol;
 import pe.edu.pucp.utilsarmy.usuarios.model.Usuario;
 
@@ -282,5 +284,26 @@ public class UsuarioImpl implements UsuarioDAO{
             DBManager.getInstance().cerrarConexion();
         }
         return users;
+    }
+
+    @Override
+    public Sancion obtener_sancion_usuario(int id_usuario) {
+        Sancion sanc=null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, id_usuario);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("Obtener_Sanciones_Usuario", parametrosEntrada);
+        try{
+            if(rs.next()){
+                sanc = new Sancion();
+                sanc.setId_sancion(rs.getInt("id_sancion"));
+                sanc.setFecha_fin(rs.getTimestamp("fecha_vencimiento"));
+                sanc.setJustificacion(rs.getString("justificacion"));
+            }
+        }catch(SQLException ex){
+            System.out.println("ERROR: " + ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return sanc;
     }
 }
