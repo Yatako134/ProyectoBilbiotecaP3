@@ -1378,3 +1378,19 @@ BEGIN
 	p.fecha_devolucion, p.estado, p.id_ejemplar, u.codigo_universitario
     FROM Prestamo p JOIN Usuario u ON u.id_usuario = p.id_usuario and u.codigo_universitario LIKE CONCAT('%', _codigo_universitario , '%');
 END $
+
+
+DELIMITER $$
+CREATE PROCEDURE sp_BuscarUsuario(
+    IN pCodigoUniversitario VARCHAR(50),
+    IN pNombre VARCHAR(50)
+)
+BEGIN
+    SELECT *
+    FROM Usuario
+    WHERE 
+        (pCodigoUniversitario IS NULL OR codigo_universitario LIKE CONCAT('%', pCodigoUniversitario, '%'))
+        OR (pNombre IS NULL OR nombre LIKE CONCAT('%', pNombre, '%'))
+        OR (pNombre IS NULL OR primer_apellido LIKE CONCAT('%', pNombre, '%'))
+        OR (pNombre IS NULL OR segundo_apellido LIKE CONCAT('%', pNombre, '%'));
+END $$
