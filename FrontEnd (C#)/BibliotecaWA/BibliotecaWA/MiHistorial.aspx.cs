@@ -13,8 +13,6 @@ namespace ProyectoP3
 {
     public partial class MiHistorial : System.Web.UI.Page
     {
-        //private PrestamoBOImpl boprestamo;
-        //private SancionBOImpl bosancion;
         private PrestamoWSClient boprestamo;
         private SancionWSClient bosancion;
 
@@ -22,10 +20,31 @@ namespace ProyectoP3
         {
             if (!IsPostBack)
             {
-                CargarPrestamos(); // Por defecto carga préstamos
-                //btnPrestamos.CssClass = "btn btn-sm btn-secondary me-1";
-                //btnSanciones.CssClass = "btn btn-sm btn-secondary";
+                bosancion = new SancionWSClient();
+                boprestamo = new PrestamoWSClient();
+                prestamo[] prest = boprestamo.listarPrestamosPorUsuario(6);
+                sancion[] saci = bosancion.listarSancionesPorUsuario(6);
+                if (prest != null)
+                {
+                    Session["prestamos"] = new BindingList<prestamo>(prest);
+                }
+                else
+                {
+                    LabelMensajePrestamo.Text = "No hay prestamos que mostrar.";
+                    LabelMensajePrestamo.Visible = true;
+                }
+                if (saci != null)
+                {
+                    Session["sanciones"] = new BindingList<sancion>(saci);
+                }
+                else
+                {
+                    lblMensaje.Text = "No hay sanciones que mostrar.";
+                    lblMensaje.Visible = true;
+                }
 
+                CargarPrestamos();
+                CargarSanciones();
 
                 // Botón seleccionado (al iniciar: Préstamos) -> azul suave
                 btnPrestamos.CssClass = "btn btn-sm btn-primary me-1";
@@ -39,12 +58,6 @@ namespace ProyectoP3
         {
             pnlPrestamos.Visible = true;
             pnlSanciones.Visible = false;
-            //btnPrestamos.CssClass = "btn btn-sm btn-outline-primary me-1 btn-activo";
-            //btnSanciones.CssClass = "btn btn-sm btn-outline-danger";
-
-            //btnPrestamos.CssClass = "btn btn-sm btn-secondary me-1";
-            //btnSanciones.CssClass = "btn btn-sm btn-secondary";
-
             // Prestamos activo (azul suave)
             btnPrestamos.CssClass = "btn btn-sm btn-primary me-1";
 
@@ -59,12 +72,6 @@ namespace ProyectoP3
         {
             pnlPrestamos.Visible = false;
             pnlSanciones.Visible = true;
-            //btnPrestamos.CssClass = "btn btn-sm btn-secondary me-1";
-            //btnSanciones.CssClass = "btn btn-sm btn-secondary";
-
-            //btnPrestamos.CssClass = "btn btn-sm btn-outline-primary me-1";
-            //btnSanciones.CssClass = "btn btn-sm btn-outline-danger btn-activo";
-
             // Prestamos vuelve al estilo original (sin sombreado)
             btnPrestamos.CssClass = "btn btn-sm btn-outline-secondary";
 
@@ -76,52 +83,45 @@ namespace ProyectoP3
 
         private void CargarPrestamos()
         {
-            //boprestamo = new PrestamoBOImpl();
-            //var lista = boprestamo.listarTodos();
-            //gvPrestamos.DataSource = lista;
-            //gvPrestamos.DataBind();
 
-            //// Información de la página
-            //int totalPaginas = (int)Math.Ceiling((double)lista.Count / gvPrestamos.PageSize);
-            //lblPaginaInfoPrestamos.Text = $"Página {gvPrestamos.PageIndex + 1} de {totalPaginas}";
-
-            boprestamo = new PrestamoWSClient();
-            BindingList<prestamo> prestamos;
-            prestamos = new BindingList<prestamo>(boprestamo.listarPrestamosPorUsuario(1)); //usuario = 1
+            BindingList<prestamo> prestamos = (BindingList<prestamo>)Session["prestamos"];
             gvPrestamos.DataSource = prestamos;
             gvPrestamos.DataBind();
+            ActualizarContador();
 
-            int totalPaginas = (int)Math.Ceiling((double)prestamos.Count / gvPrestamos.PageSize);
-            lblPaginaInfoPrestamos.Text = $"Página {gvPrestamos.PageIndex + 1} de {totalPaginas}";
 
+        }
+        private void ActualizarContador()
+        {
+            int total = 0;
+            if (((BindingList<prestamo>)Session["prestamos"]) != null)
+            {
+                total = ((BindingList<prestamo>)Session["prestamos"]).Count;
+            }
+
+            int mostrados = gvPrestamos.Rows.Count;
+            lblResultados.Text = $"Mostrando {mostrados} de {total} usuarios";
+        }
+
+        private void ActualizarContadorSancion()
+        {
+            int total = 0;
+            if (((BindingList<sancion>)Session["Sanciones"]) != null)
+            {
+                total = ((BindingList<sancion>)Session["Sanciones"]).Count;
+            }
+            int mostrados = gvSanciones.Rows.Count;
+            LabelSancion.Text = $"Mostrando {mostrados} de {total} usuarios";
         }
 
         private void CargarSanciones()
         {
-            //bosancion = new SancionBOImpl();
-            //var lista = bosancion.listarTodos();
-            //gvSanciones.DataSource = lista;
-            //gvSanciones.DataBind();
-
-            //int totalPaginas = (int)Math.Ceiling((double)lista.Count / gvSanciones.PageSize);
-            //lblPaginaInfoSanciones.Text = $"Página {gvSanciones.PageIndex + 1} de {totalPaginas}";
-
-            bosancion = new SancionWSClient();
-            BindingList<sancion> sanciones;
-            sanciones = new BindingList<sancion>(bosancion.listarSancionesPorUsuario(1)); //usuario = 1
+            BindingList<sancion> sanciones = (BindingList<sancion>)Session["sanciones"];
             gvSanciones.DataSource = sanciones;
             gvSanciones.DataBind();
-
-            int totalPaginas = (int)Math.Ceiling((double)sanciones.Count / gvSanciones.PageSize);
-            lblPaginaInfoSanciones.Text = $"Página {gvSanciones.PageIndex + 1} de {totalPaginas}";
+            ActualizarContadorSancion();
         }
 
-        /// <summary>
-        /// Genera el HTML para mostrar el estado como una "badge" con estilo.
-        /// Usa: "vigente", "atrasado", "finalizado" (case-insensitive).
-        /// </summary>
-        /// <param name="estadoObj">valor del estado (puede venir de la BD)</param>
-        /// <returns>string HTML con span y clases bootstrap</returns>
         protected string GetEstadoHtml(object estadoObj)
         {
             if (estadoObj == null) return string.Empty;
@@ -190,7 +190,38 @@ namespace ProyectoP3
         protected void ddlPageSizePrestamos_SelectedIndexChanged(object sender, EventArgs e)
         {
             gvPrestamos.PageSize = int.Parse(ddlPageSizePrestamos.SelectedValue);
-            gvPrestamos.PageIndex = 0; // Reiniciamos a la primera página
+
+            //gvPrestamos.PageIndex = 0; // Reiniciamos a la primera página
+
+            CargarPrestamos();
+        }
+
+
+        protected void btnBuscarPrestamo_Click(object sender, EventArgs e)
+        {
+            boprestamo = new PrestamoWSClient();
+            string codigo_a_buscar = txtBuscar.Text.Trim();
+
+            prestamo[] prestamos_busqueda;
+            if (codigo_a_buscar == "")
+            {
+                prestamos_busqueda = boprestamo.listarPrestamos();
+            }
+            else
+            {
+                prestamos_busqueda = boprestamo.buscarPrestamos(int.Parse(txtBuscar.Text.Trim()));
+            }
+            if (prestamos_busqueda != null)
+            {
+                Session["prestamos"] = new BindingList<prestamo>(prestamos_busqueda);
+                LabelMensajePrestamo.Visible = false;
+            }
+            else
+            {
+                Session["prestamos"] = new BindingList<prestamo>();
+                LabelMensajePrestamo.Text = "No se encontraron resultados para la búsqueda.";
+                LabelMensajePrestamo.Visible = true;
+            }
             CargarPrestamos();
         }
 
@@ -205,6 +236,34 @@ namespace ProyectoP3
         {
             gvSanciones.PageSize = int.Parse(ddlPageSizeSanciones.SelectedValue);
             gvSanciones.PageIndex = 0;
+            CargarSanciones();
+        }
+
+        protected void btnBuscarSancion_Click(object sender, EventArgs e)
+        {
+            bosancion = new SancionWSClient();
+            string codigo_a_buscar = TextBoxSancion.Text.Trim();
+
+            sancion[] sanciones_busqueda;
+            if (codigo_a_buscar == "")
+            {
+                sanciones_busqueda = bosancion.listarSanciones();
+            }
+            else
+            {
+                sanciones_busqueda = bosancion.BusquedaSanciones(int.Parse(TextBoxSancion.Text.Trim()));
+            }
+            if (sanciones_busqueda != null)
+            {
+                Session["sanciones"] = new BindingList<sancion>(sanciones_busqueda);
+                lblMensaje.Visible = false;
+            }
+            else
+            {
+                Session["sanciones"] = new BindingList<sancion>();
+                lblMensaje.Text = "No se encontraron resultados para la búsqueda.";
+                lblMensaje.Visible = true;
+            }
             CargarSanciones();
         }
     }

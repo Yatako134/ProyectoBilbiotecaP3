@@ -12,6 +12,8 @@
     </div>
 
     <div class="container mt-4">
+
+        <!-- === CABECERA SUPERIOR === -->
         <div class="text-start mb-4">
             <h2 class="fw-bold fs-2">Mi Historial</h2>
         </div>
@@ -32,9 +34,28 @@
         </div>
 
         <!-- Panel de Préstamos -->
-        <asp:Panel ID="pnlPrestamos" runat="server" Visible="true" CssClass="d-flex flex-column" Style="height: 500px;">
+        <asp:Panel ID="pnlPrestamos" runat="server" CssClass="d-flex flex-column" Style="height: 500px;">
+
+
             <!-- Grid con scroll -->
-            <div style="overflow-y: auto; flex: 1 1 auto;">
+            <div class="tabla-container shadow-sm rounded-4 overflow-hidden ">
+
+                <!-- === BARRA DE BÚSQUEDA === -->
+                <div class="tabla-busqueda d-flex align-items-center p-3 border-bottom bg-white gap-2">
+
+                    <asp:Label ID="lblResultados" runat="server" CssClass="flex-shrink-0 me-3 ColorLetras"></asp:Label>
+                    <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control bg-light flex-grow-1" placeholder=" Buscar por código..." TextMode="Number" />
+                    <asp:LinkButton ID="btnBuscarPrestamo"
+                        runat="server"
+                        CssClass="btn btn-sm btn-primary btnBuscarFix"
+                        OnClick="btnBuscarPrestamo_Click"
+                        UseSubmitBehavior="false">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </asp:LinkButton>
+
+                </div>
+
+                <!-- === GRIDVIEW === -->
                 <asp:GridView ID="gvPrestamos" runat="server"
                     AutoGenerateColumns="False"
                     AllowPaging="true" PageSize="8"
@@ -44,7 +65,12 @@
                         <asp:BoundField DataField="IdPrestamo" HeaderText="Código" ItemStyle-CssClass="align-middle" />
                         <asp:BoundField DataField="Fecha_de_prestamo" HeaderText="Fecha de Inicio" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-CssClass="align-middle" />
                         <asp:BoundField DataField="Fecha_vencimiento" HeaderText="Fecha de Vencimiento" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-CssClass="align-middle" />
-                        <asp:BoundField DataField="Fecha_devolucion" HeaderText="Fecha de Devolución" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-CssClass="align-middle" />
+                        <asp:TemplateField HeaderText="Fecha de Devolución">
+                            <ItemTemplate>
+                                <%# (Eval("Fecha_devolucion") == null || Convert.ToDateTime(Eval("Fecha_devolucion")) == DateTime.MinValue)? "-" : Convert.ToDateTime(Eval("Fecha_devolucion")).ToString("dd/MM/yyyy") %>
+                            </ItemTemplate>
+                            <ItemStyle CssClass="align-middle" />
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Sanción">
                             <ItemTemplate>
                                 <%# Eval("Estado").ToString() == "RETRASADO" ? "Sí" : "No" %>
@@ -59,6 +85,7 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
+
             </div>
 
             <!-- Contenedor de paginación al fondo -->
@@ -69,9 +96,9 @@
                         <asp:DropDownList ID="ddlPageSizePrestamos" runat="server" AutoPostBack="true"
                             CssClass="form-select d-inline-block w-auto"
                             OnSelectedIndexChanged="ddlPageSizePrestamos_SelectedIndexChanged">
-                            <asp:ListItem Text="5" Value="5" />
-                            <asp:ListItem Text="10" Value="10" />
-                            <asp:ListItem Text="20" Value="20" />
+                            <asp:ListItem Text="5" Value="5"/>
+                            <asp:ListItem Text="10" Value="10"/>
+                            <asp:ListItem Text="20" Value="20" Selected="True" />
                         </asp:DropDownList>
                         por página
                     </div>
@@ -80,11 +107,52 @@
                     </div>
                 </div>
             </div>
+
+<%--            <!-- === BARRA INFERIOR === -->
+            <div class="tabla-footer d-flex justify-content-between align-items-center p-3 bg-light">
+
+                <div class="d-flex align-items-center">
+                    <label for="ddlCantidad" class="me-2">Show</label>
+                    <asp:DropDownList ID="ddlPageSizePrestamos" runat="server" AutoPostBack="true"
+                        CssClass="form-select form-select-sm w-auto"
+                        OnSelectedIndexChanged="ddlPageSizePrestamos_SelectedIndexChanged">
+                        <asp:ListItem Text="5" Value="5" />
+                        <asp:ListItem Text="10" Value="10" Selected="True" />
+                        <asp:ListItem Text="25" Value="25" />
+                        <asp:ListItem Text="50" Value="50" />
+                        <asp:ListItem Text="100" Value="100" />
+                    </asp:DropDownList>
+                    <span class="ms-2">per page</span>
+                </div>
+
+            </div>--%>
+
+            <asp:Label ID="LabelMensajePrestamo" runat="server"
+                Text=""
+                Visible="false"
+                Style="color: #6c757d; text-align: center; display: block; font-weight: bold;">
+            </asp:Label>
+
         </asp:Panel>
 
         <!-- Panel de Sanciones -->
         <asp:Panel ID="pnlSanciones" runat="server" Visible="false" CssClass="d-flex flex-column" Style="height: 500px;">
-            <div style="overflow-y: auto; flex: 1 1 auto;">
+            <div class="tabla-container shadow-sm rounded-4 overflow-hidden ">
+
+                <!-- === BARRA DE BÚSQUEDA === -->
+                <div class="tabla-busqueda d-flex align-items-center p-3 border-bottom bg-white gap-2">
+                    <asp:Label ID="LabelSancion" runat="server" CssClass="flex-shrink-0 me-3 ColorLetras"></asp:Label>
+                    <asp:TextBox ID="TextBoxSancion" runat="server" CssClass="form-control bg-light flex-grow-1" placeholder=" Buscar por código..." TextMode="NUMBER" />
+                    <asp:LinkButton ID="btnBuscarSancion"
+                        runat="server"
+                        CssClass="btn btn-sm btn-primary btnBuscarFix"
+                        OnClick="btnBuscarSancion_Click"
+                        UseSubmitBehavior="false">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                    </asp:LinkButton>
+                </div>
+
+                <!-- === GRIDVIEW === -->
                 <asp:GridView ID="gvSanciones" runat="server"
                     AutoGenerateColumns="False"
                     AllowPaging="true" PageSize="8"
@@ -126,7 +194,7 @@
                             OnSelectedIndexChanged="ddlPageSizeSanciones_SelectedIndexChanged">
                             <asp:ListItem Text="5" Value="5" />
                             <asp:ListItem Text="10" Value="10" />
-                            <asp:ListItem Text="20" Value="20" />
+                            <asp:ListItem Text="20" Value="20" Selected="True" />
                         </asp:DropDownList>
                         por página
                     </div>
@@ -135,6 +203,29 @@
                     </div>
                 </div>
             </div>
+
+<%--            <!-- Paginación inferior -->
+            <div class="tabla-footer d-flex justify-content-between align-items-center p-3 bg-light">
+                <div class="d-flex align-items-center">
+                    <label for="ddlCantidadSancion" class="me-2">Show</label>
+                    <asp:DropDownList ID="ddlPageSizeSanciones" runat="server" AutoPostBack="true"
+                        CssClass="form-select form-select-sm w-auto"
+                        OnSelectedIndexChanged="ddlPageSizeSanciones_SelectedIndexChanged">
+                        <asp:ListItem Text="5" Value="5" />
+                        <asp:ListItem Text="10" Value="10" Selected="True" />
+                        <asp:ListItem Text="25" Value="25" />
+                        <asp:ListItem Text="50" Value="50" />
+                        <asp:ListItem Text="100" Value="100" />
+                    </asp:DropDownList>
+                    <span class="ms-2">per page</span>
+                </div>
+            </div>--%>
+            <asp:Label ID="lblMensaje" runat="server"
+                Text=""
+                Visible="false"
+                Style="color: #6c757d; text-align: center; display: block; font-weight: bold;">
+            </asp:Label>
+
         </asp:Panel>
     </div>
 </asp:Content>
