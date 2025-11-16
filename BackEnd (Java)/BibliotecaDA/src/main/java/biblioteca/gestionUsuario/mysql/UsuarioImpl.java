@@ -217,4 +217,38 @@ public class UsuarioImpl implements UsuarioDAO{
         return resultado;
     }
     
+    @Override
+    public ArrayList<Usuario> listarPorPanelBusqueda(String filtro) {
+        ArrayList<Usuario> users = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, filtro); // El parámetro que espera tu procedimiento almacenado
+
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("sp_BuscarUsuario", parametrosEntrada);
+        System.out.println("Lectura de todas los usuarios...");
+        try{
+            while(rs.next()){
+                if(users == null) users = new ArrayList<>();
+                Usuario usuario = new Usuario();
+                usuario.setId_usuario(rs.getInt("id_usuario"));
+                usuario.setCodigo(rs.getInt("codigo_universitario"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setPrimer_apellido(rs.getString("primer_apellido"));
+                usuario.setSegundo_apellido(rs.getString("segundo_apellido"));
+                usuario.setDOI(rs.getString("DOI"));
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuario.setCorreo(rs.getString("correo"));
+                usuario.setTelefono(rs.getString("numero_de_telefono"));
+                usuario.setActiva(rs.getBoolean("activo"));
+                Rol r = new Rol();
+                r.setId_rol(rs.getInt("id_rol"));
+                usuario.setRol_usuario(r);
+                users.add(usuario);
+            }
+        }catch(SQLException ex){
+            System.out.println("ERROR: " + ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return users;
+    }
 }

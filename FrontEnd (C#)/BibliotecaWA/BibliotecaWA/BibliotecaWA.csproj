@@ -322,6 +322,9 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarPorPanelBusquedaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -361,11 +364,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="Content\Images\article.png" />
-    <Content Include="Content\Images\book.png" />
-    <Content Include="Content\Images\file.png" />
-    <Content Include="Content\Images\logo2.png" />
-    <Content Include="Content\Images\tesis.png" />
+    <Content Include="Content\site.css" />
     <Content Include="DetalleMaterial.aspx" />
     <Content Include="DetallePrestamo_Sancion.aspx" />
     <Content Include="Fonts\css\AdminUsuarios.css" />
@@ -647,6 +646,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties content_4bootstrap_1css_1map__JsonSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

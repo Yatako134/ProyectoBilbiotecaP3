@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/BibliotecaWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
-  <message name="insertarBiblioteca">
-    <part name="parameters" element="tns:insertarBiblioteca" />
+  <message name="ListarTodas">
+    <part name="parameters" element="tns:ListarTodas" />
   </message>
-  <message name="insertarBibliotecaResponse">
-    <part name="parameters" element="tns:insertarBibliotecaResponse" />
+  <message name="ListarTodasResponse">
+    <part name="parameters" element="tns:ListarTodasResponse" />
   </message>
   <message name="modificarBiblioteca">
     <part name="parameters" element="tns:modificarBiblioteca" />
@@ -26,11 +26,11 @@
   <message name="eliminarBibliotecaResponse">
     <part name="parameters" element="tns:eliminarBibliotecaResponse" />
   </message>
-  <message name="ListarTodas">
-    <part name="parameters" element="tns:ListarTodas" />
+  <message name="insertarBiblioteca">
+    <part name="parameters" element="tns:insertarBiblioteca" />
   </message>
-  <message name="ListarTodasResponse">
-    <part name="parameters" element="tns:ListarTodasResponse" />
+  <message name="insertarBibliotecaResponse">
+    <part name="parameters" element="tns:insertarBibliotecaResponse" />
   </message>
   <message name="obtenerBibliotecaPorId">
     <part name="parameters" element="tns:obtenerBibliotecaPorId" />
@@ -39,9 +39,9 @@
     <part name="parameters" element="tns:obtenerBibliotecaPorIdResponse" />
   </message>
   <portType name="BibliotecaWS">
-    <operation name="insertarBiblioteca">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaRequest" message="tns:insertarBiblioteca" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaResponse" message="tns:insertarBibliotecaResponse" />
+    <operation name="ListarTodas">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/ListarTodasRequest" message="tns:ListarTodas" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/ListarTodasResponse" message="tns:ListarTodasResponse" />
     </operation>
     <operation name="modificarBiblioteca">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/modificarBibliotecaRequest" message="tns:modificarBiblioteca" />
@@ -53,9 +53,9 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/eliminarBibliotecaResponse" message="tns:eliminarBibliotecaResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/eliminarBiblioteca/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="ListarTodas">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/ListarTodasRequest" message="tns:ListarTodas" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/ListarTodasResponse" message="tns:ListarTodasResponse" />
+    <operation name="insertarBiblioteca">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaRequest" message="tns:insertarBiblioteca" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaResponse" message="tns:insertarBibliotecaResponse" />
     </operation>
     <operation name="obtenerBibliotecaPorId">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/obtenerBibliotecaPorIdRequest" message="tns:obtenerBibliotecaPorId" />
@@ -65,7 +65,7 @@
   </portType>
   <binding name="BibliotecaWSPortBinding" type="tns:BibliotecaWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="insertarBiblioteca">
+    <operation name="ListarTodas">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -98,7 +98,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="ListarTodas">
+    <operation name="insertarBiblioteca">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

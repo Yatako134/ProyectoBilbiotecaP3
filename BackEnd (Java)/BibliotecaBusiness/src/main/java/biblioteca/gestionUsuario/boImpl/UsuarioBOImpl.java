@@ -57,4 +57,9 @@ public class UsuarioBOImpl implements UsuarioBO{
     public int verificar(Usuario usuario) {
         return daoUsuario.verificar(usuario);
     }
+
+    @Override
+    public ArrayList<Usuario> listarPorPanelBusqueda(String filtro) {
+        return daoUsuario.listarPorPanelBusqueda(filtro);
+    }
 }

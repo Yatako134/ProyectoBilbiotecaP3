@@ -153,16 +153,6 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="buscarEjemplares">
-    <xs:sequence>
-      <xs:element name="idMaterial" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="buscarEjemplaresResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="BusquedaAvanzada">
     <xs:sequence>
       <xs:element minOccurs="0" name="Titulo" type="xs:string" />
@@ -179,6 +169,16 @@
   <xs:complexType name="BusquedaAvanzadaResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:materialBibliografico" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEjemplares">
+    <xs:sequence>
+      <xs:element name="idMaterial" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEjemplaresResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="obtenerEjemplaresDisponibles">
