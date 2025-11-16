@@ -129,9 +129,7 @@ namespace BibliotecaWA
                 string motivo = sancion_usuario.justificacion;
 
                 // Pasar valores al modal (JS)
-                script = $@"
-                    mostrarModalSancion('{fecha}', '{motivo}');
-                ";
+                script = $@"mostrarModalSancion('{fecha}', '{motivo}');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "modalSancion", script, true);
                 return;
             }
