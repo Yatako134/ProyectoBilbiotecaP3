@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoMaterial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Articulo;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.TipoMaterial;
 
 public class Articulolmpl implements ArticuloDAO{
     
@@ -43,14 +44,12 @@ public class Articulolmpl implements ArticuloDAO{
         parametrosEntrada.put(2, objeto.getTitulo());
         parametrosEntrada.put(3, objeto.getAnho_publicacion());
         parametrosEntrada.put(4, objeto.getNumero_paginas());
-        parametrosEntrada.put(5, objeto.getEstado().toString());
-        parametrosEntrada.put(6, objeto.getClasificacion_tematica());
-        parametrosEntrada.put(7, objeto.isActivo());
-        parametrosEntrada.put(8, objeto.getIdioma());
-        parametrosEntrada.put(9, objeto.getISSN());
-        parametrosEntrada.put(10, objeto.getRevista());
-        parametrosEntrada.put(11, objeto.getVolumen());
-        parametrosEntrada.put(12, objeto.getNumero());
+        parametrosEntrada.put(5, objeto.getClasificacion_tematica());
+        parametrosEntrada.put(6, objeto.getIdioma());
+        parametrosEntrada.put(7, objeto.getISSN());
+        parametrosEntrada.put(8, objeto.getRevista());
+        parametrosEntrada.put(9, objeto.getVolumen());
+        parametrosEntrada.put(10, objeto.getNumero());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_ARTICULO", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion del articulo");
         return resultado;
@@ -75,7 +74,7 @@ public class Articulolmpl implements ArticuloDAO{
         try{
             if(rs.next()){
                 articulo = new Articulo();
-                articulo.setIdMaterial(rs.getInt("id_material"));
+                articulo.setIdMaterial(rs.getInt("id_articulo"));
                 articulo.setTitulo(rs.getString("titulo"));
                 articulo.setAnho_publicacion(rs.getInt("anho_publicacion"));
                 articulo.setNumero_paginas(rs.getInt("numero_paginas"));
@@ -93,6 +92,7 @@ public class Articulolmpl implements ArticuloDAO{
         }finally{
             DBManager.getInstance().cerrarConexion();
         }
+        articulo.setTipo(TipoMaterial.ARTICULO);
         return articulo;
     }
 

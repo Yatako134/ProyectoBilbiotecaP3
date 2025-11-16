@@ -13,6 +13,7 @@ import javax.naming.spi.DirStateFactory;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoMaterial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Libro;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Libro;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.TipoMaterial;
 
 public class Librolmpl implements LibroDAO{
     
@@ -46,11 +47,10 @@ public class Librolmpl implements LibroDAO{
         parametrosEntrada.put(3, objeto.getAnho_publicacion());
         parametrosEntrada.put(4, objeto.getNumero_paginas());
         parametrosEntrada.put(5, objeto.getClasificacion_tematica());
-        parametrosEntrada.put(6, objeto.isActivo());
-        parametrosEntrada.put(7, objeto.getIdioma());
-        parametrosEntrada.put(8, objeto.getISBN());
-        parametrosEntrada.put(9, objeto.getEdicion());
-        parametrosEntrada.put(10, objeto.getEstado().name());
+        parametrosEntrada.put(6, objeto.getIdioma());
+        parametrosEntrada.put(7, objeto.getISBN());
+        parametrosEntrada.put(8, objeto.getEdicion());
+
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_LIBRO", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion del libro");
         return resultado;
@@ -85,12 +85,14 @@ public class Librolmpl implements LibroDAO{
                 libro.setISBN(rs.getString("ISBN"));
                 libro.setEdicion(rs.getString("edicion"));
                 libro.setEstado(EstadoMaterial.valueOf(rs.getString("estado")));
+                
             }
         }catch(SQLException ex){
             System.out.println("ERROR: " + ex.getMessage());
         }finally{
             DBManager.getInstance().cerrarConexion();
         }
+        libro.setTipo(TipoMaterial.LIBRO);
         return libro;
     }
 

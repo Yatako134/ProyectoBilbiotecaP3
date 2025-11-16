@@ -3,6 +3,7 @@ package biblioteca.main;
 import biblioteca.config.DBManager;
 import biblioteca.config.Encriptamiento;
 import biblioteca.gestionMaterial.boImpl.ContribuyenteBOImpl;
+import biblioteca.gestionMaterial.boImpl.MaterialBiblioBOImpl;
 import biblioteca.gestionMaterial.mysql.BibliotecaImpl;
 import biblioteca.gestionMaterial.mysql.EjemplarImpl;
 import biblioteca.gestionMaterial.mysql.Librolmpl;
@@ -25,6 +26,7 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoEjemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoMaterial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Libro;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Tesis;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.TipoContribuyente;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.EstadoPrestamo;
@@ -166,15 +168,21 @@ public class Principal {
 //        
 
         ContribuyenteBOImpl contribo = new ContribuyenteBOImpl();
+        /*
+        ArrayList<Contribuyente> listaCont;
+        listaCont = contribo.listar_contribuyentes_por_material(3);
+        for(Contribuyente c : listaCont){
+            System.out.println(c.getNombre());
+        }
+        */
         
-        Contribuyente cons = new Contribuyente();
-        cons.setNombre("agua0");
-        cons.setPrimer_apellido("agua1");
-        cons.setSegundo_apellido("agua2");
-        cons.setSeudonimo("aguaseu");
-        cons.setTipo_contribuyente(TipoContribuyente.AUTOR);
-        contribo.insertar(cons);
+        EjemplarImpl ejebo = new EjemplarImpl();
         
-        
+        Ejemplar ej = new Ejemplar();
+        ej = ejebo.obtenerPorId(22);
+        ej.setUbicacion("FANTA1 EDITADO JAVA");
+        ej.setEstado(EstadoEjemplar.PERDIDO);
+        //ejebo.modificar(ej);
+        ejebo.eliminar(25);
     }
 }

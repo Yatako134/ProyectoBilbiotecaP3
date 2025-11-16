@@ -12,6 +12,7 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoMaterial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Tesis;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Tesis;
+import pe.edu.pucp.utilsarmy.gestion_de_material.model.TipoMaterial;
 
 public class Tesislmpl implements TesisDAO{
     
@@ -46,15 +47,14 @@ public class Tesislmpl implements TesisDAO{
         parametrosEntrada.put(2, objeto.getTitulo());
         parametrosEntrada.put(3, objeto.getAnho_publicacion());
         parametrosEntrada.put(4, objeto.getNumero_paginas());
-        parametrosEntrada.put(5, objeto.getEstado().toString());
-        parametrosEntrada.put(6, objeto.getClasificacion_tematica());
-        parametrosEntrada.put(7, objeto.isActivo());
-        parametrosEntrada.put(8, objeto.getIdioma());
-        
-        parametrosEntrada.put(9, objeto.getEspecialidad());
-        parametrosEntrada.put(10, objeto.getAsesor());
-        parametrosEntrada.put(11, objeto.getGrado());
-        parametrosEntrada.put(12, objeto.getInstitucionPublicacion());
+
+        parametrosEntrada.put(5, objeto.getClasificacion_tematica());
+ 
+        parametrosEntrada.put(6, objeto.getIdioma());  
+        parametrosEntrada.put(7, objeto.getEspecialidad());
+        parametrosEntrada.put(8, objeto.getAsesor());
+        parametrosEntrada.put(9, objeto.getGrado());
+        parametrosEntrada.put(10, objeto.getInstitucionPublicacion());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_TESIS", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion del tesis");
         return resultado;
@@ -79,7 +79,7 @@ public class Tesislmpl implements TesisDAO{
         try{
             if(rs.next()){
                 tesis = new Tesis();
-                tesis.setIdMaterial(rs.getInt("id_material"));
+                tesis.setIdMaterial(rs.getInt("id_tesis"));
                 tesis.setTitulo(rs.getString("titulo"));
                 tesis.setAnho_publicacion(rs.getInt("anho_publicacion"));
                 tesis.setNumero_paginas(rs.getInt("numero_paginas"));
@@ -97,6 +97,7 @@ public class Tesislmpl implements TesisDAO{
         }finally{
             DBManager.getInstance().cerrarConexion();
         }
+        tesis.setTipo(TipoMaterial.TESIS);
         return tesis;
     }
 

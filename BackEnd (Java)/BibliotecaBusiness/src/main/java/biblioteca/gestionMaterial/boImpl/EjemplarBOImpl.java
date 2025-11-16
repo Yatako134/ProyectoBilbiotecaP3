@@ -48,5 +48,10 @@ private final EjemplarDAO daoEjemplar;
     public ArrayList<Ejemplar> listar_disponibles_por_material(int _id_material) {
         return daoEjemplar.listar_disponibles_por_material(_id_material);
     }
+
+    @Override
+    public ArrayList<Ejemplar> listar_por_material(int _id_material) {
+        return daoEjemplar.listar_por_material(_id_material);
+    }
     
 }

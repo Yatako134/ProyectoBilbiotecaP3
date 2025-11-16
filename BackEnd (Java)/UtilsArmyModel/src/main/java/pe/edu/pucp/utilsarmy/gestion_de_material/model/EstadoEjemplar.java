@@ -4,5 +4,5 @@ public enum EstadoEjemplar {
     DISPONIBLE,
     PRESTADO,
     EN_REPARACION,
-    NO_DISPONIBLE
+    PERDIDO
 }

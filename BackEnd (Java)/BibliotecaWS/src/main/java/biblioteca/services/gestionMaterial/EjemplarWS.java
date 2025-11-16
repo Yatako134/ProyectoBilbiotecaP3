@@ -81,4 +81,9 @@ public class EjemplarWS {
         return ejemplarbo.listar_disponibles_por_material(_id_material);
     }   
     
+    @WebMethod(operationName = "listar_por_material")
+    public ArrayList<Ejemplar> listar_por_material(@WebParam(name = "_id_material")int _id_material)throws Exception {
+        return ejemplarbo.listar_por_material(_id_material);
+    }  
+    
 }

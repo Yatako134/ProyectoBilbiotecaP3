@@ -66,7 +66,7 @@ public class Ejemplar {
     }
 
     public void marcarNoDisponible() {
-        estado = EstadoEjemplar.NO_DISPONIBLE;
+        estado = EstadoEjemplar.PERDIDO;
     }    
 
     public boolean isActivo() {
