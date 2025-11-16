@@ -1381,16 +1381,21 @@ END $
 
 
 DELIMITER $$
+
 CREATE PROCEDURE sp_BuscarUsuario(
-    IN pCodigoUniversitario VARCHAR(50),
-    IN pNombre VARCHAR(50)
+    IN pBusqueda VARCHAR(50)
 )
 BEGIN
     SELECT *
     FROM Usuario
-    WHERE 
-        (pCodigoUniversitario IS NULL OR codigo_universitario LIKE CONCAT('%', pCodigoUniversitario, '%'))
-        OR (pNombre IS NULL OR nombre LIKE CONCAT('%', pNombre, '%'))
-        OR (pNombre IS NULL OR primer_apellido LIKE CONCAT('%', pNombre, '%'))
-        OR (pNombre IS NULL OR segundo_apellido LIKE CONCAT('%', pNombre, '%'));
+    WHERE activo = 1
+      AND (
+            pBusqueda IS NULL
+         OR codigo_universitario LIKE CONCAT('%', pBusqueda, '%')
+         OR nombre LIKE CONCAT('%', pBusqueda, '%')
+         OR primer_apellido LIKE CONCAT('%', pBusqueda, '%')
+         OR segundo_apellido LIKE CONCAT('%', pBusqueda, '%')
+      );
 END $$
+
+DELIMITER ;
