@@ -135,7 +135,7 @@
       <xs:enumeration value="DISPONIBLE" />
       <xs:enumeration value="PRESTADO" />
       <xs:enumeration value="EN_REPARACION" />
-      <xs:enumeration value="NO_DISPONIBLE" />
+      <xs:enumeration value="PERDIDO" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="estadoPrestamo">

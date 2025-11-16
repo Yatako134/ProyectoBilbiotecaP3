@@ -85,7 +85,7 @@ CREATE TABLE Contribuyente(
     primer_apellido VARCHAR(60) NOT NULL,
     segundo_apellido VARCHAR(60) NOT NULL,
     seudonimo VARCHAR(60),
-    tipo_contribuyente ENUM('AUTOR','EDITOR','ILUSTRADOR') NOT NULL
+    tipo_contribuyente ENUM('AUTOR','EDITOR','TRADUCTOR') NOT NULL
 )ENGINE=InnoDB;
 
 CREATE TABLE Contribuyente_Material(

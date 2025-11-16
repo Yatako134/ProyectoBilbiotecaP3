@@ -54,12 +54,12 @@
       <xs:element minOccurs="0" name="message" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="modificarUsuario">
+  <xs:complexType name="obtener_prestamos_vigentesxUsuario">
     <xs:sequence>
-      <xs:element minOccurs="0" name="usuario" type="tns:usuario" />
+      <xs:element name="arg0" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="modificarUsuarioResponse">
+  <xs:complexType name="obtener_prestamos_vigentesxUsuarioResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
@@ -74,12 +74,12 @@
       <xs:element minOccurs="0" name="return" type="tns:usuario" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtener_prestamos_vigentesxUsuario">
+  <xs:complexType name="modificarUsuario">
     <xs:sequence>
-      <xs:element name="arg0" type="xs:int" />
+      <xs:element minOccurs="0" name="usuario" type="tns:usuario" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtener_prestamos_vigentesxUsuarioResponse">
+  <xs:complexType name="modificarUsuarioResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>

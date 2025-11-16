@@ -655,8 +655,7 @@ CREATE PROCEDURE ELIMINAR_EJEMPLAR(
     IN _id_ejemplar INT
 )
 BEGIN
-    UPDATE Ejemplar
-    SET activo = 0 
+    DELETE FROM Ejemplar 
     WHERE id_ejemplar = _id_ejemplar;
 END$
 
@@ -1302,3 +1301,20 @@ FROM Ejemplar
 WHERE id_material = _id_material and activo = 1;
 END$
 
+DELIMITER $
+CREATE PROCEDURE LISTAR_AUTORES_POR_MATERIAL(IN _id_material INT)
+BEGIN
+    SELECT c.id_contribuyente, c.nombre, c.primer_apellido, c.segundo_apellido, c.seudonimo, c.tipo_contribuyente
+    FROM Contribuyente c, Contribuyente_Material m
+    WHERE m.id_material = _id_material and m.id_contribuyente = c.id_contribuyente and c.tipo_contribuyente = 'AUTOR';
+END$
+
+DELIMITER $
+
+CREATE PROCEDURE LISTAR_CONTRIBUYENTES_POR_MATERIAL(IN _id_material INT)
+BEGIN
+    SELECT c.id_contribuyente, c.nombre, c.primer_apellido, c.segundo_apellido, c.seudonimo, c.tipo_contribuyente
+    FROM Contribuyente c
+    JOIN Contribuyente_Material cm ON c.id_contribuyente = cm.id_contribuyente
+    WHERE cm.id_material = _id_material;
+END$

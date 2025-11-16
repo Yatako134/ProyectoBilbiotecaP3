@@ -1,58 +1,310 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="RegistrarMaterial.aspx.cs" Inherits="BibliotecaWA.RegistrarMaterial" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_Title" runat="server">
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Scripts" runat="server">
-    
     <link href="Fonts/css/Estilos2.css" rel="stylesheet" />
     <script>
         let contribuyenteCount = 1;
-        let ejemplarCount = 0; // <- AGREGAR ESTO
-        // Función para añadir un contribuyente dinámicamente
+        let ejemplarCount = 0;
+
+        // ===== INICIALIZACIÓN =====
+        function inicializarFormulario() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tieneId = urlParams.has('id');
+
+            if (!tieneId) {
+                añadirEjemplar();
+                añadirContribuyente();
+            }
+        }
+        document.addEventListener('DOMContentLoaded', inicializarFormulario);
+
+        // ===== CONTRIBUYENTES =====
         function añadirContribuyente() {
             contribuyenteCount++;
             const newContribuyente = `
-        <div class="row mb-3" id="contribuyente-${contribuyenteCount}">
-            <div class="col-md-2">
-                <select class="form-select" name="autor[]" required>
-                    <option value="AUTOR">AUTOR</option>
-                    <option value="TRADUCTOR">TRADUCTOR</option>
-                    <option value="EDITOR">EDITOR</option>
-                </select>
-            </div>
-            <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="Nombre" name="nombre[]" required>
-            </div>
-            <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="Primer Apellido" name="primer_apellido[]" required>
-            </div>
-            <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="Segundo Apellido" name="segundo_apellido[]" required>
-            </div>
-            <div class="col-md-3">
-                <input type="text" class="form-control" placeholder="Seudónimo" name="seudonimo[]">
-            </div>
-            <div class="col-md-1">
-                <button type="button" class="btn btn-danger" onclick="eliminarContribuyente(${contribuyenteCount})">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-            </div>
-        </div>
-    `;
+                <div class="row mb-3" id="contribuyente-${contribuyenteCount}">
+                    <!-- AGREGADO: Hidden field para ID -->
+                    <input type="hidden" name="id_contribuyente[]" value="">
+                    <div class="col-md-2">
+                        <select class="form-select" name="autor[]" required>
+                            <option value="AUTOR">AUTOR</option>
+                            <option value="TRADUCTOR">TRADUCTOR</option>
+                            <option value="EDITOR">EDITOR</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" placeholder="Nombre" name="nombre[]" required>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" placeholder="Primer Apellido" name="primer_apellido[]" required>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" placeholder="Segundo Apellido" name="segundo_apellido[]" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Seudónimo" name="seudonimo[]">
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-danger" onclick="eliminarContribuyente(${contribuyenteCount})">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>`;
             document.getElementById("contribuyentes-container").insertAdjacentHTML('beforeend', newContribuyente);
         }
 
-        // Función para eliminar un contribuyente dinámicamente
         function eliminarContribuyente(id) {
             const contribuyente = document.getElementById(`contribuyente-${id}`);
             if (contribuyente) {
                 contribuyente.remove();
+                reindexarContribuyentes();
+            }
+        }
+
+        function reindexarContribuyentes() {
+            const container = document.getElementById("contribuyentes-container");
+            const filas = container.querySelectorAll('.row.mb-3');
+
+            filas.forEach((fila, index) => {
+                const nuevoId = index + 1;
+                fila.id = `contribuyente-${nuevoId}`;
+
+                const btnEliminar = fila.querySelector('button.btn-danger');
+                if (btnEliminar) {
+                    btnEliminar.setAttribute('onclick', `eliminarContribuyente(${nuevoId})`);
+                }
+            });
+
+            contribuyenteCount = filas.length;
+        }
+
+        // ===== EJEMPLARES =====
+        function añadirEjemplar() {
+            ejemplarCount++;
+            const newEjemplar = `
+        <div class="row mb-3" id="ejemplar-${ejemplarCount}">
+            <input type="hidden" name="id_ejemplar[]" value="">
+            <input type="hidden" name="estado_ejemplar[]" value="DISPONIBLE">
+            <div class="col-md-2">
+                <label class="form-label">Código Ejemplar</label>
+                <input type="text" class="form-control" disabled value="Nuevo">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Estado</label>
+                <input type="text" class="form-control" value="DISPONIBLE" readonly>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Biblioteca</label>
+                <select class="form-select" name="biblioteca[]" required>
+                    <option value="">Seleccione biblioteca</option>
+                    <%= GetBibliotecasOptions() %>  
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Ubicación</label>
+                <input type="text" class="form-control" placeholder="Ingrese ubicación" name="ubicacion[]" required>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="button" class="btn btn-danger" onclick="eliminarEjemplar(${ejemplarCount})">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        </div>`;
+            document.getElementById("ejemplares-container").insertAdjacentHTML('beforeend', newEjemplar);
+        }
+
+        function añadirEjemplarExistente(ejemplar, index) {
+            const ejemplarId = `ejemplar-${Date.now()}-${index}`;
+            const selectId = `ddlBiblioteca-${Date.now()}-${index}`;
+            const selectEstadoId = `ddlEstado-${Date.now()}-${index}`;
+
+            const estadoActual = ejemplar.Estado || 'DISPONIBLE';
+            const esPrestado = estadoActual === 'PRESTADO';
+            const puedeEliminar = estadoActual === 'DISPONIBLE';
+            const puedeEditarEstado = !esPrestado;
+
+            const newEjemplar = `
+        <div class="row mb-3" id="${ejemplarId}">
+            <input type="hidden" name="id_ejemplar[]" value="${ejemplar.IdEjemplar || ''}">
+            <div class="col-md-2">
+                <label class="form-label">Código Ejemplar</label>
+                <input type="text" class="form-control" disabled value="${ejemplar.CodigoEjemplar || ''}">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Estado</label>
+                ${esPrestado ?
+                    `<input type="text" class="form-control" value="PRESTADO" readonly>
+                     <input type="hidden" name="estado_ejemplar[]" value="PRESTADO">` :
+                    `<select class="form-select" name="estado_ejemplar[]" id="${selectEstadoId}" required 
+                            onchange="actualizarBotonEliminar(this, '${ejemplarId}')">
+                        <option value="DISPONIBLE" ${estadoActual === 'DISPONIBLE' ? 'selected' : ''}>DISPONIBLE</option>
+                        <option value="EN_REPARACION" ${estadoActual === 'EN_REPARACION' ? 'selected' : ''}>EN_REPARACION</option>
+                        <option value="PERDIDO" ${estadoActual === 'PERDIDO' ? 'selected' : ''}>PERDIDO</option>
+                    </select>`
+                }
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Biblioteca</label>
+                <select class="form-select" name="biblioteca[]" id="${selectId}" required 
+                    ${esPrestado ? '' : ''}>
+                    <option value="">Seleccione biblioteca</option>
+                    <%= GetBibliotecasOptions() %>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Ubicación</label>
+                <input type="text" class="form-control" name="ubicacion[]"
+                    value="${ejemplar.Ubicacion || ''}" required
+                    ${esPrestado ? '' : ''}>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="button" class="btn btn-danger ${!puedeEliminar ? 'disabled' : ''}" 
+                    onclick="${puedeEliminar ? `eliminarEjemplarExistente('${ejemplarId}')` : ''}"
+                    ${!puedeEliminar ? 'disabled' : ''}
+                    style="${!puedeEliminar ? 'opacity: 0.5; cursor: not-allowed;' : ''}">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        </div>`;
+
+            document.getElementById("ejemplares-container").insertAdjacentHTML('beforeend', newEjemplar);
+
+            // Seleccionar valores en los dropdowns
+            setTimeout(() => {
+                const selectElement = document.getElementById(selectId);
+                if (selectElement && ejemplar.BibliotecaId) {
+                    selectElement.value = ejemplar.BibliotecaId.toString();
+                }
+
+                if (!esPrestado) {
+                    const selectEstado = document.getElementById(selectEstadoId);
+                    if (selectEstado && estadoActual) {
+                        selectEstado.value = estadoActual;
+                    }
+                }
+            }, 0);
+        }
+
+        function obtenerClaseEstado(estado) {
+            const estadoUpper = estado?.toUpperCase() || 'DISPONIBLE';
+            switch (estadoUpper) {
+                case 'DISPONIBLE': return 'bg-success';
+                case 'PRESTADO': return 'bg-warning text-dark';
+                case 'EN_REPARACION': return 'bg-info';
+                case 'NO_DISPONIBLE': return 'bg-danger';
+                default: return 'bg-secondary';
+            }
+        }
+
+        // Función para actualizar el estado del botón eliminar (solo en edición)
+        function actualizarBotonEliminar(selectElement, ejemplarId) {
+            const estado = selectElement.value;
+            const puedeEliminar = estado === 'DISPONIBLE';
+
+            const ejemplarDiv = document.getElementById(ejemplarId);
+
+            if (ejemplarDiv) {
+                const botonEliminar = ejemplarDiv.querySelector('button.btn-danger');
+                if (botonEliminar) {
+                    if (puedeEliminar) {
+                        // Habilitar botón
+                        botonEliminar.classList.remove('disabled');
+                        botonEliminar.disabled = false;
+                        botonEliminar.style.opacity = '1';
+                        botonEliminar.style.cursor = 'pointer';
+                        botonEliminar.setAttribute('onclick', `eliminarEjemplarExistente('${ejemplarId}')`);
+                    } else {
+                        // Deshabilitar botón
+                        botonEliminar.classList.add('disabled');
+                        botonEliminar.disabled = true;
+                        botonEliminar.style.opacity = '0.5';
+                        botonEliminar.style.cursor = 'not-allowed';
+                        botonEliminar.removeAttribute('onclick');
+                    }
+                }
             }
         }
 
 
+        function eliminarEjemplarExistente(id) {
+            const ejemplar = document.getElementById(id);
+            if (ejemplar) {
+                const selectEstado = ejemplar.querySelector('select[name="estado_ejemplar[]"]');
+                const estado = selectEstado ? selectEstado.value : 'PRESTADO'; // Si no hay select, es PRESTADO
 
-        // Función para mostrar los campos según el tipo de material seleccionado
+                if (estado === 'DISPONIBLE') {
+                    ejemplar.remove();
+                } else {
+                    mostrarErrorEstado('Solo se pueden eliminar ejemplares con estado DISPONIBLE');
+                }
+            }
+        }
+
+        function mostrarErrorEstado(mensaje) {
+            const modalHtml = `
+        <div class="modal fade" id="modalErrorEstado" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-dark">
+                        <h5 class="modal-title">Acción no permitida</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="mb-3">${mensaje}</h5>
+                        <p class="text-muted">Solo se pueden eliminar ejemplares con estado DISPONIBLE.</p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+            const modalExistente = document.getElementById('modalErrorEstado');
+            if (modalExistente) modalExistente.remove();
+
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+            const modal = new bootstrap.Modal(document.getElementById('modalErrorEstado'));
+            modal.show();
+
+            document.getElementById('modalErrorEstado').addEventListener('hidden.bs.modal', function () {
+                this.remove();
+            });
+        }
+
+        function eliminarEjemplar(id) {
+            const ejemplar = document.getElementById(`ejemplar-${id}`);
+            if (ejemplar) {
+                // En modo registro, todos los ejemplares se pueden eliminar
+                ejemplar.remove();
+                reindexarEjemplares();
+            }
+        }
+
+        function reindexarEjemplares() {
+            const container = document.getElementById("ejemplares-container");
+            const filas = container.querySelectorAll('.row.mb-3');
+
+            filas.forEach((fila, index) => {
+                const nuevoId = index + 1;
+                fila.id = `ejemplar-${nuevoId}`;
+
+                const btnEliminar = fila.querySelector('button.btn-danger');
+                if (btnEliminar) {
+                    btnEliminar.setAttribute('onclick', `eliminarEjemplar(${nuevoId})`);
+                }
+            });
+
+            ejemplarCount = filas.length;
+        }
+
+        // ===== CAMPOS DINÁMICOS =====
         function mostrarCampos() {
             var tipoMaterial = document.getElementById("<%= ddlTipoMaterial.ClientID %>").value;
 
@@ -85,17 +337,39 @@
             }
         }
 
+        // ===== VALIDACIONES =====
+        function validarFormulario() {
+            const ejemplares = document.querySelectorAll('#ejemplares-container .row.mb-3');
+            if (ejemplares.length === 0) {
+                const modal = new bootstrap.Modal(document.getElementById('modalAdvertencia'));
+                modal.show();
+                return false;
+            }
+
+            const bibliotecas = document.querySelectorAll('select[name="biblioteca[]"]');
+            for (let i = 0; i < bibliotecas.length; i++) {
+                if (!bibliotecas[i].value) {
+                    mostrarErrorEjemplar(`El ejemplar ${i + 1} debe tener una biblioteca seleccionada.`);
+                    return false;
+                }
+            }
+
+            if (!validarCampos()) {
+                return false;
+            }
+
+            return true;
+        }
+
         function validarCampos() {
             var tipoMaterial = document.getElementById("<%= ddlTipoMaterial.ClientID %>").value;
             var isValid = true;
 
-            // Validar campos comunes
             if (!document.getElementById("<%= txtTitulo.ClientID %>").value) {
                 alert("El título es requerido");
                 isValid = false;
             }
 
-            // Validar campos específicos según el tipo
             if (tipoMaterial === 'Libro') {
                 if (!document.getElementById("<%= txtISBN.ClientID %>").value) {
                     alert("El ISBN es requerido para libros");
@@ -115,296 +389,111 @@
 
             return isValid;
         }
-        ///todo del ejemplar xd
-        // Versión modificada de añadirEjemplar para edición - CORREGIDA
-        function añadirEjemplarExistente(ejemplar) {
-            ejemplarCount++;
-            const newEjemplar = `
-        <div class="row mb-3" id="ejemplar-${ejemplarCount}">
-            <div class="col-md-4">
-                <label class="form-label">Código Ejemplar</label>
-                <input type="text" class="form-control" disabled value="${ejemplar.CodigoEjemplar || ''}">
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Biblioteca</label>
-                <select class="form-select" name="biblioteca[]" required>
-                    <option value="">Seleccione biblioteca</option>
-                    <%= GetBibliotecasOptions() %>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label class="form-label">Ubicación</label>
-                <input type="text" class="form-control" placeholder="Ingrese ubicación" name="ubicacion[]"
-                    value="${ejemplar.Ubicacion || ''}" required>
-            </div>
-            <div class="col-md-1 d-flex align-items-end">
-                <button type="button" class="btn btn-danger" onclick="eliminarEjemplar(${ejemplarCount})">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-            </div>
-        </div>
-    `;
-            document.getElementById("ejemplares-container").insertAdjacentHTML('beforeend', newEjemplar);
-        }
- 
 
-        // Función para eliminar un ejemplar dinámicamente
-        function eliminarEjemplar(id) {
-            const ejemplar = document.getElementById(`ejemplar-${id}`);
-            if (ejemplar) {
-                ejemplar.remove();
-            }
-        }
-        // Función ORIGINAL para añadir ejemplar (nuevo)
-        function añadirEjemplar() {
-            ejemplarCount++;
-            const newEjemplar = `
-        <div class="row mb-3" id="ejemplar-${ejemplarCount}">
-            <div class="col-md-4">
-                <label class="form-label">Código Ejemplar</label>
-                <input type="text" class="form-control" disabled value=" ">
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Biblioteca</label>
-                <select class="form-select" name="biblioteca[]" id="ddlBiblioteca-${ejemplarCount}" required>
-                    <option value="">Seleccione biblioteca</option>
-                     <%= GetBibliotecasOptions() %>  
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label class="form-label">Ubicación</label>
-                <input type="text" class="form-control" placeholder="Ingrese ubicación" name="ubicacion[]" required>
-            </div>
-            <div class="col-md-1 d-flex align-items-end">
-                <button type="button" class="btn btn-danger" onclick="eliminarEjemplar(${ejemplarCount})">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-            </div>
-        </div>
-    `;
-            document.getElementById("ejemplares-container").insertAdjacentHTML('beforeend', newEjemplar);
-        }
-
-
-
-
-        // Función para inicializar el formulario según el modo
-        function inicializarFormulario() {
-            console.log("=== INICIALIZANDO FORMULARIO ===");
-
-            // Verificar si estamos en modo nuevo (sin ID en URL)
-            const urlParams = new URLSearchParams(window.location.search);
-            const tieneId = urlParams.has('id');
-
-            console.log("Modo edición?:", tieneId);
-
-            if (!tieneId) {
-                // MODO NUEVO - inicializar con un ejemplar y contribuyente vacío
-                console.log("MODO NUEVO - Inicializando elementos vacíos");
-                añadirEjemplar();
-                añadirContribuyente();
-            } else {
-                // MODO EDICIÓN - los datos se cargarán via ScriptManager
-                console.log("MODO EDICIÓN - Esperando datos del servidor");
-            }
-        }
-
-        // Ejecutar cuando el DOM esté listo
-        document.addEventListener('DOMContentLoaded', inicializarFormulario);
-
-
-        function validarFormulario() {
-            // Validar que haya al menos un ejemplar
-            const ejemplares = document.querySelectorAll('#ejemplares-container .row.mb-3');
-            if (ejemplares.length === 0) {
-                // Mostrar modal centrado en lugar de alert
-                const modal = new bootstrap.Modal(document.getElementById('modalAdvertencia'));
-                modal.show();
-                return false;
-            }
-
-            // Validar que todos los ejemplares tengan biblioteca y ubicación
-            const bibliotecas = document.querySelectorAll('select[name="biblioteca[]"]');
-            const ubicaciones = document.querySelectorAll('input[name="ubicacion[]"]');
-
-            for (let i = 0; i < bibliotecas.length; i++) {
-                if (!bibliotecas[i].value) {
-                    mostrarErrorEjemplar(`El ejemplar ${i + 1} debe tener una biblioteca seleccionada.`);
-                    bibliotecas[i].focus();
-                    return false;
-                }
-
-            }
-
-            // Validar campos comunes del material
-            if (!validarCampos()) {
-                return false;
-            }
-
-            return true;
-        }
-
-        // Función para mostrar errores específicos de ejemplares en un modal
         function mostrarErrorEjemplar(mensaje) {
-            // Crear modal dinámico para errores
             const modalHtml = `
-        <div class="modal fade" id="modalErrorEjemplar" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header bg-danger text-white">
-                        <h5 class="modal-title">
-                            <i class="fas fa-exclamation-triangle me-2"></i>
-                            Error en Ejemplar
-                        </h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <div class="mb-3">
-                            <i class="fas fa-times-circle text-danger" style="font-size: 3rem;"></i>
+                <div class="modal fade" id="modalErrorEjemplar" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-danger text-white">
+                                <h5 class="modal-title">Error en Ejemplar</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-times-circle text-danger" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="mb-3">${mensaje}</h5>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
+                            </div>
                         </div>
-                        <h5 class="mb-3">${mensaje}</h5>
                     </div>
-                    <div class="modal-footer justify-content-center">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-                            <i class="fas fa-check me-2"></i>Entendido
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
+                </div>`;
 
-            // Remover modal anterior si existe
             const modalExistente = document.getElementById('modalErrorEjemplar');
-            if (modalExistente) {
-                modalExistente.remove();
-            }
+            if (modalExistente) modalExistente.remove();
 
-            // Añadir nuevo modal al body
             document.body.insertAdjacentHTML('beforeend', modalHtml);
-
-            // Mostrar modal
             const modal = new bootstrap.Modal(document.getElementById('modalErrorEjemplar'));
             modal.show();
 
-            // Remover modal del DOM después de cerrarse
             document.getElementById('modalErrorEjemplar').addEventListener('hidden.bs.modal', function () {
                 this.remove();
             });
         }
 
-        // Función para cargar ejemplares existentes en edición
+        // ===== CARGA DE DATOS =====
         function cargarEjemplaresExistente(ejemplares) {
-            console.log("=== CARGANDO EJEMPLARES EXISTENTES ===");
-            console.log("Datos recibidos:", ejemplares);
-
             const container = document.getElementById("ejemplares-container");
             if (container) {
-                container.innerHTML = ''; // Limpiar los ejemplares existentes
+                container.innerHTML = '';
                 ejemplarCount = 0;
 
-                // Recorrer los ejemplares y agregarlos
                 if (ejemplares && Array.isArray(ejemplares) && ejemplares.length > 0) {
                     ejemplares.forEach(function (ejemplar, index) {
-                        console.log(`Ejemplar ${index}:`, ejemplar);
-                        añadirEjemplarExistente(ejemplar); // Usar esta función para agregar el ejemplar
-
-                        // Obtener el DropDownList correspondiente al ejemplar actual
-                        const ejemplarDropdown = document.getElementById(`ddlBiblioteca-${index + 1}`); // index + 1 porque ejemplarCount empieza desde 1
-
-                        // Asignar el valor del ejemplar.BibliotecaId al DropDownList de la biblioteca
-                        if (ejemplarDropdown) {
-                            ejemplarDropdown.value = ejemplar.BibliotecaId; // Asignar el valor de BibliotecaId al DropDownList
-
-                            // Verifica si el valor se ha asignado correctamente
-                            console.log(`Ejemplar ${index + 1} - Biblioteca seleccionada: ${ejemplarDropdown.value}`);
-                        }
+                        añadirEjemplarExistente(ejemplar, index);
                     });
                 } else {
-                    console.log("No hay ejemplares existentes, agregando uno vacío");
-                    añadirEjemplar(); // Añadir uno vacío si no hay ejemplares
+                    añadirEjemplar();
                 }
-            } else {
-                console.error("No se encontró el contenedor de ejemplares");
             }
         }
 
-        // Función para cargar contribuyentes existentes en edición  
         function cargarContribuyentesExistente(contribuyentes) {
-            console.log("=== CARGANDO CONTRIBUYENTES EXISTENTES ===");
-            console.log("Datos recibidos:", contribuyentes);
-
             const container = document.getElementById("contribuyentes-container");
             if (container) {
-                container.innerHTML = ''; // Limpiar los contribuyentes existentes
+                container.innerHTML = '';
                 contribuyenteCount = 0;
 
-                // Recorrer los contribuyentes y agregarlos
                 if (contribuyentes && Array.isArray(contribuyentes) && contribuyentes.length > 0) {
                     contribuyentes.forEach(function (contribuyente, index) {
-                        console.log(`Contribuyente ${index}:`, contribuyente);
-                        añadirContribuyenteExistente(contribuyente); // Usar esta función para agregar el contribuyente
-
-                        // Obtener el DropDownList correspondiente al contribuyente actual
-                        const contribuyenteDropdown = document.getElementById(`ddlTipoContribuyente-${index + 1}`); // index + 1 porque contribuyenteCount empieza desde 1
-
-                        // Asignar el valor al DropDownList basado en el valor de Tipo_contribuyente
-                        if (contribuyenteDropdown) {
-                            if (contribuyente.Tipo_contribuyente == 0) {
-                                contribuyenteDropdown.value = "AUTOR";
-                            }
-                            if (contribuyente.Tipo_contribuyente == 1) {
-                                contribuyenteDropdown.value = "TRADUCTOR";
-                            }
-                            if (contribuyente.Tipo_contribuyente == 2) {
-                                contribuyenteDropdown.value = "EDITOR";
-                            }
-                        }
+                        añadirContribuyenteExistente(contribuyente);
                     });
                 } else {
-                    console.log("No hay contribuyentes existentes, agregando uno vacío");
-                    añadirContribuyente(); // Añadir uno vacío si no hay contribuyentes
+                    añadirContribuyente();
                 }
-            } else {
-                console.error("No se encontró el contenedor de contribuyentes");
             }
         }
 
-
-        // En añadirContribuyenteExistente - VERIFICA LOS NOMBRES DE PROPIEDADES:
         function añadirContribuyenteExistente(contribuyente) {
             contribuyenteCount++;
+            let tipoValor = "AUTOR";
+            if (contribuyente.Tipo_contribuyente == 1) tipoValor = "TRADUCTOR";
+            if (contribuyente.Tipo_contribuyente == 2) tipoValor = "EDITOR";
+
             const newContribuyente = `
-        <div class="row mb-3" id="contribuyente-${contribuyenteCount}">
-            <div class="col-md-2">
-                <select class="form-select" name="autor[]" id="ddlTipoContribuyente-${contribuyenteCount}" required>
-                    <option value="AUTOR" ${contribuyente.Tipo_contribuyente === 'AUTOR' ? 'selected' : ''}>AUTOR</option>
-                    <option value="TRADUCTOR" ${contribuyente.Tipo_contribuyente === 'TRADUCTOR' ? 'selected' : ''}>TRADUCTOR</option>
-                    <option value="EDITOR" ${contribuyente.Tipo_contribuyente === 'EDITOR' ? 'selected' : ''}>EDITOR</option>
-                </select>
-            </div>
-            <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="Nombre" name="nombre[]" value="${contribuyente.Nombre || ''}" required>
-            </div>
-            <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="Primer Apellido" name="primer_apellido[]" value="${contribuyente.Primer_apellido || ''}" required>
-            </div>
-            <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="Segundo Apellido" name="segundo_apellido[]" value="${contribuyente.Segundo_apellido || ''}" required>
-            </div>
-            <div class="col-md-3">
-                <input type="text" class="form-control" placeholder="Seudónimo" name="seudonimo[]" value="${contribuyente.Seudonimo || ''}">
-            </div>
-            <div class="col-md-1">
-                <button type="button" class="btn btn-danger" onclick="eliminarContribuyente(${contribuyenteCount})">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-            </div>
-        </div>
-    `;
+                <div class="row mb-3" id="contribuyente-${contribuyenteCount}">
+                    <!-- AGREGADO: Hidden field con ID existente -->
+                    <input type="hidden" name="id_contribuyente[]" value="${contribuyente.IdContribuyente || ''}">
+                    <div class="col-md-2">
+                        <select class="form-select" name="autor[]" required>
+                            <option value="AUTOR" ${tipoValor === 'AUTOR' ? 'selected' : ''}>AUTOR</option>
+                            <option value="TRADUCTOR" ${tipoValor === 'TRADUCTOR' ? 'selected' : ''}>TRADUCTOR</option>
+                            <option value="EDITOR" ${tipoValor === 'EDITOR' ? 'selected' : ''}>EDITOR</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" name="nombre[]" value="${contribuyente.Nombre || ''}" required>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" name="primer_apellido[]" value="${contribuyente.Primer_apellido || ''}" required>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" name="segundo_apellido[]" value="${contribuyente.Segundo_apellido || ''}" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="seudonimo[]" value="${contribuyente.Seudonimo || ''}">
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-danger" onclick="eliminarContribuyente(${contribuyenteCount})">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>`;
             document.getElementById("contribuyentes-container").insertAdjacentHTML('beforeend', newContribuyente);
         }
-
     </script>
 </asp:Content>
 
@@ -415,8 +504,7 @@
             <div class="modal-content">
                 <div class="modal-header bg-danger text-dark">
                     <h5 class="modal-title" id="modalAdvertenciaLabel">
-                        <i class="fas fa-exclamation-triangle me-2"></i>
-                        Advertencia
+                        <i class="fas fa-exclamation-triangle me-2"></i>Advertencia
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -436,8 +524,6 @@
         </div>
     </div>
 
-
-    <!-- AGREGAR ESTE HIDDEN FIELD -->
     <asp:HiddenField ID="hfIdMaterial" runat="server" />
 
     <div class="d-flex align-items-center mb-4">
@@ -448,9 +534,6 @@
     <hr />
 
     <div class="tabla-header d-flex justify-content-between align-items-center p-3">
-
-        
-
         <h1><strong>Registro de nuevo material bibliográfico</strong></h1>
     </div>
 
@@ -476,9 +559,7 @@
             <p1>Contribuyentes</p1>
 
             <!-- Contenedor para los contribuyentes -->
-            <div id="contribuyentes-container">
-                <!-- Los contribuyentes serán agregados aquí dinámicamente -->
-            </div>
+            <div id="contribuyentes-container"></div>
 
             <!-- Botón para añadir un contribuyente -->
             <div class="row mt-3">
@@ -495,9 +576,7 @@
                     <label for="tema" class="form-label">Tema</label>
                     <asp:TextBox ID="TextTema" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-
             </div>
-
 
             <!-- Tipo de material -->
             <div class="row">
@@ -524,13 +603,9 @@
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <label for="idioma" class="form-label">Idioma</label>
-                    <asp:TextBox ID="TextIdioma" runat="server" CssClass="form-control" ></asp:TextBox>
+                    <asp:TextBox ID="TextIdioma" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                
             </div>
-
-
-
 
             <!-- Campos para "Libro" -->
             <div class="row">
@@ -584,12 +659,10 @@
                 </div>
             </div>
 
-             <p1>Registro de ejemplares</p1>
+            <p1>Registro de ejemplares</p1>
 
-                <!-- Contenedor para los ejemplares -->
-                <div id="ejemplares-container">
-                    <!-- Los ejemplares serán agregados aquí dinámicamente -->
-                </div>
+            <!-- Contenedor para los ejemplares -->
+            <div id="ejemplares-container"></div>
 
             <!-- Botón para añadir un ejemplar -->
             <div class="row mt-3">
@@ -599,12 +672,8 @@
                     </button>
                 </div>
             </div>
-
-
-
-            </div>
-
         </div>
+    </div>
 
     <div class="row mt-3 mb-4">
         <div class="col-md-12 text-end">
@@ -617,10 +686,6 @@
                 CssClass="btn btn-primary" />
         </div>
     </div>
-
     
     <asp:Label ID="lblMensaje" runat="server" CssClass="mt-3" style="display: block;"></asp:Label>
-
-    
 </asp:Content>
-

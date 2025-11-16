@@ -38,6 +38,8 @@ namespace BibliotecaWA
 
                 if (material != null)
                 {
+
+
                     // Llenar campos básicos
                     txtCodigo.Text = material.idMaterial.ToString();
                     txtTitulo.Text = material.titulo;
@@ -45,6 +47,10 @@ namespace BibliotecaWA
                     txtPaginas.Text = material.numero_paginas.ToString();
                     TextTema.Text = material.clasificacion_tematica;
                     TextIdioma.Text = material.idioma;
+
+                    // Tipo de material - con más debug
+                    string tipoDesdeBD = material.tipo.ToString();
+                    System.Diagnostics.Debug.WriteLine($"🎯 Tipo desde BD normalizado: '{tipoDesdeBD}'");
 
                     // Tipo de material
                     if (material.tipo.ToString() == "LIBRO")
@@ -162,15 +168,17 @@ namespace BibliotecaWA
             try
             {
                 EjemplarWSClient ejemplarBO = new EjemplarWSClient();
-                BindingList<ejemplar> ejemplares = new BindingList<ejemplar>(ejemplarBO.listar_disponibles_por_material(idMaterial));
+                BindingList<ejemplar> ejemplares = new BindingList<ejemplar>(ejemplarBO.listar_por_material(idMaterial));
 
                 if (ejemplares != null && ejemplares.Count > 0)
                 {
                     var ejemplaresParaJson = ejemplares.Select(e => new
                     {
+                        IdEjemplar = e.idEjemplar,
                         CodigoEjemplar = e.idEjemplar,
                         BibliotecaId = e.blibioteca.idBiblioteca,
                         Ubicacion = e.ubicacion,
+                        Estado = e.estado.ToString() ?? "DISPONIBLE" // ← AGREGADO
                     }).ToList();
 
                     var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
@@ -199,8 +207,19 @@ namespace BibliotecaWA
 
                 if (contribuyentes != null && contribuyentes.Count > 0)
                 {
+                    // MAPEAR MANUALMENTE a las propiedades que el JavaScript espera
+                    var contribuyentesParaJson = contribuyentes.Select(c => new
+                    {
+                        IdContribuyente = c.idContribuyente,        // ← Convertir a MAYÚSCULA
+                        Nombre = c.nombre,                          // ← Convertir a MAYÚSCULA
+                        Primer_apellido = c.primer_apellido,        // ← Convertir a MAYÚSCULA  
+                        Segundo_apellido = c.segundo_apellido,      // ← Convertir a MAYÚSCULA
+                        Seudonimo = c.seudonimo,                    // ← Convertir a MAYÚSCULA
+                        Tipo_contribuyente = ConvertirTipo(c.tipo_contribuyente.ToString()) // ← Convertir string a número
+                    }).ToList();
+
                     var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-                    string contribuyentesJson = serializer.Serialize(contribuyentes);
+                    string contribuyentesJson = serializer.Serialize(contribuyentesParaJson);
 
                     string script = $"cargarContribuyentesExistente({contribuyentesJson});";
                     ScriptManager.RegisterStartupScript(this, GetType(), "CargarContribuyentes", script, true);
@@ -216,6 +235,20 @@ namespace BibliotecaWA
             }
         }
 
+        // Método para convertir string a número (como en el sistema funcional)
+        private int ConvertirTipo(string tipoStr)
+        {
+            if (string.IsNullOrEmpty(tipoStr)) return 0;
+
+            switch (tipoStr.ToUpper())
+            {
+                case "AUTOR": return 0;
+                case "TRADUCTOR": return 1;
+                case "EDITOR": return 2;
+                default: return 0;
+            }
+        }
+
         protected void GuardarMaterial_Click(object sender, EventArgs e)
         {
             try
@@ -228,18 +261,17 @@ namespace BibliotecaWA
 
                 if (esEdicion)
                 {
-                    // MODO EDICIÓN - ESTRATEGIA SIMPLE
+                    // MODO EDICIÓN - ESTRATEGIA SIMPLIFICADA
                     idMaterial = int.Parse(hfIdMaterial.Value);
 
                     // 1. Actualizar material principal
                     ActualizarMaterialExistente(idMaterial);
 
-                    // 2. Contribuyentes (complejo - mantener IDs)
+                    // 2. Contribuyentes (mantener IDs)
                     ManejarContribuyentesEnEdicion(idMaterial);
 
-                    // 3. Ejemplares (simple - eliminar todos + crear nuevos)
-                    EliminarEjemplaresAntiguos(idMaterial);
-                    GuardarEjemplares(idMaterial);
+                    // 3. Ejemplares - SOLO ACTUALIZAR, NO ELIMINAR
+                    ActualizarEjemplaresExistentes(idMaterial);
 
                     MostrarExito("Material actualizado exitosamente!");
                 }
@@ -415,6 +447,149 @@ namespace BibliotecaWA
             }
         }
 
+        // MÉTODO SIMPLIFICADO PARA ACTUALIZAR EJEMPLARES
+        private void ActualizarEjemplaresExistentes(int idMaterial)
+        {
+            try
+            {
+                EjemplarWSClient ejemplarBO = new EjemplarWSClient();
+
+                var idsEjemplares = Request.Form.GetValues("id_ejemplar[]");
+                var estadosList = Request.Form.GetValues("estado_ejemplar[]");
+                var bibliotecasList = Request.Form.GetValues("biblioteca[]");
+                var ubicacionesList = Request.Form.GetValues("ubicacion[]");
+
+                System.Diagnostics.Debug.WriteLine($"=== ACTUALIZAR EJEMPLARES EXISTENTES ===");
+
+                // Lista para guardar los IDs de ejemplares que SÍ están en el formulario
+                List<int> idsEjemplaresEnFormulario = new List<int>();
+
+                if (estadosList != null && bibliotecasList != null && ubicacionesList != null)
+                {
+                    int minLength = Math.Min(estadosList.Length, Math.Min(bibliotecasList.Length, ubicacionesList.Length));
+
+                    for (int i = 0; i < minLength; i++)
+                    {
+                        int idEjemplar = 0;
+                        if (idsEjemplares != null && i < idsEjemplares.Length)
+                        {
+                            int.TryParse(idsEjemplares[i], out idEjemplar);
+                        }
+
+                        if (!string.IsNullOrEmpty(estadosList[i]) &&
+                            !string.IsNullOrEmpty(bibliotecasList[i]) &&
+                            !string.IsNullOrEmpty(ubicacionesList[i]))
+                        {
+                            try
+                            {
+                                string estado = estadosList[i];
+                                int idBiblioteca = int.Parse(bibliotecasList[i]);
+                                string ubicacion = ubicacionesList[i];
+
+                                if (idEjemplar > 0)
+                                {
+                                    System.Diagnostics.Debug.WriteLine($"🔄 ACTUALIZANDO ejemplar ID: {idEjemplar}, Estado: {estado}");
+
+                                    // Agregar a la lista de ejemplares que SÍ están en el formulario
+                                    idsEjemplaresEnFormulario.Add(idEjemplar);
+
+                                    ejemplar ejemplarExistente = ejemplarBO.obtenerEjemplarPorId(idEjemplar);
+                                    if (ejemplarExistente != null)
+                                    {
+                                        // Solo actualizar estado si NO es PRESTADO (los PRESTADO vienen como readonly)
+                                        if (ejemplarExistente.estado.ToString() != "PRESTADO")
+                                        {
+                                            if (Enum.TryParse<estadoEjemplar>(estado, out estadoEjemplar estadoEnum))
+                                            {
+                                                ejemplarExistente.estado = estadoEnum;
+                                            }
+                                        }
+
+                                        ejemplarExistente.ubicacion = ubicacion;
+                                        biblioteca bib = new biblioteca();
+                                        bib.idBiblioteca = idBiblioteca;
+                                        ejemplarExistente.blibioteca = bib;
+
+                                        ejemplarBO.modificarEjemplar(ejemplarExistente);
+                                        System.Diagnostics.Debug.WriteLine($"✅ EJEMPLAR ACTUALIZADO: ID {idEjemplar}");
+                                    }
+                                }
+                                else
+                                {
+                                    // INSERT - Nuevo ejemplar (nunca será PRESTADO)
+                                    System.Diagnostics.Debug.WriteLine($"➕ NUEVO ejemplar");
+
+                                    var nuevoEjemplar = new ejemplar
+                                    {
+                                        ubicacion = ubicacion,
+                                        blibioteca = new biblioteca { idBiblioteca = idBiblioteca },
+                                        id_material = idMaterial,
+                                        estado = estadoEjemplar.DISPONIBLE // Siempre DISPONIBLE en nuevos
+                                    };
+
+                                    int nuevoId = ejemplarBO.insertarEjemplar(nuevoEjemplar);
+
+                                    // Agregar el nuevo ID a la lista
+                                    idsEjemplaresEnFormulario.Add(nuevoId);
+
+                                    System.Diagnostics.Debug.WriteLine($"✅ NUEVO EJEMPLAR GUARDADO: ID {nuevoId}");
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                System.Diagnostics.Debug.WriteLine($"❌ Error procesando ejemplar {i}: {ex.Message}");
+                            }
+                        }
+                    }
+
+                    // PASO FINAL: Eliminar ejemplares que fueron removidos del formulario
+                    if (idsEjemplaresEnFormulario.Count > 0)
+                    {
+                        EliminarEjemplaresRemovidos(idMaterial, idsEjemplaresEnFormulario);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al actualizar ejemplares: {ex.Message}");
+            }
+        }
+
+        // MÉTODO CORREGIDO PARA ELIMINAR EJEMPLARES REMOVIDOS
+        private void EliminarEjemplaresRemovidos(int idMaterial, List<int> idsEjemplaresEnFormulario)
+        {
+            try
+            {
+                EjemplarWSClient ejemplarBO = new EjemplarWSClient();
+
+                // Obtener todos los ejemplares actuales del material
+                var ejemplaresActuales = ejemplarBO.listar_por_material(idMaterial);
+
+                foreach (var ejemplar in ejemplaresActuales)
+                {
+                    // Si el ejemplar actual NO está en la lista del formulario, significa que fue eliminado
+                    if (!idsEjemplaresEnFormulario.Contains(ejemplar.idEjemplar))
+                    {
+                        System.Diagnostics.Debug.WriteLine($"🗑️ VERIFICANDO ejemplar para eliminar: ID {ejemplar.idEjemplar}, Estado en BD: {ejemplar.estado}");
+
+                        // SOLO eliminar si está DISPONIBLE en la BD (estado original)
+                        if (ejemplar.estado.ToString() == "DISPONIBLE")
+                        {
+                            ejemplarBO.eliminarEjemplar(ejemplar.idEjemplar);
+                            System.Diagnostics.Debug.WriteLine($"✅ Ejemplar ELIMINADO: ID {ejemplar.idEjemplar}");
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine($"⚠️ Ejemplar NO eliminado (no estaba DISPONIBLE en BD): ID {ejemplar.idEjemplar}, Estado en BD: {ejemplar.estado}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al eliminar ejemplares removidos: {ex.Message}");
+            }
+        }
         private void ActualizarMaterialExistente(int idMaterial)
         {
             string tipoMaterial = ddlTipoMaterial.SelectedValue;
@@ -527,7 +702,7 @@ namespace BibliotecaWA
             try
             {
                 EjemplarWSClient ejemplarBO = new EjemplarWSClient();
-                var ejemplaresAntiguos = new BindingList<ejemplar>(ejemplarBO.listar_disponibles_por_material(idMaterial));
+                var ejemplaresAntiguos = new BindingList<ejemplar>(ejemplarBO.listar_por_material(idMaterial));
 
                 //xd
                 if (ejemplaresAntiguos == null) return;
@@ -781,8 +956,7 @@ namespace BibliotecaWA
             string[] bibliotecas = Request.Form.GetValues("biblioteca[]");
             string[] ubicaciones = Request.Form.GetValues("ubicacion[]");
 
-            System.Diagnostics.Debug.WriteLine($"=== GUARDAR EJEMPLARES ===");
-            System.Diagnostics.Debug.WriteLine($"biblioteca[]: {bibliotecas?.Length}, ubicacion[]: {ubicaciones?.Length}");
+            System.Diagnostics.Debug.WriteLine($"=== GUARDAR EJEMPLARES NUEVOS ===");
 
             if (bibliotecas == null || ubicaciones == null || bibliotecas.Length == 0)
             {
@@ -790,8 +964,6 @@ namespace BibliotecaWA
             }
 
             int minLength = Math.Min(bibliotecas.Length, ubicaciones.Length);
-
-            System.Diagnostics.Debug.WriteLine($"Usando longitud mínima: {minLength}");
 
             EjemplarWSClient boejemplar = new EjemplarWSClient();
             int ejemplaresGuardados = 0;
@@ -803,28 +975,24 @@ namespace BibliotecaWA
                     string idBiblioteca = bibliotecas[i];
                     string ubicacion = ubicaciones[i]?.Trim();
 
-                    // DEBUG: Ver qué datos llegan
-                    System.Diagnostics.Debug.WriteLine($"Ejemplar {i}: Biblioteca='{idBiblioteca}', Ubicación='{ubicacion}'");
-
                     if (string.IsNullOrEmpty(idBiblioteca) || string.IsNullOrEmpty(ubicacion))
                     {
-                        System.Diagnostics.Debug.WriteLine($"❌ Ejemplar {i} ignorado: datos incompletos");
                         continue;
                     }
 
-                    ejemplar ejemplar = new ejemplar
-                    {
-                        id_material = idMaterial,
-                        ubicacion = ubicacion,
-                        estado = estadoEjemplar.DISPONIBLE
-                    };
-                    ejemplar.idEjemplar = Convert.ToInt32(idBiblioteca);
+                    ejemplar ejemplar = new ejemplar();
+                    ejemplar.ubicacion = ubicacion;
+                    biblioteca bib = new biblioteca();
+                    bib.idBiblioteca = Convert.ToInt32(idBiblioteca);
+                    ejemplar.blibioteca = bib;
+                    ejemplar.id_material = idMaterial;
+                    ejemplar.estado = estadoEjemplar.DISPONIBLE; // ← SIEMPRE DISPONIBLE EN REGISTRO
 
                     int idEjemplar = boejemplar.insertarEjemplar(ejemplar);
+
                     if (idEjemplar > 0)
                     {
                         ejemplaresGuardados++;
-                        System.Diagnostics.Debug.WriteLine($"✅ EJEMPLAR GUARDADO: ID={idEjemplar}, Biblioteca={idBiblioteca}");
                     }
                 }
                 catch (Exception ex)
@@ -837,8 +1005,6 @@ namespace BibliotecaWA
             {
                 throw new Exception("No se pudo guardar ningún ejemplar.");
             }
-
-            System.Diagnostics.Debug.WriteLine($"🎯 TOTAL EJEMPLARES GUARDADOS: {ejemplaresGuardados}");
         }
 
         public string GetBibliotecasOptions()

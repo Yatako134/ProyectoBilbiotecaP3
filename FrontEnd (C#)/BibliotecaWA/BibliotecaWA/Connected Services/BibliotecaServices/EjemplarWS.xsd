@@ -9,6 +9,8 @@
   <xs:element name="listarEjemplaresTodosResponse" type="tns:listarEjemplaresTodosResponse" />
   <xs:element name="listar_disponibles_por_material" type="tns:listar_disponibles_por_material" />
   <xs:element name="listar_disponibles_por_materialResponse" type="tns:listar_disponibles_por_materialResponse" />
+  <xs:element name="listar_por_material" type="tns:listar_por_material" />
+  <xs:element name="listar_por_materialResponse" type="tns:listar_por_materialResponse" />
   <xs:element name="modificarEjemplar" type="tns:modificarEjemplar" />
   <xs:element name="modificarEjemplarResponse" type="tns:modificarEjemplarResponse" />
   <xs:element name="obtenerEjemplarPorId" type="tns:obtenerEjemplarPorId" />
@@ -67,6 +69,16 @@
       <xs:element minOccurs="0" name="return" type="tns:ejemplar" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="listar_por_material">
+    <xs:sequence>
+      <xs:element name="_id_material" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listar_por_materialResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="modificarEjemplar">
     <xs:sequence>
       <xs:element minOccurs="0" name="ejemplar" type="tns:ejemplar" />
@@ -100,7 +112,7 @@
       <xs:enumeration value="DISPONIBLE" />
       <xs:enumeration value="PRESTADO" />
       <xs:enumeration value="EN_REPARACION" />
-      <xs:enumeration value="NO_DISPONIBLE" />
+      <xs:enumeration value="PERDIDO" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
