@@ -55,6 +55,9 @@ namespace BibliotecaWA
                 }
                 else { id_prestamo = int.Parse(id); }
                 prestamo prestamo = prestBO.obtenerPrestamoPorId(id_prestamo);
+
+                Session["prestamo"] = prestamo;
+
                 int id_ejemplar = prestamo.ejemplar.idEjemplar;
                 ejemplar ejemp = ejemBO.obtenerEjemplarPorId(id_ejemplar);
                 int id_material = ejemp.id_material;
@@ -200,9 +203,11 @@ namespace BibliotecaWA
 
         protected void btnGuardarCambios_Click(object sender, EventArgs e)
         {
+
             string modo = Request.QueryString["modo"];
             if (modo == "editar")
             {
+                prestamo pre = (prestamo)Session["prestamo"];
                 // Lista para almacenar todas las sanciones
                 var sanciones = new List<sancion>();
 
@@ -239,12 +244,17 @@ namespace BibliotecaWA
 
                         string id = Request.QueryString["id"];
                         sanci.prestamo.idPrestamo = Convert.ToInt32(id);
-                        sanciones.Add(sanci);
-                        // falta implementar en la bd
+                        sancionBo.insertarSancion(sanci);
 
                     }
                 }
-
+                pre.fecha_devolucion = DateTime.Parse(txtFechaDevo.Text);
+                pre.estado = estadoPrestamo.FINALIZADO;
+                if (pre.fecha_devolucion > pre.fecha_vencimiento)
+                {
+                    pre.estado = estadoPrestamo.RETRASADO;
+                }
+                prestBO.modificarPrestamo(pre);
                 Response.Redirect("HistorialPrestamos.aspx");
             }
             else

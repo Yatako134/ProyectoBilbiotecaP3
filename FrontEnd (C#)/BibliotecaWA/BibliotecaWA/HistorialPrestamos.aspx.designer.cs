@@ -69,6 +69,24 @@ namespace BibliotecaWA
         protected global::System.Web.UI.WebControls.LinkButton btnBuscarPrestamo;
 
         /// <summary>
+        /// Control ulOrdenar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ulOrdenar;
+
+        /// <summary>
+        /// Control hfDireccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfDireccion;
+
+        /// <summary>
         /// Control hfPrestamoSeleccionado.
         /// </summary>
         /// <remarks>

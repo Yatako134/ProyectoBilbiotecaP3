@@ -9,9 +9,11 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
     <!-- Superior -->
     <div class="d-flex align-items-center mb-2">
-        <i class="fa-solid fa-book fa-sm me-2"></i>
-        <span class="fw-bold">Mi historial de préstamos</span>
+        <span class="fw-bold me-4">Gestion de préstamos </span>
     </div>
+
+
+    <hr/>
 
     <div class="container-fluid">
 
@@ -42,19 +44,47 @@
             <div class="tabla-container shadow-sm rounded-4 overflow-hidden ">
 
                 <!-- === BARRA DE BÚSQUEDA === -->
-                <div class="tabla-busqueda d-flex align-items-center p-3 border-bottom bg-white gap-2">
+                <div class=" d-flex align-items-center p-3 border-bottom bg-white gap-2">
 
                     <asp:Label ID="lblResultados" runat="server" CssClass="flex-shrink-0 me-3 ColorLetras"></asp:Label>
-                    <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control bg-light flex-grow-1" placeholder=" Buscar por usuario..." TextMode ="Number" />
+                    <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control bg-light flex-grow-1" placeholder=" Buscar por usuario..." TextMode="Number" />
                     <asp:LinkButton ID="btnBuscarPrestamo"
                         runat="server"
                         CssClass="btn btn-sm btn-primary btnBuscarFix"
                         OnClick="btnBuscarPrestamo_Click"
                         UseSubmitBehavior="false">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                         <i class="fa-solid fa-magnifying-glass"></i>
                     </asp:LinkButton>
 
+                    <!-- Dropdown "Ordenar por" -->
+                    <div class="dropdown ms-2">
+                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownOrdenar" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ordenar por
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownOrdenar" id="ulOrdenar" runat="server">
+                            <!-- Aquí se llenan las opciones desde el code-behind -->
+                        </ul>
+                    </div>
+
+                    <asp:HiddenField ID="hfDireccion" runat="server" Value="asc" />
+
+                    <div class="dropdown ms-2">
+                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownDireccion" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dirección
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownDireccion">
+                            <li><a class="dropdown-item" href="#" onclick="setDireccion('asc')">Ascendente</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="setDireccion('desc')">Descendente</a></li>
+                        </ul>
+                    </div>
                 </div>
+
+                <script>
+                    function setDireccion(valor) {
+                        document.getElementById('<%= hfDireccion.ClientID %>').value = valor;
+                        // Ya no necesitas postback inmediato
+                    }
+                </script>
 
                 <!-- === GRIDVIEW === -->
                 <div class="tabla-datos">

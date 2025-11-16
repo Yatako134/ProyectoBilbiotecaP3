@@ -23,6 +23,19 @@
                 cursor: pointer;
             }
     </style>
+
+    <style>
+        .btn-guardar-personalizado {
+            background-color: #006deb !important; /* azul que quieres */
+            color: white !important; /* texto blanco */
+            border: none; /* opcional: quitar borde */
+        }
+
+            .btn-guardar-personalizado:hover {
+                background-color: #0053b3 !important; /* opcional: hover más oscuro */
+                color: white !important;
+            }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
 
@@ -31,26 +44,25 @@
      <!-- CABECERA SUPERIOR-->
 
     <div class="d-flex align-items-center mb-2">
-        <i class="fa-solid fa-book fa-sm me-2"></i>
-        <span class="fw-bold me-4">Gestion de préstamos </span>
+        <span class="me-4">Gestion de préstamos </span>
         <span class="fw-bold me-4">
             <i class="fa-solid fa-greater-than fa-xs me-4"></i>
             <asp:Label ID="lblCabecera" runat="server"></asp:Label>
         </span>
     </div>
 
-    <hr style="border-color: #d1d1d4; border-width: 1px; margin: 10px 0;" />
+    <hr />
 
     <!-- CABECERA -->
 
-   <div class="my-4">
-       <h2 class="d-flex align-items-center gap-2">
-           <asp:LinkButton ID="btnVolver" runat="server" CssClass="btn-link btn-dark text-decoration-none fa-sm" OnClick="btnVolver_Click">
-            <i class="fa-regular fa-arrow-left fa-sm me-2" style="color:black;"></i>
-           </asp:LinkButton>
-           <asp:Label ID="lblCabeceraInf" runat="server"></asp:Label>
-       </h2>
-   </div>
+    <div class="text-start mb-4">
+        <h2 class="fw-bold fs-2">
+            <asp:LinkButton ID="btnVolver" runat="server" CssClass="btn-link btn-dark text-decoration-none fa-sm" OnClick="btnVolver_Click">
+         <i class="fa-regular fa-arrow-left fa-sm me-2 " style="color:black;"></i>
+            </asp:LinkButton>
+            <asp:Label ID="lblCabeceraInf" runat="server"></asp:Label>
+        </h2>
+    </div>
 
 
 
@@ -83,17 +95,24 @@
     <div class="card shadow-sm mb-3">
         <div>
             <div class="card-header" style="background-color: #f5faff;">
-                <asp:Label ID="lblBiblioteca" runat="server" CssClass="fw-normal mb-0"></asp:Label>
+                <h5 class="mb-0">Información de biblioteca</h5>
             </div>
             <div class="card-body">
-                <p class="mb-1">
-                    <strong>Código:</strong>
-                    <asp:Label ID="lblCodEjem" runat="server" CssClass="fw-normal mb-0"></asp:Label>
-                </p>
-                <p class="mb-1">
-                    <strong>Ubicacion:</strong>
+                <div class="d-flex mb-2">
+                    <strong style="width: 200px;">Nombre:</strong>
+                    <!-- ancho fijo -->
+                    <asp:Label ID="lblBiblioteca" runat="server" CssClass="fw-normal"></asp:Label>
+                </div>
+                <div class="d-flex">
+                    <strong style="width: 200px;">Código:</strong>
+                    <!-- mismo ancho que el anterior -->
+                    <asp:Label ID="lblCodEjem" runat="server" CssClass="fw-normal"></asp:Label>
+                </div>
+                <div class="d-flex">
+                    <strong style="width: 200px;">Ubicación:</strong>
+                    <!-- mismo ancho que el anterior -->
                     <asp:Label ID="lblLocacion" runat="server" CssClass="fw-normal"></asp:Label>
-                </p>
+                </div>
             </div>
         </div>
     </div>
@@ -224,7 +243,7 @@
                 <div class="col-md-6">
                     <label class="form-label fw-bold">Fecha de Devolución</label>
                     <!-- TextBox tipo date -->
-                    <<asp:TextBox ID="txtFechaDevo" runat="server" CssClass="form-control mb-3"
+                    <asp:TextBox ID="txtFechaDevo" runat="server" CssClass="form-control mb-3"
                         placeholder="dd/mm/yyyy" TextMode="Date"></asp:TextBox>
 
                     <asp:RequiredFieldValidator ID="rfvFecha" runat="server"
@@ -247,8 +266,10 @@
 
                         <!-- Botón añadir sanción -->
                         <div class="mt-2">
-                            <input type="button" id="btnAddSancion" value="➕ Añadir Sanción"
-                                class="btn btn-primary w-100" clientidmode="Static" />
+                            <input type="button" id="btnAddSancion" value=" +  Añadir Sanción"
+                                class="btn w-100"
+                                clientidmode="Static"
+                                style="background-color: #f5faff; color: #1c7ced; border: 1px solid #1c7ced;" />
                         </div>
                     </asp:Panel>
 
@@ -272,8 +293,11 @@
                             // --------------------
                             var btnRemove = document.createElement("button");
                             btnRemove.type = "button";
-                            btnRemove.innerHTML = "&times;"; // símbolo X
+                            btnRemove.innerHTML = "X"; // símbolo X más grande
                             btnRemove.className = "btn-remove-sancion";
+                            btnRemove.style.fontSize = "1.5rem"; // más grande
+                            btnRemove.style.color = "#000";      // negro
+                            btnRemove.style.fontWeight = "bold"; // opcional, más gruesa
                             btnRemove.addEventListener("click", function () {
                                 divRow.remove(); // elimina el bloque completo
                             });
@@ -296,6 +320,7 @@
                             var selectTipo = document.createElement("select");
                             selectTipo.name = "txtTipoSancion_" + sancionCounter;
                             selectTipo.className = "form-control";
+                            selectTipo.required = true; // <-- VALIDADOR
 
                             // Llenar opciones desde el array tiposDeSancion
                             tiposDeSancion.forEach(function (tipo) {
@@ -317,10 +342,13 @@
                             labelDuracion.innerText = "Duración (días)";
 
                             var inputDuracion = document.createElement("input");
-                            inputDuracion.type = "text";
+                            inputDuracion.type = "number";      // solo números
                             inputDuracion.name = "txtDuracion_" + sancionCounter;
                             inputDuracion.placeholder = "Ingrese duración";
                             inputDuracion.className = "form-control";
+                            inputDuracion.required = true;      // obligatorio
+                            inputDuracion.min = 1;              // enteros positivos
+                            inputDuracion.step = 1;             // solo enteros
 
                             divDuracionCol.appendChild(labelDuracion);
                             divDuracionCol.appendChild(inputDuracion);
@@ -343,6 +371,7 @@
                             inputJustificacion.placeholder = "Ingrese la justificación";
                             inputJustificacion.className = "form-control";
                             inputJustificacion.rows = 3;
+                            inputJustificacion.required = true; // <-- VALIDADOR
 
                             divJustificacion.appendChild(labelJustificacion);
                             divJustificacion.appendChild(inputJustificacion);
@@ -390,7 +419,7 @@
                         <asp:Label ID="lblLimitePrestamos" runat="server" ></asp:Label>
                     </div>
                 </div>
-                <hr style="b order-color: #d1d1d4; border-width: 1px; margin: 10px 0;" />
+                <hr style="border-color: #d1d1d4; border-width: 1px; margin: 10px 0;" />
             </div>
 
             <!-- Fecha de préstamo -->
@@ -420,8 +449,8 @@
     <asp:Panel ID="pnlBotonGuardar" runat="server" Visible="false">
         <div class="d-flex justify-content-end mb-4">
             <asp:Button ID="btnGuardarCambios" runat="server"
-                Text="Guardar cambios"
-                CssClass="btn btn-success"
+                Text="Guardar cambios →"
+                CssClass="btn btn-guardar-personalizado"
                 OnClick="btnGuardarCambios_Click" />
         </div>
     </asp:Panel>

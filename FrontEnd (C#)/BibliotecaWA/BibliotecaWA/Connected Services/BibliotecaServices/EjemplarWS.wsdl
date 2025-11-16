@@ -14,6 +14,12 @@
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
   </message>
+  <message name="eliminarEjemplar">
+    <part name="parameters" element="tns:eliminarEjemplar" />
+  </message>
+  <message name="eliminarEjemplarResponse">
+    <part name="parameters" element="tns:eliminarEjemplarResponse" />
+  </message>
   <message name="modificarEjemplar">
     <part name="parameters" element="tns:modificarEjemplar" />
   </message>
@@ -26,11 +32,11 @@
   <message name="obtenerEjemplarPorIdResponse">
     <part name="parameters" element="tns:obtenerEjemplarPorIdResponse" />
   </message>
-  <message name="eliminarEjemplar">
-    <part name="parameters" element="tns:eliminarEjemplar" />
+  <message name="insertarEjemplar">
+    <part name="parameters" element="tns:insertarEjemplar" />
   </message>
-  <message name="eliminarEjemplarResponse">
-    <part name="parameters" element="tns:eliminarEjemplarResponse" />
+  <message name="insertarEjemplarResponse">
+    <part name="parameters" element="tns:insertarEjemplarResponse" />
   </message>
   <message name="listarEjemplaresTodos">
     <part name="parameters" element="tns:listarEjemplaresTodos" />
@@ -38,17 +44,16 @@
   <message name="listarEjemplaresTodosResponse">
     <part name="parameters" element="tns:listarEjemplaresTodosResponse" />
   </message>
-  <message name="insertarEjemplar">
-    <part name="parameters" element="tns:insertarEjemplar" />
-  </message>
-  <message name="insertarEjemplarResponse">
-    <part name="parameters" element="tns:insertarEjemplarResponse" />
-  </message>
   <portType name="EjemplarWS">
     <operation name="listar_disponibles_por_material">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialRequest" message="tns:listar_disponibles_por_material" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialResponse" message="tns:listar_disponibles_por_materialResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_material/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="eliminarEjemplar">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/eliminarEjemplarRequest" message="tns:eliminarEjemplar" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/eliminarEjemplarResponse" message="tns:eliminarEjemplarResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/eliminarEjemplar/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="modificarEjemplar">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplarRequest" message="tns:modificarEjemplar" />
@@ -60,19 +65,14 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/obtenerEjemplarPorIdResponse" message="tns:obtenerEjemplarPorIdResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/obtenerEjemplarPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="eliminarEjemplar">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/eliminarEjemplarRequest" message="tns:eliminarEjemplar" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/eliminarEjemplarResponse" message="tns:eliminarEjemplarResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/eliminarEjemplar/Fault/Exception" name="Exception" message="tns:Exception" />
+    <operation name="insertarEjemplar">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarRequest" message="tns:insertarEjemplar" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarResponse" message="tns:insertarEjemplarResponse" />
     </operation>
     <operation name="listarEjemplaresTodos">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosRequest" message="tns:listarEjemplaresTodos" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosResponse" message="tns:listarEjemplaresTodosResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodos/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="insertarEjemplar">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarRequest" message="tns:insertarEjemplar" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarResponse" message="tns:insertarEjemplarResponse" />
     </operation>
   </portType>
   <binding name="EjemplarWSPortBinding" type="tns:EjemplarWS">
@@ -89,6 +89,18 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
+    <operation name="eliminarEjemplar">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
     <operation name="modificarEjemplar">
       <soap:operation soapAction="" />
       <input>
@@ -113,7 +125,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="eliminarEjemplar">
+    <operation name="insertarEjemplar">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -121,9 +133,6 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
     </operation>
     <operation name="listarEjemplaresTodos">
       <soap:operation soapAction="" />
@@ -136,15 +145,6 @@
       <fault name="Exception">
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
-    </operation>
-    <operation name="insertarEjemplar">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
     </operation>
   </binding>
   <service name="EjemplarWS">
