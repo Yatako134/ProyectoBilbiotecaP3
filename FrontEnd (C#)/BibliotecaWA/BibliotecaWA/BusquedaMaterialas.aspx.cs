@@ -44,16 +44,31 @@ namespace BibliotecaWA
         {
             materialBO = new MaterialWSClient();
             listaMateriales = new BindingList<materialBibliografico>(materialBO.ListarTodos());
-            materialBibliografico m;
-            gvResultados.DataSource = listaMateriales;
-            gvResultados.DataBind();
-
-            int total = listaMateriales.Count;
-            int inicio = gvResultados.PageIndex * gvResultados.PageSize + 1;
-            int fin = Math.Min((gvResultados.PageIndex + 1) * gvResultados.PageSize, total);
-            lblPaginaInfo.Text = $"{inicio}-{fin} de {total}";
+            if (listaMateriales!=null && listaMateriales.Count > 0)
+            {
+                materialBibliografico m;
+                Session["materiales"] = listaMateriales;
+                gvResultados.DataSource = listaMateriales;
+                gvResultados.DataBind();
+                ActualizarContador();
+                int total = listaMateriales.Count;
+                int inicio = gvResultados.PageIndex * gvResultados.PageSize + 1;
+                int fin = Math.Min((gvResultados.PageIndex + 1) * gvResultados.PageSize, total);
+                lblPaginaInfo.Text = $"{inicio}-{fin} de {total}";
+            }
+            else
+            {
+                lblMensaje.Text = "No hay materiales bibliográficos para mostrar.";
+                lblMensaje.Visible = true;
+            }
+            
         }
-
+        private void ActualizarContador()
+        {
+            int total = ((BindingList<materialBibliografico>)Session["materiales"]).Count;
+            int mostrados = gvResultados.Rows.Count;
+            LabelBusqueda.Text = $"Mostrando {mostrados} de {total} usuarios";
+        }
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             if (materialBO == null) materialBO = new MaterialWSClient();

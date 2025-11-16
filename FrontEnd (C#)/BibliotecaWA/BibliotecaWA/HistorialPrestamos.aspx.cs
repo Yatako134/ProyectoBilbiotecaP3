@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace BibliotecaWA
@@ -13,7 +14,7 @@ namespace BibliotecaWA
     {
         private PrestamoWSClient boprestamo;
         private SancionWSClient bosancion;
-        private UsuarioWSClient bousuario;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,22 +22,29 @@ namespace BibliotecaWA
             {
                 bosancion = new SancionWSClient();
                 boprestamo = new PrestamoWSClient();
-                bousuario = new UsuarioWSClient();
-
-
-
-                BindingList <prestamo> prestamos = new BindingList<prestamo>(boprestamo.listarPrestamos());
-                Session["sanciones"] = new BindingList<sancion>(bosancion.listarSanciones());
-
-                foreach (prestamo presta in prestamos)
+                prestamo[] prest = boprestamo.listarPrestamos();
+                sancion[] saci = bosancion.listarSanciones();
+                if (prest != null)
                 {
-                    usuario user = bousuario.obtenerUsuarioPorId(presta.usuario.id_usuario);
-                    presta.usuario = user;
+                    Session["prestamos"] = new BindingList<prestamo>(prest);
+                }
+                else
+                {
+                    LabelMensajePrestamo.Text = "No hay prestamos que mostrar.";
+                    LabelMensajePrestamo.Visible = true;
+                }
+                if (saci != null)
+                {
+                    Session["sanciones"] = new BindingList<sancion>(saci);
+                }
+                else
+                {
+                    lblMensaje.Text = "No hay sanciones que mostrar.";
+                    lblMensaje.Visible = true;
                 }
 
-                Session["prestamos"] = prestamos;
-
-                CargarPrestamos(); 
+                CargarPrestamos();
+                CargarSanciones();
 
                 // Botón seleccionado (al iniciar: Préstamos) -> azul suave
                 btnPrestamos.CssClass = "btn btn-sm btn-primary me-1";
@@ -44,6 +52,89 @@ namespace BibliotecaWA
                 // Botón no seleccionado mantiene estilo original (sin sombreado)
                 btnSanciones.CssClass = "btn btn-sm btn-outline-secondary";
             }
+            CrearDropdownOrdenar();
+        }
+
+        private void CrearDropdownOrdenar()
+        {
+            // Lista de opciones visibles
+            List<string> opcionesVisibles = new List<string> { "Código", "Usuario", "Fecha de inicio", "Fecha de vencimiento", "Fecha de devolución", "Estado" };
+
+            // Diccionario de mapeo
+            Dictionary<string, string> mapOrden = new Dictionary<string, string>()
+                {
+                    { "Código", "idPrestamo" },
+                    { "Usuario", "usuario.codigo" },
+                    { "Fecha de inicio", "fecha_de_prestamo" },
+                    { "Fecha de vencimiento", "fecha_vencimiento" },
+                    { "Fecha de devolución", "fecha_devolucion" },
+                    { "Sanción", "Sancion" },
+                    { "Estado", "estado" }
+                };
+
+            ulOrdenar.Controls.Clear();
+
+            foreach (string opcion in opcionesVisibles)
+            {
+                HtmlGenericControl li = new HtmlGenericControl("li");
+                LinkButton lb = new LinkButton();
+                lb.Text = opcion;
+                lb.CssClass = "dropdown-item";
+                lb.CommandArgument = mapOrden[opcion];
+                lb.Click += Lb_Click;
+                li.Controls.Add(lb);
+                ulOrdenar.Controls.Add(li);
+            }
+        }
+
+        protected void Lb_Click(object sender, EventArgs e)
+        {
+            LinkButton lb = sender as LinkButton;
+            string propiedadSeleccionada = lb.CommandArgument; // puede ser "Usuario.CodigoEstudiante", etc.
+
+            // Obtener la lista de la sesión
+            if (Session["prestamos"] != null)
+            {
+                BindingList<prestamo> prestamos = (BindingList<prestamo>)Session["prestamos"];
+
+                // Determinar dirección (por defecto ascendente)
+                string direccion = "asc";
+                if (hfDireccion != null && !string.IsNullOrEmpty(hfDireccion.Value))
+                {
+                    direccion = hfDireccion.Value; // hfDireccion es un HiddenField en la página
+                }
+
+                // Ordenar usando el método que soporta propiedades anidadas
+                IEnumerable<prestamo> listaOrdenada;
+                if (direccion == "asc")
+                {
+                    listaOrdenada = prestamos.OrderBy(p => ObtenerValorPropiedad(p, propiedadSeleccionada));
+                }
+                else
+                {
+                    listaOrdenada = prestamos.OrderByDescending(p => ObtenerValorPropiedad(p, propiedadSeleccionada));
+                }
+
+                BindingList<prestamo> prestamosOrdenados = new BindingList<prestamo>(listaOrdenada.ToList());
+                Session["prestamos"] = prestamosOrdenados;
+
+                // Rebind a tu GridView o Repeater
+                CargarPrestamos();
+            }
+        }
+
+        public object ObtenerValorPropiedad(object obj, string path)
+        {
+            string[] props = path.Split('.');
+            object valor = obj;
+            foreach (string prop in props)
+            {
+                if (valor == null) return null;
+                var propInfo = valor.GetType().GetProperty(prop);
+                if (propInfo == null) return null;
+                valor = propInfo.GetValue(valor, null);
+            }
+            return valor;
         }
 
         protected void btnPrestamos_Click(object sender, EventArgs e)
@@ -88,7 +179,6 @@ namespace BibliotecaWA
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                bousuario = new UsuarioWSClient();
                 prestamo presta = (prestamo)e.Row.DataItem;
                 e.Row.Cells[0].Text = presta.idPrestamo.ToString();
                 e.Row.Cells[1].Text = presta.usuario.codigo.ToString();
@@ -97,22 +187,46 @@ namespace BibliotecaWA
                 e.Row.Cells[4].Text = (presta.fecha_devolucion == DateTime.MinValue) ? "-" : presta.fecha_devolucion.ToString("d 'de' MMM, yyyy");
             }
         }
+        protected void dgvSanciones_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
 
+                sancion san = (sancion)e.Row.DataItem;
+                e.Row.Cells[0].Text = san.id_sancion.ToString();
+                e.Row.Cells[1].Text = san.prestamo.usuario.codigo.ToString();
+                e.Row.Cells[2].Text = san.prestamo.idPrestamo.ToString();
+                e.Row.Cells[3].Text = san.fecha_inicio.ToString("d 'de' MMM, yyyy");
+                e.Row.Cells[4].Text = san.fecha_fin.ToString("d 'de' MMM, yyyy");
+            }
+        }
         private void ActualizarContador()
         {
-            int total = ((BindingList<prestamo>)Session["prestamos"]).Count;
+            int total = 0;
+            if (((BindingList<prestamo>)Session["prestamos"]) != null)
+            {
+                total = ((BindingList<prestamo>)Session["prestamos"]).Count;
+            }
+
             int mostrados = gvPrestamos.Rows.Count;
             lblResultados.Text = $"Mostrando {mostrados} de {total} usuarios";
         }
-
+        private void ActualizarContadorSancion()
+        {
+            int total = 0;
+            if (((BindingList<sancion>)Session["Sanciones"]) != null)
+            {
+                total = ((BindingList<sancion>)Session["Sanciones"]).Count;
+            }
+            int mostrados = gvSanciones.Rows.Count;
+            LabelSancion.Text = $"Mostrando {mostrados} de {total} usuarios";
+        }
         private void CargarSanciones()
         {
-
-            bosancion = new SancionWSClient();
-            BindingList<sancion> sanciones;
-            sanciones = new BindingList<sancion>(bosancion.listarSanciones()); 
+            BindingList<sancion> sanciones = (BindingList<sancion>)Session["sanciones"];
             gvSanciones.DataSource = sanciones;
             gvSanciones.DataBind();
+            ActualizarContadorSancion();
         }
 
         protected string GetEstadoHtml(object estadoObj)
@@ -190,13 +304,13 @@ namespace BibliotecaWA
         protected void btnVer_Click(object sender, EventArgs e)
         {
             int id = int.Parse(hfPrestamoSeleccionado.Value);
-            Response.Redirect($"AdministrarUsuarios.aspx?id={id}&modo=ver");
+            Response.Redirect($"DetallePrestamo_Sancion.aspx?id={id}&modo=ver");
         }
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             int id = int.Parse(hfPrestamoSeleccionado.Value);
-            Response.Redirect($"AdministrarUsuarios.aspx?id={id}&modo=editar");
+            Response.Redirect($"DetallePrestamo_Sancion.aspx?id={id}&modo=editar");
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
@@ -210,17 +324,93 @@ namespace BibliotecaWA
             CargarPrestamos();
         }
 
+        protected void btnBuscarPrestamo_Click(object sender, EventArgs e)
+        {
+            boprestamo = new PrestamoWSClient();
+            string codigo_a_buscar = txtBuscar.Text.Trim();
+
+            prestamo[] prestamos_busqueda;
+            if (codigo_a_buscar == "")
+            {
+                prestamos_busqueda = boprestamo.listarPrestamos();
+            }
+            else
+            {
+                prestamos_busqueda = boprestamo.buscarPrestamos(int.Parse(txtBuscar.Text.Trim()));
+            }
+            if (prestamos_busqueda != null)
+            {
+                Session["prestamos"] = new BindingList<prestamo>(prestamos_busqueda);
+                LabelMensajePrestamo.Visible = false;
+            }
+            else
+            {
+                Session["prestamos"] = new BindingList<prestamo>();
+                LabelMensajePrestamo.Text = "No se encontraron resultados para la búsqueda.";
+                LabelMensajePrestamo.Visible = true;
+            }
+            CargarPrestamos();
+        }
+
+
         // Sanciones
         protected void gvSanciones_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvSanciones.PageIndex = e.NewPageIndex;
             CargarSanciones();
         }
-
-        protected void ddlPageSizeSanciones_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlCantidadSancion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            gvSanciones.PageSize = int.Parse(ddlPageSizeSanciones.SelectedValue);
-            gvSanciones.PageIndex = 0;
+            gvSanciones.PageSize = int.Parse(ddlCantidadSancion.SelectedValue);
+            CargarSanciones();
+        }
+
+        protected void btnVerSancion_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(HiddenField1.Value);
+            Response.Redirect($"DetallePrestamo_Sancion.aspx?id={id}&modo=verSancion");
+        }
+
+        protected void btnEditarSancion_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(HiddenField1.Value);
+            Response.Redirect($"DetallePrestamo_Sancion.aspx?id={id}&modo=editarSancion");
+        }
+
+        protected void btnEliminarSancion_Click(object sender, EventArgs e)
+        {
+            bosancion = new SancionWSClient();
+            int id = int.Parse(HiddenField1.Value);
+            bosancion.finalizar_sancion(id);
+            sancion[] sanciones = bosancion.listarSanciones();
+            Session["sanciones"] = new BindingList<sancion>(sanciones);
+            CargarSanciones();
+        }
+        protected void btnBuscarSancion_Click(object sender, EventArgs e)
+        {
+            bosancion = new SancionWSClient();
+            string codigo_a_buscar = TextBoxSancion.Text.Trim();
+
+            sancion[] sanciones_busqueda;
+            if (codigo_a_buscar == "")
+            {
+                sanciones_busqueda = bosancion.listarSanciones();
+            }
+            else
+            {
+                sanciones_busqueda = bosancion.BusquedaSanciones(int.Parse(TextBoxSancion.Text.Trim()));
+            }
+            if (sanciones_busqueda != null)
+            {
+                Session["sanciones"] = new BindingList<sancion>(sanciones_busqueda);
+                lblMensaje.Visible = false;
+            }
+            else
+            {
+                Session["sanciones"] = new BindingList<sancion>();
+                lblMensaje.Text = "No se encontraron resultados para la búsqueda.";
+                lblMensaje.Visible = true;
+            }
             CargarSanciones();
         }
     }

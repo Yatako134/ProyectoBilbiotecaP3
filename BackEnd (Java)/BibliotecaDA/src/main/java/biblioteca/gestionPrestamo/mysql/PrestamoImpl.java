@@ -82,6 +82,7 @@ public class PrestamoImpl implements PrestamoDAO{
 
                 Usuario usuario = new Usuario();
                 usuario.setId_usuario(rs.getInt("id_usuario"));
+                usuario.setCodigo(rs.getInt("codigo_universitario"));
                 prestamo.setUsuario(usuario);
             }
         } catch (SQLException ex) {
@@ -114,7 +115,7 @@ public class PrestamoImpl implements PrestamoDAO{
                 p.setEjemplar(ejemplar);
 
                 Usuario usuario = new Usuario();
-                usuario.setId_usuario(rs.getInt("id_usuario"));
+                usuario.setCodigo(rs.getInt("codigo_universitario"));
                 p.setUsuario(usuario);
 
                 prestamos.add(p);
@@ -166,5 +167,42 @@ public class PrestamoImpl implements PrestamoDAO{
 
         return prestamos;
     }    
+
+    @Override
+    public ArrayList<Prestamo> listar_busqueda_usuario(int codigo_universitario) {
+        ArrayList<Prestamo> prestamos = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, codigo_universitario);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_PRESTAMO_BUSQUEDA_CODIGO_UNIVERSITARIO", parametrosEntrada);
+        System.out.println("Lectura de préstamos...");
+        try {
+            while (rs.next()) {
+                if (prestamos == null) prestamos = new ArrayList<>();
+                Prestamo p = new Prestamo();
+
+                p.setIdPrestamo(rs.getInt("id_prestamo"));
+                p.setFecha_de_prestamo(rs.getTimestamp("fecha_de_prestamo"));
+                p.setFecha_vencimiento(rs.getTimestamp("fecha_vencimiento"));
+                p.setFecha_devolucion(rs.getTimestamp("fecha_devolucion"));
+                String estadoStr = rs.getString("estado");
+                p.setEstado(EstadoPrestamo.valueOf(estadoStr.toUpperCase()));
+
+                Ejemplar ejemplar = new Ejemplar();
+                ejemplar.setIdEjemplar(rs.getInt("id_ejemplar"));
+                p.setEjemplar(ejemplar);
+
+                Usuario usuario = new Usuario();
+                usuario.setCodigo(rs.getInt("codigo_universitario"));
+                p.setUsuario(usuario);
+
+                prestamos.add(p);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return prestamos;
+    }
     
 }

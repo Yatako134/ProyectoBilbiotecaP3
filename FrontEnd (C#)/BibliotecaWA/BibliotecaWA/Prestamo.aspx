@@ -6,6 +6,7 @@
      <script src="Scripts/UtilsArmy/SolicitarPrestamo.js"></script>
     <script src="Scripts/UtilsArmy/ValidacionesPrestamo.js"></script>
     <script src="Scripts/UtilsArmy/MensajeExito.js"></script>
+    <script src="Scripts/UtilsArmy/ModalSancion.js"></script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
     <div class="container mt-3">
@@ -18,7 +19,7 @@
                 </h2>
             </div>
             <div class="card-body d-flex">
-                <img src="images/book.png" class="img-thumbnail me-4" style="width: 120px; height: 140px;" />
+                <img src="images/book.png" class="img-thumbnail me-4" style="width: 180px; height: 180px;" />
                 <div>
                     <h5 class="card-title mb-1">
                         <asp:Label ID="lblTitulo" runat="server"></asp:Label>
@@ -223,6 +224,28 @@
                     <button id="btnIrPrestamo" class="btn btn-outline-primary">Ir al préstamo</button>
                     <asp:Button ID="btnContinuar" runat="server" CssClass="btn btn-primary" Text="Continuar buscando" OnClick="btnContinuar_Click" />
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalSancion" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title"><i class="bi bi-exclamation-triangle-fill"></i>Sanción Activa</h5>
+
+                </div>
+
+                <div class="modal-body">
+                    <p id="txtFecha"></p>
+                    <p id="txtMotivo"></p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+
+                </div>
+
             </div>
         </div>
     </div>

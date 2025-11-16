@@ -147,4 +147,8 @@ public class MaterialWS {
     public ArrayList<MaterialBibliografico> ListarMaterialesNormal() {
         return materialBO.listartodosnormal();
     }
+    @WebMethod(operationName = "ObtenerSoloMaterial")
+    public MaterialBibliografico ObtenerSoloMaterial(@WebParam(name = "idMaterial") int id) {
+        return materialBO.obtener_por_id_solo_material(id);
+    }
 }

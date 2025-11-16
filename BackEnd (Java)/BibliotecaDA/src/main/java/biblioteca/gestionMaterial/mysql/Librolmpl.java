@@ -85,7 +85,8 @@ public class Librolmpl implements LibroDAO{
                 libro.setISBN(rs.getString("ISBN"));
                 libro.setEdicion(rs.getString("edicion"));
                 libro.setEstado(EstadoMaterial.valueOf(rs.getString("estado")));
-                
+                libro.setTipo(TipoMaterial.LIBRO);
+
             }
         }catch(SQLException ex){
             System.out.println("ERROR: " + ex.getMessage());

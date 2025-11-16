@@ -91,6 +91,7 @@ public class Tesislmpl implements TesisDAO{
                 tesis.setAsesor(rs.getString("asesor"));
                 tesis.setGrado(rs.getString("grado"));
                 tesis.setInstitucionPublicacion(rs.getString("institucion_publicacion"));
+                tesis.setTipo(TipoMaterial.TESIS);
             }
         }catch(SQLException ex){
             System.out.println("ERROR: " + ex.getMessage());
@@ -110,7 +111,7 @@ public class Tesislmpl implements TesisDAO{
             while(rs.next()){
                 if(tesis == null) tesis = new ArrayList<>();
                 Tesis e = new Tesis();
-                e.setIdMaterial(rs.getInt("id_material"));
+                e.setIdMaterial(rs.getInt("id_tesis"));
                 e.setTitulo(rs.getString("titulo"));
                 e.setAnho_publicacion(rs.getInt("anho_publicacion"));
                 e.setNumero_paginas(rs.getInt("numero_paginas"));

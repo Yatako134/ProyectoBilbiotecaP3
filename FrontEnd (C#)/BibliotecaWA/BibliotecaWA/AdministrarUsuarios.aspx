@@ -11,6 +11,94 @@
         .form-group { margin-bottom: 15px; }
         .btn-right { float: right; margin-top: 20px; }
     </style>
+
+    <style>
+        .inactivo {
+            pointer-events: none; /* desactiva clics */
+            opacity: 0.5; /* se ve deshabilitado */
+            cursor: not-allowed;
+        }
+</style>
+    <script>
+        function soloOchoEnteros(e, input) {
+            var key = e.key;
+            if (!/^[0-9]$/.test(key) && key !== "Backspace") {
+                e.preventDefault();
+                return;
+            }
+            if (input.value.length >= 8 && key !== "Backspace") {
+                e.preventDefault();
+            }
+        }
+    </script>
+
+    <script>
+        function soloLetras(e) {
+            var key = e.key;
+
+            // Permite solo letras, espacios y tildes
+            if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ ]$/.test(key)) {
+                e.preventDefault();
+            }
+        }
+    </script>
+
+    <script>
+        function soloEnteros(e) {
+            var key = e.key;
+
+            // Solo permitir números del 0 al 9
+            if (!/^[0-9]$/.test(key)) {
+                e.preventDefault();
+            }
+        }
+    </script>
+
+    <script>
+        function actualizarEstadoBoton() {
+
+            // Forzar validación del ValidationGroup antes de revisar
+            if (typeof (Page_ClientValidate) === "function") {
+                Page_ClientValidate('vgUsuario');
+            }
+
+            var esValido = true;
+
+            // Recorremos los validators del grupo
+            if (typeof (Page_Validators) !== "undefined") {
+                for (var i = 0; i < Page_Validators.length; i++) {
+
+                    // Solo validar los de este ValidationGroup
+                    if (Page_Validators[i].validationGroup === "vgUsuario") {
+
+                        if (!Page_Validators[i].isvalid) {
+                            esValido = false;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            // Cambiar el estado del botón
+            document.getElementById('btnAccion').classList.toggle("inactivo", !esValido);
+        }
+
+        // Ejecutar en cada cambio del formulario
+        document.addEventListener("input", actualizarEstadoBoton);
+        document.addEventListener("change", actualizarEstadoBoton);
+
+        // Ejecutar al cargar la página (para dejar el botón deshabilitado)
+        window.onload = actualizarEstadoBoton;
+    </script>
+
+    <style>
+        /* Si dentro metes <ul>, esto las centra también */
+        #cuerpoError ul {
+            text-align: center;
+            list-style-position: inside;
+        }
+    </style>
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
@@ -40,11 +128,31 @@
                 </div>
                 <div class="col-md-4">
                     <label for="txtCodigo" class="form-label-admiUsuarios">Código</label>
-                    <asp:TextBox ID="txtCodigo" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtCodigo" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloOchoEnteros(event, this)"></asp:TextBox>
+                    <asp:RequiredFieldValidator ControlToValidate="txtCodigo" ValidationGroup="vgUsuario" runat="server" ForeColor="Red" />
+                    <asp:RegularExpressionValidator
+                        ID="revCodigo"
+                        runat="server"
+                        ControlToValidate="txtCodigo"
+                        ValidationExpression="^\d{8}$"
+                        ErrorMessage="El codigo debe tener exactamente 8 dígitos"
+                        ValidationGroup="vgUsuario"
+                        ForeColor="Red" />
+
+                    
                 </div>
                 <div class="col-md-4">
                     <label for="txtDNI" class="form-label-admiUsuarios">DNI</label>
-                    <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloOchoEnteros(event, this)"></asp:TextBox>
+                    <asp:RequiredFieldValidator ControlToValidate="txtDNI" ValidationGroup="vgUsuario" runat="server" ForeColor="Red" />
+                    <asp:RegularExpressionValidator
+                        ID="revDNI"
+                        runat="server"
+                        ControlToValidate="txtDNI"
+                        ValidationExpression="^\d{8}$"
+                        ErrorMessage="El DNI debe tener exactamente 8 dígitos"
+                        ValidationGroup="vgUsuario"
+                        ForeColor="Red" />
                 </div>
             </div>
 
@@ -52,27 +160,52 @@
             <div class="row g-0 mt-3">
                 <div class="col-md-12">
                     <label for="txtNombre" class="form-label-admiUsuarios">Nombre(s)</label>
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
+
+                    <asp:RequiredFieldValidator ControlToValidate="txtNombre" ValidationGroup="vgUsuario" runat="server" ForeColor="Red" />
+
                 </div>
                 <div class="col-md-12">
                     <label for="txtPrimerApellido" class="form-label-admiUsuarios">Primer Apellido</label>
-                    <asp:TextBox ID="txtPrimerApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtPrimerApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
+
+                    <asp:RequiredFieldValidator ControlToValidate="txtPrimerApellido" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
+
                 </div>
                 <div class="col-md-12">
                     <label for="txtSegundoApellido" class="form-label-admiUsuarios">Segundo Apellido</label>
-                    <asp:TextBox ID="txtSegundoApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtSegundoApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
+
+                    <asp:RequiredFieldValidator ControlToValidate="txtSegundoApellido" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
                 </div>
                 <div class="col-md-12">
                     <label for="txtCorreo" class="form-label-admiUsuarios">Correo</label>
                     <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:RequiredFieldValidator ControlToValidate="txtCorreo" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
+                    <asp:RegularExpressionValidator
+                        ID="revCorreo"
+                        runat="server"
+                        ControlToValidate="txtCorreo"
+                        ValidationExpression="^[A-Za-z0-9._%+-]+@example\.com$"
+                        ErrorMessage="El formato debe ser nombre@example.com"
+                        ValidationGroup="vgUsuario"
+                        ForeColor="Red">
+                    </asp:RegularExpressionValidator>
+
                 </div>
+
                 <div class="col-md-12">
                     <label for="txtContrasena" class="form-label-admiUsuarios">Contraseña</label>
                     <asp:TextBox ID="txtContrasena" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+
+                    <asp:RequiredFieldValidator ControlToValidate="txtContrasena" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
+
                 </div>
                 <div class="col-md-12">
                     <label for="txtTelefono" class="form-label-admiUsuarios">Teléfono</label>
-                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloEnteros(event)"></asp:TextBox>
+
+                    <asp:RequiredFieldValidator ControlToValidate="txtTelefono" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
                 </div>
             </div>
 
@@ -82,9 +215,11 @@
 
         <!-- Botón de acción -->
         <div class="d-flex justify-content-end mt-4">
-            <asp:Button ID="btnAccion" runat="server" CssClass="btn btn-primary"
+            <asp:Button ID="btnAccion" runat="server" CssClass="btn btn-primary inactivo"
                 ClientIDMode="Static"
-                OnClick="btnAccion_Click" />
+                ValidationGroup="vgUsuario"
+                CausesValidation="true"
+                 OnClick="btnAccion_Click" />
         </div>
 
         <!-- Modal centrado -->
@@ -106,21 +241,73 @@
             </div>
         </div>
 
-        <!-- Botón hidden para disparar el evento en server -->
-        <asp:Button ID="btnAccionServer" runat="server" OnClick="btnAccion_Click" Style="display:none" ClientIDMode="Static" />
+        <!-- MODAL DE ERROR -->
+        <div class="modal fade" id="modalError" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
 
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title text-center w-100" id="tituloError"></h5>
+                    </div>
+
+                    <div class="modal-body text-center" id="cuerpoError">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón hidden para disparar el evento en server -->
+        <asp:Button ID="btnAccionServer" ValidationGroup="vgUsuario" CausesValidation="true" runat="server" OnClick="btnAccion_Click" Style="display:none" ClientIDMode="Static" />  
+            
+        <script>
+            // Activa el botón cuando lo necesites
+            function activarBoton() {
+                let btn = document.getElementById("btnAccion");
+
+                // quitar estado inactivo
+                btn.classList.remove("inactivo");
+
+                // permitir modal automáticamente
+                btn.setAttribute("data-bs-toggle", "modal");
+                btn.setAttribute("data-bs-target", "#confirmModal");
+
+            }
+        </script>
+  
         <script>
             function actualizarModal() {
-                var nombre = document.getElementById('<%= txtNombre.ClientID %>').value;
-                var primerApellido = document.getElementById('<%= txtPrimerApellido.ClientID %>').value;
-                var segundoApellido = document.getElementById('<%= txtSegundoApellido.ClientID %>').value;
-                var mensaje = "¿ Confirma que quieres registrar el usuario \"" + nombre + " " + primerApellido + " " + segundoApellido + "\" ? Esta acción guardará los datos en el sistema.";
-                document.getElementById('<%= lblModalMensaje.ClientID %>').innerText = mensaje;
 
-                var modal = new bootstrap.Modal(document.getElementById('confirmModal'));
-                modal.show();
+                let nombre = document.getElementById("txtNombre").value.trim();
+                let apellido1 = document.getElementById("txtPrimerApellido").value.trim();
+                let apellido2 = document.getElementById("txtSegundoApellido").value.trim();
+
+                let nombreCompleto = nombre + " " + apellido1 + " " + apellido2;
+
+                // Llenar el mensaje dentro del Label ASP.NET
+                document.getElementById("lblModalMensaje").innerHTML =
+                    "¿Confirma que desea registrar el usuario '<strong>" + nombreCompleto + "</strong>'? Esta acción guadará los datos en el sistema.";
+
+                // Activar atributos del modal
+                let btn = document.getElementById("btnAccion");
+                btn.setAttribute("data-bs-toggle", "modal");
+                btn.setAttribute("data-bs-target", "#confirmModal");
+
+                return false; // prevenir postback automático
             }
         </script>
 
+        <script>
+            function mostrarError(titulo, mensaje) {
+                document.getElementById("tituloError").innerText = titulo;
+                document.getElementById("cuerpoError").innerHTML = mensaje;
+                var modal = new bootstrap.Modal(document.getElementById("modalError"));
+                modal.show();
+            }
+        </script>
     </div>
 </asp:Content>

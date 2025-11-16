@@ -36,7 +36,6 @@ namespace BibliotecaWA
             dgvUsuario.DataSource = usuarios;
             dgvUsuario.DataBind();
             ActualizarContador();
-            GenerarPaginador();
         }
 
         protected void dgvUsuario_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -54,11 +53,27 @@ namespace BibliotecaWA
 
                 rol rolEncontrado = roles.FirstOrDefault(r => r.id_rol == user.rol_usuario.id_rol);
                 string tipoRol = rolEncontrado != null ? rolEncontrado.tipo : "Sin rol";
+                Label lblRol = e.Row.FindControl("lblRol") as Label;
+                string claseColor = ""; // default
 
-                // 🔹 Mostrar el rol con contorno azul
-                e.Row.Cells[5].Text = $"<span class='contorno-rol'>{tipoRol}</span>";
+                switch (tipoRol.ToLower())
+                {
+                    case "docente":
+                        claseColor = "rol-rojo";
+                        break;
+                    case "estudiante":
+                        claseColor = "rol-verde";
+                        break;
+                    case "bibliotecario":
+                        claseColor = "rol-azul";
+                        break;
+                        // puedes agregar más tipos aquí
+                }
+                lblRol.CssClass = "contorno-rol " + claseColor;
+                lblRol.Text = tipoRol;
 
-                // 🔹 Permitir que se renderice el HTML
+
+                // Permitir que se renderice el HTML
                 e.Row.Cells[5].Attributes["style"] = "white-space: nowrap;";
 
                 // Configurar el botón de opciones
@@ -103,6 +118,12 @@ namespace BibliotecaWA
         // Botón buscar (lo puedes implementar luego)
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            bousuario = new UsuarioWSClient();
+            var lista = bousuario.listarPorPanelBusqueda(txtBuscar.Text)?.ToList() ?? new List<usuario>();
+            BindingList<usuario> usuarios = new BindingList<usuario>(lista);
+            Session["usuarios"] = usuarios;
+            CargarUsuarios();
+
         }
 
         // Boton de registrar :V
@@ -138,108 +159,18 @@ namespace BibliotecaWA
         // ======= CONTADOR Y PAGINADOR =======
         private void ActualizarContador()
         {
-            int total = ((BindingList<usuario>)Session["usuarios"]).Count;
+            // Obtener la lista desde la sesión de forma segura
+            var lista = Session["usuarios"] as BindingList<usuario>;
+
+            // Si es null, inicializamos una lista vacía
+            if (lista == null)
+            {
+                lista = new BindingList<usuario>();
+            }
+            int total = lista.Count();
             int mostrados = dgvUsuario.Rows.Count;
             lblResultados.Text = $"Mostrando {mostrados} de {total} usuarios";
         }
 
-        protected void rptPaginas_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            if (e.CommandName == "CambiarPagina" && e.CommandArgument.ToString() != "...")
-            {
-                int nuevaPagina = int.Parse(e.CommandArgument.ToString()) - 1;
-                dgvUsuario.PageIndex = nuevaPagina;
-                CargarUsuarios();
-            }
-        }
-
-        protected void lnkPrev_Click(object sender, EventArgs e)
-        {
-            if (dgvUsuario.PageIndex > 0)
-            {
-                dgvUsuario.PageIndex--;
-                CargarUsuarios();
-            }
-        }
-
-        protected void lnkNext_Click(object sender, EventArgs e)
-        {
-            if (dgvUsuario.PageIndex < dgvUsuario.PageCount - 1)
-            {
-                dgvUsuario.PageIndex++;
-                CargarUsuarios();
-            }
-        }
-
-        private void GenerarPaginador()
-        {
-            int paginaActual = dgvUsuario.PageIndex + 1;
-            int totalPaginas = dgvUsuario.PageCount;
-
-            List<object> paginas = new List<object>();
-            int totalPosiciones = 7;
-
-            if (totalPaginas <= totalPosiciones)
-            {
-                for (int i = 1; i <= totalPaginas; i++)
-                    paginas.Add(i);
-            }
-            else
-            {
-                paginas.Add(1);
-
-                if (paginaActual <= 4)
-                {
-                    paginas.Add(2);
-                    paginas.Add(3);
-                    paginas.Add("...");
-                }
-                else if (paginaActual >= totalPaginas - 3)
-                {
-                    paginas.Add("...");
-                    paginas.Add(totalPaginas - 2);
-                    paginas.Add(totalPaginas - 1);
-                }
-                else
-                {
-                    paginas.Add("...");
-                    paginas.Add(paginaActual - 1);
-                    paginas.Add(paginaActual);
-                    paginas.Add(paginaActual + 1);
-                    paginas.Add("...");
-                }
-
-                paginas.Add(totalPaginas);
-            }
-
-            while (paginas.Count < totalPosiciones)
-                paginas.Insert(paginas.Count - 1, "");
-
-            rptPaginas.DataSource = paginas;
-            rptPaginas.DataBind();
-
-            lnkPrev.Enabled = paginaActual > 1;
-            lnkNext.Enabled = paginaActual < totalPaginas;
-        }
-
-        protected string ObtenerCssPagina(object dataItem)
-        {
-            if (dataItem == null || dataItem.ToString() == "")
-                return "btn btn-outline-secondary btn-sm mx-1 disabled";
-
-            string str = dataItem.ToString();
-
-            if (str == "...") return "btn btn-outline-secondary btn-sm mx-1 disabled";
-
-            if (int.TryParse(str, out int paginaNum))
-            {
-                if (paginaNum == dgvUsuario.PageIndex + 1)
-                    return "btn btn-outline-primary btn-sm mx-1 btn-pagina-activa";
-                else
-                    return "btn btn-outline-primary btn-sm mx-1";
-            }
-
-            return "btn btn-outline-secondary btn-sm mx-1 disabled";
-        }
     }
 }

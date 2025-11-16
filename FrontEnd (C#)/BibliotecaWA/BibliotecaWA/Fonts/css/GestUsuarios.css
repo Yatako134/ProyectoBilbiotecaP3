@@ -175,4 +175,8 @@
     border-radius: 8px 8px 8px 8px;
 }
 
-
+    .tabla-busqueda .btn.btn-primary {
+        background-color: #0d6efd !important;
+        border-color: #0d6efd !important;
+        color: #fff !important;
+    }

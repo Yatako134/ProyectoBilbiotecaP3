@@ -8,6 +8,7 @@
     <link href="Fonts/css/UsuariosOpciones.css" rel="stylesheet" />
     <link href="Fonts/css/ContornoRol.css" rel="stylesheet" />
     <link href="Fonts/css/GestUsuarios.css" rel="stylesheet" />
+
     <script src="/Scripts/usuarios-modal.js"></script>
 </asp:Content>
 
@@ -55,8 +56,7 @@
                     PageSize="10"
                     CssClass="table table-borderless text-center align-middle m-0"
                     OnPageIndexChanging="dgvUsuario_PageIndexChanging"
-                    OnRowDataBound="dgvUsuario_RowDataBound"
-                    PagerSettings-Visible="False">
+                    OnRowDataBound="dgvUsuario_RowDataBound">
                     <Columns>
                         <asp:BoundField HeaderText="Código" />
                         
@@ -89,7 +89,7 @@
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="Tipo">
+                        <asp:TemplateField HeaderText="Tipo" ItemStyle-Width="120px"  ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
                                 <asp:Label ID="lblRol" runat="server" CssClass="contorno-rol"></asp:Label>
                             </ItemTemplate>
@@ -138,24 +138,6 @@
                 <span class="ms-2">per page</span>
             </div>
 
-            <div class="paginador d-flex justify-content-center align-items-center flex-wrap">
-                <asp:LinkButton ID="lnkPrev" runat="server" CssClass="btn btn-outline-primary btn-sm me-2"
-                    OnClick="lnkPrev_Click">&lt;</asp:LinkButton>
-
-                <asp:Repeater ID="rptPaginas" runat="server" OnItemCommand="rptPaginas_ItemCommand">
-                    <ItemTemplate>
-                        <asp:LinkButton ID="lnkPagina" runat="server"
-                            CommandName="CambiarPagina"
-                            CommandArgument='<%# Container.DataItem.ToString() %>'
-                            Text='<%# Container.DataItem.ToString() %>'
-                            CssClass='<%# ObtenerCssPagina(Container.DataItem) %>'>
-                        </asp:LinkButton>
-                    </ItemTemplate>
-                </asp:Repeater>
-
-                <asp:LinkButton ID="lnkNext" runat="server" CssClass="btn btn-outline-primary btn-sm ms-2"
-                    OnClick="lnkNext_Click">&gt;</asp:LinkButton>
-            </div>
         </div>
     </div>
 

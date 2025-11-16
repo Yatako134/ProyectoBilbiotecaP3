@@ -5,14 +5,20 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/PrestamoWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
+  <message name="buscarPrestamos">
+    <part name="parameters" element="tns:buscarPrestamos" />
+  </message>
+  <message name="buscarPrestamosResponse">
+    <part name="parameters" element="tns:buscarPrestamosResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
   <message name="modificarPrestamo">
     <part name="parameters" element="tns:modificarPrestamo" />
   </message>
   <message name="modificarPrestamoResponse">
     <part name="parameters" element="tns:modificarPrestamoResponse" />
-  </message>
-  <message name="Exception">
-    <part name="fault" element="tns:Exception" />
   </message>
   <message name="eliminarPrestamo">
     <part name="parameters" element="tns:eliminarPrestamo" />
@@ -45,6 +51,11 @@
     <part name="parameters" element="tns:insertarPrestamoResponse" />
   </message>
   <portType name="PrestamoWS">
+    <operation name="buscarPrestamos">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamosRequest" message="tns:buscarPrestamos" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamosResponse" message="tns:buscarPrestamosResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamos/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
     <operation name="modificarPrestamo">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/modificarPrestamoRequest" message="tns:modificarPrestamo" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/modificarPrestamoResponse" message="tns:modificarPrestamoResponse" />
@@ -77,6 +88,18 @@
   </portType>
   <binding name="PrestamoWSPortBinding" type="tns:PrestamoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="buscarPrestamos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
     <operation name="modificarPrestamo">
       <soap:operation soapAction="" />
       <input>

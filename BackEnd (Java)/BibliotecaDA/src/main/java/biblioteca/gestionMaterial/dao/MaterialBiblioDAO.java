@@ -30,5 +30,5 @@ public interface MaterialBiblioDAO extends IDAO<MaterialBibliografico>{
     int ContarEjemplares(int idMaterial); 
     
     ArrayList<MaterialBibliografico> listartodosnormal();
-        
+    MaterialBibliografico obtener_por_id_solo_material(int idMaterial);
 }

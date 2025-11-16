@@ -120,6 +120,21 @@ namespace BibliotecaWA
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertaEjemplar", script, true);
                 return;
             }
+            //Validacion Sanciones
+            sancion sancion_usuario = usuarioBO.obtener_sancion_usuario(usuario.id_usuario);
+            if (sancion_usuario != null)
+            {
+                // Armar mensaje para el modal
+                string fecha = sancion_usuario.fecha_fin.ToString("dd/MM/yyyy");
+                string motivo = sancion_usuario.justificacion;
+
+                // Pasar valores al modal (JS)
+                script = $@"mostrarModalSancion('{fecha}', '{motivo}');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalSancion", script, true);
+                return;
+            }
+
+
             script = $"mostrarModalConfirmacion('{nombreUsuario}', '{tituloMaterial}');";
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalConfirmacion", script, true);
 

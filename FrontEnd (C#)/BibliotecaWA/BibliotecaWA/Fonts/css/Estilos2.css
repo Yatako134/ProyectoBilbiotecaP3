@@ -187,3 +187,6 @@
         opacity: 0.5;
         cursor: not-allowed;
     }
+.colSeparada {
+    padding-right: 25px; /* ajusta el espacio según necesites */
+}

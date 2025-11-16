@@ -1,13 +1,29 @@
 /* === Etiquetas de roles estilo moderno === */
 .contorno-rol {
     display: inline-block;
-    color: #007bff;
-    border: 1px solid #007bff;
-    background-color: rgba(138, 188, 246, 0.15); /* celeste muy suave */
     border-radius: 20px;
     padding: 5px 12px;
     font-size: 0.85rem;
     font-weight: 500;
     text-align: center;
+    width: 100%; /* ocupa todo el ancho de la celda */
+    box-sizing: border-box; /* incluye padding en el ancho */
 }
 
+.rol-verde {
+    background-color: #f0fdf4;
+    border: 2px solid #38b964;
+    color: #38b964;
+}
+
+.rol-rojo {
+    background-color: #fef2f2;
+    border: 2px solid #e03130;
+    color: #e0302f;
+}
+
+.rol-azul {
+    background-color: #f5faff;
+    border: 2px solid #1778ec;
+    color: #1778ec;
+}

@@ -1,3 +1,22 @@
+# Visual Studio / C# / .NET
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.pdb
+*.dll
+*.exe
+*.log
+
+# Archivos de configuración temporales de VS
+*.userosscache
+*.sln.docstates
+
+# Otros archivos basura de Visual Studio
+*.db
+*.backup
 /BackEnd (Java)/BibliotecaDBManager/target/
 /BackEnd (Java)/UtilsArmyModel/target/
 /BackEnd (Java)/BibliotecaDA/target/

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="BusquedaMaterialas.aspx.cs" Inherits="BibliotecaWA.BusquedaMaterialas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_Title" runat="server">
+    Busqueda de Material
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Scripts" runat="server">
 </asp:Content>
@@ -16,6 +17,7 @@
 
         <!-- Panel superior -->
         <div class="d-flex align-items-center mb-3">
+            <asp:Label ID="LabelBusqueda" runat="server" CssClass="flex-shrink-0 me-3 ColorLetras"></asp:Label>
             <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control flex-grow-1 me-2" Placeholder="Ingrese título o autor" MaxLength="150"></asp:TextBox>
             <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary me-2" Text="Buscar" OnClick="btnBuscar_Click" />
             <!-- Botón de búsqueda avanzada -->
@@ -199,6 +201,7 @@
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
+
         </asp:GridView>
 
         <!-- Selector de página y contador -->

@@ -316,6 +316,36 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listar_por_materialResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.buscarPrestamosResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.BusquedaSancionesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.finalizar_sancionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.insertarSancionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarPorPanelBusquedaResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarTodosDelSistemaResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.modificar_sancionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtener_por_idResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioResponse2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -361,6 +391,7 @@
     <Content Include="Content\Images\logo2.png" />
     <Content Include="Content\Images\tesis.png" />
     <Content Include="DetalleMaterial.aspx" />
+    <Content Include="DetallePrestamo_Sancion.aspx" />
     <Content Include="Fonts\css\AdminUsuarios.css" />
     <Content Include="Fonts\css\all.css" />
     <Content Include="Fonts\css\all.min.css" />
@@ -504,6 +535,13 @@
     </Compile>
     <Compile Include="DetalleMaterial.aspx.designer.cs">
       <DependentUpon>DetalleMaterial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePrestamo_Sancion.aspx.cs">
+      <DependentUpon>DetallePrestamo_Sancion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetallePrestamo_Sancion.aspx.designer.cs">
+      <DependentUpon>DetallePrestamo_Sancion.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestMaterial.aspx.cs">
       <DependentUpon>GestMaterial.aspx</DependentUpon>

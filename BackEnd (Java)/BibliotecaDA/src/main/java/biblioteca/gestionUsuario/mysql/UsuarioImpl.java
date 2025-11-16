@@ -3,12 +3,14 @@ package biblioteca.gestionUsuario.mysql;
 
 import biblioteca.config.DBManager;
 import biblioteca.gestionUsuario.dao.UsuarioDAO;
+import java.awt.image.SampleModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Sancion;
 import pe.edu.pucp.utilsarmy.usuarios.model.Rol;
 import pe.edu.pucp.utilsarmy.usuarios.model.Usuario;
 
@@ -217,4 +219,91 @@ public class UsuarioImpl implements UsuarioDAO{
         return resultado;
     }
     
+    @Override
+    public ArrayList<Usuario> listarPorPanelBusqueda(String filtro) {
+        ArrayList<Usuario> users = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, filtro); // El parámetro que espera tu procedimiento almacenado
+
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("sp_BuscarUsuario", parametrosEntrada);
+        System.out.println("Lectura de todas los usuarios...");
+        try{
+            while(rs.next()){
+                if(users == null) users = new ArrayList<>();
+                Usuario usuario = new Usuario();
+                usuario.setId_usuario(rs.getInt("id_usuario"));
+                usuario.setCodigo(rs.getInt("codigo_universitario"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setPrimer_apellido(rs.getString("primer_apellido"));
+                usuario.setSegundo_apellido(rs.getString("segundo_apellido"));
+                usuario.setDOI(rs.getString("DOI"));
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuario.setCorreo(rs.getString("correo"));
+                usuario.setTelefono(rs.getString("numero_de_telefono"));
+                usuario.setActiva(rs.getBoolean("activo"));
+                Rol r = new Rol();
+                r.setId_rol(rs.getInt("id_rol"));
+                usuario.setRol_usuario(r);
+                users.add(usuario);
+            }
+        }catch(SQLException ex){
+            System.out.println("ERROR: " + ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return users;
+    }
+    
+    @Override
+    public ArrayList<Usuario> listarTodosDelSistema() {
+        ArrayList<Usuario> users = null;
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("ListarTodosUsuariosDelSistema", null);
+        System.out.println("Lectura de todas los usuarios sin excepcion...");
+        try{
+            while(rs.next()){
+                if(users == null) users = new ArrayList<>();
+                Usuario usuario = new Usuario();
+                usuario.setId_usuario(rs.getInt("id_usuario"));
+                usuario.setCodigo(rs.getInt("codigo_universitario"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setPrimer_apellido(rs.getString("primer_apellido"));
+                usuario.setSegundo_apellido(rs.getString("segundo_apellido"));
+                usuario.setDOI(rs.getString("DOI"));
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuario.setCorreo(rs.getString("correo"));
+                usuario.setTelefono(rs.getString("numero_de_telefono"));
+                usuario.setActiva(rs.getBoolean("activo"));
+                Rol r = new Rol();
+                r.setId_rol(rs.getInt("id_rol"));
+                usuario.setRol_usuario(r);
+                users.add(usuario);
+            }
+        }catch(SQLException ex){
+            System.out.println("ERROR: " + ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return users;
+    }
+
+    @Override
+    public Sancion obtener_sancion_usuario(int id_usuario) {
+        Sancion sanc=null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, id_usuario);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("Obtener_Sanciones_Usuario", parametrosEntrada);
+        try{
+            if(rs.next()){
+                sanc = new Sancion();
+                sanc.setId_sancion(rs.getInt("id_sancion"));
+                sanc.setFecha_fin(rs.getTimestamp("fecha_vencimiento"));
+                sanc.setJustificacion(rs.getString("justificacion"));
+            }
+        }catch(SQLException ex){
+            System.out.println("ERROR: " + ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return sanc;
+    }
 }

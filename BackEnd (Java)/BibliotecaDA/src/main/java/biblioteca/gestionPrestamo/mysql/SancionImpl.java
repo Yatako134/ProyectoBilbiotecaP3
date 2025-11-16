@@ -43,10 +43,7 @@ public class SancionImpl implements SancionDAO{
         parametrosEntrada.put(1, objeto.getId_sancion());
         parametrosEntrada.put(2, objeto.getTipo_sancion().name());
         parametrosEntrada.put(3, objeto.getDuracion_dias());
-        parametrosEntrada.put(4, objeto.getFecha_fin());
-        parametrosEntrada.put(5, objeto.getJustificacion());
-        parametrosEntrada.put(6, objeto.getEstado().name());
-        parametrosEntrada.put(7, objeto.getPrestamo().getIdPrestamo());
+        parametrosEntrada.put(4, objeto.getJustificacion());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_SANCION", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion de la sancion");
         return resultado;
@@ -56,7 +53,7 @@ public class SancionImpl implements SancionDAO{
     public int eliminar(int idObjeto) {
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, idObjeto);
-        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_SANCION", parametrosEntrada, null);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("FINALIZAR_SANCION", parametrosEntrada, null);
         System.out.println("Se ha realizado la eliminacion de la sancion");
         return resultado;
     }
@@ -69,9 +66,9 @@ public class SancionImpl implements SancionDAO{
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_SANCION_X_ID", parametrosEntrada);
         System.out.println("Lectura de sancion...");
         try{
-            sancion = new Sancion();
-            sancion.setId_sancion(rs.getInt("id_sancion"));
-
+            if(rs.next()){
+                sancion = new Sancion();
+                sancion.setId_sancion(rs.getInt("id_sancion"));
             // Mapeamos el tipo de sanción (enum)
             String tipo = rs.getString("tipo_sancion");
             sancion.setTipo_sancion(Tipo_sancion.valueOf(tipo.toUpperCase())); 
@@ -89,16 +86,16 @@ public class SancionImpl implements SancionDAO{
             String estadoStr = rs.getString("estado");
             sancion.setEstado(EstadoSancion.valueOf(estadoStr.toUpperCase()));
 
-            sancion.setActivo(rs.getBoolean("activo"));
-
             // Relación con Prestamo
             Prestamo p = new Prestamo();
             p.setIdPrestamo(rs.getInt("id_prestamo"));
             sancion.setPrestamo(p);
+            }
+            
         }catch(SQLException ex){
             System.out.println("ERROR: " + ex.getMessage());
         }finally{
-            DBManager.getInstance().cerrarConexion();
+                DBManager.getInstance().cerrarConexion();
         }
         return sancion;
     }
@@ -129,12 +126,16 @@ public class SancionImpl implements SancionDAO{
             s.setEstado(EstadoSancion.valueOf(estadoStr.toUpperCase()));
 
 //            s.setActivo(rs.getBoolean("activo"));
-
+            
+            Usuario u = new Usuario();
+            u.setCodigo(rs.getInt("codigo_universitario"));
             // Relación con Prestamo
             Prestamo p = new Prestamo();
             p.setIdPrestamo(rs.getInt("id_prestamo"));
+            p.setUsuario(u);
             s.setPrestamo(p);
-
+            
+            
             sanciones.add(s);
         }
     } catch (SQLException ex) {
@@ -187,5 +188,53 @@ public class SancionImpl implements SancionDAO{
         }
         System.out.println("📋 Total sanciones leídas para usuario " + idUsuario + ": " + (sanciones == null ? 0 : sanciones.size()));
         return sanciones;
+    }
+
+    @Override
+    public ArrayList<Sancion> listar_busqueda_usuario(int codigo_universitario) {
+        ArrayList<Sancion> sanciones = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, codigo_universitario);
+    rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_SANCIONES_BUSQUEDA_CODIGO_UNIVERSITARIO", parametrosEntrada);
+    System.out.println("Lectura de sanciones...");
+    try {
+        while (rs.next()) {
+            if (sanciones == null) sanciones = new ArrayList<>();
+            Sancion s = new Sancion();
+
+            s.setId_sancion(rs.getInt("id_sancion"));
+
+            // Enum Tipo_sancion
+            String tipo = rs.getString("tipo_sancion");
+            s.setTipo_sancion(Tipo_sancion.valueOf(tipo.toUpperCase()));
+
+            s.setDuracion_dias(rs.getInt("duracion_dias"));
+            s.setFecha_inicio(rs.getDate("fecha_inicio"));
+            s.setFecha_fin(rs.getDate("fecha_fin"));
+            s.setJustificacion(rs.getString("justificacion"));
+
+            // Enum EstadoSancion
+            String estadoStr = rs.getString("estado");
+            s.setEstado(EstadoSancion.valueOf(estadoStr.toUpperCase()));
+
+//            s.setActivo(rs.getBoolean("activo"));
+            
+            Usuario u = new Usuario();
+            u.setCodigo(rs.getInt("codigo_universitario"));
+            // Relación con Prestamo
+            Prestamo p = new Prestamo();
+            p.setIdPrestamo(rs.getInt("id_prestamo"));
+            p.setUsuario(u);
+            s.setPrestamo(p);
+            
+            
+            sanciones.add(s);
+        }
+    } catch (SQLException ex) {
+        System.out.println("ERROR: " + ex.getMessage());
+    } finally {
+        DBManager.getInstance().cerrarConexion();
+    }
+    return sanciones;
     }
 }
