@@ -3,6 +3,7 @@ package biblioteca.gestionUsuario.bo;
 
 import biblioteca.ibo.IBO;
 import java.util.ArrayList;
+import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Sancion;
 import pe.edu.pucp.utilsarmy.usuarios.model.Usuario;
 
 public interface UsuarioBO extends IBO<Usuario>{
@@ -11,4 +12,5 @@ public interface UsuarioBO extends IBO<Usuario>{
     int verificar(Usuario usuario);
     ArrayList<Usuario> listarPorPanelBusqueda(String filtro);
     ArrayList<Usuario> listarTodosDelSistema();
+    Sancion obtener_sancion_usuario(int id_usuario);
 }

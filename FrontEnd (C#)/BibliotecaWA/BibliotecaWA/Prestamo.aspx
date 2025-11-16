@@ -6,6 +6,7 @@
      <script src="Scripts/UtilsArmy/SolicitarPrestamo.js"></script>
     <script src="Scripts/UtilsArmy/ValidacionesPrestamo.js"></script>
     <script src="Scripts/UtilsArmy/MensajeExito.js"></script>
+    <script src="Scripts/UtilsArmy/ModalSancion.js"></script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
     <div class="container mt-3">
@@ -223,6 +224,26 @@
                     <button id="btnIrPrestamo" class="btn btn-outline-primary">Ir al préstamo</button>
                     <asp:Button ID="btnContinuar" runat="server" CssClass="btn btn-primary" Text="Continuar buscando" OnClick="btnContinuar_Click" />
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalSancion" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Sanción Activa del Usuario</h5>
+                </div>
+
+                <div class="modal-body">
+                    <p id="txtFecha"></p>
+                    <p id="txtMotivo"></p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                </div>
+
             </div>
         </div>
     </div>

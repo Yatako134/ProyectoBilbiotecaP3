@@ -328,6 +328,9 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarTodosDelSistemaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -475,6 +478,7 @@
     <Content Include="Scripts\UtilsArmy\Contribuyentes.js" />
     <Content Include="Scripts\UtilsArmy\Editoriales.js" />
     <Content Include="Scripts\UtilsArmy\MensajeExito.js" />
+    <Content Include="Scripts\UtilsArmy\ModalSancion.js" />
     <Content Include="Scripts\UtilsArmy\MostrarSeleccionBiblio.js" />
     <Content Include="Scripts\UtilsArmy\SolicitarPrestamo.js" />
     <Content Include="Scripts\UtilsArmy\ValidacionesPrestamo.js" />

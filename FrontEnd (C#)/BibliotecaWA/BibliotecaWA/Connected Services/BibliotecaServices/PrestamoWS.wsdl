@@ -5,20 +5,20 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/PrestamoWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
+  <message name="listarPrestamos">
+    <part name="parameters" element="tns:listarPrestamos" />
+  </message>
+  <message name="listarPrestamosResponse">
+    <part name="parameters" element="tns:listarPrestamosResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
   <message name="obtenerPrestamoPorId">
     <part name="parameters" element="tns:obtenerPrestamoPorId" />
   </message>
   <message name="obtenerPrestamoPorIdResponse">
     <part name="parameters" element="tns:obtenerPrestamoPorIdResponse" />
-  </message>
-  <message name="Exception">
-    <part name="fault" element="tns:Exception" />
-  </message>
-  <message name="modificarPrestamo">
-    <part name="parameters" element="tns:modificarPrestamo" />
-  </message>
-  <message name="modificarPrestamoResponse">
-    <part name="parameters" element="tns:modificarPrestamoResponse" />
   </message>
   <message name="eliminarPrestamo">
     <part name="parameters" element="tns:eliminarPrestamo" />
@@ -32,11 +32,11 @@
   <message name="buscarPrestamosResponse">
     <part name="parameters" element="tns:buscarPrestamosResponse" />
   </message>
-  <message name="listarPrestamos">
-    <part name="parameters" element="tns:listarPrestamos" />
+  <message name="listarPrestamosPorUsuario">
+    <part name="parameters" element="tns:listarPrestamosPorUsuario" />
   </message>
-  <message name="listarPrestamosResponse">
-    <part name="parameters" element="tns:listarPrestamosResponse" />
+  <message name="listarPrestamosPorUsuarioResponse">
+    <part name="parameters" element="tns:listarPrestamosPorUsuarioResponse" />
   </message>
   <message name="insertarPrestamo">
     <part name="parameters" element="tns:insertarPrestamo" />
@@ -44,22 +44,22 @@
   <message name="insertarPrestamoResponse">
     <part name="parameters" element="tns:insertarPrestamoResponse" />
   </message>
-  <message name="listarPrestamosPorUsuario">
-    <part name="parameters" element="tns:listarPrestamosPorUsuario" />
+  <message name="modificarPrestamo">
+    <part name="parameters" element="tns:modificarPrestamo" />
   </message>
-  <message name="listarPrestamosPorUsuarioResponse">
-    <part name="parameters" element="tns:listarPrestamosPorUsuarioResponse" />
+  <message name="modificarPrestamoResponse">
+    <part name="parameters" element="tns:modificarPrestamoResponse" />
   </message>
   <portType name="PrestamoWS">
+    <operation name="listarPrestamos">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosRequest" message="tns:listarPrestamos" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosResponse" message="tns:listarPrestamosResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamos/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
     <operation name="obtenerPrestamoPorId">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdRequest" message="tns:obtenerPrestamoPorId" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdResponse" message="tns:obtenerPrestamoPorIdResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorId/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="modificarPrestamo">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/modificarPrestamoRequest" message="tns:modificarPrestamo" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/modificarPrestamoResponse" message="tns:modificarPrestamoResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/modificarPrestamo/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="eliminarPrestamo">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/eliminarPrestamoRequest" message="tns:eliminarPrestamo" />
@@ -71,24 +71,24 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamosResponse" message="tns:buscarPrestamosResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamos/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="listarPrestamos">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosRequest" message="tns:listarPrestamos" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosResponse" message="tns:listarPrestamosResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamos/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="insertarPrestamo">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/insertarPrestamoRequest" message="tns:insertarPrestamo" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/insertarPrestamoResponse" message="tns:insertarPrestamoResponse" />
-    </operation>
     <operation name="listarPrestamosPorUsuario">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosPorUsuarioRequest" message="tns:listarPrestamosPorUsuario" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosPorUsuarioResponse" message="tns:listarPrestamosPorUsuarioResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosPorUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
+    <operation name="insertarPrestamo">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/insertarPrestamoRequest" message="tns:insertarPrestamo" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/insertarPrestamoResponse" message="tns:insertarPrestamoResponse" />
+    </operation>
+    <operation name="modificarPrestamo">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/modificarPrestamoRequest" message="tns:modificarPrestamo" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/modificarPrestamoResponse" message="tns:modificarPrestamoResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/modificarPrestamo/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
   </portType>
   <binding name="PrestamoWSPortBinding" type="tns:PrestamoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="obtenerPrestamoPorId">
+    <operation name="listarPrestamos">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -100,7 +100,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="modificarPrestamo">
+    <operation name="obtenerPrestamoPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -136,7 +136,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="listarPrestamos">
+    <operation name="listarPrestamosPorUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -157,7 +157,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarPrestamosPorUsuario">
+    <operation name="modificarPrestamo">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

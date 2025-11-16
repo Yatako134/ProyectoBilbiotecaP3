@@ -1417,4 +1417,21 @@ BEGIN
 END $$
 
 DELIMITER ;
+DELIMITER $$
+
+CREATE PROCEDURE Obtener_Sanciones_Usuario (
+    IN p_id_usuario INT
+)
+BEGIN
+    SELECT 
+        p.fecha_vencimiento,
+        s.justificacion
+    FROM Prestamo p
+    INNER JOIN Sancion s
+        ON p.id_prestamo = s.id_prestamo
+    WHERE p.id_usuario = 6
+      AND s.estado = 'VIGENTE';
+END $$
+
+DELIMITER ;
 

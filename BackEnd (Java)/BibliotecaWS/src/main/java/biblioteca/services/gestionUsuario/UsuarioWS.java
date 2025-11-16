@@ -6,6 +6,7 @@ import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import java.util.ArrayList;
+import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Sancion;
 import pe.edu.pucp.utilsarmy.usuarios.model.Usuario;
 
 @WebService(serviceName = "UsuarioWS", targetNamespace = "pe.edu.pucp.utilsarmy.services")
@@ -72,5 +73,9 @@ public class UsuarioWS {
     @WebMethod(operationName = "listarTodosDelSistema")
     public ArrayList<Usuario> listarTodosDelSistema(){
         return usuarioBO.listarTodosDelSistema();
+    }
+    @WebMethod(operationName = "obtener_sancion_usuario")
+    public Sancion obtener_sancion_usuario(@WebParam(name = "name") int id_usuario){
+        return usuarioBO.obtener_sancion_usuario(id_usuario);
     }
 }

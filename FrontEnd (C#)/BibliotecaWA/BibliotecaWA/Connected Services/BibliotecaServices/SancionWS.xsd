@@ -89,20 +89,20 @@
       <xs:element minOccurs="0" name="message" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="listarSanciones">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarSancionesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="BusquedaSanciones">
     <xs:sequence>
       <xs:element name="codigo_universitario" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="BusquedaSancionesResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarSanciones">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarSancionesResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
     </xs:sequence>
