@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace BibliotecaWA
@@ -51,6 +52,89 @@ namespace BibliotecaWA
                 // Botón no seleccionado mantiene estilo original (sin sombreado)
                 btnSanciones.CssClass = "btn btn-sm btn-outline-secondary";
             }
+            CrearDropdownOrdenar();
+        }
+
+        private void CrearDropdownOrdenar()
+        {
+            // Lista de opciones visibles
+            List<string> opcionesVisibles = new List<string> { "Código", "Usuario", "Fecha de inicio", "Fecha de vencimiento", "Fecha de devolución", "Estado" };
+
+            // Diccionario de mapeo
+            Dictionary<string, string> mapOrden = new Dictionary<string, string>()
+                {
+                    { "Código", "idPrestamo" },
+                    { "Usuario", "usuario.codigo" },
+                    { "Fecha de inicio", "fecha_de_prestamo" },
+                    { "Fecha de vencimiento", "fecha_vencimiento" },
+                    { "Fecha de devolución", "fecha_devolucion" },
+                    { "Sanción", "Sancion" },
+                    { "Estado", "estado" }
+                };
+
+            ulOrdenar.Controls.Clear();
+
+            foreach (string opcion in opcionesVisibles)
+            {
+                HtmlGenericControl li = new HtmlGenericControl("li");
+                LinkButton lb = new LinkButton();
+                lb.Text = opcion;
+                lb.CssClass = "dropdown-item";
+                lb.CommandArgument = mapOrden[opcion];
+                lb.Click += Lb_Click;
+                li.Controls.Add(lb);
+                ulOrdenar.Controls.Add(li);
+            }
+        }
+
+        protected void Lb_Click(object sender, EventArgs e)
+        {
+            LinkButton lb = sender as LinkButton;
+            string propiedadSeleccionada = lb.CommandArgument; // puede ser "Usuario.CodigoEstudiante", etc.
+
+            // Obtener la lista de la sesión
+            if (Session["prestamos"] != null)
+            {
+                BindingList<prestamo> prestamos = (BindingList<prestamo>)Session["prestamos"];
+
+                // Determinar dirección (por defecto ascendente)
+                string direccion = "asc";
+                if (hfDireccion != null && !string.IsNullOrEmpty(hfDireccion.Value))
+                {
+                    direccion = hfDireccion.Value; // hfDireccion es un HiddenField en la página
+                }
+
+                // Ordenar usando el método que soporta propiedades anidadas
+                IEnumerable<prestamo> listaOrdenada;
+                if (direccion == "asc")
+                {
+                    listaOrdenada = prestamos.OrderBy(p => ObtenerValorPropiedad(p, propiedadSeleccionada));
+                }
+                else
+                {
+                    listaOrdenada = prestamos.OrderByDescending(p => ObtenerValorPropiedad(p, propiedadSeleccionada));
+                }
+
+                BindingList<prestamo> prestamosOrdenados = new BindingList<prestamo>(listaOrdenada.ToList());
+                Session["prestamos"] = prestamosOrdenados;
+
+                // Rebind a tu GridView o Repeater
+                CargarPrestamos();
+            }
+        }
+
+        public object ObtenerValorPropiedad(object obj, string path)
+        {
+            string[] props = path.Split('.');
+            object valor = obj;
+            foreach (string prop in props)
+            {
+                if (valor == null) return null;
+                var propInfo = valor.GetType().GetProperty(prop);
+                if (propInfo == null) return null;
+                valor = propInfo.GetValue(valor, null);
+            }
+            return valor;
         }
 
         protected void btnPrestamos_Click(object sender, EventArgs e)

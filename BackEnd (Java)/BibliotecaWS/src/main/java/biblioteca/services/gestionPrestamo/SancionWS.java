@@ -17,6 +17,11 @@ public class SancionWS {
     public SancionWS(){
         sancionboimpl=new SancionBOImpl();
     }
+
+    @WebMethod(operationName = "insertarSancion")
+    public int insertar(Sancion objeto) throws Exception {
+        return sancionboimpl.insertar(objeto);
+    }
     
     @WebMethod(operationName = "listarSanciones")
     public ArrayList<Sancion> listarSanciones() throws Exception {
