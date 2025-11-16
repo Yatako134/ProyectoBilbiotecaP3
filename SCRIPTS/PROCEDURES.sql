@@ -1430,7 +1430,7 @@ BEGIN
     FROM Prestamo p
     INNER JOIN Sancion s
         ON p.id_prestamo = s.id_prestamo
-    WHERE p.id_usuario = 6
+    WHERE p.id_usuario = p_id_usuario
       AND s.estado = 'VIGENTE';
 END $$
 
