@@ -337,6 +337,9 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.modificar_sancionResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">
       <SubType>Designer</SubType>
     </None>

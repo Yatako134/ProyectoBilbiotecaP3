@@ -180,91 +180,15 @@ namespace BibliotecaWA.BibliotecaServices {
     public interface ConstribuyenteWS {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_autores_por_materialReques" +
-            "t", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_autores_por_materialRespon" +
-            "se")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_autores_por_material/Fault" +
-            "/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.listar_autores_por_materialResponse listar_autores_por_material(BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_autores_por_materialReques" +
-            "t", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_autores_por_materialRespon" +
-            "se")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_autores_por_materialResponse> listar_autores_por_materialAsync(BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminar_relacion_material_contri" +
-            "buyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminar_relacion_material_contri" +
-            "buyenteResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminar_relacion_material_contri" +
-            "buyente/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteResponse eliminar_relacion_material_contribuyente(BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminar_relacion_material_contri" +
-            "buyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminar_relacion_material_contri" +
-            "buyenteResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteResponse> eliminar_relacion_material_contribuyenteAsync(BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materia" +
-            "lRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materia" +
-            "lResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materia" +
-            "l/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialResponse listar_contribuyentes_por_material(BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materia" +
-            "lRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materia" +
-            "lResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialResponse> listar_contribuyentes_por_materialAsync(BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relacionesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relacionesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relaciones/Fault/Exce" +
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/modificarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/modificarContribuyenteResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/modificarContribuyente/Fault/Exce" +
             "ption", Name="Exception")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.tiene_otras_relacionesResponse tiene_otras_relaciones(BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest request);
+        BibliotecaWA.BibliotecaServices.modificarContribuyenteResponse modificarContribuyente(BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relacionesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relacionesResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.tiene_otras_relacionesResponse> tiene_otras_relacionesAsync(BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/asignarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/asignarContribuyenteResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/asignarContribuyente/Fault/Except" +
-            "ion", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse asignarContribuyente(BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/asignarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/asignarContribuyenteResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse> asignarContribuyenteAsync(BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminarContribuyenteResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.eliminarContribuyenteResponse eliminarContribuyente(BibliotecaWA.BibliotecaServices.eliminarContribuyenteRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminarContribuyenteResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarContribuyenteResponse> eliminarContribuyenteAsync(BibliotecaWA.BibliotecaServices.eliminarContribuyenteRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/insertarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/insertarContribuyenteResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/insertarContribuyente/Fault/Excep" +
-            "tion", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.insertarContribuyenteResponse insertarContribuyente(BibliotecaWA.BibliotecaServices.insertarContribuyenteRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/insertarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/insertarContribuyenteResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarContribuyenteResponse> insertarContribuyenteAsync(BibliotecaWA.BibliotecaServices.insertarContribuyenteRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/modificarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/modificarContribuyenteResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarContribuyenteResponse> modificarContribuyenteAsync(BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listarContribuyentesTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listarContribuyentesTodosResponse" +
@@ -293,208 +217,189 @@ namespace BibliotecaWA.BibliotecaServices {
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdResponse> obtenerContribuyentePorIdAsync(BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/modificarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/modificarContribuyenteResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/modificarContribuyente/Fault/Exce" +
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminarContribuyenteResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.eliminarContribuyenteResponse eliminarContribuyente(BibliotecaWA.BibliotecaServices.eliminarContribuyenteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminarContribuyenteResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarContribuyenteResponse> eliminarContribuyenteAsync(BibliotecaWA.BibliotecaServices.eliminarContribuyenteRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/insertarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/insertarContribuyenteResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/insertarContribuyente/Fault/Excep" +
+            "tion", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.insertarContribuyenteResponse insertarContribuyente(BibliotecaWA.BibliotecaServices.insertarContribuyenteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/insertarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/insertarContribuyenteResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarContribuyenteResponse> insertarContribuyenteAsync(BibliotecaWA.BibliotecaServices.insertarContribuyenteRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relacionesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relacionesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relaciones/Fault/Exce" +
             "ption", Name="Exception")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.modificarContribuyenteResponse modificarContribuyente(BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest request);
+        BibliotecaWA.BibliotecaServices.tiene_otras_relacionesResponse tiene_otras_relaciones(BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/modificarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/modificarContribuyenteResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarContribuyenteResponse> modificarContribuyenteAsync(BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relacionesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relacionesResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.tiene_otras_relacionesResponse> tiene_otras_relacionesAsync(BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/asignarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/asignarContribuyenteResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/asignarContribuyente/Fault/Except" +
+            "ion", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse asignarContribuyente(BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/asignarContribuyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/asignarContribuyenteResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse> asignarContribuyenteAsync(BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materia" +
+            "lRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materia" +
+            "lResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materia" +
+            "l/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialResponse listar_contribuyentes_por_material(BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materia" +
+            "lRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materia" +
+            "lResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialResponse> listar_contribuyentes_por_materialAsync(BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_autores_por_materialReques" +
+            "t", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_autores_por_materialRespon" +
+            "se")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_autores_por_material/Fault" +
+            "/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.listar_autores_por_materialResponse listar_autores_por_material(BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_autores_por_materialReques" +
+            "t", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_autores_por_materialRespon" +
+            "se")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_autores_por_materialResponse> listar_autores_por_materialAsync(BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminar_relacion_material_contri" +
+            "buyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminar_relacion_material_contri" +
+            "buyenteResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminar_relacion_material_contri" +
+            "buyente/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteResponse eliminar_relacion_material_contribuyente(BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminar_relacion_material_contri" +
+            "buyenteRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminar_relacion_material_contri" +
+            "buyenteResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteResponse> eliminar_relacion_material_contribuyenteAsync(BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listar_autores_por_material", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listar_autores_por_materialRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarContribuyente", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class modificarContribuyenteRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int id_material;
+        public BibliotecaWA.BibliotecaServices.contribuyente contribuyente;
         
-        public listar_autores_por_materialRequest() {
+        public modificarContribuyenteRequest() {
         }
         
-        public listar_autores_por_materialRequest(int id_material) {
-            this.id_material = id_material;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listar_autores_por_materialResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listar_autores_por_materialResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.contribuyente[] @return;
-        
-        public listar_autores_por_materialResponse() {
-        }
-        
-        public listar_autores_por_materialResponse(BibliotecaWA.BibliotecaServices.contribuyente[] @return) {
-            this.@return = @return;
+        public modificarContribuyenteRequest(BibliotecaWA.BibliotecaServices.contribuyente contribuyente) {
+            this.contribuyente = contribuyente;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminar_relacion_material_contribuyente", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class eliminar_relacion_material_contribuyenteRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int id_material;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int id_contribuyente;
-        
-        public eliminar_relacion_material_contribuyenteRequest() {
-        }
-        
-        public eliminar_relacion_material_contribuyenteRequest(int id_material, int id_contribuyente) {
-            this.id_material = id_material;
-            this.id_contribuyente = id_contribuyente;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminar_relacion_material_contribuyenteResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class eliminar_relacion_material_contribuyenteResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public eliminar_relacion_material_contribuyenteResponse() {
-        }
-        
-        public eliminar_relacion_material_contribuyenteResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listar_contribuyentes_por_material", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listar_contribuyentes_por_materialRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int id_material;
-        
-        public listar_contribuyentes_por_materialRequest() {
-        }
-        
-        public listar_contribuyentes_por_materialRequest(int id_material) {
-            this.id_material = id_material;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listar_contribuyentes_por_materialResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listar_contribuyentes_por_materialResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.contribuyente[] @return;
-        
-        public listar_contribuyentes_por_materialResponse() {
-        }
-        
-        public listar_contribuyentes_por_materialResponse(BibliotecaWA.BibliotecaServices.contribuyente[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="tiene_otras_relaciones", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class tiene_otras_relacionesRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int id_contribuyente;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int id_material_excluir;
-        
-        public tiene_otras_relacionesRequest() {
-        }
-        
-        public tiene_otras_relacionesRequest(int id_contribuyente, int id_material_excluir) {
-            this.id_contribuyente = id_contribuyente;
-            this.id_material_excluir = id_material_excluir;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="tiene_otras_relacionesResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class tiene_otras_relacionesResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
-        
-        public tiene_otras_relacionesResponse() {
-        }
-        
-        public tiene_otras_relacionesResponse(bool @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="asignarContribuyente", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class asignarContribuyenteRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idcontribuyente;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idmaterial;
-        
-        public asignarContribuyenteRequest() {
-        }
-        
-        public asignarContribuyenteRequest(int idcontribuyente, int idmaterial) {
-            this.idcontribuyente = idcontribuyente;
-            this.idmaterial = idmaterial;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="asignarContribuyenteResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class asignarContribuyenteResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarContribuyenteResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class modificarContribuyenteResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int @return;
         
-        public asignarContribuyenteResponse() {
+        public modificarContribuyenteResponse() {
         }
         
-        public asignarContribuyenteResponse(int @return) {
+        public modificarContribuyenteResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarContribuyentesTodos", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarContribuyentesTodosRequest {
+        
+        public listarContribuyentesTodosRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarContribuyentesTodosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarContribuyentesTodosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.contribuyente[] @return;
+        
+        public listarContribuyentesTodosResponse() {
+        }
+        
+        public listarContribuyentesTodosResponse(BibliotecaWA.BibliotecaServices.contribuyente[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerContribuyentePorId", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtenerContribuyentePorIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idContribuyente;
+        
+        public obtenerContribuyentePorIdRequest() {
+        }
+        
+        public obtenerContribuyentePorIdRequest(int idContribuyente) {
+            this.idContribuyente = idContribuyente;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerContribuyentePorIdResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtenerContribuyentePorIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.contribuyente @return;
+        
+        public obtenerContribuyentePorIdResponse() {
+        }
+        
+        public obtenerContribuyentePorIdResponse(BibliotecaWA.BibliotecaServices.contribuyente @return) {
             this.@return = @return;
         }
     }
@@ -594,27 +499,40 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarContribuyentesTodos", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarContribuyentesTodosRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="tiene_otras_relaciones", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class tiene_otras_relacionesRequest {
         
-        public listarContribuyentesTodosRequest() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int id_contribuyente;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int id_material_excluir;
+        
+        public tiene_otras_relacionesRequest() {
+        }
+        
+        public tiene_otras_relacionesRequest(int id_contribuyente, int id_material_excluir) {
+            this.id_contribuyente = id_contribuyente;
+            this.id_material_excluir = id_material_excluir;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarContribuyentesTodosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarContribuyentesTodosResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="tiene_otras_relacionesResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class tiene_otras_relacionesResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.contribuyente[] @return;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
         
-        public listarContribuyentesTodosResponse() {
+        public tiene_otras_relacionesResponse() {
         }
         
-        public listarContribuyentesTodosResponse(BibliotecaWA.BibliotecaServices.contribuyente[] @return) {
+        public tiene_otras_relacionesResponse(bool @return) {
             this.@return = @return;
         }
     }
@@ -622,71 +540,153 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerContribuyentePorId", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtenerContribuyentePorIdRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="asignarContribuyente", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class asignarContribuyenteRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idContribuyente;
+        public int idcontribuyente;
         
-        public obtenerContribuyentePorIdRequest() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idmaterial;
+        
+        public asignarContribuyenteRequest() {
         }
         
-        public obtenerContribuyentePorIdRequest(int idContribuyente) {
-            this.idContribuyente = idContribuyente;
+        public asignarContribuyenteRequest(int idcontribuyente, int idmaterial) {
+            this.idcontribuyente = idcontribuyente;
+            this.idmaterial = idmaterial;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerContribuyentePorIdResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtenerContribuyentePorIdResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.contribuyente @return;
-        
-        public obtenerContribuyentePorIdResponse() {
-        }
-        
-        public obtenerContribuyentePorIdResponse(BibliotecaWA.BibliotecaServices.contribuyente @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarContribuyente", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class modificarContribuyenteRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.contribuyente contribuyente;
-        
-        public modificarContribuyenteRequest() {
-        }
-        
-        public modificarContribuyenteRequest(BibliotecaWA.BibliotecaServices.contribuyente contribuyente) {
-            this.contribuyente = contribuyente;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarContribuyenteResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class modificarContribuyenteResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="asignarContribuyenteResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class asignarContribuyenteResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int @return;
         
-        public modificarContribuyenteResponse() {
+        public asignarContribuyenteResponse() {
         }
         
-        public modificarContribuyenteResponse(int @return) {
+        public asignarContribuyenteResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listar_contribuyentes_por_material", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listar_contribuyentes_por_materialRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int id_material;
+        
+        public listar_contribuyentes_por_materialRequest() {
+        }
+        
+        public listar_contribuyentes_por_materialRequest(int id_material) {
+            this.id_material = id_material;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listar_contribuyentes_por_materialResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listar_contribuyentes_por_materialResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.contribuyente[] @return;
+        
+        public listar_contribuyentes_por_materialResponse() {
+        }
+        
+        public listar_contribuyentes_por_materialResponse(BibliotecaWA.BibliotecaServices.contribuyente[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listar_autores_por_material", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listar_autores_por_materialRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int id_material;
+        
+        public listar_autores_por_materialRequest() {
+        }
+        
+        public listar_autores_por_materialRequest(int id_material) {
+            this.id_material = id_material;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listar_autores_por_materialResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listar_autores_por_materialResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.contribuyente[] @return;
+        
+        public listar_autores_por_materialResponse() {
+        }
+        
+        public listar_autores_por_materialResponse(BibliotecaWA.BibliotecaServices.contribuyente[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminar_relacion_material_contribuyente", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class eliminar_relacion_material_contribuyenteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int id_material;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int id_contribuyente;
+        
+        public eliminar_relacion_material_contribuyenteRequest() {
+        }
+        
+        public eliminar_relacion_material_contribuyenteRequest(int id_material, int id_contribuyente) {
+            this.id_material = id_material;
+            this.id_contribuyente = id_contribuyente;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminar_relacion_material_contribuyenteResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class eliminar_relacion_material_contribuyenteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminar_relacion_material_contribuyenteResponse() {
+        }
+        
+        public eliminar_relacion_material_contribuyenteResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -719,124 +719,70 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.listar_autores_por_materialResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.listar_autores_por_material(BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest request) {
-            return base.Channel.listar_autores_por_material(request);
+        BibliotecaWA.BibliotecaServices.modificarContribuyenteResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.modificarContribuyente(BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest request) {
+            return base.Channel.modificarContribuyente(request);
         }
         
-        public BibliotecaWA.BibliotecaServices.contribuyente[] listar_autores_por_material(int id_material) {
-            BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest inValue = new BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest();
-            inValue.id_material = id_material;
-            BibliotecaWA.BibliotecaServices.listar_autores_por_materialResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).listar_autores_por_material(inValue);
+        public int modificarContribuyente(BibliotecaWA.BibliotecaServices.contribuyente contribuyente) {
+            BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest inValue = new BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest();
+            inValue.contribuyente = contribuyente;
+            BibliotecaWA.BibliotecaServices.modificarContribuyenteResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).modificarContribuyente(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_autores_por_materialResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.listar_autores_por_materialAsync(BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest request) {
-            return base.Channel.listar_autores_por_materialAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarContribuyenteResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.modificarContribuyenteAsync(BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest request) {
+            return base.Channel.modificarContribuyenteAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_autores_por_materialResponse> listar_autores_por_materialAsync(int id_material) {
-            BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest inValue = new BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest();
-            inValue.id_material = id_material;
-            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).listar_autores_por_materialAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarContribuyenteResponse> modificarContribuyenteAsync(BibliotecaWA.BibliotecaServices.contribuyente contribuyente) {
+            BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest inValue = new BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest();
+            inValue.contribuyente = contribuyente;
+            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).modificarContribuyenteAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.eliminar_relacion_material_contribuyente(BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest request) {
-            return base.Channel.eliminar_relacion_material_contribuyente(request);
+        BibliotecaWA.BibliotecaServices.listarContribuyentesTodosResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.listarContribuyentesTodos(BibliotecaWA.BibliotecaServices.listarContribuyentesTodosRequest request) {
+            return base.Channel.listarContribuyentesTodos(request);
         }
         
-        public int eliminar_relacion_material_contribuyente(int id_material, int id_contribuyente) {
-            BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest inValue = new BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest();
-            inValue.id_material = id_material;
-            inValue.id_contribuyente = id_contribuyente;
-            BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).eliminar_relacion_material_contribuyente(inValue);
+        public BibliotecaWA.BibliotecaServices.contribuyente[] listarContribuyentesTodos() {
+            BibliotecaWA.BibliotecaServices.listarContribuyentesTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarContribuyentesTodosRequest();
+            BibliotecaWA.BibliotecaServices.listarContribuyentesTodosResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).listarContribuyentesTodos(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.eliminar_relacion_material_contribuyenteAsync(BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest request) {
-            return base.Channel.eliminar_relacion_material_contribuyenteAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarContribuyentesTodosResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.listarContribuyentesTodosAsync(BibliotecaWA.BibliotecaServices.listarContribuyentesTodosRequest request) {
+            return base.Channel.listarContribuyentesTodosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteResponse> eliminar_relacion_material_contribuyenteAsync(int id_material, int id_contribuyente) {
-            BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest inValue = new BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest();
-            inValue.id_material = id_material;
-            inValue.id_contribuyente = id_contribuyente;
-            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).eliminar_relacion_material_contribuyenteAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarContribuyentesTodosResponse> listarContribuyentesTodosAsync() {
+            BibliotecaWA.BibliotecaServices.listarContribuyentesTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarContribuyentesTodosRequest();
+            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).listarContribuyentesTodosAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.listar_contribuyentes_por_material(BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest request) {
-            return base.Channel.listar_contribuyentes_por_material(request);
+        BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.obtenerContribuyentePorId(BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdRequest request) {
+            return base.Channel.obtenerContribuyentePorId(request);
         }
         
-        public BibliotecaWA.BibliotecaServices.contribuyente[] listar_contribuyentes_por_material(int id_material) {
-            BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest inValue = new BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest();
-            inValue.id_material = id_material;
-            BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).listar_contribuyentes_por_material(inValue);
+        public BibliotecaWA.BibliotecaServices.contribuyente obtenerContribuyentePorId(int idContribuyente) {
+            BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdRequest();
+            inValue.idContribuyente = idContribuyente;
+            BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).obtenerContribuyentePorId(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.listar_contribuyentes_por_materialAsync(BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest request) {
-            return base.Channel.listar_contribuyentes_por_materialAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.obtenerContribuyentePorIdAsync(BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdRequest request) {
+            return base.Channel.obtenerContribuyentePorIdAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialResponse> listar_contribuyentes_por_materialAsync(int id_material) {
-            BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest inValue = new BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest();
-            inValue.id_material = id_material;
-            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).listar_contribuyentes_por_materialAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.tiene_otras_relacionesResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.tiene_otras_relaciones(BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest request) {
-            return base.Channel.tiene_otras_relaciones(request);
-        }
-        
-        public bool tiene_otras_relaciones(int id_contribuyente, int id_material_excluir) {
-            BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest inValue = new BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest();
-            inValue.id_contribuyente = id_contribuyente;
-            inValue.id_material_excluir = id_material_excluir;
-            BibliotecaWA.BibliotecaServices.tiene_otras_relacionesResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).tiene_otras_relaciones(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.tiene_otras_relacionesResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.tiene_otras_relacionesAsync(BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest request) {
-            return base.Channel.tiene_otras_relacionesAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.tiene_otras_relacionesResponse> tiene_otras_relacionesAsync(int id_contribuyente, int id_material_excluir) {
-            BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest inValue = new BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest();
-            inValue.id_contribuyente = id_contribuyente;
-            inValue.id_material_excluir = id_material_excluir;
-            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).tiene_otras_relacionesAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.asignarContribuyente(BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest request) {
-            return base.Channel.asignarContribuyente(request);
-        }
-        
-        public int asignarContribuyente(int idcontribuyente, int idmaterial) {
-            BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest inValue = new BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest();
-            inValue.idcontribuyente = idcontribuyente;
-            inValue.idmaterial = idmaterial;
-            BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).asignarContribuyente(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.asignarContribuyenteAsync(BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest request) {
-            return base.Channel.asignarContribuyenteAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse> asignarContribuyenteAsync(int idcontribuyente, int idmaterial) {
-            BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest inValue = new BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest();
-            inValue.idcontribuyente = idcontribuyente;
-            inValue.idmaterial = idmaterial;
-            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).asignarContribuyenteAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdResponse> obtenerContribuyentePorIdAsync(int idContribuyente) {
+            BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdRequest();
+            inValue.idContribuyente = idContribuyente;
+            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).obtenerContribuyentePorIdAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -894,70 +840,124 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.listarContribuyentesTodosResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.listarContribuyentesTodos(BibliotecaWA.BibliotecaServices.listarContribuyentesTodosRequest request) {
-            return base.Channel.listarContribuyentesTodos(request);
+        BibliotecaWA.BibliotecaServices.tiene_otras_relacionesResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.tiene_otras_relaciones(BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest request) {
+            return base.Channel.tiene_otras_relaciones(request);
         }
         
-        public BibliotecaWA.BibliotecaServices.contribuyente[] listarContribuyentesTodos() {
-            BibliotecaWA.BibliotecaServices.listarContribuyentesTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarContribuyentesTodosRequest();
-            BibliotecaWA.BibliotecaServices.listarContribuyentesTodosResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).listarContribuyentesTodos(inValue);
+        public bool tiene_otras_relaciones(int id_contribuyente, int id_material_excluir) {
+            BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest inValue = new BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest();
+            inValue.id_contribuyente = id_contribuyente;
+            inValue.id_material_excluir = id_material_excluir;
+            BibliotecaWA.BibliotecaServices.tiene_otras_relacionesResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).tiene_otras_relaciones(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarContribuyentesTodosResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.listarContribuyentesTodosAsync(BibliotecaWA.BibliotecaServices.listarContribuyentesTodosRequest request) {
-            return base.Channel.listarContribuyentesTodosAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.tiene_otras_relacionesResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.tiene_otras_relacionesAsync(BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest request) {
+            return base.Channel.tiene_otras_relacionesAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarContribuyentesTodosResponse> listarContribuyentesTodosAsync() {
-            BibliotecaWA.BibliotecaServices.listarContribuyentesTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarContribuyentesTodosRequest();
-            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).listarContribuyentesTodosAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.tiene_otras_relacionesResponse> tiene_otras_relacionesAsync(int id_contribuyente, int id_material_excluir) {
+            BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest inValue = new BibliotecaWA.BibliotecaServices.tiene_otras_relacionesRequest();
+            inValue.id_contribuyente = id_contribuyente;
+            inValue.id_material_excluir = id_material_excluir;
+            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).tiene_otras_relacionesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.obtenerContribuyentePorId(BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdRequest request) {
-            return base.Channel.obtenerContribuyentePorId(request);
+        BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.asignarContribuyente(BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest request) {
+            return base.Channel.asignarContribuyente(request);
         }
         
-        public BibliotecaWA.BibliotecaServices.contribuyente obtenerContribuyentePorId(int idContribuyente) {
-            BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdRequest();
-            inValue.idContribuyente = idContribuyente;
-            BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).obtenerContribuyentePorId(inValue);
+        public int asignarContribuyente(int idcontribuyente, int idmaterial) {
+            BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest inValue = new BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest();
+            inValue.idcontribuyente = idcontribuyente;
+            inValue.idmaterial = idmaterial;
+            BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).asignarContribuyente(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.obtenerContribuyentePorIdAsync(BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdRequest request) {
-            return base.Channel.obtenerContribuyentePorIdAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.asignarContribuyenteAsync(BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest request) {
+            return base.Channel.asignarContribuyenteAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdResponse> obtenerContribuyentePorIdAsync(int idContribuyente) {
-            BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerContribuyentePorIdRequest();
-            inValue.idContribuyente = idContribuyente;
-            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).obtenerContribuyentePorIdAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.asignarContribuyenteResponse> asignarContribuyenteAsync(int idcontribuyente, int idmaterial) {
+            BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest inValue = new BibliotecaWA.BibliotecaServices.asignarContribuyenteRequest();
+            inValue.idcontribuyente = idcontribuyente;
+            inValue.idmaterial = idmaterial;
+            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).asignarContribuyenteAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.modificarContribuyenteResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.modificarContribuyente(BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest request) {
-            return base.Channel.modificarContribuyente(request);
+        BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.listar_contribuyentes_por_material(BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest request) {
+            return base.Channel.listar_contribuyentes_por_material(request);
         }
         
-        public int modificarContribuyente(BibliotecaWA.BibliotecaServices.contribuyente contribuyente) {
-            BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest inValue = new BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest();
-            inValue.contribuyente = contribuyente;
-            BibliotecaWA.BibliotecaServices.modificarContribuyenteResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).modificarContribuyente(inValue);
+        public BibliotecaWA.BibliotecaServices.contribuyente[] listar_contribuyentes_por_material(int id_material) {
+            BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest inValue = new BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest();
+            inValue.id_material = id_material;
+            BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).listar_contribuyentes_por_material(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarContribuyenteResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.modificarContribuyenteAsync(BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest request) {
-            return base.Channel.modificarContribuyenteAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.listar_contribuyentes_por_materialAsync(BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest request) {
+            return base.Channel.listar_contribuyentes_por_materialAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarContribuyenteResponse> modificarContribuyenteAsync(BibliotecaWA.BibliotecaServices.contribuyente contribuyente) {
-            BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest inValue = new BibliotecaWA.BibliotecaServices.modificarContribuyenteRequest();
-            inValue.contribuyente = contribuyente;
-            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).modificarContribuyenteAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialResponse> listar_contribuyentes_por_materialAsync(int id_material) {
+            BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest inValue = new BibliotecaWA.BibliotecaServices.listar_contribuyentes_por_materialRequest();
+            inValue.id_material = id_material;
+            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).listar_contribuyentes_por_materialAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.listar_autores_por_materialResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.listar_autores_por_material(BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest request) {
+            return base.Channel.listar_autores_por_material(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.contribuyente[] listar_autores_por_material(int id_material) {
+            BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest inValue = new BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest();
+            inValue.id_material = id_material;
+            BibliotecaWA.BibliotecaServices.listar_autores_por_materialResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).listar_autores_por_material(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_autores_por_materialResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.listar_autores_por_materialAsync(BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest request) {
+            return base.Channel.listar_autores_por_materialAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_autores_por_materialResponse> listar_autores_por_materialAsync(int id_material) {
+            BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest inValue = new BibliotecaWA.BibliotecaServices.listar_autores_por_materialRequest();
+            inValue.id_material = id_material;
+            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).listar_autores_por_materialAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteResponse BibliotecaWA.BibliotecaServices.ConstribuyenteWS.eliminar_relacion_material_contribuyente(BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest request) {
+            return base.Channel.eliminar_relacion_material_contribuyente(request);
+        }
+        
+        public int eliminar_relacion_material_contribuyente(int id_material, int id_contribuyente) {
+            BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest inValue = new BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest();
+            inValue.id_material = id_material;
+            inValue.id_contribuyente = id_contribuyente;
+            BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteResponse retVal = ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).eliminar_relacion_material_contribuyente(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteResponse> BibliotecaWA.BibliotecaServices.ConstribuyenteWS.eliminar_relacion_material_contribuyenteAsync(BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest request) {
+            return base.Channel.eliminar_relacion_material_contribuyenteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteResponse> eliminar_relacion_material_contribuyenteAsync(int id_material, int id_contribuyente) {
+            BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest inValue = new BibliotecaWA.BibliotecaServices.eliminar_relacion_material_contribuyenteRequest();
+            inValue.id_material = id_material;
+            inValue.id_contribuyente = id_contribuyente;
+            return ((BibliotecaWA.BibliotecaServices.ConstribuyenteWS)(this)).eliminar_relacion_material_contribuyenteAsync(inValue);
         }
     }
     
@@ -966,14 +966,23 @@ namespace BibliotecaWA.BibliotecaServices {
     public interface LibroWS {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodos/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/insertarLibroRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/insertarLibroResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.listarLibrosTodosResponse listarLibrosTodos(BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest request);
+        BibliotecaWA.BibliotecaServices.insertarLibroResponse insertarLibro(BibliotecaWA.BibliotecaServices.insertarLibroRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarLibrosTodosResponse> listarLibrosTodosAsync(BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/insertarLibroRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/insertarLibroResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarLibroResponse> insertarLibroAsync(BibliotecaWA.BibliotecaServices.insertarLibroRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibroRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibroResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibro/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.eliminarLibroResponse eliminarLibro(BibliotecaWA.BibliotecaServices.eliminarLibroRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibroRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibroResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarLibroResponse> eliminarLibroAsync(BibliotecaWA.BibliotecaServices.eliminarLibroRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/obtenerLibroPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/obtenerLibroPorIdResponse")]
@@ -986,13 +995,14 @@ namespace BibliotecaWA.BibliotecaServices {
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerLibroPorIdResponse> obtenerLibroPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerLibroPorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/insertarLibroRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/insertarLibroResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodos/Fault/Exception", Name="Exception")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.insertarLibroResponse insertarLibro(BibliotecaWA.BibliotecaServices.insertarLibroRequest request);
+        BibliotecaWA.BibliotecaServices.listarLibrosTodosResponse listarLibrosTodos(BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/insertarLibroRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/insertarLibroResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarLibroResponse> insertarLibroAsync(BibliotecaWA.BibliotecaServices.insertarLibroRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarLibrosTodosResponse> listarLibrosTodosAsync(BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/modificarLibroRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/modificarLibroResponse")]
@@ -1003,16 +1013,6 @@ namespace BibliotecaWA.BibliotecaServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/modificarLibroRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/modificarLibroResponse")]
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarLibroResponse> modificarLibroAsync(BibliotecaWA.BibliotecaServices.modificarLibroRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibroRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibroResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibro/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.eliminarLibroResponse eliminarLibro(BibliotecaWA.BibliotecaServices.eliminarLibroRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibroRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibroResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarLibroResponse> eliminarLibroAsync(BibliotecaWA.BibliotecaServices.eliminarLibroRequest request);
     }
     
     /// <remarks/>
@@ -1756,27 +1756,71 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarLibrosTodos", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarLibrosTodosRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarLibro", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class insertarLibroRequest {
         
-        public listarLibrosTodosRequest() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.libro libro;
+        
+        public insertarLibroRequest() {
+        }
+        
+        public insertarLibroRequest(BibliotecaWA.BibliotecaServices.libro libro) {
+            this.libro = libro;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarLibrosTodosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarLibrosTodosResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarLibroResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class insertarLibroResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.libro[] @return;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
         
-        public listarLibrosTodosResponse() {
+        public insertarLibroResponse() {
         }
         
-        public listarLibrosTodosResponse(BibliotecaWA.BibliotecaServices.libro[] @return) {
+        public insertarLibroResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarLibro", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class eliminarLibroRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idLibro;
+        
+        public eliminarLibroRequest() {
+        }
+        
+        public eliminarLibroRequest(int idLibro) {
+            this.idLibro = idLibro;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarLibroResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class eliminarLibroResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarLibroResponse() {
+        }
+        
+        public eliminarLibroResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -1820,35 +1864,27 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarLibro", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class insertarLibroRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarLibrosTodos", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarLibrosTodosRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.libro libro;
-        
-        public insertarLibroRequest() {
-        }
-        
-        public insertarLibroRequest(BibliotecaWA.BibliotecaServices.libro libro) {
-            this.libro = libro;
+        public listarLibrosTodosRequest() {
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarLibroResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class insertarLibroResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarLibrosTodosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarLibrosTodosResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.libro[] @return;
         
-        public insertarLibroResponse() {
+        public listarLibrosTodosResponse() {
         }
         
-        public insertarLibroResponse(int @return) {
+        public listarLibrosTodosResponse(BibliotecaWA.BibliotecaServices.libro[] @return) {
             this.@return = @return;
         }
     }
@@ -1889,42 +1925,6 @@ namespace BibliotecaWA.BibliotecaServices {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarLibro", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class eliminarLibroRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idLibro;
-        
-        public eliminarLibroRequest() {
-        }
-        
-        public eliminarLibroRequest(int idLibro) {
-            this.idLibro = idLibro;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarLibroResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class eliminarLibroResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public eliminarLibroResponse() {
-        }
-        
-        public eliminarLibroResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface LibroWSChannel : BibliotecaWA.BibliotecaServices.LibroWS, System.ServiceModel.IClientChannel {
     }
@@ -1953,24 +1953,49 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.listarLibrosTodosResponse BibliotecaWA.BibliotecaServices.LibroWS.listarLibrosTodos(BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest request) {
-            return base.Channel.listarLibrosTodos(request);
+        BibliotecaWA.BibliotecaServices.insertarLibroResponse BibliotecaWA.BibliotecaServices.LibroWS.insertarLibro(BibliotecaWA.BibliotecaServices.insertarLibroRequest request) {
+            return base.Channel.insertarLibro(request);
         }
         
-        public BibliotecaWA.BibliotecaServices.libro[] listarLibrosTodos() {
-            BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest();
-            BibliotecaWA.BibliotecaServices.listarLibrosTodosResponse retVal = ((BibliotecaWA.BibliotecaServices.LibroWS)(this)).listarLibrosTodos(inValue);
+        public int insertarLibro(BibliotecaWA.BibliotecaServices.libro libro) {
+            BibliotecaWA.BibliotecaServices.insertarLibroRequest inValue = new BibliotecaWA.BibliotecaServices.insertarLibroRequest();
+            inValue.libro = libro;
+            BibliotecaWA.BibliotecaServices.insertarLibroResponse retVal = ((BibliotecaWA.BibliotecaServices.LibroWS)(this)).insertarLibro(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarLibrosTodosResponse> BibliotecaWA.BibliotecaServices.LibroWS.listarLibrosTodosAsync(BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest request) {
-            return base.Channel.listarLibrosTodosAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarLibroResponse> BibliotecaWA.BibliotecaServices.LibroWS.insertarLibroAsync(BibliotecaWA.BibliotecaServices.insertarLibroRequest request) {
+            return base.Channel.insertarLibroAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarLibrosTodosResponse> listarLibrosTodosAsync() {
-            BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest();
-            return ((BibliotecaWA.BibliotecaServices.LibroWS)(this)).listarLibrosTodosAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarLibroResponse> insertarLibroAsync(BibliotecaWA.BibliotecaServices.libro libro) {
+            BibliotecaWA.BibliotecaServices.insertarLibroRequest inValue = new BibliotecaWA.BibliotecaServices.insertarLibroRequest();
+            inValue.libro = libro;
+            return ((BibliotecaWA.BibliotecaServices.LibroWS)(this)).insertarLibroAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.eliminarLibroResponse BibliotecaWA.BibliotecaServices.LibroWS.eliminarLibro(BibliotecaWA.BibliotecaServices.eliminarLibroRequest request) {
+            return base.Channel.eliminarLibro(request);
+        }
+        
+        public int eliminarLibro(int idLibro) {
+            BibliotecaWA.BibliotecaServices.eliminarLibroRequest inValue = new BibliotecaWA.BibliotecaServices.eliminarLibroRequest();
+            inValue.idLibro = idLibro;
+            BibliotecaWA.BibliotecaServices.eliminarLibroResponse retVal = ((BibliotecaWA.BibliotecaServices.LibroWS)(this)).eliminarLibro(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarLibroResponse> BibliotecaWA.BibliotecaServices.LibroWS.eliminarLibroAsync(BibliotecaWA.BibliotecaServices.eliminarLibroRequest request) {
+            return base.Channel.eliminarLibroAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarLibroResponse> eliminarLibroAsync(int idLibro) {
+            BibliotecaWA.BibliotecaServices.eliminarLibroRequest inValue = new BibliotecaWA.BibliotecaServices.eliminarLibroRequest();
+            inValue.idLibro = idLibro;
+            return ((BibliotecaWA.BibliotecaServices.LibroWS)(this)).eliminarLibroAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1997,26 +2022,24 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.insertarLibroResponse BibliotecaWA.BibliotecaServices.LibroWS.insertarLibro(BibliotecaWA.BibliotecaServices.insertarLibroRequest request) {
-            return base.Channel.insertarLibro(request);
+        BibliotecaWA.BibliotecaServices.listarLibrosTodosResponse BibliotecaWA.BibliotecaServices.LibroWS.listarLibrosTodos(BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest request) {
+            return base.Channel.listarLibrosTodos(request);
         }
         
-        public int insertarLibro(BibliotecaWA.BibliotecaServices.libro libro) {
-            BibliotecaWA.BibliotecaServices.insertarLibroRequest inValue = new BibliotecaWA.BibliotecaServices.insertarLibroRequest();
-            inValue.libro = libro;
-            BibliotecaWA.BibliotecaServices.insertarLibroResponse retVal = ((BibliotecaWA.BibliotecaServices.LibroWS)(this)).insertarLibro(inValue);
+        public BibliotecaWA.BibliotecaServices.libro[] listarLibrosTodos() {
+            BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest();
+            BibliotecaWA.BibliotecaServices.listarLibrosTodosResponse retVal = ((BibliotecaWA.BibliotecaServices.LibroWS)(this)).listarLibrosTodos(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarLibroResponse> BibliotecaWA.BibliotecaServices.LibroWS.insertarLibroAsync(BibliotecaWA.BibliotecaServices.insertarLibroRequest request) {
-            return base.Channel.insertarLibroAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarLibrosTodosResponse> BibliotecaWA.BibliotecaServices.LibroWS.listarLibrosTodosAsync(BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest request) {
+            return base.Channel.listarLibrosTodosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarLibroResponse> insertarLibroAsync(BibliotecaWA.BibliotecaServices.libro libro) {
-            BibliotecaWA.BibliotecaServices.insertarLibroRequest inValue = new BibliotecaWA.BibliotecaServices.insertarLibroRequest();
-            inValue.libro = libro;
-            return ((BibliotecaWA.BibliotecaServices.LibroWS)(this)).insertarLibroAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarLibrosTodosResponse> listarLibrosTodosAsync() {
+            BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarLibrosTodosRequest();
+            return ((BibliotecaWA.BibliotecaServices.LibroWS)(this)).listarLibrosTodosAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2041,43 +2064,11 @@ namespace BibliotecaWA.BibliotecaServices {
             inValue.libro = libro;
             return ((BibliotecaWA.BibliotecaServices.LibroWS)(this)).modificarLibroAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.eliminarLibroResponse BibliotecaWA.BibliotecaServices.LibroWS.eliminarLibro(BibliotecaWA.BibliotecaServices.eliminarLibroRequest request) {
-            return base.Channel.eliminarLibro(request);
-        }
-        
-        public int eliminarLibro(int idLibro) {
-            BibliotecaWA.BibliotecaServices.eliminarLibroRequest inValue = new BibliotecaWA.BibliotecaServices.eliminarLibroRequest();
-            inValue.idLibro = idLibro;
-            BibliotecaWA.BibliotecaServices.eliminarLibroResponse retVal = ((BibliotecaWA.BibliotecaServices.LibroWS)(this)).eliminarLibro(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarLibroResponse> BibliotecaWA.BibliotecaServices.LibroWS.eliminarLibroAsync(BibliotecaWA.BibliotecaServices.eliminarLibroRequest request) {
-            return base.Channel.eliminarLibroAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarLibroResponse> eliminarLibroAsync(int idLibro) {
-            BibliotecaWA.BibliotecaServices.eliminarLibroRequest inValue = new BibliotecaWA.BibliotecaServices.eliminarLibroRequest();
-            inValue.idLibro = idLibro;
-            return ((BibliotecaWA.BibliotecaServices.LibroWS)(this)).eliminarLibroAsync(inValue);
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="pe.edu.pucp.utilsarmy.services", ConfigurationName="BibliotecaServices.BibliotecaWS")]
     public interface BibliotecaWS {
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.insertarBibliotecaResponse insertarBiblioteca(BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarBibliotecaResponse> insertarBibliotecaAsync(BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/eliminarBibliotecaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/BibliotecaWS/eliminarBibliotecaResponse")]
@@ -2088,6 +2079,15 @@ namespace BibliotecaWA.BibliotecaServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/eliminarBibliotecaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/BibliotecaWS/eliminarBibliotecaResponse")]
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarBibliotecaResponse> eliminarBibliotecaAsync(BibliotecaWA.BibliotecaServices.eliminarBibliotecaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.insertarBibliotecaResponse insertarBiblioteca(BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarBibliotecaResponse> insertarBibliotecaAsync(BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/modificarBibliotecaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/BibliotecaWS/modificarBibliotecaResponse")]
@@ -2123,42 +2123,6 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarBiblioteca", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class insertarBibliotecaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.biblioteca biblioteca;
-        
-        public insertarBibliotecaRequest() {
-        }
-        
-        public insertarBibliotecaRequest(BibliotecaWA.BibliotecaServices.biblioteca biblioteca) {
-            this.biblioteca = biblioteca;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarBibliotecaResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class insertarBibliotecaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public insertarBibliotecaResponse() {
-        }
-        
-        public insertarBibliotecaResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarBiblioteca", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
     public partial class eliminarBibliotecaRequest {
         
@@ -2188,6 +2152,42 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         public eliminarBibliotecaResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarBiblioteca", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class insertarBibliotecaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.biblioteca biblioteca;
+        
+        public insertarBibliotecaRequest() {
+        }
+        
+        public insertarBibliotecaRequest(BibliotecaWA.BibliotecaServices.biblioteca biblioteca) {
+            this.biblioteca = biblioteca;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarBibliotecaResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class insertarBibliotecaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarBibliotecaResponse() {
+        }
+        
+        public insertarBibliotecaResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -2320,29 +2320,6 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.insertarBibliotecaResponse BibliotecaWA.BibliotecaServices.BibliotecaWS.insertarBiblioteca(BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest request) {
-            return base.Channel.insertarBiblioteca(request);
-        }
-        
-        public int insertarBiblioteca(BibliotecaWA.BibliotecaServices.biblioteca biblioteca) {
-            BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest inValue = new BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest();
-            inValue.biblioteca = biblioteca;
-            BibliotecaWA.BibliotecaServices.insertarBibliotecaResponse retVal = ((BibliotecaWA.BibliotecaServices.BibliotecaWS)(this)).insertarBiblioteca(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarBibliotecaResponse> BibliotecaWA.BibliotecaServices.BibliotecaWS.insertarBibliotecaAsync(BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest request) {
-            return base.Channel.insertarBibliotecaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarBibliotecaResponse> insertarBibliotecaAsync(BibliotecaWA.BibliotecaServices.biblioteca biblioteca) {
-            BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest inValue = new BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest();
-            inValue.biblioteca = biblioteca;
-            return ((BibliotecaWA.BibliotecaServices.BibliotecaWS)(this)).insertarBibliotecaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         BibliotecaWA.BibliotecaServices.eliminarBibliotecaResponse BibliotecaWA.BibliotecaServices.BibliotecaWS.eliminarBiblioteca(BibliotecaWA.BibliotecaServices.eliminarBibliotecaRequest request) {
             return base.Channel.eliminarBiblioteca(request);
         }
@@ -2363,6 +2340,29 @@ namespace BibliotecaWA.BibliotecaServices {
             BibliotecaWA.BibliotecaServices.eliminarBibliotecaRequest inValue = new BibliotecaWA.BibliotecaServices.eliminarBibliotecaRequest();
             inValue.idMaterial = idMaterial;
             return ((BibliotecaWA.BibliotecaServices.BibliotecaWS)(this)).eliminarBibliotecaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.insertarBibliotecaResponse BibliotecaWA.BibliotecaServices.BibliotecaWS.insertarBiblioteca(BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest request) {
+            return base.Channel.insertarBiblioteca(request);
+        }
+        
+        public int insertarBiblioteca(BibliotecaWA.BibliotecaServices.biblioteca biblioteca) {
+            BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest inValue = new BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest();
+            inValue.biblioteca = biblioteca;
+            BibliotecaWA.BibliotecaServices.insertarBibliotecaResponse retVal = ((BibliotecaWA.BibliotecaServices.BibliotecaWS)(this)).insertarBiblioteca(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarBibliotecaResponse> BibliotecaWA.BibliotecaServices.BibliotecaWS.insertarBibliotecaAsync(BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest request) {
+            return base.Channel.insertarBibliotecaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarBibliotecaResponse> insertarBibliotecaAsync(BibliotecaWA.BibliotecaServices.biblioteca biblioteca) {
+            BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest inValue = new BibliotecaWA.BibliotecaServices.insertarBibliotecaRequest();
+            inValue.biblioteca = biblioteca;
+            return ((BibliotecaWA.BibliotecaServices.BibliotecaWS)(this)).insertarBibliotecaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2448,14 +2448,14 @@ namespace BibliotecaWA.BibliotecaServices {
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarRolResponse> modificarRolAsync(BibliotecaWA.BibliotecaServices.modificarRolRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/RolWS/listarRolesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/RolWS/listarRolesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/RolWS/listarRoles/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorId/Fault/Exception", Name="Exception")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.listarRolesResponse listarRoles(BibliotecaWA.BibliotecaServices.listarRolesRequest request);
+        BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse obtenerRolPorId(BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/RolWS/listarRolesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/RolWS/listarRolesResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarRolesResponse> listarRolesAsync(BibliotecaWA.BibliotecaServices.listarRolesRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorIdResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse> obtenerRolPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/RolWS/eliminarRolRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/RolWS/eliminarRolResponse")]
@@ -2468,14 +2468,14 @@ namespace BibliotecaWA.BibliotecaServices {
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarRolResponse> eliminarRolAsync(BibliotecaWA.BibliotecaServices.eliminarRolRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorIdResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorId/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/RolWS/listarRolesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/RolWS/listarRolesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/RolWS/listarRoles/Fault/Exception", Name="Exception")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse obtenerRolPorId(BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest request);
+        BibliotecaWA.BibliotecaServices.listarRolesResponse listarRoles(BibliotecaWA.BibliotecaServices.listarRolesRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorIdResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse> obtenerRolPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/RolWS/listarRolesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/RolWS/listarRolesResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarRolesResponse> listarRolesAsync(BibliotecaWA.BibliotecaServices.listarRolesRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/RolWS/insertarRolRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/RolWS/insertarRolResponse")]
@@ -2615,27 +2615,35 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRoles", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarRolesRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerRolPorId", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtenerRolPorIdRequest {
         
-        public listarRolesRequest() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idRol;
+        
+        public obtenerRolPorIdRequest() {
+        }
+        
+        public obtenerRolPorIdRequest(int idRol) {
+            this.idRol = idRol;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRolesResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarRolesResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerRolPorIdResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtenerRolPorIdResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.rol[] @return;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.rol @return;
         
-        public listarRolesResponse() {
+        public obtenerRolPorIdResponse() {
         }
         
-        public listarRolesResponse(BibliotecaWA.BibliotecaServices.rol[] @return) {
+        public obtenerRolPorIdResponse(BibliotecaWA.BibliotecaServices.rol @return) {
             this.@return = @return;
         }
     }
@@ -2679,35 +2687,27 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerRolPorId", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtenerRolPorIdRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRoles", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarRolesRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idRol;
-        
-        public obtenerRolPorIdRequest() {
-        }
-        
-        public obtenerRolPorIdRequest(int idRol) {
-            this.idRol = idRol;
+        public listarRolesRequest() {
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerRolPorIdResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtenerRolPorIdResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRolesResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarRolesResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.rol @return;
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.rol[] @return;
         
-        public obtenerRolPorIdResponse() {
+        public listarRolesResponse() {
         }
         
-        public obtenerRolPorIdResponse(BibliotecaWA.BibliotecaServices.rol @return) {
+        public listarRolesResponse(BibliotecaWA.BibliotecaServices.rol[] @return) {
             this.@return = @return;
         }
     }
@@ -2799,24 +2799,26 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.listarRolesResponse BibliotecaWA.BibliotecaServices.RolWS.listarRoles(BibliotecaWA.BibliotecaServices.listarRolesRequest request) {
-            return base.Channel.listarRoles(request);
+        BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse BibliotecaWA.BibliotecaServices.RolWS.obtenerRolPorId(BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest request) {
+            return base.Channel.obtenerRolPorId(request);
         }
         
-        public BibliotecaWA.BibliotecaServices.rol[] listarRoles() {
-            BibliotecaWA.BibliotecaServices.listarRolesRequest inValue = new BibliotecaWA.BibliotecaServices.listarRolesRequest();
-            BibliotecaWA.BibliotecaServices.listarRolesResponse retVal = ((BibliotecaWA.BibliotecaServices.RolWS)(this)).listarRoles(inValue);
+        public BibliotecaWA.BibliotecaServices.rol obtenerRolPorId(int idRol) {
+            BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest();
+            inValue.idRol = idRol;
+            BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse retVal = ((BibliotecaWA.BibliotecaServices.RolWS)(this)).obtenerRolPorId(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarRolesResponse> BibliotecaWA.BibliotecaServices.RolWS.listarRolesAsync(BibliotecaWA.BibliotecaServices.listarRolesRequest request) {
-            return base.Channel.listarRolesAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse> BibliotecaWA.BibliotecaServices.RolWS.obtenerRolPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest request) {
+            return base.Channel.obtenerRolPorIdAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarRolesResponse> listarRolesAsync() {
-            BibliotecaWA.BibliotecaServices.listarRolesRequest inValue = new BibliotecaWA.BibliotecaServices.listarRolesRequest();
-            return ((BibliotecaWA.BibliotecaServices.RolWS)(this)).listarRolesAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse> obtenerRolPorIdAsync(int idRol) {
+            BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest();
+            inValue.idRol = idRol;
+            return ((BibliotecaWA.BibliotecaServices.RolWS)(this)).obtenerRolPorIdAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2843,26 +2845,24 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse BibliotecaWA.BibliotecaServices.RolWS.obtenerRolPorId(BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest request) {
-            return base.Channel.obtenerRolPorId(request);
+        BibliotecaWA.BibliotecaServices.listarRolesResponse BibliotecaWA.BibliotecaServices.RolWS.listarRoles(BibliotecaWA.BibliotecaServices.listarRolesRequest request) {
+            return base.Channel.listarRoles(request);
         }
         
-        public BibliotecaWA.BibliotecaServices.rol obtenerRolPorId(int idRol) {
-            BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest();
-            inValue.idRol = idRol;
-            BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse retVal = ((BibliotecaWA.BibliotecaServices.RolWS)(this)).obtenerRolPorId(inValue);
+        public BibliotecaWA.BibliotecaServices.rol[] listarRoles() {
+            BibliotecaWA.BibliotecaServices.listarRolesRequest inValue = new BibliotecaWA.BibliotecaServices.listarRolesRequest();
+            BibliotecaWA.BibliotecaServices.listarRolesResponse retVal = ((BibliotecaWA.BibliotecaServices.RolWS)(this)).listarRoles(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse> BibliotecaWA.BibliotecaServices.RolWS.obtenerRolPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest request) {
-            return base.Channel.obtenerRolPorIdAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarRolesResponse> BibliotecaWA.BibliotecaServices.RolWS.listarRolesAsync(BibliotecaWA.BibliotecaServices.listarRolesRequest request) {
+            return base.Channel.listarRolesAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerRolPorIdResponse> obtenerRolPorIdAsync(int idRol) {
-            BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerRolPorIdRequest();
-            inValue.idRol = idRol;
-            return ((BibliotecaWA.BibliotecaServices.RolWS)(this)).obtenerRolPorIdAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarRolesResponse> listarRolesAsync() {
+            BibliotecaWA.BibliotecaServices.listarRolesRequest inValue = new BibliotecaWA.BibliotecaServices.listarRolesRequest();
+            return ((BibliotecaWA.BibliotecaServices.RolWS)(this)).listarRolesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2894,27 +2894,14 @@ namespace BibliotecaWA.BibliotecaServices {
     public interface EjemplarWS {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialResponse" +
-            "")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_material/Fault/E" +
-            "xception", Name="Exception")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodos/Fault/Exception", Name="Exception")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialResponse listar_disponibles_por_material(BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest request);
+        BibliotecaWA.BibliotecaServices.listarEjemplaresTodosResponse listarEjemplaresTodos(BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialResponse" +
-            "")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialResponse> listar_disponibles_por_materialAsync(BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplarRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplarResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplar/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.modificarEjemplarResponse modificarEjemplar(BibliotecaWA.BibliotecaServices.modificarEjemplarRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplarRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplarResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarEjemplarResponse> modificarEjemplarAsync(BibliotecaWA.BibliotecaServices.modificarEjemplarRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarEjemplaresTodosResponse> listarEjemplaresTodosAsync(BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/obtenerEjemplarPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/obtenerEjemplarPorIdResponse")]
@@ -2937,14 +2924,14 @@ namespace BibliotecaWA.BibliotecaServices {
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarEjemplarResponse> eliminarEjemplarAsync(BibliotecaWA.BibliotecaServices.eliminarEjemplarRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodos/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplarRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplarResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplar/Fault/Exception", Name="Exception")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.listarEjemplaresTodosResponse listarEjemplaresTodos(BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest request);
+        BibliotecaWA.BibliotecaServices.modificarEjemplarResponse modificarEjemplar(BibliotecaWA.BibliotecaServices.modificarEjemplarRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarEjemplaresTodosResponse> listarEjemplaresTodosAsync(BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplarRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplarResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarEjemplarResponse> modificarEjemplarAsync(BibliotecaWA.BibliotecaServices.modificarEjemplarRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarResponse")]
@@ -2954,76 +2941,45 @@ namespace BibliotecaWA.BibliotecaServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarResponse")]
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarEjemplarResponse> insertarEjemplarAsync(BibliotecaWA.BibliotecaServices.insertarEjemplarRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialResponse" +
+            "")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_material/Fault/E" +
+            "xception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialResponse listar_disponibles_por_material(BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialResponse" +
+            "")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialResponse> listar_disponibles_por_materialAsync(BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listar_disponibles_por_material", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listar_disponibles_por_materialRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEjemplaresTodos", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarEjemplaresTodosRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int _id_material;
-        
-        public listar_disponibles_por_materialRequest() {
-        }
-        
-        public listar_disponibles_por_materialRequest(int _id_material) {
-            this._id_material = _id_material;
+        public listarEjemplaresTodosRequest() {
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listar_disponibles_por_materialResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listar_disponibles_por_materialResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEjemplaresTodosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarEjemplaresTodosResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public BibliotecaWA.BibliotecaServices.ejemplar[] @return;
         
-        public listar_disponibles_por_materialResponse() {
+        public listarEjemplaresTodosResponse() {
         }
         
-        public listar_disponibles_por_materialResponse(BibliotecaWA.BibliotecaServices.ejemplar[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEjemplar", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class modificarEjemplarRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.ejemplar ejemplar;
-        
-        public modificarEjemplarRequest() {
-        }
-        
-        public modificarEjemplarRequest(BibliotecaWA.BibliotecaServices.ejemplar ejemplar) {
-            this.ejemplar = ejemplar;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEjemplarResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class modificarEjemplarResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public modificarEjemplarResponse() {
-        }
-        
-        public modificarEjemplarResponse(int @return) {
+        public listarEjemplaresTodosResponse(BibliotecaWA.BibliotecaServices.ejemplar[] @return) {
             this.@return = @return;
         }
     }
@@ -3103,27 +3059,35 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEjemplaresTodos", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarEjemplaresTodosRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEjemplar", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class modificarEjemplarRequest {
         
-        public listarEjemplaresTodosRequest() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.ejemplar ejemplar;
+        
+        public modificarEjemplarRequest() {
+        }
+        
+        public modificarEjemplarRequest(BibliotecaWA.BibliotecaServices.ejemplar ejemplar) {
+            this.ejemplar = ejemplar;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEjemplaresTodosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarEjemplaresTodosResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEjemplarResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class modificarEjemplarResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.ejemplar[] @return;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
         
-        public listarEjemplaresTodosResponse() {
+        public modificarEjemplarResponse() {
         }
         
-        public listarEjemplaresTodosResponse(BibliotecaWA.BibliotecaServices.ejemplar[] @return) {
+        public modificarEjemplarResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -3164,6 +3128,42 @@ namespace BibliotecaWA.BibliotecaServices {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listar_disponibles_por_material", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listar_disponibles_por_materialRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int _id_material;
+        
+        public listar_disponibles_por_materialRequest() {
+        }
+        
+        public listar_disponibles_por_materialRequest(int _id_material) {
+            this._id_material = _id_material;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listar_disponibles_por_materialResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listar_disponibles_por_materialResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.ejemplar[] @return;
+        
+        public listar_disponibles_por_materialResponse() {
+        }
+        
+        public listar_disponibles_por_materialResponse(BibliotecaWA.BibliotecaServices.ejemplar[] @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface EjemplarWSChannel : BibliotecaWA.BibliotecaServices.EjemplarWS, System.ServiceModel.IClientChannel {
     }
@@ -3192,49 +3192,24 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialResponse BibliotecaWA.BibliotecaServices.EjemplarWS.listar_disponibles_por_material(BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest request) {
-            return base.Channel.listar_disponibles_por_material(request);
+        BibliotecaWA.BibliotecaServices.listarEjemplaresTodosResponse BibliotecaWA.BibliotecaServices.EjemplarWS.listarEjemplaresTodos(BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest request) {
+            return base.Channel.listarEjemplaresTodos(request);
         }
         
-        public BibliotecaWA.BibliotecaServices.ejemplar[] listar_disponibles_por_material(int _id_material) {
-            BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest inValue = new BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest();
-            inValue._id_material = _id_material;
-            BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialResponse retVal = ((BibliotecaWA.BibliotecaServices.EjemplarWS)(this)).listar_disponibles_por_material(inValue);
+        public BibliotecaWA.BibliotecaServices.ejemplar[] listarEjemplaresTodos() {
+            BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest();
+            BibliotecaWA.BibliotecaServices.listarEjemplaresTodosResponse retVal = ((BibliotecaWA.BibliotecaServices.EjemplarWS)(this)).listarEjemplaresTodos(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialResponse> BibliotecaWA.BibliotecaServices.EjemplarWS.listar_disponibles_por_materialAsync(BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest request) {
-            return base.Channel.listar_disponibles_por_materialAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarEjemplaresTodosResponse> BibliotecaWA.BibliotecaServices.EjemplarWS.listarEjemplaresTodosAsync(BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest request) {
+            return base.Channel.listarEjemplaresTodosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialResponse> listar_disponibles_por_materialAsync(int _id_material) {
-            BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest inValue = new BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest();
-            inValue._id_material = _id_material;
-            return ((BibliotecaWA.BibliotecaServices.EjemplarWS)(this)).listar_disponibles_por_materialAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.modificarEjemplarResponse BibliotecaWA.BibliotecaServices.EjemplarWS.modificarEjemplar(BibliotecaWA.BibliotecaServices.modificarEjemplarRequest request) {
-            return base.Channel.modificarEjemplar(request);
-        }
-        
-        public int modificarEjemplar(BibliotecaWA.BibliotecaServices.ejemplar ejemplar) {
-            BibliotecaWA.BibliotecaServices.modificarEjemplarRequest inValue = new BibliotecaWA.BibliotecaServices.modificarEjemplarRequest();
-            inValue.ejemplar = ejemplar;
-            BibliotecaWA.BibliotecaServices.modificarEjemplarResponse retVal = ((BibliotecaWA.BibliotecaServices.EjemplarWS)(this)).modificarEjemplar(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarEjemplarResponse> BibliotecaWA.BibliotecaServices.EjemplarWS.modificarEjemplarAsync(BibliotecaWA.BibliotecaServices.modificarEjemplarRequest request) {
-            return base.Channel.modificarEjemplarAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarEjemplarResponse> modificarEjemplarAsync(BibliotecaWA.BibliotecaServices.ejemplar ejemplar) {
-            BibliotecaWA.BibliotecaServices.modificarEjemplarRequest inValue = new BibliotecaWA.BibliotecaServices.modificarEjemplarRequest();
-            inValue.ejemplar = ejemplar;
-            return ((BibliotecaWA.BibliotecaServices.EjemplarWS)(this)).modificarEjemplarAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarEjemplaresTodosResponse> listarEjemplaresTodosAsync() {
+            BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest();
+            return ((BibliotecaWA.BibliotecaServices.EjemplarWS)(this)).listarEjemplaresTodosAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -3284,24 +3259,26 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.listarEjemplaresTodosResponse BibliotecaWA.BibliotecaServices.EjemplarWS.listarEjemplaresTodos(BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest request) {
-            return base.Channel.listarEjemplaresTodos(request);
+        BibliotecaWA.BibliotecaServices.modificarEjemplarResponse BibliotecaWA.BibliotecaServices.EjemplarWS.modificarEjemplar(BibliotecaWA.BibliotecaServices.modificarEjemplarRequest request) {
+            return base.Channel.modificarEjemplar(request);
         }
         
-        public BibliotecaWA.BibliotecaServices.ejemplar[] listarEjemplaresTodos() {
-            BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest();
-            BibliotecaWA.BibliotecaServices.listarEjemplaresTodosResponse retVal = ((BibliotecaWA.BibliotecaServices.EjemplarWS)(this)).listarEjemplaresTodos(inValue);
+        public int modificarEjemplar(BibliotecaWA.BibliotecaServices.ejemplar ejemplar) {
+            BibliotecaWA.BibliotecaServices.modificarEjemplarRequest inValue = new BibliotecaWA.BibliotecaServices.modificarEjemplarRequest();
+            inValue.ejemplar = ejemplar;
+            BibliotecaWA.BibliotecaServices.modificarEjemplarResponse retVal = ((BibliotecaWA.BibliotecaServices.EjemplarWS)(this)).modificarEjemplar(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarEjemplaresTodosResponse> BibliotecaWA.BibliotecaServices.EjemplarWS.listarEjemplaresTodosAsync(BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest request) {
-            return base.Channel.listarEjemplaresTodosAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarEjemplarResponse> BibliotecaWA.BibliotecaServices.EjemplarWS.modificarEjemplarAsync(BibliotecaWA.BibliotecaServices.modificarEjemplarRequest request) {
+            return base.Channel.modificarEjemplarAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarEjemplaresTodosResponse> listarEjemplaresTodosAsync() {
-            BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarEjemplaresTodosRequest();
-            return ((BibliotecaWA.BibliotecaServices.EjemplarWS)(this)).listarEjemplaresTodosAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarEjemplarResponse> modificarEjemplarAsync(BibliotecaWA.BibliotecaServices.ejemplar ejemplar) {
+            BibliotecaWA.BibliotecaServices.modificarEjemplarRequest inValue = new BibliotecaWA.BibliotecaServices.modificarEjemplarRequest();
+            inValue.ejemplar = ejemplar;
+            return ((BibliotecaWA.BibliotecaServices.EjemplarWS)(this)).modificarEjemplarAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -3326,41 +3303,34 @@ namespace BibliotecaWA.BibliotecaServices {
             inValue.ejemplar = ejemplar;
             return ((BibliotecaWA.BibliotecaServices.EjemplarWS)(this)).insertarEjemplarAsync(inValue);
         }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialResponse BibliotecaWA.BibliotecaServices.EjemplarWS.listar_disponibles_por_material(BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest request) {
+            return base.Channel.listar_disponibles_por_material(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.ejemplar[] listar_disponibles_por_material(int _id_material) {
+            BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest inValue = new BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest();
+            inValue._id_material = _id_material;
+            BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialResponse retVal = ((BibliotecaWA.BibliotecaServices.EjemplarWS)(this)).listar_disponibles_por_material(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialResponse> BibliotecaWA.BibliotecaServices.EjemplarWS.listar_disponibles_por_materialAsync(BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest request) {
+            return base.Channel.listar_disponibles_por_materialAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialResponse> listar_disponibles_por_materialAsync(int _id_material) {
+            BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest inValue = new BibliotecaWA.BibliotecaServices.listar_disponibles_por_materialRequest();
+            inValue._id_material = _id_material;
+            return ((BibliotecaWA.BibliotecaServices.EjemplarWS)(this)).listar_disponibles_por_materialAsync(inValue);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="pe.edu.pucp.utilsarmy.services", ConfigurationName="BibliotecaServices.SancionWS")]
     public interface SancionWS {
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/modificar_sancionRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/modificar_sancionResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/SancionWS/modificar_sancion/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.modificar_sancionResponse modificar_sancion(BibliotecaWA.BibliotecaServices.modificar_sancionRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/modificar_sancionRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/modificar_sancionResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificar_sancionResponse> modificar_sancionAsync(BibliotecaWA.BibliotecaServices.modificar_sancionRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/obtener_por_idRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/obtener_por_idResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/SancionWS/obtener_por_id/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.obtener_por_idResponse obtener_por_id(BibliotecaWA.BibliotecaServices.obtener_por_idRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/obtener_por_idRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/obtener_por_idResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_por_idResponse> obtener_por_idAsync(BibliotecaWA.BibliotecaServices.obtener_por_idRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSanciones/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.BusquedaSancionesResponse BusquedaSanciones(BibliotecaWA.BibliotecaServices.BusquedaSancionesRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.BusquedaSancionesResponse> BusquedaSancionesAsync(BibliotecaWA.BibliotecaServices.BusquedaSancionesRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesPorUsuarioRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesPorUsuarioResponse")]
@@ -3374,14 +3344,24 @@ namespace BibliotecaWA.BibliotecaServices {
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioResponse> listarSancionesPorUsuarioAsync(BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSanciones/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/modificar_sancionRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/modificar_sancionResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/SancionWS/modificar_sancion/Fault/Exception", Name="Exception")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.listarSancionesResponse listarSanciones(BibliotecaWA.BibliotecaServices.listarSancionesRequest request);
+        BibliotecaWA.BibliotecaServices.modificar_sancionResponse modificar_sancion(BibliotecaWA.BibliotecaServices.modificar_sancionRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarSancionesResponse> listarSancionesAsync(BibliotecaWA.BibliotecaServices.listarSancionesRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/modificar_sancionRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/modificar_sancionResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificar_sancionResponse> modificar_sancionAsync(BibliotecaWA.BibliotecaServices.modificar_sancionRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSanciones/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.BusquedaSancionesResponse BusquedaSanciones(BibliotecaWA.BibliotecaServices.BusquedaSancionesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.BusquedaSancionesResponse> BusquedaSancionesAsync(BibliotecaWA.BibliotecaServices.BusquedaSancionesRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/finalizar_sancionRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/finalizar_sancionResponse")]
@@ -3392,6 +3372,26 @@ namespace BibliotecaWA.BibliotecaServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/finalizar_sancionRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/finalizar_sancionResponse")]
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.finalizar_sancionResponse> finalizar_sancionAsync(BibliotecaWA.BibliotecaServices.finalizar_sancionRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSanciones/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.listarSancionesResponse listarSanciones(BibliotecaWA.BibliotecaServices.listarSancionesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarSancionesResponse> listarSancionesAsync(BibliotecaWA.BibliotecaServices.listarSancionesRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/obtener_por_idRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/obtener_por_idResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/SancionWS/obtener_por_id/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.obtener_por_idResponse obtener_por_id(BibliotecaWA.BibliotecaServices.obtener_por_idRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/SancionWS/obtener_por_idRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/SancionWS/obtener_por_idResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_por_idResponse> obtener_por_idAsync(BibliotecaWA.BibliotecaServices.obtener_por_idRequest request);
     }
     
     /// <remarks/>
@@ -3986,6 +3986,42 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarSancionesPorUsuario", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarSancionesPorUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idUsuario;
+        
+        public listarSancionesPorUsuarioRequest() {
+        }
+        
+        public listarSancionesPorUsuarioRequest(int idUsuario) {
+            this.idUsuario = idUsuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarSancionesPorUsuarioResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarSancionesPorUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.sancion[] @return;
+        
+        public listarSancionesPorUsuarioResponse() {
+        }
+        
+        public listarSancionesPorUsuarioResponse(BibliotecaWA.BibliotecaServices.sancion[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="modificar_sancion", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
     public partial class modificar_sancionRequest {
         
@@ -4020,42 +4056,6 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         public modificar_sancionResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtener_por_id", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtener_por_idRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idSancion;
-        
-        public obtener_por_idRequest() {
-        }
-        
-        public obtener_por_idRequest(int idSancion) {
-            this.idSancion = idSancion;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtener_por_idResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtener_por_idResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.sancion @return;
-        
-        public obtener_por_idResponse() {
-        }
-        
-        public obtener_por_idResponse(BibliotecaWA.BibliotecaServices.sancion @return) {
             this.@return = @return;
         }
     }
@@ -4099,35 +4099,35 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarSancionesPorUsuario", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarSancionesPorUsuarioRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="finalizar_sancion", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class finalizar_sancionRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idUsuario;
+        public int idSancion;
         
-        public listarSancionesPorUsuarioRequest() {
+        public finalizar_sancionRequest() {
         }
         
-        public listarSancionesPorUsuarioRequest(int idUsuario) {
-            this.idUsuario = idUsuario;
+        public finalizar_sancionRequest(int idSancion) {
+            this.idSancion = idSancion;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarSancionesPorUsuarioResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarSancionesPorUsuarioResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="finalizar_sancionResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class finalizar_sancionResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.sancion[] @return;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
         
-        public listarSancionesPorUsuarioResponse() {
+        public finalizar_sancionResponse() {
         }
         
-        public listarSancionesPorUsuarioResponse(BibliotecaWA.BibliotecaServices.sancion[] @return) {
+        public finalizar_sancionResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -4163,17 +4163,17 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="finalizar_sancion", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class finalizar_sancionRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtener_por_id", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtener_por_idRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int idSancion;
         
-        public finalizar_sancionRequest() {
+        public obtener_por_idRequest() {
         }
         
-        public finalizar_sancionRequest(int idSancion) {
+        public obtener_por_idRequest(int idSancion) {
             this.idSancion = idSancion;
         }
     }
@@ -4181,17 +4181,17 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="finalizar_sancionResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class finalizar_sancionResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtener_por_idResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtener_por_idResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
+        public BibliotecaWA.BibliotecaServices.sancion @return;
         
-        public finalizar_sancionResponse() {
+        public obtener_por_idResponse() {
         }
         
-        public finalizar_sancionResponse(int @return) {
+        public obtener_por_idResponse(BibliotecaWA.BibliotecaServices.sancion @return) {
             this.@return = @return;
         }
     }
@@ -4224,6 +4224,29 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioResponse BibliotecaWA.BibliotecaServices.SancionWS.listarSancionesPorUsuario(BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioRequest request) {
+            return base.Channel.listarSancionesPorUsuario(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.sancion[] listarSancionesPorUsuario(int idUsuario) {
+            BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioRequest();
+            inValue.idUsuario = idUsuario;
+            BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioResponse retVal = ((BibliotecaWA.BibliotecaServices.SancionWS)(this)).listarSancionesPorUsuario(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioResponse> BibliotecaWA.BibliotecaServices.SancionWS.listarSancionesPorUsuarioAsync(BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioRequest request) {
+            return base.Channel.listarSancionesPorUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioResponse> listarSancionesPorUsuarioAsync(int idUsuario) {
+            BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioRequest();
+            inValue.idUsuario = idUsuario;
+            return ((BibliotecaWA.BibliotecaServices.SancionWS)(this)).listarSancionesPorUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         BibliotecaWA.BibliotecaServices.modificar_sancionResponse BibliotecaWA.BibliotecaServices.SancionWS.modificar_sancion(BibliotecaWA.BibliotecaServices.modificar_sancionRequest request) {
             return base.Channel.modificar_sancion(request);
         }
@@ -4246,29 +4269,6 @@ namespace BibliotecaWA.BibliotecaServices {
             inValue.idSancion = idSancion;
             inValue.tipo = tipo;
             return ((BibliotecaWA.BibliotecaServices.SancionWS)(this)).modificar_sancionAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.obtener_por_idResponse BibliotecaWA.BibliotecaServices.SancionWS.obtener_por_id(BibliotecaWA.BibliotecaServices.obtener_por_idRequest request) {
-            return base.Channel.obtener_por_id(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.sancion obtener_por_id(int idSancion) {
-            BibliotecaWA.BibliotecaServices.obtener_por_idRequest inValue = new BibliotecaWA.BibliotecaServices.obtener_por_idRequest();
-            inValue.idSancion = idSancion;
-            BibliotecaWA.BibliotecaServices.obtener_por_idResponse retVal = ((BibliotecaWA.BibliotecaServices.SancionWS)(this)).obtener_por_id(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_por_idResponse> BibliotecaWA.BibliotecaServices.SancionWS.obtener_por_idAsync(BibliotecaWA.BibliotecaServices.obtener_por_idRequest request) {
-            return base.Channel.obtener_por_idAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_por_idResponse> obtener_por_idAsync(int idSancion) {
-            BibliotecaWA.BibliotecaServices.obtener_por_idRequest inValue = new BibliotecaWA.BibliotecaServices.obtener_por_idRequest();
-            inValue.idSancion = idSancion;
-            return ((BibliotecaWA.BibliotecaServices.SancionWS)(this)).obtener_por_idAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -4295,26 +4295,26 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioResponse BibliotecaWA.BibliotecaServices.SancionWS.listarSancionesPorUsuario(BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioRequest request) {
-            return base.Channel.listarSancionesPorUsuario(request);
+        BibliotecaWA.BibliotecaServices.finalizar_sancionResponse BibliotecaWA.BibliotecaServices.SancionWS.finalizar_sancion(BibliotecaWA.BibliotecaServices.finalizar_sancionRequest request) {
+            return base.Channel.finalizar_sancion(request);
         }
         
-        public BibliotecaWA.BibliotecaServices.sancion[] listarSancionesPorUsuario(int idUsuario) {
-            BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioRequest();
-            inValue.idUsuario = idUsuario;
-            BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioResponse retVal = ((BibliotecaWA.BibliotecaServices.SancionWS)(this)).listarSancionesPorUsuario(inValue);
+        public int finalizar_sancion(int idSancion) {
+            BibliotecaWA.BibliotecaServices.finalizar_sancionRequest inValue = new BibliotecaWA.BibliotecaServices.finalizar_sancionRequest();
+            inValue.idSancion = idSancion;
+            BibliotecaWA.BibliotecaServices.finalizar_sancionResponse retVal = ((BibliotecaWA.BibliotecaServices.SancionWS)(this)).finalizar_sancion(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioResponse> BibliotecaWA.BibliotecaServices.SancionWS.listarSancionesPorUsuarioAsync(BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioRequest request) {
-            return base.Channel.listarSancionesPorUsuarioAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.finalizar_sancionResponse> BibliotecaWA.BibliotecaServices.SancionWS.finalizar_sancionAsync(BibliotecaWA.BibliotecaServices.finalizar_sancionRequest request) {
+            return base.Channel.finalizar_sancionAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioResponse> listarSancionesPorUsuarioAsync(int idUsuario) {
-            BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioRequest();
-            inValue.idUsuario = idUsuario;
-            return ((BibliotecaWA.BibliotecaServices.SancionWS)(this)).listarSancionesPorUsuarioAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.finalizar_sancionResponse> finalizar_sancionAsync(int idSancion) {
+            BibliotecaWA.BibliotecaServices.finalizar_sancionRequest inValue = new BibliotecaWA.BibliotecaServices.finalizar_sancionRequest();
+            inValue.idSancion = idSancion;
+            return ((BibliotecaWA.BibliotecaServices.SancionWS)(this)).finalizar_sancionAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -4339,26 +4339,26 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.finalizar_sancionResponse BibliotecaWA.BibliotecaServices.SancionWS.finalizar_sancion(BibliotecaWA.BibliotecaServices.finalizar_sancionRequest request) {
-            return base.Channel.finalizar_sancion(request);
+        BibliotecaWA.BibliotecaServices.obtener_por_idResponse BibliotecaWA.BibliotecaServices.SancionWS.obtener_por_id(BibliotecaWA.BibliotecaServices.obtener_por_idRequest request) {
+            return base.Channel.obtener_por_id(request);
         }
         
-        public int finalizar_sancion(int idSancion) {
-            BibliotecaWA.BibliotecaServices.finalizar_sancionRequest inValue = new BibliotecaWA.BibliotecaServices.finalizar_sancionRequest();
+        public BibliotecaWA.BibliotecaServices.sancion obtener_por_id(int idSancion) {
+            BibliotecaWA.BibliotecaServices.obtener_por_idRequest inValue = new BibliotecaWA.BibliotecaServices.obtener_por_idRequest();
             inValue.idSancion = idSancion;
-            BibliotecaWA.BibliotecaServices.finalizar_sancionResponse retVal = ((BibliotecaWA.BibliotecaServices.SancionWS)(this)).finalizar_sancion(inValue);
+            BibliotecaWA.BibliotecaServices.obtener_por_idResponse retVal = ((BibliotecaWA.BibliotecaServices.SancionWS)(this)).obtener_por_id(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.finalizar_sancionResponse> BibliotecaWA.BibliotecaServices.SancionWS.finalizar_sancionAsync(BibliotecaWA.BibliotecaServices.finalizar_sancionRequest request) {
-            return base.Channel.finalizar_sancionAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_por_idResponse> BibliotecaWA.BibliotecaServices.SancionWS.obtener_por_idAsync(BibliotecaWA.BibliotecaServices.obtener_por_idRequest request) {
+            return base.Channel.obtener_por_idAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.finalizar_sancionResponse> finalizar_sancionAsync(int idSancion) {
-            BibliotecaWA.BibliotecaServices.finalizar_sancionRequest inValue = new BibliotecaWA.BibliotecaServices.finalizar_sancionRequest();
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_por_idResponse> obtener_por_idAsync(int idSancion) {
+            BibliotecaWA.BibliotecaServices.obtener_por_idRequest inValue = new BibliotecaWA.BibliotecaServices.obtener_por_idRequest();
             inValue.idSancion = idSancion;
-            return ((BibliotecaWA.BibliotecaServices.SancionWS)(this)).finalizar_sancionAsync(inValue);
+            return ((BibliotecaWA.BibliotecaServices.SancionWS)(this)).obtener_por_idAsync(inValue);
         }
     }
     
@@ -4374,6 +4374,78 @@ namespace BibliotecaWA.BibliotecaServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/obtenerPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/obtenerPorIdResponse")]
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerPorIdResponse> obtenerPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerPorIdRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarTodosResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.ListarTodosResponse ListarTodos(BibliotecaWA.BibliotecaServices.ListarTodosRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarTodosResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ListarTodosResponse> ListarTodosAsync(BibliotecaWA.BibliotecaServices.ListarTodosRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEditorialesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEditorialesResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.buscarEditorialesResponse buscarEditoriales(BibliotecaWA.BibliotecaServices.buscarEditorialesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEditorialesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEditorialesResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarEditorialesResponse> buscarEditorialesAsync(BibliotecaWA.BibliotecaServices.buscarEditorialesRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.BusquedaResponse Busqueda(BibliotecaWA.BibliotecaServices.BusquedaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.BusquedaResponse> BusquedaAsync(BibliotecaWA.BibliotecaServices.BusquedaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ContarMaterialesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ContarMaterialesResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.ContarMaterialesResponse ContarMateriales(BibliotecaWA.BibliotecaServices.ContarMaterialesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ContarMaterialesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ContarMaterialesResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ContarMaterialesResponse> ContarMaterialesAsync(BibliotecaWA.BibliotecaServices.ContarMaterialesRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarContribuyentesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarContribuyentesResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.buscarContribuyentesResponse buscarContribuyentes(BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarContribuyentesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarContribuyentesResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarContribuyentesResponse> buscarContribuyentesAsync(BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse ListarMaterialesNormal(BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse> ListarMaterialesNormalAsync(BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.buscarEjemplaresResponse buscarEjemplares(BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarEjemplaresResponse> buscarEjemplaresAsync(BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ObtenerSoloMaterialRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ObtenerSoloMaterialResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse ObtenerSoloMaterial(BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ObtenerSoloMaterialRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ObtenerSoloMaterialResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse> ObtenerSoloMaterialAsync(BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/obtenerEjemplaresDisponiblesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/obtenerEjemplaresDisponiblesResponse")]
@@ -4392,78 +4464,6 @@ namespace BibliotecaWA.BibliotecaServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaAvanzadaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaAvanzadaResponse")]
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.BusquedaAvanzadaResponse> BusquedaAvanzadaAsync(BibliotecaWA.BibliotecaServices.BusquedaAvanzadaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarTodosResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.ListarTodosResponse ListarTodos(BibliotecaWA.BibliotecaServices.ListarTodosRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarTodosResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ListarTodosResponse> ListarTodosAsync(BibliotecaWA.BibliotecaServices.ListarTodosRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarContribuyentesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarContribuyentesResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.buscarContribuyentesResponse buscarContribuyentes(BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarContribuyentesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarContribuyentesResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarContribuyentesResponse> buscarContribuyentesAsync(BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.buscarEjemplaresResponse buscarEjemplares(BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarEjemplaresResponse> buscarEjemplaresAsync(BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse ListarMaterialesNormal(BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse> ListarMaterialesNormalAsync(BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEditorialesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEditorialesResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.buscarEditorialesResponse buscarEditoriales(BibliotecaWA.BibliotecaServices.buscarEditorialesRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEditorialesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEditorialesResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarEditorialesResponse> buscarEditorialesAsync(BibliotecaWA.BibliotecaServices.buscarEditorialesRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ContarMaterialesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ContarMaterialesResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.ContarMaterialesResponse ContarMateriales(BibliotecaWA.BibliotecaServices.ContarMaterialesRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ContarMaterialesRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ContarMaterialesResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ContarMaterialesResponse> ContarMaterialesAsync(BibliotecaWA.BibliotecaServices.ContarMaterialesRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ObtenerSoloMaterialRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ObtenerSoloMaterialResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse ObtenerSoloMaterial(BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ObtenerSoloMaterialRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/ObtenerSoloMaterialResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse> ObtenerSoloMaterialAsync(BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.BusquedaResponse Busqueda(BibliotecaWA.BibliotecaServices.BusquedaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.BusquedaResponse> BusquedaAsync(BibliotecaWA.BibliotecaServices.BusquedaRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -4498,6 +4498,278 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         public obtenerPorIdResponse(BibliotecaWA.BibliotecaServices.materialBibliografico @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ListarTodos", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class ListarTodosRequest {
+        
+        public ListarTodosRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ListarTodosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class ListarTodosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.materialBibliografico[] @return;
+        
+        public ListarTodosResponse() {
+        }
+        
+        public ListarTodosResponse(BibliotecaWA.BibliotecaServices.materialBibliografico[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEditoriales", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class buscarEditorialesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idMaterial;
+        
+        public buscarEditorialesRequest() {
+        }
+        
+        public buscarEditorialesRequest(int idMaterial) {
+            this.idMaterial = idMaterial;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEditorialesResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class buscarEditorialesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.editorial[] @return;
+        
+        public buscarEditorialesResponse() {
+        }
+        
+        public buscarEditorialesResponse(BibliotecaWA.BibliotecaServices.editorial[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Busqueda", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class BusquedaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string _titulo_autor;
+        
+        public BusquedaRequest() {
+        }
+        
+        public BusquedaRequest(string _titulo_autor) {
+            this._titulo_autor = _titulo_autor;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="BusquedaResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class BusquedaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.materialBibliografico[] @return;
+        
+        public BusquedaResponse() {
+        }
+        
+        public BusquedaResponse(BibliotecaWA.BibliotecaServices.materialBibliografico[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ContarMateriales", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class ContarMaterialesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idmat;
+        
+        public ContarMaterialesRequest() {
+        }
+        
+        public ContarMaterialesRequest(int idmat) {
+            this.idmat = idmat;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ContarMaterialesResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class ContarMaterialesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public ContarMaterialesResponse() {
+        }
+        
+        public ContarMaterialesResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarContribuyentes", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class buscarContribuyentesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idMaterial;
+        
+        public buscarContribuyentesRequest() {
+        }
+        
+        public buscarContribuyentesRequest(int idMaterial) {
+            this.idMaterial = idMaterial;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarContribuyentesResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class buscarContribuyentesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.contribuyente[] @return;
+        
+        public buscarContribuyentesResponse() {
+        }
+        
+        public buscarContribuyentesResponse(BibliotecaWA.BibliotecaServices.contribuyente[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ListarMaterialesNormal", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class ListarMaterialesNormalRequest {
+        
+        public ListarMaterialesNormalRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ListarMaterialesNormalResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class ListarMaterialesNormalResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.materialBibliografico[] @return;
+        
+        public ListarMaterialesNormalResponse() {
+        }
+        
+        public ListarMaterialesNormalResponse(BibliotecaWA.BibliotecaServices.materialBibliografico[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEjemplares", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class buscarEjemplaresRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idMaterial;
+        
+        public buscarEjemplaresRequest() {
+        }
+        
+        public buscarEjemplaresRequest(int idMaterial) {
+            this.idMaterial = idMaterial;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEjemplaresResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class buscarEjemplaresResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.ejemplar[] @return;
+        
+        public buscarEjemplaresResponse() {
+        }
+        
+        public buscarEjemplaresResponse(BibliotecaWA.BibliotecaServices.ejemplar[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ObtenerSoloMaterial", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class ObtenerSoloMaterialRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idMaterial;
+        
+        public ObtenerSoloMaterialRequest() {
+        }
+        
+        public ObtenerSoloMaterialRequest(int idMaterial) {
+            this.idMaterial = idMaterial;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ObtenerSoloMaterialResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class ObtenerSoloMaterialResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.materialBibliografico @return;
+        
+        public ObtenerSoloMaterialResponse() {
+        }
+        
+        public ObtenerSoloMaterialResponse(BibliotecaWA.BibliotecaServices.materialBibliografico @return) {
             this.@return = @return;
         }
     }
@@ -4619,278 +4891,6 @@ namespace BibliotecaWA.BibliotecaServices {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ListarTodos", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class ListarTodosRequest {
-        
-        public ListarTodosRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ListarTodosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class ListarTodosResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.materialBibliografico[] @return;
-        
-        public ListarTodosResponse() {
-        }
-        
-        public ListarTodosResponse(BibliotecaWA.BibliotecaServices.materialBibliografico[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarContribuyentes", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class buscarContribuyentesRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idMaterial;
-        
-        public buscarContribuyentesRequest() {
-        }
-        
-        public buscarContribuyentesRequest(int idMaterial) {
-            this.idMaterial = idMaterial;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarContribuyentesResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class buscarContribuyentesResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.contribuyente[] @return;
-        
-        public buscarContribuyentesResponse() {
-        }
-        
-        public buscarContribuyentesResponse(BibliotecaWA.BibliotecaServices.contribuyente[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEjemplares", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class buscarEjemplaresRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idMaterial;
-        
-        public buscarEjemplaresRequest() {
-        }
-        
-        public buscarEjemplaresRequest(int idMaterial) {
-            this.idMaterial = idMaterial;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEjemplaresResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class buscarEjemplaresResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.ejemplar[] @return;
-        
-        public buscarEjemplaresResponse() {
-        }
-        
-        public buscarEjemplaresResponse(BibliotecaWA.BibliotecaServices.ejemplar[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ListarMaterialesNormal", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class ListarMaterialesNormalRequest {
-        
-        public ListarMaterialesNormalRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ListarMaterialesNormalResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class ListarMaterialesNormalResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.materialBibliografico[] @return;
-        
-        public ListarMaterialesNormalResponse() {
-        }
-        
-        public ListarMaterialesNormalResponse(BibliotecaWA.BibliotecaServices.materialBibliografico[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEditoriales", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class buscarEditorialesRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idMaterial;
-        
-        public buscarEditorialesRequest() {
-        }
-        
-        public buscarEditorialesRequest(int idMaterial) {
-            this.idMaterial = idMaterial;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEditorialesResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class buscarEditorialesResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.editorial[] @return;
-        
-        public buscarEditorialesResponse() {
-        }
-        
-        public buscarEditorialesResponse(BibliotecaWA.BibliotecaServices.editorial[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ContarMateriales", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class ContarMaterialesRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idmat;
-        
-        public ContarMaterialesRequest() {
-        }
-        
-        public ContarMaterialesRequest(int idmat) {
-            this.idmat = idmat;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ContarMaterialesResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class ContarMaterialesResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public ContarMaterialesResponse() {
-        }
-        
-        public ContarMaterialesResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ObtenerSoloMaterial", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class ObtenerSoloMaterialRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idMaterial;
-        
-        public ObtenerSoloMaterialRequest() {
-        }
-        
-        public ObtenerSoloMaterialRequest(int idMaterial) {
-            this.idMaterial = idMaterial;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ObtenerSoloMaterialResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class ObtenerSoloMaterialResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.materialBibliografico @return;
-        
-        public ObtenerSoloMaterialResponse() {
-        }
-        
-        public ObtenerSoloMaterialResponse(BibliotecaWA.BibliotecaServices.materialBibliografico @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="Busqueda", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class BusquedaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string _titulo_autor;
-        
-        public BusquedaRequest() {
-        }
-        
-        public BusquedaRequest(string _titulo_autor) {
-            this._titulo_autor = _titulo_autor;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="BusquedaResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class BusquedaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.materialBibliografico[] @return;
-        
-        public BusquedaResponse() {
-        }
-        
-        public BusquedaResponse(BibliotecaWA.BibliotecaServices.materialBibliografico[] @return) {
-            this.@return = @return;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface MaterialWSChannel : BibliotecaWA.BibliotecaServices.MaterialWS, System.ServiceModel.IClientChannel {
     }
@@ -4939,6 +4939,186 @@ namespace BibliotecaWA.BibliotecaServices {
             BibliotecaWA.BibliotecaServices.obtenerPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerPorIdRequest();
             inValue.id = id;
             return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).obtenerPorIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.ListarTodosResponse BibliotecaWA.BibliotecaServices.MaterialWS.ListarTodos(BibliotecaWA.BibliotecaServices.ListarTodosRequest request) {
+            return base.Channel.ListarTodos(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.materialBibliografico[] ListarTodos() {
+            BibliotecaWA.BibliotecaServices.ListarTodosRequest inValue = new BibliotecaWA.BibliotecaServices.ListarTodosRequest();
+            BibliotecaWA.BibliotecaServices.ListarTodosResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ListarTodos(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ListarTodosResponse> BibliotecaWA.BibliotecaServices.MaterialWS.ListarTodosAsync(BibliotecaWA.BibliotecaServices.ListarTodosRequest request) {
+            return base.Channel.ListarTodosAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ListarTodosResponse> ListarTodosAsync() {
+            BibliotecaWA.BibliotecaServices.ListarTodosRequest inValue = new BibliotecaWA.BibliotecaServices.ListarTodosRequest();
+            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ListarTodosAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.buscarEditorialesResponse BibliotecaWA.BibliotecaServices.MaterialWS.buscarEditoriales(BibliotecaWA.BibliotecaServices.buscarEditorialesRequest request) {
+            return base.Channel.buscarEditoriales(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.editorial[] buscarEditoriales(int idMaterial) {
+            BibliotecaWA.BibliotecaServices.buscarEditorialesRequest inValue = new BibliotecaWA.BibliotecaServices.buscarEditorialesRequest();
+            inValue.idMaterial = idMaterial;
+            BibliotecaWA.BibliotecaServices.buscarEditorialesResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).buscarEditoriales(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarEditorialesResponse> BibliotecaWA.BibliotecaServices.MaterialWS.buscarEditorialesAsync(BibliotecaWA.BibliotecaServices.buscarEditorialesRequest request) {
+            return base.Channel.buscarEditorialesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarEditorialesResponse> buscarEditorialesAsync(int idMaterial) {
+            BibliotecaWA.BibliotecaServices.buscarEditorialesRequest inValue = new BibliotecaWA.BibliotecaServices.buscarEditorialesRequest();
+            inValue.idMaterial = idMaterial;
+            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).buscarEditorialesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.BusquedaResponse BibliotecaWA.BibliotecaServices.MaterialWS.Busqueda(BibliotecaWA.BibliotecaServices.BusquedaRequest request) {
+            return base.Channel.Busqueda(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.materialBibliografico[] Busqueda(string _titulo_autor) {
+            BibliotecaWA.BibliotecaServices.BusquedaRequest inValue = new BibliotecaWA.BibliotecaServices.BusquedaRequest();
+            inValue._titulo_autor = _titulo_autor;
+            BibliotecaWA.BibliotecaServices.BusquedaResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).Busqueda(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.BusquedaResponse> BibliotecaWA.BibliotecaServices.MaterialWS.BusquedaAsync(BibliotecaWA.BibliotecaServices.BusquedaRequest request) {
+            return base.Channel.BusquedaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.BusquedaResponse> BusquedaAsync(string _titulo_autor) {
+            BibliotecaWA.BibliotecaServices.BusquedaRequest inValue = new BibliotecaWA.BibliotecaServices.BusquedaRequest();
+            inValue._titulo_autor = _titulo_autor;
+            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).BusquedaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.ContarMaterialesResponse BibliotecaWA.BibliotecaServices.MaterialWS.ContarMateriales(BibliotecaWA.BibliotecaServices.ContarMaterialesRequest request) {
+            return base.Channel.ContarMateriales(request);
+        }
+        
+        public int ContarMateriales(int idmat) {
+            BibliotecaWA.BibliotecaServices.ContarMaterialesRequest inValue = new BibliotecaWA.BibliotecaServices.ContarMaterialesRequest();
+            inValue.idmat = idmat;
+            BibliotecaWA.BibliotecaServices.ContarMaterialesResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ContarMateriales(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ContarMaterialesResponse> BibliotecaWA.BibliotecaServices.MaterialWS.ContarMaterialesAsync(BibliotecaWA.BibliotecaServices.ContarMaterialesRequest request) {
+            return base.Channel.ContarMaterialesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ContarMaterialesResponse> ContarMaterialesAsync(int idmat) {
+            BibliotecaWA.BibliotecaServices.ContarMaterialesRequest inValue = new BibliotecaWA.BibliotecaServices.ContarMaterialesRequest();
+            inValue.idmat = idmat;
+            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ContarMaterialesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.buscarContribuyentesResponse BibliotecaWA.BibliotecaServices.MaterialWS.buscarContribuyentes(BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest request) {
+            return base.Channel.buscarContribuyentes(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.contribuyente[] buscarContribuyentes(int idMaterial) {
+            BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest inValue = new BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest();
+            inValue.idMaterial = idMaterial;
+            BibliotecaWA.BibliotecaServices.buscarContribuyentesResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).buscarContribuyentes(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarContribuyentesResponse> BibliotecaWA.BibliotecaServices.MaterialWS.buscarContribuyentesAsync(BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest request) {
+            return base.Channel.buscarContribuyentesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarContribuyentesResponse> buscarContribuyentesAsync(int idMaterial) {
+            BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest inValue = new BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest();
+            inValue.idMaterial = idMaterial;
+            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).buscarContribuyentesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse BibliotecaWA.BibliotecaServices.MaterialWS.ListarMaterialesNormal(BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest request) {
+            return base.Channel.ListarMaterialesNormal(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.materialBibliografico[] ListarMaterialesNormal() {
+            BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest inValue = new BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest();
+            BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ListarMaterialesNormal(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse> BibliotecaWA.BibliotecaServices.MaterialWS.ListarMaterialesNormalAsync(BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest request) {
+            return base.Channel.ListarMaterialesNormalAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse> ListarMaterialesNormalAsync() {
+            BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest inValue = new BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest();
+            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ListarMaterialesNormalAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.buscarEjemplaresResponse BibliotecaWA.BibliotecaServices.MaterialWS.buscarEjemplares(BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest request) {
+            return base.Channel.buscarEjemplares(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.ejemplar[] buscarEjemplares(int idMaterial) {
+            BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest inValue = new BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest();
+            inValue.idMaterial = idMaterial;
+            BibliotecaWA.BibliotecaServices.buscarEjemplaresResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).buscarEjemplares(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarEjemplaresResponse> BibliotecaWA.BibliotecaServices.MaterialWS.buscarEjemplaresAsync(BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest request) {
+            return base.Channel.buscarEjemplaresAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarEjemplaresResponse> buscarEjemplaresAsync(int idMaterial) {
+            BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest inValue = new BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest();
+            inValue.idMaterial = idMaterial;
+            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).buscarEjemplaresAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse BibliotecaWA.BibliotecaServices.MaterialWS.ObtenerSoloMaterial(BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest request) {
+            return base.Channel.ObtenerSoloMaterial(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.materialBibliografico ObtenerSoloMaterial(int idMaterial) {
+            BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest inValue = new BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest();
+            inValue.idMaterial = idMaterial;
+            BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ObtenerSoloMaterial(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse> BibliotecaWA.BibliotecaServices.MaterialWS.ObtenerSoloMaterialAsync(BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest request) {
+            return base.Channel.ObtenerSoloMaterialAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse> ObtenerSoloMaterialAsync(int idMaterial) {
+            BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest inValue = new BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest();
+            inValue.idMaterial = idMaterial;
+            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ObtenerSoloMaterialAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -5004,191 +5184,21 @@ namespace BibliotecaWA.BibliotecaServices {
             inValue.Disponibilidad = Disponibilidad;
             return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).BusquedaAvanzadaAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.ListarTodosResponse BibliotecaWA.BibliotecaServices.MaterialWS.ListarTodos(BibliotecaWA.BibliotecaServices.ListarTodosRequest request) {
-            return base.Channel.ListarTodos(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.materialBibliografico[] ListarTodos() {
-            BibliotecaWA.BibliotecaServices.ListarTodosRequest inValue = new BibliotecaWA.BibliotecaServices.ListarTodosRequest();
-            BibliotecaWA.BibliotecaServices.ListarTodosResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ListarTodos(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ListarTodosResponse> BibliotecaWA.BibliotecaServices.MaterialWS.ListarTodosAsync(BibliotecaWA.BibliotecaServices.ListarTodosRequest request) {
-            return base.Channel.ListarTodosAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ListarTodosResponse> ListarTodosAsync() {
-            BibliotecaWA.BibliotecaServices.ListarTodosRequest inValue = new BibliotecaWA.BibliotecaServices.ListarTodosRequest();
-            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ListarTodosAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.buscarContribuyentesResponse BibliotecaWA.BibliotecaServices.MaterialWS.buscarContribuyentes(BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest request) {
-            return base.Channel.buscarContribuyentes(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.contribuyente[] buscarContribuyentes(int idMaterial) {
-            BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest inValue = new BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest();
-            inValue.idMaterial = idMaterial;
-            BibliotecaWA.BibliotecaServices.buscarContribuyentesResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).buscarContribuyentes(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarContribuyentesResponse> BibliotecaWA.BibliotecaServices.MaterialWS.buscarContribuyentesAsync(BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest request) {
-            return base.Channel.buscarContribuyentesAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarContribuyentesResponse> buscarContribuyentesAsync(int idMaterial) {
-            BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest inValue = new BibliotecaWA.BibliotecaServices.buscarContribuyentesRequest();
-            inValue.idMaterial = idMaterial;
-            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).buscarContribuyentesAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.buscarEjemplaresResponse BibliotecaWA.BibliotecaServices.MaterialWS.buscarEjemplares(BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest request) {
-            return base.Channel.buscarEjemplares(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.ejemplar[] buscarEjemplares(int idMaterial) {
-            BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest inValue = new BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest();
-            inValue.idMaterial = idMaterial;
-            BibliotecaWA.BibliotecaServices.buscarEjemplaresResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).buscarEjemplares(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarEjemplaresResponse> BibliotecaWA.BibliotecaServices.MaterialWS.buscarEjemplaresAsync(BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest request) {
-            return base.Channel.buscarEjemplaresAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarEjemplaresResponse> buscarEjemplaresAsync(int idMaterial) {
-            BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest inValue = new BibliotecaWA.BibliotecaServices.buscarEjemplaresRequest();
-            inValue.idMaterial = idMaterial;
-            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).buscarEjemplaresAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse BibliotecaWA.BibliotecaServices.MaterialWS.ListarMaterialesNormal(BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest request) {
-            return base.Channel.ListarMaterialesNormal(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.materialBibliografico[] ListarMaterialesNormal() {
-            BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest inValue = new BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest();
-            BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ListarMaterialesNormal(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse> BibliotecaWA.BibliotecaServices.MaterialWS.ListarMaterialesNormalAsync(BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest request) {
-            return base.Channel.ListarMaterialesNormalAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ListarMaterialesNormalResponse> ListarMaterialesNormalAsync() {
-            BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest inValue = new BibliotecaWA.BibliotecaServices.ListarMaterialesNormalRequest();
-            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ListarMaterialesNormalAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.buscarEditorialesResponse BibliotecaWA.BibliotecaServices.MaterialWS.buscarEditoriales(BibliotecaWA.BibliotecaServices.buscarEditorialesRequest request) {
-            return base.Channel.buscarEditoriales(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.editorial[] buscarEditoriales(int idMaterial) {
-            BibliotecaWA.BibliotecaServices.buscarEditorialesRequest inValue = new BibliotecaWA.BibliotecaServices.buscarEditorialesRequest();
-            inValue.idMaterial = idMaterial;
-            BibliotecaWA.BibliotecaServices.buscarEditorialesResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).buscarEditoriales(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarEditorialesResponse> BibliotecaWA.BibliotecaServices.MaterialWS.buscarEditorialesAsync(BibliotecaWA.BibliotecaServices.buscarEditorialesRequest request) {
-            return base.Channel.buscarEditorialesAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarEditorialesResponse> buscarEditorialesAsync(int idMaterial) {
-            BibliotecaWA.BibliotecaServices.buscarEditorialesRequest inValue = new BibliotecaWA.BibliotecaServices.buscarEditorialesRequest();
-            inValue.idMaterial = idMaterial;
-            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).buscarEditorialesAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.ContarMaterialesResponse BibliotecaWA.BibliotecaServices.MaterialWS.ContarMateriales(BibliotecaWA.BibliotecaServices.ContarMaterialesRequest request) {
-            return base.Channel.ContarMateriales(request);
-        }
-        
-        public int ContarMateriales(int idmat) {
-            BibliotecaWA.BibliotecaServices.ContarMaterialesRequest inValue = new BibliotecaWA.BibliotecaServices.ContarMaterialesRequest();
-            inValue.idmat = idmat;
-            BibliotecaWA.BibliotecaServices.ContarMaterialesResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ContarMateriales(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ContarMaterialesResponse> BibliotecaWA.BibliotecaServices.MaterialWS.ContarMaterialesAsync(BibliotecaWA.BibliotecaServices.ContarMaterialesRequest request) {
-            return base.Channel.ContarMaterialesAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ContarMaterialesResponse> ContarMaterialesAsync(int idmat) {
-            BibliotecaWA.BibliotecaServices.ContarMaterialesRequest inValue = new BibliotecaWA.BibliotecaServices.ContarMaterialesRequest();
-            inValue.idmat = idmat;
-            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ContarMaterialesAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse BibliotecaWA.BibliotecaServices.MaterialWS.ObtenerSoloMaterial(BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest request) {
-            return base.Channel.ObtenerSoloMaterial(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.materialBibliografico ObtenerSoloMaterial(int idMaterial) {
-            BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest inValue = new BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest();
-            inValue.idMaterial = idMaterial;
-            BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ObtenerSoloMaterial(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse> BibliotecaWA.BibliotecaServices.MaterialWS.ObtenerSoloMaterialAsync(BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest request) {
-            return base.Channel.ObtenerSoloMaterialAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialResponse> ObtenerSoloMaterialAsync(int idMaterial) {
-            BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest inValue = new BibliotecaWA.BibliotecaServices.ObtenerSoloMaterialRequest();
-            inValue.idMaterial = idMaterial;
-            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).ObtenerSoloMaterialAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.BusquedaResponse BibliotecaWA.BibliotecaServices.MaterialWS.Busqueda(BibliotecaWA.BibliotecaServices.BusquedaRequest request) {
-            return base.Channel.Busqueda(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.materialBibliografico[] Busqueda(string _titulo_autor) {
-            BibliotecaWA.BibliotecaServices.BusquedaRequest inValue = new BibliotecaWA.BibliotecaServices.BusquedaRequest();
-            inValue._titulo_autor = _titulo_autor;
-            BibliotecaWA.BibliotecaServices.BusquedaResponse retVal = ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).Busqueda(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.BusquedaResponse> BibliotecaWA.BibliotecaServices.MaterialWS.BusquedaAsync(BibliotecaWA.BibliotecaServices.BusquedaRequest request) {
-            return base.Channel.BusquedaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.BusquedaResponse> BusquedaAsync(string _titulo_autor) {
-            BibliotecaWA.BibliotecaServices.BusquedaRequest inValue = new BibliotecaWA.BibliotecaServices.BusquedaRequest();
-            inValue._titulo_autor = _titulo_autor;
-            return ((BibliotecaWA.BibliotecaServices.MaterialWS)(this)).BusquedaAsync(inValue);
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="pe.edu.pucp.utilsarmy.services", ConfigurationName="BibliotecaServices.PrestamoWS")]
     public interface PrestamoWS {
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamosResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamos/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.buscarPrestamosResponse buscarPrestamos(BibliotecaWA.BibliotecaServices.buscarPrestamosRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamosResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarPrestamosResponse> buscarPrestamosAsync(BibliotecaWA.BibliotecaServices.buscarPrestamosRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosPorUsuarioRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosPorUsuarioResponse")]
@@ -5202,16 +5212,6 @@ namespace BibliotecaWA.BibliotecaServices {
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioResponse> listarPrestamosPorUsuarioAsync(BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamos/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.listarPrestamosResponse listarPrestamos(BibliotecaWA.BibliotecaServices.listarPrestamosRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarPrestamosResponse> listarPrestamosAsync(BibliotecaWA.BibliotecaServices.listarPrestamosRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/insertarPrestamoRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/insertarPrestamoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -5219,26 +5219,6 @@ namespace BibliotecaWA.BibliotecaServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/insertarPrestamoRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/insertarPrestamoResponse")]
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarPrestamoResponse> insertarPrestamoAsync(BibliotecaWA.BibliotecaServices.insertarPrestamoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamosResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamos/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.buscarPrestamosResponse buscarPrestamos(BibliotecaWA.BibliotecaServices.buscarPrestamosRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/buscarPrestamosResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.buscarPrestamosResponse> buscarPrestamosAsync(BibliotecaWA.BibliotecaServices.buscarPrestamosRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorId/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdResponse obtenerPrestamoPorId(BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdResponse> obtenerPrestamoPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/modificarPrestamoRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/modificarPrestamoResponse")]
@@ -5259,106 +5239,26 @@ namespace BibliotecaWA.BibliotecaServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/eliminarPrestamoRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/eliminarPrestamoResponse")]
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarPrestamoResponse> eliminarPrestamoAsync(BibliotecaWA.BibliotecaServices.eliminarPrestamoRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPrestamosPorUsuario", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarPrestamosPorUsuarioRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idUsuario;
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorId/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdResponse obtenerPrestamoPorId(BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest request);
         
-        public listarPrestamosPorUsuarioRequest() {
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/obtenerPrestamoPorIdResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdResponse> obtenerPrestamoPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest request);
         
-        public listarPrestamosPorUsuarioRequest(int idUsuario) {
-            this.idUsuario = idUsuario;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPrestamosPorUsuarioResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarPrestamosPorUsuarioResponse {
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamos/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.listarPrestamosResponse listarPrestamos(BibliotecaWA.BibliotecaServices.listarPrestamosRequest request);
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.prestamo[] @return;
-        
-        public listarPrestamosPorUsuarioResponse() {
-        }
-        
-        public listarPrestamosPorUsuarioResponse(BibliotecaWA.BibliotecaServices.prestamo[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPrestamos", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarPrestamosRequest {
-        
-        public listarPrestamosRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPrestamosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarPrestamosResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.prestamo[] @return;
-        
-        public listarPrestamosResponse() {
-        }
-        
-        public listarPrestamosResponse(BibliotecaWA.BibliotecaServices.prestamo[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarPrestamo", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class insertarPrestamoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.prestamo name;
-        
-        public insertarPrestamoRequest() {
-        }
-        
-        public insertarPrestamoRequest(BibliotecaWA.BibliotecaServices.prestamo name) {
-            this.name = name;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarPrestamoResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class insertarPrestamoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public insertarPrestamoResponse() {
-        }
-        
-        public insertarPrestamoResponse(int @return) {
-            this.@return = @return;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/PrestamoWS/listarPrestamosResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarPrestamosResponse> listarPrestamosAsync(BibliotecaWA.BibliotecaServices.listarPrestamosRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -5400,17 +5300,53 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerPrestamoPorId", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtenerPrestamoPorIdRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPrestamosPorUsuario", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarPrestamosPorUsuarioRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int name;
+        public int idUsuario;
         
-        public obtenerPrestamoPorIdRequest() {
+        public listarPrestamosPorUsuarioRequest() {
         }
         
-        public obtenerPrestamoPorIdRequest(int name) {
+        public listarPrestamosPorUsuarioRequest(int idUsuario) {
+            this.idUsuario = idUsuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPrestamosPorUsuarioResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarPrestamosPorUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.prestamo[] @return;
+        
+        public listarPrestamosPorUsuarioResponse() {
+        }
+        
+        public listarPrestamosPorUsuarioResponse(BibliotecaWA.BibliotecaServices.prestamo[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarPrestamo", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class insertarPrestamoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.prestamo name;
+        
+        public insertarPrestamoRequest() {
+        }
+        
+        public insertarPrestamoRequest(BibliotecaWA.BibliotecaServices.prestamo name) {
             this.name = name;
         }
     }
@@ -5418,17 +5354,17 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerPrestamoPorIdResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtenerPrestamoPorIdResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarPrestamoResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class insertarPrestamoResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.prestamo @return;
+        public int @return;
         
-        public obtenerPrestamoPorIdResponse() {
+        public insertarPrestamoResponse() {
         }
         
-        public obtenerPrestamoPorIdResponse(BibliotecaWA.BibliotecaServices.prestamo @return) {
+        public insertarPrestamoResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -5505,6 +5441,70 @@ namespace BibliotecaWA.BibliotecaServices {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerPrestamoPorId", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtenerPrestamoPorIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int name;
+        
+        public obtenerPrestamoPorIdRequest() {
+        }
+        
+        public obtenerPrestamoPorIdRequest(int name) {
+            this.name = name;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerPrestamoPorIdResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtenerPrestamoPorIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.prestamo @return;
+        
+        public obtenerPrestamoPorIdResponse() {
+        }
+        
+        public obtenerPrestamoPorIdResponse(BibliotecaWA.BibliotecaServices.prestamo @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPrestamos", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarPrestamosRequest {
+        
+        public listarPrestamosRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPrestamosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarPrestamosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.prestamo[] @return;
+        
+        public listarPrestamosResponse() {
+        }
+        
+        public listarPrestamosResponse(BibliotecaWA.BibliotecaServices.prestamo[] @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface PrestamoWSChannel : BibliotecaWA.BibliotecaServices.PrestamoWS, System.ServiceModel.IClientChannel {
     }
@@ -5533,73 +5533,6 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioResponse BibliotecaWA.BibliotecaServices.PrestamoWS.listarPrestamosPorUsuario(BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioRequest request) {
-            return base.Channel.listarPrestamosPorUsuario(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.prestamo[] listarPrestamosPorUsuario(int idUsuario) {
-            BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioRequest();
-            inValue.idUsuario = idUsuario;
-            BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioResponse retVal = ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).listarPrestamosPorUsuario(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioResponse> BibliotecaWA.BibliotecaServices.PrestamoWS.listarPrestamosPorUsuarioAsync(BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioRequest request) {
-            return base.Channel.listarPrestamosPorUsuarioAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioResponse> listarPrestamosPorUsuarioAsync(int idUsuario) {
-            BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioRequest();
-            inValue.idUsuario = idUsuario;
-            return ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).listarPrestamosPorUsuarioAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.listarPrestamosResponse BibliotecaWA.BibliotecaServices.PrestamoWS.listarPrestamos(BibliotecaWA.BibliotecaServices.listarPrestamosRequest request) {
-            return base.Channel.listarPrestamos(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.prestamo[] listarPrestamos() {
-            BibliotecaWA.BibliotecaServices.listarPrestamosRequest inValue = new BibliotecaWA.BibliotecaServices.listarPrestamosRequest();
-            BibliotecaWA.BibliotecaServices.listarPrestamosResponse retVal = ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).listarPrestamos(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarPrestamosResponse> BibliotecaWA.BibliotecaServices.PrestamoWS.listarPrestamosAsync(BibliotecaWA.BibliotecaServices.listarPrestamosRequest request) {
-            return base.Channel.listarPrestamosAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarPrestamosResponse> listarPrestamosAsync() {
-            BibliotecaWA.BibliotecaServices.listarPrestamosRequest inValue = new BibliotecaWA.BibliotecaServices.listarPrestamosRequest();
-            return ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).listarPrestamosAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.insertarPrestamoResponse BibliotecaWA.BibliotecaServices.PrestamoWS.insertarPrestamo(BibliotecaWA.BibliotecaServices.insertarPrestamoRequest request) {
-            return base.Channel.insertarPrestamo(request);
-        }
-        
-        public int insertarPrestamo(BibliotecaWA.BibliotecaServices.prestamo name) {
-            BibliotecaWA.BibliotecaServices.insertarPrestamoRequest inValue = new BibliotecaWA.BibliotecaServices.insertarPrestamoRequest();
-            inValue.name = name;
-            BibliotecaWA.BibliotecaServices.insertarPrestamoResponse retVal = ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).insertarPrestamo(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarPrestamoResponse> BibliotecaWA.BibliotecaServices.PrestamoWS.insertarPrestamoAsync(BibliotecaWA.BibliotecaServices.insertarPrestamoRequest request) {
-            return base.Channel.insertarPrestamoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarPrestamoResponse> insertarPrestamoAsync(BibliotecaWA.BibliotecaServices.prestamo name) {
-            BibliotecaWA.BibliotecaServices.insertarPrestamoRequest inValue = new BibliotecaWA.BibliotecaServices.insertarPrestamoRequest();
-            inValue.name = name;
-            return ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).insertarPrestamoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         BibliotecaWA.BibliotecaServices.buscarPrestamosResponse BibliotecaWA.BibliotecaServices.PrestamoWS.buscarPrestamos(BibliotecaWA.BibliotecaServices.buscarPrestamosRequest request) {
             return base.Channel.buscarPrestamos(request);
         }
@@ -5623,26 +5556,49 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdResponse BibliotecaWA.BibliotecaServices.PrestamoWS.obtenerPrestamoPorId(BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest request) {
-            return base.Channel.obtenerPrestamoPorId(request);
+        BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioResponse BibliotecaWA.BibliotecaServices.PrestamoWS.listarPrestamosPorUsuario(BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioRequest request) {
+            return base.Channel.listarPrestamosPorUsuario(request);
         }
         
-        public BibliotecaWA.BibliotecaServices.prestamo obtenerPrestamoPorId(int name) {
-            BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest();
-            inValue.name = name;
-            BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdResponse retVal = ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).obtenerPrestamoPorId(inValue);
+        public BibliotecaWA.BibliotecaServices.prestamo[] listarPrestamosPorUsuario(int idUsuario) {
+            BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioRequest();
+            inValue.idUsuario = idUsuario;
+            BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioResponse retVal = ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).listarPrestamosPorUsuario(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdResponse> BibliotecaWA.BibliotecaServices.PrestamoWS.obtenerPrestamoPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest request) {
-            return base.Channel.obtenerPrestamoPorIdAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioResponse> BibliotecaWA.BibliotecaServices.PrestamoWS.listarPrestamosPorUsuarioAsync(BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioRequest request) {
+            return base.Channel.listarPrestamosPorUsuarioAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdResponse> obtenerPrestamoPorIdAsync(int name) {
-            BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest();
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioResponse> listarPrestamosPorUsuarioAsync(int idUsuario) {
+            BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.listarPrestamosPorUsuarioRequest();
+            inValue.idUsuario = idUsuario;
+            return ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).listarPrestamosPorUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.insertarPrestamoResponse BibliotecaWA.BibliotecaServices.PrestamoWS.insertarPrestamo(BibliotecaWA.BibliotecaServices.insertarPrestamoRequest request) {
+            return base.Channel.insertarPrestamo(request);
+        }
+        
+        public int insertarPrestamo(BibliotecaWA.BibliotecaServices.prestamo name) {
+            BibliotecaWA.BibliotecaServices.insertarPrestamoRequest inValue = new BibliotecaWA.BibliotecaServices.insertarPrestamoRequest();
             inValue.name = name;
-            return ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).obtenerPrestamoPorIdAsync(inValue);
+            BibliotecaWA.BibliotecaServices.insertarPrestamoResponse retVal = ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).insertarPrestamo(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarPrestamoResponse> BibliotecaWA.BibliotecaServices.PrestamoWS.insertarPrestamoAsync(BibliotecaWA.BibliotecaServices.insertarPrestamoRequest request) {
+            return base.Channel.insertarPrestamoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarPrestamoResponse> insertarPrestamoAsync(BibliotecaWA.BibliotecaServices.prestamo name) {
+            BibliotecaWA.BibliotecaServices.insertarPrestamoRequest inValue = new BibliotecaWA.BibliotecaServices.insertarPrestamoRequest();
+            inValue.name = name;
+            return ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).insertarPrestamoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -5690,11 +5646,64 @@ namespace BibliotecaWA.BibliotecaServices {
             inValue.name = name;
             return ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).eliminarPrestamoAsync(inValue);
         }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdResponse BibliotecaWA.BibliotecaServices.PrestamoWS.obtenerPrestamoPorId(BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest request) {
+            return base.Channel.obtenerPrestamoPorId(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.prestamo obtenerPrestamoPorId(int name) {
+            BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest();
+            inValue.name = name;
+            BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdResponse retVal = ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).obtenerPrestamoPorId(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdResponse> BibliotecaWA.BibliotecaServices.PrestamoWS.obtenerPrestamoPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest request) {
+            return base.Channel.obtenerPrestamoPorIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdResponse> obtenerPrestamoPorIdAsync(int name) {
+            BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerPrestamoPorIdRequest();
+            inValue.name = name;
+            return ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).obtenerPrestamoPorIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.listarPrestamosResponse BibliotecaWA.BibliotecaServices.PrestamoWS.listarPrestamos(BibliotecaWA.BibliotecaServices.listarPrestamosRequest request) {
+            return base.Channel.listarPrestamos(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.prestamo[] listarPrestamos() {
+            BibliotecaWA.BibliotecaServices.listarPrestamosRequest inValue = new BibliotecaWA.BibliotecaServices.listarPrestamosRequest();
+            BibliotecaWA.BibliotecaServices.listarPrestamosResponse retVal = ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).listarPrestamos(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarPrestamosResponse> BibliotecaWA.BibliotecaServices.PrestamoWS.listarPrestamosAsync(BibliotecaWA.BibliotecaServices.listarPrestamosRequest request) {
+            return base.Channel.listarPrestamosAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarPrestamosResponse> listarPrestamosAsync() {
+            BibliotecaWA.BibliotecaServices.listarPrestamosRequest inValue = new BibliotecaWA.BibliotecaServices.listarPrestamosRequest();
+            return ((BibliotecaWA.BibliotecaServices.PrestamoWS)(this)).listarPrestamosAsync(inValue);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="pe.edu.pucp.utilsarmy.services", ConfigurationName="BibliotecaServices.TesisWS")]
     public interface TesisWS {
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/TesisWS/insertarTesisRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/TesisWS/insertarTesisResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.insertarTesisResponse insertarTesis(BibliotecaWA.BibliotecaServices.insertarTesisRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/TesisWS/insertarTesisRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/TesisWS/insertarTesisResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarTesisResponse> insertarTesisAsync(BibliotecaWA.BibliotecaServices.insertarTesisRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/TesisWS/eliminarTesisRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/TesisWS/eliminarTesisResponse")]
@@ -5707,13 +5716,14 @@ namespace BibliotecaWA.BibliotecaServices {
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarTesisResponse> eliminarTesisAsync(BibliotecaWA.BibliotecaServices.eliminarTesisRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/TesisWS/insertarTesisRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/TesisWS/insertarTesisResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/TesisWS/listarTesisTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/TesisWS/listarTesisTodosResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/TesisWS/listarTesisTodos/Fault/Exception", Name="Exception")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.insertarTesisResponse insertarTesis(BibliotecaWA.BibliotecaServices.insertarTesisRequest request);
+        BibliotecaWA.BibliotecaServices.listarTesisTodosResponse listarTesisTodos(BibliotecaWA.BibliotecaServices.listarTesisTodosRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/TesisWS/insertarTesisRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/TesisWS/insertarTesisResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarTesisResponse> insertarTesisAsync(BibliotecaWA.BibliotecaServices.insertarTesisRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/TesisWS/listarTesisTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/TesisWS/listarTesisTodosResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarTesisTodosResponse> listarTesisTodosAsync(BibliotecaWA.BibliotecaServices.listarTesisTodosRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/TesisWS/modificarTesisRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/TesisWS/modificarTesisResponse")]
@@ -5734,16 +5744,42 @@ namespace BibliotecaWA.BibliotecaServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/TesisWS/obtenerTesisPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/TesisWS/obtenerTesisPorIdResponse")]
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerTesisPorIdResponse> obtenerTesisPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerTesisPorIdRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarTesis", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class insertarTesisRequest {
         
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/TesisWS/listarTesisTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/TesisWS/listarTesisTodosResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/TesisWS/listarTesisTodos/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.listarTesisTodosResponse listarTesisTodos(BibliotecaWA.BibliotecaServices.listarTesisTodosRequest request);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.tesis tesis;
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/TesisWS/listarTesisTodosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/TesisWS/listarTesisTodosResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarTesisTodosResponse> listarTesisTodosAsync(BibliotecaWA.BibliotecaServices.listarTesisTodosRequest request);
+        public insertarTesisRequest() {
+        }
+        
+        public insertarTesisRequest(BibliotecaWA.BibliotecaServices.tesis tesis) {
+            this.tesis = tesis;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarTesisResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class insertarTesisResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarTesisResponse() {
+        }
+        
+        public insertarTesisResponse(int @return) {
+            this.@return = @return;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -5785,35 +5821,27 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarTesis", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class insertarTesisRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTesisTodos", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarTesisTodosRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.tesis tesis;
-        
-        public insertarTesisRequest() {
-        }
-        
-        public insertarTesisRequest(BibliotecaWA.BibliotecaServices.tesis tesis) {
-            this.tesis = tesis;
+        public listarTesisTodosRequest() {
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarTesisResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class insertarTesisResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTesisTodosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarTesisTodosResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.tesis[] @return;
         
-        public insertarTesisResponse() {
+        public listarTesisTodosResponse() {
         }
         
-        public insertarTesisResponse(int @return) {
+        public listarTesisTodosResponse(BibliotecaWA.BibliotecaServices.tesis[] @return) {
             this.@return = @return;
         }
     }
@@ -5890,34 +5918,6 @@ namespace BibliotecaWA.BibliotecaServices {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTesisTodos", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarTesisTodosRequest {
-        
-        public listarTesisTodosRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTesisTodosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarTesisTodosResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.tesis[] @return;
-        
-        public listarTesisTodosResponse() {
-        }
-        
-        public listarTesisTodosResponse(BibliotecaWA.BibliotecaServices.tesis[] @return) {
-            this.@return = @return;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface TesisWSChannel : BibliotecaWA.BibliotecaServices.TesisWS, System.ServiceModel.IClientChannel {
     }
@@ -5946,6 +5946,29 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.insertarTesisResponse BibliotecaWA.BibliotecaServices.TesisWS.insertarTesis(BibliotecaWA.BibliotecaServices.insertarTesisRequest request) {
+            return base.Channel.insertarTesis(request);
+        }
+        
+        public int insertarTesis(BibliotecaWA.BibliotecaServices.tesis tesis) {
+            BibliotecaWA.BibliotecaServices.insertarTesisRequest inValue = new BibliotecaWA.BibliotecaServices.insertarTesisRequest();
+            inValue.tesis = tesis;
+            BibliotecaWA.BibliotecaServices.insertarTesisResponse retVal = ((BibliotecaWA.BibliotecaServices.TesisWS)(this)).insertarTesis(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarTesisResponse> BibliotecaWA.BibliotecaServices.TesisWS.insertarTesisAsync(BibliotecaWA.BibliotecaServices.insertarTesisRequest request) {
+            return base.Channel.insertarTesisAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarTesisResponse> insertarTesisAsync(BibliotecaWA.BibliotecaServices.tesis tesis) {
+            BibliotecaWA.BibliotecaServices.insertarTesisRequest inValue = new BibliotecaWA.BibliotecaServices.insertarTesisRequest();
+            inValue.tesis = tesis;
+            return ((BibliotecaWA.BibliotecaServices.TesisWS)(this)).insertarTesisAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         BibliotecaWA.BibliotecaServices.eliminarTesisResponse BibliotecaWA.BibliotecaServices.TesisWS.eliminarTesis(BibliotecaWA.BibliotecaServices.eliminarTesisRequest request) {
             return base.Channel.eliminarTesis(request);
         }
@@ -5969,26 +5992,24 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.insertarTesisResponse BibliotecaWA.BibliotecaServices.TesisWS.insertarTesis(BibliotecaWA.BibliotecaServices.insertarTesisRequest request) {
-            return base.Channel.insertarTesis(request);
+        BibliotecaWA.BibliotecaServices.listarTesisTodosResponse BibliotecaWA.BibliotecaServices.TesisWS.listarTesisTodos(BibliotecaWA.BibliotecaServices.listarTesisTodosRequest request) {
+            return base.Channel.listarTesisTodos(request);
         }
         
-        public int insertarTesis(BibliotecaWA.BibliotecaServices.tesis tesis) {
-            BibliotecaWA.BibliotecaServices.insertarTesisRequest inValue = new BibliotecaWA.BibliotecaServices.insertarTesisRequest();
-            inValue.tesis = tesis;
-            BibliotecaWA.BibliotecaServices.insertarTesisResponse retVal = ((BibliotecaWA.BibliotecaServices.TesisWS)(this)).insertarTesis(inValue);
+        public BibliotecaWA.BibliotecaServices.tesis[] listarTesisTodos() {
+            BibliotecaWA.BibliotecaServices.listarTesisTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarTesisTodosRequest();
+            BibliotecaWA.BibliotecaServices.listarTesisTodosResponse retVal = ((BibliotecaWA.BibliotecaServices.TesisWS)(this)).listarTesisTodos(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarTesisResponse> BibliotecaWA.BibliotecaServices.TesisWS.insertarTesisAsync(BibliotecaWA.BibliotecaServices.insertarTesisRequest request) {
-            return base.Channel.insertarTesisAsync(request);
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarTesisTodosResponse> BibliotecaWA.BibliotecaServices.TesisWS.listarTesisTodosAsync(BibliotecaWA.BibliotecaServices.listarTesisTodosRequest request) {
+            return base.Channel.listarTesisTodosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarTesisResponse> insertarTesisAsync(BibliotecaWA.BibliotecaServices.tesis tesis) {
-            BibliotecaWA.BibliotecaServices.insertarTesisRequest inValue = new BibliotecaWA.BibliotecaServices.insertarTesisRequest();
-            inValue.tesis = tesis;
-            return ((BibliotecaWA.BibliotecaServices.TesisWS)(this)).insertarTesisAsync(inValue);
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarTesisTodosResponse> listarTesisTodosAsync() {
+            BibliotecaWA.BibliotecaServices.listarTesisTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarTesisTodosRequest();
+            return ((BibliotecaWA.BibliotecaServices.TesisWS)(this)).listarTesisTodosAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -6036,32 +6057,30 @@ namespace BibliotecaWA.BibliotecaServices {
             inValue.idTesis = idTesis;
             return ((BibliotecaWA.BibliotecaServices.TesisWS)(this)).obtenerTesisPorIdAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.listarTesisTodosResponse BibliotecaWA.BibliotecaServices.TesisWS.listarTesisTodos(BibliotecaWA.BibliotecaServices.listarTesisTodosRequest request) {
-            return base.Channel.listarTesisTodos(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.tesis[] listarTesisTodos() {
-            BibliotecaWA.BibliotecaServices.listarTesisTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarTesisTodosRequest();
-            BibliotecaWA.BibliotecaServices.listarTesisTodosResponse retVal = ((BibliotecaWA.BibliotecaServices.TesisWS)(this)).listarTesisTodos(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarTesisTodosResponse> BibliotecaWA.BibliotecaServices.TesisWS.listarTesisTodosAsync(BibliotecaWA.BibliotecaServices.listarTesisTodosRequest request) {
-            return base.Channel.listarTesisTodosAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarTesisTodosResponse> listarTesisTodosAsync() {
-            BibliotecaWA.BibliotecaServices.listarTesisTodosRequest inValue = new BibliotecaWA.BibliotecaServices.listarTesisTodosRequest();
-            return ((BibliotecaWA.BibliotecaServices.TesisWS)(this)).listarTesisTodosAsync(inValue);
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="pe.edu.pucp.utilsarmy.services", ConfigurationName="BibliotecaServices.ArticuloWS")]
     public interface ArticuloWS {
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.insertarArticuloResponse insertarArticulo(BibliotecaWA.BibliotecaServices.insertarArticuloRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarArticuloResponse> insertarArticuloAsync(BibliotecaWA.BibliotecaServices.insertarArticuloRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorId/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdResponse obtenerArticuloPorId(BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorIdResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdResponse> obtenerArticuloPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/eliminarArticuloRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ArticuloWS/eliminarArticuloResponse")]
@@ -6092,25 +6111,78 @@ namespace BibliotecaWA.BibliotecaServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticuloRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticuloResponse")]
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarArticuloResponse> modificarArticuloAsync(BibliotecaWA.BibliotecaServices.modificarArticuloRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarArticulo", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class insertarArticuloRequest {
         
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.insertarArticuloResponse insertarArticulo(BibliotecaWA.BibliotecaServices.insertarArticuloRequest request);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.articulo articulo;
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarArticuloResponse> insertarArticuloAsync(BibliotecaWA.BibliotecaServices.insertarArticuloRequest request);
+        public insertarArticuloRequest() {
+        }
         
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorIdResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorId/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdResponse obtenerArticuloPorId(BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest request);
+        public insertarArticuloRequest(BibliotecaWA.BibliotecaServices.articulo articulo) {
+            this.articulo = articulo;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarArticuloResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class insertarArticuloResponse {
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorIdResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdResponse> obtenerArticuloPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest request);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarArticuloResponse() {
+        }
+        
+        public insertarArticuloResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerArticuloPorId", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtenerArticuloPorIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idArticulo;
+        
+        public obtenerArticuloPorIdRequest() {
+        }
+        
+        public obtenerArticuloPorIdRequest(int idArticulo) {
+            this.idArticulo = idArticulo;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerArticuloPorIdResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtenerArticuloPorIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.articulo @return;
+        
+        public obtenerArticuloPorIdResponse() {
+        }
+        
+        public obtenerArticuloPorIdResponse(BibliotecaWA.BibliotecaServices.articulo @return) {
+            this.@return = @return;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -6213,78 +6285,6 @@ namespace BibliotecaWA.BibliotecaServices {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarArticulo", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class insertarArticuloRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.articulo articulo;
-        
-        public insertarArticuloRequest() {
-        }
-        
-        public insertarArticuloRequest(BibliotecaWA.BibliotecaServices.articulo articulo) {
-            this.articulo = articulo;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarArticuloResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class insertarArticuloResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public insertarArticuloResponse() {
-        }
-        
-        public insertarArticuloResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerArticuloPorId", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtenerArticuloPorIdRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idArticulo;
-        
-        public obtenerArticuloPorIdRequest() {
-        }
-        
-        public obtenerArticuloPorIdRequest(int idArticulo) {
-            this.idArticulo = idArticulo;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerArticuloPorIdResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtenerArticuloPorIdResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.articulo @return;
-        
-        public obtenerArticuloPorIdResponse() {
-        }
-        
-        public obtenerArticuloPorIdResponse(BibliotecaWA.BibliotecaServices.articulo @return) {
-            this.@return = @return;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ArticuloWSChannel : BibliotecaWA.BibliotecaServices.ArticuloWS, System.ServiceModel.IClientChannel {
     }
@@ -6310,6 +6310,52 @@ namespace BibliotecaWA.BibliotecaServices {
         
         public ArticuloWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.insertarArticuloResponse BibliotecaWA.BibliotecaServices.ArticuloWS.insertarArticulo(BibliotecaWA.BibliotecaServices.insertarArticuloRequest request) {
+            return base.Channel.insertarArticulo(request);
+        }
+        
+        public int insertarArticulo(BibliotecaWA.BibliotecaServices.articulo articulo) {
+            BibliotecaWA.BibliotecaServices.insertarArticuloRequest inValue = new BibliotecaWA.BibliotecaServices.insertarArticuloRequest();
+            inValue.articulo = articulo;
+            BibliotecaWA.BibliotecaServices.insertarArticuloResponse retVal = ((BibliotecaWA.BibliotecaServices.ArticuloWS)(this)).insertarArticulo(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarArticuloResponse> BibliotecaWA.BibliotecaServices.ArticuloWS.insertarArticuloAsync(BibliotecaWA.BibliotecaServices.insertarArticuloRequest request) {
+            return base.Channel.insertarArticuloAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarArticuloResponse> insertarArticuloAsync(BibliotecaWA.BibliotecaServices.articulo articulo) {
+            BibliotecaWA.BibliotecaServices.insertarArticuloRequest inValue = new BibliotecaWA.BibliotecaServices.insertarArticuloRequest();
+            inValue.articulo = articulo;
+            return ((BibliotecaWA.BibliotecaServices.ArticuloWS)(this)).insertarArticuloAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdResponse BibliotecaWA.BibliotecaServices.ArticuloWS.obtenerArticuloPorId(BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest request) {
+            return base.Channel.obtenerArticuloPorId(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.articulo obtenerArticuloPorId(int idArticulo) {
+            BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest();
+            inValue.idArticulo = idArticulo;
+            BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdResponse retVal = ((BibliotecaWA.BibliotecaServices.ArticuloWS)(this)).obtenerArticuloPorId(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdResponse> BibliotecaWA.BibliotecaServices.ArticuloWS.obtenerArticuloPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest request) {
+            return base.Channel.obtenerArticuloPorIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdResponse> obtenerArticuloPorIdAsync(int idArticulo) {
+            BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest();
+            inValue.idArticulo = idArticulo;
+            return ((BibliotecaWA.BibliotecaServices.ArticuloWS)(this)).obtenerArticuloPorIdAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -6378,72 +6424,11 @@ namespace BibliotecaWA.BibliotecaServices {
             inValue.articulo = articulo;
             return ((BibliotecaWA.BibliotecaServices.ArticuloWS)(this)).modificarArticuloAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.insertarArticuloResponse BibliotecaWA.BibliotecaServices.ArticuloWS.insertarArticulo(BibliotecaWA.BibliotecaServices.insertarArticuloRequest request) {
-            return base.Channel.insertarArticulo(request);
-        }
-        
-        public int insertarArticulo(BibliotecaWA.BibliotecaServices.articulo articulo) {
-            BibliotecaWA.BibliotecaServices.insertarArticuloRequest inValue = new BibliotecaWA.BibliotecaServices.insertarArticuloRequest();
-            inValue.articulo = articulo;
-            BibliotecaWA.BibliotecaServices.insertarArticuloResponse retVal = ((BibliotecaWA.BibliotecaServices.ArticuloWS)(this)).insertarArticulo(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarArticuloResponse> BibliotecaWA.BibliotecaServices.ArticuloWS.insertarArticuloAsync(BibliotecaWA.BibliotecaServices.insertarArticuloRequest request) {
-            return base.Channel.insertarArticuloAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarArticuloResponse> insertarArticuloAsync(BibliotecaWA.BibliotecaServices.articulo articulo) {
-            BibliotecaWA.BibliotecaServices.insertarArticuloRequest inValue = new BibliotecaWA.BibliotecaServices.insertarArticuloRequest();
-            inValue.articulo = articulo;
-            return ((BibliotecaWA.BibliotecaServices.ArticuloWS)(this)).insertarArticuloAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdResponse BibliotecaWA.BibliotecaServices.ArticuloWS.obtenerArticuloPorId(BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest request) {
-            return base.Channel.obtenerArticuloPorId(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.articulo obtenerArticuloPorId(int idArticulo) {
-            BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest();
-            inValue.idArticulo = idArticulo;
-            BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdResponse retVal = ((BibliotecaWA.BibliotecaServices.ArticuloWS)(this)).obtenerArticuloPorId(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdResponse> BibliotecaWA.BibliotecaServices.ArticuloWS.obtenerArticuloPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest request) {
-            return base.Channel.obtenerArticuloPorIdAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdResponse> obtenerArticuloPorIdAsync(int idArticulo) {
-            BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerArticuloPorIdRequest();
-            inValue.idArticulo = idArticulo;
-            return ((BibliotecaWA.BibliotecaServices.ArticuloWS)(this)).obtenerArticuloPorIdAsync(inValue);
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="pe.edu.pucp.utilsarmy.services", ConfigurationName="BibliotecaServices.UsuarioWS")]
     public interface UsuarioWS {
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuarioReques" +
-            "t", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuarioRespon" +
-            "se")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuario/Fault" +
-            "/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioResponse obtener_prestamos_vigentesxUsuario(BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuarioReques" +
-            "t", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuarioRespon" +
-            "se")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioResponse> obtener_prestamos_vigentesxUsuarioAsync(BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarPorPanelBusquedaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarPorPanelBusquedaResponse")]
@@ -6455,6 +6440,34 @@ namespace BibliotecaWA.BibliotecaServices {
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarPorPanelBusquedaResponse> listarPorPanelBusquedaAsync(BibliotecaWA.BibliotecaServices.listarPorPanelBusquedaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarTodosDelSistemaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarTodosDelSistemaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.listarTodosDelSistemaResponse listarTodosDelSistema(BibliotecaWA.BibliotecaServices.listarTodosDelSistemaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarTodosDelSistemaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarTodosDelSistemaResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarTodosDelSistemaResponse> listarTodosDelSistemaAsync(BibliotecaWA.BibliotecaServices.listarTodosDelSistemaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioxCodigoRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioxCodigoResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioxCodigo/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.obtenerUsuarioxCodigoResponse obtenerUsuarioxCodigo(BibliotecaWA.BibliotecaServices.obtenerUsuarioxCodigoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioxCodigoRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioxCodigoResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerUsuarioxCodigoResponse> obtenerUsuarioxCodigoAsync(BibliotecaWA.BibliotecaServices.obtenerUsuarioxCodigoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_sancion_usuarioRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_sancion_usuarioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioResponse obtener_sancion_usuario(BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_sancion_usuarioRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_sancion_usuarioResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioResponse> obtener_sancion_usuarioAsync(BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/modificarUsuarioRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/modificarUsuarioResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/modificarUsuario/Fault/Exception", Name="Exception")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -6463,6 +6476,26 @@ namespace BibliotecaWA.BibliotecaServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/modificarUsuarioRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/modificarUsuarioResponse")]
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarUsuarioResponse> modificarUsuarioAsync(BibliotecaWA.BibliotecaServices.modificarUsuarioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuarioRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuarioResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuario/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.eliminarUsuarioResponse eliminarUsuario(BibliotecaWA.BibliotecaServices.eliminarUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuarioRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuarioResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarUsuarioResponse> eliminarUsuarioAsync(BibliotecaWA.BibliotecaServices.eliminarUsuarioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioPorIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioPorId/Fault/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse obtenerUsuarioPorId(BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioPorIdResponse")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse> obtenerUsuarioPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarUsuariosRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarUsuariosResponse")]
@@ -6485,45 +6518,6 @@ namespace BibliotecaWA.BibliotecaServices {
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarUsuarioResponse> insertarUsuarioAsync(BibliotecaWA.BibliotecaServices.insertarUsuarioRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioPorIdResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioPorId/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse obtenerUsuarioPorId(BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioPorIdRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioPorIdResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse> obtenerUsuarioPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarTodosDelSistemaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarTodosDelSistemaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.listarTodosDelSistemaResponse listarTodosDelSistema(BibliotecaWA.BibliotecaServices.listarTodosDelSistemaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarTodosDelSistemaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/listarTodosDelSistemaResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarTodosDelSistemaResponse> listarTodosDelSistemaAsync(BibliotecaWA.BibliotecaServices.listarTodosDelSistemaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioxCodigoRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioxCodigoResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioxCodigo/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.obtenerUsuarioxCodigoResponse obtenerUsuarioxCodigo(BibliotecaWA.BibliotecaServices.obtenerUsuarioxCodigoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioxCodigoRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtenerUsuarioxCodigoResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerUsuarioxCodigoResponse> obtenerUsuarioxCodigoAsync(BibliotecaWA.BibliotecaServices.obtenerUsuarioxCodigoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuarioRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuarioResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuario/Fault/Exception", Name="Exception")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        BibliotecaWA.BibliotecaServices.eliminarUsuarioResponse eliminarUsuario(BibliotecaWA.BibliotecaServices.eliminarUsuarioRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuarioRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/eliminarUsuarioResponse")]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.eliminarUsuarioResponse> eliminarUsuarioAsync(BibliotecaWA.BibliotecaServices.eliminarUsuarioRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/verificarCuentaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/verificarCuentaResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/verificarCuenta/Fault/Exception", Name="Exception")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -6532,42 +6526,21 @@ namespace BibliotecaWA.BibliotecaServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/verificarCuentaRequest", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/verificarCuentaResponse")]
         System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.verificarCuentaResponse> verificarCuentaAsync(BibliotecaWA.BibliotecaServices.verificarCuentaRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtener_prestamos_vigentesxUsuario", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtener_prestamos_vigentesxUsuarioRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuarioReques" +
+            "t", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuarioRespon" +
+            "se")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BibliotecaWA.BibliotecaServices.Exception), Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuario/Fault" +
+            "/Exception", Name="Exception")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioResponse obtener_prestamos_vigentesxUsuario(BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest request);
         
-        public obtener_prestamos_vigentesxUsuarioRequest() {
-        }
-        
-        public obtener_prestamos_vigentesxUsuarioRequest(int arg0) {
-            this.arg0 = arg0;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtener_prestamos_vigentesxUsuarioResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtener_prestamos_vigentesxUsuarioResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public obtener_prestamos_vigentesxUsuarioResponse() {
-        }
-        
-        public obtener_prestamos_vigentesxUsuarioResponse(int @return) {
-            this.@return = @return;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuarioReques" +
+            "t", ReplyAction="pe.edu.pucp.utilsarmy.services/UsuarioWS/obtener_prestamos_vigentesxUsuarioRespon" +
+            "se")]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioResponse> obtener_prestamos_vigentesxUsuarioAsync(BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -6602,142 +6575,6 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         public listarPorPanelBusquedaResponse(BibliotecaWA.BibliotecaServices.usuario[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarUsuario", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class modificarUsuarioRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.usuario usuario;
-        
-        public modificarUsuarioRequest() {
-        }
-        
-        public modificarUsuarioRequest(BibliotecaWA.BibliotecaServices.usuario usuario) {
-            this.usuario = usuario;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarUsuarioResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class modificarUsuarioResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public modificarUsuarioResponse() {
-        }
-        
-        public modificarUsuarioResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarUsuarios", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarUsuariosRequest {
-        
-        public listarUsuariosRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarUsuariosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class listarUsuariosResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.usuario[] @return;
-        
-        public listarUsuariosResponse() {
-        }
-        
-        public listarUsuariosResponse(BibliotecaWA.BibliotecaServices.usuario[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarUsuario", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class insertarUsuarioRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.usuario usuario;
-        
-        public insertarUsuarioRequest() {
-        }
-        
-        public insertarUsuarioRequest(BibliotecaWA.BibliotecaServices.usuario usuario) {
-            this.usuario = usuario;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarUsuarioResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class insertarUsuarioResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public insertarUsuarioResponse() {
-        }
-        
-        public insertarUsuarioResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerUsuarioPorId", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtenerUsuarioPorIdRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idUsuario;
-        
-        public obtenerUsuarioPorIdRequest() {
-        }
-        
-        public obtenerUsuarioPorIdRequest(int idUsuario) {
-            this.idUsuario = idUsuario;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerUsuarioPorIdResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
-    public partial class obtenerUsuarioPorIdResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BibliotecaWA.BibliotecaServices.usuario @return;
-        
-        public obtenerUsuarioPorIdResponse() {
-        }
-        
-        public obtenerUsuarioPorIdResponse(BibliotecaWA.BibliotecaServices.usuario @return) {
             this.@return = @return;
         }
     }
@@ -6809,6 +6646,78 @@ namespace BibliotecaWA.BibliotecaServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtener_sancion_usuario", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtener_sancion_usuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int name;
+        
+        public obtener_sancion_usuarioRequest() {
+        }
+        
+        public obtener_sancion_usuarioRequest(int name) {
+            this.name = name;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtener_sancion_usuarioResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtener_sancion_usuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.sancion @return;
+        
+        public obtener_sancion_usuarioResponse() {
+        }
+        
+        public obtener_sancion_usuarioResponse(BibliotecaWA.BibliotecaServices.sancion @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarUsuario", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class modificarUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.usuario usuario;
+        
+        public modificarUsuarioRequest() {
+        }
+        
+        public modificarUsuarioRequest(BibliotecaWA.BibliotecaServices.usuario usuario) {
+            this.usuario = usuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarUsuarioResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class modificarUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarUsuarioResponse() {
+        }
+        
+        public modificarUsuarioResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarUsuario", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
     public partial class eliminarUsuarioRequest {
         
@@ -6838,6 +6747,106 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         public eliminarUsuarioResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerUsuarioPorId", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtenerUsuarioPorIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idUsuario;
+        
+        public obtenerUsuarioPorIdRequest() {
+        }
+        
+        public obtenerUsuarioPorIdRequest(int idUsuario) {
+            this.idUsuario = idUsuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerUsuarioPorIdResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtenerUsuarioPorIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.usuario @return;
+        
+        public obtenerUsuarioPorIdResponse() {
+        }
+        
+        public obtenerUsuarioPorIdResponse(BibliotecaWA.BibliotecaServices.usuario @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarUsuarios", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarUsuariosRequest {
+        
+        public listarUsuariosRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarUsuariosResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class listarUsuariosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.usuario[] @return;
+        
+        public listarUsuariosResponse() {
+        }
+        
+        public listarUsuariosResponse(BibliotecaWA.BibliotecaServices.usuario[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarUsuario", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class insertarUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BibliotecaWA.BibliotecaServices.usuario usuario;
+        
+        public insertarUsuarioRequest() {
+        }
+        
+        public insertarUsuarioRequest(BibliotecaWA.BibliotecaServices.usuario usuario) {
+            this.usuario = usuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarUsuarioResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class insertarUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarUsuarioResponse() {
+        }
+        
+        public insertarUsuarioResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -6878,6 +6887,42 @@ namespace BibliotecaWA.BibliotecaServices {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtener_prestamos_vigentesxUsuario", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtener_prestamos_vigentesxUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int arg0;
+        
+        public obtener_prestamos_vigentesxUsuarioRequest() {
+        }
+        
+        public obtener_prestamos_vigentesxUsuarioRequest(int arg0) {
+            this.arg0 = arg0;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtener_prestamos_vigentesxUsuarioResponse", WrapperNamespace="pe.edu.pucp.utilsarmy.services", IsWrapped=true)]
+    public partial class obtener_prestamos_vigentesxUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.utilsarmy.services", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public obtener_prestamos_vigentesxUsuarioResponse() {
+        }
+        
+        public obtener_prestamos_vigentesxUsuarioResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface UsuarioWSChannel : BibliotecaWA.BibliotecaServices.UsuarioWS, System.ServiceModel.IClientChannel {
     }
@@ -6906,29 +6951,6 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioResponse BibliotecaWA.BibliotecaServices.UsuarioWS.obtener_prestamos_vigentesxUsuario(BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest request) {
-            return base.Channel.obtener_prestamos_vigentesxUsuario(request);
-        }
-        
-        public int obtener_prestamos_vigentesxUsuario(int arg0) {
-            BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest();
-            inValue.arg0 = arg0;
-            BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioResponse retVal = ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).obtener_prestamos_vigentesxUsuario(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioResponse> BibliotecaWA.BibliotecaServices.UsuarioWS.obtener_prestamos_vigentesxUsuarioAsync(BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest request) {
-            return base.Channel.obtener_prestamos_vigentesxUsuarioAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioResponse> obtener_prestamos_vigentesxUsuarioAsync(int arg0) {
-            BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest();
-            inValue.arg0 = arg0;
-            return ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).obtener_prestamos_vigentesxUsuarioAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         BibliotecaWA.BibliotecaServices.listarPorPanelBusquedaResponse BibliotecaWA.BibliotecaServices.UsuarioWS.listarPorPanelBusqueda(BibliotecaWA.BibliotecaServices.listarPorPanelBusquedaRequest request) {
             return base.Channel.listarPorPanelBusqueda(request);
         }
@@ -6949,96 +6971,6 @@ namespace BibliotecaWA.BibliotecaServices {
             BibliotecaWA.BibliotecaServices.listarPorPanelBusquedaRequest inValue = new BibliotecaWA.BibliotecaServices.listarPorPanelBusquedaRequest();
             inValue.filtro = filtro;
             return ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).listarPorPanelBusquedaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.modificarUsuarioResponse BibliotecaWA.BibliotecaServices.UsuarioWS.modificarUsuario(BibliotecaWA.BibliotecaServices.modificarUsuarioRequest request) {
-            return base.Channel.modificarUsuario(request);
-        }
-        
-        public int modificarUsuario(BibliotecaWA.BibliotecaServices.usuario usuario) {
-            BibliotecaWA.BibliotecaServices.modificarUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.modificarUsuarioRequest();
-            inValue.usuario = usuario;
-            BibliotecaWA.BibliotecaServices.modificarUsuarioResponse retVal = ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).modificarUsuario(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarUsuarioResponse> BibliotecaWA.BibliotecaServices.UsuarioWS.modificarUsuarioAsync(BibliotecaWA.BibliotecaServices.modificarUsuarioRequest request) {
-            return base.Channel.modificarUsuarioAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarUsuarioResponse> modificarUsuarioAsync(BibliotecaWA.BibliotecaServices.usuario usuario) {
-            BibliotecaWA.BibliotecaServices.modificarUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.modificarUsuarioRequest();
-            inValue.usuario = usuario;
-            return ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).modificarUsuarioAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.listarUsuariosResponse BibliotecaWA.BibliotecaServices.UsuarioWS.listarUsuarios(BibliotecaWA.BibliotecaServices.listarUsuariosRequest request) {
-            return base.Channel.listarUsuarios(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.usuario[] listarUsuarios() {
-            BibliotecaWA.BibliotecaServices.listarUsuariosRequest inValue = new BibliotecaWA.BibliotecaServices.listarUsuariosRequest();
-            BibliotecaWA.BibliotecaServices.listarUsuariosResponse retVal = ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).listarUsuarios(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarUsuariosResponse> BibliotecaWA.BibliotecaServices.UsuarioWS.listarUsuariosAsync(BibliotecaWA.BibliotecaServices.listarUsuariosRequest request) {
-            return base.Channel.listarUsuariosAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarUsuariosResponse> listarUsuariosAsync() {
-            BibliotecaWA.BibliotecaServices.listarUsuariosRequest inValue = new BibliotecaWA.BibliotecaServices.listarUsuariosRequest();
-            return ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).listarUsuariosAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.insertarUsuarioResponse BibliotecaWA.BibliotecaServices.UsuarioWS.insertarUsuario(BibliotecaWA.BibliotecaServices.insertarUsuarioRequest request) {
-            return base.Channel.insertarUsuario(request);
-        }
-        
-        public int insertarUsuario(BibliotecaWA.BibliotecaServices.usuario usuario) {
-            BibliotecaWA.BibliotecaServices.insertarUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.insertarUsuarioRequest();
-            inValue.usuario = usuario;
-            BibliotecaWA.BibliotecaServices.insertarUsuarioResponse retVal = ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).insertarUsuario(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarUsuarioResponse> BibliotecaWA.BibliotecaServices.UsuarioWS.insertarUsuarioAsync(BibliotecaWA.BibliotecaServices.insertarUsuarioRequest request) {
-            return base.Channel.insertarUsuarioAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarUsuarioResponse> insertarUsuarioAsync(BibliotecaWA.BibliotecaServices.usuario usuario) {
-            BibliotecaWA.BibliotecaServices.insertarUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.insertarUsuarioRequest();
-            inValue.usuario = usuario;
-            return ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).insertarUsuarioAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse BibliotecaWA.BibliotecaServices.UsuarioWS.obtenerUsuarioPorId(BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest request) {
-            return base.Channel.obtenerUsuarioPorId(request);
-        }
-        
-        public BibliotecaWA.BibliotecaServices.usuario obtenerUsuarioPorId(int idUsuario) {
-            BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest();
-            inValue.idUsuario = idUsuario;
-            BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse retVal = ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).obtenerUsuarioPorId(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse> BibliotecaWA.BibliotecaServices.UsuarioWS.obtenerUsuarioPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest request) {
-            return base.Channel.obtenerUsuarioPorIdAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse> obtenerUsuarioPorIdAsync(int idUsuario) {
-            BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest();
-            inValue.idUsuario = idUsuario;
-            return ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).obtenerUsuarioPorIdAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -7086,6 +7018,52 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioResponse BibliotecaWA.BibliotecaServices.UsuarioWS.obtener_sancion_usuario(BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioRequest request) {
+            return base.Channel.obtener_sancion_usuario(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.sancion obtener_sancion_usuario(int name) {
+            BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioRequest inValue = new BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioRequest();
+            inValue.name = name;
+            BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioResponse retVal = ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).obtener_sancion_usuario(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioResponse> BibliotecaWA.BibliotecaServices.UsuarioWS.obtener_sancion_usuarioAsync(BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioRequest request) {
+            return base.Channel.obtener_sancion_usuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioResponse> obtener_sancion_usuarioAsync(int name) {
+            BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioRequest inValue = new BibliotecaWA.BibliotecaServices.obtener_sancion_usuarioRequest();
+            inValue.name = name;
+            return ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).obtener_sancion_usuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.modificarUsuarioResponse BibliotecaWA.BibliotecaServices.UsuarioWS.modificarUsuario(BibliotecaWA.BibliotecaServices.modificarUsuarioRequest request) {
+            return base.Channel.modificarUsuario(request);
+        }
+        
+        public int modificarUsuario(BibliotecaWA.BibliotecaServices.usuario usuario) {
+            BibliotecaWA.BibliotecaServices.modificarUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.modificarUsuarioRequest();
+            inValue.usuario = usuario;
+            BibliotecaWA.BibliotecaServices.modificarUsuarioResponse retVal = ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).modificarUsuario(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarUsuarioResponse> BibliotecaWA.BibliotecaServices.UsuarioWS.modificarUsuarioAsync(BibliotecaWA.BibliotecaServices.modificarUsuarioRequest request) {
+            return base.Channel.modificarUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.modificarUsuarioResponse> modificarUsuarioAsync(BibliotecaWA.BibliotecaServices.usuario usuario) {
+            BibliotecaWA.BibliotecaServices.modificarUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.modificarUsuarioRequest();
+            inValue.usuario = usuario;
+            return ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).modificarUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         BibliotecaWA.BibliotecaServices.eliminarUsuarioResponse BibliotecaWA.BibliotecaServices.UsuarioWS.eliminarUsuario(BibliotecaWA.BibliotecaServices.eliminarUsuarioRequest request) {
             return base.Channel.eliminarUsuario(request);
         }
@@ -7109,6 +7087,73 @@ namespace BibliotecaWA.BibliotecaServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse BibliotecaWA.BibliotecaServices.UsuarioWS.obtenerUsuarioPorId(BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest request) {
+            return base.Channel.obtenerUsuarioPorId(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.usuario obtenerUsuarioPorId(int idUsuario) {
+            BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest();
+            inValue.idUsuario = idUsuario;
+            BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse retVal = ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).obtenerUsuarioPorId(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse> BibliotecaWA.BibliotecaServices.UsuarioWS.obtenerUsuarioPorIdAsync(BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest request) {
+            return base.Channel.obtenerUsuarioPorIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdResponse> obtenerUsuarioPorIdAsync(int idUsuario) {
+            BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest inValue = new BibliotecaWA.BibliotecaServices.obtenerUsuarioPorIdRequest();
+            inValue.idUsuario = idUsuario;
+            return ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).obtenerUsuarioPorIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.listarUsuariosResponse BibliotecaWA.BibliotecaServices.UsuarioWS.listarUsuarios(BibliotecaWA.BibliotecaServices.listarUsuariosRequest request) {
+            return base.Channel.listarUsuarios(request);
+        }
+        
+        public BibliotecaWA.BibliotecaServices.usuario[] listarUsuarios() {
+            BibliotecaWA.BibliotecaServices.listarUsuariosRequest inValue = new BibliotecaWA.BibliotecaServices.listarUsuariosRequest();
+            BibliotecaWA.BibliotecaServices.listarUsuariosResponse retVal = ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).listarUsuarios(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarUsuariosResponse> BibliotecaWA.BibliotecaServices.UsuarioWS.listarUsuariosAsync(BibliotecaWA.BibliotecaServices.listarUsuariosRequest request) {
+            return base.Channel.listarUsuariosAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.listarUsuariosResponse> listarUsuariosAsync() {
+            BibliotecaWA.BibliotecaServices.listarUsuariosRequest inValue = new BibliotecaWA.BibliotecaServices.listarUsuariosRequest();
+            return ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).listarUsuariosAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.insertarUsuarioResponse BibliotecaWA.BibliotecaServices.UsuarioWS.insertarUsuario(BibliotecaWA.BibliotecaServices.insertarUsuarioRequest request) {
+            return base.Channel.insertarUsuario(request);
+        }
+        
+        public int insertarUsuario(BibliotecaWA.BibliotecaServices.usuario usuario) {
+            BibliotecaWA.BibliotecaServices.insertarUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.insertarUsuarioRequest();
+            inValue.usuario = usuario;
+            BibliotecaWA.BibliotecaServices.insertarUsuarioResponse retVal = ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).insertarUsuario(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarUsuarioResponse> BibliotecaWA.BibliotecaServices.UsuarioWS.insertarUsuarioAsync(BibliotecaWA.BibliotecaServices.insertarUsuarioRequest request) {
+            return base.Channel.insertarUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.insertarUsuarioResponse> insertarUsuarioAsync(BibliotecaWA.BibliotecaServices.usuario usuario) {
+            BibliotecaWA.BibliotecaServices.insertarUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.insertarUsuarioRequest();
+            inValue.usuario = usuario;
+            return ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).insertarUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         BibliotecaWA.BibliotecaServices.verificarCuentaResponse BibliotecaWA.BibliotecaServices.UsuarioWS.verificarCuenta(BibliotecaWA.BibliotecaServices.verificarCuentaRequest request) {
             return base.Channel.verificarCuenta(request);
         }
@@ -7129,6 +7174,29 @@ namespace BibliotecaWA.BibliotecaServices {
             BibliotecaWA.BibliotecaServices.verificarCuentaRequest inValue = new BibliotecaWA.BibliotecaServices.verificarCuentaRequest();
             inValue.cuenta = cuenta;
             return ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).verificarCuentaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioResponse BibliotecaWA.BibliotecaServices.UsuarioWS.obtener_prestamos_vigentesxUsuario(BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest request) {
+            return base.Channel.obtener_prestamos_vigentesxUsuario(request);
+        }
+        
+        public int obtener_prestamos_vigentesxUsuario(int arg0) {
+            BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest();
+            inValue.arg0 = arg0;
+            BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioResponse retVal = ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).obtener_prestamos_vigentesxUsuario(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioResponse> BibliotecaWA.BibliotecaServices.UsuarioWS.obtener_prestamos_vigentesxUsuarioAsync(BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest request) {
+            return base.Channel.obtener_prestamos_vigentesxUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioResponse> obtener_prestamos_vigentesxUsuarioAsync(int arg0) {
+            BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest inValue = new BibliotecaWA.BibliotecaServices.obtener_prestamos_vigentesxUsuarioRequest();
+            inValue.arg0 = arg0;
+            return ((BibliotecaWA.BibliotecaServices.UsuarioWS)(this)).obtener_prestamos_vigentesxUsuarioAsync(inValue);
         }
     }
 }
