@@ -65,16 +65,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:contribuyente" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listar_autores_por_material">
-    <xs:sequence>
-      <xs:element name="id_material" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listar_autores_por_materialResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:contribuyente" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="obtenerContribuyentePorId">
     <xs:sequence>
       <xs:element name="idContribuyente" type="xs:int" />
@@ -83,6 +73,16 @@
   <xs:complexType name="obtenerContribuyentePorIdResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:contribuyente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listar_autores_por_material">
+    <xs:sequence>
+      <xs:element name="id_material" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listar_autores_por_materialResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:contribuyente" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarContribuyente">

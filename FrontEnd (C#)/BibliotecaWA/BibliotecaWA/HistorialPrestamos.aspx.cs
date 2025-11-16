@@ -226,7 +226,7 @@ namespace BibliotecaWA
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             int id = int.Parse(hfPrestamoSeleccionado.Value);
-            Response.Redirect($"AdministrarUsuarios.aspx?id={id}&modo=editar");
+            Response.Redirect($"DetallePrestamo_Sancion.aspx?id={id}&modo=editar");
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

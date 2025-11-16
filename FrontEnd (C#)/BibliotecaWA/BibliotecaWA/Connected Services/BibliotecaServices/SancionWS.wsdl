@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/SancionWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
-  <message name="listarSanciones">
-    <part name="parameters" element="tns:listarSanciones" />
+  <message name="BusquedaSanciones">
+    <part name="parameters" element="tns:BusquedaSanciones" />
   </message>
-  <message name="listarSancionesResponse">
-    <part name="parameters" element="tns:listarSancionesResponse" />
+  <message name="BusquedaSancionesResponse">
+    <part name="parameters" element="tns:BusquedaSancionesResponse" />
   </message>
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
@@ -20,32 +20,32 @@
   <message name="listarSancionesPorUsuarioResponse">
     <part name="parameters" element="tns:listarSancionesPorUsuarioResponse" />
   </message>
-  <message name="BusquedaSanciones">
-    <part name="parameters" element="tns:BusquedaSanciones" />
+  <message name="listarSanciones">
+    <part name="parameters" element="tns:listarSanciones" />
   </message>
-  <message name="BusquedaSancionesResponse">
-    <part name="parameters" element="tns:BusquedaSancionesResponse" />
+  <message name="listarSancionesResponse">
+    <part name="parameters" element="tns:listarSancionesResponse" />
   </message>
   <portType name="SancionWS">
-    <operation name="listarSanciones">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesRequest" message="tns:listarSanciones" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesResponse" message="tns:listarSancionesResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSanciones/Fault/Exception" name="Exception" message="tns:Exception" />
+    <operation name="BusquedaSanciones">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesRequest" message="tns:BusquedaSanciones" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesResponse" message="tns:BusquedaSancionesResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSanciones/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="listarSancionesPorUsuario">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesPorUsuarioRequest" message="tns:listarSancionesPorUsuario" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesPorUsuarioResponse" message="tns:listarSancionesPorUsuarioResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesPorUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="BusquedaSanciones">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesRequest" message="tns:BusquedaSanciones" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesResponse" message="tns:BusquedaSancionesResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSanciones/Fault/Exception" name="Exception" message="tns:Exception" />
+    <operation name="listarSanciones">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesRequest" message="tns:listarSanciones" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesResponse" message="tns:listarSancionesResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSanciones/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
   </portType>
   <binding name="SancionWSPortBinding" type="tns:SancionWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="listarSanciones">
+    <operation name="BusquedaSanciones">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -69,7 +69,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="BusquedaSanciones">
+    <operation name="listarSanciones">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -744,19 +744,27 @@ BEGIN
     
 END$
 
-DELIMITER $
--- OBTENER_PRESTAMO_X_ID
+DELIMITER $$
+
 CREATE PROCEDURE OBTENER_PRESTAMO_X_ID(
     IN _id_prestamo INT
 )
 BEGIN
-    SELECT id_prestamo, fecha_de_prestamo, fecha_vencimiento, fecha_devolucion, estado, id_ejemplar, id_usuario
-    FROM Prestamo 
-    WHERE id_prestamo = _id_prestamo;
-END$
+    SELECT 
+        p.id_prestamo, 
+        p.fecha_de_prestamo, 
+        p.fecha_vencimiento, 
+        p.fecha_devolucion, 
+        p.estado, 
+        p.id_ejemplar, 
+        u.id_usuario,
+        u.codigo_universitario
+    FROM Prestamo p
+    JOIN Usuario u ON u.id_usuario = p.id_usuario  
+    WHERE p.id_prestamo = _id_prestamo;
+END $$
 
-
-DELIMITER $
+DELIMITER ;
 -- LISTAR_PRESTAMOS_TODOS
 CREATE PROCEDURE LISTAR_PRESTAMOS_TODOS()
 BEGIN
