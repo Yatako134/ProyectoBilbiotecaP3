@@ -19,6 +19,9 @@ namespace BibliotecaWA
         {
             if (!IsPostBack)
             {
+                materialBO = new MaterialWSClient();
+                listaMateriales = new BindingList<materialBibliografico>(materialBO.ListarTodos());
+                Session["materiales"] = listaMateriales;
                 CargarMateriales();
                 CargarBibliotecas();
             }
@@ -42,26 +45,26 @@ namespace BibliotecaWA
 
         private void CargarMateriales(string filtro = "")
         {
-            materialBO = new MaterialWSClient();
-            listaMateriales = new BindingList<materialBibliografico>(materialBO.ListarTodos());
-            if (listaMateriales!=null && listaMateriales.Count > 0)
+            var materiales = Session["materiales"] as BindingList<materialBibliografico>;
+
+            if (materiales != null && materiales.Count > 0)
             {
-                materialBibliografico m;
-                Session["materiales"] = listaMateriales;
-                gvResultados.DataSource = listaMateriales;
+                gvResultados.DataSource = materiales;
                 gvResultados.DataBind();
                 ActualizarContador();
-                int total = listaMateriales.Count;
+
+                int total = materiales.Count;
                 int inicio = gvResultados.PageIndex * gvResultados.PageSize + 1;
                 int fin = Math.Min((gvResultados.PageIndex + 1) * gvResultados.PageSize, total);
                 lblPaginaInfo.Text = $"{inicio}-{fin} de {total}";
             }
             else
             {
+                gvResultados.DataSource = null;
+                gvResultados.DataBind();
                 lblMensaje.Text = "No hay materiales bibliográficos para mostrar.";
                 lblMensaje.Visible = true;
             }
-            
         }
         private void ActualizarContador()
         {
@@ -72,43 +75,40 @@ namespace BibliotecaWA
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             if (materialBO == null) materialBO = new MaterialWSClient();
-            var resultados = materialBO.Busqueda(txtBusqueda.Text)?.ToList(); // Convierte a List
+            var resultados = materialBO.Busqueda(txtBusqueda.Text)?.ToList();
 
             if (resultados == null || resultados.Count == 0)
             {
                 gvResultados.DataSource = null;
                 gvResultados.DataBind();
-
                 lblMensaje.Text = "No se encontraron resultados.";
                 lblMensaje.Visible = true;
             }
             else
             {
                 listaMateriales = new BindingList<materialBibliografico>(resultados);
+                Session["materiales"] = listaMateriales;
+
+                gvResultados.PageIndex = 0;
                 gvResultados.DataSource = listaMateriales;
                 gvResultados.DataBind();
-
                 lblMensaje.Visible = false;
             }
         }
 
         protected void btnBuscarAvanzado_Click(object sender, EventArgs e)
         {
-            string titulo = string.IsNullOrWhiteSpace(txtTituloAvanzado.Text) ? null : txtTituloAvanzado.Text.Trim();
-            string nombreContribuyente = string.IsNullOrWhiteSpace(txtNombreContribuyente.Text) ? null : txtNombreContribuyente.Text.Trim();
-            string tema = string.IsNullOrWhiteSpace(txtTema.Text) ? null : txtTema.Text.Trim();
+            if (materialBO == null) materialBO = new MaterialWSClient();
+            string titulo = string.IsNullOrWhiteSpace(txtTituloAvanzado.Text) ? null : txtTituloAvanzado.Text.Trim(); 
+            string nombreContribuyente = string.IsNullOrWhiteSpace(txtNombreContribuyente.Text) ? null : txtNombreContribuyente.Text.Trim(); 
+            string tema = string.IsNullOrWhiteSpace(txtTema.Text) ? null : txtTema.Text.Trim(); 
 
-            // Si el campo está vacío, usar el rango completo
-            int anioDesde = int.TryParse(txtAnioDesde.Text.Trim(), out int desde) ? desde : 0;
+            int anioDesde = int.TryParse(txtAnioDesde.Text.Trim(), out int desde) ? desde : 0; 
             int anioHasta = int.TryParse(txtAnioHasta.Text.Trim(), out int hasta) ? hasta : 9999;
-
-            string contribuyente = ddlContribuyente.SelectedIndex == 0 ? null : ddlContribuyente.SelectedValue;
-            string tipoMaterial = ddlTipoMaterial.SelectedIndex == 0 ? null : ddlTipoMaterial.SelectedValue;
-            string biblioteca = ddlBiblioteca.SelectedIndex == 0 ? null : ddlBiblioteca.SelectedValue;
+            string contribuyente = ddlContribuyente.SelectedIndex == 0 ? null : ddlContribuyente.SelectedValue; 
+            string tipoMaterial = ddlTipoMaterial.SelectedIndex == 0 ? null : ddlTipoMaterial.SelectedValue; 
+            string biblioteca = ddlBiblioteca.SelectedIndex == 0 ? null : ddlBiblioteca.SelectedValue; 
             string disponibilidad = ddlDisponibilidad.SelectedIndex == 0 ? null : ddlDisponibilidad.SelectedValue;
-
-            if (materialBO == null)
-                materialBO = new MaterialWSClient();
 
             var resultados = materialBO.BusquedaAvanzada(
                 titulo,
@@ -126,16 +126,17 @@ namespace BibliotecaWA
             {
                 gvResultados.DataSource = null;
                 gvResultados.DataBind();
-
                 lblMensaje.Text = "No se encontraron resultados.";
                 lblMensaje.Visible = true;
             }
             else
             {
                 listaMateriales = new BindingList<materialBibliografico>(resultados);
+                Session["materiales"] = listaMateriales;
+
+                gvResultados.PageIndex = 0;
                 gvResultados.DataSource = listaMateriales;
                 gvResultados.DataBind();
-
                 lblMensaje.Visible = false;
             }
         }
@@ -151,14 +152,14 @@ namespace BibliotecaWA
         protected void gvResultados_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvResultados.PageIndex = e.NewPageIndex;
-            CargarMateriales(txtBusqueda.Text.Trim());
+            CargarMateriales();
         }
 
         protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             gvResultados.PageSize = int.Parse(ddlPageSize.SelectedValue);
             gvResultados.PageIndex = 0;
-            CargarMateriales(txtBusqueda.Text.Trim());
+            CargarMateriales();
         }
 
         protected string GetTipoImagen(object tipo)
