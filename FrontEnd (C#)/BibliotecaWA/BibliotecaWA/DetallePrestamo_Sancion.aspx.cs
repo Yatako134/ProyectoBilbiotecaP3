@@ -1,7 +1,6 @@
 ﻿using BibliotecaWA.BibliotecaServices;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -24,14 +23,13 @@ namespace BibliotecaWA
             {
                 return new List<string>
         {
-            "DANHO",
-            "ENTREGA_TARDIA",
+            "DANHO"
         };
             }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
             ejemBO = new EjemplarWSClient();
             mateBO = new MaterialWSClient();
             prestBO = new PrestamoWSClient();
@@ -41,9 +39,11 @@ namespace BibliotecaWA
 
             if (!IsPostBack)
             {
+                txtFechaDevo.Text = DateTime.Now.ToString("dd/mm/yyyy");
+
                 string id = Request.QueryString["id"];
                 string modo = Request.QueryString["modo"];
-                MostrarDetalle(modo);
+
                 int id_sancion;
                 int id_prestamo;
                 sancion sanc = null;
@@ -56,49 +56,69 @@ namespace BibliotecaWA
                 else { id_prestamo = int.Parse(id); }
                 prestamo prestamo = prestBO.obtenerPrestamoPorId(id_prestamo);
 
+                MostrarDetalle(modo, prestamo.fecha_vencimiento);
                 Session["prestamo"] = prestamo;
 
                 int id_ejemplar = prestamo.ejemplar.idEjemplar;
                 ejemplar ejemp = ejemBO.obtenerEjemplarPorId(id_ejemplar);
                 int id_material = ejemp.id_material;
                 materialBibliografico material = mateBO.ObtenerSoloMaterial(id_material);
-                if (modo.Equals("ver"))
+
+                if (modo == "ver")
                 {
                     lblCabecera.Text = "Detalle de préstamo";
                     lblCabeceraInf.Text = "Detalle de préstamo";
-                    lblMensajePersonalizado.Text = "⚠️ Si no se devuelve a tiempo, se le aplicará la sanción correspondiente.";
+
+                    switch (prestamo.estado)
+                    {
+                        case estadoPrestamo.FINALIZADO:
+                            lblMensajePersonalizado.Text = "";
+                            break;
+
+                        case estadoPrestamo.VIGENTE:
+                            lblMensajePersonalizado.Text =
+                                "⚠️ Si no se devuelve a tiempo, se le aplicará la sanción correspondiente.";
+                            break;
+
+                        case estadoPrestamo.RETRASADO:
+                            lblMensajePersonalizado.Text =
+                                "⚠️ El usuario está retrasado en el préstamo actual";
+                            break;
+                    }
                 }
-                else
-                if(modo.Equals("editar")){
+
+                if (modo == "editar")
+                {
                     lblCabeceraInf.Text = "Modificacion de préstamo";
                     lblCabecera.Text = "Modificacion de préstamo";
-
                 }
-                else if (modo.Equals("verSancion"))
+
+                if (modo == "verSancion")
                 {
                     lblCabeceraInf.Text = "Detalle de sanción";
                     lblCabecera.Text = "Detalle de sanción";
-                    if(sanc.tipo_sancion.ToString() == "ENTREGA_TARDIA")
-                    {
-                        lblTipoSancion.Text = "Entrega tardía";
-                    }
-                    else
-                    {
-                        lblTipoSancion.Text = "Daño del material";
-                    }
-                        lblDuracion.Text = sanc.duracion_dias.ToString();
-                    lblJustificacion.Text = sanc.justificacion.ToString();
+
+                    lblTipoSancion.Text =
+                        sanc.tipo_sancion.ToString() == "ENTREGA_TARDIA"
+                            ? "Entrega tardía"
+                            : "Daño del material";
+
+                    lblDuracion.Text = sanc.duracion_dias.ToString();
+                    lblJustificacion.Text = sanc.justificacion;
                     lblFechaIni.Text = sanc.fecha_inicio.ToString("dd/MM/yyyy - hh:mm tt");
                     lblFechaFin.Text = sanc.fecha_fin.ToString("dd/MM/yyyy - hh:mm tt");
                 }
-                else
+
+                if (modo == "editarSancion")
                 {
                     lblCabeceraInf.Text = "Modificación de sanción";
                     lblCabecera.Text = "Modificacion de sanción";
                     LabelInicioFecha.Text = sanc.fecha_inicio.ToString("dd/MM/yyyy - hh:mm tt");
                     LabelFinFecha.Text = sanc.fecha_fin.ToString("dd/MM/yyyy - hh:mm tt");
                 }
-                    
+
+
+
 
                 lblTitulo.Text = material.titulo;
                 lblAutor.Text = material.autoresTexto;
@@ -126,8 +146,6 @@ namespace BibliotecaWA
 
                 txtCodigo.Text = usuario.codigo.ToString();
                 txtNombre.Text = usuario.nombre + " " + usuario.primer_apellido + " " + usuario.segundo_apellido;
-
-                
             }
 
         }
@@ -144,30 +162,34 @@ namespace BibliotecaWA
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("HistorialPrestamos.aspx"); 
+            Response.Redirect("HistorialPrestamos.aspx");
         }
 
-        protected void MostrarDetalle(string modo)
+        protected void MostrarDetalle(string modo, DateTime fecha_vencimiento)
         {
             if (modo == "editar")
             {
                 pnlFilaEditar.Visible = true;
                 pnlBotonGuardar.Visible = true;
-                DateTime fechaHoy = DateTime.Now.Date;
-                DateTime fechaMaxima = fechaHoy.AddYears(1);
+                if (fecha_vencimiento > DateTime.Now)
+                {
 
-                txtFechaDevo.Attributes["min"] = fechaHoy.ToString("yyyy-MM-dd");
-                txtFechaDevo.Attributes["max"] = fechaMaxima.ToString("yyyy-MM-dd");
+                    pnlSanciones.Visible = true;
+                    pnlSancionAutomatica.Visible = false;
+                }
+                else
+                {
+                    pnlSancionAutomatica.Visible = true;
+                    pnlSanciones.Visible = false;
+                }
 
-                // Opcional: precargar fecha actual
-                txtFechaDevo.Text = fechaHoy.ToString("yyyy-MM-dd");
             }
             else if (modo == "ver")
             {
                 pnlFilaEditar.Visible = false;
                 pnlBotonGuardar.Visible = false;
             }
-            else if(modo == "verSancion")
+            else if (modo == "verSancion")
             {
                 pnlSancionUnica.Visible = true;
                 pnlFilaEditar.Visible = false;
@@ -182,24 +204,6 @@ namespace BibliotecaWA
             }
         }
 
-        protected void cvFecha_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            DateTime fechaHoy = DateTime.Now.Date;
-            DateTime fechaMaxima = fechaHoy.AddYears(1);
-            DateTime fechaIngresada;
-
-            // Validación estricta: si no es una fecha válida o está fuera del rango, se marca inválida
-            if (!DateTime.TryParse(txtFechaDevo.Text, out fechaIngresada) ||
-                fechaIngresada < fechaHoy ||
-                fechaIngresada > fechaMaxima)
-            {
-                args.IsValid = false;
-            }
-            else
-            {
-                args.IsValid = true;
-            }
-        }
 
         protected void btnGuardarCambios_Click(object sender, EventArgs e)
         {
@@ -267,7 +271,7 @@ namespace BibliotecaWA
                 sancionModificada.duracion_dias = int.Parse(txtDuracionUnica.Text);
                 string tipo = ddlTipoSancionUnica.SelectedValue;
                 string tipoAMod;
-                if(tipo == "Daño de material")
+                if (tipo == "Daño de material")
                 {
                     tipoAMod = tipoSancion.DANHO.ToString();
                 }
@@ -279,7 +283,7 @@ namespace BibliotecaWA
                 sancionBo.modificar_sancion(sancionModificada, tipoAMod);
                 Response.Redirect("HistorialPrestamos.aspx");
             }
-            
+
         }
 
     }

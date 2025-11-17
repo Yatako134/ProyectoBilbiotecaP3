@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="DetallePrestamo_Sancion.aspx.cs" Inherits="BibliotecaWA.DetallePrestamo_Sancion" UnobtrusiveValidationMode="None" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="DetallePrestamo_Sancion.aspx.cs" Inherits="BibliotecaWA.DetallePrestamo_Sancion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_Title" runat="server">
 </asp:Content>
@@ -195,11 +195,6 @@
 </asp:Panel>
 
 
-
-
-
-
-
             <asp:Panel ID="pnlSancionUnica" runat="server" Visible="false" CssClass="sancion-row">
 
                 <div class="row mb-3">
@@ -242,20 +237,15 @@
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold">Fecha de Devolución</label>
-                    <!-- TextBox tipo date -->
-                    <asp:TextBox ID="txtFechaDevo" runat="server" CssClass="form-control mb-3"
-                        placeholder="dd/mm/yyyy" TextMode="Date"></asp:TextBox>
 
-                    <asp:RequiredFieldValidator ID="rfvFecha" runat="server"
-                        ControlToValidate="txtFechaDevo"
-                        ErrorMessage="Debe seleccionar una fecha."
-                        ForeColor="Red" Display="Dynamic" />
-
-                    <asp:CustomValidator ID="cvFecha" runat="server"
-                        ControlToValidate="txtFechaDevo"
-                        OnServerValidate="cvFecha_ServerValidate"
-                        ErrorMessage="La fecha debe estar entre hoy y un año a partir de hoy."
-                        ForeColor="Red" Display="Dynamic" />
+                    <asp:TextBox ID="txtFechaDevo" runat="server"
+                        CssClass="form-control mb-3"
+                        TextMode="Date"
+                        placeholder="dd/mm/yyyy"
+                        Enabled="false"
+                        ReadOnly="true"
+                        >
+                    </asp:TextBox>
                 </div>
 
                 <div>
@@ -271,45 +261,58 @@
                                 clientidmode="Static"
                                 style="background-color: #f5faff; color: #1c7ced; border: 1px solid #1c7ced;" />
                         </div>
-                    </asp:Panel>
 
+                    </asp:Panel>
                     <script type="text/javascript">
                         var sancionCounter = 0;
 
-                        // Array de tipos de sanción pasado desde el CodeBehind
                         var tiposDeSancion = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(TiposDeSancion) %>;
 
-                        document.getElementById("btnAddSancion").addEventListener("click", function () {
+                        var btnAdd = document.getElementById("btnAddSancion");
+
+                        btnAdd.addEventListener("click", function () {
+
+                            // Solo permitir 1 sanción a la vez
+                            if (document.querySelectorAll(".sancion-row").length >= 1) {
+                                return;
+                            }
+
                             sancionCounter++;
 
-                            // Contenedor principal de la sanción
+                            // Desactivar botón después de presionarlo
+                            btnAdd.disabled = true;
+                            btnAdd.style.opacity = "0.5";
+                            btnAdd.style.cursor = "not-allowed";
+
                             var divRow = document.createElement("div");
                             divRow.className = "sancion-row";
                             divRow.id = "sancionRow_" + sancionCounter;
-                            divRow.style.position = "relative"; // necesario para la X
+                            divRow.style.position = "relative";
 
-                            // --------------------
-                            // Botón eliminar X
-                            // --------------------
+                            // Botón eliminar
                             var btnRemove = document.createElement("button");
                             btnRemove.type = "button";
-                            btnRemove.innerHTML = "X"; // símbolo X más grande
+                            btnRemove.innerHTML = "X";
                             btnRemove.className = "btn-remove-sancion";
-                            btnRemove.style.fontSize = "1.5rem"; // más grande
-                            btnRemove.style.color = "#000";      // negro
-                            btnRemove.style.fontWeight = "bold"; // opcional, más gruesa
+                            btnRemove.style.fontSize = "1.5rem";
+                            btnRemove.style.color = "#000";
+                            btnRemove.style.fontWeight = "bold";
+
                             btnRemove.addEventListener("click", function () {
-                                divRow.remove(); // elimina el bloque completo
+                                divRow.remove();
+
+                                // Reactivar el botón
+                                btnAdd.disabled = false;
+                                btnAdd.style.opacity = "1";
+                                btnAdd.style.cursor = "pointer";
                             });
+
                             divRow.appendChild(btnRemove);
 
-                            // --------------------
-                            // Campos Tipo y Duración en la misma fila
-                            // --------------------
+                            // --- resto de tu código tal cual ---
                             var divRowTop = document.createElement("div");
                             divRowTop.className = "row mb-3";
 
-                            // Tipo de sanción como dropdown
                             var divTipoCol = document.createElement("div");
                             divTipoCol.className = "col-md-6 mb-2";
 
@@ -320,9 +323,8 @@
                             var selectTipo = document.createElement("select");
                             selectTipo.name = "txtTipoSancion_" + sancionCounter;
                             selectTipo.className = "form-control";
-                            selectTipo.required = true; // <-- VALIDADOR
+                            selectTipo.required = true;
 
-                            // Llenar opciones desde el array tiposDeSancion
                             tiposDeSancion.forEach(function (tipo) {
                                 var option = document.createElement("option");
                                 option.value = tipo;
@@ -333,7 +335,6 @@
                             divTipoCol.appendChild(labelTipo);
                             divTipoCol.appendChild(selectTipo);
 
-                            // Duración
                             var divDuracionCol = document.createElement("div");
                             divDuracionCol.className = "col-md-6 mb-2";
 
@@ -342,13 +343,13 @@
                             labelDuracion.innerText = "Duración (días)";
 
                             var inputDuracion = document.createElement("input");
-                            inputDuracion.type = "number";      // solo números
+                            inputDuracion.type = "number";
                             inputDuracion.name = "txtDuracion_" + sancionCounter;
                             inputDuracion.placeholder = "Ingrese duración";
                             inputDuracion.className = "form-control";
-                            inputDuracion.required = true;      // obligatorio
-                            inputDuracion.min = 1;              // enteros positivos
-                            inputDuracion.step = 1;             // solo enteros
+                            inputDuracion.required = true;
+                            inputDuracion.min = 1;
+                            inputDuracion.step = 1;
 
                             divDuracionCol.appendChild(labelDuracion);
                             divDuracionCol.appendChild(inputDuracion);
@@ -356,9 +357,6 @@
                             divRowTop.appendChild(divTipoCol);
                             divRowTop.appendChild(divDuracionCol);
 
-                            // --------------------
-                            // Justificación debajo
-                            // --------------------
                             var divJustificacion = document.createElement("div");
                             divJustificacion.className = "mb-3";
 
@@ -371,22 +369,59 @@
                             inputJustificacion.placeholder = "Ingrese la justificación";
                             inputJustificacion.className = "form-control";
                             inputJustificacion.rows = 3;
-                            inputJustificacion.required = true; // <-- VALIDADOR
+                            inputJustificacion.required = true;
 
                             divJustificacion.appendChild(labelJustificacion);
                             divJustificacion.appendChild(inputJustificacion);
 
-                            // --------------------
-                            // Agregar todo al contenedor principal
-                            // --------------------
                             divRow.appendChild(divRowTop);
                             divRow.appendChild(divJustificacion);
 
-                            // Agregar la sanción al contenedor
                             document.getElementById("divSancionesContainer").appendChild(divRow);
                         });
                     </script>
 
+                </div>
+
+                <div>
+
+                    <!-- SANCIÓN AUTOMÁTICA (único bloque fijo) -->
+                    <asp:Panel ID="pnlSancionAutomatica" runat="server" Visible="false" CssClass="mt-3">
+
+                        <div class="alert alert-danger fw-bold mb-2">
+                            Sanción automática generada por devolución tardía.
+                        </div>
+
+                        <div class="sancion-row" style="border: 1px solid #1c7ced; padding: 12px; border-radius: 8px; background: #f5faff; position: relative;">
+
+                            <!-- Parte superior (2 columnas) -->
+                            <div class="row mb-3">
+
+                                <!-- Tipo de sanción (pero fijo, no editable) -->
+                                <div class="col-md-6 mb-2">
+                                    <label class="form-label fw-semibold">Tipo de sanción</label>
+                                    <input type="text" class="form-control" value="Automática" readonly style="background: #e9ecef;">
+                                </div>
+
+                                <!-- Días -->
+                                <div class="col-md-6 mb-2">
+                                    <label class="form-label fw-semibold">Duración (días)</label>
+                                    <input type="number" id="txtDiasAuto" class="form-control"
+                                        min="1" max="30" placeholder="Ingrese días" />
+                                </div>
+
+                            </div>
+
+                            <!-- Justificación -->
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Justificación</label>
+                                <textarea id="txtJustificacionAuto" class="form-control" rows="3"
+                                    placeholder="Descripción"></textarea>
+                            </div>
+
+                        </div>
+
+                    </asp:Panel>
                 </div>
             </asp:Panel>
 
