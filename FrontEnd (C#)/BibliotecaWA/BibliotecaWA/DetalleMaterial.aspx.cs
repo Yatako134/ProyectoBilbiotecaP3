@@ -55,7 +55,7 @@ namespace BibliotecaWA
                 TextNroPaginas.Text = materialBibliografico.numero_paginas.ToString();
                 materialBibliografico.ejemplares = materialBiblioBO.buscarEjemplares(materialBibliografico.idMaterial);
                 if (materialBibliografico.ejemplares != null) TextNroEjemplares.Text = materialBibliografico.ejemplares.Length.ToString();
-                else TextNroEjemplares.Text = "0";
+                else TextNroEjemplares.Text = "No tiene ejemplares registrados";
                 txtTipoMaterial.Text = materialBibliografico.tipo.ToString();
                 TextNroPaginas.Text = materialBibliografico.numero_paginas.ToString();
 
@@ -71,27 +71,21 @@ namespace BibliotecaWA
                         {
                             TextISBN.Text = lib.ISBN;
                             txtEdicion.Text = lib.edicion;
+                            TextISBN.Enabled = false;
+                            txtEdicion.Enabled = false;
                         }
 
                         // Ocultar campos de tesis
-                        TextInstitucionPublicacion.Visible = false;
-                        lblInstitucionPublicacion.Visible = false;
-                        TextEspecialidad.Visible = false;
-                        lblEspecialidad.Visible = false;
-                        TextAsesor.Visible = false;
-                        lblAsesor.Visible = false;
-                        TextGrado.Visible = false;
-                        lblGrado.Visible = false;
+                        Institucion.Visible = false;
+                        Especialidad.Visible = false;
+                        Asesor.Visible = false;
+                        Grado.Visible = false;
 
                         // Ocultar campos de artículo
-                        TextISSN.Visible = false;
-                        lblISSN.Visible = false;
-                        TextRevista.Visible = false;
-                        lblRevista.Visible = false;
-                        TextVolumen.Visible = false;
-                        lblVolumen.Visible = false;
-                        TextNumero.Visible = false;
-                        lblNumero.Visible = false;
+                        ISSN.Visible = false;
+                        Revista.Visible = false;
+                        Volumen.Visible = false;
+                        Número.Visible = false;
                         break;
 
                     case "TESIS":
@@ -103,23 +97,21 @@ namespace BibliotecaWA
                             TextEspecialidad.Text = tes.especialidad;
                             TextAsesor.Text = tes.asesor;
                             TextGrado.Text = tes.grado;
+                            TextInstitucionPublicacion.Enabled = false;
+                            TextEspecialidad.Enabled = false;
+                            TextAsesor.Enabled = false;
+                            TextGrado.Enabled = false;
                         }
 
                         // Ocultar campos de libro
-                        TextISBN.Visible = false;
-                        lblISBN.Visible = false;
-                        txtEdicion.Visible = false;
-                        lblEdicion.Visible = false;
+                        ISBN.Visible = false;
+                        Edicion.Visible = false;    
 
                         // Ocultar campos de artículo
-                        TextISSN.Visible = false;
-                        lblISSN.Visible = false;
-                        TextRevista.Visible = false;
-                        lblRevista.Visible = false;
-                        TextVolumen.Visible = false;
-                        lblVolumen.Visible = false;
-                        TextNumero.Visible = false;
-                        lblNumero.Visible = false;
+                        ISSN.Visible = false;
+                        Revista.Visible = false;
+                        Volumen.Visible = false;
+                        Número.Visible = false;
                         break;
 
                     case "ARTICULO":
@@ -131,23 +123,21 @@ namespace BibliotecaWA
                             TextRevista.Text = art.revista;
                             TextVolumen.Text = art.volumen.ToString();
                             TextNumero.Text = art.numero.ToString();
+                            TextISSN.Enabled = false;
+                            TextRevista.Enabled = false;
+                            TextVolumen.Enabled = false;    
+                            TextNumero.Enabled = false;
                         }
 
                         // Ocultar campos de libro
-                        TextISBN.Visible = false;
-                        lblISBN.Visible = false;
-                        txtEdicion.Visible = false;
-                        lblEdicion.Visible = false;
+                        ISBN.Visible = false;
+                        Edicion.Visible = false;
 
                         // Ocultar campos de tesis
-                        TextInstitucionPublicacion.Visible = false;
-                        lblInstitucionPublicacion.Visible = false;
-                        TextEspecialidad.Visible = false;
-                        lblEspecialidad.Visible = false;
-                        TextAsesor.Visible = false;
-                        lblAsesor.Visible = false;
-                        TextGrado.Visible = false;
-                        lblGrado.Visible = false;
+                        Institucion.Visible = false;
+                        Especialidad.Visible = false;
+                        Asesor.Visible = false;
+                        Grado.Visible = false;
                         break;
 
                     default:
@@ -192,7 +182,8 @@ namespace BibliotecaWA
             if (listaEditoriales == null || !listaEditoriales.Any())
             {
                 lblEditorial1.InnerText = "Sin editoriales registrados";
-                rptEditoriales.DataSource = null;
+                lnkVerMasEditoriales.Visible = false;
+                //rptEditoriales.DataSource = null;
                 rptEditoriales.DataBind();
                 return;
             }
@@ -266,17 +257,19 @@ namespace BibliotecaWA
             var ejemplares = materialBiblioBO.buscarEjemplares(id);
 
             List<biblioteca> listaBibliotecasFinal = new List<biblioteca>();
-
+            if (ejemplares == null || ejemplares.Length == 0)
+            {
+                panelSinEjemplares.Visible = true;
+                rptBibliotecas.Visible = false;
+                SelectorBiblioteca.Visible = false; 
+                return;
+            }
             // 3️⃣ Recorrer cada ejemplar y agruparlos por biblioteca
             if (ejemplares != null)
             {
                 foreach (var ejemplar in ejemplares)
                 {
                     int idBiblio = ejemplar.blibioteca.idBiblioteca;
-
-                    // Buscar si la biblioteca ya está en la lista
-                    //var bibliotecaExistente = listaBibliotecas
-                    //    .FirstOrDefault(b => b.idBiblioteca == idBiblio);
                     var bibliotecaExistente = listaBibliotecasFinal
                         .FirstOrDefault(b => b.idBiblioteca == idBiblio);
 
@@ -308,15 +301,6 @@ namespace BibliotecaWA
                     rptBibliotecas.DataBind();
                 }
             }
-            // 4️⃣ Contar ejemplares disponibles y prestados por biblioteca
-            //foreach (var biblioteca in listaBibliotecas)
-            //{
-            //    biblioteca.Disponibles = biblioteca.Ejemplares
-            //        .Count(e => e.Estado.Equals("DISPONIBLE"));
-
-            //    biblioteca.Prestados = biblioteca.Ejemplares
-            //        .Count(e => e.Estado.Equals("PRESTADO"));
-            //}
 
             // 5️⃣ Vincular la lista al Repeater para mostrarla en la interfaz
             rptBibliotecas.DataSource = listaBibliotecasFinal;
@@ -370,6 +354,22 @@ namespace BibliotecaWA
                                     .Where(x => x.blibioteca.idBiblioteca == idBibliotecaSeleccionada)
                                     .ToList();
 
+            // 📌 Si NO HAY ejemplares → mostrar mensaje
+            if (ejemplares == null || ejemplares.Count == 0)
+            {
+                rptBibliotecas.Visible = false;
+                panelSinEjemplares.Visible = true;
+                panelSinEjemplares.Controls.Clear(); // limpia mensajes previos
+
+                panelSinEjemplares.Controls.Add(new Literal
+                {
+                    Text = $"No hay ejemplares disponibles en la biblioteca <b>{biblioteca.nombre}</b>."
+                });
+
+                return;
+            }
+            panelSinEjemplares.Visible = false;
+            rptBibliotecas.Visible = true;
 
             var bibliotecaSeleccionada = new biblioteca
             {

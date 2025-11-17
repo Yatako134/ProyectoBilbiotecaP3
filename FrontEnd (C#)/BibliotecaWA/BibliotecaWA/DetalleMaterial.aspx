@@ -65,18 +65,7 @@
                     <asp:TextBox ID="TextNroPaginas" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
-            <div class="mb-3 row">
-                <asp:Label ID="lblEdicion" runat="server" Text="Edicion:" CssClass="col-sm-2 col-form-label"></asp:Label>
-                <div class="col-sm-8">
-                    <asp:TextBox ID="txtEdicion" runat="server" CssClass="form-control"></asp:TextBox>
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <asp:Label ID="lblISBN" runat="server" Text="ISBN:" CssClass="col-sm-2 col-form-label"></asp:Label>
-                <div class="col-sm-8">
-                    <asp:TextBox ID="TextISBN" runat="server" CssClass="form-control"></asp:TextBox>
-                </div>
-            </div>
+           
 
             <div class="mb-3 row">
                 <asp:Label ID="lblNroEjemplares" runat="server" Text="Nro. Ejemplares:" CssClass="col-sm-2 col-form-label"></asp:Label>
@@ -84,24 +73,36 @@
                     <asp:TextBox ID="TextNroEjemplares" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
+            <!-- Editoriales -->
+            <div ID="Editoriales" runat="server" class="mb-3 row align-items-center">
+                <asp:Label ID="lblEditorialTitulo" runat="server" Text="Editorial(es):" CssClass="col-sm-2 col-form-label"></asp:Label>
+                <div class="col-sm-8 d-flex align-items-center">
+                    <span id="lblEditorial1" runat="server"></span>
+                    <a id="lnkVerMasEditoriales" runat="server" 
+                        href="#" class="ms-2 text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditoriales">Ver más</a>
+                </div>
+            </div>
+           
             <div class="mb-3 row align-items-center">
                 <asp:Label ID="lblEstadoT" runat="server" Text="Estado:" CssClass="col-sm-2 col-form-label"></asp:Label>
                 <div class="col-sm-8">
                     <span id="lblEstado" runat="server" class="badge rounded-pill px-3 py-2"></span>
                 </div>
             </div>
-
-            <!-- Editoriales -->
-            <div class="mb-3 row align-items-center">
-                <asp:Label ID="lblEditorialTitulo" runat="server" Text="Editorial(es):" CssClass="col-sm-2 col-form-label"></asp:Label>
-                <div class="col-sm-8 d-flex align-items-center">
-                    <span id="lblEditorial1" runat="server"></span>
-                    <a href="#" class="ms-2 text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditoriales">Ver más</a>
+            <div id="Edicion" runat="server" class="mb-3 row">
+                <asp:Label ID="lblEdicion" runat="server" Text="Edicion:" CssClass="col-sm-2 col-form-label"></asp:Label>
+                <div class="col-sm-8">
+                    <asp:TextBox ID="txtEdicion" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
-
+            <div id="ISBN" runat="server" class="mb-3 row">
+                <asp:Label ID="lblISBN" runat="server" Text="ISBN:" CssClass="col-sm-2 col-form-label"></asp:Label>
+                <div class="col-sm-8">
+                    <asp:TextBox ID="TextISBN" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
             <!-- Institución de Publicación -->
-            <div class="mb-3 row">
+            <div ID="Institucion" runat ="server" class="mb-3 row">
                 <asp:Label ID="lblInstitucionPublicacion" runat="server" Text="Institución de Publicación:" CssClass="col-sm-2 col-form-label"></asp:Label>
                 <div class="col-sm-8">
                     <asp:TextBox ID="TextInstitucionPublicacion" runat="server" CssClass="form-control"></asp:TextBox>
@@ -109,7 +110,7 @@
             </div>
 
             <!-- Especialidad -->
-            <div class="mb-3 row">
+            <div  ID="Especialidad" runat ="server" class="mb-3 row">
                 <asp:Label ID="lblEspecialidad" runat="server" Text="Especialidad:" CssClass="col-sm-2 col-form-label"></asp:Label>
                 <div class="col-sm-8">
                     <asp:TextBox ID="TextEspecialidad" runat="server" CssClass="form-control"></asp:TextBox>
@@ -117,7 +118,7 @@
             </div>
 
             <!-- Asesor -->
-            <div class="mb-3 row">
+            <div ID="Asesor" runat ="server" class="mb-3 row">
                 <asp:Label ID="lblAsesor" runat="server" Text="Asesor:" CssClass="col-sm-2 col-form-label"></asp:Label>
                 <div class="col-sm-8">
                     <asp:TextBox ID="TextAsesor" runat="server" CssClass="form-control"></asp:TextBox>
@@ -125,7 +126,7 @@
             </div>
 
             <!-- Grado -->
-            <div class="mb-3 row">
+            <div ID="Grado" runat ="server" class="mb-3 row">
                 <asp:Label ID="lblGrado" runat="server" Text="Grado:" CssClass="col-sm-2 col-form-label"></asp:Label>
                 <div class="col-sm-8">
                     <asp:TextBox ID="TextGrado" runat="server" CssClass="form-control"></asp:TextBox>
@@ -133,7 +134,7 @@
             </div>
 
             <!-- ISSN -->
-            <div class="mb-3 row">
+            <div ID="ISSN" runat ="server" class="mb-3 row">
                 <asp:Label ID="lblISSN" runat="server" Text="ISSN:" CssClass="col-sm-2 col-form-label"></asp:Label>
                 <div class="col-sm-8">
                     <asp:TextBox ID="TextISSN" runat="server" CssClass="form-control"></asp:TextBox>
@@ -141,7 +142,7 @@
             </div>
 
             <!-- Revista -->
-            <div class="mb-3 row">
+            <div  ID="Revista" runat ="server" class="mb-3 row">
                 <asp:Label ID="lblRevista" runat="server" Text="Revista:" CssClass="col-sm-2 col-form-label"></asp:Label>
                 <div class="col-sm-8">
                     <asp:TextBox ID="TextRevista" runat="server" CssClass="form-control"></asp:TextBox>
@@ -149,7 +150,7 @@
             </div>
 
             <!-- Volumen -->
-            <div class="mb-3 row">
+            <div ID="Volumen" runat ="server" class="mb-3 row">
                 <asp:Label ID="lblVolumen" runat="server" Text="Volumen:" CssClass="col-sm-2 col-form-label"></asp:Label>
                 <div class="col-sm-8">
                     <asp:TextBox ID="TextVolumen" runat="server" CssClass="form-control"></asp:TextBox>
@@ -157,7 +158,7 @@
             </div>
 
             <!-- Número -->
-            <div class="mb-3 row">
+            <div ID="Número" runat ="server" class="mb-3 row">
                 <asp:Label ID="lblNumero" runat="server" Text="Número:" CssClass="col-sm-2 col-form-label"></asp:Label>
                 <div class="col-sm-8">
                     <asp:TextBox ID="TextNumero" runat="server" CssClass="form-control"></asp:TextBox>
@@ -221,7 +222,7 @@
             <asp:UpdatePanel ID="upBibliotecas" runat="server">
             <ContentTemplate>
             <!-- Selector de biblioteca -->
-                <div class="mb-3">
+                <div ID="SelectorBiblioteca" runat="server"  class="mb-3">
                     <asp:Label ID="lblBiblioteca" CssClass="form-label" runat="server" Text="Biblioteca"></asp:Label>
                     <div class="input-group">
                         <asp:DropDownList ID="ddlbibliotecas" CssClass="form-select" runat="server" AutoPostBack="true"
@@ -231,7 +232,12 @@
                         <asp:Button ID="btnPrestar" runat="server" CssClass="btn btn-primary" Text="Prestar" OnClick="btnPrestar_Click" />
                     </div>
                 </div>
-
+                <asp:Panel ID="panelSinEjemplares" runat="server" Visible="false" CssClass="alert alert-warning">
+                    No hay ejemplares disponibles en ninguna biblioteca.
+                </asp:Panel>
+                <asp:Panel ID="panel1" runat="server" Visible="false"
+                    CssClass="alert alert-warning mt-2">
+                </asp:Panel>
                 <!-- Repeater para mostrar los ejemplares agrupados -->
                 <asp:Repeater ID="rptBibliotecas" runat="server">
                     <ItemTemplate>
