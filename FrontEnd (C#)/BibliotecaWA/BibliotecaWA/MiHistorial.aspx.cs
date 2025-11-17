@@ -223,6 +223,12 @@ namespace ProyectoP3
                 LabelMensajePrestamo.Visible = true;
             }
             CargarPrestamos();
+
+            //boprestamo = new PrestamoWSClient();
+            //var lista = boprestamo.listarPorPanelBusqueda(txtBuscar.Text)?.ToList() ?? new List<usuario>();
+            //BindingList<prestamo> usuarios = new BindingList<usuario>(lista);
+            //Session["usuarios"] = usuarios;
+            //CargarPrestamos();
         }
 
         // Sanciones
@@ -235,7 +241,7 @@ namespace ProyectoP3
         protected void ddlPageSizeSanciones_SelectedIndexChanged(object sender, EventArgs e)
         {
             gvSanciones.PageSize = int.Parse(ddlPageSizeSanciones.SelectedValue);
-            gvSanciones.PageIndex = 0;
+            //gvSanciones.PageIndex = 0;
             CargarSanciones();
         }
 

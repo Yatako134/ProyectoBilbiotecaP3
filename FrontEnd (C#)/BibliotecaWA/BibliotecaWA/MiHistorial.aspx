@@ -50,7 +50,7 @@
                         CssClass="btn btn-sm btn-primary btnBuscarFix"
                         OnClick="btnBuscarPrestamo_Click"
                         UseSubmitBehavior="false">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                         <i class="fa-solid fa-magnifying-glass"></i>
                     </asp:LinkButton>
 
                 </div>
@@ -160,7 +160,7 @@
                     OnPageIndexChanging="gvSanciones_PageIndexChanging">
                     <Columns>
                         <asp:BoundField DataField="id_sancion" HeaderText="Código" ItemStyle-CssClass="align-middle" />
-                        <asp:BoundField DataField="id_sancion" HeaderText="Préstamo" ItemStyle-CssClass="align-middle" />
+                        <asp:BoundField DataField="prestamo.idPrestamo" HeaderText="Préstamo" ItemStyle-CssClass="align-middle" />
                         <asp:TemplateField HeaderText="Fecha de Inicio">
                             <ItemTemplate>
                                 <%# Eval("fecha_inicio", "{0:dd/MM/yyyy}") %>
