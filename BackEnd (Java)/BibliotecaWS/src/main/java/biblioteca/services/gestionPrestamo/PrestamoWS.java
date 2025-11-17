@@ -74,4 +74,12 @@ public class PrestamoWS {
         }
         return resultado;
     }
+    
+    @WebMethod(operationName = "listarPrestamosPorUsuarioPorPanel")
+    public ArrayList<Prestamo> listarPrestamosPorUsuarioPorPanel(@WebParam(name = "idUsuario") int idUsuario,
+            @WebParam(name = "filtro") String filtro) throws Exception {
+        // Si viene null desde el cliente, lo convertimos a vacío
+        if (filtro == null) filtro = "";
+        return prestamoboimpl.listarPorUsuario_X_ID(idUsuario,filtro);
+    }
 }

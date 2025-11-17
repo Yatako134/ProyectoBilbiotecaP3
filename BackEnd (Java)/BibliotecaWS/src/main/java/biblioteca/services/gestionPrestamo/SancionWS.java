@@ -55,5 +55,14 @@ public class SancionWS {
         }
         return sancionboimpl.modificar(sancion);
     }
+    
+    @WebMethod(operationName = "listarSancionesPorUsuarioPorPanel")
+    public ArrayList<Sancion> listarSancionesPorUsuarioPorPanel(@WebParam(name = "idUsuario") int idUsuario,
+            @WebParam(name = "filtro") String filtro) throws Exception {
+        // Si viene null desde el cliente, lo convertimos a vacío
+        if (filtro == null) filtro = "";
+        return sancionboimpl.listarPorUsuario_X_ID(idUsuario,filtro);
+    }
+    
 }
 

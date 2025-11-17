@@ -780,6 +780,21 @@ BEGIN
     WHERE id_usuario = p_id_usuario;
 END $$
 
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `sp_BuscarPrestamo`(
+    IN pIdUsuario INT,
+    IN pBusqueda VARCHAR(50)
+)
+BEGIN
+    SELECT *
+    FROM Prestamo
+    WHERE id_usuario = pIdUsuario
+      AND (
+            pBusqueda IS NULL
+         OR CAST(id_prestamo AS CHAR) LIKE CONCAT('%', pBusqueda, '%')
+      );
+END $$
+
 
 DELIMITER $
 CREATE PROCEDURE INSERTAR_SANCION(
@@ -879,6 +894,21 @@ BEGIN
     WHERE p.id_usuario = p_id_usuario;
 END $$
 
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `sp_BuscarSancion`(
+    IN pIdUsuario INT,
+    IN pBusqueda VARCHAR(50)
+)
+BEGIN
+    SELECT s.*
+    FROM Sancion s
+    INNER JOIN Prestamo p ON s.id_prestamo = p.id_prestamo
+    WHERE p.id_usuario = pIdUsuario
+      AND (
+            pBusqueda IS NULL
+         OR CAST(s.id_sancion AS CHAR) LIKE CONCAT('%', pBusqueda, '%')
+      );
+END $$
 
 
 DELIMITER $
@@ -1318,3 +1348,5 @@ BEGIN
     JOIN Contribuyente_Material cm ON c.id_contribuyente = cm.id_contribuyente
     WHERE cm.id_material = _id_material;
 END$
+
+

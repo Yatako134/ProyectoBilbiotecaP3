@@ -52,5 +52,10 @@ private final SancionDAO daoSancion;
     public ArrayList<Sancion> listar_busqueda_usuario(int codigo_universitario) {
         return daoSancion.listar_busqueda_usuario(codigo_universitario);
     }
+
+    @Override
+    public ArrayList<Sancion> listarPorUsuario_X_ID(int idUsuario, String filtro) {
+        return daoSancion.listarPorUsuario_X_ID(idUsuario, filtro);
+    }
     
 }

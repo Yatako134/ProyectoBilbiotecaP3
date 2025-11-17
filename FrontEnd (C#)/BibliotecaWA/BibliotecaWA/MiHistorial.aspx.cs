@@ -1,4 +1,5 @@
 ﻿//using SoftProgBusiness.GestPrestamos.BOI;
+using BibliotecaWA;
 using BibliotecaWA.BibliotecaServices;
 using System;
 using System.Collections.Generic;
@@ -199,36 +200,24 @@ namespace ProyectoP3
 
         protected void btnBuscarPrestamo_Click(object sender, EventArgs e)
         {
-            boprestamo = new PrestamoWSClient();
-            string codigo_a_buscar = txtBuscar.Text.Trim();
-
-            prestamo[] prestamos_busqueda;
-            if (codigo_a_buscar == "")
-            {
-                prestamos_busqueda = boprestamo.listarPrestamos();
-            }
-            else
-            {
-                prestamos_busqueda = boprestamo.buscarPrestamos(int.Parse(txtBuscar.Text.Trim()));
-            }
-            if (prestamos_busqueda != null)
-            {
-                Session["prestamos"] = new BindingList<prestamo>(prestamos_busqueda);
-                LabelMensajePrestamo.Visible = false;
-            }
-            else
-            {
-                Session["prestamos"] = new BindingList<prestamo>();
-                LabelMensajePrestamo.Text = "No se encontraron resultados para la búsqueda.";
-                LabelMensajePrestamo.Visible = true;
-            }
-            CargarPrestamos();
 
             //boprestamo = new PrestamoWSClient();
-            //var lista = boprestamo.listarPorPanelBusqueda(txtBuscar.Text)?.ToList() ?? new List<usuario>();
-            //BindingList<prestamo> usuarios = new BindingList<usuario>(lista);
-            //Session["usuarios"] = usuarios;
+            //prestamo[] prest = boprestamo.listarPrestamosPorUsuarioPorPanel(6, txtBuscar.Text);
+            //Session["prestamos"] = new BindingList<prestamo>(prest);
             //CargarPrestamos();
+
+            boprestamo = new PrestamoWSClient();
+            prestamo[] prest = boprestamo.listarPrestamosPorUsuarioPorPanel(6, txtBuscar.Text);
+            // Si el servicio devuelve null o no hay resultados
+            if (prest == null || prest.Length == 0)
+            {
+                Session["prestamos"] = new BindingList<prestamo>();
+                CargarPrestamos();  // carga vacío sin romper
+                return;
+            }
+            // Si hay resultados
+            Session["prestamos"] = new BindingList<prestamo>(prest);
+            CargarPrestamos();
         }
 
         // Sanciones
@@ -247,30 +236,25 @@ namespace ProyectoP3
 
         protected void btnBuscarSancion_Click(object sender, EventArgs e)
         {
-            bosancion = new SancionWSClient();
-            string codigo_a_buscar = TextBoxSancion.Text.Trim();
+            //bosancion = new SancionWSClient();
+            //sancion[] sanc = bosancion.listarSancionesPorUsuarioPorPanel(6, TextBoxSancion.Text);
+            //Session["sanciones"] = new BindingList<sancion>(sanc);
+            //CargarSanciones();
 
-            sancion[] sanciones_busqueda;
-            if (codigo_a_buscar == "")
-            {
-                sanciones_busqueda = bosancion.listarSanciones();
-            }
-            else
-            {
-                sanciones_busqueda = bosancion.BusquedaSanciones(int.Parse(TextBoxSancion.Text.Trim()));
-            }
-            if (sanciones_busqueda != null)
-            {
-                Session["sanciones"] = new BindingList<sancion>(sanciones_busqueda);
-                lblMensaje.Visible = false;
-            }
-            else
+            bosancion = new SancionWSClient();
+            sancion[] sanc = bosancion.listarSancionesPorUsuarioPorPanel(6, TextBoxSancion.Text);
+            // Si el webservice devuelve null, lo conviertes en lista vacía.
+            if (sanc == null || sanc.Length == 0)
             {
                 Session["sanciones"] = new BindingList<sancion>();
-                lblMensaje.Text = "No se encontraron resultados para la búsqueda.";
-                lblMensaje.Visible = true;
+                CargarSanciones(); // Se cargará vacío
+                return;
             }
+
+            // Si hay resultados
+            Session["sanciones"] = new BindingList<sancion>(sanc);
             CargarSanciones();
+
         }
     }
 }

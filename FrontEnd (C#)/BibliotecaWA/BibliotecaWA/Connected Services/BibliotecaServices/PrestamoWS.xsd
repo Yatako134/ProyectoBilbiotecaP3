@@ -9,6 +9,8 @@
   <xs:element name="insertarPrestamoResponse" type="tns:insertarPrestamoResponse" />
   <xs:element name="listarPrestamos" type="tns:listarPrestamos" />
   <xs:element name="listarPrestamosPorUsuario" type="tns:listarPrestamosPorUsuario" />
+  <xs:element name="listarPrestamosPorUsuarioPorPanel" type="tns:listarPrestamosPorUsuarioPorPanel" />
+  <xs:element name="listarPrestamosPorUsuarioPorPanelResponse" type="tns:listarPrestamosPorUsuarioPorPanelResponse" />
   <xs:element name="listarPrestamosPorUsuarioResponse" type="tns:listarPrestamosPorUsuarioResponse" />
   <xs:element name="listarPrestamosResponse" type="tns:listarPrestamosResponse" />
   <xs:element name="modificarPrestamo" type="tns:modificarPrestamo" />
@@ -82,6 +84,17 @@
   <xs:complexType name="Exception">
     <xs:sequence>
       <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPrestamosPorUsuarioPorPanel">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="filtro" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPrestamosPorUsuarioPorPanelResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:prestamo" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarPrestamo">
