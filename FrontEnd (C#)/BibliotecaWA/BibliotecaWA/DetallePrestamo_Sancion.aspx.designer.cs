@@ -267,24 +267,6 @@ namespace BibliotecaWA
         protected global::System.Web.UI.WebControls.TextBox txtFechaDevo;
 
         /// <summary>
-        /// Control rfvFecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFecha;
-
-        /// <summary>
-        /// Control cvFecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvFecha;
-
-        /// <summary>
         /// Control pnlSanciones.
         /// </summary>
         /// <remarks>
@@ -292,6 +274,15 @@ namespace BibliotecaWA
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlSanciones;
+
+        /// <summary>
+        /// Control pnlSancionAutomatica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlSancionAutomatica;
 
         /// <summary>
         /// Control lblTipoUsuario.

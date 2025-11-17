@@ -310,7 +310,20 @@ namespace BibliotecaWA
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             int id = int.Parse(hfPrestamoSeleccionado.Value);
-            Response.Redirect($"DetallePrestamo_Sancion.aspx?id={id}&modo=editar");
+            boprestamo = new PrestamoWSClient();
+            prestamo pre = boprestamo.obtenerPrestamoPorId(id);
+            if (pre.estado != estadoPrestamo.FINALIZADO)
+            {
+                Response.Redirect($"DetallePrestamo_Sancion.aspx?id={id}&modo=editar");
+            }
+            else
+            {
+                string mensaje = $"No se puede editar un préstamo con estado: {pre.estado}";
+                ScriptManager.RegisterStartupScript(this, this.GetType(),
+                    "alertaEstadoPrestamo",
+                    $"mostrarAlerta('{mensaje}');",
+                    true);
+            }
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

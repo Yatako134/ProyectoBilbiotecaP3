@@ -165,12 +165,32 @@
             <button type="button" class="opcion" onclick="__doPostBack('<%= btnEditar.UniqueID %>', '')">
                 <i class="fa-solid fa-pen me-2 text-secondary"></i>Editar
             </button>
-            <button type="button" class="opcion eliminar" onclick="__doPostBack('<%= btnEliminar.UniqueID %>', '')">
-                <i class="fa-solid fa-trash me-2 text-danger"></i>Eliminar
-            </button>
         </div>
 
+        <div class="modal fade" id="modalAlerta" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-dark">
+                        <h5 class="modal-title">Advertencia</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <span id="mensajeAlerta"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <script>
+            function mostrarAlerta(mensaje) {
+                document.getElementById("mensajeAlerta").innerText = mensaje;
+                var modal = new bootstrap.Modal(document.getElementById('modalAlerta'));
+                modal.show();
+            }
+        </script>
 
         <!-- === SCRIPT MENU OPCIONES === -->
         <script>
