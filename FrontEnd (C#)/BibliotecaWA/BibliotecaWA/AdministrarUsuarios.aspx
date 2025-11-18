@@ -35,11 +35,14 @@
     <script>
         function soloLetras(e) {
             var key = e.key;
+            var input = e.target;
 
-            // Permite solo letras, espacios y tildes
-            if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ ]$/.test(key)) {
+            // Permite solo letras, espacios, tildes, guiones y apóstrofes
+            if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ \-']$/.test(key)) {
                 e.preventDefault();
+                return;
             }
+
         }
     </script>
 
@@ -160,27 +163,27 @@
             <div class="row g-0 mt-3">
                 <div class="col-md-12">
                     <label for="txtNombre" class="form-label-admiUsuarios">Nombre(s)</label>
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
+                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control form-input admiUsuarios-input" MaxLength="50"  ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
 
                     <asp:RequiredFieldValidator ControlToValidate="txtNombre" ValidationGroup="vgUsuario" runat="server" ForeColor="Red" />
 
                 </div>
                 <div class="col-md-12">
                     <label for="txtPrimerApellido" class="form-label-admiUsuarios">Primer Apellido</label>
-                    <asp:TextBox ID="txtPrimerApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
+                    <asp:TextBox ID="txtPrimerApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" MaxLength="50" ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
 
                     <asp:RequiredFieldValidator ControlToValidate="txtPrimerApellido" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
 
                 </div>
                 <div class="col-md-12">
                     <label for="txtSegundoApellido" class="form-label-admiUsuarios">Segundo Apellido</label>
-                    <asp:TextBox ID="txtSegundoApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
+                    <asp:TextBox ID="txtSegundoApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" MaxLength="50" ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
 
                     <asp:RequiredFieldValidator ControlToValidate="txtSegundoApellido" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
                 </div>
                 <div class="col-md-12">
                     <label for="txtCorreo" class="form-label-admiUsuarios">Correo</label>
-                    <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control form-input admiUsuarios-input" MaxLength="100" ClientIDMode="Static"></asp:TextBox>
                     <asp:RequiredFieldValidator ControlToValidate="txtCorreo" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
                     <asp:RegularExpressionValidator
                         ID="revCorreo"
@@ -196,14 +199,14 @@
 
                 <div class="col-md-12">
                     <label for="txtContrasena" class="form-label-admiUsuarios">Contraseña</label>
-                    <asp:TextBox ID="txtContrasena" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static"></asp:TextBox>
+                    <asp:TextBox ID="txtContrasena" runat="server" CssClass="form-control form-input admiUsuarios-input"  MaxLength="40" ClientIDMode="Static"></asp:TextBox>
 
                     <asp:RequiredFieldValidator ControlToValidate="txtContrasena" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
 
                 </div>
                 <div class="col-md-12">
                     <label for="txtTelefono" class="form-label-admiUsuarios">Teléfono</label>
-                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloEnteros(event)"></asp:TextBox>
+                    <asp:TextBox ID="txtTelefono" runat="server"  MaxLength="12" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloEnteros(event)"></asp:TextBox>
 
                     <asp:RequiredFieldValidator ControlToValidate="txtTelefono" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
                 </div>
