@@ -1349,4 +1349,24 @@ BEGIN
     WHERE cm.id_material = _id_material;
 END$
 
+DELIMITER $$
+
+CREATE PROCEDURE sp_prestamos_retrasados_usuario(IN p_id_usuario INT)
+BEGIN
+    SELECT 
+        p.id_prestamo,
+        p.fecha_vencimiento,
+        p.estado
+    FROM Prestamo p
+    INNER JOIN Usuario u
+        ON p.id_usuario = u.id_usuario
+    WHERE 
+        p.fecha_vencimiento < SYSDATE()
+        AND p.fecha_devolucion IS NULL
+        AND p.id_usuario = p_id_usuario
+        AND p.estado = 'VIGENTE'
+    ORDER BY p.fecha_vencimiento;
+END$$
+
+DELIMITER ;
 
