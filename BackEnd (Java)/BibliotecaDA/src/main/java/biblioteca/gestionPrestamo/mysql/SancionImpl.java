@@ -27,10 +27,8 @@ public class SancionImpl implements SancionDAO{
         parametrosSalida.put(1, Types.INTEGER);
         parametrosEntrada.put(2, objeto.getTipo_sancion().name());
         parametrosEntrada.put(3, objeto.getDuracion_dias());
-        parametrosEntrada.put(4, objeto.getFecha_fin());
-        parametrosEntrada.put(5, objeto.getJustificacion());
-        parametrosEntrada.put(6, objeto.getEstado().name());
-        parametrosEntrada.put(7, objeto.getPrestamo().getIdPrestamo());
+        parametrosEntrada.put(4, objeto.getJustificacion());
+        parametrosEntrada.put(5, objeto.getPrestamo().getIdPrestamo());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_SANCION", parametrosEntrada, parametrosSalida);
         objeto.setId_sancion((int) parametrosSalida.get(1));
         System.out.println("Se ha realizado el registro de la sancion");

@@ -30,8 +30,7 @@
                     <i class="fa-solid fa-book pe-1"></i> Préstamos
                 </asp:LinkButton>
 
-                <asp:LinkButton ID="btnSanciones" runat="server" CssClass="btn btn-sm btn-outline-danger"
-                    OnClick="btnSanciones_Click">
+                <asp:LinkButton ID="btnSanciones" runat="server" CssClass="btn btn-sm btn-outline-danger" OnClick="btnSanciones_Click">
                     <i class="fa-solid fa-triangle-exclamation pe-1"></i> Sanciones
                 </asp:LinkButton>
             </div>

@@ -107,12 +107,14 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:editorial" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="ListarTodos">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="ListarTodosResponse">
+  <xs:complexType name="ObtenerSoloMaterial">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:materialBibliografico" />
+      <xs:element name="idMaterial" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ObtenerSoloMaterialResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:materialBibliografico" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="buscarContribuyentes">
@@ -125,14 +127,12 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:contribuyente" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="ObtenerSoloMaterial">
-    <xs:sequence>
-      <xs:element name="idMaterial" type="xs:int" />
-    </xs:sequence>
+  <xs:complexType name="ListarTodos">
+    <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="ObtenerSoloMaterialResponse">
+  <xs:complexType name="ListarTodosResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:materialBibliografico" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:materialBibliografico" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ListarMaterialesNormal">
