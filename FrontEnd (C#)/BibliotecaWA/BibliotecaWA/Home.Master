@@ -49,7 +49,7 @@
                     <a href="HistorialPrestamos.aspx"><i class="fa-solid fa-table" style="margin-right: 10px;"></i>Historial de préstamos</a>
                 </li>
                 <li class="nav-item mb-1">
-                    <a href="ListarReporte.aspx"><i class="fa-solid fa-file" style="margin-right: 10px;"></i>Reportes</a>
+                    <a href="Reportes.aspx"><i class="fa-solid fa-file" style="margin-right: 10px;"></i>Reportes</a>
                 </li>
             </ul>
 

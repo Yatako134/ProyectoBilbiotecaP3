@@ -444,6 +444,7 @@
     <Content Include="MiHistorial.aspx" />
     <Content Include="Prestamo.aspx" />
     <Content Include="RegistrarMaterial.aspx" />
+    <Content Include="Reportes.aspx" />
     <Content Include="Scripts\activarMenu.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -618,6 +619,13 @@
     </Compile>
     <Compile Include="RegistrarMaterial.aspx.designer.cs">
       <DependentUpon>RegistrarMaterial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
