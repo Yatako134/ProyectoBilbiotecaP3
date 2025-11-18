@@ -503,6 +503,9 @@
     <Content Include="Scripts\UtilsArmy\Contribuyentes.js" />
     <Content Include="Scripts\UtilsArmy\Editoriales.js" />
     <Content Include="Scripts\UtilsArmy\MensajeExito.js" />
+    <Content Include="Scripts\UtilsArmy\ModalNoUsuario.js" />
+    <Content Include="Scripts\UtilsArmy\modalRetraso.js" />
+    <Content Include="Scripts\UtilsArmy\ModalSancion.js" />
     <Content Include="Scripts\UtilsArmy\SolicitarPrestamo.js" />
     <Content Include="Scripts\UtilsArmy\ValidacionesPrestamo.js" />
     <Content Include="Scripts\validarCampos.js" />
