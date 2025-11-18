@@ -334,7 +334,7 @@
                 <i class="fa-solid fa-pen me-2 text-secondary"></i>Editar
             </button>
             <button type="button" class="opcion eliminar" onclick="__doPostBack('<%= btnEliminarSancion.UniqueID %>', '')">
-                <i class="fa-solid fa-trash me-2 text-danger"></i>Eliminar
+                <i class="fa-solid fa-x me-2"></i>Finalizar sanción
             </button>
         </div>
 

@@ -31,7 +31,6 @@
 
 
             <!-- Modal de Búsqueda Avanzada -->
-            <!-- Modal de Búsqueda Avanzada -->
             <div class="modal fade" id="modalBusquedaAvanzada" tabindex="-1" aria-labelledby="tituloModalBusquedaAvanzada" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
