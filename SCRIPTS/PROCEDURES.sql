@@ -75,7 +75,7 @@ CREATE PROCEDURE INSERTAR_LIBRO(
     IN _numero_paginas INT,
     IN _clasificacion_tematica VARCHAR(100),
     IN _idioma VARCHAR(40),
-    IN _ISBN CHAR(13),
+    IN _ISBN VARCHAR(30),
     IN _edicion VARCHAR(20)
 )
 BEGIN
@@ -102,7 +102,7 @@ CREATE PROCEDURE MODIFICAR_LIBRO(
     IN _numero_paginas INT,
     IN _clasificacion_tematica VARCHAR(100),
     IN _idioma VARCHAR(40),
-    IN _ISBN CHAR(13),
+    IN _ISBN VARCHAR(30),
     IN _edicion VARCHAR(20)
     
 )
@@ -162,7 +162,7 @@ CREATE PROCEDURE INSERTAR_ARTICULO(
     IN _numero_paginas INT,
     IN _clasificacion_tematica VARCHAR(100),
     IN _idioma VARCHAR(40),
-    IN _ISSN CHAR(9),
+    IN _ISSN VARCHAR(30),
     IN _revista VARCHAR(100),
     IN _volumen INT,
     IN _numero INT
@@ -191,7 +191,7 @@ CREATE PROCEDURE MODIFICAR_ARTICULO(
     IN _numero_paginas INT,
     IN _clasificacion_tematica VARCHAR(100),
     IN _idioma VARCHAR(40),
-    IN _ISSN CHAR(9),
+    IN _ISSN VARCHAR(30),
     IN _revista VARCHAR(100),
     IN _volumen INT,
     IN _numero INT
