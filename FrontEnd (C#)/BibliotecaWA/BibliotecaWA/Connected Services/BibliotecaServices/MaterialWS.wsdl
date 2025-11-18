@@ -5,60 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/MaterialWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
-  <message name="obtenerEjemplaresDisponibles">
-    <part name="parameters" element="tns:obtenerEjemplaresDisponibles" />
-  </message>
-  <message name="obtenerEjemplaresDisponiblesResponse">
-    <part name="parameters" element="tns:obtenerEjemplaresDisponiblesResponse" />
-  </message>
-  <message name="BusquedaAvanzada">
-    <part name="parameters" element="tns:BusquedaAvanzada" />
-  </message>
-  <message name="BusquedaAvanzadaResponse">
-    <part name="parameters" element="tns:BusquedaAvanzadaResponse" />
-  </message>
-  <message name="buscarContribuyentes">
-    <part name="parameters" element="tns:buscarContribuyentes" />
-  </message>
-  <message name="buscarContribuyentesResponse">
-    <part name="parameters" element="tns:buscarContribuyentesResponse" />
-  </message>
-  <message name="buscarEditoriales">
-    <part name="parameters" element="tns:buscarEditoriales" />
-  </message>
-  <message name="buscarEditorialesResponse">
-    <part name="parameters" element="tns:buscarEditorialesResponse" />
-  </message>
-  <message name="ListarTodos">
-    <part name="parameters" element="tns:ListarTodos" />
-  </message>
-  <message name="ListarTodosResponse">
-    <part name="parameters" element="tns:ListarTodosResponse" />
-  </message>
-  <message name="obtenerPorId">
-    <part name="parameters" element="tns:obtenerPorId" />
-  </message>
-  <message name="obtenerPorIdResponse">
-    <part name="parameters" element="tns:obtenerPorIdResponse" />
-  </message>
-  <message name="buscarEjemplares">
-    <part name="parameters" element="tns:buscarEjemplares" />
-  </message>
-  <message name="buscarEjemplaresResponse">
-    <part name="parameters" element="tns:buscarEjemplaresResponse" />
-  </message>
-  <message name="Busqueda">
-    <part name="parameters" element="tns:Busqueda" />
-  </message>
-  <message name="BusquedaResponse">
-    <part name="parameters" element="tns:BusquedaResponse" />
-  </message>
-  <message name="ListarMaterialesNormal">
-    <part name="parameters" element="tns:ListarMaterialesNormal" />
-  </message>
-  <message name="ListarMaterialesNormalResponse">
-    <part name="parameters" element="tns:ListarMaterialesNormalResponse" />
-  </message>
   <message name="ObtenerSoloMaterial">
     <part name="parameters" element="tns:ObtenerSoloMaterial" />
   </message>
@@ -71,43 +17,61 @@
   <message name="ContarMaterialesResponse">
     <part name="parameters" element="tns:ContarMaterialesResponse" />
   </message>
+  <message name="ListarMaterialesNormal">
+    <part name="parameters" element="tns:ListarMaterialesNormal" />
+  </message>
+  <message name="ListarMaterialesNormalResponse">
+    <part name="parameters" element="tns:ListarMaterialesNormalResponse" />
+  </message>
+  <message name="buscarEditoriales">
+    <part name="parameters" element="tns:buscarEditoriales" />
+  </message>
+  <message name="buscarEditorialesResponse">
+    <part name="parameters" element="tns:buscarEditorialesResponse" />
+  </message>
+  <message name="Busqueda">
+    <part name="parameters" element="tns:Busqueda" />
+  </message>
+  <message name="BusquedaResponse">
+    <part name="parameters" element="tns:BusquedaResponse" />
+  </message>
+  <message name="buscarEjemplares">
+    <part name="parameters" element="tns:buscarEjemplares" />
+  </message>
+  <message name="buscarEjemplaresResponse">
+    <part name="parameters" element="tns:buscarEjemplaresResponse" />
+  </message>
+  <message name="buscarContribuyentes">
+    <part name="parameters" element="tns:buscarContribuyentes" />
+  </message>
+  <message name="buscarContribuyentesResponse">
+    <part name="parameters" element="tns:buscarContribuyentesResponse" />
+  </message>
+  <message name="obtenerPorId">
+    <part name="parameters" element="tns:obtenerPorId" />
+  </message>
+  <message name="obtenerPorIdResponse">
+    <part name="parameters" element="tns:obtenerPorIdResponse" />
+  </message>
+  <message name="ListarTodos">
+    <part name="parameters" element="tns:ListarTodos" />
+  </message>
+  <message name="ListarTodosResponse">
+    <part name="parameters" element="tns:ListarTodosResponse" />
+  </message>
+  <message name="BusquedaAvanzada">
+    <part name="parameters" element="tns:BusquedaAvanzada" />
+  </message>
+  <message name="BusquedaAvanzadaResponse">
+    <part name="parameters" element="tns:BusquedaAvanzadaResponse" />
+  </message>
+  <message name="obtenerEjemplaresDisponibles">
+    <part name="parameters" element="tns:obtenerEjemplaresDisponibles" />
+  </message>
+  <message name="obtenerEjemplaresDisponiblesResponse">
+    <part name="parameters" element="tns:obtenerEjemplaresDisponiblesResponse" />
+  </message>
   <portType name="MaterialWS">
-    <operation name="obtenerEjemplaresDisponibles">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/obtenerEjemplaresDisponiblesRequest" message="tns:obtenerEjemplaresDisponibles" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/obtenerEjemplaresDisponiblesResponse" message="tns:obtenerEjemplaresDisponiblesResponse" />
-    </operation>
-    <operation name="BusquedaAvanzada">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaAvanzadaRequest" message="tns:BusquedaAvanzada" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaAvanzadaResponse" message="tns:BusquedaAvanzadaResponse" />
-    </operation>
-    <operation name="buscarContribuyentes">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarContribuyentesRequest" message="tns:buscarContribuyentes" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarContribuyentesResponse" message="tns:buscarContribuyentesResponse" />
-    </operation>
-    <operation name="buscarEditoriales">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEditorialesRequest" message="tns:buscarEditoriales" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEditorialesResponse" message="tns:buscarEditorialesResponse" />
-    </operation>
-    <operation name="ListarTodos">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarTodosRequest" message="tns:ListarTodos" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarTodosResponse" message="tns:ListarTodosResponse" />
-    </operation>
-    <operation name="obtenerPorId">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/obtenerPorIdRequest" message="tns:obtenerPorId" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/obtenerPorIdResponse" message="tns:obtenerPorIdResponse" />
-    </operation>
-    <operation name="buscarEjemplares">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresRequest" message="tns:buscarEjemplares" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresResponse" message="tns:buscarEjemplaresResponse" />
-    </operation>
-    <operation name="Busqueda">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaRequest" message="tns:Busqueda" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaResponse" message="tns:BusquedaResponse" />
-    </operation>
-    <operation name="ListarMaterialesNormal">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalRequest" message="tns:ListarMaterialesNormal" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalResponse" message="tns:ListarMaterialesNormalResponse" />
-    </operation>
     <operation name="ObtenerSoloMaterial">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ObtenerSoloMaterialRequest" message="tns:ObtenerSoloMaterial" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ObtenerSoloMaterialResponse" message="tns:ObtenerSoloMaterialResponse" />
@@ -116,10 +80,46 @@
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ContarMaterialesRequest" message="tns:ContarMateriales" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ContarMaterialesResponse" message="tns:ContarMaterialesResponse" />
     </operation>
+    <operation name="ListarMaterialesNormal">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalRequest" message="tns:ListarMaterialesNormal" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalResponse" message="tns:ListarMaterialesNormalResponse" />
+    </operation>
+    <operation name="buscarEditoriales">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEditorialesRequest" message="tns:buscarEditoriales" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEditorialesResponse" message="tns:buscarEditorialesResponse" />
+    </operation>
+    <operation name="Busqueda">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaRequest" message="tns:Busqueda" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaResponse" message="tns:BusquedaResponse" />
+    </operation>
+    <operation name="buscarEjemplares">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresRequest" message="tns:buscarEjemplares" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresResponse" message="tns:buscarEjemplaresResponse" />
+    </operation>
+    <operation name="buscarContribuyentes">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarContribuyentesRequest" message="tns:buscarContribuyentes" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarContribuyentesResponse" message="tns:buscarContribuyentesResponse" />
+    </operation>
+    <operation name="obtenerPorId">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/obtenerPorIdRequest" message="tns:obtenerPorId" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/obtenerPorIdResponse" message="tns:obtenerPorIdResponse" />
+    </operation>
+    <operation name="ListarTodos">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarTodosRequest" message="tns:ListarTodos" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarTodosResponse" message="tns:ListarTodosResponse" />
+    </operation>
+    <operation name="BusquedaAvanzada">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaAvanzadaRequest" message="tns:BusquedaAvanzada" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/BusquedaAvanzadaResponse" message="tns:BusquedaAvanzadaResponse" />
+    </operation>
+    <operation name="obtenerEjemplaresDisponibles">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/obtenerEjemplaresDisponiblesRequest" message="tns:obtenerEjemplaresDisponibles" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/obtenerEjemplaresDisponiblesResponse" message="tns:obtenerEjemplaresDisponiblesResponse" />
+    </operation>
   </portType>
   <binding name="MaterialWSPortBinding" type="tns:MaterialWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="obtenerEjemplaresDisponibles">
+    <operation name="ObtenerSoloMaterial">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -128,61 +128,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="BusquedaAvanzada">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="buscarContribuyentes">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="buscarEditoriales">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="ListarTodos">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="obtenerPorId">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="buscarEjemplares">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="Busqueda">
+    <operation name="ContarMateriales">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -200,7 +146,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="ObtenerSoloMaterial">
+    <operation name="buscarEditoriales">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -209,7 +155,61 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="ContarMateriales">
+    <operation name="Busqueda">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarEjemplares">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarContribuyentes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ListarTodos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BusquedaAvanzada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerEjemplaresDisponibles">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
