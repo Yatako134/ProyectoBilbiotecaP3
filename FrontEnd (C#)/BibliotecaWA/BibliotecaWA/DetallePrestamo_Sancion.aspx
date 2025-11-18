@@ -36,6 +36,14 @@
                 color: white !important;
             }
     </style>
+
+    <style>
+        .btn-simulado-apagado {
+            opacity: 0.5;
+            pointer-events: none; /* ignora clicks */
+            cursor: not-allowed;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
 
@@ -166,33 +174,33 @@
                     </div>
                     <!-- Tipo -->
                     <div class="row mb-3">
-            <div class="col-md-6 mb-2">
-                <label class="form-label">Tipo de sanción</label>
+                        <div class="col-md-6 mb-2">
+                            <label class="form-label">Tipo de sanción</label>
 
-                <asp:DropDownList ID="ddlTipoSancionUnica" runat="server" CssClass="form-control">
-                    <asp:ListItem Text="Entrega tardía" Value="Entrega tardía"></asp:ListItem>
-                    <asp:ListItem Text="Daño de material" Value="Daño de material"></asp:ListItem>
-                </asp:DropDownList>
+                            <asp:DropDownList ID="ddlTipoSancionUnica" runat="server" CssClass="form-control">
+                                <asp:ListItem Text="Entrega tardía" Value="Entrega tardía"></asp:ListItem>
+                                <asp:ListItem Text="Daño de material" Value="Daño de material"></asp:ListItem>
+                            </asp:DropDownList>
 
-            </div>
+                        </div>
 
-            <!-- Días -->
-            <div class="col-md-6 mb-2">
-                <label class="form-label">Duración (días)</label>
-                <asp:TextBox ID="txtDuracionUnica" runat="server" CssClass="form-control" TextMode ="Number"
-                    placeholder="Ingrese duración"></asp:TextBox>
-            </div>
-        </div>
+                        <!-- Días -->
+                        <div class="col-md-6 mb-2">
+                            <label class="form-label">Duración (días)</label>
+                            <asp:TextBox ID="txtDuracionUnica" runat="server" CssClass="form-control" TextMode="Number"
+                                placeholder="Ingrese duración"></asp:TextBox>
+                        </div>
+                    </div>
 
-        <!-- Justificación -->
-        <div class="mb-3">
-            <label class="form-label">Justificación</label>
-            <asp:TextBox ID="txtJustificacionUnica" runat="server"
-                CssClass="form-control" TextMode="MultiLine" Rows="3"
-                placeholder="Ingrese la justificación"></asp:TextBox>
-        </div>
-    </div>
-</asp:Panel>
+                    <!-- Justificación -->
+                    <div class="mb-3">
+                        <label class="form-label">Justificación</label>
+                        <asp:TextBox ID="txtJustificacionUnica" runat="server"
+                            CssClass="form-control" TextMode="MultiLine" Rows="3"
+                            placeholder="Ingrese la justificación"></asp:TextBox>
+                    </div>
+                </div>
+            </asp:Panel>
 
 
             <asp:Panel ID="pnlSancionUnica" runat="server" Visible="false" CssClass="sancion-row">
@@ -240,9 +248,8 @@
 
                     <asp:TextBox ID="txtFechaDevo" runat="server"
                         CssClass="form-control mb-3"
-                        TextMode="Date"
-                        placeholder="dd/mm/yyyy"
                         Enabled="false"
+                        TextMode="SingleLine" 
                         ReadOnly="true"
                         >
                     </asp:TextBox>
@@ -263,6 +270,7 @@
                         </div>
 
                     </asp:Panel>
+                    
                     <script type="text/javascript">
                         var sancionCounter = 0;
 
@@ -370,6 +378,7 @@
                             inputJustificacion.className = "form-control";
                             inputJustificacion.rows = 3;
                             inputJustificacion.required = true;
+                            inputJustificacion.maxLength = "150";
 
                             divJustificacion.appendChild(labelJustificacion);
                             divJustificacion.appendChild(inputJustificacion);
@@ -380,6 +389,7 @@
                             document.getElementById("divSancionesContainer").appendChild(divRow);
                         });
                     </script>
+
 
                 </div>
 
@@ -392,7 +402,7 @@
                             Sanción automática generada por devolución tardía.
                         </div>
 
-                        <div class="sancion-row" style="border: 1px solid #1c7ced; padding: 12px; border-radius: 8px; background: #f5faff; position: relative;">
+                        <div class="sancion-row" style="border: 1px solid #ccc; padding: 12px; border-radius: 8px; background: #ffffff; position: relative;">
 
                             <!-- Parte superior (2 columnas) -->
                             <div class="row mb-3">
@@ -400,14 +410,14 @@
                                 <!-- Tipo de sanción (pero fijo, no editable) -->
                                 <div class="col-md-6 mb-2">
                                     <label class="form-label fw-semibold">Tipo de sanción</label>
-                                    <input type="text" class="form-control" value="Automática" readonly style="background: #e9ecef;">
+                                    <input type="text" class="form-control" value="Entrega tardia" readonly style="background: #e9ecef;">
                                 </div>
 
                                 <!-- Días -->
                                 <div class="col-md-6 mb-2">
                                     <label class="form-label fw-semibold">Duración (días)</label>
-                                    <input type="number" id="txtDiasAuto" class="form-control"
-                                        min="1" max="30" placeholder="Ingrese días" />
+                                    <input type="number" step="1" id="txtDiasAuto" class="form-control"
+                                        min="1" placeholder="Ingrese días" required/>
                                 </div>
 
                             </div>
@@ -416,8 +426,11 @@
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Justificación</label>
                                 <textarea id="txtJustificacionAuto" class="form-control" rows="3"
-                                    placeholder="Descripción"></textarea>
+                                    placeholder="Descripción" required maxlength="150" ></textarea>
                             </div>
+                            <!-- HiddenFields que sí se envían al servidor -->
+                            <asp:HiddenField ID="hfDiasAuto" runat="server" />
+                            <asp:HiddenField ID="hfJustificacionAuto" runat="server" />
 
                         </div>
 
@@ -489,6 +502,7 @@
                 OnClick="btnGuardarCambios_Click" />
         </div>
     </asp:Panel>
+
 
 
 </asp:Content>

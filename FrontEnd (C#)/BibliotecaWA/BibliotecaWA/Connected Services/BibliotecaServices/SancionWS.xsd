@@ -9,6 +9,8 @@
   <xs:element name="insertarSancionResponse" type="tns:insertarSancionResponse" />
   <xs:element name="listarSanciones" type="tns:listarSanciones" />
   <xs:element name="listarSancionesPorUsuario" type="tns:listarSancionesPorUsuario" />
+  <xs:element name="listarSancionesPorUsuarioPorPanel" type="tns:listarSancionesPorUsuarioPorPanel" />
+  <xs:element name="listarSancionesPorUsuarioPorPanelResponse" type="tns:listarSancionesPorUsuarioPorPanelResponse" />
   <xs:element name="listarSancionesPorUsuarioResponse" type="tns:listarSancionesPorUsuarioResponse" />
   <xs:element name="listarSancionesResponse" type="tns:listarSancionesResponse" />
   <xs:element name="modificar_sancion" type="tns:modificar_sancion" />
@@ -107,23 +109,10 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="modificar_sancion">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="idSancion" type="tns:sancion" />
-      <xs:element minOccurs="0" name="tipo" type="xs:string" />
-    </xs:sequence>
+  <xs:complexType name="listarSanciones">
+    <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="modificar_sancionResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="BusquedaSanciones">
-    <xs:sequence>
-      <xs:element name="codigo_universitario" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="BusquedaSancionesResponse">
+  <xs:complexType name="listarSancionesResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
     </xs:sequence>
@@ -138,22 +127,49 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarSanciones">
-    <xs:sequence />
+  <xs:complexType name="BusquedaSanciones">
+    <xs:sequence>
+      <xs:element name="codigo_universitario" type="xs:int" />
+    </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarSancionesResponse">
+  <xs:complexType name="BusquedaSancionesResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="modificar_sancion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idSancion" type="tns:sancion" />
+      <xs:element minOccurs="0" name="tipo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificar_sancionResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="insertarSancion">
     <xs:sequence>
-      <xs:element minOccurs="0" name="arg0" type="tns:sancion" />
+      <xs:element minOccurs="0" name="tipo" type="xs:string" />
+      <xs:element name="duracion" type="xs:int" />
+      <xs:element minOccurs="0" name="justificacion" type="xs:string" />
+      <xs:element name="id_prestamo" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarSancionResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarSancionesPorUsuarioPorPanel">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="filtro" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarSancionesPorUsuarioPorPanelResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="estadoSancion">

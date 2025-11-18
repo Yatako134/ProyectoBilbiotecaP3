@@ -8,6 +8,7 @@ import biblioteca.gestionMaterial.mysql.BibliotecaImpl;
 import biblioteca.gestionMaterial.mysql.EjemplarImpl;
 import biblioteca.gestionMaterial.mysql.Librolmpl;
 import biblioteca.gestionMaterial.mysql.Tesislmpl;
+import biblioteca.gestionPrestamo.boImpl.SancionBOImpl;
 import biblioteca.gestionPrestamo.dao.PrestamoDAO;
 import biblioteca.gestionPrestamo.mysql.PrestamoImpl;
 import biblioteca.gestionUsuario.boImpl.UsuarioBOImpl;
@@ -31,6 +32,8 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.Tesis;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.TipoContribuyente;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.EstadoPrestamo;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Prestamo;
+import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Sancion;
+import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Tipo_sancion;
 import pe.edu.pucp.utilsarmy.usuarios.model.Rol;
 import pe.edu.pucp.utilsarmy.usuarios.model.Usuario;
 
@@ -166,23 +169,14 @@ public class Principal {
 //            System.out.println(pr.getFecha_de_prestamo());
 //        }
 //        
-
-        ContribuyenteBOImpl contribo = new ContribuyenteBOImpl();
-        /*
-        ArrayList<Contribuyente> listaCont;
-        listaCont = contribo.listar_contribuyentes_por_material(3);
-        for(Contribuyente c : listaCont){
-            System.out.println(c.getNombre());
-        }
-        */
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
+        Date fechaInicio = formato.parse("18/11/2025 - 14:30");
+        Date fechaFin = formato.parse("25/11/2025 - 14:30");
+        Prestamo p = new Prestamo();
+        p.setIdPrestamo(2);
+        Sancion s = new Sancion(Tipo_sancion.ENTREGA_TARDIA, 5, fechaInicio, fechaFin, "Justificación", p);
         
-        EjemplarImpl ejebo = new EjemplarImpl();
-        
-        Ejemplar ej = new Ejemplar();
-        ej = ejebo.obtenerPorId(22);
-        ej.setUbicacion("FANTA1 EDITADO JAVA");
-        ej.setEstado(EstadoEjemplar.PERDIDO);
-        //ejebo.modificar(ej);
-        ejebo.eliminar(25);
+        SancionBOImpl sancionbo = new SancionBOImpl();
+        sancionbo.insertar(s);
     }
 }

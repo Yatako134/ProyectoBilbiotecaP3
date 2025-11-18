@@ -31,16 +31,16 @@
     <div class="tabla-busqueda d-flex justify-content-between align-items-center p-3 border-bottom bg-light">
         <asp:Label ID="lblResultados" runat="server" CssClass="text-muted"></asp:Label>
 
-        <div class="input-group w-75">
+        <div class="input-group w-75">  
             <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control" placeholder="Buscar algún material..." />
             <asp:LinkButton ID="btnBuscar" runat="server" CssClass="btn btn-outline-primary"
                 OnClick="btnBuscar_Click">
                  Buscar
             </asp:LinkButton>
             <asp:LinkButton ID="btnBuscarAvanzada" runat="server" CssClass="btn btn-outline-primary"
-                OnClick="btnBuscarAvanzada_Click">
-                    <i class="fa-solid fa-magnifying-glass"></i> Búsqueda avanzada
-            </asp:LinkButton>
+    OnClientClick="new bootstrap.Modal(document.getElementById('modalBusquedaAvanzada')).show(); return false;">
+    <i class="fa-solid fa-magnifying-glass"></i> Búsqueda avanzada
+</asp:LinkButton>
         </div>
 
     </div>
@@ -214,7 +214,122 @@
         </asp:LinkButton>
     </div>
 </div>
+    <!-- === MODAL BÚSQUEDA AVANZADA === -->
+<div class="modal fade" id="modalBusquedaAvanzada" tabindex="-1" aria-labelledby="tituloModalBusquedaAvanzada" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
 
+            <!-- Cabecera -->
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="tituloModalBusquedaAvanzada">Búsqueda Avanzada</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <!-- Cuerpo -->
+            <div class="modal-body">
+
+                <!-- Título -->
+                <div class="mb-3">
+                    <label class="form-label">Título</label>
+                    <asp:TextBox ID="txtTituloAvanzado" runat="server" CssClass="form-control" />
+                </div>
+
+                <!-- Tipo de contribuyente + Nombre -->
+                <div class="row mb-3">
+                    <div class="col-5">
+                        <label class="form-label">Tipo de contribuyente</label>
+                        <asp:DropDownList ID="ddlContribuyente" runat="server" CssClass="form-select">
+                            <asp:ListItem>AUTOR</asp:ListItem>
+                            <asp:ListItem>TRADUCTOR</asp:ListItem>
+                            <asp:ListItem>EDITOR</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-7">
+                        <label class="form-label">Nombre</label>
+                        <asp:TextBox ID="txtNombreContribuyente" runat="server" CssClass="form-control" />
+                    </div>
+                </div>
+
+                <!-- Tema -->
+                <div class="mb-3">
+                    <label class="form-label">Tema</label>
+                    <asp:TextBox ID="txtTema" runat="server" CssClass="form-control" />
+                </div>
+
+                <!-- Años -->
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label">Año de publicación (desde)</label>
+                        <asp:TextBox ID="txtAnioDesde" runat="server" CssClass="form-control" TextMode="Number" />
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Año de publicación (hasta)</label>
+                        <asp:TextBox ID="txtAnioHasta" runat="server" CssClass="form-control" TextMode="Number" />
+                    </div>
+                </div>
+
+                <!-- Tipo de material -->
+                <div class="mt-3">
+                    <label class="form-label">Tipo de material</label>
+                    <asp:DropDownList ID="ddlTipoMaterial" runat="server" CssClass="form-select">
+                        <asp:ListItem>--Seleccione el material--</asp:ListItem>
+                        <asp:ListItem>Libro</asp:ListItem>
+                        <asp:ListItem>Artículo</asp:ListItem>
+                        <asp:ListItem>Tesis</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+
+                <!-- Biblioteca -->
+                <div class="mt-3">
+                    <label class="form-label">Biblioteca</label>
+                    <asp:DropDownList ID="ddlBiblioteca" runat="server" CssClass="form-select">
+                    </asp:DropDownList>
+                </div>
+
+                <!-- Disponibilidad -->
+                <div class="mt-3">
+                    <label class="form-label">Disponibilidad</label>
+                    <asp:DropDownList ID="ddlDisponibilidad" runat="server" CssClass="form-select">
+                        <asp:ListItem>--Seleccione--</asp:ListItem>
+                        <asp:ListItem>DISPONIBLE</asp:ListItem>
+                        <asp:ListItem>NO_DISPONIBLE</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+
+            </div>
+
+            <!-- Pie -->
+            <div class="modal-footer d-flex justify-content-end">
+
+                <!-- Botón Cancelar -->
+                <button type="button" class="btn border border-primary text-primary fw-bold bg-white me-2" data-bs-dismiss="modal">
+                    Cancelar
+                </button>
+
+                <!-- Botón Limpiar -->
+                <button type="button" class="btn btn-light text-primary fw-bold d-flex align-items-center justify-content-center gap-1 border border-info me-2"
+                    onclick="
+document.getElementById('<%= txtTituloAvanzado.ClientID %>').value = '';
+document.getElementById('<%= txtNombreContribuyente.ClientID %>').value = '';
+document.getElementById('<%= txtTema.ClientID %>').value = '';
+document.getElementById('<%= txtAnioDesde.ClientID %>').value = '';
+document.getElementById('<%= txtAnioHasta.ClientID %>').value = '';
+document.getElementById('<%= ddlContribuyente.ClientID %>').selectedIndex = 0;
+document.getElementById('<%= ddlTipoMaterial.ClientID %>').selectedIndex = 0;
+document.getElementById('<%= ddlBiblioteca.ClientID %>').selectedIndex = 0;
+document.getElementById('<%= ddlDisponibilidad.ClientID %>').selectedIndex = 0;
+">
+                    Limpiar
+                </button>
+
+                <!-- Botón Buscar -->
+                <asp:Button ID="btnBuscarAvanzado" runat="server" CssClass="btn btn-primary text-white fw-bold" Text="Buscar" OnClick="btnBuscarAvanzada_Click" />
+
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 

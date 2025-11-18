@@ -13,7 +13,8 @@ namespace BibliotecaWA
     {
         //private BibliotecaWSClient bobiblioteca;
         private MaterialWSClient materialBO;
-
+        private BibliotecaWSClient bibliotecaBO;
+        private BindingList<biblioteca> bibliotecas;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -23,8 +24,22 @@ namespace BibliotecaWA
                 Session["materiales"] = new BindingList<materialBibliografico>(materialBO.ListarTodos());
 
                 CargarMateriales();
+                CargarBibliotecas();
                 ActualizarPaginacion();
             }
+        }
+        private void CargarBibliotecas()
+        {
+            if (bibliotecaBO == null) bibliotecaBO = new BibliotecaWSClient();
+
+            bibliotecas = new BindingList<biblioteca>(bibliotecaBO.ListarTodas()); // Debe devolver lista con propiedades IdBiblioteca y Nombre
+
+            ddlBiblioteca.DataSource = bibliotecas;
+            ddlBiblioteca.DataTextField = "Nombre";
+            ddlBiblioteca.DataValueField = "Nombre";
+            ddlBiblioteca.DataBind();
+
+            ddlBiblioteca.Items.Insert(0, new ListItem("-- Seleccione --", ""));
         }
         private void CargarMateriales()
         {
@@ -84,12 +99,81 @@ namespace BibliotecaWA
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            if (materialBO == null) materialBO = new MaterialWSClient();
 
+            string parametro = txtBuscar.Text;
+
+            var resultados = materialBO.Busqueda(parametro)?.ToList();
+
+            if (resultados == null || resultados.Count == 0)
+            {
+                Session["materiales"] = null;
+
+                dgvUsuario.DataSource = null;
+                dgvUsuario.DataBind();
+
+                lblResultados.Text = "No se encontraron resultados.";
+                lblResultados.Visible = true;
+            }
+            else
+            {
+                var lista = new BindingList<materialBibliografico>(resultados);
+                Session["materiales"] = lista;
+
+                dgvUsuario.PageIndex = 0;
+                dgvUsuario.DataSource = lista;
+                dgvUsuario.DataBind();
+
+                lblResultados.Visible = false;
+
+                ActualizarPaginacion(); // tu método normal
+            }
         }
         protected void btnBuscarAvanzada_Click(object sender, EventArgs e)
         {
+            if (materialBO == null) materialBO = new MaterialWSClient();
+            BindingList<materialBibliografico> listaMateriales;
+            string titulo = string.IsNullOrWhiteSpace(txtTituloAvanzado.Text) ? null : txtTituloAvanzado.Text.Trim();
+            string nombreContribuyente = string.IsNullOrWhiteSpace(txtNombreContribuyente.Text) ? null : txtNombreContribuyente.Text.Trim();
+            string tema = string.IsNullOrWhiteSpace(txtTema.Text) ? null : txtTema.Text.Trim();
+            int anioDesde = int.TryParse(txtAnioDesde.Text.Trim(), out int desde) ? desde : 0;
+            int anioHasta = int.TryParse(txtAnioHasta.Text.Trim(), out int hasta) ? hasta : 9999;
+            string contribuyente = ddlContribuyente.SelectedIndex == 0 ? null : ddlContribuyente.SelectedValue;
+            string tipoMaterial = ddlTipoMaterial.SelectedIndex == 0 ? null : ddlTipoMaterial.SelectedValue;
+            string biblioteca = ddlBiblioteca.SelectedIndex == 0 ? null : ddlBiblioteca.SelectedValue;
+            string disponibilidad = ddlDisponibilidad.SelectedIndex == 0 ? null : ddlDisponibilidad.SelectedValue;
 
+            var resultados = materialBO.BusquedaAvanzada(
+                titulo,
+                contribuyente,
+                nombreContribuyente,
+                tema,
+                anioDesde,
+                anioHasta,
+                tipoMaterial,
+                biblioteca,
+                disponibilidad
+            )?.ToList();
+
+            if (resultados == null || resultados.Count == 0)
+            {
+                dgvUsuario.DataSource = null;
+                dgvUsuario.DataBind();
+                lblResultados.Text = "No se encontraron resultados.";
+                lblResultados.Visible = true;
+            }
+            else
+            {
+                listaMateriales = new BindingList<materialBibliografico>(resultados);
+                Session["materiales"] = listaMateriales;
+
+                dgvUsuario.PageIndex = 0;
+                dgvUsuario.DataSource = listaMateriales;
+                dgvUsuario.DataBind();
+                lblResultados.Visible = false;
+            }
         }
+
         protected void dgvUsuario_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dgvUsuario.PageIndex = e.NewPageIndex;

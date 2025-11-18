@@ -5,14 +5,20 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/ConstribuyenteWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
+  <message name="listar_contribuyentes_por_material">
+    <part name="parameters" element="tns:listar_contribuyentes_por_material" />
+  </message>
+  <message name="listar_contribuyentes_por_materialResponse">
+    <part name="parameters" element="tns:listar_contribuyentes_por_materialResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
   <message name="eliminar_relacion_material_contribuyente">
     <part name="parameters" element="tns:eliminar_relacion_material_contribuyente" />
   </message>
   <message name="eliminar_relacion_material_contribuyenteResponse">
     <part name="parameters" element="tns:eliminar_relacion_material_contribuyenteResponse" />
-  </message>
-  <message name="Exception">
-    <part name="fault" element="tns:Exception" />
   </message>
   <message name="listar_autores_por_material">
     <part name="parameters" element="tns:listar_autores_por_material" />
@@ -20,23 +26,11 @@
   <message name="listar_autores_por_materialResponse">
     <part name="parameters" element="tns:listar_autores_por_materialResponse" />
   </message>
-  <message name="listar_contribuyentes_por_material">
-    <part name="parameters" element="tns:listar_contribuyentes_por_material" />
-  </message>
-  <message name="listar_contribuyentes_por_materialResponse">
-    <part name="parameters" element="tns:listar_contribuyentes_por_materialResponse" />
-  </message>
   <message name="modificarContribuyente">
     <part name="parameters" element="tns:modificarContribuyente" />
   </message>
   <message name="modificarContribuyenteResponse">
     <part name="parameters" element="tns:modificarContribuyenteResponse" />
-  </message>
-  <message name="listarContribuyentesTodos">
-    <part name="parameters" element="tns:listarContribuyentesTodos" />
-  </message>
-  <message name="listarContribuyentesTodosResponse">
-    <part name="parameters" element="tns:listarContribuyentesTodosResponse" />
   </message>
   <message name="obtenerContribuyentePorId">
     <part name="parameters" element="tns:obtenerContribuyentePorId" />
@@ -44,17 +38,11 @@
   <message name="obtenerContribuyentePorIdResponse">
     <part name="parameters" element="tns:obtenerContribuyentePorIdResponse" />
   </message>
-  <message name="tiene_otras_relaciones">
-    <part name="parameters" element="tns:tiene_otras_relaciones" />
+  <message name="listarContribuyentesTodos">
+    <part name="parameters" element="tns:listarContribuyentesTodos" />
   </message>
-  <message name="tiene_otras_relacionesResponse">
-    <part name="parameters" element="tns:tiene_otras_relacionesResponse" />
-  </message>
-  <message name="eliminarContribuyente">
-    <part name="parameters" element="tns:eliminarContribuyente" />
-  </message>
-  <message name="eliminarContribuyenteResponse">
-    <part name="parameters" element="tns:eliminarContribuyenteResponse" />
+  <message name="listarContribuyentesTodosResponse">
+    <part name="parameters" element="tns:listarContribuyentesTodosResponse" />
   </message>
   <message name="asignarContribuyente">
     <part name="parameters" element="tns:asignarContribuyente" />
@@ -62,13 +50,30 @@
   <message name="asignarContribuyenteResponse">
     <part name="parameters" element="tns:asignarContribuyenteResponse" />
   </message>
+  <message name="eliminarContribuyente">
+    <part name="parameters" element="tns:eliminarContribuyente" />
+  </message>
+  <message name="eliminarContribuyenteResponse">
+    <part name="parameters" element="tns:eliminarContribuyenteResponse" />
+  </message>
   <message name="insertarContribuyente">
     <part name="parameters" element="tns:insertarContribuyente" />
   </message>
   <message name="insertarContribuyenteResponse">
     <part name="parameters" element="tns:insertarContribuyenteResponse" />
   </message>
+  <message name="tiene_otras_relaciones">
+    <part name="parameters" element="tns:tiene_otras_relaciones" />
+  </message>
+  <message name="tiene_otras_relacionesResponse">
+    <part name="parameters" element="tns:tiene_otras_relacionesResponse" />
+  </message>
   <portType name="ConstribuyenteWS">
+    <operation name="listar_contribuyentes_por_material">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materialRequest" message="tns:listar_contribuyentes_por_material" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materialResponse" message="tns:listar_contribuyentes_por_materialResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_material/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
     <operation name="eliminar_relacion_material_contribuyente">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminar_relacion_material_contribuyenteRequest" message="tns:eliminar_relacion_material_contribuyente" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminar_relacion_material_contribuyenteResponse" message="tns:eliminar_relacion_material_contribuyenteResponse" />
@@ -79,48 +84,55 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_autores_por_materialResponse" message="tns:listar_autores_por_materialResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_autores_por_material/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="listar_contribuyentes_por_material">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materialRequest" message="tns:listar_contribuyentes_por_material" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_materialResponse" message="tns:listar_contribuyentes_por_materialResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listar_contribuyentes_por_material/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
     <operation name="modificarContribuyente">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/modificarContribuyenteRequest" message="tns:modificarContribuyente" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/modificarContribuyenteResponse" message="tns:modificarContribuyenteResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/modificarContribuyente/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="listarContribuyentesTodos">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listarContribuyentesTodosRequest" message="tns:listarContribuyentesTodos" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listarContribuyentesTodosResponse" message="tns:listarContribuyentesTodosResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listarContribuyentesTodos/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="obtenerContribuyentePorId">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/obtenerContribuyentePorIdRequest" message="tns:obtenerContribuyentePorId" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/obtenerContribuyentePorIdResponse" message="tns:obtenerContribuyentePorIdResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/obtenerContribuyentePorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="tiene_otras_relaciones">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relacionesRequest" message="tns:tiene_otras_relaciones" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relacionesResponse" message="tns:tiene_otras_relacionesResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relaciones/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="eliminarContribuyente">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminarContribuyenteRequest" message="tns:eliminarContribuyente" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminarContribuyenteResponse" message="tns:eliminarContribuyenteResponse" />
+    <operation name="listarContribuyentesTodos">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listarContribuyentesTodosRequest" message="tns:listarContribuyentesTodos" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listarContribuyentesTodosResponse" message="tns:listarContribuyentesTodosResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/listarContribuyentesTodos/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="asignarContribuyente">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/asignarContribuyenteRequest" message="tns:asignarContribuyente" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/asignarContribuyenteResponse" message="tns:asignarContribuyenteResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/asignarContribuyente/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
+    <operation name="eliminarContribuyente">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminarContribuyenteRequest" message="tns:eliminarContribuyente" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/eliminarContribuyenteResponse" message="tns:eliminarContribuyenteResponse" />
+    </operation>
     <operation name="insertarContribuyente">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/insertarContribuyenteRequest" message="tns:insertarContribuyente" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/insertarContribuyenteResponse" message="tns:insertarContribuyenteResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/insertarContribuyente/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
+    <operation name="tiene_otras_relaciones">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relacionesRequest" message="tns:tiene_otras_relaciones" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relacionesResponse" message="tns:tiene_otras_relacionesResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ConstribuyenteWS/tiene_otras_relaciones/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
   </portType>
   <binding name="ConstribuyenteWSPortBinding" type="tns:ConstribuyenteWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listar_contribuyentes_por_material">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
     <operation name="eliminar_relacion_material_contribuyente">
       <soap:operation soapAction="" />
       <input>
@@ -145,31 +157,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="listar_contribuyentes_por_material">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
     <operation name="modificarContribuyente">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
-    <operation name="listarContribuyentesTodos">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -193,7 +181,19 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="tiene_otras_relaciones">
+    <operation name="listarContribuyentesTodos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="asignarContribuyente">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -214,7 +214,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="asignarContribuyente">
+    <operation name="insertarContribuyente">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -226,7 +226,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="insertarContribuyente">
+    <operation name="tiene_otras_relaciones">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

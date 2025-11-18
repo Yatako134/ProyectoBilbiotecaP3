@@ -30,8 +30,7 @@
                     <i class="fa-solid fa-book pe-1"></i> Préstamos
                 </asp:LinkButton>
 
-                <asp:LinkButton ID="btnSanciones" runat="server" CssClass="btn btn-sm btn-outline-danger"
-                    OnClick="btnSanciones_Click">
+                <asp:LinkButton ID="btnSanciones" runat="server" CssClass="btn btn-sm btn-outline-danger" OnClick="btnSanciones_Click">
                     <i class="fa-solid fa-triangle-exclamation pe-1"></i> Sanciones
                 </asp:LinkButton>
             </div>
@@ -335,7 +334,7 @@
                 <i class="fa-solid fa-pen me-2 text-secondary"></i>Editar
             </button>
             <button type="button" class="opcion eliminar" onclick="__doPostBack('<%= btnEliminarSancion.UniqueID %>', '')">
-                <i class="fa-solid fa-trash me-2 text-danger"></i>Eliminar
+                <i class="fa-solid fa-x me-2"></i>Finalizar sanción
             </button>
         </div>
 

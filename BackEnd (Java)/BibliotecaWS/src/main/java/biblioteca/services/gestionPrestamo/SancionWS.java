@@ -6,6 +6,7 @@ import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import java.util.ArrayList;
+import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Prestamo;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Sancion;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Tipo_sancion;
 
@@ -19,8 +20,20 @@ public class SancionWS {
     }
 
     @WebMethod(operationName = "insertarSancion")
-    public int insertar(Sancion objeto) throws Exception {
-        return sancionboimpl.insertar(objeto);
+    public int insertar(@WebParam(name = "tipo")String tipo
+            ,@WebParam(name = "duracion") int duracion
+            ,@WebParam(name = "justificacion")String justificacion
+            ,@WebParam(name = "id_prestamo")int id_prestamo) throws Exception {
+        Sancion sancion = new Sancion();
+        Prestamo prest = new Prestamo();
+        prest.setIdPrestamo(id_prestamo);
+        
+        // se da los valores
+        sancion.setTipo_sancion(Tipo_sancion.valueOf(tipo));
+        sancion.setDuracion_dias(duracion);
+        sancion.setJustificacion(justificacion);
+        sancion.setPrestamo(prest);
+        return sancionboimpl.insertar(sancion);
     }
     
     @WebMethod(operationName = "listarSanciones")
@@ -55,5 +68,14 @@ public class SancionWS {
         }
         return sancionboimpl.modificar(sancion);
     }
+    
+    @WebMethod(operationName = "listarSancionesPorUsuarioPorPanel")
+    public ArrayList<Sancion> listarSancionesPorUsuarioPorPanel(@WebParam(name = "idUsuario") int idUsuario,
+            @WebParam(name = "filtro") String filtro) throws Exception {
+        // Si viene null desde el cliente, lo convertimos a vacío
+        if (filtro == null) filtro = "";
+        return sancionboimpl.listarPorUsuario_X_ID(idUsuario,filtro);
+    }
+    
 }
 

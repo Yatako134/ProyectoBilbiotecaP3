@@ -53,5 +53,10 @@ public class PrestamoBOImpl implements PrestamoBO{
     public ArrayList<Prestamo> listar_busqueda_usuario(int codigo_universitario) {
         return  daoPrestamo.listar_busqueda_usuario(codigo_universitario);
     }
+
+    @Override
+    public ArrayList<Prestamo> listarPorUsuario_X_ID(int idUsuario, String filtro) {
+        return daoPrestamo.listarPorUsuario_X_ID(idUsuario, filtro);
+    }
     
 }

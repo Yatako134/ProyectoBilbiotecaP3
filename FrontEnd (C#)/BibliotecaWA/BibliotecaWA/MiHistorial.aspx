@@ -11,7 +11,7 @@
         <span class="fw-bold">Mi historial de préstamos</span>
     </div>
 
-    <div class="container mt-4">
+    <div class="container-fluid">
 
         <!-- === CABECERA SUPERIOR === -->
         <div class="text-start mb-4">

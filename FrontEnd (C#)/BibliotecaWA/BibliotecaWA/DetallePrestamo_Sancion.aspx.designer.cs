@@ -285,6 +285,24 @@ namespace BibliotecaWA
         protected global::System.Web.UI.WebControls.Panel pnlSancionAutomatica;
 
         /// <summary>
+        /// Control hfDiasAuto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfDiasAuto;
+
+        /// <summary>
+        /// Control hfJustificacionAuto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfJustificacionAuto;
+
+        /// <summary>
         /// Control lblTipoUsuario.
         /// </summary>
         /// <remarks>

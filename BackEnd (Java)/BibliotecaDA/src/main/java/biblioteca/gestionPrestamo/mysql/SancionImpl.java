@@ -27,10 +27,8 @@ public class SancionImpl implements SancionDAO{
         parametrosSalida.put(1, Types.INTEGER);
         parametrosEntrada.put(2, objeto.getTipo_sancion().name());
         parametrosEntrada.put(3, objeto.getDuracion_dias());
-        parametrosEntrada.put(4, objeto.getFecha_fin());
-        parametrosEntrada.put(5, objeto.getJustificacion());
-        parametrosEntrada.put(6, objeto.getEstado().name());
-        parametrosEntrada.put(7, objeto.getPrestamo().getIdPrestamo());
+        parametrosEntrada.put(4, objeto.getJustificacion());
+        parametrosEntrada.put(5, objeto.getPrestamo().getIdPrestamo());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_SANCION", parametrosEntrada, parametrosSalida);
         objeto.setId_sancion((int) parametrosSalida.get(1));
         System.out.println("Se ha realizado el registro de la sancion");
@@ -236,5 +234,50 @@ public class SancionImpl implements SancionDAO{
         DBManager.getInstance().cerrarConexion();
     }
     return sanciones;
+    }
+
+    @Override
+    public ArrayList<Sancion> listarPorUsuario_X_ID(int idUsuario, String filtro) {
+        ArrayList<Sancion> sanciones = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idUsuario);
+        parametrosEntrada.put(2,filtro);
+
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("sp_BuscarSancion", parametrosEntrada);
+        System.out.println("Lectura de sanciones por usuario...");
+        try {
+            while (rs.next()) {
+                if (sanciones == null) sanciones = new ArrayList<>();
+                Sancion s = new Sancion();
+
+                s.setId_sancion(rs.getInt("id_sancion"));
+
+                // Enum Tipo_sancion
+                String tipo = rs.getString("tipo_sancion");
+                s.setTipo_sancion(Tipo_sancion.valueOf(tipo.toUpperCase()));
+
+                s.setDuracion_dias(rs.getInt("duracion_dias"));
+                s.setFecha_inicio(rs.getDate("fecha_inicio"));
+                s.setFecha_fin(rs.getDate("fecha_fin"));
+                s.setJustificacion(rs.getString("justificacion"));
+
+                // Enum EstadoSancion
+                String estadoStr = rs.getString("estado");
+                s.setEstado(EstadoSancion.valueOf(estadoStr.toUpperCase()));
+
+                // Relación con Prestamo
+                Prestamo p = new Prestamo();
+                p.setIdPrestamo(rs.getInt("id_prestamo"));
+                s.setPrestamo(p);
+
+                sanciones.add(s);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        System.out.println("📋 Total sanciones leídas para usuario " + idUsuario + ": " + (sanciones == null ? 0 : sanciones.size()));
+        return sanciones;        
     }
 }

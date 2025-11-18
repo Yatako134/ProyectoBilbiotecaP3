@@ -6,6 +6,7 @@ import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import java.util.ArrayList;
+import java.util.Date;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Prestamo;
 
 @WebService(serviceName = "PrestamoWS", targetNamespace = "pe.edu.pucp.utilsarmy.services")
@@ -33,6 +34,7 @@ public class PrestamoWS {
     @WebMethod(operationName = "modificarPrestamo")
     public int modificarPrestamo(@WebParam(name = "name") Prestamo prestamo) throws Exception {
         prestamobo =new PrestamoBOImpl();
+        prestamo.setFecha_devolucion(new Date());
         return prestamobo.modificar(prestamo);
     }
     
@@ -73,5 +75,13 @@ public class PrestamoWS {
             System.out.println(ex.getMessage());
         }
         return resultado;
+    }
+    
+    @WebMethod(operationName = "listarPrestamosPorUsuarioPorPanel")
+    public ArrayList<Prestamo> listarPrestamosPorUsuarioPorPanel(@WebParam(name = "idUsuario") int idUsuario,
+            @WebParam(name = "filtro") String filtro) throws Exception {
+        // Si viene null desde el cliente, lo convertimos a vacío
+        if (filtro == null) filtro = "";
+        return prestamoboimpl.listarPorUsuario_X_ID(idUsuario,filtro);
     }
 }

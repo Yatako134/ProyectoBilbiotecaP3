@@ -1,6 +1,7 @@
 ﻿using BibliotecaWA.BibliotecaServices;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -39,7 +40,7 @@ namespace BibliotecaWA
 
             if (!IsPostBack)
             {
-                txtFechaDevo.Text = DateTime.Now.ToString("dd/mm/yyyy");
+                txtFechaDevo.Text = DateTime.Now.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
 
                 string id = Request.QueryString["id"];
                 string modo = Request.QueryString["modo"];
@@ -141,8 +142,8 @@ namespace BibliotecaWA
                 lblPrestamosVigentes.Text = userBO.obtener_prestamos_vigentesxUsuario(usuario.id_usuario).ToString();
                 lblLimiteDias.Text = usuario.rol_usuario.cantidad_de_dias_por_prestamo.ToString();
                 lblLimitePrestamos.Text = usuario.rol_usuario.limite_prestamo.ToString();
-                lblFechaPrestamo.Text = prestamo.fecha_de_prestamo.ToString("dd/MM/yyyy - hh:mm tt");
-                lblFechaVencimiento.Text = prestamo.fecha_vencimiento.ToString("dd/MM/yyyy - hh:mm tt");
+                lblFechaPrestamo.Text = prestamo.fecha_de_prestamo.ToString("dd/MM/yyyy - hh:mm tt", CultureInfo.InvariantCulture);
+                lblFechaVencimiento.Text = prestamo.fecha_vencimiento.ToString("dd/MM/yyyy - hh:mm tt", CultureInfo.InvariantCulture);
 
                 txtCodigo.Text = usuario.codigo.ToString();
                 txtNombre.Text = usuario.nombre + " " + usuario.primer_apellido + " " + usuario.segundo_apellido;
@@ -214,8 +215,31 @@ namespace BibliotecaWA
                 prestamo pre = (prestamo)Session["prestamo"];
                 // Lista para almacenar todas las sanciones
                 var sanciones = new List<sancion>();
-
+                sancion sanci = new sancion();
+                string id = Request.QueryString["id"];
+                sanci.prestamo = new prestamo();
+                sanci.prestamo.idPrestamo = Convert.ToInt32(id);
+                if (pre.estado.Equals(estadoPrestamo.RETRASADO))
+                {
+                    sanci.duracion_dias = Convert.ToInt32(hfDiasAuto.Value);
+                    sanci.justificacion = hfJustificacionAuto.Value;
+                }
                 // Iterar sobre los campos enviados
+                sancionBo = new SancionWSClient();
+                if (pre.estado.Equals(estadoPrestamo.RETRASADO))
+                {
+                    sancion sanciAuto = new sancion();
+                    sanciAuto.prestamo = new prestamo();
+                    sanciAuto.prestamo.idPrestamo = Convert.ToInt32(id);
+
+                    sanciAuto.duracion_dias = Convert.ToInt32(hfDiasAuto.Value);
+                    sanciAuto.justificacion = hfJustificacionAuto.Value;
+                    sanciAuto.tipo_sancion = tipoSancion.ENTREGA_TARDIA; // o la que corresponda
+                    sanciAuto.estado = estadoSancion.VIGENTE;
+
+                    sancionBo.insertarSancion(tipoSancion.ENTREGA_TARDIA.ToString(), Convert.ToInt32(hfDiasAuto.Value),
+                        hfJustificacionAuto.Value, Convert.ToInt32(id));
+                }
 
                 foreach (string key in Request.Form.AllKeys)
                 {
@@ -228,36 +252,11 @@ namespace BibliotecaWA
 
                         string duracion = Request.Form[duracionKey];
                         string justificacion = Request.Form[justificacionKey];
-                        sancion sanci = new sancion();
 
-                        // Asignar tipo de sanción desde string al enum
-                        sanci.tipo_sancion = (tipoSancion)Enum.Parse(typeof(tipoSancion), tipo);
-
-                        // Convertir duración a entero
-                        sanci.duracion_dias = Convert.ToInt32(duracion);
-
-                        // Convertir fechas desde los Labels a DateTime usando el formato exacto
-                        string fechaInicioStr = lblFechaPrestamo.Text.Split('-')[0].Trim();
-                        sanci.fecha_fin = DateTime.Parse(txtFechaDevo.Text);
-                        sanci.fecha_inicio = DateTime.Parse(fechaInicioStr);
-
-
-                        // Asignar justificación y estado
-                        sanci.justificacion = justificacion;
-                        sanci.estado = estadoSancion.VIGENTE;
-
-                        string id = Request.QueryString["id"];
-                        sanci.prestamo.idPrestamo = Convert.ToInt32(id);
-                        sancionBo.insertarSancion(sanci);
-
+                        int valor = sancionBo.insertarSancion(tipo,Convert.ToInt32(duracion), justificacion, Convert.ToInt32(id));
                     }
                 }
-                pre.fecha_devolucion = DateTime.Parse(txtFechaDevo.Text);
                 pre.estado = estadoPrestamo.FINALIZADO;
-                if (pre.fecha_devolucion > pre.fecha_vencimiento)
-                {
-                    pre.estado = estadoPrestamo.RETRASADO;
-                }
                 prestBO.modificarPrestamo(pre);
                 Response.Redirect("HistorialPrestamos.aspx");
             }
