@@ -139,8 +139,13 @@ namespace BibliotecaWA
 
             if (prest != null && prest.Length > 0)
             {
+                var prestamosFormateados = prest.Select(p => new {
+                    p.idPrestamo,
+                    fecha_vencimiento = p.fecha_vencimiento.ToString("yyyy-MM-dd")
+                }).ToArray();
+
                 var serializer = new JavaScriptSerializer();
-                string prestamosJson = serializer.Serialize(prest);
+                string prestamosJson = serializer.Serialize(prestamosFormateados);
 
                 script = $@"mostrarModalRetraso({prest.Length}, {prestamosJson});";
                 ScriptManager.RegisterStartupScript(this, GetType(), "modalRetraso", script, true);

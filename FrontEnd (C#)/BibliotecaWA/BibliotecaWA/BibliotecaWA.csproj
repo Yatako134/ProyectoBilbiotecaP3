@@ -352,6 +352,9 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioPorPanelResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtenerPrestamosRetrasadosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">
       <SubType>Designer</SubType>
     </None>
