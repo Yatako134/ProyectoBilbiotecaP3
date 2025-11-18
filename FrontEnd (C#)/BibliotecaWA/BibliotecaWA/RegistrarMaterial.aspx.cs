@@ -38,8 +38,6 @@ namespace BibliotecaWA
 
                 if (material != null)
                 {
-
-
                     // Llenar campos básicos
                     txtCodigo.Text = material.idMaterial.ToString();
                     txtTitulo.Text = material.titulo;
@@ -178,7 +176,7 @@ namespace BibliotecaWA
                         CodigoEjemplar = e.idEjemplar,
                         BibliotecaId = e.blibioteca.idBiblioteca,
                         Ubicacion = e.ubicacion,
-                        Estado = e.estado.ToString() ?? "DISPONIBLE" // ← AGREGADO
+                        Estado = e.estado.ToString() ?? "DISPONIBLE"
                     }).ToList();
 
                     var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
@@ -207,15 +205,14 @@ namespace BibliotecaWA
 
                 if (contribuyentes != null && contribuyentes.Count > 0)
                 {
-                    // MAPEAR MANUALMENTE a las propiedades que el JavaScript espera
                     var contribuyentesParaJson = contribuyentes.Select(c => new
                     {
-                        IdContribuyente = c.idContribuyente,        // ← Convertir a MAYÚSCULA
-                        Nombre = c.nombre,                          // ← Convertir a MAYÚSCULA
-                        Primer_apellido = c.primer_apellido,        // ← Convertir a MAYÚSCULA  
-                        Segundo_apellido = c.segundo_apellido,      // ← Convertir a MAYÚSCULA
-                        Seudonimo = c.seudonimo,                    // ← Convertir a MAYÚSCULA
-                        Tipo_contribuyente = ConvertirTipo(c.tipo_contribuyente.ToString()) // ← Convertir string a número
+                        IdContribuyente = c.idContribuyente,
+                        Nombre = c.nombre,
+                        Primer_apellido = c.primer_apellido,
+                        Segundo_apellido = c.segundo_apellido,
+                        Seudonimo = c.seudonimo,
+                        Tipo_contribuyente = ConvertirTipo(c.tipo_contribuyente.ToString())
                     }).ToList();
 
                     var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
@@ -253,26 +250,47 @@ namespace BibliotecaWA
         {
             try
             {
+                LimpiarTodosLosErrores();
+
                 if (!ValidarDatos())
                     return;
 
                 bool esEdicion = !string.IsNullOrEmpty(hfIdMaterial.Value);
                 int idMaterial;
 
+                // === VALIDACIÓN DE UNICIDAD ISBN/ISSN ===
+                string tipoMaterial = ddlTipoMaterial.SelectedValue;
+
+                if (tipoMaterial == "Libro" && !esEdicion)
+                {
+                    /*
+                    LibroWSClient libroBO = new LibroWSClient();
+                    if (libroBO.existeISBN(txtISBN.Text))
+                    {
+                        MostrarErrorCampo(txtISBN, lblErrorISBN, "❌ Este ISBN ya está registrado en el sistema");
+                        return;
+                    }
+                    */
+                }
+                else if (tipoMaterial == "Articulo" && !esEdicion)
+                {
+                    /*
+                    ArticuloWSClient articuloBO = new ArticuloWSClient();
+                    if (articuloBO.existeISSN(txtISSN.Text))
+                    {
+                        MostrarErrorCampo(txtISSN, lblErrorISSN, "❌ Este ISSN ya está registrado en el sistema");
+                        return;
+                    }
+                    */
+                }
+
                 if (esEdicion)
                 {
-                    // MODO EDICIÓN - ESTRATEGIA SIMPLIFICADA
+                    // MODO EDICIÓN
                     idMaterial = int.Parse(hfIdMaterial.Value);
-
-                    // 1. Actualizar material principal
                     ActualizarMaterialExistente(idMaterial);
-
-                    // 2. Contribuyentes (mantener IDs)
                     ManejarContribuyentesEnEdicion(idMaterial);
-
-                    // 3. Ejemplares - SOLO ACTUALIZAR, NO ELIMINAR
                     ActualizarEjemplaresExistentes(idMaterial);
-
                     MostrarExito("Material actualizado exitosamente!");
                 }
                 else
@@ -292,14 +310,434 @@ namespace BibliotecaWA
             }
         }
 
-        // MÉTODO ACTUALIZADO PARA MANEJAR CONTRIBUYENTES EN EDICIÓN
+        // ===== MÉTODOS DE VALIDACIÓN MEJORADOS =====
+        private bool ValidarDatos()
+        {
+            bool esValido = true;
+
+            // Validar título
+            if (string.IsNullOrEmpty(txtTitulo.Text))
+            {
+                MostrarErrorCampo(txtTitulo, lblErrorTitulo, "El título es requerido");
+                esValido = false;
+            }
+            else if (!EsTituloValido(txtTitulo.Text))
+            {
+                MostrarErrorCampo(txtTitulo, lblErrorTitulo, "El título contiene caracteres no permitidos");
+                esValido = false;
+            }
+
+            // Validar tipo de material
+            if (string.IsNullOrEmpty(ddlTipoMaterial.SelectedValue))
+            {
+                MostrarErrorCampo(ddlTipoMaterial, lblErrorTipoMaterial, "Debe seleccionar un tipo de material");
+                esValido = false;
+            }
+
+            // Validar año de publicación
+            if (string.IsNullOrEmpty(txtAnho.Text))
+            {
+                MostrarErrorCampo(txtAnho, lblErrorAnho, "El año de publicación es requerido");
+                esValido = false;
+            }
+            else if (!int.TryParse(txtAnho.Text, out int anho) || anho < 1000 || anho > DateTime.Now.Year + 1)
+            {
+                MostrarErrorCampo(txtAnho, lblErrorAnho, $"El año debe estar entre 1000 y {DateTime.Now.Year + 1}");
+                esValido = false;
+            }
+
+            // Validar número de páginas
+            if (string.IsNullOrEmpty(txtPaginas.Text))
+            {
+                MostrarErrorCampo(txtPaginas, lblErrorPaginas, "El número de páginas es requerido");
+                esValido = false;
+            }
+            else if (!int.TryParse(txtPaginas.Text, out int paginas) || paginas <= 0 || paginas > 10000)
+            {
+                MostrarErrorCampo(txtPaginas, lblErrorPaginas, "El número de páginas debe ser positivo y no exceder 10,000");
+                esValido = false;
+            }
+
+            // Validar tema
+            if (string.IsNullOrEmpty(TextTema.Text))
+            {
+                MostrarErrorCampo(TextTema, lblErrorTema, "El tema es requerido");
+                esValido = false;
+            }
+            else if (!EsCampoGeneralValido(TextTema.Text))
+            {
+                MostrarErrorCampo(TextTema, lblErrorTema, "El tema contiene caracteres no permitidos");
+                esValido = false;
+            }
+
+            // Validar idioma
+            if (string.IsNullOrEmpty(TextIdioma.Text))
+            {
+                MostrarErrorCampo(TextIdioma, lblErrorIdioma, "El idioma es requerido");
+                esValido = false;
+            }
+            else if (!EsIdiomaValido(TextIdioma.Text))
+            {
+                MostrarErrorCampo(TextIdioma, lblErrorIdioma, "El idioma solo puede contener letras y espacios");
+                esValido = false;
+            }
+
+            // Validar campos específicos por tipo de material
+            string tipoMaterial = ddlTipoMaterial.SelectedValue;
+
+            if (tipoMaterial == "Libro")
+            {
+                // Validar ISBN
+                if (string.IsNullOrEmpty(txtISBN.Text))
+                {
+                    MostrarErrorCampo(txtISBN, lblErrorISBN, "El ISBN es requerido para libros");
+                    esValido = false;
+                }
+                else if (!EsISBNValido(txtISBN.Text))
+                {
+                    MostrarErrorCampo(txtISBN, lblErrorISBN, "El formato del ISBN no es válido");
+                    esValido = false;
+                }
+
+                // Validar edición
+                if (string.IsNullOrEmpty(txtEdicion.Text))
+                {
+                    MostrarErrorCampo(txtEdicion, lblErrorEdicion, "La edición es requerida para libros");
+                    esValido = false;
+                }
+                else if (!EsCampoGeneralValido(txtEdicion.Text))
+                {
+                    MostrarErrorCampo(txtEdicion, lblErrorEdicion, "La edición contiene caracteres no permitidos");
+                    esValido = false;
+                }
+            }
+            else if (tipoMaterial == "Tesis")
+            {
+                // Validar campos de tesis
+                if (string.IsNullOrEmpty(txtEspecialidad.Text))
+                {
+                    MostrarErrorCampo(txtEspecialidad, lblErrorEspecialidad, "La especialidad es requerida para tesis");
+                    esValido = false;
+                }
+                else if (!EsCampoGeneralValido(txtEspecialidad.Text))
+                {
+                    MostrarErrorCampo(txtEspecialidad, lblErrorEspecialidad, "La especialidad contiene caracteres no permitidos");
+                    esValido = false;
+                }
+
+                if (string.IsNullOrEmpty(txtAsesor.Text))
+                {
+                    MostrarErrorCampo(txtAsesor, lblErrorAsesor, "El asesor es requerido para tesis");
+                    esValido = false;
+                }
+                else if (!EsCampoGeneralValido(txtAsesor.Text))
+                {
+                    MostrarErrorCampo(txtAsesor, lblErrorAsesor, "El asesor contiene caracteres no permitidos");
+                    esValido = false;
+                }
+
+                if (string.IsNullOrEmpty(txtGrado.Text))
+                {
+                    MostrarErrorCampo(txtGrado, lblErrorGrado, "El grado es requerido para tesis");
+                    esValido = false;
+                }
+                else if (!EsCampoGeneralValido(txtGrado.Text))
+                {
+                    MostrarErrorCampo(txtGrado, lblErrorGrado, "El grado contiene caracteres no permitidos");
+                    esValido = false;
+                }
+
+                if (string.IsNullOrEmpty(txtInstitucion.Text))
+                {
+                    MostrarErrorCampo(txtInstitucion, lblErrorInstitucion, "La institución de publicación es requerida para tesis");
+                    esValido = false;
+                }
+                else if (!EsCampoGeneralValido(txtInstitucion.Text))
+                {
+                    MostrarErrorCampo(txtInstitucion, lblErrorInstitucion, "La institución contiene caracteres no permitidos");
+                    esValido = false;
+                }
+            }
+            else if (tipoMaterial == "Articulo")
+            {
+                // Validar ISSN
+                if (string.IsNullOrEmpty(txtISSN.Text))
+                {
+                    MostrarErrorCampo(txtISSN, lblErrorISSN, "El ISSN es requerido para artículos");
+                    esValido = false;
+                }
+                else if (!EsISSNValido(txtISSN.Text))
+                {
+                    MostrarErrorCampo(txtISSN, lblErrorISSN, "El formato del ISSN no es válido");
+                    esValido = false;
+                }
+
+                // Validar revista
+                if (string.IsNullOrEmpty(txtRevista.Text))
+                {
+                    MostrarErrorCampo(txtRevista, lblErrorRevista, "La revista es requerida para artículos");
+                    esValido = false;
+                }
+                else if (!EsCampoGeneralValido(txtRevista.Text))
+                {
+                    MostrarErrorCampo(txtRevista, lblErrorRevista, "La revista contiene caracteres no permitidos");
+                    esValido = false;
+                }
+
+                // Validar volumen
+                if (string.IsNullOrEmpty(txtVolumen.Text))
+                {
+                    MostrarErrorCampo(txtVolumen, lblErrorVolumen, "El volumen es requerido para artículos");
+                    esValido = false;
+                }
+                else if (!int.TryParse(txtVolumen.Text, out int volumen) || volumen < 0)
+                {
+                    MostrarErrorCampo(txtVolumen, lblErrorVolumen, "El volumen debe ser un número positivo");
+                    esValido = false;
+                }
+
+                // Validar número
+                if (string.IsNullOrEmpty(txtNumero.Text))
+                {
+                    MostrarErrorCampo(txtNumero, lblErrorNumero, "El número es requerido para artículos");
+                    esValido = false;
+                }
+                else if (!int.TryParse(txtNumero.Text, out int numero) || numero < 0)
+                {
+                    MostrarErrorCampo(txtNumero, lblErrorNumero, "El número debe ser un número positivo");
+                    esValido = false;
+                }
+            }
+
+            // Validar contribuyentes
+            if (!ValidarContribuyentesFormulario())
+                esValido = false;
+
+            // Validar ejemplares
+            if (!ValidarEjemplaresFormulario())
+                esValido = false;
+
+            return esValido;
+        }
+
+        private bool ValidarContribuyentesFormulario()
+        {
+            var nombres = Request.Form.GetValues("nombre[]");
+            var primerApellidos = Request.Form.GetValues("primer_apellido[]");
+            var segundoApellidos = Request.Form.GetValues("segundo_apellido[]");
+
+            // === MODIFICACIÓN: Los contribuyentes son OPCIONALES ===
+            // Si no hay contribuyentes, es válido
+            if (nombres == null || nombres.Length == 0)
+            {
+                return true; // Cambiado de false a true
+            }
+
+            // Si hay contribuyentes, validar los que tengan datos
+            for (int i = 0; i < nombres.Length; i++)
+            {
+                // Solo validar si el contribuyente tiene datos
+                bool tieneDatos = !string.IsNullOrEmpty(nombres[i]) ||
+                                 !string.IsNullOrEmpty(primerApellidos[i]) ||
+                                 !string.IsNullOrEmpty(segundoApellidos[i]);
+
+                if (tieneDatos)
+                {
+                    if (string.IsNullOrEmpty(nombres[i]))
+                    {
+                        MostrarError($"El nombre del contribuyente {i + 1} es requerido");
+                        return false;
+                    }
+
+                    if (!EsNombreValido(nombres[i]))
+                    {
+                        MostrarError($"El nombre del contribuyente {i + 1} contiene caracteres no permitidos");
+                        return false;
+                    }
+
+                    if (string.IsNullOrEmpty(primerApellidos[i]))
+                    {
+                        MostrarError($"El primer apellido del contribuyente {i + 1} es requerido");
+                        return false;
+                    }
+
+                    if (!EsNombreValido(primerApellidos[i]))
+                    {
+                        MostrarError($"El primer apellido del contribuyente {i + 1} contiene caracteres no permitidos");
+                        return false;
+                    }
+
+                    if (string.IsNullOrEmpty(segundoApellidos[i]))
+                    {
+                        MostrarError($"El segundo apellido del contribuyente {i + 1} es requerido");
+                        return false;
+                    }
+
+                    if (!EsNombreValido(segundoApellidos[i]))
+                    {
+                        MostrarError($"El segundo apellido del contribuyente {i + 1} contiene caracteres no permitidos");
+                        return false;
+                    }
+
+                    // Validar seudónimo (puede estar vacío)
+                    var seudonimos = Request.Form.GetValues("seudonimo[]");
+                    if (seudonimos != null && i < seudonimos.Length && !string.IsNullOrEmpty(seudonimos[i]))
+                    {
+                        if (!EsNombreValido(seudonimos[i]))
+                        {
+                            MostrarError($"El seudónimo del contribuyente {i + 1} contiene caracteres no permitidos");
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        private bool ValidarEjemplaresFormulario()
+        {
+            var bibliotecas = Request.Form.GetValues("biblioteca[]");
+            var ubicaciones = Request.Form.GetValues("ubicacion[]");
+
+            if (bibliotecas == null || ubicaciones == null || bibliotecas.Length == 0)
+            {
+                MostrarError("Debe registrar al menos un ejemplar");
+                return false;
+            }
+
+            for (int i = 0; i < ubicaciones.Length; i++)
+            {
+                if (string.IsNullOrEmpty(ubicaciones[i]))
+                {
+                    MostrarError($"La ubicación del ejemplar {i + 1} es requerida");
+                    return false;
+                }
+
+                if (!EsUbicacionValida(ubicaciones[i]))
+                {
+                    MostrarError($"La ubicación del ejemplar {i + 1} contiene caracteres no permitidos");
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(bibliotecas[i]))
+                {
+                    MostrarError($"Debe seleccionar una biblioteca para el ejemplar {i + 1}");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // ===== MÉTODOS AUXILIARES PARA MOSTRAR ERRORES =====
+        private void MostrarErrorCampo(WebControl control, Label labelError, string mensaje)
+        {
+            labelError.Text = mensaje;
+            labelError.Style["display"] = "block";
+
+            if (control is TextBox)
+                control.CssClass = "form-control is-invalid";
+            else if (control is DropDownList)
+                control.CssClass = "form-select is-invalid";
+        }
+
+        private void LimpiarTodosLosErrores()
+        {
+            // Limpiar errores de campos principales
+            LimpiarErrorCampo(txtTitulo, lblErrorTitulo);
+            LimpiarErrorCampo(ddlTipoMaterial, lblErrorTipoMaterial);
+            LimpiarErrorCampo(txtAnho, lblErrorAnho);
+            LimpiarErrorCampo(txtPaginas, lblErrorPaginas);
+            LimpiarErrorCampo(TextTema, lblErrorTema);
+            LimpiarErrorCampo(TextIdioma, lblErrorIdioma);
+
+            // Limpiar errores de libro
+            LimpiarErrorCampo(txtISBN, lblErrorISBN);
+            LimpiarErrorCampo(txtEdicion, lblErrorEdicion);
+
+            // Limpiar errores de tesis
+            LimpiarErrorCampo(txtEspecialidad, lblErrorEspecialidad);
+            LimpiarErrorCampo(txtAsesor, lblErrorAsesor);
+            LimpiarErrorCampo(txtGrado, lblErrorGrado);
+            LimpiarErrorCampo(txtInstitucion, lblErrorInstitucion);
+
+            // Limpiar errores de artículo
+            LimpiarErrorCampo(txtISSN, lblErrorISSN);
+            LimpiarErrorCampo(txtRevista, lblErrorRevista);
+            LimpiarErrorCampo(txtVolumen, lblErrorVolumen);
+            LimpiarErrorCampo(txtNumero, lblErrorNumero);
+        }
+
+        private void LimpiarErrorCampo(WebControl control, Label labelError)
+        {
+            labelError.Text = "";
+            labelError.Style["display"] = "none";
+
+            if (control is TextBox)
+                control.CssClass = "form-control";
+            else if (control is DropDownList)
+                control.CssClass = "form-select";
+        }
+
+        // ===== MÉTODOS DE VALIDACIÓN CON EXPRESIONES REGULARES =====
+        private bool EsTituloValido(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto)) return false;
+            var regex = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s\-\.,;:¿?¡!()""]+$");
+            return regex.IsMatch(texto);
+        }
+
+        private bool EsNombreValido(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto)) return false;
+            var regex = new System.Text.RegularExpressions.Regex(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$");
+            return regex.IsMatch(texto);
+        }
+
+        private bool EsIdiomaValido(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto)) return false;
+            var regex = new System.Text.RegularExpressions.Regex(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$");
+            return regex.IsMatch(texto);
+        }
+
+        private bool EsCampoGeneralValido(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto)) return false;
+            var regex = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s\-\.,;:¿?¡!()""]+$");
+            return regex.IsMatch(texto);
+        }
+
+        private bool EsUbicacionValida(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto)) return false;
+            var regex = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s\-\.,;:¿?¡!()""]+$");
+            return regex.IsMatch(texto);
+        }
+
+        private bool EsISBNValido(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto)) return false;
+            var regex = new System.Text.RegularExpressions.Regex(@"^(?:\d[\-\s]?){9}[\dX]$|^(?:\d[\-\s]?){12}[\d]$");
+            return regex.IsMatch(texto);
+        }
+
+        private bool EsISSNValido(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto)) return false;
+            var regex = new System.Text.RegularExpressions.Regex(@"^\d{4}\-\d{3}[\dX]$");
+            return regex.IsMatch(texto);
+        }
+
+        // ===== MÉTODOS EXISTENTES (MANTENIENDO TU LÓGICA ORIGINAL) =====
+
         private void ManejarContribuyentesEnEdicion(int idMaterial)
         {
             try
             {
                 ConstribuyenteWSClient contribuyenteBO = new ConstribuyenteWSClient();
 
-                // Obtener arrays del formulario
                 var idsContribuyentes = Request.Form.GetValues("id_contribuyente[]");
                 var tipoContribuyenteList = Request.Form.GetValues("autor[]");
                 var nombreList = Request.Form.GetValues("nombre[]");
@@ -310,9 +748,9 @@ namespace BibliotecaWA
                 System.Diagnostics.Debug.WriteLine($"=== MODO EDICIÓN CONTRIBUYENTES ===");
                 System.Diagnostics.Debug.WriteLine($"IDs recibidos: {idsContribuyentes?.Length}");
 
-                // Lista para guardar los IDs de contribuyentes que SÍ están en el formulario
                 List<int> idsContribuyentesEnFormulario = new List<int>();
 
+                // === MODIFICACIÓN: Permitir formulario sin contribuyentes ===
                 if (tipoContribuyenteList != null && nombreList != null && primerApellidoList != null)
                 {
                     int minLength = Math.Min(tipoContribuyenteList.Length,
@@ -320,18 +758,19 @@ namespace BibliotecaWA
 
                     for (int i = 0; i < minLength; i++)
                     {
-                        // Obtener ID del contribuyente (0 si es nuevo)
-                        int idContribuyente = 0;
-                        if (idsContribuyentes != null && i < idsContribuyentes.Length)
-                        {
-                            int.TryParse(idsContribuyentes[i], out idContribuyente);
-                        }
+                        // === MODIFICACIÓN: Solo procesar contribuyentes con datos completos ===
+                        bool tieneDatosCompletos = !string.IsNullOrEmpty(tipoContribuyenteList[i]) &&
+                                                  !string.IsNullOrEmpty(nombreList[i]) &&
+                                                  !string.IsNullOrEmpty(primerApellidoList[i]);
 
-                        // Validar campos requeridos
-                        if (!string.IsNullOrEmpty(tipoContribuyenteList[i]) &&
-                            !string.IsNullOrEmpty(nombreList[i]) &&
-                            !string.IsNullOrEmpty(primerApellidoList[i]))
+                        if (tieneDatosCompletos)
                         {
+                            int idContribuyente = 0;
+                            if (idsContribuyentes != null && i < idsContribuyentes.Length)
+                            {
+                                int.TryParse(idsContribuyentes[i], out idContribuyente);
+                            }
+
                             try
                             {
                                 var tipoContribuyenteStr = tipoContribuyenteList[i];
@@ -343,10 +782,8 @@ namespace BibliotecaWA
 
                                     if (idContribuyente > 0)
                                     {
-                                        // UPDATE - Contribuyente existente
                                         System.Diagnostics.Debug.WriteLine($"🔄 ACTUALIZANDO contribuyente ID: {idContribuyente}");
 
-                                        // Agregar a la lista de contribuyentes que SÍ están en el formulario
                                         idsContribuyentesEnFormulario.Add(idContribuyente);
 
                                         contribuyente contribuyenteExistente = contribuyenteBO.obtenerContribuyentePorId(idContribuyente);
@@ -364,7 +801,6 @@ namespace BibliotecaWA
                                     }
                                     else
                                     {
-                                        // INSERT - Nuevo contribuyente
                                         System.Diagnostics.Debug.WriteLine($"➕ NUEVO contribuyente");
 
                                         var nuevoContribuyente = new contribuyente
@@ -376,12 +812,11 @@ namespace BibliotecaWA
                                             tipo_contribuyente = tipoContribuyente
                                         };
 
-                                        int nuevoId = contribuyenteBO.insertarContribuyente(nuevoContribuyente.nombre,nuevoContribuyente.primer_apellido
-                                            ,nuevoContribuyente.segundo_apellido,nuevoContribuyente.seudonimo,nuevoContribuyente.tipo_contribuyente.ToString());
+                                        int nuevoId = contribuyenteBO.insertarContribuyente(nuevoContribuyente.nombre, nuevoContribuyente.primer_apellido
+                                            , nuevoContribuyente.segundo_apellido, nuevoContribuyente.seudonimo, nuevoContribuyente.tipo_contribuyente.ToString());
 
                                         contribuyenteBO.asignarContribuyente(idMaterial, nuevoId);
 
-                                        // Agregar el nuevo ID a la lista
                                         idsContribuyentesEnFormulario.Add(nuevoId);
 
                                         System.Diagnostics.Debug.WriteLine($"✅ NUEVO GUARDADO: {nuevoContribuyente.nombre} -> ID: {nuevoId}");
@@ -394,13 +829,10 @@ namespace BibliotecaWA
                             }
                         }
                     }
-
-                    // PASO FINAL: Eliminar contribuyentes que fueron removidos del formulario
-                    if (idsContribuyentesEnFormulario.Count > 0)
-                    {
-                        EliminarContribuyentesRemovidos(idMaterial, idsContribuyentesEnFormulario);
-                    }
                 }
+
+                // === MODIFICACIÓN: Eliminar contribuyentes removidos (incluso si se removieron todos) ===
+                EliminarContribuyentesRemovidos(idMaterial, idsContribuyentesEnFormulario);
             }
             catch (Exception ex)
             {
@@ -415,26 +847,21 @@ namespace BibliotecaWA
             {
                 ConstribuyenteWSClient contribuyenteBO = new ConstribuyenteWSClient();
 
-                // Obtener todos los contribuyentes actuales del material
                 var contribuyentesActuales = contribuyenteBO.listar_contribuyentes_por_material(idMaterial);
 
                 foreach (var contribuyente in contribuyentesActuales)
                 {
-                    // Si el contribuyente actual NO está en la lista del formulario, significa que fue eliminado
                     if (!idsContribuyentesEnFormulario.Contains(contribuyente.idContribuyente))
                     {
                         System.Diagnostics.Debug.WriteLine($"🗑️ ELIMINANDO contribuyente removido: {contribuyente.nombre} (ID: {contribuyente.idContribuyente})");
 
-                        // Verificar si el contribuyente está siendo usado por otros materiales
                         if (contribuyenteBO.tiene_otras_relaciones(contribuyente.idContribuyente, idMaterial))
                         {
-                            // Solo eliminar la relación (contribuyente pertenece a otros materiales)
                             contribuyenteBO.eliminar_relacion_material_contribuyente(idMaterial, contribuyente.idContribuyente);
                             System.Diagnostics.Debug.WriteLine($"➖ Solo se eliminó la relación del contribuyente ID: {contribuyente.idContribuyente}");
                         }
                         else
                         {
-                            // Eliminar contribuyente completo (solo pertenece a este material)
                             contribuyenteBO.eliminarContribuyente(contribuyente.idContribuyente);
                             System.Diagnostics.Debug.WriteLine($"✅ Contribuyente eliminado completamente: {contribuyente.nombre}");
                         }
@@ -461,7 +888,6 @@ namespace BibliotecaWA
 
                 System.Diagnostics.Debug.WriteLine($"=== ACTUALIZAR EJEMPLARES EXISTENTES ===");
 
-                // Lista para guardar los IDs de ejemplares que SÍ están en el formulario
                 List<int> idsEjemplaresEnFormulario = new List<int>();
 
                 if (estadosList != null && bibliotecasList != null && ubicacionesList != null)
@@ -490,13 +916,11 @@ namespace BibliotecaWA
                                 {
                                     System.Diagnostics.Debug.WriteLine($"🔄 ACTUALIZANDO ejemplar ID: {idEjemplar}, Estado: {estado}");
 
-                                    // Agregar a la lista de ejemplares que SÍ están en el formulario
                                     idsEjemplaresEnFormulario.Add(idEjemplar);
 
                                     ejemplar ejemplarExistente = ejemplarBO.obtenerEjemplarPorId(idEjemplar);
                                     if (ejemplarExistente != null)
                                     {
-                                        // Solo actualizar estado si NO es PRESTADO (los PRESTADO vienen como readonly)
                                         if (ejemplarExistente.estado.ToString() != "PRESTADO")
                                         {
                                             if (Enum.TryParse<estadoEjemplar>(estado, out estadoEjemplar estadoEnum))
@@ -516,7 +940,6 @@ namespace BibliotecaWA
                                 }
                                 else
                                 {
-                                    // INSERT - Nuevo ejemplar (nunca será PRESTADO)
                                     System.Diagnostics.Debug.WriteLine($"➕ NUEVO ejemplar");
 
                                     var nuevoEjemplar = new ejemplar
@@ -524,12 +947,11 @@ namespace BibliotecaWA
                                         ubicacion = ubicacion,
                                         blibioteca = new biblioteca { idBiblioteca = idBiblioteca },
                                         id_material = idMaterial,
-                                        estado = estadoEjemplar.DISPONIBLE // Siempre DISPONIBLE en nuevos
+                                        estado = estadoEjemplar.DISPONIBLE
                                     };
 
                                     int nuevoId = ejemplarBO.insertarEjemplar(nuevoEjemplar);
 
-                                    // Agregar el nuevo ID a la lista
                                     idsEjemplaresEnFormulario.Add(nuevoId);
 
                                     System.Diagnostics.Debug.WriteLine($"✅ NUEVO EJEMPLAR GUARDADO: ID {nuevoId}");
@@ -542,7 +964,6 @@ namespace BibliotecaWA
                         }
                     }
 
-                    // PASO FINAL: Eliminar ejemplares que fueron removidos del formulario
                     if (idsEjemplaresEnFormulario.Count > 0)
                     {
                         EliminarEjemplaresRemovidos(idMaterial, idsEjemplaresEnFormulario);
@@ -562,17 +983,14 @@ namespace BibliotecaWA
             {
                 EjemplarWSClient ejemplarBO = new EjemplarWSClient();
 
-                // Obtener todos los ejemplares actuales del material
                 var ejemplaresActuales = ejemplarBO.listar_por_material(idMaterial);
 
                 foreach (var ejemplar in ejemplaresActuales)
                 {
-                    // Si el ejemplar actual NO está en la lista del formulario, significa que fue eliminado
                     if (!idsEjemplaresEnFormulario.Contains(ejemplar.idEjemplar))
                     {
                         System.Diagnostics.Debug.WriteLine($"🗑️ VERIFICANDO ejemplar para eliminar: ID {ejemplar.idEjemplar}, Estado en BD: {ejemplar.estado}");
 
-                        // SOLO eliminar si está DISPONIBLE en la BD (estado original)
                         if (ejemplar.estado.ToString() == "DISPONIBLE")
                         {
                             ejemplarBO.eliminarEjemplar(ejemplar.idEjemplar);
@@ -590,6 +1008,7 @@ namespace BibliotecaWA
                 throw new Exception($"Error al eliminar ejemplares removidos: {ex.Message}");
             }
         }
+
         private void ActualizarMaterialExistente(int idMaterial)
         {
             string tipoMaterial = ddlTipoMaterial.SelectedValue;
@@ -617,16 +1036,14 @@ namespace BibliotecaWA
 
                 if (libro != null)
                 {
-                    // Actualizar propiedades
                     libro.titulo = txtTitulo.Text;
                     libro.anho_publicacion = int.Parse(txtAnho.Text);
                     libro.numero_paginas = int.Parse(txtPaginas.Text);
                     libro.clasificacion_tematica = TextTema.Text;
                     libro.idioma = TextIdioma.Text;
-                    libro.ISBN = txtISBN.Text;
+                    libro.ISBN = txtISBN.Text; // ← GUARDA CON GUIONES
                     libro.edicion = txtEdicion.Text;
 
-                    // Ejecutar actualización
                     libroBO.modificarLibro(libro);
                 }
             }
@@ -645,7 +1062,6 @@ namespace BibliotecaWA
 
                 if (tesis != null)
                 {
-                    // Actualizar propiedades
                     tesis.titulo = txtTitulo.Text;
                     tesis.anho_publicacion = int.Parse(txtAnho.Text);
                     tesis.numero_paginas = int.Parse(txtPaginas.Text);
@@ -656,7 +1072,6 @@ namespace BibliotecaWA
                     tesis.grado = txtGrado.Text;
                     tesis.institucionPublicacion = txtInstitucion.Text;
 
-                    // Ejecutar actualización
                     tesisBO.modificarTesis(tesis);
                 }
             }
@@ -675,18 +1090,16 @@ namespace BibliotecaWA
 
                 if (articulo != null)
                 {
-                    // Actualizar propiedades
                     articulo.titulo = txtTitulo.Text;
                     articulo.anho_publicacion = int.Parse(txtAnho.Text);
                     articulo.numero_paginas = int.Parse(txtPaginas.Text);
                     articulo.clasificacion_tematica = TextTema.Text;
                     articulo.idioma = TextIdioma.Text;
-                    articulo.ISSN = txtISSN.Text;
+                    articulo.ISSN = txtISSN.Text; // ← GUARDA CON GUIONES
                     articulo.revista = txtRevista.Text;
                     articulo.volumen = int.Parse(txtVolumen.Text);
                     articulo.numero = int.Parse(txtNumero.Text);
 
-                    // Ejecutar actualización
                     articuloBO.modificarArticulo(articulo);
                 }
             }
@@ -694,85 +1107,6 @@ namespace BibliotecaWA
             {
                 throw new Exception($"Error al actualizar artículo: {ex.Message}");
             }
-        }
-
-        // MÉTODO PARA ELIMINAR EJEMPLARES ANTIGUOS
-        private void EliminarEjemplaresAntiguos(int idMaterial)
-        {
-            try
-            {
-                EjemplarWSClient ejemplarBO = new EjemplarWSClient();
-                var ejemplaresAntiguos = new BindingList<ejemplar>(ejemplarBO.listar_por_material(idMaterial));
-
-                //xd
-                if (ejemplaresAntiguos == null) return;
-
-                foreach (var ejemplar in ejemplaresAntiguos)
-                {
-                    ejemplarBO.eliminarEjemplar(ejemplar.idEjemplar);
-                }
-
-                System.Diagnostics.Debug.WriteLine($"🗑️ Se eliminaron {ejemplaresAntiguos.Count} ejemplares antiguos");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error al eliminar ejemplares antiguos: {ex.Message}");
-            }
-        }
-
-        private bool ValidarDatos()
-        {
-            if (string.IsNullOrEmpty(txtTitulo.Text))
-            {
-                MostrarError("El título es requerido");
-                return false;
-            }
-
-            if (!int.TryParse(txtAnho.Text, out int anho) || anho < 1000 || anho > DateTime.Now.Year + 1)
-            {
-                MostrarError("El año de publicación debe ser un año válido");
-                return false;
-            }
-
-            if (!int.TryParse(txtPaginas.Text, out int paginas) || paginas <= 0)
-            {
-                MostrarError("El número de páginas debe ser un valor positivo");
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(ddlTipoMaterial.SelectedValue))
-            {
-                MostrarError("Debe seleccionar un tipo de material");
-                return false;
-            }
-
-            string tipoMaterial = ddlTipoMaterial.SelectedValue;
-            if (tipoMaterial == "Libro")
-            {
-                if (string.IsNullOrEmpty(txtISBN.Text))
-                {
-                    MostrarError("El ISBN es requerido para libros");
-                    return false;
-                }
-            }
-            else if (tipoMaterial == "Tesis")
-            {
-                if (string.IsNullOrEmpty(txtEspecialidad.Text))
-                {
-                    MostrarError("La especialidad es requerida para tesis");
-                    return false;
-                }
-            }
-            else if (tipoMaterial == "Articulo")
-            {
-                if (string.IsNullOrEmpty(txtISSN.Text))
-                {
-                    MostrarError("El ISSN es requerido para artículos");
-                    return false;
-                }
-            }
-
-            return true;
         }
 
         private int GuardarMaterialPorTipo()
@@ -808,7 +1142,7 @@ namespace BibliotecaWA
                 libro.numero_paginas = Convert.ToInt32(txtPaginas.Text);
                 libro.clasificacion_tematica = TextTema.Text;
                 libro.idioma = TextIdioma.Text;
-                libro.ISBN = txtISBN.Text;
+                libro.ISBN = txtISBN.Text; // ← GUARDA CON GUIONES
                 libro.edicion = txtEdicion.Text;
 
                 return libroDAO.insertarLibro(libro);
@@ -856,7 +1190,7 @@ namespace BibliotecaWA
                 art.numero_paginas = Convert.ToInt32(txtPaginas.Text);
                 art.clasificacion_tematica = TextTema.Text;
                 art.idioma = TextIdioma.Text;
-                art.ISSN = txtISSN.Text;
+                art.ISSN = txtISSN.Text; // ← GUARDA CON GUIONES
                 art.revista = txtRevista.Text;
                 art.volumen = Convert.ToInt32(txtVolumen.Text);
                 art.numero = Convert.ToInt32(txtNumero.Text);
@@ -869,7 +1203,6 @@ namespace BibliotecaWA
             }
         }
 
-        // MÉTODO ORIGINAL PARA NUEVOS CONTRIBUYENTES (solo se usa en modo NUEVO)
         private void GuardarContribuyentes(int idMaterial)
         {
             List<contribuyente> contribuyentes = new List<contribuyente>();
@@ -883,6 +1216,7 @@ namespace BibliotecaWA
             System.Diagnostics.Debug.WriteLine($"=== DEBUG CONTRIBUYENTES FORMULARIO (MODO NUEVO) ===");
             System.Diagnostics.Debug.WriteLine($"Arrays: autor[]={tipoContribuyenteList?.Length}, nombre[]={nombreList?.Length}, primer_apellido[]={primerApellidoList?.Length}");
 
+            // === MODIFICACIÓN: Verificar si hay contribuyentes antes de procesar ===
             if (tipoContribuyenteList != null && nombreList != null && primerApellidoList != null)
             {
                 int minLength = Math.Min(tipoContribuyenteList.Length,
@@ -894,9 +1228,13 @@ namespace BibliotecaWA
                 {
                     System.Diagnostics.Debug.WriteLine($"Contribuyente {i}: autor='{tipoContribuyenteList[i]}', nombre='{nombreList[i]}'");
 
-                    if (!string.IsNullOrEmpty(tipoContribuyenteList[i]) &&
-                        !string.IsNullOrEmpty(nombreList[i]) &&
-                        !string.IsNullOrEmpty(primerApellidoList[i]))
+                    // === MODIFICACIÓN: Solo procesar contribuyentes con datos completos ===
+                    bool tieneDatosCompletos = !string.IsNullOrEmpty(tipoContribuyenteList[i]) &&
+                                              !string.IsNullOrEmpty(nombreList[i]) &&
+                                              !string.IsNullOrEmpty(primerApellidoList[i]) &&
+                                              !string.IsNullOrEmpty(segundoApellidoList?[i] ?? "");
+
+                    if (tieneDatosCompletos)
                     {
                         try
                         {
@@ -926,27 +1264,39 @@ namespace BibliotecaWA
                     }
                     else
                     {
-                        System.Diagnostics.Debug.WriteLine($"❌ FILTRADO: Posición {i} - Campos vacíos");
+                        System.Diagnostics.Debug.WriteLine($"❌ FILTRADO: Posición {i} - Campos incompletos");
                     }
                 }
 
-                ConstribuyenteWSClient bocontribuyente = new ConstribuyenteWSClient();
-                foreach (var contribuyente in contribuyentes)
+                // === MODIFICACIÓN: Solo guardar si hay contribuyentes válidos ===
+                if (contribuyentes.Count > 0)
                 {
-                    try
+                    ConstribuyenteWSClient bocontribuyente = new ConstribuyenteWSClient();
+                    foreach (var contribuyente in contribuyentes)
                     {
-                        int idcon = bocontribuyente.insertarContribuyente(contribuyente.nombre, contribuyente.primer_apellido
-                                            , contribuyente.segundo_apellido, contribuyente.seudonimo, contribuyente.tipo_contribuyente.ToString());
-                        bocontribuyente.asignarContribuyente(idMaterial, idcon);
-                        System.Diagnostics.Debug.WriteLine($"💾 GUARDADO EN BD: {contribuyente.nombre} -> ID: {idcon}");
+                        try
+                        {
+                            int idcon = bocontribuyente.insertarContribuyente(contribuyente.nombre, contribuyente.primer_apellido
+                                                , contribuyente.segundo_apellido, contribuyente.seudonimo, contribuyente.tipo_contribuyente.ToString());
+                            bocontribuyente.asignarContribuyente(idMaterial, idcon);
+                            System.Diagnostics.Debug.WriteLine($"💾 GUARDADO EN BD: {contribuyente.nombre} -> ID: {idcon}");
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"💥 ERROR BD: {contribuyente.nombre} - {ex.Message}");
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"💥 ERROR BD: {contribuyente.nombre} - {ex.Message}");
-                    }
-                }
 
-                System.Diagnostics.Debug.WriteLine($"=== RESUMEN: {contribuyentes.Count} contribuyentes guardados ===");
+                    System.Diagnostics.Debug.WriteLine($"=== RESUMEN: {contribuyentes.Count} contribuyentes guardados ===");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine($"=== RESUMEN: 0 contribuyentes guardados (opcional) ===");
+                }
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine($"=== RESUMEN: No hay contribuyentes en el formulario ===");
             }
         }
 
@@ -986,7 +1336,7 @@ namespace BibliotecaWA
                     bib.idBiblioteca = Convert.ToInt32(idBiblioteca);
                     ejemplar.blibioteca = bib;
                     ejemplar.id_material = idMaterial;
-                    ejemplar.estado = estadoEjemplar.DISPONIBLE; // ← SIEMPRE DISPONIBLE EN REGISTRO
+                    ejemplar.estado = estadoEjemplar.DISPONIBLE;
 
                     int idEjemplar = boejemplar.insertarEjemplar(ejemplar);
 
@@ -1039,7 +1389,5 @@ namespace BibliotecaWA
             lblMensaje.Text = mensaje;
             lblMensaje.CssClass = "alert alert-success";
         }
-
-
     }
 }
