@@ -225,7 +225,7 @@ namespace BibliotecaWA
                     sanci.justificacion = hfJustificacionAuto.Value;
                 }
                 // Iterar sobre los campos enviados
-
+                sancionBo = new SancionWSClient();
                 if (pre.estado.Equals(estadoPrestamo.RETRASADO))
                 {
                     sancion sanciAuto = new sancion();
@@ -237,7 +237,8 @@ namespace BibliotecaWA
                     sanciAuto.tipo_sancion = tipoSancion.ENTREGA_TARDIA; // o la que corresponda
                     sanciAuto.estado = estadoSancion.VIGENTE;
 
-                    sancionBo.insertarSancion(sanciAuto);
+                    sancionBo.insertarSancion(tipoSancion.ENTREGA_TARDIA.ToString(), Convert.ToInt32(hfDiasAuto.Value),
+                        hfJustificacionAuto.Value, Convert.ToInt32(id));
                 }
 
                 foreach (string key in Request.Form.AllKeys)
@@ -252,25 +253,9 @@ namespace BibliotecaWA
                         string duracion = Request.Form[duracionKey];
                         string justificacion = Request.Form[justificacionKey];
 
-                        // Crear un nuevo objeto por cada sanción
-                        sancion sanciDynamic = new sancion();
-                        sanciDynamic.prestamo = new prestamo();
-                        sanciDynamic.prestamo.idPrestamo = Convert.ToInt32(id);
-
-                        // Asignar tipo de sanción desde string al enum
-                        sanciDynamic.tipo_sancion = (tipoSancion)Enum.Parse(typeof(tipoSancion), tipo);
-
-                        // Convertir duración a entero
-                        sanciDynamic.duracion_dias = Convert.ToInt32(duracion);
-
-                        // Asignar justificación y estado
-                        sanciDynamic.justificacion = justificacion;
-                        sanciDynamic.estado = estadoSancion.VIGENTE;
-
-                        sancionBo.insertarSancion(sanciDynamic);
+                        int valor = sancionBo.insertarSancion(tipo,Convert.ToInt32(duracion), justificacion, Convert.ToInt32(id));
                     }
                 }
-                pre.fecha_devolucion = DateTime.Parse(txtFechaDevo.Text);
                 pre.estado = estadoPrestamo.FINALIZADO;
                 prestBO.modificarPrestamo(pre);
                 Response.Redirect("HistorialPrestamos.aspx");

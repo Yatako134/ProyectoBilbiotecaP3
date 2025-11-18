@@ -6,6 +6,7 @@ import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import java.util.ArrayList;
+import java.util.Date;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Prestamo;
 
 @WebService(serviceName = "PrestamoWS", targetNamespace = "pe.edu.pucp.utilsarmy.services")
@@ -33,6 +34,7 @@ public class PrestamoWS {
     @WebMethod(operationName = "modificarPrestamo")
     public int modificarPrestamo(@WebParam(name = "name") Prestamo prestamo) throws Exception {
         prestamobo =new PrestamoBOImpl();
+        prestamo.setFecha_devolucion(new Date());
         return prestamobo.modificar(prestamo);
     }
     

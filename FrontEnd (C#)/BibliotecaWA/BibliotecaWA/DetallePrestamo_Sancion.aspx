@@ -378,6 +378,7 @@
                             inputJustificacion.className = "form-control";
                             inputJustificacion.rows = 3;
                             inputJustificacion.required = true;
+                            inputJustificacion.maxLength = "150";
 
                             divJustificacion.appendChild(labelJustificacion);
                             divJustificacion.appendChild(inputJustificacion);
@@ -401,7 +402,7 @@
                             Sanción automática generada por devolución tardía.
                         </div>
 
-                        <div class="sancion-row" style="border: 1px solid #1c7ced; padding: 12px; border-radius: 8px; background: #ffffff; position: relative;">
+                        <div class="sancion-row" style="border: 1px solid #ccc; padding: 12px; border-radius: 8px; background: #ffffff; position: relative;">
 
                             <!-- Parte superior (2 columnas) -->
                             <div class="row mb-3">
@@ -415,8 +416,8 @@
                                 <!-- Días -->
                                 <div class="col-md-6 mb-2">
                                     <label class="form-label fw-semibold">Duración (días)</label>
-                                    <input type="number" id="txtDiasAuto" class="form-control"
-                                        min="1" max="30" placeholder="Ingrese días" />
+                                    <input type="number" step="1" id="txtDiasAuto" class="form-control"
+                                        min="1" placeholder="Ingrese días" required/>
                                 </div>
 
                             </div>
@@ -425,30 +426,13 @@
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Justificación</label>
                                 <textarea id="txtJustificacionAuto" class="form-control" rows="3"
-                                    placeholder="Descripción"></textarea>
+                                    placeholder="Descripción" required maxlength="150" ></textarea>
                             </div>
                             <!-- HiddenFields que sí se envían al servidor -->
                             <asp:HiddenField ID="hfDiasAuto" runat="server" />
                             <asp:HiddenField ID="hfJustificacionAuto" runat="server" />
 
                         </div>
-
-                        <script>
-                            document.addEventListener("DOMContentLoaded", function () {
-                                var diasAuto = document.getElementById("txtDiasAuto");
-                                var justAuto = document.getElementById("txtJustificacionAuto");
-                                var hfDias = document.getElementById("<%= hfDiasAuto.ClientID %>");
-                                var hfJust = document.getElementById("<%= hfJustificacionAuto.ClientID %>");
-
-                                diasAuto.addEventListener("input", function () {
-                                    hfDias.value = diasAuto.value;
-                                });
-
-                                justAuto.addEventListener("input", function () {
-                                    hfJust.value = justAuto.value;
-                                });
-                            });
-                        </script>
 
                     </asp:Panel>
                 </div>

@@ -5,20 +5,14 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/ArticuloWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
-  <message name="listarArticulosTodos">
-    <part name="parameters" element="tns:listarArticulosTodos" />
+  <message name="modificarArticulo">
+    <part name="parameters" element="tns:modificarArticulo" />
   </message>
-  <message name="listarArticulosTodosResponse">
-    <part name="parameters" element="tns:listarArticulosTodosResponse" />
+  <message name="modificarArticuloResponse">
+    <part name="parameters" element="tns:modificarArticuloResponse" />
   </message>
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
-  </message>
-  <message name="obtenerArticuloPorId">
-    <part name="parameters" element="tns:obtenerArticuloPorId" />
-  </message>
-  <message name="obtenerArticuloPorIdResponse">
-    <part name="parameters" element="tns:obtenerArticuloPorIdResponse" />
   </message>
   <message name="insertarArticulo">
     <part name="parameters" element="tns:insertarArticulo" />
@@ -26,11 +20,17 @@
   <message name="insertarArticuloResponse">
     <part name="parameters" element="tns:insertarArticuloResponse" />
   </message>
-  <message name="modificarArticulo">
-    <part name="parameters" element="tns:modificarArticulo" />
+  <message name="listarArticulosTodos">
+    <part name="parameters" element="tns:listarArticulosTodos" />
   </message>
-  <message name="modificarArticuloResponse">
-    <part name="parameters" element="tns:modificarArticuloResponse" />
+  <message name="listarArticulosTodosResponse">
+    <part name="parameters" element="tns:listarArticulosTodosResponse" />
+  </message>
+  <message name="obtenerArticuloPorId">
+    <part name="parameters" element="tns:obtenerArticuloPorId" />
+  </message>
+  <message name="obtenerArticuloPorIdResponse">
+    <part name="parameters" element="tns:obtenerArticuloPorIdResponse" />
   </message>
   <message name="eliminarArticulo">
     <part name="parameters" element="tns:eliminarArticulo" />
@@ -39,6 +39,15 @@
     <part name="parameters" element="tns:eliminarArticuloResponse" />
   </message>
   <portType name="ArticuloWS">
+    <operation name="modificarArticulo">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticuloRequest" message="tns:modificarArticulo" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticuloResponse" message="tns:modificarArticuloResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticulo/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="insertarArticulo">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloRequest" message="tns:insertarArticulo" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloResponse" message="tns:insertarArticuloResponse" />
+    </operation>
     <operation name="listarArticulosTodos">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/listarArticulosTodosRequest" message="tns:listarArticulosTodos" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/listarArticulosTodosResponse" message="tns:listarArticulosTodosResponse" />
@@ -49,15 +58,6 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorIdResponse" message="tns:obtenerArticuloPorIdResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="insertarArticulo">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloRequest" message="tns:insertarArticulo" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloResponse" message="tns:insertarArticuloResponse" />
-    </operation>
-    <operation name="modificarArticulo">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticuloRequest" message="tns:modificarArticulo" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticuloResponse" message="tns:modificarArticuloResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticulo/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
     <operation name="eliminarArticulo">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/eliminarArticuloRequest" message="tns:eliminarArticulo" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/eliminarArticuloResponse" message="tns:eliminarArticuloResponse" />
@@ -66,6 +66,27 @@
   </portType>
   <binding name="ArticuloWSPortBinding" type="tns:ArticuloWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="modificarArticulo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="insertarArticulo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="listarArticulosTodos">
       <soap:operation soapAction="" />
       <input>
@@ -79,27 +100,6 @@
       </fault>
     </operation>
     <operation name="obtenerArticuloPorId">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
-    <operation name="insertarArticulo">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="modificarArticulo">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
