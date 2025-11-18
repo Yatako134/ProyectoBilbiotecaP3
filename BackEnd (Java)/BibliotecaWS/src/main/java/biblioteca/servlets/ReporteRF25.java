@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package biblioteca.servlets;
 
 import biblioteca.config.DBManager;
@@ -20,15 +24,11 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 
-public class ReporteR25 extends HttpServlet {
+public class ReporteRF25 extends HttpServlet {
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        // 👇👇 IMPORTANTE: avisar al navegador que viene un PDF
-//        response.setContentType("application/pdf");
-//        response.setHeader("Content-Disposition", "inline; filename=ReporteR25.pdf");
-//        response.setCharacterEncoding("UTF-8");
-        
         try{
             Connection con = DBManager.getInstance()
                     .getConnection();
@@ -37,7 +37,7 @@ public class ReporteR25 extends HttpServlet {
                 JRLoader.loadObject(getClass().
                     getResourceAsStream
         ("/pe/edu/pucp/utilsarmy/reports/"
-                + "ReporteR25.jasper"));
+                + "ReporteRF25.jasper"));
             
             
             URL rutaImagen
@@ -48,7 +48,7 @@ public class ReporteR25 extends HttpServlet {
             (new ImageIcon(rutaImagen)).getImage();
             
             HashMap hm = new HashMap();
-            hm.put("nombre", "LucheX");
+            hm.put("nombre", "Luchex");
             hm.put("logo", imagen);
             
             JasperPrint jp
