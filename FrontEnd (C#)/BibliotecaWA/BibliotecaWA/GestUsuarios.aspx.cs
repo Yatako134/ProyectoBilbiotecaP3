@@ -18,6 +18,20 @@ namespace BibliotecaWA
         {
             if (!IsPostBack)
             {
+                string nombre = Request.QueryString["nombre"];
+                if(!string.IsNullOrEmpty(nombre))
+                {
+                    if(nombre != "")
+                    {
+                        nombre = HttpUtility.UrlDecode(nombre); // decodifica acentos, espacios, ñ, etc.
+
+                        string script = $@"
+                            mostrarModal('{nombre}');
+                        ";
+
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "MostrarModalRegistro", script, true);
+                    }
+                }
                 bousuario = new UsuarioWSClient();
                 borol = new RolWSClient();
 
@@ -149,11 +163,19 @@ namespace BibliotecaWA
         {
             int idUsuario = int.Parse(hfIdUsuarioSeleccionado.Value);
             bousuario = new UsuarioWSClient();
-            bousuario.eliminarUsuario(idUsuario);
+            int idUsuarioActual = 1;
+            if(idUsuarioActual != idUsuario)
+            {
+                bousuario.eliminarUsuario(idUsuario);
 
-            BindingList<usuario> usuarios = new BindingList<usuario>(bousuario.listarUsuarios());
-            Session["usuarios"] = usuarios;
-            CargarUsuarios();
+                BindingList<usuario> usuarios = new BindingList<usuario>(bousuario.listarUsuarios());
+                Session["usuarios"] = usuarios;
+                CargarUsuarios();
+            }
+            else
+            {
+
+            }
         }
 
         // ======= CONTADOR Y PAGINADOR =======
