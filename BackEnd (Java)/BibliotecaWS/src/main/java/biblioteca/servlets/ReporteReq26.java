@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package biblioteca.servlets;
 
 import biblioteca.config.DBManager;
@@ -24,36 +20,35 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 
-public class ReporteRF25 extends HttpServlet {
-
+public class ReporteReq26 extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try{
-            Connection con = DBManager.getInstance()
-                    .getConnection();
+//            Connection con = DBManager.getInstance()
+//                    .getConnection();
             JasperReport jr
             = (JasperReport)
                 JRLoader.loadObject(getClass().
                     getResourceAsStream
         ("/pe/edu/pucp/utilsarmy/reports/"
-                + "ReporteRF25.jasper"));
+                + "ReporteRF26.jasper"));
             
             
-            URL rutaImagen
-            = getClass().getResource
-        ("/pe/edu/pucp/utilsarmy/images/logo2.png");
-            
-            Image imagen =
-            (new ImageIcon(rutaImagen)).getImage();
-            
-            HashMap hm = new HashMap();
-            hm.put("nombre", "Luchex");
-            hm.put("logo", imagen);
-            
+//            URL rutaImagen
+//            = getClass().getResource
+//        ("/pe/edu/pucp/softprog/images/pikachu.png");
+//            
+//            Image imagen =
+//            (new ImageIcon(rutaImagen)).getImage();
+//            
+//            HashMap hm = new HashMap();
+//            hm.put("nombre", "FREDDY");
+//            hm.put("logo", imagen);
+//            
             JasperPrint jp
-            = JasperFillManager.fillReport(jr,hm,
-                    con);
+            = JasperFillManager.fillReport(jr,null,
+                    new JREmptyDataSource());
             JasperExportManager.exportReportToPdfStream(jp,
                     response.getOutputStream());
         }catch(IOException | JRException ex){
