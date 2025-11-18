@@ -7,6 +7,8 @@
     <script src="Scripts/UtilsArmy/ValidacionesPrestamo.js"></script>
     <script src="Scripts/UtilsArmy/MensajeExito.js"></script>
     <script src="Scripts/UtilsArmy/ModalSancion.js"></script>
+    <script src="Scripts/UtilsArmy/modalRetraso.js"></script>
+    <script src="Scripts/UtilsArmy/ModalNoUsuario.js"></script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
     <div class="container mt-3">
@@ -249,5 +251,46 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modalRetraso" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Préstamos Retrasados</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p>El usuario tiene préstamos sin devolver</p>
+                    <p>Cantidad total: <b id="lblCantidad"></b></p>
+                    <ul id="listaPrestamos"></ul>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="cerrarModalRetraso()">Aceptar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalUsuario" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Usuario no encontrado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p id="mensajeUsuario"></p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="cerrarModalUsuario()">Aceptar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </asp:Content>

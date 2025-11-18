@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\repo_ta_prog3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\registrarmaterial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\registrarmaterial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\repo_ta_prog3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\prestamo.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\prestamo.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\registrarmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\registrarmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\gestmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\gestmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\repo_ta_prog3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\prestamo.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\prestamo.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,43 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GestMaterial.aspx",
-              "DocumentMoniker": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestMaterial.aspx",
-              "RelativeDocumentMoniker": "BibliotecaWA\\GestMaterial.aspx",
-              "ToolTip": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestMaterial.aspx",
-              "RelativeToolTip": "BibliotecaWA\\GestMaterial.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-18T01:34:45.858Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RegistrarMaterial.aspx",
-              "DocumentMoniker": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RegistrarMaterial.aspx",
-              "RelativeDocumentMoniker": "BibliotecaWA\\RegistrarMaterial.aspx",
-              "ToolTip": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RegistrarMaterial.aspx",
-              "RelativeToolTip": "BibliotecaWA\\RegistrarMaterial.aspx",
+              "Title": "Prestamo.aspx",
+              "DocumentMoniker": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Prestamo.aspx",
+              "RelativeDocumentMoniker": "BibliotecaWA\\Prestamo.aspx",
+              "ToolTip": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Prestamo.aspx",
+              "RelativeToolTip": "BibliotecaWA\\Prestamo.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-17T21:13:11.188Z"
+              "WhenOpened": "2025-11-18T21:47:03.384Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RegistrarMaterial.aspx.cs",
-              "DocumentMoniker": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RegistrarMaterial.aspx.cs",
-              "RelativeDocumentMoniker": "BibliotecaWA\\RegistrarMaterial.aspx.cs",
-              "ToolTip": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RegistrarMaterial.aspx.cs",
-              "RelativeToolTip": "BibliotecaWA\\RegistrarMaterial.aspx.cs",
-              "ViewState": "AgIAADIFAAAAAAAAAAAAAFwFAAAfAAAAAAAAAA==",
+              "Title": "Prestamo.aspx.cs",
+              "DocumentMoniker": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Prestamo.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\Prestamo.aspx.cs",
+              "ToolTip": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Prestamo.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\Prestamo.aspx.cs",
+              "ViewState": "AgIAALsAAAAAAAAAAAAIwMEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T21:13:20.202Z",
+              "WhenOpened": "2025-11-18T21:47:02.566Z",
               "EditorCaption": ""
             }
           ]
