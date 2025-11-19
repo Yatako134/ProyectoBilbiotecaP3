@@ -219,11 +219,12 @@ namespace BibliotecaWA
                 string id = Request.QueryString["id"];
                 sanci.prestamo = new prestamo();
                 sanci.prestamo.idPrestamo = Convert.ToInt32(id);
- 
+                pre.estado = estadoPrestamo.FINALIZADO;
                 // Iterar sobre los campos enviados
                 sancionBo = new SancionWSClient();
-                if (pre.estado.Equals(estadoPrestamo.RETRASADO))
+                if (pre.fecha_vencimiento < DateTime.Now)
                 {
+                    pre.estado = estadoPrestamo.RETRASADO;
                     sancion sanciAuto = new sancion();
                     sanciAuto.prestamo = new prestamo();
                     sanciAuto.prestamo.idPrestamo = Convert.ToInt32(id);
@@ -237,22 +238,27 @@ namespace BibliotecaWA
                         hfJustificacionAuto.Value, Convert.ToInt32(id));
                 }
 
-                foreach (string key in Request.Form.AllKeys)
+                if (Request.Form.AllKeys.Any(k => k.StartsWith("txtTipoSancion_")
+                                  && !string.IsNullOrWhiteSpace(Request.Form[k])))
                 {
-                    if (key.StartsWith("txtTipoSancion_"))
+                    pre.estado = estadoPrestamo.FINALIZADO;
+                    foreach (string key in Request.Form.AllKeys)
                     {
-                        string suffix = key.Substring("txtTipoSancion_".Length);
-                        string tipo = Request.Form[key];
-                        string duracionKey = "txtDuracion_" + suffix;
-                        string justificacionKey = "txtJustificacion_" + suffix;
+                        if (key.StartsWith("txtTipoSancion_"))
+                        {
+                            string suffix = key.Substring("txtTipoSancion_".Length);
+                            string tipo = Request.Form[key];
+                            string duracionKey = "txtDuracion_" + suffix;
+                            string justificacionKey = "txtJustificacion_" + suffix;
 
-                        string duracion = Request.Form[duracionKey];
-                        string justificacion = Request.Form[justificacionKey];
+                            string duracion = Request.Form[duracionKey];
+                            string justificacion = Request.Form[justificacionKey];
 
-                        int valor = sancionBo.insertarSancion(tipo,Convert.ToInt32(duracion), justificacion, Convert.ToInt32(id));
+                            int valor = sancionBo.insertarSancion(tipo, Convert.ToInt32(duracion), justificacion, Convert.ToInt32(id));
+                        }
                     }
                 }
-                pre.estado = estadoPrestamo.FINALIZADO;
+
                 prestBO.modificarPrestamo(pre);
                 Response.Redirect("HistorialPrestamos.aspx");
             }

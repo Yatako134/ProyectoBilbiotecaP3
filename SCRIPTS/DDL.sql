@@ -15,149 +15,173 @@ DROP TABLE IF EXISTS Libro;
 DROP TABLE IF EXISTS MaterialBibliografico;
 DROP TABLE IF EXISTS Idioma;
 
-CREATE TABLE Rol(
-	id_rol INT AUTO_INCREMENT PRIMARY KEY,
-	tipo VARCHAR(30) NOT NULL UNIQUE,
-    cantidad_de_dias_por_prestamo INT NOT NULL,
-    activo BOOLEAN DEFAULT TRUE,
-	limite_prestamos INT NOT NULL
-)ENGINE=InnoDB;
-
-CREATE TABLE Usuario (
-    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
-    codigo_universitario INT UNIQUE NOT NULL,
-    nombre VARCHAR(50) NOT NULL,
-    primer_apellido VARCHAR(50) NOT NULL,
-    segundo_apellido VARCHAR(50) NOT NULL,
-    DOI INT NOT NULL,
-    contrasena VARCHAR(40) NOT NULL,
-    correo VARCHAR(100) UNIQUE NOT NULL,
-    numero_de_telefono VARCHAR(12) NOT NULL,
-    activo BOOLEAN DEFAULT TRUE,
-    id_rol INT NOT NULL,
-    FOREIGN KEY(id_rol) REFERENCES Rol(id_rol)
-)ENGINE=InnoDB;
+CREATE TABLE `Rol` (
+  `id_rol` int NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(30) NOT NULL,
+  `cantidad_de_dias_por_prestamo` int NOT NULL,
+  `activo` tinyint(1) DEFAULT '1',
+  `limite_prestamos` int NOT NULL,
+  PRIMARY KEY (`id_rol`),
+  UNIQUE KEY `tipo` (`tipo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-CREATE TABLE MaterialBibliografico (
-    id_material INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(150) NOT NULL,
-    anho_publicacion INT NOT NULL,
-    numero_paginas INT NOT NULL,
-    estado ENUM('DISPONIBLE','NO_DISPONIBLE') NOT NULL,
-    clasificacion_tematica VARCHAR(100) NOT NULL,
-    activo BOOLEAN DEFAULT TRUE,
-    idioma VARCHAR(40) NOT NULL,
-    tipo ENUM('LIBRO','TESIS','ARTICULO') NOT NULL,
-    editoriales VARCHAR(300)
-) ENGINE=InnoDB;
-
-CREATE TABLE Libro (
-    id_libro INT PRIMARY KEY,
-    FOREIGN KEY(id_libro) REFERENCES MaterialBibliografico(id_material),
-    ISBN VARCHAR(30) UNIQUE NOT NULL,  
-    edicion VARCHAR(20) NOT NULL
-) ENGINE=InnoDB;
-
-CREATE TABLE Articulo (
-    id_articulo INT,
-    PRIMARY KEY(id_articulo),
-    FOREIGN KEY(id_articulo) REFERENCES MaterialBibliografico(id_material),
-    ISSN VARCHAR(30) UNIQUE NOT NULL,
-    revista VARCHAR(100) NOT NULL,
-    volumen INT NOT NULL,
-    numero INT NOT NULL
-)ENGINE=InnoDB;
-
-CREATE TABLE Tesis (
-    id_tesis INT,
-    PRIMARY KEY(id_tesis),
-    FOREIGN KEY(id_tesis) REFERENCES MaterialBibliografico(id_material),
-    especialidad VARCHAR(100) NOT NULL,
-    asesor VARCHAR(60) NOT NULL,
-    grado VARCHAR(50) NOT NULL,
-    institucion_publicacion VARCHAR(150) NOT NULL
-)ENGINE=InnoDB;
+CREATE TABLE `Usuario` (
+  `id_usuario` int NOT NULL AUTO_INCREMENT,
+  `codigo_universitario` int NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `primer_apellido` varchar(50) NOT NULL,
+  `segundo_apellido` varchar(50) NOT NULL,
+  `DOI` int NOT NULL,
+  `contrasena` varchar(40) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `numero_de_telefono` varchar(12) NOT NULL,
+  `activo` tinyint(1) DEFAULT '1',
+  `id_rol` int NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `codigo_universitario` (`codigo_universitario`),
+  UNIQUE KEY `correo` (`correo`),
+  KEY `id_rol` (`id_rol`),
+  CONSTRAINT `Usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `Rol` (`id_rol`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-
-CREATE TABLE Contribuyente(
-	id_contribuyente INT AUTO_INCREMENT PRIMARY KEY,
-	nombre VARCHAR(60) NOT NULL,
-    primer_apellido VARCHAR(60) NOT NULL,
-    segundo_apellido VARCHAR(60) NOT NULL,
-    seudonimo VARCHAR(60),
-    tipo_contribuyente ENUM('AUTOR','EDITOR','TRADUCTOR') NOT NULL
-)ENGINE=InnoDB;
-
-CREATE TABLE Contribuyente_Material(
-	id_material INT,
-    id_contribuyente INT,
-	PRIMARY KEY (id_material, id_contribuyente),
-    FOREIGN KEY (id_material) REFERENCES MaterialBibliografico(id_material),
-    FOREIGN KEY (id_contribuyente) REFERENCES Contribuyente(id_contribuyente)
-
-)ENGINE=InnoDB;
-
-CREATE TABLE Editorial(
-	id_editorial INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL  
-)ENGINE = InnoDB;
-
-CREATE TABLE Editorial_Material (
-    id_editorial INT,
-    id_material INT,
-    PRIMARY KEY (id_editorial, id_material),
-    FOREIGN KEY (id_editorial) REFERENCES Editorial(id_editorial),
-    FOREIGN KEY (id_material) REFERENCES MaterialBibliografico(id_material)
-) ENGINE = InnoDB;
+CREATE TABLE `MaterialBibliografico` (
+  `id_material` int NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(150) NOT NULL,
+  `anho_publicacion` int NOT NULL,
+  `numero_paginas` int NOT NULL,
+  `estado` enum('DISPONIBLE','NO_DISPONIBLE') NOT NULL,
+  `clasificacion_tematica` varchar(100) NOT NULL,
+  `activo` tinyint(1) DEFAULT '1',
+  `idioma` varchar(40) NOT NULL,
+  `tipo` enum('LIBRO','TESIS','ARTICULO') NOT NULL,
+  `editoriales` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`id_material`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-CREATE TABLE Biblioteca(
-	id_biblioteca INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(80),
-    ubicacion VARCHAR(60),
-    activo BOOLEAN DEFAULT TRUE
-)ENGINE= InnoDB;
+CREATE TABLE `Editorial` (
+  `id_editorial` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_editorial`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
+CREATE TABLE `Articulo` (
+  `id_articulo` int NOT NULL,
+  `ISSN` varchar(30) NOT NULL,
+  `revista` varchar(100) NOT NULL,
+  `volumen` int NOT NULL,
+  `numero` int NOT NULL,
+  PRIMARY KEY (`id_articulo`),
+  UNIQUE KEY `ISSN` (`ISSN`),
+  CONSTRAINT `Articulo_ibfk_1` FOREIGN KEY (`id_articulo`) REFERENCES `MaterialBibliografico` (`id_material`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-CREATE TABLE Ejemplar (
-    id_ejemplar INT AUTO_INCREMENT PRIMARY KEY,
-    id_material INT NOT NULL,
-    estado ENUM('DISPONIBLE','PRESTADO','EN_REPARACION','PERDIDO') NOT NULL,
-    ubicacion VARCHAR(50) NOT NULL,
-    activo BOOLEAN DEFAULT TRUE,
-    id_biblioteca INT NOT NULL,
-    FOREIGN KEY (id_material) REFERENCES MaterialBibliografico(id_material),
-    FOREIGN KEY(id_biblioteca) REFERENCES Biblioteca(id_biblioteca)
-)ENGINE=InnoDB;
+CREATE TABLE `Libro` (
+  `id_libro` int NOT NULL,
+  `ISBN` varchar(30) NOT NULL,
+  `edicion` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_libro`),
+  UNIQUE KEY `ISBN` (`ISBN`),
+  CONSTRAINT `Libro_ibfk_1` FOREIGN KEY (`id_libro`) REFERENCES `MaterialBibliografico` (`id_material`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
+CREATE TABLE `Tesis` (
+  `id_tesis` int NOT NULL,
+  `especialidad` varchar(100) NOT NULL,
+  `asesor` varchar(60) NOT NULL,
+  `grado` varchar(50) NOT NULL,
+  `institucion_publicacion` varchar(150) NOT NULL,
+  PRIMARY KEY (`id_tesis`),
+  CONSTRAINT `Tesis_ibfk_1` FOREIGN KEY (`id_tesis`) REFERENCES `MaterialBibliografico` (`id_material`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
+CREATE TABLE `Contribuyente` (
+  `id_contribuyente` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(60) NOT NULL,
+  `primer_apellido` varchar(60) NOT NULL,
+  `segundo_apellido` varchar(60) NOT NULL,
+  `seudonimo` varchar(60) DEFAULT NULL,
+  `tipo_contribuyente` enum('AUTOR','EDITOR','TRADUCTOR') NOT NULL,
+  PRIMARY KEY (`id_contribuyente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE Prestamo (
-  id_prestamo INT AUTO_INCREMENT PRIMARY KEY,
-  fecha_de_prestamo DATETIME NOT NULL,
-  fecha_vencimiento DATETIME NOT NULL,
-  fecha_devolucion DATETIME NULL,
-  estado ENUM('VIGENTE','FINALIZADO','RETRASADO'),
-  id_ejemplar INT NOT NULL,
-  id_usuario INT NOT NULL,
-  FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario),
-  FOREIGN KEY (id_ejemplar) REFERENCES Ejemplar(id_ejemplar)
-) ENGINE=InnoDB;
 
-CREATE TABLE Sancion (
-  id_sancion INT AUTO_INCREMENT PRIMARY KEY,               
-  tipo_sancion ENUM('ENTREGA_TARDIA','DANHO') NOT NULL,
-  duracion_dias INT NOT NULL,
-  fecha_inicio DATETIME NOT NULL,
-  fecha_fin DATETIME NOT NULL,
-  justificacion VARCHAR(255) NOT NULL,
-  estado ENUM('VIGENTE','FINALIZADA','PAUSADO'),
-  id_prestamo INT UNIQUE,                        
-  FOREIGN KEY (id_prestamo) REFERENCES Prestamo(id_prestamo)
-) ENGINE=InnoDB;
+CREATE TABLE `Contribuyente_Material` (
+  `id_material` int NOT NULL,
+  `id_contribuyente` int NOT NULL,
+  PRIMARY KEY (`id_material`,`id_contribuyente`),
+  KEY `id_contribuyente` (`id_contribuyente`),
+  CONSTRAINT `Contribuyente_Material_ibfk_1` FOREIGN KEY (`id_material`) REFERENCES `MaterialBibliografico` (`id_material`),
+  CONSTRAINT `Contribuyente_Material_ibfk_2` FOREIGN KEY (`id_contribuyente`) REFERENCES `Contribuyente` (`id_contribuyente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `Editorial_Material` (
+  `id_editorial` int NOT NULL,
+  `id_material` int NOT NULL,
+  PRIMARY KEY (`id_editorial`,`id_material`),
+  KEY `id_material` (`id_material`),
+  CONSTRAINT `Editorial_Material_ibfk_1` FOREIGN KEY (`id_editorial`) REFERENCES `Editorial` (`id_editorial`),
+  CONSTRAINT `Editorial_Material_ibfk_2` FOREIGN KEY (`id_material`) REFERENCES `MaterialBibliografico` (`id_material`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `Biblioteca` (
+  `id_biblioteca` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(80) DEFAULT NULL,
+  `ubicacion` varchar(60) DEFAULT NULL,
+  `activo` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id_biblioteca`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `Ejemplar` (
+  `id_ejemplar` int NOT NULL AUTO_INCREMENT,
+  `id_material` int NOT NULL,
+  `estado` enum('DISPONIBLE','PRESTADO','EN_REPARACION','PERDIDO') NOT NULL,
+  `ubicacion` varchar(50) NOT NULL,
+  `activo` tinyint(1) DEFAULT '1',
+  `id_biblioteca` int NOT NULL,
+  PRIMARY KEY (`id_ejemplar`),
+  KEY `id_material` (`id_material`),
+  KEY `id_biblioteca` (`id_biblioteca`),
+  CONSTRAINT `Ejemplar_ibfk_1` FOREIGN KEY (`id_material`) REFERENCES `MaterialBibliografico` (`id_material`),
+  CONSTRAINT `Ejemplar_ibfk_2` FOREIGN KEY (`id_biblioteca`) REFERENCES `Biblioteca` (`id_biblioteca`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `Prestamo` (
+  `id_prestamo` int NOT NULL AUTO_INCREMENT,
+  `fecha_de_prestamo` datetime NOT NULL,
+  `fecha_vencimiento` datetime NOT NULL,
+  `fecha_devolucion` datetime DEFAULT NULL,
+  `estado` enum('VIGENTE','FINALIZADO','RETRASADO') DEFAULT NULL,
+  `id_ejemplar` int NOT NULL,
+  `id_usuario` int NOT NULL,
+  PRIMARY KEY (`id_prestamo`),
+  KEY `id_usuario` (`id_usuario`),
+  KEY `id_ejemplar` (`id_ejemplar`),
+  CONSTRAINT `Prestamo_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `Usuario` (`id_usuario`),
+  CONSTRAINT `Prestamo_ibfk_2` FOREIGN KEY (`id_ejemplar`) REFERENCES `Ejemplar` (`id_ejemplar`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `Sancion` (
+  `id_sancion` int NOT NULL AUTO_INCREMENT,
+  `tipo_sancion` enum('ENTREGA_TARDIA','DANHO') NOT NULL,
+  `duracion_dias` int NOT NULL,
+  `fecha_inicio` datetime NOT NULL,
+  `fecha_fin` datetime NOT NULL,
+  `justificacion` varchar(255) NOT NULL,
+  `estado` enum('VIGENTE','FINALIZADA','PAUSADO') DEFAULT NULL,
+  `id_prestamo` int DEFAULT NULL,
+  PRIMARY KEY (`id_sancion`),
+  UNIQUE KEY `id_prestamo` (`id_prestamo`),
+  CONSTRAINT `Sancion_ibfk_1` FOREIGN KEY (`id_prestamo`) REFERENCES `Prestamo` (`id_prestamo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
