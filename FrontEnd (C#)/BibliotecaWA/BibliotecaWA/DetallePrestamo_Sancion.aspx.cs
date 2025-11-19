@@ -219,11 +219,7 @@ namespace BibliotecaWA
                 string id = Request.QueryString["id"];
                 sanci.prestamo = new prestamo();
                 sanci.prestamo.idPrestamo = Convert.ToInt32(id);
-                if (pre.estado.Equals(estadoPrestamo.RETRASADO))
-                {
-                    sanci.duracion_dias = Convert.ToInt32(hfDiasAuto.Value);
-                    sanci.justificacion = hfJustificacionAuto.Value;
-                }
+ 
                 // Iterar sobre los campos enviados
                 sancionBo = new SancionWSClient();
                 if (pre.estado.Equals(estadoPrestamo.RETRASADO))

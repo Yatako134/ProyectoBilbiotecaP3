@@ -431,8 +431,18 @@
                             <!-- HiddenFields que sí se envían al servidor -->
                             <asp:HiddenField ID="hfDiasAuto" runat="server" />
                             <asp:HiddenField ID="hfJustificacionAuto" runat="server" />
+                            <script>
+                                function pasarDatosAuto() {
+                                    document.getElementById("<%= hfDiasAuto.ClientID %>").value =
+                                        document.getElementById("txtDiasAuto").value;
+
+                                    document.getElementById("<%= hfJustificacionAuto.ClientID %>").value =
+                                        document.getElementById("txtJustificacionAuto").value;
+                                }
+                            </script>
 
                         </div>
+
 
                     </asp:Panel>
                 </div>
@@ -499,7 +509,8 @@
             <asp:Button ID="btnGuardarCambios" runat="server"
                 Text="Guardar cambios →"
                 CssClass="btn btn-guardar-personalizado"
-                OnClick="btnGuardarCambios_Click" />
+                OnClick="btnGuardarCambios_Click" 
+                OnClientClick="pasarDatosAuto();"/>
         </div>
     </asp:Panel>
 
