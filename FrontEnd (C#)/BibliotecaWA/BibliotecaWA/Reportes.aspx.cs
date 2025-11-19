@@ -24,8 +24,14 @@ namespace BibliotecaWA
 
             if (chkReporteUsuarios != null && chkReporteUsuarios.Checked)
             {
-                Response.Redirect("http://localhost:8080/BibliotecaWS/ReporteReq24");
-                return;
+                 string fechaInicio = txtFechaInicio1.Text;
+				string fechaFin = txtFechaFin1.Text;
+
+				// Construir la URL con parámetros
+				string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaInicio}&fechaFin={fechaFin}";
+
+				Response.Redirect(url);
+				return;
             }
 
             if (chkReporteLibros != null && chkReporteLibros.Checked)
