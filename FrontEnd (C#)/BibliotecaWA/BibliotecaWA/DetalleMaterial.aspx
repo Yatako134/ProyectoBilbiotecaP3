@@ -188,7 +188,10 @@
                 <div class="modal-body">
                     <asp:Repeater ID="rptContribuyentes" runat="server">
                         <ItemTemplate>
-                            <%# Eval("Nombre") + " " + Eval("Primer_apellido") + " " + Eval("Segundo_apellido") %> (<%# Eval("Tipo_contribuyente").ToString().ToLower() %>)                           
+                            <div>
+                                <%# Eval("Nombre") + " " + Eval("Primer_apellido") + " " + Eval("Segundo_apellido") %> (<%# Eval("Tipo_contribuyente").ToString().ToLower() %>)                           
+
+                            </div>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
