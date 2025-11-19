@@ -342,7 +342,7 @@ namespace BibliotecaWA
                 rptBibliotecas.Visible = false;
                 panelSinEjemplares.Visible = true;
                 panelSinEjemplares.Controls.Clear(); // limpia mensajes previos
-                btnPrestar.Enabled = false;
+                //btnPrestar.Enabled = false;
                 panelSinEjemplares.Controls.Add(new Literal
                 {
                     Text = $"No hay ejemplares disponibles en la biblioteca <b>{biblioteca.nombre}</b>."
