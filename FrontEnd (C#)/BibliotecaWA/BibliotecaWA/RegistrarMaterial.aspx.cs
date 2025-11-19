@@ -595,6 +595,12 @@ namespace BibliotecaWA
             return true;
         }
 
+        private void MostrarModal(string modalId = "modalAdvertencia")
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModal",
+                $"new bootstrap.Modal(document.getElementById('{modalId}')).show();", true);
+        }
+
         private bool ValidarEjemplaresFormulario()
         {
             var bibliotecas = Request.Form.GetValues("biblioteca[]");
@@ -602,7 +608,7 @@ namespace BibliotecaWA
 
             if (bibliotecas == null || ubicaciones == null || bibliotecas.Length == 0)
             {
-                MostrarError("Debe registrar al menos un ejemplar");
+                MostrarModal();
                 return false;
             }
 
@@ -1043,7 +1049,7 @@ namespace BibliotecaWA
                     libro.idioma = TextIdioma.Text;
                     libro.ISBN = txtISBN.Text; // ← GUARDA CON GUIONES
                     libro.edicion = txtEdicion.Text;
-
+                    //libro.editoriales = TextEditorial;
                     libroBO.modificarLibro(libro);
                 }
             }
@@ -1071,7 +1077,7 @@ namespace BibliotecaWA
                     tesis.asesor = txtAsesor.Text;
                     tesis.grado = txtGrado.Text;
                     tesis.institucionPublicacion = txtInstitucion.Text;
-
+                    //tesis.editoriales = TextEditorial;
                     tesisBO.modificarTesis(tesis);
                 }
             }
@@ -1099,7 +1105,7 @@ namespace BibliotecaWA
                     articulo.revista = txtRevista.Text;
                     articulo.volumen = int.Parse(txtVolumen.Text);
                     articulo.numero = int.Parse(txtNumero.Text);
-
+                    //articulo.editoriales = TextEditorial;
                     articuloBO.modificarArticulo(articulo);
                 }
             }
@@ -1144,7 +1150,7 @@ namespace BibliotecaWA
                 libro.idioma = TextIdioma.Text;
                 libro.ISBN = txtISBN.Text; // ← GUARDA CON GUIONES
                 libro.edicion = txtEdicion.Text;
-
+                //libro.editoriales = TextEditorial;
                 return libroDAO.insertarLibro(libro);
             }
             catch (Exception ex)
@@ -1169,7 +1175,7 @@ namespace BibliotecaWA
                 tesis.asesor = txtAsesor.Text;
                 tesis.grado = txtGrado.Text;
                 tesis.institucionPublicacion = txtInstitucion.Text;
-
+                //tesis.editoriales = TextEditorial;
                 return tesisDAO.insertarTesis(tesis);
             }
             catch (Exception ex)
@@ -1194,7 +1200,7 @@ namespace BibliotecaWA
                 art.revista = txtRevista.Text;
                 art.volumen = Convert.ToInt32(txtVolumen.Text);
                 art.numero = Convert.ToInt32(txtNumero.Text);
-
+                //art.editoriales = TextEditorial;
                 return artiDAO.insertarArticulo(art);
             }
             catch (Exception ex)
