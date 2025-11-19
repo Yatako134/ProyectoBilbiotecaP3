@@ -6,7 +6,6 @@ import biblioteca.gestionMaterial.dao.MaterialBiblioDAO;
 import biblioteca.gestionMaterial.mysql.MaterialBiblioImpl;
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Contribuyente;
-import pe.edu.pucp.utilsarmy.gestion_de_material.model.Editorial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 
@@ -28,10 +27,6 @@ public class MaterialBiblioBOImpl implements MaterialBiblioBO{
         return matDao.buscarContribuyente(id);
     }
 
-    @Override
-    public ArrayList<Editorial> buscarEditorial(int id) {
-        return matDao.buscarEditorial(id);
-    }
 
     @Override
     public ArrayList<Ejemplar> obtenerEjemplaresDisponibles(int idMaterial, int idBiblioteca) {
@@ -77,10 +72,12 @@ public class MaterialBiblioBOImpl implements MaterialBiblioBO{
         (String _titulo, String _tipo_contribuyente, 
                 String _nombre_contribuyente, String _tema, 
                 Integer _fecha_desde, Integer _fecha_hasta, 
-                String _tipo_material, String _biblioteca, String _disponibilidad) {
+                String _tipo_material, String _biblioteca, String _disponibilidad,
+                String _editoriales) {
             
             
-        return matDao.listar_busqueda_avanzada(_titulo, _tipo_contribuyente, _nombre_contribuyente, _tema, _fecha_desde, _fecha_hasta, _tipo_material, _biblioteca, _disponibilidad);
+        return matDao.listar_busqueda_avanzada(_titulo, _tipo_contribuyente, _nombre_contribuyente, _tema, _fecha_desde, _fecha_hasta, _tipo_material, _biblioteca, _disponibilidad,
+                _editoriales);
     }
     
         

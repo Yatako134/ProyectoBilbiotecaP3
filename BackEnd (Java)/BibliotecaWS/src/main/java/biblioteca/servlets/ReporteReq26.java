@@ -20,40 +20,35 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 
-public class ReporteR25 extends HttpServlet {
+public class ReporteReq26 extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        // 👇👇 IMPORTANTE: avisar al navegador que viene un PDF
-//        response.setContentType("application/pdf");
-//        response.setHeader("Content-Disposition", "inline; filename=ReporteR25.pdf");
-//        response.setCharacterEncoding("UTF-8");
-        
         try{
-            Connection con = DBManager.getInstance()
-                    .getConnection();
+//            Connection con = DBManager.getInstance()
+//                    .getConnection();
             JasperReport jr
             = (JasperReport)
                 JRLoader.loadObject(getClass().
                     getResourceAsStream
         ("/pe/edu/pucp/utilsarmy/reports/"
-                + "ReporteR25.jasper"));
+                + "ReporteRF26.jasper"));
             
             
-            URL rutaImagen
-            = getClass().getResource
-        ("/pe/edu/pucp/utilsarmy/images/logo2.png");
-            
-            Image imagen =
-            (new ImageIcon(rutaImagen)).getImage();
-            
-            HashMap hm = new HashMap();
-            hm.put("nombre", "LucheX");
-            hm.put("logo", imagen);
-            
+//            URL rutaImagen
+//            = getClass().getResource
+//        ("/pe/edu/pucp/softprog/images/pikachu.png");
+//            
+//            Image imagen =
+//            (new ImageIcon(rutaImagen)).getImage();
+//            
+//            HashMap hm = new HashMap();
+//            hm.put("nombre", "FREDDY");
+//            hm.put("logo", imagen);
+//            
             JasperPrint jp
-            = JasperFillManager.fillReport(jr,hm,
-                    con);
+            = JasperFillManager.fillReport(jr,null,
+                    new JREmptyDataSource());
             JasperExportManager.exportReportToPdfStream(jp,
                     response.getOutputStream());
         }catch(IOException | JRException ex){

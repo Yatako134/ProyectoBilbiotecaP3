@@ -48,13 +48,14 @@ CREATE TABLE MaterialBibliografico (
     clasificacion_tematica VARCHAR(100) NOT NULL,
     activo BOOLEAN DEFAULT TRUE,
     idioma VARCHAR(40) NOT NULL,
-    tipo ENUM('LIBRO','TESIS','ARTICULO') NOT NULL
+    tipo ENUM('LIBRO','TESIS','ARTICULO') NOT NULL,
+    editoriales VARCHAR(300)
 ) ENGINE=InnoDB;
 
 CREATE TABLE Libro (
     id_libro INT PRIMARY KEY,
     FOREIGN KEY(id_libro) REFERENCES MaterialBibliografico(id_material),
-    ISBN CHAR(13) UNIQUE NOT NULL,  
+    ISBN VARCHAR(30) UNIQUE NOT NULL,  
     edicion VARCHAR(20) NOT NULL
 ) ENGINE=InnoDB;
 
@@ -62,7 +63,7 @@ CREATE TABLE Articulo (
     id_articulo INT,
     PRIMARY KEY(id_articulo),
     FOREIGN KEY(id_articulo) REFERENCES MaterialBibliografico(id_material),
-    ISSN CHAR(9) UNIQUE NOT NULL,
+    ISSN VARCHAR(30) UNIQUE NOT NULL,
     revista VARCHAR(100) NOT NULL,
     volumen INT NOT NULL,
     numero INT NOT NULL
@@ -160,6 +161,3 @@ CREATE TABLE Sancion (
   id_prestamo INT UNIQUE,                        
   FOREIGN KEY (id_prestamo) REFERENCES Prestamo(id_prestamo)
 ) ENGINE=InnoDB;
-
-
-

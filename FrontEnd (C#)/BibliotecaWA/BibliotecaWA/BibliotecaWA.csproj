@@ -352,6 +352,9 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.listarSancionesPorUsuarioPorPanelResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtenerPrestamosRetrasadosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -441,6 +444,7 @@
     <Content Include="MiHistorial.aspx" />
     <Content Include="Prestamo.aspx" />
     <Content Include="RegistrarMaterial.aspx" />
+    <Content Include="Reportes.aspx" />
     <Content Include="Scripts\activarMenu.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -503,6 +507,9 @@
     <Content Include="Scripts\UtilsArmy\Contribuyentes.js" />
     <Content Include="Scripts\UtilsArmy\Editoriales.js" />
     <Content Include="Scripts\UtilsArmy\MensajeExito.js" />
+    <Content Include="Scripts\UtilsArmy\ModalNoUsuario.js" />
+    <Content Include="Scripts\UtilsArmy\modalRetraso.js" />
+    <Content Include="Scripts\UtilsArmy\ModalSancion.js" />
     <Content Include="Scripts\UtilsArmy\SolicitarPrestamo.js" />
     <Content Include="Scripts\UtilsArmy\ValidacionesPrestamo.js" />
     <Content Include="Scripts\validarCampos.js" />
@@ -612,6 +619,13 @@
     </Compile>
     <Compile Include="RegistrarMaterial.aspx.designer.cs">
       <DependentUpon>RegistrarMaterial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

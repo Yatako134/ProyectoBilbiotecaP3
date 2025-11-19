@@ -4,9 +4,41 @@
         <servlet-name>ReporteR25</servlet-name>
         <servlet-class>biblioteca.servlets.ReporteR25</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReporteR26</servlet-name>
+        <servlet-class>biblioteca.servlets.ReporteR26</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReporteReq26</servlet-name>
+        <servlet-class>biblioteca.servlets.ReporteReq26</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReporteReq25</servlet-name>
+        <servlet-class>biblioteca.servlets.ReporteReq25</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReporteReq24</servlet-name>
+        <servlet-class>biblioteca.servlets.ReporteReq24</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ReporteR25</servlet-name>
         <url-pattern>/ReporteR25</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteR26</servlet-name>
+        <url-pattern>/ReporteR26</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteReq26</servlet-name>
+        <url-pattern>/ReporteReq26</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteReq25</servlet-name>
+        <url-pattern>/ReporteReq25</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteReq24</servlet-name>
+        <url-pattern>/ReporteReq24</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

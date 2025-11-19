@@ -10,6 +10,8 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.EstadoPrestamo;
+import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Prestamo;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Sancion;
 import pe.edu.pucp.utilsarmy.usuarios.model.Rol;
 import pe.edu.pucp.utilsarmy.usuarios.model.Usuario;
@@ -305,5 +307,27 @@ public class UsuarioImpl implements UsuarioDAO{
             DBManager.getInstance().cerrarConexion();
         }
         return sanc;
+    }
+    @Override
+    public ArrayList<Prestamo> obtenerPrestamosRetrasados(int id_usuario) {
+        ArrayList<Prestamo> pes=null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, id_usuario);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("sp_prestamos_retrasados_usuario", parametrosEntrada);
+        try{
+            if(rs.next()){
+                 if(pes == null) pes = new ArrayList<>();
+                Prestamo p = new Prestamo();
+                p.setIdPrestamo(rs.getInt("id_prestamo"));
+                p.setFecha_vencimiento(rs.getTimestamp("fecha_vencimiento"));
+                p.setEstado(EstadoPrestamo.valueOf(rs.getString("estado")));
+                pes.add(p);
+            }
+        }catch(SQLException ex){
+            System.out.println("ERROR: " + ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return pes;
     }
 }

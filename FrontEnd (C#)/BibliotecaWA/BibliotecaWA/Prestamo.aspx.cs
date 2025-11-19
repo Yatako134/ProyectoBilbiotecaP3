@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BibliotecaWA.BibliotecaServices;
@@ -133,7 +134,23 @@ namespace BibliotecaWA
                 ScriptManager.RegisterStartupScript(this, GetType(), "modalSancion", script, true);
                 return;
             }
+            // Validar préstamos retrasados
+            prestamo[] prest = usuarioBO.obtenerPrestamosRetrasados(usuario.id_usuario);
 
+            if (prest != null && prest.Length > 0)
+            {
+                var prestamosFormateados = prest.Select(p => new {
+                    p.idPrestamo,
+                    fecha_vencimiento = p.fecha_vencimiento.ToString("yyyy-MM-dd")
+                }).ToArray();
+
+                var serializer = new JavaScriptSerializer();
+                string prestamosJson = serializer.Serialize(prestamosFormateados);
+
+                script = $@"mostrarModalRetraso({prest.Length}, {prestamosJson});";
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalRetraso", script, true);
+                return;
+            }
 
             script = $"mostrarModalConfirmacion('{nombreUsuario}', '{tituloMaterial}');";
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalConfirmacion", script, true);
@@ -180,9 +197,14 @@ namespace BibliotecaWA
             if (string.IsNullOrEmpty(codigo))
                 return;
 
-            usuario = usuarioBO.obtenerUsuarioxCodigo(Int32.Parse(codigo));
 
-            if (usuario == null) return;
+            usuario = usuarioBO.obtenerUsuarioxCodigo(Int32.Parse(codigo));
+            if (usuario == null)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "msg",
+                    $"mostrarModalUsuario('El usuario con código \"{codigo}\" no se encuentra registrado.');", true);
+                return;
+            }
 
 
             Session["usuario"] = usuario;

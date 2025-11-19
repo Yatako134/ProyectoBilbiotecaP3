@@ -1,5 +1,5 @@
-
 package biblioteca.gestionMaterial.mysql;
+
 import biblioteca.config.DBManager;
 import biblioteca.gestionMaterial.dao.TesisDAO;
 import java.sql.ResultSet;
@@ -14,30 +14,31 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Tesis;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.TipoMaterial;
 
-public class Tesislmpl implements TesisDAO{
-    
+public class Tesislmpl implements TesisDAO {
+
     private ResultSet rs;
-    
+
     @Override
     public int insertar(Tesis objeto) {
-        Map<Integer,Object> parametrosSalida = new HashMap<>();
-        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        Map<Integer, Object> parametrosSalida = new HashMap<>();
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
         parametrosSalida.put(1, Types.INTEGER);
         parametrosEntrada.put(2, objeto.getTitulo());
         parametrosEntrada.put(3, objeto.getAnho_publicacion());
         parametrosEntrada.put(4, objeto.getNumero_paginas());
-        
+
         parametrosEntrada.put(5, objeto.getClasificacion_tematica());
-        
+
         parametrosEntrada.put(6, objeto.getIdioma());
         parametrosEntrada.put(7, objeto.getEspecialidad());
         parametrosEntrada.put(8, objeto.getAsesor());
         parametrosEntrada.put(9, objeto.getGrado());
         parametrosEntrada.put(10, objeto.getInstitucionPublicacion());
+        parametrosEntrada.put(11, objeto.getEditoriales());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_TESIS", parametrosEntrada, parametrosSalida);
         objeto.setIdMaterial((int) parametrosSalida.get(1));
         System.out.println("Se ha realizado el registro del tesis");
-        return objeto.getIdMaterial();  
+        return objeto.getIdMaterial();
     }
 
     @Override
@@ -49,12 +50,13 @@ public class Tesislmpl implements TesisDAO{
         parametrosEntrada.put(4, objeto.getNumero_paginas());
 
         parametrosEntrada.put(5, objeto.getClasificacion_tematica());
- 
-        parametrosEntrada.put(6, objeto.getIdioma());  
+
+        parametrosEntrada.put(6, objeto.getIdioma());
         parametrosEntrada.put(7, objeto.getEspecialidad());
         parametrosEntrada.put(8, objeto.getAsesor());
         parametrosEntrada.put(9, objeto.getGrado());
         parametrosEntrada.put(10, objeto.getInstitucionPublicacion());
+        parametrosEntrada.put(11, objeto.getEditoriales());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_TESIS", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion del tesis");
         return resultado;
@@ -76,8 +78,8 @@ public class Tesislmpl implements TesisDAO{
         parametrosEntrada.put(1, idObjeto);
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_TESIS_X_ID", parametrosEntrada);
         System.out.println("Lectura de tesis...");
-        try{
-            if(rs.next()){
+        try {
+            if (rs.next()) {
                 tesis = new Tesis();
                 tesis.setIdMaterial(rs.getInt("id_tesis"));
                 tesis.setTitulo(rs.getString("titulo"));
@@ -92,10 +94,11 @@ public class Tesislmpl implements TesisDAO{
                 tesis.setGrado(rs.getString("grado"));
                 tesis.setInstitucionPublicacion(rs.getString("institucion_publicacion"));
                 tesis.setTipo(TipoMaterial.TESIS);
+                tesis.setEditoriales(rs.getString("editoriales"));
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
-        }finally{
+        } finally {
             DBManager.getInstance().cerrarConexion();
         }
         tesis.setTipo(TipoMaterial.TESIS);
@@ -107,9 +110,11 @@ public class Tesislmpl implements TesisDAO{
         ArrayList<Tesis> tesis = null;
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_TESIS_TODOS", null);
         System.out.println("Lectura de tesis...");
-        try{
-            while(rs.next()){
-                if(tesis == null) tesis = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                if (tesis == null) {
+                    tesis = new ArrayList<>();
+                }
                 Tesis e = new Tesis();
                 e.setIdMaterial(rs.getInt("id_tesis"));
                 e.setTitulo(rs.getString("titulo"));
@@ -123,14 +128,16 @@ public class Tesislmpl implements TesisDAO{
                 e.setAsesor(rs.getString("asesor"));
                 e.setGrado(rs.getString("grado"));
                 e.setInstitucionPublicacion(rs.getString("institucion_publicacion"));
+                e.setEditoriales(rs.getString("editoriales"));
+
                 tesis.add(e);
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }finally{
+        } finally {
             DBManager.getInstance().cerrarConexion();
         }
         return tesis;
     }
-    
+
 }

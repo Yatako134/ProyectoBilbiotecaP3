@@ -54,7 +54,7 @@ namespace BibliotecaWA
                     txtPrimerApellido.Text = usuarioActual.primer_apellido;
                     txtSegundoApellido.Text = usuarioActual.segundo_apellido;
                     txtCorreo.Text = usuarioActual.correo;
-                    txtContrasena.Text = usuarioActual.contrasena;
+                    txtContrasena.Text = new string('•', 8);
                     txtTelefono.Text = usuarioActual.telefono;
                     ddlRol.SelectedValue = usuarioActual.rol_usuario.id_rol.ToString();
 
@@ -136,7 +136,7 @@ namespace BibliotecaWA
             txtPrimerApellido.Enabled = true;
             txtSegundoApellido.Enabled = true;
             txtCorreo.Enabled = true;
-            txtContrasena.Enabled = true;
+            txtContrasena.Enabled = false;
             txtTelefono.Enabled = true;
             ddlRol.Enabled = true;
         }
@@ -177,7 +177,7 @@ namespace BibliotecaWA
                 return;
             }
 
-
+            string NombreCompleto = "";
             if (modo == "registrar")
             {
                 usuario nuevo = new usuario
@@ -193,8 +193,9 @@ namespace BibliotecaWA
                     rol_usuario = new BindingList<rol>(borol.listarRoles()).ToList().Find(r => r.id_rol.ToString() == ddlRol.SelectedValue)
                 };
 
-
+                NombreCompleto = nuevo.nombre + " " + nuevo.primer_apellido + " " + nuevo.segundo_apellido;
                 bousuario.insertarUsuario(nuevo);
+                
             }
             else if (modo == "editar" && usuarioActual != null)
             {
@@ -210,8 +211,9 @@ namespace BibliotecaWA
 
                 bousuario.modificarUsuario(usuarioActual);
             }
+            Response.Redirect($"GestUsuarios.aspx?nombre={NombreCompleto}");
 
-            Response.Redirect("GestUsuarios.aspx");
+
         }
 
         protected void btnRegresar_Click(object sender, EventArgs e)

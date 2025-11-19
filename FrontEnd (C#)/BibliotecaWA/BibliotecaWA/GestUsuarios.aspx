@@ -10,6 +10,49 @@
     <link href="Fonts/css/GestUsuarios.css" rel="stylesheet" />
 
     <script src="/Scripts/usuarios-modal.js"></script>
+
+    <style>
+        .custom-modal {
+            position: fixed;
+            top: 20px; /* parte superior */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%; /* ancho responsivo */
+            max-width: 600px;
+            z-index: 9999;
+            display: none; /* oculto inicialmente */
+            opacity: 0; /* inicio invisible */
+            transition: opacity 1s ease; /* transición suave */
+        }
+
+            .custom-modal.show {
+                display: block;
+                opacity: 1; /* visible */
+            }
+
+        .custom-modal-content {
+            background-color: #f0fdf4; /* fondo solicitado */
+            border: 2px solid #22c55e; /* borde visible y verde */
+            border-radius: 8px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+            .custom-modal-content h4 {
+                margin: 0 0 10px 0;
+                color: #071437; /* título color oscuro */
+                font-weight: bold; /* título en negrita */
+            }
+
+            .custom-modal-content p {
+                margin: 0;
+                font-weight: 500;
+                color: #333;
+            }
+    </style>
+
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
@@ -18,6 +61,33 @@
         <h6 class="ColorLetras fw-bold"> Gestión de Usuarios</h6>
     </div>
     <hr>
+
+    <!-- Modal personalizado -->
+    <div id="modalRegistroUsuario" class="custom-modal">
+        <div class="custom-modal-content">
+            <h4 class="modal-header">Registro de usuario</h4>
+            <p class="modal-body">El usuario "Nombre" ha sido registrado correctamente.</p>
+        </div>
+    </div>
+
+    <script>
+        function mostrarModal(nombre) {
+            var modal = document.getElementById("modalRegistroUsuario");
+            modal.querySelector(".modal-body").textContent = `El usuario "${nombre}" ha sido registrado correctamente.`;
+
+            // Mostrar modal
+            modal.classList.add("show");
+
+            // Espera 4.5 segundos antes de empezar a desvanecer
+            setTimeout(function () {
+                modal.style.opacity = "0"; // comienza a desaparecer
+                // Después de la transición de 1s, ocultamos completamente
+                setTimeout(function () {
+                    modal.classList.remove("show");
+                }, 1000);
+            }, 4500); // 4.5 segundos visible antes de desvanecer
+        }
+    </script>
 
     <div class="container-fluid">
 

@@ -22,7 +22,6 @@ import java.util.Calendar;
 import java.util.Date;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Biblioteca;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Contribuyente;
-import pe.edu.pucp.utilsarmy.gestion_de_material.model.Editorial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoEjemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoMaterial;

@@ -1,4 +1,3 @@
-
 package biblioteca.gestionMaterial.mysql;
 
 import biblioteca.config.DBManager;
@@ -13,14 +12,14 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoMaterial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Articulo;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.TipoMaterial;
 
-public class Articulolmpl implements ArticuloDAO{
-    
+public class Articulolmpl implements ArticuloDAO {
+
     private ResultSet rs;
-    
+
     @Override
     public int insertar(Articulo objeto) {
-        Map<Integer,Object> parametrosSalida = new HashMap<>();
-        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        Map<Integer, Object> parametrosSalida = new HashMap<>();
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
         parametrosSalida.put(1, Types.INTEGER);
         parametrosEntrada.put(2, objeto.getTitulo());
         parametrosEntrada.put(3, objeto.getAnho_publicacion());
@@ -31,10 +30,11 @@ public class Articulolmpl implements ArticuloDAO{
         parametrosEntrada.put(8, objeto.getRevista());
         parametrosEntrada.put(9, objeto.getVolumen());
         parametrosEntrada.put(10, objeto.getNumero());
+        parametrosEntrada.put(11, objeto.getEditoriales());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_ARTICULO", parametrosEntrada, parametrosSalida);
         objeto.setIdMaterial((int) parametrosSalida.get(1));
         System.out.println("Se ha realizado el registro del articulo");
-        return objeto.getIdMaterial();  
+        return objeto.getIdMaterial();
     }
 
     @Override
@@ -50,6 +50,8 @@ public class Articulolmpl implements ArticuloDAO{
         parametrosEntrada.put(8, objeto.getRevista());
         parametrosEntrada.put(9, objeto.getVolumen());
         parametrosEntrada.put(10, objeto.getNumero());
+        parametrosEntrada.put(11, objeto.getEditoriales());
+
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_ARTICULO", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion del articulo");
         return resultado;
@@ -71,8 +73,8 @@ public class Articulolmpl implements ArticuloDAO{
         parametrosEntrada.put(1, idObjeto);
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_ARTICULO_X_ID", parametrosEntrada);
         System.out.println("Lectura de articulo...");
-        try{
-            if(rs.next()){
+        try {
+            if (rs.next()) {
                 articulo = new Articulo();
                 articulo.setIdMaterial(rs.getInt("id_articulo"));
                 articulo.setTitulo(rs.getString("titulo"));
@@ -87,10 +89,11 @@ public class Articulolmpl implements ArticuloDAO{
                 articulo.setVolumen(rs.getInt("volumen"));
                 articulo.setNumero(rs.getInt("numero"));
                 articulo.setTipo(TipoMaterial.ARTICULO);
+                articulo.setEditoriales(rs.getString("editoriales"));
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
-        }finally{
+        } finally {
             DBManager.getInstance().cerrarConexion();
         }
         articulo.setTipo(TipoMaterial.ARTICULO);
@@ -102,9 +105,11 @@ public class Articulolmpl implements ArticuloDAO{
         ArrayList<Articulo> articulos = null;
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ARTICULO_TODOS", null);
         System.out.println("Lectura de articulos...");
-        try{
-            while(rs.next()){
-                if(articulos == null) articulos = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                if (articulos == null) {
+                    articulos = new ArrayList<>();
+                }
                 Articulo e = new Articulo();
                 e.setIdMaterial(rs.getInt("id_articulo"));
                 e.setTitulo(rs.getString("titulo"));
@@ -118,14 +123,16 @@ public class Articulolmpl implements ArticuloDAO{
                 e.setRevista(rs.getString("revista"));
                 e.setVolumen(rs.getInt("volumen"));
                 e.setNumero(rs.getInt("numero"));
+                e.setEditoriales(rs.getString("editoriales"));
+
                 articulos.add(e);
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }finally{
+        } finally {
             DBManager.getInstance().cerrarConexion();
         }
         return articulos;
     }
-    
+
 }

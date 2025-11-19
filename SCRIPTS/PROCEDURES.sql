@@ -66,6 +66,7 @@ END$
 
 -- Libros:
 
+
 DELIMITER $
 
 CREATE PROCEDURE INSERTAR_LIBRO(
@@ -76,15 +77,16 @@ CREATE PROCEDURE INSERTAR_LIBRO(
     IN _clasificacion_tematica VARCHAR(100),
     IN _idioma VARCHAR(40),
     IN _ISBN VARCHAR(30),
-    IN _edicion VARCHAR(20)
+    IN _edicion VARCHAR(20),
+    IN _editoriales VARCHAR(300)
 )
 BEGIN
 	INSERT INTO MaterialBibliografico(
         titulo,
-        anho_publicacion,numero_paginas,estado,clasificacion_tematica,activo,idioma, tipo
+        anho_publicacion,numero_paginas,estado,clasificacion_tematica,activo,idioma, tipo,editoriales
     )
     VALUES(
-        _titulo,_anho_publicacion,_numero_paginas,'NO_DISPONIBLE',_clasificacion_tematica,1,_idioma,'LIBRO'
+        _titulo,_anho_publicacion,_numero_paginas,'NO_DISPONIBLE',_clasificacion_tematica,1,_idioma,'LIBRO',_editoriales 
     );
     SET _id_libro = @@last_insert_id;
     INSERT INTO Libro(id_libro, ISBN, edicion)
@@ -103,14 +105,14 @@ CREATE PROCEDURE MODIFICAR_LIBRO(
     IN _clasificacion_tematica VARCHAR(100),
     IN _idioma VARCHAR(40),
     IN _ISBN VARCHAR(30),
-    IN _edicion VARCHAR(20)
-    
+    IN _edicion VARCHAR(20),
+    IN _editoriales VARCHAR(300)
 )
 BEGIN
 	UPDATE MaterialBibliografico SET titulo=_titulo,
         anho_publicacion=_anho_publicacion,numero_paginas=_numero_paginas,
         clasificacion_tematica=_clasificacion_tematica,
-        idioma=_idioma WHERE id_material=_id_libro;
+        idioma=_idioma,editoriales=_editoriales WHERE id_material=_id_libro;
     UPDATE Libro SET ISBN = _ISBN,
         edicion = _edicion
     WHERE id_libro = _id_libro;
@@ -136,7 +138,7 @@ CREATE PROCEDURE OBTENER_LIBRO_X_ID(
 )
 BEGIN
 
-	SELECT l.id_libro, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo, l.ISBN, l.edicion
+	SELECT l.id_libro, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo, l.ISBN, l.edicion, m.editoriales
     FROM MaterialBibliografico m INNER JOIN Libro l
     ON m.id_material=l.id_libro  WHERE l.id_libro=_id_libro;
 END$
@@ -146,7 +148,7 @@ DELIMITER $
 
 CREATE PROCEDURE LISTAR_LIBROS_TODOS()
 BEGIN
-    SELECT l.id_libro, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo, l.ISBN, l.edicion
+    SELECT l.id_libro, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo, l.ISBN, l.edicion, m.editoriales
     FROM MaterialBibliografico m INNER JOIN Libro l
     ON m.id_material=l.id_libro and m.activo=1;
 END$
@@ -165,15 +167,16 @@ CREATE PROCEDURE INSERTAR_ARTICULO(
     IN _ISSN VARCHAR(30),
     IN _revista VARCHAR(100),
     IN _volumen INT,
-    IN _numero INT
+    IN _numero INT,
+    IN _editoriales VARCHAR(300)
 )
 BEGIN
 	INSERT INTO MaterialBibliografico(
         titulo,
-        anho_publicacion,numero_paginas,estado,clasificacion_tematica,activo,idioma, tipo
+        anho_publicacion,numero_paginas,estado,clasificacion_tematica,activo,idioma, tipo, editoriales
     )
     VALUES(
-        _titulo,_anho_publicacion,_numero_paginas,'NO_DISPONIBLE',_clasificacion_tematica,1,_idioma,'ARTICULO'
+        _titulo,_anho_publicacion,_numero_paginas,'NO_DISPONIBLE',_clasificacion_tematica,1,_idioma,'ARTICULO', _editoriales
     );
     SET _id_articulo = @@last_insert_id;
     INSERT INTO Articulo(id_articulo, ISSN, revista, volumen, numero)
@@ -194,14 +197,14 @@ CREATE PROCEDURE MODIFICAR_ARTICULO(
     IN _ISSN VARCHAR(30),
     IN _revista VARCHAR(100),
     IN _volumen INT,
-    IN _numero INT
-    
+    IN _numero INT,
+    IN _editoriales VARCHAR(300)
 )
 BEGIN
 	UPDATE MaterialBibliografico SET titulo=_titulo,
         anho_publicacion=_anho_publicacion,numero_paginas=_numero_paginas,
         clasificacion_tematica=_clasificacion_tematica,
-        idioma=_idioma WHERE id_material=_id_articulo;
+        idioma=_idioma, editoriales = _editoriales WHERE id_material=_id_articulo;
     UPDATE Articulo SET ISSN = _ISSN, revista=_revista, volumen=_volumen, numero=_numero
     WHERE id_articulo = _id_articulo;
 END$
@@ -226,8 +229,8 @@ CREATE PROCEDURE OBTENER_ARTICULO_X_ID(
 )
 BEGIN
 
-	SELECT a.id_articulo, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo,
-    a.ISSN, a.numero, a.revista, a.volumen
+	SELECT a.id_articulo, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo, 
+    a.ISSN, a.numero, a.revista, a.volumen, m.editoriales
     FROM MaterialBibliografico m INNER JOIN Articulo a
     ON m.id_material=a.id_articulo  WHERE a.id_articulo=_id_articulo;
 END$
@@ -238,7 +241,7 @@ DELIMITER $
 CREATE PROCEDURE LISTAR_ARTICULOS_TODOS()
 BEGIN
     SELECT a.id_articulo, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo,
-    a.ISSN, a.numero, a.revista, a.volumen
+    a.ISSN, a.numero, a.revista, a.volumen, m.editoriales
     FROM MaterialBibliografico m INNER JOIN Articulo a
     ON m.id_material=a.id_articulo and m.activo=1;
 END$
@@ -256,15 +259,16 @@ CREATE PROCEDURE INSERTAR_TESIS(
     IN _especialidad VARCHAR(100),
     IN _asesor VARCHAR(60),
     IN _grado VARCHAR(50),
-    IN _institucion_publicacion VARCHAR(150)
+    IN _institucion_publicacion VARCHAR(150),
+    IN _editoriales VARCHAR(300)
 )
 BEGIN
 	INSERT INTO MaterialBibliografico(
         titulo,
-        anho_publicacion,numero_paginas,estado,clasificacion_tematica,activo,idioma, tipo
+        anho_publicacion,numero_paginas,estado,clasificacion_tematica,activo,idioma, tipo, editoriales
     )
     VALUES(
-        _titulo,_anho_publicacion,_numero_paginas,'NO_DISPONIBLE',_clasificacion_tematica,1,_idioma,'TESIS'
+        _titulo,_anho_publicacion,_numero_paginas,'NO_DISPONIBLE',_clasificacion_tematica,1,_idioma,'TESIS', _editoriales
     );
     SET _id_tesis = @@last_insert_id;
     INSERT INTO Tesis(id_tesis, especialidad, asesor, 
@@ -287,14 +291,15 @@ CREATE PROCEDURE MODIFICAR_TESIS(
     IN _especialidad VARCHAR(100),
     IN _asesor VARCHAR(60),
     IN _grado VARCHAR(50),
-    IN _institucion_publicacion VARCHAR(150)
+    IN _institucion_publicacion VARCHAR(150),
+    IN _editoriales VARCHAR(300)
     
 )
 BEGIN
 	UPDATE MaterialBibliografico SET titulo=_titulo,
         anho_publicacion=_anho_publicacion,numero_paginas=_numero_paginas,
         clasificacion_tematica=_clasificacion_tematica,
-        idioma=_idioma WHERE id_material=_id_tesis;
+        idioma=_idioma,editoriales = _editoriales WHERE id_material=_id_tesis;
     UPDATE Tesis SET especialidad = _especialidad, asesor=_asesor, grado=_grado, institucion_publicacion=_institucion_publicacion
     WHERE id_tesis = _id_tesis;
 END$
@@ -320,7 +325,7 @@ CREATE PROCEDURE OBTENER_TESIS_X_ID(
 BEGIN
 
 	SELECT t.id_tesis, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo,
-    t.especialidad, t.asesor, t.grado, t.institucion_publicacion
+    t.especialidad, t.asesor, t.grado, t.institucion_publicacion, m.editoriales
     FROM MaterialBibliografico m INNER JOIN Tesis t
     ON m.id_material=t.id_tesis  WHERE t.id_tesis=_id_tesis;
 END$
@@ -331,7 +336,7 @@ DELIMITER $
 CREATE PROCEDURE LISTAR_TESIS_TODOS()
 BEGIN
     SELECT t.id_tesis, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo,
-    t.especialidad, t.asesor, t.grado, t.institucion_publicacion
+    t.especialidad, t.asesor, t.grado, t.institucion_publicacion, m.editoriales
     FROM MaterialBibliografico m INNER JOIN Tesis t
     ON m.id_material=t.id_tesis and m.activo=1;
 END$
@@ -982,14 +987,6 @@ WHERE e.id_material = _id_material and b.id_biblioteca = e.id_biblioteca and est
 END$
 
 
-DELIMITER $
-CREATE PROCEDURE LISTAR_EJEMPLARES_DISPONIBLES_POR_MATERIAL
-(IN _id_material INT)
-BEGIN
-SELECT  id_ejemplar, id_material, estado, ubicacion, activo, id_biblioteca
-FROM Ejemplar
-WHERE id_material = _id_material and activo = 1 and estado = 'DISPONIBLE';
-END$
 
 
 -- MODIFICAR
@@ -1095,6 +1092,7 @@ BEGIN
         m.clasificacion_tematica,
         m.idioma,
         m.tipo,
+        m.editoriales,
         IFNULL(
             NULLIF(
                 GROUP_CONCAT(
@@ -1125,6 +1123,7 @@ BEGIN
           OR c.primer_apellido LIKE CONCAT('%', _titulo_autor, '%')
           OR c.segundo_apellido LIKE CONCAT('%', _titulo_autor, '%')
           OR c.seudonimo LIKE CONCAT('%', _titulo_autor, '%')
+          OR m.editoriales LIKE CONCAT('%', _editoriales, '%')
       )
     GROUP BY 
         m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, 
@@ -1190,6 +1189,7 @@ BEGIN
                     OR c.primer_apellido LIKE CONCAT('%', _nombre_contribuyente, '%')
                     OR c.segundo_apellido LIKE CONCAT('%', _nombre_contribuyente, '%')
                     OR c.seudonimo LIKE CONCAT('%', _nombre_contribuyente, '%')
+                    OR m.editoriales LIKE CONCAT('%', _editoriales, '%')
                 )
             )
         )
@@ -1349,4 +1349,32 @@ BEGIN
     WHERE cm.id_material = _id_material;
 END$
 
+DELIMITER $$
 
+CREATE PROCEDURE sp_prestamos_retrasados_usuario(IN p_id_usuario INT)
+BEGIN
+    SELECT 
+        p.id_prestamo,
+        p.fecha_vencimiento,
+        p.estado
+    FROM Prestamo p
+    INNER JOIN Usuario u
+        ON p.id_usuario = u.id_usuario
+    WHERE 
+        p.fecha_vencimiento < SYSDATE()
+        AND p.fecha_devolucion IS NULL
+        AND p.id_usuario = p_id_usuario
+        AND p.estado = 'VIGENTE'
+    ORDER BY p.fecha_vencimiento;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE ListarTodosUsuariosDelSistema()
+BEGIN
+SELECT * FROM Usuario;
+END $$
+
+DELIMITER ;

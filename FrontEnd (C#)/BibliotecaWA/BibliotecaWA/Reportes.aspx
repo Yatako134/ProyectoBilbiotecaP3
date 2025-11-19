@@ -1,0 +1,113 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="Reportes.aspx.cs" Inherits="BibliotecaWA.Reportes" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cph_Title" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cph_Scripts" runat="server">
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
+    <div class="d-flex align-items-center mb-4">
+        <!-- Icono -->
+        <i class="fas fa-th" style="margin-right: 10px; font-size: 24px;"></i>
+
+        <div style="border-right: 2px solid #ccc; height: 24px; margin-right: 10px;"></div>
+
+        <!-- Texto -->
+        <h6>Reportes</h6>
+    </div>
+    <hr />
+
+    <!-- === CABECERA SUPERIOR === -->
+    <div class="tabla-header d-flex justify-content-between align-items-center p-3">
+        <h2><strong>Reportes</strong></h2>
+        <asp:LinkButton ID="lkDescargar" CssClass="btn btn-primary" runat="server"
+            OnClick="btnRegistrar_click"
+            Text="<i class='fas fa-download pe-2'></i> Descargar" />
+    </div>
+
+    <!-- === CONTENIDO DE REPORTES === -->
+    <div class="container mt-4">
+
+        <!-- ======= REPORTE 1: Usuarios sancionados ======= -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="p-3 border rounded shadow-sm bg-white">
+                    <div class="form-check">
+                        <asp:CheckBox ID="chkReporteUsuarios" runat="server" CssClass="form-check-input" />
+                        <label class="form-check-label" for="chkUsuariosSancionados">
+                            <strong>Reporte de usuarios sancionados</strong>
+                        </label>
+                    </div>
+                    <p class="text-muted mt-2 mb-0">
+                        Informe en formato PDF con los usuarios más sancionados
+                    dentro de un rango de fechas especificadas.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Fechas -->
+            <div class="col-md-4">
+                <label class="form-label">Fecha Inicio</label>
+                <asp:TextBox ID="txtFechaInicio1" CssClass="form-control" TextMode="Date" runat="server" />
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Fecha Fin</label>
+                <asp:TextBox ID="txtFechaFin1" CssClass="form-control" TextMode="Date" runat="server" />
+            </div>
+        </div>
+
+
+        <!-- ======= REPORTE 2: Materiales más prestados ======= -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="p-3 border rounded shadow-sm bg-white">
+                    <div class="form-check">
+                        <asp:CheckBox ID="chkReporteLibros" runat="server" CssClass="form-check-input" />
+                        <label class="form-check-label" for="chkMaterialesPrestados">
+                            <strong>Reporte de materiales más prestados</strong>
+                        </label>
+                    </div>
+                    <p class="text-muted mt-2 mb-0">
+                        Informe en formato PDF con los materiales que han registrado
+                    el mayor número de préstamos dentro de un rango de fechas.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Fechas -->
+            <div class="col-md-4">
+                <label class="form-label">Fecha Inicio</label>
+                <asp:TextBox ID="txtFechaInicio2" CssClass="form-control" TextMode="Date" runat="server" />
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Fecha Fin</label>
+                <asp:TextBox ID="txtFechaFin2" CssClass="form-control" TextMode="Date" runat="server" />
+            </div>
+        </div>
+
+
+        <!-- ======= REPORTE 3: Ejemplares en reparación ======= -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="p-3 border rounded shadow-sm bg-white">
+                    <div class="form-check">
+                        <asp:CheckBox ID="chkReporteEjemplares" runat="server" CssClass="form-check-input" />
+                        <label class="form-check-label" for="chkEjemplaresReparacion">
+                            <strong>Reporte de ejemplares en reparación</strong>
+                        </label>
+                    </div>
+                    <p class="text-muted mt-2 mb-0">
+                        Informe en formato PDF con los ejemplares que se encuentran
+                    en proceso de reparación.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Este reporte no usa fechas en tu imagen, así que lo dejo vacío -->
+            <div class="col-md-8"></div>
+        </div>
+
+    </div>
+
+</asp:Content>

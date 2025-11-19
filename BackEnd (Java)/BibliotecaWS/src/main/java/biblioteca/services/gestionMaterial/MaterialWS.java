@@ -7,7 +7,6 @@ import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Contribuyente;
-import pe.edu.pucp.utilsarmy.gestion_de_material.model.Editorial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 
@@ -58,19 +57,6 @@ public class MaterialWS {
         return contribuyentes;
     }
 
-    @WebMethod(operationName = "buscarEditoriales")
-    public ArrayList<Editorial> buscarEditoriales(@WebParam(name = "idMaterial") int id) {
-         ArrayList<Editorial> editoriales = new ArrayList<>();
-        try {
-            editoriales = materialBO.buscarEditorial(id);
-            if (editoriales == null) {
-                editoriales = new ArrayList<>();
-            }
-        } catch (Exception ex) {
-            System.out.println("ERROR en buscarEditoriales: " + ex.getMessage());
-        }
-        return editoriales;
-    }
 
     @WebMethod(operationName = "obtenerEjemplaresDisponibles")
     public ArrayList<Ejemplar> obtenerEjemplaresDisponibles(
@@ -125,12 +111,16 @@ public class MaterialWS {
             @WebParam(name ="Fecha_hasta")Integer _fecha_hasta,
             @WebParam(name ="Tipo_de_material")String _tipo_material, 
             @WebParam(name ="Biblioteca")String _biblioteca, 
-            @WebParam(name ="Disponibilidad")String _disponibilidad) {
+            @WebParam(name ="Disponibilidad")String _disponibilidad,
+            @WebParam(name="Editoriales") String _editoriales) {
         materialBO = new MaterialBiblioBOImpl();
         ArrayList<MaterialBibliografico> materiales = null;
         try {
 
-            materiales = materialBO.listar_busqueda_avanzada(_titulo, _tipo_contribuyente, _nombre_contribuyente, _tema, _fecha_desde, _fecha_hasta, _tipo_material, _biblioteca, _disponibilidad);
+            materiales = materialBO.listar_busqueda_avanzada(_titulo, 
+                    _tipo_contribuyente, _nombre_contribuyente, _tema,
+                    _fecha_desde, _fecha_hasta, _tipo_material, _biblioteca, 
+                    _disponibilidad, _editoriales);
             return materiales;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
