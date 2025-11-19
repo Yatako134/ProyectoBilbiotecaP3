@@ -74,7 +74,8 @@
                 </div>
             </div>
             <div class="mb-3 row">
-                <asp:Label ID="lblEditoriales" runat="server" Text="Editorial:" CssClass="col-sm-2 col-form-label"></asp:Label>
+                <asp:Label ID="lblEditoriales" runat="server" Text="Editorial:"
+                    ReadOnly="true" Enabled="false" CssClass="col-sm-2 col-form-label"></asp:Label>
                 <div class="col-sm-8">
                     <asp:TextBox ID="txtEditoriales" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
