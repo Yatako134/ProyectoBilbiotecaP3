@@ -242,7 +242,8 @@ namespace BibliotecaWA
             {
                 panelSinEjemplares.Visible = true;
                 rptBibliotecas.Visible = false;
-                SelectorBiblioteca.Visible = false; 
+                SelectorBiblioteca.Visible = false;
+                btnPrestar.Enabled = false;
                 return;
             }
             // 3️⃣ Recorrer cada ejemplar y agruparlos por biblioteca
@@ -341,7 +342,7 @@ namespace BibliotecaWA
                 rptBibliotecas.Visible = false;
                 panelSinEjemplares.Visible = true;
                 panelSinEjemplares.Controls.Clear(); // limpia mensajes previos
-
+                btnPrestar.Enabled = false;
                 panelSinEjemplares.Controls.Add(new Literal
                 {
                     Text = $"No hay ejemplares disponibles en la biblioteca <b>{biblioteca.nombre}</b>."
