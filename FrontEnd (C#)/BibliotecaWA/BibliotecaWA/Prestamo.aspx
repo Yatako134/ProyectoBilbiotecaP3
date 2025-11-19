@@ -96,7 +96,8 @@
                     </div>
                     <div class="col-md-8">
                         <asp:Label runat="server" Text="Nombre" CssClass="form-label"></asp:Label>
-                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" ReadOnly="true" Enabled="false"></asp:TextBox>
+                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" ReadOnly="true"
+                            Enabled="false"></asp:TextBox>
                     </div>
                 </div>
 
@@ -106,13 +107,13 @@
                         <asp:Label runat="server" Text="Tipo de usuario" CssClass="form-label me-2"
                             Style="white-space: nowrap;"></asp:Label>
                         <asp:TextBox ID="txtTipoUsuario" runat="server" CssClass="form-control me-3"
-                            Style="white-space: nowrap;"></asp:TextBox>
+                            ReadOnly="true" Enabled="false" Style="white-space: nowrap;"></asp:TextBox>
                     </div>
                     <div class="col-md-6 d-flex align-items-center">
                         <asp:Label runat="server" Text="Préstamos vigentes" CssClass="form-label m-2"
                            Style="white-space: nowrap;" ></asp:Label>
                         <asp:TextBox ID="txtPrestamosVigentes" runat="server" CssClass="form-control"
-                            Style="white-space: nowrap;"></asp:TextBox>
+                            ReadOnly="true"  Enabled="false" Style="white-space: nowrap;"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -120,13 +121,13 @@
                         <asp:Label runat="server" Text="Límite de días" CssClass="form-label me-2"
                             Style="white-space: nowrap;"></asp:Label>
                         <asp:TextBox ID="txtLimiteDias" runat="server" CssClass="form-control"
-                            ReadOnly="true" Style="white-space: nowrap;"></asp:TextBox>
+                            ReadOnly="true" Enabled="false" Style="white-space: nowrap;"></asp:TextBox>
                     </div>
                     <div class="col-md-6 d-flex align-items-center">
                         <asp:Label runat="server" Text="Límite de préstamos" CssClass="form-label me-2 "
                             Style="white-space: nowrap;"></asp:Label>
                         <asp:TextBox ID="txtLimitePrestamo" runat="server" CssClass="form-control" 
-                            ReadOnly="true" Style="white-space: nowrap;" ></asp:TextBox>
+                            ReadOnly="true" Enabled="false" Style="white-space: nowrap;" ></asp:TextBox>
                     </div>
                 </div>
 
@@ -137,7 +138,7 @@
                         <asp:Label runat="server" Text="Fecha de préstamo" CssClass="form-label me-2"
                             Style="white-space: nowrap;"></asp:Label>
                         <asp:TextBox ID="txtFechaPrestamo" runat="server" CssClass="form-control" 
-                            ReadOnly="true" Style="white-space: nowrap;"></asp:TextBox>
+                            ReadOnly="true" Enabled="false" Style="white-space: nowrap;"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -145,7 +146,7 @@
                         <asp:Label runat="server" Text="Fecha de vencimiento" CssClass="form-label me-2"
                             Style="white-space: nowrap;"></asp:Label>
                         <asp:TextBox ID="txtFechaVencimiento" runat="server" CssClass="form-control me-3"
-                            ReadOnly="true" Style="width:180px; display:inline-block;"></asp:TextBox>
+                            ReadOnly="true" Enabled="false" Style="width:180px; display:inline-block;"></asp:TextBox>
                         
                         <span class="text-danger small ms-2" style="white-space: nowrap;">
                             <i class="fa-solid fa-circle-exclamation me-1"></i>
@@ -223,7 +224,7 @@
                     <p>Para ver detalles del préstamo seleccione “Ir al préstamo”.</p>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button id="btnIrPrestamo" class="btn btn-outline-primary">Ir al préstamo</button>
+                    <%--<button id="btnIrPrestamo" class="btn btn-outline-primary">Ir al préstamo</button>--%>
                     <asp:Button ID="btnContinuar" runat="server" CssClass="btn btn-primary" Text="Continuar buscando" OnClick="btnContinuar_Click" />
                 </div>
             </div>

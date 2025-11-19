@@ -58,7 +58,7 @@ namespace BibliotecaWA
                 else TextNroEjemplares.Text = "No tiene ejemplares registrados";
                 txtTipoMaterial.Text = materialBibliografico.tipo.ToString();
                 TextNroPaginas.Text = materialBibliografico.numero_paginas.ToString();
-
+                txtEditoriales.Text=materialBibliografico.editoriales.ToString();
              
 
 
