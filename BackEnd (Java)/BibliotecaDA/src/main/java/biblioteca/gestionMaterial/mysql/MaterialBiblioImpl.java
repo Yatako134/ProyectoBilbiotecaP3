@@ -199,7 +199,7 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
                 material.setAutoresTexto(rs.getString("autores"));
                 material.setBibliotecasTexto(rs.getString("bibliotecas"));
                 material.setCantidadDisponible(rs.getInt("ejemplares_disponibles"));
-                material.setEditoriales(rs.getString("editoriales"));
+                if(rs.getString("editoriales")!=null)material.setEditoriales(rs.getString("editoriales"));
                 materiales.add(material);
             }
 

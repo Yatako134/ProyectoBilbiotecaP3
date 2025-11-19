@@ -5,20 +5,14 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/TesisWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
-  <message name="eliminarTesis">
-    <part name="parameters" element="tns:eliminarTesis" />
-  </message>
-  <message name="eliminarTesisResponse">
-    <part name="parameters" element="tns:eliminarTesisResponse" />
-  </message>
-  <message name="Exception">
-    <part name="fault" element="tns:Exception" />
-  </message>
   <message name="modificarTesis">
     <part name="parameters" element="tns:modificarTesis" />
   </message>
   <message name="modificarTesisResponse">
     <part name="parameters" element="tns:modificarTesisResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
   </message>
   <message name="obtenerTesisPorId">
     <part name="parameters" element="tns:obtenerTesisPorId" />
@@ -26,11 +20,11 @@
   <message name="obtenerTesisPorIdResponse">
     <part name="parameters" element="tns:obtenerTesisPorIdResponse" />
   </message>
-  <message name="insertarTesis">
-    <part name="parameters" element="tns:insertarTesis" />
+  <message name="eliminarTesis">
+    <part name="parameters" element="tns:eliminarTesis" />
   </message>
-  <message name="insertarTesisResponse">
-    <part name="parameters" element="tns:insertarTesisResponse" />
+  <message name="eliminarTesisResponse">
+    <part name="parameters" element="tns:eliminarTesisResponse" />
   </message>
   <message name="listarTesisTodos">
     <part name="parameters" element="tns:listarTesisTodos" />
@@ -38,12 +32,13 @@
   <message name="listarTesisTodosResponse">
     <part name="parameters" element="tns:listarTesisTodosResponse" />
   </message>
+  <message name="insertarTesis">
+    <part name="parameters" element="tns:insertarTesis" />
+  </message>
+  <message name="insertarTesisResponse">
+    <part name="parameters" element="tns:insertarTesisResponse" />
+  </message>
   <portType name="TesisWS">
-    <operation name="eliminarTesis">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/eliminarTesisRequest" message="tns:eliminarTesis" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/eliminarTesisResponse" message="tns:eliminarTesisResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/eliminarTesis/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
     <operation name="modificarTesis">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/modificarTesisRequest" message="tns:modificarTesis" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/modificarTesisResponse" message="tns:modificarTesisResponse" />
@@ -54,30 +49,23 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/obtenerTesisPorIdResponse" message="tns:obtenerTesisPorIdResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/obtenerTesisPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="insertarTesis">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/insertarTesisRequest" message="tns:insertarTesis" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/insertarTesisResponse" message="tns:insertarTesisResponse" />
+    <operation name="eliminarTesis">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/eliminarTesisRequest" message="tns:eliminarTesis" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/eliminarTesisResponse" message="tns:eliminarTesisResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/eliminarTesis/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="listarTesisTodos">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/listarTesisTodosRequest" message="tns:listarTesisTodos" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/listarTesisTodosResponse" message="tns:listarTesisTodosResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/listarTesisTodos/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
+    <operation name="insertarTesis">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/insertarTesisRequest" message="tns:insertarTesis" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/insertarTesisResponse" message="tns:insertarTesisResponse" />
+    </operation>
   </portType>
   <binding name="TesisWSPortBinding" type="tns:TesisWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="eliminarTesis">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
     <operation name="modificarTesis">
       <soap:operation soapAction="" />
       <input>
@@ -102,7 +90,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="insertarTesis">
+    <operation name="eliminarTesis">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -110,6 +98,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
     </operation>
     <operation name="listarTesisTodos">
       <soap:operation soapAction="" />
@@ -122,6 +113,15 @@
       <fault name="Exception">
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
+    </operation>
+    <operation name="insertarTesis">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
     </operation>
   </binding>
   <service name="TesisWS">

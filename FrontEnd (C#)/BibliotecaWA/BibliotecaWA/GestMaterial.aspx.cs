@@ -13,6 +13,9 @@ namespace BibliotecaWA
     {
         //private BibliotecaWSClient bobiblioteca;
         private MaterialWSClient materialBO;
+        private LibroWSClient libroBO;
+        private TesisWSClient tesisBO;
+        private ArticuloWSClient articuloBO;
         private BibliotecaWSClient bibliotecaBO;
         private BindingList<biblioteca> bibliotecas;
         protected void Page_Load(object sender, EventArgs e)
@@ -338,8 +341,24 @@ namespace BibliotecaWA
         {
             int idmaterial = int.Parse(hfIdUsuarioSeleccionado.Value);
             materialBO = new MaterialWSClient();
-            //materialBO.(idmaterial);
-
+            materialBibliografico mat = new materialBibliografico();
+            mat = materialBO.obtenerPorId(idmaterial);
+            string tipo = mat.tipo.ToString();
+            if(tipo == "LIBRO")
+            {
+                libroBO = new LibroWSClient();
+                libroBO.eliminarLibro(mat.idMaterial);
+            }
+            if (tipo == "TESIS")
+            {
+                tesisBO = new TesisWSClient();
+                tesisBO.eliminarTesis(mat.idMaterial);
+            }
+            if (tipo == "ARTICULO")
+            {
+                articuloBO = new ArticuloWSClient();
+                articuloBO.eliminarArticulo(mat.idMaterial);
+            }
             BindingList<materialBibliografico> materiales = new BindingList<materialBibliografico>(materialBO.ListarMaterialesNormal());
             Session["materiales"] = materiales;
             CargarMateriales();

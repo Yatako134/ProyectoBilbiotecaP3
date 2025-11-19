@@ -74,9 +74,10 @@
                 </div>
             </div>
             <div class="mb-3 row">
-                <asp:Label ID="lblEditoriales" runat="server" Text="Editorial:" CssClass="col-sm-2 col-form-label"></asp:Label>
+                <asp:Label ID="lblEditoriales" runat="server" Text="Editorial:"
+                    CssClass="col-sm-2 col-form-label"></asp:Label>
                 <div class="col-sm-8">
-                    <asp:TextBox ID="txtEditoriales" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtEditoriales" runat="server" CssClass="form-control" ReadOnly="true" Enabled="false"></asp:TextBox>
                 </div>
             </div>
 
@@ -187,7 +188,10 @@
                 <div class="modal-body">
                     <asp:Repeater ID="rptContribuyentes" runat="server">
                         <ItemTemplate>
-                            <%# Eval("Nombre") + " " + Eval("Primer_apellido") + " " + Eval("Segundo_apellido") %> (<%# Eval("Tipo_contribuyente").ToString().ToLower() %>)                           
+                            <div>
+                                <%# Eval("Nombre") + " " + Eval("Primer_apellido") + " " + Eval("Segundo_apellido") %> (<%# Eval("Tipo_contribuyente").ToString().ToLower() %>)                           
+
+                            </div>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
