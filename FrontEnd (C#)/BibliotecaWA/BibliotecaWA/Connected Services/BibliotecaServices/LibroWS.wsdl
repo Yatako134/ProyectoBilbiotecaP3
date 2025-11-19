@@ -14,6 +14,18 @@
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
   </message>
+  <message name="eliminarLibro">
+    <part name="parameters" element="tns:eliminarLibro" />
+  </message>
+  <message name="eliminarLibroResponse">
+    <part name="parameters" element="tns:eliminarLibroResponse" />
+  </message>
+  <message name="modificarLibro">
+    <part name="parameters" element="tns:modificarLibro" />
+  </message>
+  <message name="modificarLibroResponse">
+    <part name="parameters" element="tns:modificarLibroResponse" />
+  </message>
   <message name="insertarLibro">
     <part name="parameters" element="tns:insertarLibro" />
   </message>
@@ -26,23 +38,21 @@
   <message name="listarLibrosTodosResponse">
     <part name="parameters" element="tns:listarLibrosTodosResponse" />
   </message>
-  <message name="modificarLibro">
-    <part name="parameters" element="tns:modificarLibro" />
-  </message>
-  <message name="modificarLibroResponse">
-    <part name="parameters" element="tns:modificarLibroResponse" />
-  </message>
-  <message name="eliminarLibro">
-    <part name="parameters" element="tns:eliminarLibro" />
-  </message>
-  <message name="eliminarLibroResponse">
-    <part name="parameters" element="tns:eliminarLibroResponse" />
-  </message>
   <portType name="LibroWS">
     <operation name="obtenerLibroPorId">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/obtenerLibroPorIdRequest" message="tns:obtenerLibroPorId" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/obtenerLibroPorIdResponse" message="tns:obtenerLibroPorIdResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/obtenerLibroPorId/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="eliminarLibro">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibroRequest" message="tns:eliminarLibro" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibroResponse" message="tns:eliminarLibroResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibro/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="modificarLibro">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/modificarLibroRequest" message="tns:modificarLibro" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/modificarLibroResponse" message="tns:modificarLibroResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/modificarLibro/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="insertarLibro">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/insertarLibroRequest" message="tns:insertarLibro" />
@@ -52,16 +62,6 @@
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosRequest" message="tns:listarLibrosTodos" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosResponse" message="tns:listarLibrosTodosResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodos/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="modificarLibro">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/modificarLibroRequest" message="tns:modificarLibro" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/modificarLibroResponse" message="tns:modificarLibroResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/modificarLibro/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="eliminarLibro">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibroRequest" message="tns:eliminarLibro" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibroResponse" message="tns:eliminarLibroResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/eliminarLibro/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
   </portType>
   <binding name="LibroWSPortBinding" type="tns:LibroWS">
@@ -78,16 +78,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="insertarLibro">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarLibrosTodos">
+    <operation name="eliminarLibro">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -111,7 +102,16 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="eliminarLibro">
+    <operation name="insertarLibro">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarLibrosTodos">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

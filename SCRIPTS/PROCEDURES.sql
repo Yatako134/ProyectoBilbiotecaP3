@@ -314,7 +314,7 @@ CREATE PROCEDURE ELIMINAR_TESIS(
 BEGIN
     UPDATE MaterialBibliografico
     SET activo = 0
-    WHERE id_tesis = _id_tesis;
+    WHERE id_material = _id_tesis;
 END$
 
 -- BUSCAR POR ID
@@ -816,9 +816,9 @@ BEGIN
     SET _fecha_inicio = NOW();
 	SET _fecha_fin = date_add(_fecha_inicio, INTERVAL _duracion_dias DAY);
 	INSERT INTO Sancion(tipo_sancion, duracion_dias, fecha_inicio, fecha_fin,
-    justificacion, estado, activo, id_prestamo)
+    justificacion, estado, id_prestamo)
     VALUES (_tipo_sancion, _duracion_dias, _fecha_inicio, _fecha_fin, _justificacion,
-    'VIGENTE', 1, _id_prestamo);
+    'VIGENTE', _id_prestamo);
     SET _id_sancion = @@last_insert_id;
     
 END$
@@ -876,10 +876,12 @@ DELIMITER $
 -- OBTENER_PRESTAMO_X_ID
 CREATE PROCEDURE LISTAR_SANCIONES_TODAS()
 BEGIN
-    SELECT id_sancion, tipo_sancion, duracion_dias, fecha_inicio,
-    fecha_fin, justificacion, estado, id_prestamo
-    FROM Sancion;
+    SELECT s.id_sancion, s.tipo_sancion, s.duracion_dias, s.fecha_inicio,
+    s.fecha_fin, s.justificacion, s.estado, s.id_prestamo, u.codigo_universitario
+    FROM Sancion s, Usuario u, Prestamo p 
+    WHERE s.id_prestamo = p.id_prestamo and p.id_usuario = u.id_usuario;
 END$
+
 
 DELIMITER $$
 
@@ -928,53 +930,46 @@ BEGIN
         m.clasificacion_tematica,
         m.idioma,
         m.tipo,
-        
+        m.editoriales,
         IFNULL(
             NULLIF(
-                GROUP_CONCAT(
-                    DISTINCT CONCAT(
-                        IFNULL(c.nombre, ''), 
-                        CASE 
-                            WHEN c.nombre IS NOT NULL AND c.nombre <> '' THEN ' ' 
-                            ELSE '' 
-                        END,
-                        IFNULL(c.primer_apellido, ''), ' ', IFNULL(c.segundo_apellido, '')
-                    ) SEPARATOR ', '
-                ), ''
+               GROUP_CONCAT(
+    DISTINCT TRIM(
+        CASE 
+            WHEN 
+                (IFNULL(c.nombre, '') = '' 
+                 AND IFNULL(c.primer_apellido, '') = '' 
+                 AND IFNULL(c.segundo_apellido, '') = '') 
+            THEN NULL
+            ELSE CONCAT_WS(' ',
+                NULLIF(c.nombre, ''),
+                NULLIF(c.primer_apellido, ''),
+                NULLIF(c.segundo_apellido, '')
+            )
+        END
+    ) SEPARATOR ', '
+), ''
             ), 'No hay autores registrados'
         ) AS autores,
-        
+        -- Concatenamos los nombres de bibliotecas donde hay ejemplares disponibles, sin repetir
         IFNULL(
             NULLIF(
-                GROUP_CONCAT(
-                    DISTINCT CASE 
-                        WHEN e.estado = 'DISPONIBLE' THEN b.nombre 
-                        ELSE NULL 
-                    END SEPARATOR ', '
-                ), ''
+                GROUP_CONCAT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN b.nombre END SEPARATOR ', '), 
+                ''
             ), 'No hay ejemplares disponibles para préstamo'
         ) AS bibliotecas,
-        
+        -- Contamos los ejemplares disponibles
         COUNT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN e.id_ejemplar END) AS ejemplares_disponibles
-        
     FROM MaterialBibliografico m
-    LEFT JOIN Contribuyente_Material cm 
-        ON m.id_material = cm.id_material
-    LEFT JOIN Contribuyente c 
-        ON cm.id_contribuyente = c.id_contribuyente 
-        AND c.tipo_contribuyente = 'AUTOR'
-    LEFT JOIN Ejemplar e 
-        ON m.id_material = e.id_material 
-        AND e.activo = 1
-    LEFT JOIN Biblioteca b 
-        ON e.id_biblioteca = b.id_biblioteca 
-        AND b.activo = 1
+    LEFT JOIN Contribuyente_Material cm ON m.id_material = cm.id_material
+    LEFT JOIN Contribuyente c ON cm.id_contribuyente = c.id_contribuyente AND c.tipo_contribuyente = 'AUTOR'
+    LEFT JOIN Ejemplar e ON m.id_material = e.id_material AND e.activo = 1
+    LEFT JOIN Biblioteca b ON e.id_biblioteca = b.id_biblioteca AND b.activo = 1
     WHERE m.activo = 1
     GROUP BY 
-        m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, 
-        m.estado, m.clasificacion_tematica, m.idioma, m.tipo
-    ORDER BY ejemplares_disponibles DESC, m.titulo ASC;  -- primero por disponibilidad, luego por título
-END $
+        m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.idioma, m.tipo
+         ORDER BY ejemplares_disponibles DESC, m.titulo ASC;
+END $   
 DELIMITER ;
 
 DELIMITER $
@@ -1123,7 +1118,6 @@ BEGIN
           OR c.primer_apellido LIKE CONCAT('%', _titulo_autor, '%')
           OR c.segundo_apellido LIKE CONCAT('%', _titulo_autor, '%')
           OR c.seudonimo LIKE CONCAT('%', _titulo_autor, '%')
-          OR m.editoriales LIKE CONCAT('%', _editoriales, '%')
       )
     GROUP BY 
         m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, 
@@ -1142,7 +1136,8 @@ CREATE PROCEDURE LISTAR_MATERIALES_BUSQUEDA_AVANZADA(
     IN _fecha_hasta INT,
     IN _tipo_material VARCHAR(20),
     IN _nombre_biblioteca VARCHAR(80),
-    IN _disponibilidad VARCHAR(20)
+    IN _disponibilidad VARCHAR(20),
+    IN _editoriales VARCHAR(300)
 )
 BEGIN
     SELECT 
@@ -1154,6 +1149,7 @@ BEGIN
         m.clasificacion_tematica,
         m.idioma,
         m.tipo,
+        m.editoriales,
         IFNULL(
             NULLIF(
                 GROUP_CONCAT(
@@ -1375,6 +1371,49 @@ DELIMITER $$
 CREATE PROCEDURE ListarTodosUsuariosDelSistema()
 BEGIN
 SELECT * FROM Usuario;
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_SANCIONES_BUSQUEDA_CODIGO_UNIVERSITARIO
+(IN _codigo_universitario INT)
+
+BEGIN
+	SELECT s.id_sancion, s.tipo_sancion, s.duracion_dias, s.fecha_inicio,
+    s.fecha_fin, s.justificacion, s.estado, s.id_prestamo, u.codigo_universitario
+    FROM Sancion s, Prestamo p, Usuario u
+    WHERE s.id_prestamo = p.id_prestamo and u.id_usuario = p.id_usuario and u.codigo_universitario LIKE CONCAT('%', _codigo_universitario , '%');
+END $
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_PRESTAMO_BUSQUEDA_CODIGO_UNIVERSITARIO
+(IN _codigo_universitario INT)
+
+BEGIN
+	 SELECT p.id_prestamo, p.fecha_de_prestamo, p.fecha_vencimiento,
+	p.fecha_devolucion, p.estado, p.id_ejemplar, u.codigo_universitario
+    FROM Prestamo p JOIN Usuario u ON u.id_usuario = p.id_usuario and u.codigo_universitario LIKE CONCAT('%', _codigo_universitario , '%');
+END $
+
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_BuscarUsuario(
+    IN pBusqueda VARCHAR(50)
+)
+BEGIN
+    SELECT *
+    FROM Usuario
+    WHERE activo = 1
+      AND (
+            pBusqueda IS NULL
+         OR codigo_universitario LIKE CONCAT('%', pBusqueda, '%')
+         OR nombre LIKE CONCAT('%', pBusqueda, '%')
+         OR primer_apellido LIKE CONCAT('%', pBusqueda, '%')
+         OR segundo_apellido LIKE CONCAT('%', pBusqueda, '%')
+      );
 END $$
 
 DELIMITER ;
