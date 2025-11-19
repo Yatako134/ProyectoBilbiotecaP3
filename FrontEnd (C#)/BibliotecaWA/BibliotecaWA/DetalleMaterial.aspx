@@ -73,7 +73,14 @@
                     <asp:TextBox ID="TextNroEjemplares" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
-            <!-- Editoriales -->
+            <div class="mb-3 row">
+                <asp:Label ID="lblEditoriales" runat="server" Text="Editorial:" CssClass="col-sm-2 col-form-label"></asp:Label>
+                <div class="col-sm-8">
+                    <asp:TextBox ID="txtEditoriales" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
+
+            <!-- Editoriales
             <div ID="Editoriales" runat="server" class="mb-3 row align-items-center">
                 <asp:Label ID="lblEditorialTitulo" runat="server" Text="Editorial(es):" CssClass="col-sm-2 col-form-label"></asp:Label>
                 <div class="col-sm-8 d-flex align-items-center">
@@ -82,7 +89,7 @@
                         href="#" class="ms-2 text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditoriales">Ver más</a>
                 </div>
             </div>
-           
+            -->
             <div class="mb-3 row align-items-center">
                 <asp:Label ID="lblEstadoT" runat="server" Text="Estado:" CssClass="col-sm-2 col-form-label"></asp:Label>
                 <div class="col-sm-8">
