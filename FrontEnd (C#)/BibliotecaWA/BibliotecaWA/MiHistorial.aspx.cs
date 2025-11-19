@@ -23,8 +23,8 @@ namespace ProyectoP3
             {
                 bosancion = new SancionWSClient();
                 boprestamo = new PrestamoWSClient();
-                prestamo[] prest = boprestamo.listarPrestamosPorUsuario(6);
-                sancion[] saci = bosancion.listarSancionesPorUsuario(6);
+                prestamo[] prest = boprestamo.listarPrestamosPorUsuario(2);
+                sancion[] saci = bosancion.listarSancionesPorUsuario(2);
                 if (prest != null)
                 {
                     Session["prestamos"] = new BindingList<prestamo>(prest);
@@ -207,7 +207,7 @@ namespace ProyectoP3
             //CargarPrestamos();
 
             boprestamo = new PrestamoWSClient();
-            prestamo[] prest = boprestamo.listarPrestamosPorUsuarioPorPanel(6, txtBuscar.Text);
+            prestamo[] prest = boprestamo.listarPrestamosPorUsuarioPorPanel(2, txtBuscar.Text);
             // Si el servicio devuelve null o no hay resultados
             if (prest == null || prest.Length == 0)
             {
@@ -242,7 +242,7 @@ namespace ProyectoP3
             //CargarSanciones();
 
             bosancion = new SancionWSClient();
-            sancion[] sanc = bosancion.listarSancionesPorUsuarioPorPanel(6, TextBoxSancion.Text);
+            sancion[] sanc = bosancion.listarSancionesPorUsuarioPorPanel(2, TextBoxSancion.Text);
             // Si el webservice devuelve null, lo conviertes en lista vacía.
             if (sanc == null || sanc.Length == 0)
             {

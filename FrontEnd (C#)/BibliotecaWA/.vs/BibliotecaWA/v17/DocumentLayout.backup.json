@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Asus\\OneDrive\\Escritorio\\Progra3\\VIANELAAAA\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\asus\\onedrive\\escritorio\\progra3\\vianelaaaa\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\reportes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\reportes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\asus\\onedrive\\escritorio\\progra3\\vianelaaaa\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\gestmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\gestmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
@@ -22,11 +26,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "GestMaterial.aspx",
               "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Escritorio\\Progra3\\VIANELAAAA\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestMaterial.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\GestMaterial.aspx",
@@ -40,7 +44,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Reportes.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Escritorio\\Progra3\\VIANELAAAA\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Reportes.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\Reportes.aspx.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Escritorio\\Progra3\\VIANELAAAA\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Reportes.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\Reportes.aspx.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T04:31:12.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "RegistrarMaterial.aspx.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Escritorio\\Progra3\\VIANELAAAA\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RegistrarMaterial.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\RegistrarMaterial.aspx.cs",
@@ -52,7 +69,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "RegistrarMaterial.aspx",
               "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Escritorio\\Progra3\\VIANELAAAA\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RegistrarMaterial.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\RegistrarMaterial.aspx",
