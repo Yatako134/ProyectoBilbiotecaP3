@@ -24,7 +24,7 @@ namespace BibliotecaWA
 
             if (chkReporteUsuarios != null && chkReporteUsuarios.Checked)
             {
-                //Response.Redirect("ReporteUsuarios.aspx");
+                Response.Redirect("http://localhost:8080/BibliotecaWS/ReporteReq24");
                 return;
             }
 
