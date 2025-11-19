@@ -342,6 +342,7 @@ namespace BibliotecaWA
                 rptBibliotecas.Visible = false;
                 panelSinEjemplares.Visible = true;
                 panelSinEjemplares.Controls.Clear(); // limpia mensajes previos
+                btnPrestar.Visible = false;
                 //btnPrestar.Enabled = false;
                 panelSinEjemplares.Controls.Add(new Literal
                 {
@@ -350,6 +351,8 @@ namespace BibliotecaWA
 
                 return;
             }
+            //btnPrestar.Enabled = true;
+            btnPrestar.Visible = true;
             panelSinEjemplares.Visible = false;
             rptBibliotecas.Visible = true;
 
