@@ -238,10 +238,10 @@
             const anho = parseInt(valor);
             const anhoActual = new Date().getFullYear();
 
-            if (anho < 1000 || anho > anhoActual + 1) {
+            if (anho < 868 || anho > anhoActual + 1) {
                 return {
                     esValido: false,
-                    mensaje: `El año de publicación debe estar entre 1000 y ${anhoActual + 1}`
+                    mensaje: `El año de publicación debe estar entre 868  y ${anhoActual + 1}`
                 };
             }
 

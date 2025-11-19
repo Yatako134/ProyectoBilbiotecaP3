@@ -19,7 +19,7 @@ namespace BibliotecaWA
             if (!IsPostBack)
             {
                 string idMaterial = Request.QueryString["id"];
-
+                
                 if (!string.IsNullOrEmpty(idMaterial))
                 {
                     CargarMaterialParaEdicion(int.Parse(idMaterial));
@@ -45,7 +45,7 @@ namespace BibliotecaWA
                     txtPaginas.Text = material.numero_paginas.ToString();
                     TextTema.Text = material.clasificacion_tematica;
                     TextIdioma.Text = material.idioma;
-
+                    TextEditorial.Text = material.editoriales;
                     // Tipo de material - con más debug
                     string tipoDesdeBD = material.tipo.ToString();
                     System.Diagnostics.Debug.WriteLine($"🎯 Tipo desde BD normalizado: '{tipoDesdeBD}'");
@@ -1049,7 +1049,7 @@ namespace BibliotecaWA
                     libro.idioma = TextIdioma.Text;
                     libro.ISBN = txtISBN.Text; // ← GUARDA CON GUIONES
                     libro.edicion = txtEdicion.Text;
-                    //libro.editoriales = TextEditorial;
+                    libro.editoriales = TextEditorial.Text;
                     libroBO.modificarLibro(libro);
                 }
             }
@@ -1077,7 +1077,7 @@ namespace BibliotecaWA
                     tesis.asesor = txtAsesor.Text;
                     tesis.grado = txtGrado.Text;
                     tesis.institucionPublicacion = txtInstitucion.Text;
-                    //tesis.editoriales = TextEditorial;
+                    tesis.editoriales = TextEditorial.Text;
                     tesisBO.modificarTesis(tesis);
                 }
             }
@@ -1105,7 +1105,7 @@ namespace BibliotecaWA
                     articulo.revista = txtRevista.Text;
                     articulo.volumen = int.Parse(txtVolumen.Text);
                     articulo.numero = int.Parse(txtNumero.Text);
-                    //articulo.editoriales = TextEditorial;
+                    articulo.editoriales = TextEditorial.Text;
                     articuloBO.modificarArticulo(articulo);
                 }
             }
@@ -1150,7 +1150,7 @@ namespace BibliotecaWA
                 libro.idioma = TextIdioma.Text;
                 libro.ISBN = txtISBN.Text; // ← GUARDA CON GUIONES
                 libro.edicion = txtEdicion.Text;
-                //libro.editoriales = TextEditorial;
+                libro.editoriales = TextEditorial.Text;
                 return libroDAO.insertarLibro(libro);
             }
             catch (Exception ex)
@@ -1175,7 +1175,7 @@ namespace BibliotecaWA
                 tesis.asesor = txtAsesor.Text;
                 tesis.grado = txtGrado.Text;
                 tesis.institucionPublicacion = txtInstitucion.Text;
-                //tesis.editoriales = TextEditorial;
+                tesis.editoriales = TextEditorial.Text;
                 return tesisDAO.insertarTesis(tesis);
             }
             catch (Exception ex)
@@ -1200,7 +1200,7 @@ namespace BibliotecaWA
                 art.revista = txtRevista.Text;
                 art.volumen = Convert.ToInt32(txtVolumen.Text);
                 art.numero = Convert.ToInt32(txtNumero.Text);
-                //art.editoriales = TextEditorial;
+                art.editoriales = TextEditorial.Text;
                 return artiDAO.insertarArticulo(art);
             }
             catch (Exception ex)

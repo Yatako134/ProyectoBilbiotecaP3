@@ -1,12 +1,13 @@
-﻿using System;
+﻿using BibliotecaWA.BibliotecaServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BibliotecaWA.BibliotecaServices;
 
 namespace BibliotecaWA
 {
@@ -179,7 +180,7 @@ namespace BibliotecaWA
 
             prestamobo = new PrestamoWSClient();
             int codigoPrestamo = prestamobo.insertarPrestamo(p);
-
+            System.Diagnostics.Debug.WriteLine($"💾 INSERTANDO: {codigoPrestamo}");
             //Modal para la confirmación del prestamo
             string script = $"mostrarModalPrestamoExitoso('{codigoPrestamo:D5}');";
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", script, true);
@@ -187,7 +188,7 @@ namespace BibliotecaWA
         protected void btnContinuar_Click(object sender, EventArgs e)
         {
 
-            Response.Redirect("BusquedaMaterialaspx.aspx");
+            Response.Redirect("BusquedaMaterialas.aspx");
         }
 
         protected void txtCodigoUniv_TextChanged(object sender, EventArgs e)
