@@ -1,4 +1,3 @@
-
 package biblioteca.services.gestionUsuario;
 
 import biblioteca.gestionUsuario.boImpl.UsuarioBOImpl;
@@ -43,44 +42,76 @@ public class UsuarioWS {
     public ArrayList<Usuario> listarUsuarios() throws Exception {
         return usuarioBO.listarTodos();
     }
-    
+
     @WebMethod(operationName = "obtenerUsuarioxCodigo")
     public Usuario obtenerUsuarioxCodigo(int codigo) throws Exception {
         return usuarioBO.obtenerUsuarioxCodigo(codigo);
     }
-    
+
     @WebMethod(operationName = "obtener_prestamos_vigentesxUsuario")
     public int obtener_prestamos_vigentesxUsuario(int codigo) throws Exception {
         return usuarioBO.prestamos_vigentesxUsuario(codigo);
     }
-    
+
     @WebMethod(operationName = "verificarCuenta")
     public int verificarCuenta(@WebParam(name = "cuenta") Usuario usuario) throws Exception {
-        int resultado=0;
-        try{
-            usuarioBO=new UsuarioBOImpl();
-            resultado=usuarioBO.verificar(usuario);
-        }catch(Exception ex){
+        int resultado = 0;
+        try {
+            usuarioBO = new UsuarioBOImpl();
+            resultado = usuarioBO.verificar(usuario);
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
         return resultado;
     }
-    
+
     @WebMethod(operationName = "listarPorPanelBusqueda")
-    public ArrayList<Usuario> listarPorPanelBusqueda(@WebParam(name = "filtro")String filtro) {
+    public ArrayList<Usuario> listarPorPanelBusqueda(@WebParam(name = "filtro") String filtro) {
         return usuarioBO.listarPorPanelBusqueda(filtro);
     }
-    
+
     @WebMethod(operationName = "listarTodosDelSistema")
-    public ArrayList<Usuario> listarTodosDelSistema(){
+    public ArrayList<Usuario> listarTodosDelSistema() {
         return usuarioBO.listarTodosDelSistema();
     }
+
     @WebMethod(operationName = "obtener_sancion_usuario")
-    public Sancion obtener_sancion_usuario(@WebParam(name = "name") int id_usuario){
+    public Sancion obtener_sancion_usuario(@WebParam(name = "name") int id_usuario) {
         return usuarioBO.obtener_sancion_usuario(id_usuario);
     }
+
     @WebMethod(operationName = "obtenerPrestamosRetrasados")
-    public ArrayList<Prestamo> obtenerPrestamosRetrasados(@WebParam(name = "name") int id_usuario){
+    public ArrayList<Prestamo> obtenerPrestamosRetrasados(@WebParam(name = "name") int id_usuario) {
         return usuarioBO.obtenerPrestamosRetrasados(id_usuario);
+    }
+
+    @WebMethod(operationName = "verificarCorreoExistente")
+    public int verificarCorreoExistente(@WebParam(name = "correo") String correo) throws Exception {
+
+        int resultado = 0;
+        try {
+            usuarioBO = new UsuarioBOImpl();
+            resultado = usuarioBO.verificarCorreoExistente(correo);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+
+    }
+
+    @WebMethod(operationName = "modificarContrasena")
+    public int modificarContrasena(
+            @WebParam(name = "idUsuario") int idUsuario,
+            @WebParam(name = "nuevaContrasena") String nuevaContrasena) throws Exception {
+
+        int resultado = 0;
+        try {
+            resultado = usuarioBO.modificarContrasena(idUsuario, nuevaContrasena);
+            System.out.println("Servicio Web - Contraseña modificada para usuario ID: " + idUsuario + ", resultado: " + resultado);
+        } catch (Exception ex) {
+            System.out.println("Error en servicio web modificarContrasena: " + ex.getMessage());
+            throw ex;
+        }
+        return resultado;
     }
 }

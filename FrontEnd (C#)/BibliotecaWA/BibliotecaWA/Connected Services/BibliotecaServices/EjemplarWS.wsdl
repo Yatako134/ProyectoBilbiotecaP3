@@ -20,29 +20,29 @@
   <message name="obtenerEjemplarPorIdResponse">
     <part name="parameters" element="tns:obtenerEjemplarPorIdResponse" />
   </message>
-  <message name="listarEjemplaresTodos">
-    <part name="parameters" element="tns:listarEjemplaresTodos" />
-  </message>
-  <message name="listarEjemplaresTodosResponse">
-    <part name="parameters" element="tns:listarEjemplaresTodosResponse" />
-  </message>
   <message name="eliminarEjemplar">
     <part name="parameters" element="tns:eliminarEjemplar" />
   </message>
   <message name="eliminarEjemplarResponse">
     <part name="parameters" element="tns:eliminarEjemplarResponse" />
   </message>
-  <message name="insertarEjemplar">
-    <part name="parameters" element="tns:insertarEjemplar" />
-  </message>
-  <message name="insertarEjemplarResponse">
-    <part name="parameters" element="tns:insertarEjemplarResponse" />
-  </message>
   <message name="modificarEjemplar">
     <part name="parameters" element="tns:modificarEjemplar" />
   </message>
   <message name="modificarEjemplarResponse">
     <part name="parameters" element="tns:modificarEjemplarResponse" />
+  </message>
+  <message name="listarEjemplaresTodos">
+    <part name="parameters" element="tns:listarEjemplaresTodos" />
+  </message>
+  <message name="listarEjemplaresTodosResponse">
+    <part name="parameters" element="tns:listarEjemplaresTodosResponse" />
+  </message>
+  <message name="insertarEjemplar">
+    <part name="parameters" element="tns:insertarEjemplar" />
+  </message>
+  <message name="insertarEjemplarResponse">
+    <part name="parameters" element="tns:insertarEjemplarResponse" />
   </message>
   <message name="listar_por_material">
     <part name="parameters" element="tns:listar_por_material" />
@@ -61,24 +61,24 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/obtenerEjemplarPorIdResponse" message="tns:obtenerEjemplarPorIdResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/obtenerEjemplarPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="listarEjemplaresTodos">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosRequest" message="tns:listarEjemplaresTodos" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosResponse" message="tns:listarEjemplaresTodosResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodos/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
     <operation name="eliminarEjemplar">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/eliminarEjemplarRequest" message="tns:eliminarEjemplar" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/eliminarEjemplarResponse" message="tns:eliminarEjemplarResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/eliminarEjemplar/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="insertarEjemplar">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarRequest" message="tns:insertarEjemplar" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarResponse" message="tns:insertarEjemplarResponse" />
-    </operation>
     <operation name="modificarEjemplar">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplarRequest" message="tns:modificarEjemplar" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplarResponse" message="tns:modificarEjemplarResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplar/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarEjemplaresTodos">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosRequest" message="tns:listarEjemplaresTodos" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosResponse" message="tns:listarEjemplaresTodosResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodos/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="insertarEjemplar">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarRequest" message="tns:insertarEjemplar" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarResponse" message="tns:insertarEjemplarResponse" />
     </operation>
     <operation name="listar_por_material">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_por_materialRequest" message="tns:listar_por_material" />
@@ -112,7 +112,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="listarEjemplaresTodos">
+    <operation name="eliminarEjemplar">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -124,7 +124,19 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="eliminarEjemplar">
+    <operation name="modificarEjemplar">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarEjemplaresTodos">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -144,18 +156,6 @@
       <output>
         <soap:body use="literal" />
       </output>
-    </operation>
-    <operation name="modificarEjemplar">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
     </operation>
     <operation name="listar_por_material">
       <soap:operation soapAction="" />

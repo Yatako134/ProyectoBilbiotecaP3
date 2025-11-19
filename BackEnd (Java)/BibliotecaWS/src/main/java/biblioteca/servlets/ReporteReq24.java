@@ -34,7 +34,7 @@ public class ReporteReq24 extends HttpServlet {
                 JRLoader.loadObject(getClass().
                     getResourceAsStream
                     ("/pe/edu/pucp/utilsarmy/reports/"
-                            + "ReporteRF24.jasper"));
+                            + "ReporteRF26.jasper"));
             
             //Logo de la web
             URL rutaImagen

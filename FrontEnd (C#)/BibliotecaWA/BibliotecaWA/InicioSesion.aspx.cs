@@ -63,11 +63,28 @@ namespace BibliotecaWA
                 lblMensaje.Text = "Credenciales correctas";
 
                 // Redirigir a la página solicitada o a la predeterminada
+                usuario usu=bousuario.obtenerUsuarioPorId(resultado);
                 string strRedirect = Request["ReturnUrl"];
-                if (strRedirect == null)
-                    strRedirect = "BusquedaMaterialas.aspx";  // Página predeterminada después de iniciar sesión
+                string rol = usu.rol_usuario.ToString();
 
-                // Redirige una vez
+                if (strRedirect == null)
+                {
+                    Session["UserId"] = resultado;
+                    Session["UserName"] = $"{usu.nombre} {usu.primer_apellido}";
+
+                    //if (rol == "Estudiante" || rol == "Docente")
+                    //{
+                    //strRedirect = "BusquedaMaterialesEstudiante.aspx";
+
+                    //}
+                    //else
+                    //{
+                    strRedirect = "BusquedaMaterialas.aspx";
+
+                    //}
+
+
+                }
                 Response.Redirect(strRedirect, true);
             }
             else

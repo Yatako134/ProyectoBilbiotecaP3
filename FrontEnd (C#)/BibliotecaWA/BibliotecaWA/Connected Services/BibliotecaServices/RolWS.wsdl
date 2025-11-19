@@ -5,20 +5,26 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/RolWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
+  <message name="insertarRol">
+    <part name="parameters" element="tns:insertarRol" />
+  </message>
+  <message name="insertarRolResponse">
+    <part name="parameters" element="tns:insertarRolResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
   <message name="modificarRol">
     <part name="parameters" element="tns:modificarRol" />
   </message>
   <message name="modificarRolResponse">
     <part name="parameters" element="tns:modificarRolResponse" />
   </message>
-  <message name="Exception">
-    <part name="fault" element="tns:Exception" />
+  <message name="obtenerRolPorId">
+    <part name="parameters" element="tns:obtenerRolPorId" />
   </message>
-  <message name="insertarRol">
-    <part name="parameters" element="tns:insertarRol" />
-  </message>
-  <message name="insertarRolResponse">
-    <part name="parameters" element="tns:insertarRolResponse" />
+  <message name="obtenerRolPorIdResponse">
+    <part name="parameters" element="tns:obtenerRolPorIdResponse" />
   </message>
   <message name="listarRoles">
     <part name="parameters" element="tns:listarRoles" />
@@ -32,22 +38,21 @@
   <message name="eliminarRolResponse">
     <part name="parameters" element="tns:eliminarRolResponse" />
   </message>
-  <message name="obtenerRolPorId">
-    <part name="parameters" element="tns:obtenerRolPorId" />
-  </message>
-  <message name="obtenerRolPorIdResponse">
-    <part name="parameters" element="tns:obtenerRolPorIdResponse" />
-  </message>
   <portType name="RolWS">
+    <operation name="insertarRol">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/insertarRolRequest" message="tns:insertarRol" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/insertarRolResponse" message="tns:insertarRolResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/insertarRol/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
     <operation name="modificarRol">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/modificarRolRequest" message="tns:modificarRol" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/modificarRolResponse" message="tns:modificarRolResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/modificarRol/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="insertarRol">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/insertarRolRequest" message="tns:insertarRol" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/insertarRolResponse" message="tns:insertarRolResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/insertarRol/Fault/Exception" name="Exception" message="tns:Exception" />
+    <operation name="obtenerRolPorId">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorIdRequest" message="tns:obtenerRolPorId" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorIdResponse" message="tns:obtenerRolPorIdResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="listarRoles">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/listarRolesRequest" message="tns:listarRoles" />
@@ -59,14 +64,21 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/eliminarRolResponse" message="tns:eliminarRolResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/eliminarRol/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="obtenerRolPorId">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorIdRequest" message="tns:obtenerRolPorId" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorIdResponse" message="tns:obtenerRolPorIdResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/RolWS/obtenerRolPorId/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
   </portType>
   <binding name="RolWSPortBinding" type="tns:RolWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="insertarRol">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
     <operation name="modificarRol">
       <soap:operation soapAction="" />
       <input>
@@ -79,7 +91,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="insertarRol">
+    <operation name="obtenerRolPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -104,18 +116,6 @@
       </fault>
     </operation>
     <operation name="eliminarRol">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
-    <operation name="obtenerRolPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

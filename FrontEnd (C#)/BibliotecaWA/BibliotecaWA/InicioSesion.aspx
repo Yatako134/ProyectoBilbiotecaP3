@@ -155,7 +155,7 @@
                 </div>
 
                 <div class="form-group mt-3 text-start">
-                    <a href="#" class="d-block">¿Olvidaste tu contraseña?</a>
+                    <button type="button" class="btn btn-link p-0" onclick="window.location.href='RestablecerContrasena.aspx'">¿Olvidaste tu contraseña?</button>
                 </div>
 
                 <!-- Botón de inicio de sesión -->

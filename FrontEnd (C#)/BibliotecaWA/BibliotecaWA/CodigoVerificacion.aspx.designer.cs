@@ -11,70 +11,88 @@ namespace BibliotecaWA
 {
 
 
-    public partial class HomeEstudiante
+    public partial class CodigoVerificacion
     {
 
         /// <summary>
-        /// Control cph_Title.
+        /// Control formVerificacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cph_Title;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formVerificacion;
 
         /// <summary>
-        /// Control cph_Scripts.
+        /// Control txtCodigo1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cph_Scripts;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigo1;
 
         /// <summary>
-        /// Control form1.
+        /// Control txtCodigo2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigo2;
 
         /// <summary>
-        /// Control spnNombreUsuario.
+        /// Control txtCodigo3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label spnNombreUsuario;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigo3;
 
         /// <summary>
-        /// Control lnkCambiarContrasena.
+        /// Control txtCodigo4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCambiarContrasena;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigo4;
 
         /// <summary>
-        /// Control lnkCerrarSesion.
+        /// Control txtCodigo5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCerrarSesion;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigo5;
 
         /// <summary>
-        /// Control cph_Contenido.
+        /// Control txtCodigo6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cph_Contenido;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigo6;
+
+        /// <summary>
+        /// Control lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
+
+        /// <summary>
+        /// Control btnContinue.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnContinue;
     }
 }
