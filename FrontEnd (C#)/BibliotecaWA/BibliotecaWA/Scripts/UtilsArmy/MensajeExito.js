@@ -6,7 +6,7 @@ function mostrarModalPrestamoExitoso(codigo) {
     modalPrestamoExitoso.show();
 }
 
-document.getElementById("btnIrPrestamo").addEventListener("click", function () {
-    // Aquí podrías redirigir a la página del préstamo
-    window.location.href = "Prestamo.aspx";
-});
+//document.getElementById("btnIrPrestamo").addEventListener("click", function () {
+//    // Aquí podrías redirigir a la página del préstamo
+//    window.location.href = "Prestamo.aspx";
+//});

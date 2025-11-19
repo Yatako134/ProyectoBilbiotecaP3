@@ -224,7 +224,7 @@
                     <p>Para ver detalles del préstamo seleccione “Ir al préstamo”.</p>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button id="btnIrPrestamo" class="btn btn-outline-primary">Ir al préstamo</button>
+                    <%--<button id="btnIrPrestamo" class="btn btn-outline-primary">Ir al préstamo</button>--%>
                     <asp:Button ID="btnContinuar" runat="server" CssClass="btn btn-primary" Text="Continuar buscando" OnClick="btnContinuar_Click" />
                 </div>
             </div>
