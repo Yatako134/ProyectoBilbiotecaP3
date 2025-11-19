@@ -181,6 +181,7 @@ namespace BibliotecaWA
             prestamobo = new PrestamoWSClient();
             int codigoPrestamo = prestamobo.insertarPrestamo(p);
             System.Diagnostics.Debug.WriteLine($"💾 INSERTANDO: {codigoPrestamo}");
+
             //Modal para la confirmación del prestamo
             string script = $"mostrarModalPrestamoExitoso('{codigoPrestamo:D5}');";
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", script, true);
