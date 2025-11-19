@@ -20,8 +20,12 @@ namespace BibliotecaWA
             if (!IsPostBack)
             {
                 materialBO = new MaterialWSClient();
-                //Session["usuarios"] = new BindingList<usuario>(bousuario.listarUsuarios());
-                Session["materiales"] = new BindingList<materialBibliografico>(materialBO.ListarTodos());
+
+                var listaWS = materialBO.ListarTodos();
+
+                Session["materiales"] = listaWS != null
+                    ? new BindingList<materialBibliografico>(listaWS)
+                    : new BindingList<materialBibliografico>();
 
                 CargarMateriales();
                 CargarBibliotecas();
@@ -30,25 +34,34 @@ namespace BibliotecaWA
         }
         private void CargarBibliotecas()
         {
-            if (bibliotecaBO == null) bibliotecaBO = new BibliotecaWSClient();
+            if (bibliotecaBO == null)
+                bibliotecaBO = new BibliotecaWSClient();
 
-            bibliotecas = new BindingList<biblioteca>(bibliotecaBO.ListarTodas()); // Debe devolver lista con propiedades IdBiblioteca y Nombre
+            // Llamada segura al WS
+            var listaWS = bibliotecaBO.ListarTodas();
+
+            // Si viene null → lista vacía
+            bibliotecas = listaWS != null
+                ? new BindingList<biblioteca>(listaWS)
+                : new BindingList<biblioteca>();
 
             ddlBiblioteca.DataSource = bibliotecas;
             ddlBiblioteca.DataTextField = "Nombre";
-            ddlBiblioteca.DataValueField = "Nombre";
+            ddlBiblioteca.DataValueField = "Nombre";  // o IdBiblioteca si debe ser el ID
             ddlBiblioteca.DataBind();
 
             ddlBiblioteca.Items.Insert(0, new ListItem("-- Seleccione --", ""));
         }
         private void CargarMateriales()
         {
-            BindingList<materialBibliografico> materiales = (BindingList<materialBibliografico>)Session["materiales"];
-            //recorremos esos materiales para contar los ejemplares y si es 0 ponemos NODISPONIBLE
+            // Recupero de sesión pero si viene null, creo una lista vacía
+            var materiales = Session["materiales"] as BindingList<materialBibliografico>
+                             ?? new BindingList<materialBibliografico>();
+
             dgvUsuario.DataSource = materiales;
             dgvUsuario.DataBind();
+
             ActualizarContador();
-            //GenerarPaginador();
             ActualizarPaginacion();
         }
         protected void dgvUsuario_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -142,7 +155,7 @@ namespace BibliotecaWA
             string tipoMaterial = ddlTipoMaterial.SelectedIndex == 0 ? null : ddlTipoMaterial.SelectedValue;
             string biblioteca = ddlBiblioteca.SelectedIndex == 0 ? null : ddlBiblioteca.SelectedValue;
             string disponibilidad = ddlDisponibilidad.SelectedIndex == 0 ? null : ddlDisponibilidad.SelectedValue;
-
+            string editoriales = "";
             var resultados = materialBO.BusquedaAvanzada(
                 titulo,
                 contribuyente,
@@ -152,7 +165,8 @@ namespace BibliotecaWA
                 anioHasta,
                 tipoMaterial,
                 biblioteca,
-                disponibilidad
+                disponibilidad,
+                editoriales
             )?.ToList();
 
             if (resultados == null || resultados.Count == 0)
