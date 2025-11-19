@@ -26,7 +26,7 @@
         function validateEmail() {
             var email = document.getElementById('<%= txtUsername.ClientID %>').value;
         var emailError = document.getElementById('<%= lblEmailError.ClientID %>');
-            var emailRegex = /^[a-zA-Z0-9._%+-]+@example\.com$/; // Solo correos @ejemplo.com
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@pucp\.edu\.pe$/; // Solo correos @ejemplo.com
 
             // Solo mostrar errores si el usuario ya interactuó con el campo
             if (!emailInteracted) {
@@ -39,7 +39,7 @@
                 emailError.style.display = "block";
                 return false;
             } else if (!emailRegex.test(email)) {
-                emailError.innerHTML = "El correo debe ser de tipo @example.com";
+                emailError.innerHTML = "El correo debe ser de tipo @pucp.edu.pe";
                 emailError.style.display = "block";
                 return false;
             } else {

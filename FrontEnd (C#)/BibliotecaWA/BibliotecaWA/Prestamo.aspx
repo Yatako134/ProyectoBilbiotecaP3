@@ -106,13 +106,13 @@
                         <asp:Label runat="server" Text="Tipo de usuario" CssClass="form-label me-2"
                             Style="white-space: nowrap;"></asp:Label>
                         <asp:TextBox ID="txtTipoUsuario" runat="server" CssClass="form-control me-3"
-                            Style="white-space: nowrap;"></asp:TextBox>
+                            ReadOnly="true" Style="white-space: nowrap;"></asp:TextBox>
                     </div>
                     <div class="col-md-6 d-flex align-items-center">
                         <asp:Label runat="server" Text="Préstamos vigentes" CssClass="form-label m-2"
                            Style="white-space: nowrap;" ></asp:Label>
                         <asp:TextBox ID="txtPrestamosVigentes" runat="server" CssClass="form-control"
-                            Style="white-space: nowrap;"></asp:TextBox>
+                            ReadOnly="true" Style="white-space: nowrap;"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row mb-3">

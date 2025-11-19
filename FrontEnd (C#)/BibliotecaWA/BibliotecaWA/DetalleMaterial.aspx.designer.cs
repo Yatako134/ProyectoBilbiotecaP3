@@ -168,6 +168,24 @@ namespace BibliotecaWA
         protected global::System.Web.UI.WebControls.TextBox TextNroEjemplares;
 
         /// <summary>
+        /// Control lblEditoriales.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEditoriales;
+
+        /// <summary>
+        /// Control txtEditoriales.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEditoriales;
+
+        /// <summary>
         /// Control Editoriales.
         /// </summary>
         /// <remarks>

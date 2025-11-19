@@ -91,7 +91,7 @@ namespace BibliotecaWA
             string tipoMaterial = ddlTipoMaterial.SelectedIndex == 0 ? null : ddlTipoMaterial.SelectedValue;
             string biblioteca = ddlBiblioteca.SelectedIndex == 0 ? null : ddlBiblioteca.SelectedValue;
             string disponibilidad = ddlDisponibilidad.SelectedIndex == 0 ? null : ddlDisponibilidad.SelectedValue;
-
+            string editoriales = "";
             if (materialBO == null)
                 materialBO = new MaterialWSClient();
 
@@ -104,7 +104,8 @@ namespace BibliotecaWA
                 anioHasta,
                 tipoMaterial,
                 biblioteca,
-                disponibilidad
+                disponibilidad,
+                editoriales
             )?.ToList();
 
             if (resultados == null || resultados.Count == 0)
