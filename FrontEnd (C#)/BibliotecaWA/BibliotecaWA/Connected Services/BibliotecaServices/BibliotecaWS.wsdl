@@ -20,6 +20,12 @@
   <message name="ListarTodasResponse">
     <part name="parameters" element="tns:ListarTodasResponse" />
   </message>
+  <message name="insertarBiblioteca">
+    <part name="parameters" element="tns:insertarBiblioteca" />
+  </message>
+  <message name="insertarBibliotecaResponse">
+    <part name="parameters" element="tns:insertarBibliotecaResponse" />
+  </message>
   <message name="modificarBiblioteca">
     <part name="parameters" element="tns:modificarBiblioteca" />
   </message>
@@ -47,6 +53,10 @@
     <operation name="ListarTodas">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/ListarTodasRequest" message="tns:ListarTodas" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/ListarTodasResponse" message="tns:ListarTodasResponse" />
+    </operation>
+    <operation name="insertarBiblioteca">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaRequest" message="tns:insertarBiblioteca" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/insertarBibliotecaResponse" message="tns:insertarBibliotecaResponse" />
     </operation>
     <operation name="modificarBiblioteca">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/BibliotecaWS/modificarBibliotecaRequest" message="tns:modificarBiblioteca" />
@@ -78,6 +88,15 @@
       </fault>
     </operation>
     <operation name="ListarTodas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarBiblioteca">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
