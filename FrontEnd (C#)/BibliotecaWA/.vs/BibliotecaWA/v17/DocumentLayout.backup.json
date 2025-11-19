@@ -3,15 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\usuario\\desktop\\gitnuevo\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\gestmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\gestmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\registrarmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\registrarmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\registrarmaterial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\gestmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\gestmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\usuario\\desktop\\gitnuevo\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\registrarmaterial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\registrarmaterial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -22,11 +22,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "GestMaterial.aspx",
               "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestMaterial.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\GestMaterial.aspx",
@@ -39,7 +39,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "RegistrarMaterial.aspx",
               "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RegistrarMaterial.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\RegistrarMaterial.aspx",
@@ -58,7 +58,7 @@
               "RelativeDocumentMoniker": "BibliotecaWA\\RegistrarMaterial.aspx.cs",
               "ToolTip": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RegistrarMaterial.aspx.cs",
               "RelativeToolTip": "BibliotecaWA\\RegistrarMaterial.aspx.cs",
-              "ViewState": "AgIAAFgCAAAAAAAAAAAowHwCAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAEIFAAAAAAAAAAAwwGEFAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-17T21:13:20.202Z",
               "EditorCaption": ""
