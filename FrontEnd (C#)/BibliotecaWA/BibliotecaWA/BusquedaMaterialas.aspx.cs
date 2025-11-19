@@ -20,8 +20,15 @@ namespace BibliotecaWA
             if (!IsPostBack)
             {
                 materialBO = new MaterialWSClient();
-                listaMateriales = new BindingList<materialBibliografico>(materialBO.ListarTodos());
+
+                // --- Manejo seguro de null ---
+                var materialesWS = materialBO.ListarTodos();
+                listaMateriales = materialesWS != null
+                    ? new BindingList<materialBibliografico>(materialesWS)
+                    : new BindingList<materialBibliografico>();   // lista vacía si viene null
+
                 Session["materiales"] = listaMateriales;
+
                 CargarMateriales();
                 CargarBibliotecas();
             }
@@ -29,18 +36,23 @@ namespace BibliotecaWA
 
         private void CargarBibliotecas()
         {
-            // Supongamos que obtienes una lista desde tu capa de negocio o BD
-            if (bibliotecaBO == null) bibliotecaBO = new BibliotecaWSClient();
+            if (bibliotecaBO == null)
+                bibliotecaBO = new BibliotecaWSClient();
 
-            bibliotecas = new BindingList<biblioteca>(bibliotecaBO.ListarTodas()); // Debe devolver lista con propiedades IdBiblioteca y Nombre
+            // Llamada segura al WS
+            var listaWS = bibliotecaBO.ListarTodas();
+
+            // Si viene null → lista vacía
+            bibliotecas = listaWS != null
+                ? new BindingList<biblioteca>(listaWS)
+                : new BindingList<biblioteca>();
 
             ddlBiblioteca.DataSource = bibliotecas;
             ddlBiblioteca.DataTextField = "Nombre";
-            ddlBiblioteca.DataValueField = "Nombre";
+            ddlBiblioteca.DataValueField = "Nombre";  // o IdBiblioteca si debe ser el ID
             ddlBiblioteca.DataBind();
 
             ddlBiblioteca.Items.Insert(0, new ListItem("-- Seleccione --", ""));
-
         }
 
         private void CargarMateriales(string filtro = "")
@@ -109,6 +121,7 @@ namespace BibliotecaWA
             string tipoMaterial = ddlTipoMaterial.SelectedIndex == 0 ? null : ddlTipoMaterial.SelectedValue; 
             string biblioteca = ddlBiblioteca.SelectedIndex == 0 ? null : ddlBiblioteca.SelectedValue; 
             string disponibilidad = ddlDisponibilidad.SelectedIndex == 0 ? null : ddlDisponibilidad.SelectedValue;
+            string editoriales="";
 
             var resultados = materialBO.BusquedaAvanzada(
                 titulo,
@@ -119,7 +132,8 @@ namespace BibliotecaWA
                 anioHasta,
                 tipoMaterial,
                 biblioteca,
-                disponibilidad
+                disponibilidad,
+                editoriales
             )?.ToList();
 
             if (resultados == null || resultados.Count == 0)

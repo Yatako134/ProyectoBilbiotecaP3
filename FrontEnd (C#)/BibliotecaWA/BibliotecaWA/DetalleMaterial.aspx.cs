@@ -176,26 +176,7 @@ namespace BibliotecaWA
 
         private void CargarEditoriales()
         {
-            var listaEditoriales = materialBiblioBO.buscarEditoriales(materialBibliografico.idMaterial);
-
-            // Validar si la lista es nula o está vacía
-            if (listaEditoriales == null || !listaEditoriales.Any())
-            {
-                lblEditorial1.InnerText = "Sin editoriales registrados";
-                lnkVerMasEditoriales.Visible = false;
-                //rptEditoriales.DataSource = null;
-                rptEditoriales.DataBind();
-                return;
-            }
-
-            BindingList<editorial> es = new BindingList<editorial>(listaEditoriales);
-
-            // Mostrar solo el primer editorial
-            lblEditorial1.InnerText = es[0].nombre;
-
-            // Llenar el modal con todos los editoriales
-            rptEditoriales.DataSource = es;
-            rptEditoriales.DataBind();
+            
         }
 
         private void CargarContribuyentes()
