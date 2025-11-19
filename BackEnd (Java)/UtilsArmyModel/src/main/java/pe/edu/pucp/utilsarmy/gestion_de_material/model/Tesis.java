@@ -12,8 +12,8 @@ public class Tesis extends MaterialBibliografico{
 
     public Tesis(String institucionPublicacion, String especialidad, String asesor, String grado, int numero_copias, 
             String titulo, int anho_publicacion, int numero_paginas, EstadoMaterial estado, String clasificacion_tematica,
-            boolean activo, String idioma, Editorial editorial) {
-        super(titulo, anho_publicacion, numero_paginas, estado, clasificacion_tematica, activo, idioma, editorial);
+            boolean activo, String idioma, String editoriales) {
+        super(titulo, anho_publicacion, numero_paginas, estado, clasificacion_tematica, activo, idioma, editoriales);
         this.institucionPublicacion = institucionPublicacion;
         this.especialidad = especialidad;
         this.asesor = asesor;

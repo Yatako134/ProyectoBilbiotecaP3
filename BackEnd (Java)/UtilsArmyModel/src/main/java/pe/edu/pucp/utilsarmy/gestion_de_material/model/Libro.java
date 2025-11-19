@@ -8,8 +8,8 @@ public class Libro extends MaterialBibliografico {
         super();
     }
 
-    public Libro(String ISBN, String edicion, int numero_copias, String titulo, int anho_publicacion, int numero_paginas, EstadoMaterial estado, String clasificacion_tematica, boolean activo, String idioma, Editorial editorial) {
-        super(titulo, anho_publicacion, numero_paginas, estado, clasificacion_tematica, activo, idioma, editorial);
+    public Libro(String ISBN, String edicion, int numero_copias, String titulo, int anho_publicacion, int numero_paginas, EstadoMaterial estado, String clasificacion_tematica, boolean activo, String idioma, String editoriales) {
+        super(titulo, anho_publicacion, numero_paginas, estado, clasificacion_tematica, activo, idioma, editoriales);
         this.ISBN = ISBN;
         this.edicion = edicion;
     }

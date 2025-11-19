@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Biblioteca;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Contribuyente;
-import pe.edu.pucp.utilsarmy.gestion_de_material.model.Editorial;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoEjemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.EstadoMaterial;
@@ -102,31 +101,6 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
 
     }
 
-    @Override
-    public ArrayList<Editorial> buscarEditorial(int id) {
-        ArrayList<Editorial> editoriales = null;
-        Map<Integer, Object> parametrosEntrada = new HashMap<>();
-        parametrosEntrada.put(1, id);
-
-        ResultSet rs = DBManager.getInstance().ejecutarProcedimientoLectura("ObtenerEditorialesPorId", parametrosEntrada);
-
-        try {
-            while (rs.next()) {
-                if (editoriales == null) editoriales = new ArrayList<>();
-
-                Editorial e = new Editorial();
-                e.setNombre(rs.getString("nombre"));
-
-                editoriales.add(e);
-            }
-        } catch (SQLException ex) {
-            System.out.println("ERROR: " + ex.getMessage());
-        } finally {
-            DBManager.getInstance().cerrarConexion();
-        }
-
-        return editoriales;
-    }
 
     @Override
     public ArrayList<Ejemplar> obtenerEjemplaresDisponibles(int idMaterial, int idBiblioteca) {
@@ -225,6 +199,7 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
                 material.setAutoresTexto(rs.getString("autores"));
                 material.setBibliotecasTexto(rs.getString("bibliotecas"));
                 material.setCantidadDisponible(rs.getInt("ejemplares_disponibles"));
+                material.setEditoriales(rs.getString("editoriales"));
                 materiales.add(material);
             }
 
@@ -260,6 +235,7 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
                 material.setAutoresTexto(rs.getString("autores"));
                 material.setBibliotecasTexto(rs.getString("bibliotecas"));
                 material.setCantidadDisponible(rs.getInt("ejemplares_disponibles"));
+                material.setEditoriales(rs.getString("editoriales"));
                 materiales.add(material);
             }
 
@@ -275,7 +251,8 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
     public ArrayList<MaterialBibliografico> listar_busqueda_avanzada(String _titulo, 
             String _tipo_contribuyente, String _nombre_contribuyente, 
             String _tema, Integer _fecha_desde, Integer _fecha_hasta, 
-            String _tipo_material, String _biblioteca, String _disponibilidad) {
+            String _tipo_material, String _biblioteca, String _disponibilidad,
+            String _editoriales) {
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, _titulo);
         parametrosEntrada.put(2, _tipo_contribuyente);
@@ -286,6 +263,7 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
         parametrosEntrada.put(7, _tipo_material);
         parametrosEntrada.put(8, _biblioteca);
         parametrosEntrada.put(9, _disponibilidad);
+        parametrosEntrada.put(10, _editoriales);
         ArrayList<MaterialBibliografico> materiales = null;
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_MATERIALES_BUSQUEDA_AVANZADA", parametrosEntrada);
         System.out.println("Lectura de materiales...");
@@ -309,6 +287,7 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
                 material.setAutoresTexto(rs.getString("autores"));
                 material.setBibliotecasTexto(rs.getString("bibliotecas"));
                 material.setCantidadDisponible(rs.getInt("ejemplares_disponibles"));
+                material.setEditoriales(rs.getString("editoriales"));
                 materiales.add(material);
             }
         } catch (Exception ex) {
@@ -390,6 +369,7 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
                 material.setAutoresTexto(rs.getString("autores"));
                 material.setBibliotecasTexto(rs.getString("bibliotecas"));
                 material.setCantidadDisponible(rs.getInt("ejemplares_disponibles"));
+                material.setEditoriales(rs.getString("editoriales"));
             }
         }catch(SQLException ex){
             System.out.println("ERROR: " + ex.getMessage());

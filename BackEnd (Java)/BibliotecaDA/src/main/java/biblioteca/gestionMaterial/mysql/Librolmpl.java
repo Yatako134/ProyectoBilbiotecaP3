@@ -32,7 +32,7 @@ public class Librolmpl implements LibroDAO{
         parametrosEntrada.put(6, objeto.getIdioma());
         parametrosEntrada.put(7, objeto.getISBN());
         parametrosEntrada.put(8, objeto.getEdicion());
-        
+        parametrosEntrada.put(9, objeto.getEditoriales());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_LIBRO", parametrosEntrada, parametrosSalida);
         objeto.setIdMaterial((int) parametrosSalida.get(1));
         System.out.println("Se ha realizado el registro del libro");
@@ -50,6 +50,7 @@ public class Librolmpl implements LibroDAO{
         parametrosEntrada.put(6, objeto.getIdioma());
         parametrosEntrada.put(7, objeto.getISBN());
         parametrosEntrada.put(8, objeto.getEdicion());
+        parametrosEntrada.put(9, objeto.getEditoriales());
 
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_LIBRO", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion del libro");
@@ -86,7 +87,7 @@ public class Librolmpl implements LibroDAO{
                 libro.setEdicion(rs.getString("edicion"));
                 libro.setEstado(EstadoMaterial.valueOf(rs.getString("estado")));
                 libro.setTipo(TipoMaterial.LIBRO);
-
+                libro.setEditoriales(rs.getString("editoriales"));
             }
         }catch(SQLException ex){
             System.out.println("ERROR: " + ex.getMessage());
@@ -116,6 +117,7 @@ public class Librolmpl implements LibroDAO{
                 e.setISBN(rs.getString("ISBN"));
                 e.setEdicion(rs.getString("edicion"));
                 e.setEstado(EstadoMaterial.valueOf(rs.getString("estado")));
+                e.setEditoriales(rs.getString("editoriales"));
                 libros.add(e);
             }
         }catch(SQLException ex){

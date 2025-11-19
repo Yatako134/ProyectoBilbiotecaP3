@@ -13,8 +13,7 @@ public class MaterialBibliografico {
     private String clasificacion_tematica;
     private boolean activo;
     private String idioma;
-
-    private Editorial editorial;
+    private String editoriales;
     private ArrayList<Contribuyente> contribuyentes;
     private ArrayList<Ejemplar> ejemplares;
     private ArrayList<Biblioteca> bibliotecas;
@@ -23,7 +22,6 @@ public class MaterialBibliografico {
     private TipoMaterial tipo;
     private int cantidadDisponible;
     public MaterialBibliografico() {
-        this.editorial = new Editorial();
         this.contribuyentes = new ArrayList<>();
         this.ejemplares = new ArrayList<>();
         this.bibliotecas = new ArrayList<>();
@@ -31,8 +29,7 @@ public class MaterialBibliografico {
 
     public MaterialBibliografico(String titulo,
             int anho_publicacion, int numero_paginas, EstadoMaterial estado,
-            String clasificacion_tematica, boolean activo, String idioma,
-            Editorial editorial) {
+            String clasificacion_tematica, boolean activo, String idioma, String editoriales) {
        
         this.titulo = titulo;
         this.anho_publicacion = anho_publicacion;
@@ -41,9 +38,9 @@ public class MaterialBibliografico {
         this.clasificacion_tematica = clasificacion_tematica;
         this.activo = activo;
         this.idioma = idioma;
-        this.editorial = editorial;
         this.contribuyentes = new ArrayList<>();
         this.ejemplares = new ArrayList<>();
+        this.editoriales = editoriales;
     }
 
     public int getIdMaterial() {
@@ -108,14 +105,6 @@ public class MaterialBibliografico {
 
     public void setIdioma(String idioma) {
         this.idioma = idioma;
-    }
-
-    public Editorial getEditorial() {
-        return editorial;
-    }
-
-    public void setEditorial(Editorial editorial) {
-        this.editorial = editorial;
     }
 
     public ArrayList<Contribuyente> getContribuyentes() {
@@ -193,6 +182,14 @@ public class MaterialBibliografico {
 
     public void setBibliotecasTexto(String bibliotecasTexto) {
         this.bibliotecasTexto = bibliotecasTexto;
+    }
+
+    public String getEditoriales() {
+        return editoriales;
+    }
+
+    public void setEditoriales(String editoriales) {
+        this.editoriales = editoriales;
     }
 
 }
