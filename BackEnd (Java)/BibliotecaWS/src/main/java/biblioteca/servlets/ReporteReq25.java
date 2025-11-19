@@ -45,7 +45,7 @@ public class ReporteReq25 extends HttpServlet {
             (new ImageIcon(rutaImagen)).getImage();
             
             HashMap hm = new HashMap();
-            hm.put("nombre", "Luchex");
+            hm.put("nombre", "Jorge");
             hm.put("logo", imagen);
             
             JasperPrint jp
