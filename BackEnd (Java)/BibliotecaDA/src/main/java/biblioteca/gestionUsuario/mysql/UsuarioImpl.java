@@ -1,4 +1,3 @@
-
 package biblioteca.gestionUsuario.mysql;
 
 import biblioteca.config.DBManager;
@@ -16,15 +15,14 @@ import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Sancion;
 import pe.edu.pucp.utilsarmy.usuarios.model.Rol;
 import pe.edu.pucp.utilsarmy.usuarios.model.Usuario;
 
+public class UsuarioImpl implements UsuarioDAO {
 
-public class UsuarioImpl implements UsuarioDAO{
-    
     private ResultSet rs;
-    
+
     @Override
     public int insertar(Usuario objeto) {
-        Map<Integer,Object> parametrosSalida = new HashMap<>();
-        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        Map<Integer, Object> parametrosSalida = new HashMap<>();
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
         parametrosSalida.put(1, Types.INTEGER);
         parametrosEntrada.put(2, objeto.getCodigo());
         parametrosEntrada.put(3, objeto.getNombre());
@@ -38,7 +36,7 @@ public class UsuarioImpl implements UsuarioDAO{
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_USUARIO", parametrosEntrada, parametrosSalida);
         objeto.setId_usuario((int) parametrosSalida.get(1));
         System.out.println("Se ha realizado el registro del usuario");
-        return objeto.getId_usuario();    
+        return objeto.getId_usuario();
     }
 
     @Override
@@ -57,7 +55,7 @@ public class UsuarioImpl implements UsuarioDAO{
         //parametrosEntrada.put(11, objeto.isActiva());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_USUARIO", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion del usuario");
-        return resultado;    
+        return resultado;
     }
 
     @Override
@@ -76,8 +74,8 @@ public class UsuarioImpl implements UsuarioDAO{
         parametrosEntrada.put(1, idObjeto);
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_USUARIO_X_ID", parametrosEntrada);
         System.out.println("Lectura de usuarios...");
-        try{
-            if(rs.next()){
+        try {
+            if (rs.next()) {
                 usuario = new Usuario();
                 usuario.setId_usuario(rs.getInt("id_usuario"));
                 usuario.setCodigo(rs.getInt("codigo_universitario"));
@@ -93,9 +91,9 @@ public class UsuarioImpl implements UsuarioDAO{
                 r.setId_rol(rs.getInt("id_rol"));
                 usuario.setRol_usuario(r);
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
-        }finally{
+        } finally {
             DBManager.getInstance().cerrarConexion();
         }
         return usuario;
@@ -106,9 +104,11 @@ public class UsuarioImpl implements UsuarioDAO{
         ArrayList<Usuario> users = null;
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_USUARIOS_TODOS", null);
         System.out.println("Lectura de todas los usuarios...");
-        try{
-            while(rs.next()){
-                if(users == null) users = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                if (users == null) {
+                    users = new ArrayList<>();
+                }
                 Usuario usuario = new Usuario();
                 usuario.setId_usuario(rs.getInt("id_usuario"));
                 usuario.setCodigo(rs.getInt("codigo_universitario"));
@@ -125,13 +125,14 @@ public class UsuarioImpl implements UsuarioDAO{
                 usuario.setRol_usuario(r);
                 users.add(usuario);
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
-        }finally{
+        } finally {
             DBManager.getInstance().cerrarConexion();
         }
         return users;
     }
+
     @Override
     public Usuario obtenerUsuarioxCodigo(int codigo) {
         Usuario usuario = null;
@@ -144,32 +145,44 @@ public class UsuarioImpl implements UsuarioDAO{
         try {
             if (rs.next()) {
                 usuario = new Usuario();
-                if (rs.getObject("id_usuario") != null)
+                if (rs.getObject("id_usuario") != null) {
                     usuario.setId_usuario(rs.getInt("id_usuario"));
-                if (rs.getObject("codigo_universitario") != null)
+                }
+                if (rs.getObject("codigo_universitario") != null) {
                     usuario.setCodigo(rs.getInt("codigo_universitario"));
-                if (rs.getObject("nombre") != null)
+                }
+                if (rs.getObject("nombre") != null) {
                     usuario.setNombre(rs.getString("nombre"));
-                if (rs.getObject("primer_apellido") != null)
+                }
+                if (rs.getObject("primer_apellido") != null) {
                     usuario.setPrimer_apellido(rs.getString("primer_apellido"));
-                if (rs.getObject("segundo_apellido") != null)
+                }
+                if (rs.getObject("segundo_apellido") != null) {
                     usuario.setSegundo_apellido(rs.getString("segundo_apellido"));
-                if (rs.getObject("DOI") != null)
+                }
+                if (rs.getObject("DOI") != null) {
                     usuario.setDOI(rs.getString("DOI"));
-                if (rs.getObject("correo") != null)
+                }
+                if (rs.getObject("correo") != null) {
                     usuario.setCorreo(rs.getString("correo"));
-                if (rs.getObject("numero_de_telefono") != null)
+                }
+                if (rs.getObject("numero_de_telefono") != null) {
                     usuario.setTelefono(rs.getString("numero_de_telefono"));
+                }
 
                 Rol rol = new Rol();
-                if (rs.getObject("id_rol") != null)
+                if (rs.getObject("id_rol") != null) {
                     rol.setId_rol(rs.getInt("id_rol"));
-                if (rs.getObject("cantidad_de_dias_por_prestamo") != null)
+                }
+                if (rs.getObject("cantidad_de_dias_por_prestamo") != null) {
                     rol.setCantidad_de_dias_por_prestamo(rs.getInt("cantidad_de_dias_por_prestamo"));
-                if (rs.getObject("rol") != null)
+                }
+                if (rs.getObject("rol") != null) {
                     rol.setTipo(rs.getString("rol"));
-                if (rs.getObject("limite_prestamos") != null)
+                }
+                if (rs.getObject("limite_prestamos") != null) {
                     rol.setLimite_prestamo(rs.getInt("limite_prestamos"));
+                }
 
                 usuario.setRol_usuario(rol);
             }
@@ -184,18 +197,18 @@ public class UsuarioImpl implements UsuarioDAO{
 
     @Override
     public int prestamos_vigentesxUsuario(int idUsuario) {
-        int cantidad_prestamos_vigentes=0;
+        int cantidad_prestamos_vigentes = 0;
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, idUsuario);
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("SP_CONTAR_PRESTAMOS_VIGENTES_POR_USUARIO", parametrosEntrada);
 //        System.out.println("Lectura de usuarios...");
-        try{
-            if(rs.next()){
-                cantidad_prestamos_vigentes=rs.getInt("cantidad_prestamos_vigentes");
+        try {
+            if (rs.next()) {
+                cantidad_prestamos_vigentes = rs.getInt("cantidad_prestamos_vigentes");
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
-        }finally{
+        } finally {
             DBManager.getInstance().cerrarConexion();
         }
         return cantidad_prestamos_vigentes;
@@ -203,24 +216,24 @@ public class UsuarioImpl implements UsuarioDAO{
 
     @Override
     public int verificar(Usuario usuario) {
-        int resultado=0;
-        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        int resultado = 0;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, usuario.getCorreo());
         parametrosEntrada.put(2, usuario.getContrasena());
-        rs=DBManager.getInstance().ejecutarProcedimientoLectura("VERIFICAR_CUENTA", parametrosEntrada);
-        try{
-        if(rs.next()){
-                resultado=rs.getInt("id_usuario");
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("VERIFICAR_CUENTA", parametrosEntrada);
+        try {
+            if (rs.next()) {
+                resultado = rs.getInt("id_usuario");
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }finally{
+        } finally {
             DBManager.getInstance().cerrarConexion();
         }
         System.out.println("Se esta verificando la cuenta del usuario...");
         return resultado;
     }
-    
+
     @Override
     public ArrayList<Usuario> listarPorPanelBusqueda(String filtro) {
         ArrayList<Usuario> users = null;
@@ -229,9 +242,11 @@ public class UsuarioImpl implements UsuarioDAO{
 
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("sp_BuscarUsuario", parametrosEntrada);
         System.out.println("Lectura de todas los usuarios...");
-        try{
-            while(rs.next()){
-                if(users == null) users = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                if (users == null) {
+                    users = new ArrayList<>();
+                }
                 Usuario usuario = new Usuario();
                 usuario.setId_usuario(rs.getInt("id_usuario"));
                 usuario.setCodigo(rs.getInt("codigo_universitario"));
@@ -248,22 +263,24 @@ public class UsuarioImpl implements UsuarioDAO{
                 usuario.setRol_usuario(r);
                 users.add(usuario);
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
-        }finally{
+        } finally {
             DBManager.getInstance().cerrarConexion();
         }
         return users;
     }
-    
+
     @Override
     public ArrayList<Usuario> listarTodosDelSistema() {
         ArrayList<Usuario> users = null;
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("ListarTodosUsuariosDelSistema", null);
         System.out.println("Lectura de todas los usuarios sin excepcion...");
-        try{
-            while(rs.next()){
-                if(users == null) users = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                if (users == null) {
+                    users = new ArrayList<>();
+                }
                 Usuario usuario = new Usuario();
                 usuario.setId_usuario(rs.getInt("id_usuario"));
                 usuario.setCodigo(rs.getInt("codigo_universitario"));
@@ -280,9 +297,9 @@ public class UsuarioImpl implements UsuarioDAO{
                 usuario.setRol_usuario(r);
                 users.add(usuario);
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
-        }finally{
+        } finally {
             DBManager.getInstance().cerrarConexion();
         }
         return users;
@@ -290,44 +307,93 @@ public class UsuarioImpl implements UsuarioDAO{
 
     @Override
     public Sancion obtener_sancion_usuario(int id_usuario) {
-        Sancion sanc=null;
+        Sancion sanc = null;
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, id_usuario);
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("Obtener_Sanciones_Usuario", parametrosEntrada);
-        try{
-            if(rs.next()){
+        try {
+            if (rs.next()) {
                 sanc = new Sancion();
                 sanc.setId_sancion(rs.getInt("id_sancion"));
                 sanc.setFecha_fin(rs.getTimestamp("fecha_vencimiento"));
                 sanc.setJustificacion(rs.getString("justificacion"));
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
-        }finally{
+        } finally {
             DBManager.getInstance().cerrarConexion();
         }
         return sanc;
     }
+
     @Override
     public ArrayList<Prestamo> obtenerPrestamosRetrasados(int id_usuario) {
-        ArrayList<Prestamo> pes=null;
+        ArrayList<Prestamo> pes = null;
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, id_usuario);
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("sp_prestamos_retrasados_usuario", parametrosEntrada);
-        try{
-            if(rs.next()){
-                 if(pes == null) pes = new ArrayList<>();
+        try {
+            if (rs.next()) {
+                if (pes == null) {
+                    pes = new ArrayList<>();
+                }
                 Prestamo p = new Prestamo();
                 p.setIdPrestamo(rs.getInt("id_prestamo"));
                 p.setFecha_vencimiento(rs.getTimestamp("fecha_vencimiento"));
                 p.setEstado(EstadoPrestamo.valueOf(rs.getString("estado")));
                 pes.add(p);
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
-        }finally{
+        } finally {
             DBManager.getInstance().cerrarConexion();
         }
         return pes;
+    }
+
+    @Override
+    public int verificarCorreoExistente(String correo) {
+        int resultado = 0;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, correo);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("VERIFICAR_CORREO_EXISTENTE", parametrosEntrada);
+        try {
+            if (rs.next()) {
+                resultado = rs.getInt("id_usuario");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        System.out.println("Se esta verificando la cuenta del usuario...");
+        return resultado;
+    }
+
+    @Override
+    public int modificarContrasena(int idUsuario, String nuevaContrasena) {
+        int filasAfectadas = 0;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+
+        parametrosEntrada.put(1, idUsuario);
+        parametrosEntrada.put(2, nuevaContrasena);
+
+        System.out.println("Ejecutando MODIFICAR_CONTRASENA para usuario ID: " + idUsuario);
+
+        try {
+            rs = DBManager.getInstance().ejecutarProcedimientoLectura("MODIFICAR_CONTRASENA", parametrosEntrada);
+
+            if (rs != null && rs.next()) {
+                filasAfectadas = rs.getInt("filas_afectadas");
+                System.out.println("Contraseña modificada. Filas afectadas: " + filasAfectadas);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("ERROR al modificar contraseña: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+
+        return filasAfectadas;
     }
 }

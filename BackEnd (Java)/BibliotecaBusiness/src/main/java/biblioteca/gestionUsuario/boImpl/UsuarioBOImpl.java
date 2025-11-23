@@ -1,4 +1,3 @@
-
 package biblioteca.gestionUsuario.boImpl;
 
 import biblioteca.gestionUsuario.bo.UsuarioBO;
@@ -9,7 +8,8 @@ import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Prestamo;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Sancion;
 import pe.edu.pucp.utilsarmy.usuarios.model.Usuario;
 
-public class UsuarioBOImpl implements UsuarioBO{
+public class UsuarioBOImpl implements UsuarioBO {
+
     private final UsuarioDAO daoUsuario;
 
     public UsuarioBOImpl() {
@@ -40,10 +40,12 @@ public class UsuarioBOImpl implements UsuarioBO{
     public ArrayList<Usuario> listarTodos() throws Exception {
         return daoUsuario.listarTodos();
     }
+
     @Override
     public void validar(Usuario objeto) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
     @Override
     public Usuario obtenerUsuarioxCodigo(int codigo) {
         return daoUsuario.obtenerUsuarioxCodigo(codigo);
@@ -51,7 +53,7 @@ public class UsuarioBOImpl implements UsuarioBO{
 
     @Override
     public int prestamos_vigentesxUsuario(int idUsuario) {
-        
+
         return daoUsuario.prestamos_vigentesxUsuario(idUsuario);
     }
 
@@ -64,9 +66,9 @@ public class UsuarioBOImpl implements UsuarioBO{
     public ArrayList<Usuario> listarPorPanelBusqueda(String filtro) {
         return daoUsuario.listarPorPanelBusqueda(filtro);
     }
-    
+
     @Override
-    public ArrayList<Usuario> listarTodosDelSistema(){
+    public ArrayList<Usuario> listarTodosDelSistema() {
         return daoUsuario.listarTodosDelSistema();
     }
 
@@ -78,5 +80,15 @@ public class UsuarioBOImpl implements UsuarioBO{
     @Override
     public ArrayList<Prestamo> obtenerPrestamosRetrasados(int id_usuario) {
         return daoUsuario.obtenerPrestamosRetrasados(id_usuario);
+    }
+
+    @Override
+    public int verificarCorreoExistente(String correo) {
+        return daoUsuario.verificarCorreoExistente(correo);
+    }
+
+    @Override
+    public int modificarContrasena(int idUsuario, String nuevaContrasena) {
+        return daoUsuario.modificarContrasena(idUsuario, nuevaContrasena);
     }
 }
