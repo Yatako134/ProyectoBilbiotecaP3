@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -69,8 +70,23 @@ namespace BibliotecaWA
 
         protected void lnkCerrarSesion_Click(object sender, EventArgs e)
         {
+            // 1. Cerrar autenticación de Forms
+            FormsAuthentication.SignOut();
+
+            // 2. Limpiar sesión
             Session.Clear();
             Session.Abandon();
+
+            // 3. Expirar cookies manualmente
+            HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, "");
+            authCookie.Expires = DateTime.Now.AddYears(-1);
+            Response.Cookies.Add(authCookie);
+
+            HttpCookie sessionCookie = new HttpCookie("ASP.NET_SessionId", "");
+            sessionCookie.Expires = DateTime.Now.AddYears(-1);
+            Response.Cookies.Add(sessionCookie);
+
+            // 4. Redirigir al login
             Response.Redirect("InicioSesion.aspx");
         }
     }

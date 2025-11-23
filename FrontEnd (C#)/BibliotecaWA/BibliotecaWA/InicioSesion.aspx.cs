@@ -1,7 +1,5 @@
 ﻿using BibliotecaWA.BibliotecaServices;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -15,68 +13,60 @@ namespace BibliotecaWA
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ////Verificar si el usuario ya está autenticado
-            //if (Request.IsAuthenticated)
-            //{
-            //    // Si el usuario ya está autenticado, redirigir a la página de búsqueda de materiales
-            //    Response.Redirect("BusquedaMaterialas.aspx", true);
-            //}
+            if (!IsPostBack)
+            {
+                FormsAuthentication.SignOut();
+                Session.Clear();
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            // Limpiar cualquier error previo
             hfCredentialError.Value = "";
 
-            // Crear objeto para usuario
             usuario us = new usuario();
             us.correo = txtUsername.Text;
             us.contrasena = txtPassword.Text;
 
-            // Llamada al servicio web para verificar las credenciales
             bousuario = new UsuarioWSClient();
             int resultado = bousuario.verificarCuenta(us);
 
-            // Verificar si las credenciales son correctas
             if (resultado != 0)
             {
-                // Credenciales correctas: crear la cookie de autenticación
-                FormsAuthenticationTicket tkt;
-                string cookiestr;
-                HttpCookie ck;
-                tkt = new FormsAuthenticationTicket(1, us.correo, DateTime.Now,
-                DateTime.Now.AddMinutes(30), true, "aqui van los roles");
+                usuario usu = bousuario.obtenerUsuarioPorId(resultado);
+                int rol = usu.rol_usuario.id_rol;
+                string rolString = rol.ToString();
 
-                // Encriptar el ticket
-                cookiestr = FormsAuthentication.Encrypt(tkt);
-
-                // Crear la cookie de autenticación
-                ck = new HttpCookie(FormsAuthentication.FormsCookieName, cookiestr);
+                // Crear cookie de autenticación con el rol en userData
+                FormsAuthenticationTicket tkt = new FormsAuthenticationTicket(
+                    1,
+                    us.correo,
+                    DateTime.Now,
+                    DateTime.Now.AddMinutes(30),
+                    true,
+                    rolString); // Aquí van los roles
+                string cookiestr = FormsAuthentication.Encrypt(tkt);
+                HttpCookie ck = new HttpCookie(FormsAuthentication.FormsCookieName, cookiestr);
                 ck.Expires = tkt.Expiration;
-                ck.Path = FormsAuthentication.FormsCookiePath;
-
-                // Añadir la cookie a la respuesta
                 Response.Cookies.Add(ck);
 
-                // Redirigir a la página solicitada o a la predeterminada
-                usuario usu = bousuario.obtenerUsuarioPorId(resultado);
-                string strRedirect = Request["ReturnUrl"];
-                string rol = usu.rol_usuario.ToString();
+                Session["UserId"] = resultado;
+                Session["UserName"] = $"{usu.nombre} {usu.primer_apellido}";
+                Session["UserRole"] = rol;
 
-                if (strRedirect == null)
+                // Redirigir según el rol
+                if (rol == 3)
                 {
-                    Session["UserId"] = resultado;
-                    Session["UserName"] = $"{usu.nombre} {usu.primer_apellido}";
-                    strRedirect = "BusquedaMaterialas.aspx";
+                    Response.Redirect("BusquedaMaterialas.aspx");
                 }
-                Response.Redirect(strRedirect, true);
+                else
+                {
+                    Response.Redirect("BusquedaMaterialesEstudiante.aspx");
+                }
             }
             else
             {
-                // Si las credenciales son incorrectas, establecer el campo oculto
                 hfCredentialError.Value = "true";
-
-                // Limpiar ambos campos para que sea consistente
                 txtUsername.Text = "";
                 txtPassword.Text = "";
             }

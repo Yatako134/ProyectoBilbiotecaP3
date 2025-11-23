@@ -33,15 +33,6 @@ namespace BibliotecaWA
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// Control lblPasswordError.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPasswordError;
-
-        /// <summary>
         /// Control txtConfirmPassword.
         /// </summary>
         /// <remarks>
@@ -49,15 +40,6 @@ namespace BibliotecaWA
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
-
-        /// <summary>
-        /// Control lblConfirmPasswordError.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblConfirmPasswordError;
 
         /// <summary>
         /// Control btnRestablecer.

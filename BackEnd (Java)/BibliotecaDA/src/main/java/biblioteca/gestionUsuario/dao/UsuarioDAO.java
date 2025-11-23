@@ -17,4 +17,5 @@ public interface UsuarioDAO extends IDAO<Usuario>{
      ArrayList<Prestamo> obtenerPrestamosRetrasados(int id_usuario);
      int verificarCorreoExistente(String correo);
      int modificarContrasena(int idUsuario, String nuevaContrasena);
+     
 }
