@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://correo.services.biblioteca/" targetNamespace="http://correo.services.biblioteca/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="enviar_correo" type="tns:enviar_correo" />
+  <xs:element name="enviar_correoResponse" type="tns:enviar_correoResponse" />
+  <xs:complexType name="enviar_correo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="destino" type="xs:string" />
+      <xs:element minOccurs="0" name="asunto" type="xs:string" />
+      <xs:element minOccurs="0" name="contenidoHTML" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enviar_correoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

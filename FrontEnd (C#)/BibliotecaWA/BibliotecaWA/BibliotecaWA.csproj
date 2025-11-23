@@ -356,7 +356,14 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.modificarContrasenaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.enviar_correoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BibliotecaServices\CorreoWS.wsdl" />
+    <None Include="Connected Services\BibliotecaServices\CorreoWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\BibliotecaServices\EjemplarWS.xsd">
@@ -402,6 +409,7 @@
     <Content Include="Content\Images\tesis.png" />
     <Content Include="Content\site-custom.css" />
     <Content Include="DetalleMaterial.aspx" />
+    <Content Include="DetalleMaterialEstudiante.aspx" />
     <Content Include="DetallePrestamo_Sancion.aspx" />
     <Content Include="Fonts\css\AdminUsuarios.css" />
     <Content Include="Fonts\css\all.css" />
@@ -560,6 +568,13 @@
     </Compile>
     <Compile Include="DetalleMaterial.aspx.designer.cs">
       <DependentUpon>DetalleMaterial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleMaterialEstudiante.aspx.cs">
+      <DependentUpon>DetalleMaterialEstudiante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleMaterialEstudiante.aspx.designer.cs">
+      <DependentUpon>DetalleMaterialEstudiante.aspx</DependentUpon>
     </Compile>
     <Compile Include="DetallePrestamo_Sancion.aspx.cs">
       <DependentUpon>DetallePrestamo_Sancion.aspx</DependentUpon>
