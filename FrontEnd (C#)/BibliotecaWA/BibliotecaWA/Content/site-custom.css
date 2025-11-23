@@ -83,45 +83,66 @@
 
 /*================================BOTONES===========================*/
 
-/* Botón primario */
-.btn-primary {
+/* Botón primario azul - flexible para iconos */
+.button-primary {
     border-radius: 8px !important;
     padding: 8px 20px !important;
     transition: all 0.3s ease !important;
     font-weight: 500 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    background-color: #006DEB !important;
+    border: 1px solid #006DEB !important;
+    color: white !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
 }
 
-    .btn-primary:hover {
+    .button-primary:hover {
         transform: translateY(-1px) !important;
+        background-color: #0056b3 !important;
+        border-color: #0056b3 !important;
     }
 
-/* Botón deshabilitado */
-.btn.disabled {
-    opacity: 0.5 !important;
-    cursor: not-allowed !important;
-}
+    .button-primary:focus {
+        box-shadow: 0 0 0 3px rgba(0, 109, 235, 0.1) !important;
+        outline: none !important;
+    }
 
-.btn-primary:disabled {
-    opacity: 0.5 !important;
-    cursor: not-allowed !important;
-    transform: none !important;
-}
+    .button-primary:active {
+        background-color: #004494 !important;
+        border-color: #004494 !important;
+        transform: translateY(0) !important;
+    }
 
-/* Botón de cancelar estilo secundario */
-.btn-cancel-secondary {
+    /* Botón deshabilitado */
+    .button-primary:disabled,
+    .button-error-secondary:disabled {
+        opacity: 0.5 !important;
+        cursor: not-allowed !important;
+        transform: none !important;
+    }
+
+/* Botón de error secundario rojo - flexible para iconos */
+.button-error-secondary {
     background-color: #FEF2F2 !important;
     border: 1px solid #EF4444 !important;
     color: #EF4444 !important;
     border-radius: 8px !important;
     padding: 8px 16px !important;
-    display: flex !important;
-    align-items: center !important;
     text-decoration: none !important;
     transition: all 0.3s ease !important;
     font-weight: 500 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    cursor: pointer !important;
 }
 
-    .btn-cancel-secondary:hover {
+    .button-error-secondary:hover {
         background-color: #FEE2E2 !important;
         border-color: #DC2626 !important;
         color: #DC2626 !important;
@@ -129,12 +150,12 @@
         text-decoration: none !important;
     }
 
-    .btn-cancel-secondary:focus {
+    .button-error-secondary:focus {
         box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
         outline: none !important;
     }
 
-    .btn-cancel-secondary:active {
+    .button-error-secondary:active {
         background-color: #FECACA !important;
         border-color: #B91C1C !important;
         color: #B91C1C !important;
@@ -153,4 +174,37 @@
 /* Contenedor de tarjeta con sombra */
 .card {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+/*================================CÓDIGO DE VERIFICACIÓN===========================*/
+
+.code-input {
+    width: 50px !important;
+    height: 60px !important;
+    text-align: center !important;
+    font-size: 24px !important;
+    margin: 0 4px !important;
+    border: 1px solid #DBDFE9 !important;
+    background-color: #FCFCFC !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+    .code-input:focus {
+        border-color: #006DEB !important;
+        background-color: #FFFFFF !important;
+        box-shadow: 0 0 0 2px rgba(0, 109, 235, 0.1) !important;
+        outline: none !important;
+    }
+
+    .code-input.error {
+        border-color: #EF4444 !important;
+        background-color: #FEF2F2 !important;
+    }
+
+.code-container {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin: 20px 0 !important;
 }

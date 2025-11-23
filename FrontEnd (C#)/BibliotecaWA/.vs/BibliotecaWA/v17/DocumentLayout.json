@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\p3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\content\\site-custom.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\p3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\iniciosesion.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\iniciosesion.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\content\\site-custom.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\content\\site-custom.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\p3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\restablecercontrasena.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\restablecercontrasena.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\home.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\home.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\p3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\restablecercontrasena.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\restablecercontrasena.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\home.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\home.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,41 +35,51 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "RestablecerContrasena.aspx.cs",
-              "DocumentMoniker": "C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx.cs",
-              "RelativeDocumentMoniker": "BibliotecaWA\\RestablecerContrasena.aspx.cs",
-              "ToolTip": "C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx.cs",
-              "RelativeToolTip": "BibliotecaWA\\RestablecerContrasena.aspx.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAAAGgAAAABAAAAAAAAAA==",
+              "Title": "Home.Master.cs",
+              "DocumentMoniker": "C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Home.Master.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\Home.Master.cs",
+              "ToolTip": "C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Home.Master.cs",
+              "RelativeToolTip": "BibliotecaWA\\Home.Master.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAA7wFoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T03:11:10.648Z",
+              "WhenOpened": "2025-11-23T18:23:16.54Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Home.Master",
+              "DocumentMoniker": "C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Home.Master",
+              "RelativeDocumentMoniker": "BibliotecaWA\\Home.Master",
+              "ToolTip": "C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Home.Master",
+              "RelativeToolTip": "BibliotecaWA\\Home.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-23T18:23:09.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "InicioSesion.aspx.cs",
+              "DocumentMoniker": "C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\InicioSesion.aspx.cs",
+              "ToolTip": "C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\InicioSesion.aspx.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAUwDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T17:44:37.064Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RestablecerContrasena.aspx",
-              "DocumentMoniker": "C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx",
-              "RelativeDocumentMoniker": "BibliotecaWA\\RestablecerContrasena.aspx",
-              "ToolTip": "C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx",
-              "RelativeToolTip": "BibliotecaWA\\RestablecerContrasena.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-23T03:10:41.194Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "site-custom.css",
               "DocumentMoniker": "C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Content\\site-custom.css",
               "RelativeDocumentMoniker": "BibliotecaWA\\Content\\site-custom.css",
               "ToolTip": "C:\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Content\\site-custom.css",
               "RelativeToolTip": "BibliotecaWA\\Content\\site-custom.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALEAAAAAAAAAAAAcwL0AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-11-23T02:24:28.891Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T02:24:28.891Z"
             }
           ]
         }
