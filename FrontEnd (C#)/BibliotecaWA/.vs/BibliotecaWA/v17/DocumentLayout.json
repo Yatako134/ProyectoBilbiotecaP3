@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\busquedamaterialas.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\busquedamaterialas.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\busquedamaterialas.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -31,7 +31,7 @@
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\administrarusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\gestmaterial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\gestmaterial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\gestmaterial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -102,7 +102,7 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Document",
@@ -114,8 +114,7 @@
               "RelativeToolTip": "BibliotecaWA\\DetallePrestamo_Sancion.aspx.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAgwIoAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T23:55:01.68Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T23:55:01.68Z"
             },
             {
               "$type": "Document",
@@ -127,8 +126,7 @@
               "RelativeToolTip": "BibliotecaWA\\Prestamo.aspx.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T21:59:04.424Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T21:59:04.424Z"
             },
             {
               "$type": "Document",
@@ -140,8 +138,7 @@
               "RelativeToolTip": "BibliotecaWA\\BusquedaMaterialas.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-18T21:55:25.887Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T21:55:25.887Z"
             },
             {
               "$type": "Document",
@@ -162,7 +159,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
@@ -186,8 +183,7 @@
               "RelativeToolTip": "BibliotecaWA\\HistorialPrestamos.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-19T00:57:47.538Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-19T00:57:47.538Z"
             },
             {
               "$type": "Document",
@@ -235,8 +231,7 @@
               "RelativeToolTip": "BibliotecaWA\\GestMaterial.aspx.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T23:54:50.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T23:54:50.357Z"
             },
             {
               "$type": "Document",
@@ -272,8 +267,7 @@
               "RelativeToolTip": "BibliotecaWA\\GestMaterial.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-18T23:52:58.16Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T23:52:58.16Z"
             },
             {
               "$type": "Document",
@@ -285,8 +279,7 @@
               "RelativeToolTip": "BibliotecaWA\\Home.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-18T23:52:00.334Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T23:52:00.334Z"
             },
             {
               "$type": "Document",
@@ -310,8 +303,7 @@
               "RelativeToolTip": "BibliotecaWA\\AdministrarUsuarios.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-19T00:57:42.218Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-19T00:57:42.218Z"
             },
             {
               "$type": "Document",
