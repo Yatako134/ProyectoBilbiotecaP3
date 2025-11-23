@@ -19,18 +19,6 @@
             cursor: not-allowed;
         }
 </style>
-    <script>
-        function soloOchoEnteros(e, input) {
-            var key = e.key;
-            if (!/^[0-9]$/.test(key) && key !== "Backspace") {
-                e.preventDefault();
-                return;
-            }
-            if (input.value.length >= 8 && key !== "Backspace") {
-                e.preventDefault();
-            }
-        }
-    </script>
 
     <script>
         function soloLetras(e) {
@@ -101,6 +89,211 @@
             list-style-position: inside;
         }
     </style>
+    <script>
+
+        // LIMPIAR ERROR
+        function limpiarError(campo) {
+            campo.classList.remove('is-invalid');
+            campo.classList.remove('is-valid');
+
+            const errorLabel = campo.parentNode.querySelector('.invalid-feedback');
+            if (errorLabel) errorLabel.remove();
+        }
+
+        // VALIDAR NOMBRE / APELLIDOS
+        function validarCampoNombreApellido(campo, nombreCampo) {
+            const valor = campo.value.trim();
+
+            if (valor === '') {
+                return { mensaje: `El campo ${nombreCampo} es requerido` };
+            }
+
+            if (valor.length < 2) {
+                return { mensaje: `El campo ${nombreCampo} debe tener al menos 2 caracteres` };
+            }
+
+
+            return { mensaje: "" }; // SIN ERRORES
+        }
+
+        function validarContrasena(campo) {
+            const valor = campo.value.trim();
+
+            // 1) Longitud mínima
+            if (valor.length < 8) {
+                return { mensaje: "La contraseña debe tener al menos 8 caracteres" };
+            }
+
+            // 2) Letra minúscula
+            if (!/[a-z]/.test(valor)) {
+                return { mensaje: "La contraseña debe contener al menos una letra minúscula" };
+            }
+
+            // 3) Letra mayúscula
+            if (!/[A-Z]/.test(valor)) {
+                return { mensaje: "La contraseña debe contener al menos una letra mayúscula" };
+            }
+
+            // 4) Al menos 2 números
+            const numeros = valor.match(/\d/g);
+            if (!numeros || numeros.length < 2) {
+                return { mensaje: "La contraseña debe contener al menos 2 números" };
+            }
+
+            // 5) Al menos 1 caracter especial
+            const regexEspecial = /[!@#$%\*\_\-\+=]/;
+            if (!regexEspecial.test(valor)) {
+                return { mensaje: "La contraseña debe contener al menos un carácter especial (!, @, #, $, %, *, _, -, +, =)" };
+            }
+
+            return { mensaje: "" }; // SIN ERRORES
+        }
+
+        function validarCorreoPUCP(campo) {
+            const valor = campo.value.trim();
+
+            if (valor === "") {
+                return { mensaje: "El correo es requerido" };
+            }
+
+            // Expresión regular para: cualquier texto válido antes de @, luego exactamente @pucp.edu.pe
+            const regexPUCP = /^[a-zA-Z0-9._%+-]+@pucp\.edu\.pe$/;
+
+            if (!regexPUCP.test(valor)) {
+                return { mensaje: "El correo debe tener el formato usuario@pucp.edu.pe" };
+            }
+
+            return { mensaje: "" }; // SIN ERRORES
+        }
+
+        function validarDNI(campo) {
+            const valor = campo.value.trim();
+
+            if (valor === "") {
+                return { mensaje: "El DNI es requerido" };
+            }
+
+            // Debe tener exactamente 8 dígitos
+            if (valor.length !== 8) {
+                return { mensaje: "El DNI debe tener exactamente 8 dígitos" };
+            }
+
+            return { mensaje: "" }; // SIN ERRORES
+        }
+
+        function validarCodigo(campo) {
+            const valor = campo.value.trim();
+
+            if (valor === "") {
+                return { mensaje: "El Codigo es requerido" };
+            }
+
+            // Debe tener exactamente 8 dígitos
+            if (valor.length !== 8) {
+                return { mensaje: "El Codigo debe tener exactamente 8 dígitos" };
+            }
+
+            return { mensaje: "" }; // SIN ERRORES
+        }
+
+        function validarTelefono(campo, nombreCampo) {
+            const valor = campo.value.trim();
+
+            // Validar requerido
+            if (valor === '') {
+                return { mensaje: `El campo ${nombreCampo} es requerido` };
+            }
+
+            // Mínimo 9
+            if (valor.length < 9) {
+                return { mensaje: `El campo ${nombreCampo} debe tener al menos 9 dígitos` };
+            }
+
+            return { mensaje: "" }; // SIN ERRORES
+        }
+
+
+
+        // MOSTRAR ERROR
+        function mostrarErrorCampo(campo, mensaje) {
+            limpiarError(campo);
+
+            if (mensaje) {
+                campo.classList.add('is-invalid');
+
+                const feedback = document.createElement('div');
+                feedback.className = 'invalid-feedback';
+                feedback.textContent = mensaje;
+                campo.parentNode.appendChild(feedback);
+            } else {
+                campo.classList.add('is-valid');
+            }
+
+            verificarErroresYDeshabilitarBoton();
+        }
+
+        // BOTÓN
+        function verificarErroresYDeshabilitarBoton() {
+            const errores = document.querySelectorAll('.is-invalid');
+            const boton = document.getElementById("<%= btnAccion.ClientID %>");
+
+            if (!boton) return;
+
+            if (errores.length > 0) {
+                boton.disabled = true;
+                boton.classList.remove('btn-primary');
+                boton.classList.add('btn-secondary');
+            } else {
+                boton.disabled = false;
+                boton.classList.remove('btn-secondary');
+                boton.classList.add('btn-primary');
+            }
+        }
+
+        // CONFIGURAR VALIDACIÓN
+        function configurarValidacion(elemento, funcionValidacion, nombreCampo) {
+            if (!elemento) return;
+
+            elemento.addEventListener('blur', function () {
+                const resultado = funcionValidacion(this, nombreCampo);
+                mostrarErrorCampo(this, resultado.mensaje);
+            });
+
+            elemento.addEventListener('input', function () {
+                limpiarError(this);
+                verificarErroresYDeshabilitarBoton();
+            });
+        }
+
+        // ASIGNAR EVENTOS
+        function configurarEventListeners() {
+            configurarValidacion(document.getElementById("<%= txtNombre.ClientID %>"), validarCampoNombreApellido, "Nombre");
+            configurarValidacion(document.getElementById("<%= txtPrimerApellido.ClientID %>"), validarCampoNombreApellido, "Primer apellido");
+            configurarValidacion(document.getElementById("<%= txtSegundoApellido.ClientID %>"), validarCampoNombreApellido, "Segundo apellido");
+            configurarValidacion(document.getElementById("<%= txtContrasena.ClientID %>"), validarContrasena);
+            configurarValidacion(document.getElementById("<%= txtCorreo.ClientID %>"), validarCorreoPUCP, "Correo");
+            configurarValidacion(document.getElementById("<%= txtDNI.ClientID %>"), validarDNI, "DNI");
+            configurarValidacion(document.getElementById("<%= txtCodigo.ClientID %>"), validarCodigo, "Codigo");
+            configurarValidacion(document.getElementById("<%= txtTelefono.ClientID %>"), validarTelefono, "Telefono");
+
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // 🔹 Desactivar botón al empezar
+            const boton = document.getElementById("<%= btnAccion.ClientID %>");
+            if (boton) {
+                boton.disabled = true;
+                boton.classList.remove('btn-primary');
+                boton.classList.add('btn-secondary');
+            }
+
+            configurarEventListeners();
+        });
+
+    </script>
+
+
 
 </asp:Content>
 
@@ -131,31 +324,12 @@
                 </div>
                 <div class="col-md-4">
                     <label for="txtCodigo" class="form-label-admiUsuarios">Código</label>
-                    <asp:TextBox ID="txtCodigo" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloOchoEnteros(event, this)"></asp:TextBox>
-                    <asp:RequiredFieldValidator ControlToValidate="txtCodigo" ValidationGroup="vgUsuario" runat="server" ForeColor="Red" />
-                    <asp:RegularExpressionValidator
-                        ID="revCodigo"
-                        runat="server"
-                        ControlToValidate="txtCodigo"
-                        ValidationExpression="^\d{8}$"
-                        ErrorMessage="El codigo debe tener exactamente 8 dígitos"
-                        ValidationGroup="vgUsuario"
-                        ForeColor="Red" />
+                    <asp:TextBox ID="txtCodigo" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" MaxLength="8" onkeypress="soloEnteros(event)"></asp:TextBox>
 
-                    
                 </div>
                 <div class="col-md-4">
                     <label for="txtDNI" class="form-label-admiUsuarios">DNI</label>
-                    <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloOchoEnteros(event, this)"></asp:TextBox>
-                    <asp:RequiredFieldValidator ControlToValidate="txtDNI" ValidationGroup="vgUsuario" runat="server" ForeColor="Red" />
-                    <asp:RegularExpressionValidator
-                        ID="revDNI"
-                        runat="server"
-                        ControlToValidate="txtDNI"
-                        ValidationExpression="^\d{8}$"
-                        ErrorMessage="El DNI debe tener exactamente 8 dígitos"
-                        ValidationGroup="vgUsuario"
-                        ForeColor="Red" />
+                    <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" MaxLength="8" onkeypress="soloEnteros(event)"></asp:TextBox>
                 </div>
             </div>
 
@@ -163,37 +337,22 @@
             <div class="row g-0 mt-3">
                 <div class="col-md-12">
                     <label for="txtNombre" class="form-label-admiUsuarios">Nombre(s)</label>
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control form-input admiUsuarios-input" MaxLength="50"  ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
-
-                    <asp:RequiredFieldValidator ControlToValidate="txtNombre" ValidationGroup="vgUsuario" runat="server" ForeColor="Red" />
-
+                    <asp:TextBox ID="txtNombre" runat="server"
+                        CssClass="form-control form-input admiUsuarios-input"
+                        ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
                 </div>
                 <div class="col-md-12">
                     <label for="txtPrimerApellido" class="form-label-admiUsuarios">Primer Apellido</label>
                     <asp:TextBox ID="txtPrimerApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" MaxLength="50" ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
 
-                    <asp:RequiredFieldValidator ControlToValidate="txtPrimerApellido" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
-
                 </div>
                 <div class="col-md-12">
                     <label for="txtSegundoApellido" class="form-label-admiUsuarios">Segundo Apellido</label>
                     <asp:TextBox ID="txtSegundoApellido" runat="server" CssClass="form-control form-input admiUsuarios-input" MaxLength="50" ClientIDMode="Static" onkeypress="soloLetras(event)"></asp:TextBox>
-
-                    <asp:RequiredFieldValidator ControlToValidate="txtSegundoApellido" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
                 </div>
                 <div class="col-md-12">
                     <label for="txtCorreo" class="form-label-admiUsuarios">Correo</label>
                     <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control form-input admiUsuarios-input" MaxLength="100" ClientIDMode="Static"></asp:TextBox>
-                    <asp:RequiredFieldValidator ControlToValidate="txtCorreo" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
-                    <asp:RegularExpressionValidator
-                        ID="revCorreo"
-                        runat="server"
-                        ControlToValidate="txtCorreo"
-                        ValidationExpression="^[A-Za-z0-9._%+-]+@example\.com$"
-                        ErrorMessage="El formato debe ser nombre@example.com"
-                        ValidationGroup="vgUsuario"
-                        ForeColor="Red">
-                    </asp:RegularExpressionValidator>
 
                 </div>
 
@@ -201,14 +360,11 @@
                     <label for="txtContrasena" class="form-label-admiUsuarios">Contraseña</label>
                     <asp:TextBox ID="txtContrasena" runat="server" CssClass="form-control form-input admiUsuarios-input"  MaxLength="40" ClientIDMode="Static"></asp:TextBox>
 
-                    <asp:RequiredFieldValidator ControlToValidate="txtContrasena" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
 
                 </div>
                 <div class="col-md-12">
                     <label for="txtTelefono" class="form-label-admiUsuarios">Teléfono</label>
                     <asp:TextBox ID="txtTelefono" runat="server"  MaxLength="12" CssClass="form-control form-input admiUsuarios-input" ClientIDMode="Static" onkeypress="soloEnteros(event)"></asp:TextBox>
-
-                    <asp:RequiredFieldValidator ControlToValidate="txtTelefono" ValidationGroup="vgUsuario" runat="server" ForeColor="Red"/>
                 </div>
             </div>
 
