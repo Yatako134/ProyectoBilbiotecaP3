@@ -17,6 +17,7 @@ namespace BibliotecaWA
         private UsuarioWSClient userBO;
         private BibliotecaWSClient biblioBo;
         private SancionWSClient sancionBo;
+        private CorreoWSClient correoBO;
 
         public List<string> TiposDeSancion
         {
@@ -147,6 +148,8 @@ namespace BibliotecaWA
 
                 txtCodigo.Text = usuario.codigo.ToString();
                 txtNombre.Text = usuario.nombre + " " + usuario.primer_apellido + " " + usuario.segundo_apellido;
+                Session["UsuarioDetallePrestamo"] = usuario;
+                Session["MaterialDetallePrestamo"] = material;
             }
 
         }
@@ -260,6 +263,36 @@ namespace BibliotecaWA
                 }
 
                 prestBO.modificarPrestamo(pre);
+                usuario usuarioSesion = (usuario)Session["UsuarioDetallePrestamo"];
+                materialBibliografico m = (materialBibliografico)Session ["MaterialDetallePrestamo"];
+                correoBO = new CorreoWSClient();
+                DateTime fecha_aa = DateTime.Now;
+                string fechaActual = fecha_aa.ToString("dd/MM/yyyy");
+                string fechaVencimiento = pre.fecha_vencimiento.ToString();
+                string correo = usuarioSesion.correo.ToString();
+                string asunto = "COMPROBANTE DE DEVOLUCIÓN - SISTEMA DE BIBLIOTECAS UTILSARMY";
+                string HTML = $@"
+<html>
+  <body style=""font-family: Arial, sans-serif;"">
+    <h2 style=""color:#004080;"">Detalles de la Devolución:</h2>
+
+    <p><strong>Fecha de devolución:</strong> {fechaActual}</p>
+    <p><strong>Código de usuario: </strong> {usuarioSesion.codigo}</p>
+    <p><strong>Nombre: </strong> {usuarioSesion.nombre.ToUpper()} {usuarioSesion.primer_apellido.ToUpper()} {usuarioSesion.segundo_apellido.ToUpper()}</p>
+    <p><strong>Título:</strong> {m.titulo.ToUpper()}</p>
+    <p><strong>Fecha de vencimiento:</strong> {fechaVencimiento}</p>
+
+    <br>
+
+    <p style=""font-size:14px;"">
+      Por favor recuerde devolver el material antes del vencimiento para evitar retrasos.
+    </p>
+
+    <img src=""cid:logo"" style=""width:180px; height:auto;"">
+  </body>
+</html>";
+                correoBO.enviar_correo(correo,asunto, HTML);
+
                 Response.Redirect("HistorialPrestamos.aspx");
             }
             else

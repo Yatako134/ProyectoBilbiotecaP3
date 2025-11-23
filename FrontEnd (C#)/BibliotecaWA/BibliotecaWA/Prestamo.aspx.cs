@@ -187,19 +187,31 @@ namespace BibliotecaWA
             string fechaVencimiento = fecha_aa.AddDays(usuarioSesion.rol_usuario.cantidad_de_dias_por_prestamo).ToString("dd/MM/yyyy");
             string correo = usuarioSesion.correo.ToString();
             string asunto = "COMPROBANTE DE PRÉSTAMO DEL SISTEMA DE BIBLIOTECAS UTILSARMY";
-            string HTML = "<html>\r\n  " +
-                "<body style=\"font-family: Arial, sans-serif; color:#333;\">\r\n    \r\n   " +
-                " <h2 style=\"color:#004080;\">Detalles del Préstamo</h2>\r\n\r\n   " +
-                " <p><strong>Fecha de préstamo:</strong> "+  fechaActual.ToString() + "</p>\r\n    " +
-                "<p><strong>Código de usuario: </strong>" + usuarioSesion.codigo.ToString() + "</p>\r\n    " +
-                "<p><strong>Nombre: </strong>" + usuarioSesion.nombre.ToString().ToUpper() + " " + usuarioSesion.primer_apellido.ToString().ToUpper() + " " + usuarioSesion.segundo_apellido.ToString().ToUpper() + "</p>\r\n    " +
-                "<p><strong>Título:</strong> " + m.titulo.ToString().ToUpper() + "</p>\r\n   " +
-                " <p><strong>Fecha de vencimiento:</strong> " + fechaVencimiento.ToString() + "</p>\r\n\r\n    <br>\r\n\r\n   " +
-                " <p style=\"font-size: 14px;\">\r\n      " +
-                "Por favor recuerde devolver el material antes del vencimiento para evitar retrasos.\r\n    </p>\r\n\r\n    " +
-                "<!-- Logo -->\r\n    <img src=\"cid:logo\" style=\"width:180px; height:auto; margin-top:20px;\">\r\n    \r\n  " +
-                "</body>\r\n" +
-                "</html>";
+            string HTML = $@"
+<html>
+  <body style='font-family: Arial, sans-serif; color:#333;'>
+    <h2 style='color:#004080;'>Detalles del Préstamo</h2>
+
+    <p><strong>Fecha de préstamo:</strong> {fechaActual}</p>
+    <p><strong>Código de usuario: </strong> {usuarioSesion.codigo}</p>
+    <p><strong>Nombre: </strong> {usuarioSesion.nombre.ToUpper()} {usuarioSesion.primer_apellido.ToUpper()} {usuarioSesion.segundo_apellido.ToUpper()}</p>
+    <p><strong>Título:</strong> {m.titulo.ToUpper()}</p>
+    <p><strong>Fecha de vencimiento:</strong> {fechaVencimiento}</p>
+
+    <br>
+
+    <p style='font-size:14px;'>
+      Por favor recuerde devolver el material antes del vencimiento para evitar retrasos.
+    </p>
+
+    <img src='cid:logo' style='width:180px; height:auto; margin-top:20px;'>
+
+    <p style='margin-top:25px; font-size:13px; color:#666;'>
+      Sistema de Bibliotecas UtilsArmy
+    </p>
+
+  </body>
+</html>";
             correoBO = new CorreoWSClient();
             correoBO.enviar_correo(correo, asunto, HTML);
             //Modal para la confirmación del prestamo

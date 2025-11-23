@@ -49,7 +49,6 @@ public class Principal {
   <body>
     <h1>Hola usuario</h1>
     <p>Este es un mensaje con imagen.</p>
-    <img src="cid:logo" style="width:180px; height:auto;">
   </body>
 </html>
 """;
