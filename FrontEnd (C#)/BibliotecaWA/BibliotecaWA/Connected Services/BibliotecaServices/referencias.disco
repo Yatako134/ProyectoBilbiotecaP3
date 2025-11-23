@@ -11,4 +11,5 @@
   <contractRef ref="http://localhost:8080/BibliotecaWS/LibroWS?WSDL" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://localhost:8080/BibliotecaWS/MaterialWS?WSDL" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://localhost:8080/BibliotecaWS/TesisWS?WSDL" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/BibliotecaWS/CorreoWS?WSDL" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
 </discovery>

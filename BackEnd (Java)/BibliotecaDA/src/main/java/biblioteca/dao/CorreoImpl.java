@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author renat
  */
-public class Correo {
+public class CorreoImpl {
 
     private String correoDeOrigen;
     private String correoDeDestino;
@@ -27,7 +27,7 @@ public class Correo {
     private String contraseña16Digitos;
     private InputStream rutaLogo;
 
-    public Correo() {
+    public CorreoImpl() {
         correoDeOrigen = "utilsarmysistemabiblioteca@gmail.com";
         contraseña16Digitos = "adze tffa borr ndbg";
         rutaLogo= getClass().getResourceAsStream("/Isologo.png");
@@ -73,11 +73,11 @@ public class Correo {
             t.sendMessage(mensaje, mensaje.getAllRecipients());
             t.close();
 
-            Logger.getLogger(Correo.class.getName()).log(Level.INFO, "Correo enviado exitosamente");
+            Logger.getLogger(CorreoImpl.class.getName()).log(Level.INFO, "Correo enviado exitosamente");
             return true;
 
         } catch (MessagingException e) {
-            Logger.getLogger(Correo.class.getName()).log(Level.SEVERE, "Error al enviar correo", e);
+            Logger.getLogger(CorreoImpl.class.getName()).log(Level.SEVERE, "Error al enviar correo", e);
             return false;
         }
     }
@@ -99,11 +99,11 @@ public class Correo {
 
             // Mostrar mensaje de éxito (como en enviarEmail)
             if (resultado) {
-                Logger.getLogger(Correo.class.getName()).log(Level.INFO, "Correo enviado exitosamente.");
+                Logger.getLogger(CorreoImpl.class.getName()).log(Level.INFO, "Correo enviado exitosamente.");
             }
 
         } catch (IOException e) {
-            Logger.getLogger(Correo.class.getName()).log(Level.SEVERE, "Error al enviar correo", e);
+            Logger.getLogger(CorreoImpl.class.getName()).log(Level.SEVERE, "Error al enviar correo", e);
             resultado = false;
         }
 

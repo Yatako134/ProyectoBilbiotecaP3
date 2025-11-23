@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://correo.services.biblioteca/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="CorreoWS" targetNamespace="http://correo.services.biblioteca/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/CorreoWS?xsd=1" namespace="http://correo.services.biblioteca/" />
+    </xsd:schema>
+  </types>
+  <message name="enviar_correo">
+    <part name="parameters" element="tns:enviar_correo" />
+  </message>
+  <message name="enviar_correoResponse">
+    <part name="parameters" element="tns:enviar_correoResponse" />
+  </message>
+  <portType name="CorreoWS">
+    <operation name="enviar_correo">
+      <input wsam:Action="http://correo.services.biblioteca/CorreoWS/enviar_correoRequest" message="tns:enviar_correo" />
+      <output wsam:Action="http://correo.services.biblioteca/CorreoWS/enviar_correoResponse" message="tns:enviar_correoResponse" />
+    </operation>
+  </portType>
+  <binding name="CorreoWSPortBinding" type="tns:CorreoWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="enviar_correo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CorreoWS">
+    <port name="CorreoWSPort" binding="tns:CorreoWSPortBinding">
+      <soap:address location="http://localhost:8080/BibliotecaWS/CorreoWS" />
+    </port>
+  </service>
+</definitions>

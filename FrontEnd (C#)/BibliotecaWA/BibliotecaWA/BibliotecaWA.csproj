@@ -356,7 +356,14 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.modificarContrasenaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.enviar_correoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BibliotecaServices\CorreoWS.wsdl" />
+    <None Include="Connected Services\BibliotecaServices\CorreoWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\BibliotecaServices\EjemplarWS.xsd">

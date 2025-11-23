@@ -2,7 +2,7 @@ package biblioteca.main;
 
 import biblioteca.config.DBManager;
 import biblioteca.config.Encriptamiento;
-import biblioteca.dao.Correo;
+import biblioteca.dao.CorreoImpl;
 import biblioteca.gestionMaterial.boImpl.ContribuyenteBOImpl;
 import biblioteca.gestionMaterial.boImpl.MaterialBiblioBOImpl;
 import biblioteca.gestionMaterial.mysql.BibliotecaImpl;
@@ -41,7 +41,7 @@ import pe.edu.pucp.utilsarmy.usuarios.model.Usuario;
 public class Principal {
 
     public static void main(String[] args) throws Exception {
-        Correo correo = new Correo();
+        CorreoImpl correo = new CorreoImpl();
         String destino = "a20234943@pucp.edu.pe";               // <-- A donde quieres enviarlo
         String asunto = "Luchex Backtracking";
         String html = """
