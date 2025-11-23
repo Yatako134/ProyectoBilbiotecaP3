@@ -191,8 +191,8 @@ namespace BibliotecaWA
                 "<body style=\"font-family: Arial, sans-serif; color:#333;\">\r\n    \r\n   " +
                 " <h2 style=\"color:#004080;\">Detalles del Préstamo</h2>\r\n\r\n   " +
                 " <p><strong>Fecha de préstamo:</strong> "+  fechaActual.ToString() + "</p>\r\n    " +
-                "<p><strong>Código de usuario:</strong>" + usuarioSesion.codigo.ToString() + "</p>\r\n    " +
-                "<p><strong>Nombre:</strong>" + usuarioSesion.nombre.ToString().ToUpper() + " " + usuarioSesion.primer_apellido.ToString().ToUpper() + " " + usuarioSesion.segundo_apellido.ToString().ToUpper() + "</p>\r\n    " +
+                "<p><strong>Código de usuario: </strong>" + usuarioSesion.codigo.ToString() + "</p>\r\n    " +
+                "<p><strong>Nombre: </strong>" + usuarioSesion.nombre.ToString().ToUpper() + " " + usuarioSesion.primer_apellido.ToString().ToUpper() + " " + usuarioSesion.segundo_apellido.ToString().ToUpper() + "</p>\r\n    " +
                 "<p><strong>Título:</strong> " + m.titulo.ToString().ToUpper() + "</p>\r\n   " +
                 " <p><strong>Fecha de vencimiento:</strong> " + fechaVencimiento.ToString() + "</p>\r\n\r\n    <br>\r\n\r\n   " +
                 " <p style=\"font-size: 14px;\">\r\n      " +
