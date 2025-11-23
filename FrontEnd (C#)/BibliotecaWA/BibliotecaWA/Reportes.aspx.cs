@@ -111,8 +111,11 @@ namespace BibliotecaWA
                     );
                     return;
                 }
+                // ✅ 4️⃣ Formato CORRECTO para el servlet
+                string fechaInicioFmt = fechaIni.ToString("yyyy-MM-dd");
+                string fechaFinFmt = fechaF.ToString("yyyy-MM-dd");
 
-                string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaInicio}&fechaFin={fechaFin}";
+                string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaInicioFmt}&fechaFin={fechaFinFmt}";
                 Response.Redirect(url);
                 return;
             }
