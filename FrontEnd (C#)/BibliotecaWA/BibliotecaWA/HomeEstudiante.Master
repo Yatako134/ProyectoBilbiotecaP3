@@ -103,10 +103,10 @@
                 <!-- Listado de opciones para estudiantes -->
                 <ul class="mynav nav nav-pills flex-column mb-auto">
                     <li class="nav-item mb-1">
-                        <a href="BusquedaMaterialesEstudiante.aspx"><i class="fa-solid fa-book-open" style="margin-right: 10px;"></i>Búsqueda de materiales</a>
+                        <a href="BusquedaMaterialesEstudiante.aspx"><i class="fa-solid fa-book-open" style="margin-right: 10px;"></i>Búsqueda</a>
                     </li>
                     <li class="nav-item mb-1">
-                        <a href="MiHistorial.aspx"><i class="fa-solid fa-book" style="margin-right: 10px;"></i>Mis préstamos</a>
+                        <a href="MiHistorial.aspx"><i class="fa-solid fa-book" style="margin-right: 10px;"></i>Mi historial de préstamos</a>
                     </li>
                   
                 </ul>
