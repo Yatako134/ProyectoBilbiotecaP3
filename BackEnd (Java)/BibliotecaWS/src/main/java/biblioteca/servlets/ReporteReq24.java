@@ -41,9 +41,9 @@ public class ReporteReq24 extends HttpServlet {
             URL rutaImagen
                 = getClass().getResource
             ("/pe/edu/pucp/utilsarmy/images/logo2.png");
-             URL rutaURLSubreporteEmpleados = getClass().
-                     getResource("/pe/edu/pucp/softprog/reports/SubReporteGrafico.jasper");
-             String rutaSubReporteGrafico = URLDecoder.decode(rutaURLSubreporteEmpleados.getPath(), "UTF-8");
+             URL rutaURLSubreporteGrafico = getClass().
+                     getResource("/pe/edu/pucp/utilsarmy/reports/SubReporteGrafico.jasper");
+             String rutaSubReporteGrafico = URLDecoder.decode(rutaURLSubreporteGrafico.getPath(), "UTF-8");
             Image imagen =
             (new ImageIcon(rutaImagen)).getImage();
             
@@ -75,7 +75,7 @@ public class ReporteReq24 extends HttpServlet {
             hm.put("FECHA_INICIO", new java.sql.Date(fechaInicio.getTime()));
             hm.put("FECHA_FIN", new java.sql.Date(fechaFin.getTime()));
             System.out.println("RUTA .jasper = " + 
-                getClass().getResource("/pe/edu/pucp/utilsarmy/reports/ReporteRF24.jasper"));
+                getClass().getResource("/pe/edu/pucp/utilsarmy/reports/ReporteRF24v.jasper"));
 
             
             JasperPrint jp
