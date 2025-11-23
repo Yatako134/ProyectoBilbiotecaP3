@@ -15,7 +15,7 @@
 
         <!-- === CABECERA SUPERIOR === -->
         <div class="text-start mb-4">
-            <h2 class="fw-bold fs-2">Mi Historial</h2>
+            <h2 class="fw-bold fs-2">Mi historial</h2>
         </div>
 
         <!-- Botones de pestaña -->
@@ -63,11 +63,24 @@
                     OnPageIndexChanging="gvPrestamos_PageIndexChanging">
                     <Columns>
                         <asp:BoundField DataField="IdPrestamo" HeaderText="Código" ItemStyle-CssClass="align-middle" />
-                        <asp:BoundField DataField="Fecha_de_prestamo" HeaderText="Fecha de Inicio" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-CssClass="align-middle" />
-                        <asp:BoundField DataField="Fecha_vencimiento" HeaderText="Fecha de Vencimiento" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-CssClass="align-middle" />
+                        <asp:BoundField DataField="Fecha_de_prestamo"
+                            HeaderText="Fecha de Inicio"
+                            DataFormatString="{0:d 'de' MMM, yyyy}"
+                            HtmlEncode="false"
+                            ItemStyle-CssClass="align-middle" />
+                        <asp:BoundField DataField="Fecha_vencimiento"
+                            HeaderText="Fecha de Vencimiento"
+                            DataFormatString="{0:d 'de' MMM, yyyy}"
+                            HtmlEncode="false"
+                            ItemStyle-CssClass="align-middle" />
                         <asp:TemplateField HeaderText="Fecha de Devolución">
                             <ItemTemplate>
-                                <%# (Eval("Fecha_devolucion") == null || Convert.ToDateTime(Eval("Fecha_devolucion")) == DateTime.MinValue)? "-" : Convert.ToDateTime(Eval("Fecha_devolucion")).ToString("dd/MM/yyyy") %>
+                                <%# 
+                                    (Eval("Fecha_devolucion") == null 
+                                    || Convert.ToDateTime(Eval("Fecha_devolucion")) == DateTime.MinValue)
+                                    ? "-" 
+                                    : Convert.ToDateTime(Eval("Fecha_devolucion")).ToString("d 'de' MMM, yyyy") 
+                                %>
                             </ItemTemplate>
                             <ItemStyle CssClass="align-middle" />
                         </asp:TemplateField>
@@ -161,18 +174,21 @@
                     <Columns>
                         <asp:BoundField DataField="id_sancion" HeaderText="Código" ItemStyle-CssClass="align-middle" />
                         <asp:BoundField DataField="prestamo.idPrestamo" HeaderText="Préstamo" ItemStyle-CssClass="align-middle" />
+
                         <asp:TemplateField HeaderText="Fecha de Inicio">
                             <ItemTemplate>
-                                <%# Eval("fecha_inicio", "{0:dd/MM/yyyy}") %>
+                                <%# Eval("fecha_inicio", "{0:d 'de' MMM, yyyy}") %>
                             </ItemTemplate>
                             <ItemStyle CssClass="align-middle" />
                         </asp:TemplateField>
+
                         <asp:TemplateField HeaderText="Fecha de Fin">
                             <ItemTemplate>
-                                <%# Eval("fecha_fin", "{0:dd/MM/yyyy}") %>
+                                <%# Eval("fecha_fin", "{0:d 'de' MMM, yyyy}") %>
                             </ItemTemplate>
                             <ItemStyle CssClass="align-middle" />
                         </asp:TemplateField>
+
                         <asp:BoundField DataField="justificacion" HeaderText="Justificación" ItemStyle-CssClass="align-middle" />
                         <asp:TemplateField HeaderText="Estado">
                             <ItemTemplate>

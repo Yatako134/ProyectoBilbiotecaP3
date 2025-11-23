@@ -101,7 +101,7 @@ namespace ProyectoP3
             }
 
             int mostrados = gvPrestamos.Rows.Count;
-            lblResultados.Text = $"Mostrando {mostrados} de {total} usuarios";
+            lblResultados.Text = $"Mostrando {mostrados} de {total} resultados";
         }
 
         private void ActualizarContadorSancion()
@@ -112,7 +112,7 @@ namespace ProyectoP3
                 total = ((BindingList<sancion>)Session["Sanciones"]).Count;
             }
             int mostrados = gvSanciones.Rows.Count;
-            LabelSancion.Text = $"Mostrando {mostrados} de {total} usuarios";
+            LabelSancion.Text = $"Mostrando {mostrados} de {total} restultados";
         }
 
         private void CargarSanciones()
