@@ -72,8 +72,8 @@ public class ReporteReq24 extends HttpServlet {
                 throw new ServletException("Error al parsear fechaFin: " + fechaFinStr, e);
             }
 
-            hm.put("FECHA_INICIO", new java.sql.Date(fechaInicio.getTime()));
-            hm.put("FECHA_FIN", new java.sql.Date(fechaFin.getTime()));
+            hm.put("Fecha_Inicio", new java.sql.Date(fechaInicio.getTime()));
+            hm.put("Fecha_Fin", new java.sql.Date(fechaFin.getTime()));
             System.out.println("RUTA .jasper = " + 
                 getClass().getResource("/pe/edu/pucp/utilsarmy/reports/ReporteRF24v.jasper"));
 
