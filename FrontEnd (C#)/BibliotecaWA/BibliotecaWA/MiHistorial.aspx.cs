@@ -112,7 +112,7 @@ namespace ProyectoP3
                 total = ((BindingList<sancion>)Session["Sanciones"]).Count;
             }
             int mostrados = gvSanciones.Rows.Count;
-            LabelSancion.Text = $"Mostrando {mostrados} de {total} restultados";
+            LabelSancion.Text = $"Mostrando {mostrados} de {total} resultados";
         }
 
         private void CargarSanciones()

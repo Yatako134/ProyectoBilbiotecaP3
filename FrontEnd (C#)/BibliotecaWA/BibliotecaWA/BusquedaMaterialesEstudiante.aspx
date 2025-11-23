@@ -8,7 +8,7 @@
     <!-- Cabecera -->
     <div class="d-flex align-items-center mb-2">
         <i class="fa-solid fa-book fa-sm me-2"></i>
-        <span class="fw-bold">Búsqueda y Préstamos</span>
+        <span class="fw-bold">Búsqueda</span>
     </div>
 
     <!-- Contenedor principal -->

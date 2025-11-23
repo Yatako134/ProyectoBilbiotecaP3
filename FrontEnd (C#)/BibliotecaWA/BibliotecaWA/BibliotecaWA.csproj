@@ -409,6 +409,7 @@
     <Content Include="Content\Images\tesis.png" />
     <Content Include="Content\site-custom.css" />
     <Content Include="DetalleMaterial.aspx" />
+    <Content Include="DetalleMaterialEstudiante.aspx" />
     <Content Include="DetallePrestamo_Sancion.aspx" />
     <Content Include="Fonts\css\AdminUsuarios.css" />
     <Content Include="Fonts\css\all.css" />
@@ -567,6 +568,13 @@
     </Compile>
     <Compile Include="DetalleMaterial.aspx.designer.cs">
       <DependentUpon>DetalleMaterial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleMaterialEstudiante.aspx.cs">
+      <DependentUpon>DetalleMaterialEstudiante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleMaterialEstudiante.aspx.designer.cs">
+      <DependentUpon>DetalleMaterialEstudiante.aspx</DependentUpon>
     </Compile>
     <Compile Include="DetallePrestamo_Sancion.aspx.cs">
       <DependentUpon>DetallePrestamo_Sancion.aspx</DependentUpon>
