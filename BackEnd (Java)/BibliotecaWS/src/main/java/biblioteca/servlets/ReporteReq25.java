@@ -24,7 +24,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 public class ReporteReq25 extends HttpServlet {
 
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try{
             Connection con = DBManager.getInstance()
@@ -45,7 +45,9 @@ public class ReporteReq25 extends HttpServlet {
             (new ImageIcon(rutaImagen)).getImage();
             
             HashMap hm = new HashMap();
-            hm.put("nombre", "Jorge");
+            //hm.put("nombre", "Jorge");
+            String nombre = request.getParameter("nombre");
+            hm.put("nombre", nombre);
             hm.put("logo", imagen);
             
             JasperPrint jp

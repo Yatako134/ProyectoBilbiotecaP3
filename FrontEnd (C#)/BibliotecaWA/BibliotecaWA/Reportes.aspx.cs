@@ -1,14 +1,17 @@
-﻿using System;
+﻿using BibliotecaWA.BibliotecaServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Windows;
+using System.Windows.Forms;
 namespace BibliotecaWA
 {
     public partial class Reportes : System.Web.UI.Page
     {
+        UsuarioWSClient bousuario = new UsuarioWSClient();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -48,7 +51,11 @@ namespace BibliotecaWA
             // 4. Solo si hay EXACTAMENTE uno → hacemos redirect
             if (chkReporteEjemplares.Checked)
             {
-                Response.Redirect("http://localhost:8080/BibliotecaWS/ReporteReq25");
+                usuario user = new usuario();
+                user = bousuario.obtenerUsuarioPorId(2);
+                //string nombre = "Luchexx";
+                string nombre = user.nombre;
+                Response.Redirect($"http://localhost:8080/BibliotecaWS/ReporteReq25?nombre={nombre}");
                 return;
             }
 
@@ -56,6 +63,55 @@ namespace BibliotecaWA
             {
                 string fechaInicio = txtFechaInicio1.Text;
                 string fechaFin = txtFechaFin1.Text;
+                // 1️⃣ Validar que ambos campos tengan algo
+                if (string.IsNullOrEmpty(fechaInicio) || string.IsNullOrEmpty(fechaFin))
+                {
+                    MessageBox.Show(
+                        "Debes ingresar ambas fechas.",
+                        "Validación",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
+
+                // 2️⃣ Intentar convertir a fecha
+                DateTime fechaIni, fechaF;
+
+                if (!DateTime.TryParse(fechaInicio, out fechaIni))
+                {
+                    MessageBox.Show(
+                        "La fecha inicial no es válida.",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                    return;
+                }
+
+                if (!DateTime.TryParse(fechaFin, out fechaF))
+                {
+                    MessageBox.Show(
+                        "La fecha final no es válida.",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                    return;
+                }
+
+                // 3️⃣ Validar rango
+                if (fechaIni > fechaF)
+                {
+                    MessageBox.Show(
+                        "La fecha inicial no puede ser mayor que la fecha final.",
+                        "Rango inválido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                    return;
+                }
+
                 string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaInicio}&fechaFin={fechaFin}";
                 Response.Redirect(url);
                 return;

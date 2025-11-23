@@ -57,10 +57,17 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
 
-    <div class="titulo-usuarios">
-        <h6 class="ColorLetras fw-bold"> Gestión de Usuarios</h6>
+
+    <div class="d-flex align-items-center mb-4">
+        <!-- Icono -->
+        <i class="fas fa-th" style="margin-right: 10px; font-size: 24px;"></i>
+
+        <div style="border-right: 2px solid #ccc; height: 24px; margin-right: 10px;"></div>
+
+        <!-- Texto -->
+        <p1>Gestión de Usuarios</p1>
     </div>
-    <hr>
+    <hr />
 
     <!-- Modal personalizado -->
     <div id="modalRegistroUsuario" class="custom-modal">
@@ -93,7 +100,7 @@
 
         <!-- === CABECERA SUPERIOR === -->
         <div class="tabla-header d-flex justify-content-between align-items-center p-3 ColorLetras">
-            <h2 class="m-0 fw-semibold">Usuarios Registrados</h2>
+            <h1><strong>Usuarios Registrados</strong></h1>
             <asp:LinkButton ID="lkRegistrar" CssClass="btn btn-primary" runat="server"
                 OnClick="btnRegistrar_click"
                 Text="<i class='fa-solid fa-plus pe-2'></i> Añadir Usuario" />

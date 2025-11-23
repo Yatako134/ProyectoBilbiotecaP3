@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="Reportes.aspx.cs" Inherits="BibliotecaWA.Reportes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_Title" runat="server">
+    Reportes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Scripts" runat="server">
 </asp:Content>
