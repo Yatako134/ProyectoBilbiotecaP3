@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.awt.Image;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,7 +41,9 @@ public class ReporteReq24 extends HttpServlet {
             URL rutaImagen
                 = getClass().getResource
             ("/pe/edu/pucp/utilsarmy/images/logo2.png");
-            
+             URL rutaURLSubreporteEmpleados = getClass().
+                     getResource("/pe/edu/pucp/softprog/reports/SubReporteGrafico.jasper");
+             String rutaSubReporteGrafico = URLDecoder.decode(rutaURLSubreporteEmpleados.getPath(), "UTF-8");
             Image imagen =
             (new ImageIcon(rutaImagen)).getImage();
             
@@ -48,6 +51,7 @@ public class ReporteReq24 extends HttpServlet {
             String nombre = request.getParameter("nombre");
             hm.put("nombre", nombre);
             hm.put("logo", imagen);
+            hm.put("rutaSubRepGrafico",rutaSubReporteGrafico);
             //Fecha de inicio y fin
             String fechaInicioStr = request.getParameter("fechaInicio"); // yyyy-MM-dd
             String fechaFinStr = request.getParameter("fechaFin");
