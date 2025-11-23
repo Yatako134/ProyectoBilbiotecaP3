@@ -34,7 +34,7 @@ public class ReporteReq24 extends HttpServlet {
                 JRLoader.loadObject(getClass().
                     getResourceAsStream
                     ("/pe/edu/pucp/utilsarmy/reports/"
-                            + "ReporteRF26.jasper"));
+                            + "ReporteRF24v.jasper"));
             
             //Logo de la web
             URL rutaImagen
@@ -45,7 +45,8 @@ public class ReporteReq24 extends HttpServlet {
             (new ImageIcon(rutaImagen)).getImage();
             
             HashMap hm = new HashMap();
-            hm.put("nombre", "Luchex");
+            String nombre = request.getParameter("nombre");
+            hm.put("nombre", nombre);
             hm.put("logo", imagen);
             //Fecha de inicio y fin
             String fechaInicioStr = request.getParameter("fechaInicio"); // yyyy-MM-dd
