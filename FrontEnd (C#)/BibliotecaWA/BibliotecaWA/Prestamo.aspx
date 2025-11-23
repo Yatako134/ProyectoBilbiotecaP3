@@ -238,8 +238,10 @@
                     <h5 class="modal-title"><i class="bi bi-exclamation-triangle-fill"></i>Sanción Activa</h5>
 
                 </div>
-
+                
                 <div class="modal-body">
+                    <p>El usuario tiene sanción vigente</p>
+                    <p>Ültima sanción: </p>
                     <p id="txtFecha"></p>
                     <p id="txtMotivo"></p>
                 </div>

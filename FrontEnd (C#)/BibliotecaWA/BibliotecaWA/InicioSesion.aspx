@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InicioSesion.aspx.cs" Inherits="BibliotecaWA.InicioSesion" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,72 +9,152 @@
     <link href="Fonts/css/all.css" rel="stylesheet" />
     <link href="Content/site.css" rel="stylesheet" />
     <link href="Fonts/css/custom.css" rel="stylesheet" />
+    <!-- NUEVO ARCHIVO CSS CORREGIDO -->
+    <link href="Content/site-custom.css" rel="stylesheet" />
+
     <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/bootstrap.bundle.js"></script>
     <script src="Scripts/jquery-3.7.1.js"></script>
     <script src="Scripts/activarMenu.js"></script>
 
-    <title>Inicio de sesion</title>
+    <title>Inicio de sesión - Sistema de Bibliotecas</title>
 
     <script type="text/javascript">
         // Variables para rastrear si los campos han sido interactuados
         var emailInteracted = false;
         var passwordInteracted = false;
+        var isCredentialError = false;
 
-        // Validar el correo
+        // Validar formato básico del correo
+        function isValidEmailFormat(email) {
+            var basicEmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return basicEmailRegex.test(email);
+        }
+
+        // Validar caracteres permitidos en la parte local (antes del @)
+        function isValidLocalPart(localPart) {
+            var localPartRegex = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*[a-zA-Z0-9]$/;
+            var invalidChars = /[!#$&*()=\[\]{}|:;<>\/]/;
+
+            return localPartRegex.test(localPart) && !invalidChars.test(localPart) &&
+                !localPart.startsWith('.') && !localPart.endsWith('.') &&
+                !localPart.startsWith('-') && !localPart.endsWith('-');
+        }
+
+        // Validar dominio específico
+        function isValidDomain(domain) {
+            return domain === "pucp.edu.pe";
+        }
+
+        // Validar el correo completo (para habilitar botón)
+        function validateEmailForButton() {
+            var email = document.getElementById('<%= txtUsername.ClientID %>').value.trim();
+
+            if (email === "") return false;
+            if (!isValidEmailFormat(email)) return false;
+
+            var parts = email.split('@');
+            var localPart = parts[0];
+            var domain = parts[1];
+
+            if (!isValidLocalPart(localPart)) return false;
+            if (!isValidDomain(domain)) return false;
+
+            return true;
+        }
+
+        // Validar el correo completo (para mostrar errores)
         function validateEmail() {
-            var email = document.getElementById('<%= txtUsername.ClientID %>').value;
-        var emailError = document.getElementById('<%= lblEmailError.ClientID %>');
-            var emailRegex = /^[a-zA-Z0-9._%+-]+@pucp\.edu\.pe$/; // Solo correos @ejemplo.com
+            if (isCredentialError) return false;
 
-            // Solo mostrar errores si el usuario ya interactuó con el campo
+            var email = document.getElementById('<%= txtUsername.ClientID %>').value.trim();
+            var emailError = document.getElementById('emailErrorContainer');
+            var emailField = document.getElementById('<%= txtUsername.ClientID %>');
+
             if (!emailInteracted) {
-                emailError.style.display = "none";
+                emailError.classList.remove("show");
+                emailField.classList.remove("error");
                 return false;
             }
 
             if (email === "") {
-                emailError.innerHTML = "Debe ingresar un correo electrónico.";
-                emailError.style.display = "block";
+                emailError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>Debe ingresar su correo electrónico institucional.</span></div>";
+                emailError.classList.add("show");
+                emailField.classList.add("error");
                 return false;
-            } else if (!emailRegex.test(email)) {
-                emailError.innerHTML = "El correo debe ser de tipo @pucp.edu.pe";
-                emailError.style.display = "block";
-                return false;
-            } else {
-                emailError.style.display = "none";
-                return true;
             }
+
+            if (!isValidEmailFormat(email)) {
+                emailError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>El formato del correo no es válido. Verifica que tenga un formato correcto.</span></div>";
+                emailError.classList.add("show");
+                emailField.classList.add("error");
+                return false;
+            }
+
+            var parts = email.split('@');
+            var localPart = parts[0];
+            var domain = parts[1];
+
+            if (!isValidLocalPart(localPart)) {
+                emailError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>El formato del correo no es válido. Verifica que tenga un formato correcto.</span></div>";
+                emailError.classList.add("show");
+                emailField.classList.add("error");
+                return false;
+            }
+
+            if (!isValidDomain(domain)) {
+                emailError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>Debe ser un correo institucional @pucp.edu.pe</span></div>";
+                emailError.classList.add("show");
+                emailField.classList.add("error");
+                return false;
+            }
+
+            emailError.classList.remove("show");
+            emailField.classList.remove("error");
+            emailField.classList.add("filled");
+            return true;
         }
 
-        // Validar la contraseña
-        function validatePassword() {
+        // Validar la contraseña (para habilitar botón)
+        function validatePasswordForButton() {
             var password = document.getElementById('<%= txtPassword.ClientID %>').value;
-        var passwordError = document.getElementById('<%= lblPasswordError.ClientID %>');
+            return password !== "";
+        }
 
-            // Solo mostrar errores si el usuario ya interactuó con el campo
+        // Validar la contraseña (para mostrar errores)
+        function validatePassword() {
+            if (isCredentialError) return false;
+
+            var password = document.getElementById('<%= txtPassword.ClientID %>').value;
+            var passwordError = document.getElementById('passwordErrorContainer');
+            var passwordField = document.getElementById('<%= txtPassword.ClientID %>');
+
             if (!passwordInteracted) {
-                passwordError.style.display = "none";
+                passwordError.classList.remove("show");
+                passwordField.classList.remove("error");
                 return false;
             }
 
             if (password === "") {
-                passwordError.innerHTML = "Debe ingresar su contraseña.";
-                passwordError.style.display = "block";
+                passwordError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>Debe ingresar su contraseña</span></div>";
+                passwordError.classList.add("show");
+                passwordField.classList.add("error");
                 return false;
             } else {
-                passwordError.style.display = "none";
+                passwordError.classList.remove("show");
+                passwordField.classList.remove("error");
+                passwordField.classList.add("filled");
                 return true;
             }
         }
 
         // Habilitar el botón de login
         function enableLoginButton() {
-            var emailValid = validateEmail();
-            var passwordValid = validatePassword();
+            var emailValid = validateEmailForButton();
+            var passwordValid = validatePasswordForButton();
             var loginButton = document.getElementById('<%= btnLogin.ClientID %>');
 
-            if (emailValid && passwordValid) {
+            if (emailValid && passwordValid && !isCredentialError) {
                 loginButton.disabled = false;
                 loginButton.classList.remove("disabled");
             } else {
@@ -87,30 +166,102 @@
         // Marcar que el usuario interactuó con el campo de email
         function markEmailInteracted() {
             emailInteracted = true;
+            validateEmail();
             enableLoginButton();
         }
 
         // Marcar que el usuario interactuó con el campo de contraseña
         function markPasswordInteracted() {
             passwordInteracted = true;
+            validatePassword();
             enableLoginButton();
+        }
+
+        // Mostrar error de credenciales
+        function showCredentialError() {
+            var emailField = document.getElementById('<%= txtUsername.ClientID %>');
+            var passwordField = document.getElementById('<%= txtPassword.ClientID %>');
+            var passwordError = document.getElementById('passwordErrorContainer');
+            var emailError = document.getElementById('emailErrorContainer');
+            
+            emailError.classList.remove("show");
+            
+            isCredentialError = true;
+            passwordError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>Credenciales incorrectas. Inténtalo nuevamente.</span></div>";
+            passwordError.classList.add("show");
+            
+            emailField.classList.add("error");
+            passwordField.classList.add("error");
+            
+            passwordInteracted = true;
+            emailInteracted = true;
+            
+            enableLoginButton();
+        }
+
+        // Limpiar error de credenciales cuando el usuario empiece a escribir
+        function clearCredentialError() {
+            if (isCredentialError) {
+                isCredentialError = false;
+                var emailField = document.getElementById('<%= txtUsername.ClientID %>');
+                var passwordField = document.getElementById('<%= txtPassword.ClientID %>');
+                var passwordError = document.getElementById('passwordErrorContainer');
+                
+                emailField.classList.remove("error");
+                passwordField.classList.remove("error");
+                passwordError.classList.remove("show");
+                
+                enableLoginButton();
+            }
         }
 
         // Validar en tiempo real mientras se digita
         function setupRealTimeValidation() {
             var emailField = document.getElementById('<%= txtUsername.ClientID %>');
-    var passwordField = document.getElementById('<%= txtPassword.ClientID %>');
+            var passwordField = document.getElementById('<%= txtPassword.ClientID %>');
 
-            emailField.addEventListener('input', enableLoginButton);
-            passwordField.addEventListener('input', enableLoginButton);
+            emailField.addEventListener('input', function() {
+                clearCredentialError();
+                enableLoginButton();
+                
+                if (emailField.value !== "") {
+                    emailInteracted = true;
+                    validateEmail();
+                }
+            });
+            
+            passwordField.addEventListener('input', function() {
+                clearCredentialError();
+                enableLoginButton();
+                
+                if (passwordField.value !== "") {
+                    passwordInteracted = true;
+                    validatePassword();
+                }
+            });
+            
+            if (emailField.value !== "") {
+                emailField.classList.add("filled");
+                emailInteracted = true;
+            }
+            if (passwordField.value !== "") {
+                passwordField.classList.add("filled");
+                passwordInteracted = true;
+            }
+            
+            var hfError = document.getElementById('<%= hfCredentialError.ClientID %>');
+            if (hfError && hfError.value === "true") {
+                showCredentialError();
+                hfError.value = "";
+            }
+
+            enableLoginButton();
         }
 
-        // Ejecutar cuando el documento esté listo
         document.addEventListener('DOMContentLoaded', function () {
             setupRealTimeValidation();
         });
     </script>
-
 </head>
 <body>
     <div class="container-fluid d-flex p-0 m-0" style="height: 100vh; padding: 20px;">
@@ -122,7 +273,6 @@
         <!-- Contenedor del formulario (lado derecho) -->
         <div class="col-md-6 d-flex justify-content-center align-items-center form-container" style="padding-left: 80px; padding-right: 80px;">
             <form id="formLogin" runat="server" class="w-100">
-
                 <div class="text-center mb-4">
                     <h2 style="font-weight: 500;">¡Bienvenido al Sistema de Bibliotecas Universitario!</h2>
                 </div>
@@ -135,8 +285,7 @@
                     <label for="txtUsername">Correo institucional</label>
                     <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control"
                         onblur="markEmailInteracted()" oninput="enableLoginButton()"></asp:TextBox>
-                    <asp:Label ID="lblEmailError" runat="server" CssClass="text-danger"
-                        Style="display: none; font-size: 0.875rem;"></asp:Label>
+                    <div id="emailErrorContainer" class="error-message"></div>
                 </div>
 
                 <!-- Campo de contraseña -->
@@ -146,16 +295,14 @@
                         <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password"
                             onblur="markPasswordInteracted()" oninput="enableLoginButton()"></asp:TextBox>
                     </div>
-                    <asp:Label ID="lblPasswordError" runat="server" CssClass="text-danger"
-                        Style="display: none; font-size: 0.875rem;"></asp:Label>
+                    <div id="passwordErrorContainer" class="error-message"></div>
                 </div>
 
-                <div class="form-group mt-2">
-                    <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger text-center d-block" EnableViewState="false" Visible="false"></asp:Label>
-                </div>
+                <!-- Campo oculto para comunicar error de credenciales desde el servidor -->
+                <asp:HiddenField ID="hfCredentialError" runat="server" Value="" />
 
                 <div class="form-group mt-3 text-start">
-                    <a href="#" class="d-block">¿Olvidaste tu contraseña?</a>
+                    <button type="button" class="btn btn-link p-0" onclick="window.location.href='RestablecerContrasena.aspx'">¿Olvidaste tu contraseña?</button>
                 </div>
 
                 <!-- Botón de inicio de sesión -->

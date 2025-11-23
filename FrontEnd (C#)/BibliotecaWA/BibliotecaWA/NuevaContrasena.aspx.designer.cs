@@ -11,70 +11,61 @@ namespace BibliotecaWA
 {
 
 
-    public partial class HomeEstudiante
+    public partial class NuevaContrasena
     {
 
         /// <summary>
-        /// Control cph_Title.
+        /// Control formCambiar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cph_Title;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formCambiar;
 
         /// <summary>
-        /// Control cph_Scripts.
+        /// Control txtPassword.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cph_Scripts;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// Control form1.
+        /// Control lblPasswordError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label lblPasswordError;
 
         /// <summary>
-        /// Control spnNombreUsuario.
+        /// Control txtConfirmPassword.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label spnNombreUsuario;
+        protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
 
         /// <summary>
-        /// Control lnkCambiarContrasena.
+        /// Control lblConfirmPasswordError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCambiarContrasena;
+        protected global::System.Web.UI.WebControls.Label lblConfirmPasswordError;
 
         /// <summary>
-        /// Control lnkCerrarSesion.
+        /// Control btnRestablecer.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCerrarSesion;
-
-        /// <summary>
-        /// Control cph_Contenido.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cph_Contenido;
+        protected global::System.Web.UI.WebControls.Button btnRestablecer;
     }
 }

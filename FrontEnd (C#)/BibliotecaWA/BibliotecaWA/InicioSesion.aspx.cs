@@ -12,6 +12,7 @@ namespace BibliotecaWA
     public partial class InicioSesion : System.Web.UI.Page
     {
         private UsuarioWSClient bousuario;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ////Verificar si el usuario ya está autenticado
@@ -24,9 +25,8 @@ namespace BibliotecaWA
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            // Ocultar mensaje de error antes de la verificación
-            lblMensaje.Visible = false;
-            lblMensaje.Text = "";
+            // Limpiar cualquier error previo
+            hfCredentialError.Value = "";
 
             // Crear objeto para usuario
             usuario us = new usuario();
@@ -58,23 +58,27 @@ namespace BibliotecaWA
                 // Añadir la cookie a la respuesta
                 Response.Cookies.Add(ck);
 
-                // Mostrar mensaje de éxito antes de redirigir
-                lblMensaje.Visible = true;
-                lblMensaje.Text = "Credenciales correctas";
-
                 // Redirigir a la página solicitada o a la predeterminada
+                usuario usu = bousuario.obtenerUsuarioPorId(resultado);
                 string strRedirect = Request["ReturnUrl"];
-                if (strRedirect == null)
-                    strRedirect = "BusquedaMaterialas.aspx";  // Página predeterminada después de iniciar sesión
+                string rol = usu.rol_usuario.ToString();
 
-                // Redirige una vez
+                if (strRedirect == null)
+                {
+                    Session["UserId"] = resultado;
+                    Session["UserName"] = $"{usu.nombre} {usu.primer_apellido}";
+                    strRedirect = "BusquedaMaterialas.aspx";
+                }
                 Response.Redirect(strRedirect, true);
             }
             else
             {
-                // Si las credenciales son incorrectas, mostrar mensaje de error
-                lblMensaje.Visible = true;
-                lblMensaje.Text = "Credenciales incorrectas. Inténtalo nuevamente.";
+                // Si las credenciales son incorrectas, establecer el campo oculto
+                hfCredentialError.Value = "true";
+
+                // Limpiar ambos campos para que sea consistente
+                txtUsername.Text = "";
+                txtPassword.Text = "";
             }
         }
     }

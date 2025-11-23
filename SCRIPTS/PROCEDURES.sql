@@ -1,163 +1,203 @@
--- Bibliotecas:
-DELIMITER $
-CREATE PROCEDURE INSERTAR_BIBLIOTECA(
-    OUT _id_biblioteca INT,
-    IN _nombre VARCHAR(80),
-    IN _ubicacion VARCHAR(60)
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ASIGNAR_CONTRIBUYENTE`(
+	IN _id_material INT,
+    IN _id_contribuyente INT
 )
 BEGIN
-    INSERT INTO Biblioteca(nombre, ubicacion, activo)
-    VALUES(_nombre, _ubicacion, 1);
-    
-    SET _id_biblioteca = LAST_INSERT_ID();
-END$
+	INSERT INTO Contribuyente_Material(id_material, id_contribuyente)
+	VALUES (_id_material, _id_contribuyente);
+END$$
+DELIMITER ;
 
--- MODIFICAR
-DELIMITER $
-
-CREATE PROCEDURE MODIFICAR_BIBLIOTECA(
-    IN _id_biblioteca INT,
-    IN _nombre VARCHAR(80),
-    IN _ubicacion VARCHAR(60)
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ASIGNAR_EDITORIAL`(
+	IN _id_material INT,
+    IN _id_editorial INT
 )
 BEGIN
-    UPDATE Biblioteca
-    SET nombre = _nombre,
-        ubicacion = _ubicacion
-    WHERE id_biblioteca = _id_biblioteca;
-END$
-	
-    
-    
-    
-    -- ELIMINAR
-DELIMITER $
+	INSERT INTO Editorial_Material(id_material, id_editorial)
+	VALUES (_id_material, _id_editorial);
+END$$
+DELIMITER ;
 
-CREATE PROCEDURE ELIMINAR_BIBLIOTECA(
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `CONTAR_EJEMPLARES_ASIGNADOS_POR_MATERIAL`(IN _id_material INT)
+BEGIN
+    SELECT COUNT(*) AS cantidad_ejemplares
+    FROM Ejemplar
+    WHERE id_material = _id_material AND activo = 1;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `CONTAR_RELACIONES_CONTRIBUYENTE`(
+    IN _id_contribuyente INT,
+    IN _excluir_material INT
+)
+BEGIN
+    SELECT COUNT(*) AS total_relaciones
+    FROM Contribuyente_Material 
+    WHERE id_contribuyente = _id_contribuyente 
+    AND id_material != _excluir_material;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `EJEMPLARES_BIBLIOTECA`(
+    IN _id_material INT
+    
+)
+BEGIN
+	select e.id_ejemplar,e.estado,e.ubicacion,b.nombre,b.id_biblioteca
+	from Ejemplar e
+	inner join Biblioteca b
+	on e.id_biblioteca=b.id_biblioteca
+	where e.id_material=_id_material
+    and e.estado='DISPONIBLE';
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ELIMINAR_ARTICULO`(
+    IN _id_articulo INT
+)
+BEGIN
+    UPDATE MaterialBibliografico
+    SET activo = 0
+    WHERE id_material = _id_articulo;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ELIMINAR_BIBLIOTECA`(
     IN _id_biblioteca INT
 )
 BEGIN
     UPDATE Biblioteca
     SET activo = 0
     WHERE id_biblioteca = _id_biblioteca;
-END$
+END$$
+DELIMITER ;
 
--- BUSCAR POR ID
-DELIMITER $
-
-CREATE PROCEDURE OBTENER_BIBLIOTECA_X_ID(
-    IN _id_biblioteca INT
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ELIMINAR_CONTRIBUYENTE`(
+    IN _id_contribuyente INT
 )
 BEGIN
-    SELECT id_biblioteca, nombre, ubicacion, activo
-    FROM Biblioteca
-    WHERE id_biblioteca = _id_biblioteca;
-END$
-
--- LISTAR
-DELIMITER $
-
-CREATE PROCEDURE LISTAR_BIBLIOTECAS_TODAS()
-BEGIN
-    SELECT id_biblioteca, nombre, ubicacion, activo
-    FROM Biblioteca
-    WHERE activo = 1;
-END$
-
--- Libros:
-
-
-DELIMITER $
-
-CREATE PROCEDURE INSERTAR_LIBRO(
-    OUT _id_libro INT,
-    IN _titulo VARCHAR(150),
-    IN _anho_publicacion INT,
-    IN _numero_paginas INT,
-    IN _clasificacion_tematica VARCHAR(100),
-    IN _idioma VARCHAR(40),
-    IN _ISBN VARCHAR(30),
-    IN _edicion VARCHAR(20),
-    IN _editoriales VARCHAR(300)
-)
-BEGIN
-	INSERT INTO MaterialBibliografico(
-        titulo,
-        anho_publicacion,numero_paginas,estado,clasificacion_tematica,activo,idioma, tipo,editoriales
-    )
-    VALUES(
-        _titulo,_anho_publicacion,_numero_paginas,'NO_DISPONIBLE',_clasificacion_tematica,1,_idioma,'LIBRO',_editoriales 
-    );
-    SET _id_libro = @@last_insert_id;
-    INSERT INTO Libro(id_libro, ISBN, edicion)
-    VALUES(_id_libro, _ISBN, _edicion);
+    -- Primero eliminamos las relaciones
+    DELETE FROM Contribuyente_Material 
+    WHERE id_contribuyente = _id_contribuyente;
     
-END$
+    -- Luego eliminamos el contribuyente
+    DELETE FROM Contribuyente 
+    WHERE id_contribuyente = _id_contribuyente;
+END$$
+DELIMITER ;
 
--- MODIFICAR
-DELIMITER $
--- idioma VARCHAR(40) NOT NULL,
-CREATE PROCEDURE MODIFICAR_LIBRO(
-    IN _id_libro INT,
-    IN _titulo VARCHAR(150),
-    IN _anho_publicacion INT,
-    IN _numero_paginas INT,
-    IN _clasificacion_tematica VARCHAR(100),
-    IN _idioma VARCHAR(40),
-    IN _ISBN VARCHAR(30),
-    IN _edicion VARCHAR(20),
-    IN _editoriales VARCHAR(300)
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ELIMINAR_EJEMPLAR`(
+    IN _id_ejemplar INT
 )
 BEGIN
-	UPDATE MaterialBibliografico SET titulo=_titulo,
-        anho_publicacion=_anho_publicacion,numero_paginas=_numero_paginas,
-        clasificacion_tematica=_clasificacion_tematica,
-        idioma=_idioma,editoriales=_editoriales WHERE id_material=_id_libro;
-    UPDATE Libro SET ISBN = _ISBN,
-        edicion = _edicion
-    WHERE id_libro = _id_libro;
-END$
+    DELETE FROM Ejemplar 
+    WHERE id_ejemplar = _id_ejemplar;
+END$$
+DELIMITER ;
 
--- BUSCAR POR ID
-DELIMITER $
-    -- ELIMINAR
-
-CREATE PROCEDURE ELIMINAR_LIBRO(
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ELIMINAR_LIBRO`(
     IN _id_libro INT
 )
 BEGIN
     UPDATE MaterialBibliografico
     SET activo = 0
     WHERE id_material = _id_libro;
-END$
+END$$
+DELIMITER ;
 
--- BUSCAR POR ID
-DELIMITER $
-CREATE PROCEDURE OBTENER_LIBRO_X_ID(
-    IN _id_libro INT
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ELIMINAR_RELACION_MATERIAL_CONTRIBUYENTE`(
+    IN _id_material INT,
+    IN _id_contribuyente INT
 )
 BEGIN
+    DELETE FROM Contribuyente_Material 
+    WHERE id_material = _id_material 
+    AND id_contribuyente = _id_contribuyente;
+END$$
+DELIMITER ;
 
-	SELECT l.id_libro, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo, l.ISBN, l.edicion, m.editoriales
-    FROM MaterialBibliografico m INNER JOIN Libro l
-    ON m.id_material=l.id_libro  WHERE l.id_libro=_id_libro;
-END$
-
--- LISTAR
-DELIMITER $
-
-CREATE PROCEDURE LISTAR_LIBROS_TODOS()
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ELIMINAR_ROL`(
+	IN _id_rol INT
+)
 BEGIN
-    SELECT l.id_libro, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo, l.ISBN, l.edicion, m.editoriales
-    FROM MaterialBibliografico m INNER JOIN Libro l
-    ON m.id_material=l.id_libro and m.activo=1;
-END$
+	UPDATE Rol 
+    SET activo = 0
+    WHERE id_rol = _id_rol;
 
--- Articulo:
+END$$
+DELIMITER ;
 
-DELIMITER $
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ELIMINAR_TESIS`(
+    IN _id_tesis INT
+)
+BEGIN
+    UPDATE MaterialBibliografico
+    SET activo = 0
+    WHERE id_material = _id_tesis;
+END$$
+DELIMITER ;
 
-CREATE PROCEDURE INSERTAR_ARTICULO(
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ELIMINAR_USUARIO`(
+    IN _id_usuario INT
+)
+BEGIN
+    UPDATE Usuario 
+    SET activo = 0 
+    WHERE id_usuario = _id_usuario;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `FINALIZAR_PRESTAMO`(
+    IN _id_prestamo INT
+)
+BEGIN
+	DECLARE _id_ejemplar INT;
+    SELECT id_ejemplar
+    INTO _id_ejemplar
+    FROM Prestamo
+    WHERE id_prestamo = _id_prestamo;
+    
+    UPDATE Prestamo 
+    SET fecha_devolucion = NOW(),
+        estado = 'FINALIZADO'
+    WHERE id_prestamo = _id_prestamo;
+    
+    UPDATE Ejemplar
+    SET estado = 'DISPONIBLE'
+    WHERE id_ejemplar = _id_ejemplar;
+    
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `FINALIZAR_SANCION`(
+    IN _id_sancion INT
+)
+BEGIN
+    UPDATE Sancion
+    SET 
+    estado = 'FINALIZADA'
+    WHERE id_sancion = _id_sancion;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `INSERTAR_ARTICULO`(
     OUT _id_articulo INT,
     IN _titulo VARCHAR(150),
     IN _anho_publicacion INT,
@@ -182,74 +222,195 @@ BEGIN
     INSERT INTO Articulo(id_articulo, ISSN, revista, volumen, numero)
     VALUES(_id_articulo, _ISSN, _revista, _volumen, _numero);
     
-END$
+END$$
+DELIMITER ;
 
--- MODIFICAR
-DELIMITER $
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `INSERTAR_BIBLIOTECA`(
+    OUT _id_biblioteca INT,
+    IN _nombre VARCHAR(80),
+    IN _ubicacion VARCHAR(60)
+)
+BEGIN
+    INSERT INTO Biblioteca(nombre, ubicacion, activo)
+    VALUES(_nombre, _ubicacion, 1);
+    
+    SET _id_biblioteca = LAST_INSERT_ID();
+END$$
+DELIMITER ;
 
-CREATE PROCEDURE MODIFICAR_ARTICULO(
-    IN _id_articulo INT,
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `INSERTAR_CONTRIBUYENTE`(
+    OUT _id_contribuyente INT,
+    IN _nombre VARCHAR(60),
+    IN _primer_apellido VARCHAR(60),
+    IN _segundo_apellido VARCHAR(60),
+    IN _seudonimo VARCHAR(60),
+    IN _tipo_contribuyente ENUM('AUTOR', 'EDITOR', 'TRADUCTOR')
+)
+BEGIN
+    INSERT INTO Contribuyente(nombre,primer_apellido,segundo_apellido,seudonimo,tipo_contribuyente)
+    VALUES(_nombre, _primer_apellido,_segundo_apellido,_seudonimo, _tipo_contribuyente);
+    
+    SET _id_contribuyente = @@last_insert_id; 
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `INSERTAR_EDITORIAL`(
+	OUT _id_editorial INT,
+    IN _nombre VARCHAR(100)
+)
+BEGIN
+	INSERT INTO Editorial(nombre)
+    VALUES (_nombre);
+	SET _id_editorial = @@last_insert_id; 
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `INSERTAR_EJEMPLAR`(
+    OUT _id_ejemplar INT,
+    IN _id_material INT,
+    IN _ubicacion VARCHAR(50),
+    IN _id_biblioteca INT
+)
+BEGIN
+    INSERT INTO Ejemplar(id_material, estado, ubicacion, activo, id_biblioteca)
+    VALUES(_id_material, 'DISPONIBLE', _ubicacion, 1, _id_biblioteca);
+    
+    SET _id_ejemplar = @@last_insert_id;  
+
+    UPDATE MaterialBibliografico 
+    SET estado = 'DISPONIBLE'
+    WHERE id_material = _id_material;
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `INSERTAR_LIBRO`(
+    OUT _id_libro INT,
     IN _titulo VARCHAR(150),
     IN _anho_publicacion INT,
     IN _numero_paginas INT,
     IN _clasificacion_tematica VARCHAR(100),
     IN _idioma VARCHAR(40),
-    IN _ISSN VARCHAR(30),
-    IN _revista VARCHAR(100),
-    IN _volumen INT,
-    IN _numero INT,
+    IN _ISBN VARCHAR(30),
+    IN _edicion VARCHAR(20),
     IN _editoriales VARCHAR(300)
 )
 BEGIN
-	UPDATE MaterialBibliografico SET titulo=_titulo,
-        anho_publicacion=_anho_publicacion,numero_paginas=_numero_paginas,
-        clasificacion_tematica=_clasificacion_tematica,
-        idioma=_idioma, editoriales = _editoriales WHERE id_material=_id_articulo;
-    UPDATE Articulo SET ISSN = _ISSN, revista=_revista, volumen=_volumen, numero=_numero
-    WHERE id_articulo = _id_articulo;
-END$
+	INSERT INTO MaterialBibliografico(
+        titulo,
+        anho_publicacion,numero_paginas,estado,clasificacion_tematica,activo,idioma, tipo,editoriales
+    )
+    VALUES(
+        _titulo,_anho_publicacion,_numero_paginas,'NO_DISPONIBLE',_clasificacion_tematica,1,_idioma,'LIBRO',_editoriales 
+    );
+    SET _id_libro = @@last_insert_id;
+    INSERT INTO Libro(id_libro, ISBN, edicion)
+    VALUES(_id_libro, _ISBN, _edicion);
+    
+END$$
+DELIMITER ;
 
--- BUSCAR POR ID
-DELIMITER $
-    -- ELIMINAR
-
-CREATE PROCEDURE ELIMINAR_ARTICULO(
-    IN _id_articulo INT
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `INSERTAR_PRESTAMO`(
+    OUT _id_prestamo INT,
+    IN _id_ejemplar INT,
+    IN _id_usuario INT
 )
 BEGIN
-    UPDATE MaterialBibliografico
-    SET activo = 0
-    WHERE id_material = _id_articulo;
-END$
+    DECLARE _fecha_de_prestamo  DATETIME;
+    DECLARE cant_dias INT;
+    DECLARE _id_rol  INT;
+    DECLARE _fecha_vencimiento DATETIME;
 
--- BUSCAR POR ID
-DELIMITER $
-CREATE PROCEDURE OBTENER_ARTICULO_X_ID(
-    IN _id_articulo INT
+    -- Fecha actual convertida a hora Perú (-05:00)
+    SET _fecha_de_prestamo = CONVERT_TZ(NOW(), @@global.time_zone, '-05:00');
+
+    -- Obtener rol del usuario
+    SELECT id_rol
+    INTO _id_rol
+    FROM Usuario
+    WHERE id_usuario = _id_usuario;
+
+    -- Obtener cantidad de días de préstamo según rol
+    SELECT cantidad_de_dias_por_prestamo
+    INTO cant_dias
+    FROM Rol
+    WHERE id_rol = _id_rol;
+
+    -- Calcular fecha de vencimiento
+    SET _fecha_vencimiento = DATE_ADD(_fecha_de_prestamo, INTERVAL cant_dias DAY);
+
+    -- Insertar préstamo
+    INSERT INTO Prestamo(
+        fecha_de_prestamo,
+        fecha_vencimiento,
+        fecha_devolucion,
+        estado,
+        id_ejemplar,
+        id_usuario
+    )
+    VALUES(
+        _fecha_de_prestamo,
+        _fecha_vencimiento,
+        NULL,
+        'VIGENTE',
+        _id_ejemplar,
+        _id_usuario
+    );
+
+    SET _id_prestamo = @@last_insert_id;
+
+    -- Actualizar ejemplar
+    UPDATE Ejemplar
+    SET estado = 'PRESTADO'
+    WHERE id_ejemplar = _id_ejemplar;
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `INSERTAR_ROL`(
+    OUT _id_rol INT,
+    IN _tipo VARCHAR(30),
+    IN _cantidad_de_dias_por_prestamo INT
 )
 BEGIN
+    INSERT INTO Rol(tipo, activo, cantidad_de_dias_por_prestamo)
+    VALUES(_tipo, 1, _cantidad_de_dias_por_prestamo);
+    SET _id_rol = @@last_insert_id;
+END$$
+DELIMITER ;
 
-	SELECT a.id_articulo, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo, 
-    a.ISSN, a.numero, a.revista, a.volumen, m.editoriales
-    FROM MaterialBibliografico m INNER JOIN Articulo a
-    ON m.id_material=a.id_articulo  WHERE a.id_articulo=_id_articulo;
-END$
-
--- LISTAR
-DELIMITER $
-
-CREATE PROCEDURE LISTAR_ARTICULOS_TODOS()
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `INSERTAR_SANCION`(
+    OUT _id_sancion INT,
+    IN _tipo_sancion ENUM ('ENTREGA_TARDIA','DANHO'),
+    IN _duracion_dias INT,
+    IN _justificacion VARCHAR (255),
+    IN _id_prestamo INT
+)
 BEGIN
-    SELECT a.id_articulo, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo,
-    a.ISSN, a.numero, a.revista, a.volumen, m.editoriales
-    FROM MaterialBibliografico m INNER JOIN Articulo a
-    ON m.id_material=a.id_articulo and m.activo=1;
-END$
+	DECLARE _fecha_inicio  datetime;
+    DECLARE _fecha_fin DATETIME;
+    
+    SET _fecha_inicio = NOW();
+	SET _fecha_fin = date_add(_fecha_inicio, INTERVAL _duracion_dias DAY);
+	INSERT INTO Sancion(tipo_sancion, duracion_dias, fecha_inicio, fecha_fin,
+    justificacion, estado, id_prestamo)
+    VALUES (_tipo_sancion, _duracion_dias, _fecha_inicio, _fecha_fin, _justificacion,
+    'VIGENTE', _id_prestamo);
+    SET _id_sancion = @@last_insert_id;
+    
+END$$
+DELIMITER ;
 
--- TESIS
-DELIMITER $
-
-CREATE PROCEDURE INSERTAR_TESIS(
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `INSERTAR_TESIS`(
     OUT _id_tesis INT,
     IN _titulo VARCHAR(150),
     IN _anho_publicacion INT,
@@ -276,136 +437,11 @@ BEGIN
     VALUES(_id_tesis, _especialidad, _asesor, _grado,
     _institucion_publicacion);
     
-END$
+END$$
+DELIMITER ;
 
--- MODIFICAR
-DELIMITER $
-
-CREATE PROCEDURE MODIFICAR_TESIS(
-    IN _id_tesis INT,
-    IN _titulo VARCHAR(150),
-    IN _anho_publicacion INT,
-    IN _numero_paginas INT,
-    IN _clasificacion_tematica VARCHAR(100),
-    IN _idioma VARCHAR(40),
-    IN _especialidad VARCHAR(100),
-    IN _asesor VARCHAR(60),
-    IN _grado VARCHAR(50),
-    IN _institucion_publicacion VARCHAR(150),
-    IN _editoriales VARCHAR(300)
-    
-)
-BEGIN
-	UPDATE MaterialBibliografico SET titulo=_titulo,
-        anho_publicacion=_anho_publicacion,numero_paginas=_numero_paginas,
-        clasificacion_tematica=_clasificacion_tematica,
-        idioma=_idioma,editoriales = _editoriales WHERE id_material=_id_tesis;
-    UPDATE Tesis SET especialidad = _especialidad, asesor=_asesor, grado=_grado, institucion_publicacion=_institucion_publicacion
-    WHERE id_tesis = _id_tesis;
-END$
-
--- BUSCAR POR ID
-DELIMITER $
-    -- ELIMINAR
-
-CREATE PROCEDURE ELIMINAR_TESIS(
-    IN _id_tesis INT
-)
-BEGIN
-    UPDATE MaterialBibliografico
-    SET activo = 0
-    WHERE id_material = _id_tesis;
-END$
-
--- BUSCAR POR ID
-DELIMITER $
-CREATE PROCEDURE OBTENER_TESIS_X_ID(
-    IN _id_tesis INT
-)
-BEGIN
-
-	SELECT t.id_tesis, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo,
-    t.especialidad, t.asesor, t.grado, t.institucion_publicacion, m.editoriales
-    FROM MaterialBibliografico m INNER JOIN Tesis t
-    ON m.id_material=t.id_tesis  WHERE t.id_tesis=_id_tesis;
-END$
-
--- LISTAR
-DELIMITER $
-
-CREATE PROCEDURE LISTAR_TESIS_TODOS()
-BEGIN
-    SELECT t.id_tesis, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo,
-    t.especialidad, t.asesor, t.grado, t.institucion_publicacion, m.editoriales
-    FROM MaterialBibliografico m INNER JOIN Tesis t
-    ON m.id_material=t.id_tesis and m.activo=1;
-END$
--- ROL:
-
-
--- INSERTAR 
-DELIMITER $
-CREATE PROCEDURE INSERTAR_ROL(
-    OUT _id_rol INT,
-    IN _tipo VARCHAR(30),
-    IN _cantidad_de_dias_por_prestamo INT
-)
-BEGIN
-    INSERT INTO Rol(tipo, activo, cantidad_de_dias_por_prestamo)
-    VALUES(_tipo, 1, _cantidad_de_dias_por_prestamo);
-    SET _id_rol = @@last_insert_id;
-END$
-
--- MODIFICAR
-DELIMITER $
-CREATE PROCEDURE MODIFICAR_ROL(
-    IN _id_rol INT,
-    IN _tipo VARCHAR(30),
-    IN _cantidad_de_dias_por_prestamo INT
-)
-BEGIN
-    UPDATE Rol 
-    SET tipo = _tipo, cantidad_de_dias_por_prestamo = _cantidad_de_dias_por_prestamo
-    WHERE id_rol = _id_rol;
-END$
-
--- ELIMINAR 
-DELIMITER $
-CREATE PROCEDURE ELIMINAR_ROL(
-	IN _id_rol INT
-)
-BEGIN
-	UPDATE Rol 
-    SET activo = 0
-    WHERE id_rol = _id_rol;
-
-END$
--- OBTENER POR ID
-DELIMITER $
-CREATE PROCEDURE OBTENER_ROL_X_ID(
-    IN _id_rol INT
-)
-BEGIN
-    SELECT id_rol, tipo, activo, cantidad_de_dias_por_prestamo
-    FROM Rol 
-    WHERE id_rol = _id_rol;
-END$
-
--- LISTAR 
-DELIMITER $
-CREATE PROCEDURE LISTAR_ROLES_TODOS()
-BEGIN
-    SELECT id_rol, tipo, activo, cantidad_de_dias_por_prestamo
-    FROM Rol
-    WHERE activo = 1;
-END$
-
--- Usuario:
-
-
--- INSERTAR
-DELIMITER $
-CREATE PROCEDURE INSERTAR_USUARIO(
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `INSERTAR_USUARIO`(
     OUT _id_usuario INT,
     IN _codigo_universitario INT,
     IN _nombre VARCHAR(50),
@@ -427,656 +463,112 @@ BEGIN
         MD5(_contrasena),_correo,_numero_de_telefono,1, _id_rol);
     
     SET _id_usuario = @@last_insert_id;
-END$
--- MODIFICAR
+END$$
+DELIMITER ;
 
-DELIMITER $
-CREATE PROCEDURE MODIFICAR_USUARIO(
-    IN _id_usuario INT,
-    IN _codigo_universitario INT,
-    IN _nombre VARCHAR(50),
-    IN _primer_apellido VARCHAR(50),
-    IN _segundo_apellido VARCHAR(50),
-    IN _DOI VARCHAR(30),
-    IN _correo VARCHAR(100),
-    IN _contrasena VARCHAR(40),
-    IN _numero_de_telefono VARCHAR(12),
-    IN _id_rol INT
-)
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_ARTICULOS_TODOS`()
 BEGIN
-    UPDATE Usuario 
-    SET 
-		codigo_universitario = _codigo_universitario,
-        nombre = _nombre,
-        primer_apellido = _primer_apellido,
-        segundo_apellido = _segundo_apellido,
-        DOI = _DOI,
-        correo = _correo,
-        contrasena = MD5(_contrasena),
-        numero_de_telefono = _numero_de_telefono,
-        id_rol = _id_rol
-    WHERE id_usuario = _id_usuario;
-END$
+    SELECT a.id_articulo, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo,
+    a.ISSN, a.numero, a.revista, a.volumen, m.editoriales
+    FROM MaterialBibliografico m INNER JOIN Articulo a
+    ON m.id_material=a.id_articulo and m.activo=1;
+END$$
+DELIMITER ;
 
--- ELIMINAR
-DELIMITER $
-CREATE PROCEDURE ELIMINAR_USUARIO(
-    IN _id_usuario INT
-)
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_AUTORES_POR_MATERIAL`(IN _id_material INT)
 BEGIN
-    UPDATE Usuario 
-    SET activo = 0 
-    WHERE id_usuario = _id_usuario;
-END$
+    SELECT c.id_contribuyente, c.nombre, c.primer_apellido, c.segundo_apellido, c.seudonimo, c.tipo_contribuyente
+    FROM Contribuyente c, Contribuyente_Material m
+    WHERE m.id_material = _id_material and m.id_contribuyente = c.id_contribuyente and c.tipo_contribuyente = 'AUTOR';
+END$$
+DELIMITER ;
 
--- BUSCAR POR ID
-DELIMITER $
-CREATE PROCEDURE OBTENER_USUARIO_X_ID(
-    IN _id_usuario INT
-)
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_BIBLIOTECAS_DE_MATERIAL`(IN _id_material INT)
 BEGIN
-    SELECT id_usuario,codigo_universitario, nombre, primer_apellido, segundo_apellido, DOI, contrasena, correo, numero_de_telefono, activo, id_rol 
-    FROM Usuario 
-    WHERE id_usuario = _id_usuario;
-END$
+SELECT DISTINCT b.nombre
+FROM Biblioteca b, Ejemplar e
+WHERE e.id_material = _id_material and b.id_biblioteca = e.id_biblioteca and estado = 'DISPONIBLE';
+END$$
+DELIMITER ;
 
--- LISTAR
-DELIMITER $
-CREATE PROCEDURE LISTAR_USUARIOS_TODOS()
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_BIBLIOTECAS_TODAS`()
 BEGIN
-    SELECT id_usuario,codigo_universitario, nombre, primer_apellido, segundo_apellido, DOI, contrasena, correo, numero_de_telefono, activo, id_rol
-    FROM Usuario 
+    SELECT id_biblioteca, nombre, ubicacion, activo
+    FROM Biblioteca
     WHERE activo = 1;
-END$
+END$$
+DELIMITER ;
 
--- Contribuyente 
-
--- INSERTAR
-DELIMITER $
-CREATE PROCEDURE INSERTAR_CONTRIBUYENTE(
-    OUT _id_contribuyente INT,
-    IN _nombre VARCHAR(60),
-    IN _primer_apellido VARCHAR(60),
-    IN _segundo_apellido VARCHAR(60),
-    IN _seudonimo VARCHAR(60),
-    IN _tipo_contribuyente ENUM('AUTOR', 'EDITOR', 'TRADUCTOR')
-)
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_CONTRIBUYENTES_POR_MATERIAL`(IN _id_material INT)
 BEGIN
-    INSERT INTO Contribuyente(nombre,primer_apellido,segundo_apellido,seudonimo,tipo_contribuyente)
-    VALUES(_nombre, _primer_apellido,_segundo_apellido,_seudonimo, _tipo_contribuyente);
-    
-    SET _id_contribuyente = @@last_insert_id; 
-END$
+    SELECT c.id_contribuyente, c.nombre, c.primer_apellido, c.segundo_apellido, c.seudonimo, c.tipo_contribuyente
+    FROM Contribuyente c
+    JOIN Contribuyente_Material cm ON c.id_contribuyente = cm.id_contribuyente
+    WHERE cm.id_material = _id_material;
+END$$
+DELIMITER ;
 
--- MODIFICAR
-DELIMITER $
-CREATE PROCEDURE MODIFICAR_CONTRIBUYENTE(
-    IN _id_contribuyente INT,
-    IN _nombre VARCHAR(60),
-    IN _primer_apellido VARCHAR(60),
-    IN _segundo_apellido VARCHAR(60),
-    IN _seudonimo VARCHAR(60),
-    IN _tipo_contribuyente ENUM('AUTOR', 'EDITOR', 'TRADUCTOR')
-)
-BEGIN
-    UPDATE Contribuyente
-    SET 
-        nombre = _nombre,
-        primer_apellido = _primer_apellido,
-        segundo_apellido = _segundo_apellido,
-        seudonimo = _seudonimo,
-        tipo_contribuyente = _tipo_contribuyente
-    WHERE id_contribuyente = _id_contribuyente;
-END$
-
-
--- BUSCAR POR ID
-DELIMITER $
-CREATE PROCEDURE OBTENER_CONTRIBUYENTE_X_ID(
-    IN _id_contribuyente INT
-)
-BEGIN
-    SELECT id_contribuyente, nombre, primer_apellido, segundo_apellido, seudonimo, tipo_contribuyente
-    FROM Contribuyente
-    WHERE id_contribuyente = _id_contribuyente;
-END$
-
--- LISTAR TODOS
-DELIMITER $
-CREATE PROCEDURE LISTAR_CONTRIBUYENTES_TODOS()
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_CONTRIBUYENTES_TODOS`()
 BEGIN
     SELECT id_contribuyente, nombre, primer_apellido, segundo_apellido, seudonimo, tipo_contribuyente
     FROM Contribuyente;
-END$
+END$$
+DELIMITER ;
 
-DELIMITER $
-CREATE PROCEDURE ASIGNAR_CONTRIBUYENTE(
-	IN _id_material INT,
-    IN _id_contribuyente INT
-)
-BEGIN
-	INSERT INTO Contribuyente_Material(id_material, id_contribuyente)
-	VALUES (_id_material, _id_contribuyente);
-END$
-
--- Editorial:
-
-DELIMITER $
-CREATE PROCEDURE INSERTAR_EDITORIAL(
-	OUT _id_editorial INT,
-    IN _nombre VARCHAR(100)
-)
-BEGIN
-	INSERT INTO Editorial(nombre)
-    VALUES (_nombre);
-	SET _id_editorial = @@last_insert_id; 
-END$
-
-DELIMITER $
-CREATE PROCEDURE MODIFICAR_EDITORIAL(
-	IN _id_editorial INT,
-    IN _nombre VARCHAR(100)
-)
-BEGIN
-	UPDATE Editorial
-    SET
-		nombre=_nombre
-    WHERE id_editorial = _id_editoral;
-END$
-
-DELIMITER $
-CREATE PROCEDURE OBTENER_EDITORIAL_X_ID(
-	IN _id_editorial INT
-)
-BEGIN
-	SELECT id_editorial, nombre
-    FROM Editorial
-    WHERE id_editorial = _id_editorial;
-END$
-
-DELIMITER $
-CREATE PROCEDURE LISTAR_EDITORIALES_TODAS(
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_EDITORIALES_TODAS`(
 	IN _id_editorial INT
 )
 BEGIN
 	SELECT id_editorial, nombre
     FROM Editorial;
-END$
+END$$
+DELIMITER ;
 
-DELIMITER $
-CREATE PROCEDURE ASIGNAR_EDITORIAL(
-	IN _id_material INT,
-    IN _id_editorial INT
-)
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_EJEMPLARES_DISPONIBLES_POR_MATERIAL`(IN _id_material INT)
 BEGIN
-	INSERT INTO Editorial_Material(id_material, id_editorial)
-	VALUES (_id_material, _id_editorial);
-END$
+SELECT  id_ejemplar, id_material, estado, ubicacion, activo, id_biblioteca
+FROM Ejemplar
+WHERE id_material = _id_material and activo = 1 and estado = 'DISPONIBLE';
+END$$
+DELIMITER ;
 
--- Ejemplar:
-
--- INSERTAR
-DELIMITER $
-
-CREATE PROCEDURE INSERTAR_EJEMPLAR(
-    OUT _id_ejemplar INT,
-    IN _id_material INT,
-    IN _ubicacion VARCHAR(50),
-    IN _id_biblioteca INT
-)
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_EJEMPLARES_POR_MATERIAL`(IN _id_material INT)
 BEGIN
-    INSERT INTO Ejemplar(id_material, estado, ubicacion, activo, id_biblioteca)
-    VALUES(_id_material, 'DISPONIBLE', _ubicacion, 1, _id_biblioteca);
-    
-    SET _id_ejemplar = @@last_insert_id;  
+SELECT  id_ejemplar, id_material, estado, ubicacion, activo, id_biblioteca
+FROM Ejemplar
+WHERE id_material = _id_material and activo = 1;
+END$$
+DELIMITER ;
 
-    UPDATE MaterialBibliografico 
-    SET estado = 'DISPONIBLE'
-    WHERE id_material = _id_material;
-
-END$
-
--- MODIFICAR
-DELIMITER $
-
-CREATE PROCEDURE MODIFICAR_EJEMPLAR(
-    IN _id_ejemplar INT,
-    IN _estado ENUM('DISPONIBLE', 'PRESTADO', 'EN_REPARACION', 'PERDIDO'),
-    IN _ubicacion VARCHAR(50),
-    IN _id_biblioteca INT
-)
-BEGIN
-    UPDATE Ejemplar
-    SET estado = _estado,
-        ubicacion = _ubicacion,
-        id_biblioteca = _id_biblioteca
-    WHERE id_ejemplar = _id_ejemplar;
-END$
-
--- ELIMINAR
-DELIMITER $
-
-CREATE PROCEDURE ELIMINAR_EJEMPLAR(
-    IN _id_ejemplar INT
-)
-BEGIN
-    DELETE FROM Ejemplar 
-    WHERE id_ejemplar = _id_ejemplar;
-END$
-
--- BUSCAR POR ID
-DELIMITER $
-
-CREATE PROCEDURE OBTENER_EJEMPLAR_X_ID(
-    IN _id_ejemplar INT
-)
-BEGIN
-    SELECT id_ejemplar, id_material, estado, ubicacion, activo, id_biblioteca
-    FROM Ejemplar
-    WHERE id_ejemplar = _id_ejemplar;
-END$
-
--- LISTAR
-DELIMITER $
-CREATE PROCEDURE LISTAR_EJEMPLARES_TODOS()
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_EJEMPLARES_TODOS`()
 BEGIN
     SELECT id_ejemplar, id_material, estado, ubicacion, activo, id_biblioteca
     FROM Ejemplar
     WHERE activo = 1;
-END$
-
--- Prestamo:
-
-DELIMITER $
-
--- INSERTAR_PRESTAMO
-CREATE PROCEDURE INSERTAR_PRESTAMO(
-    OUT _id_prestamo INT,
-    IN _id_ejemplar INT,
-    IN _id_usuario INT
-)
-BEGIN
-	DECLARE _fecha_de_prestamo  datetime;
-    DECLARE cant_dias INT;
-    DECLARE _id_rol  INT;
-    DECLARE _fecha_vencimiento DATETIME;
-    
-    SET _fecha_de_prestamo = NOW();
-	
-    SELECT id_rol
-    INTO _id_rol
-    FROM Usuario
-    WHERE id_usuario = _id_usuario;
-    
-    SELECT cantidad_de_dias_por_prestamo
-    INTO cant_dias
-    FROM Rol
-    WHERE id_rol = _id_rol;
-    
-    SET _fecha_vencimiento = date_add(_fecha_de_prestamo, INTERVAL cant_dias DAY);
-    
-    INSERT INTO Prestamo(fecha_de_prestamo, fecha_vencimiento, fecha_devolucion, estado, id_ejemplar, id_usuario)
-    VALUES(_fecha_de_prestamo, _fecha_vencimiento, null,'VIGENTE' , _id_ejemplar, _id_usuario);
-    SET _id_prestamo = @@last_insert_id;
-    
-    UPDATE Ejemplar
-    SET estado = 'PRESTADO'
-    WHERE id_ejemplar = _id_ejemplar;
-END$
-
-
-DELIMITER $
--- Finalizar prestamo
-CREATE PROCEDURE FINALIZAR_PRESTAMO(
-    IN _id_prestamo INT
-)
-BEGIN
-	DECLARE _id_ejemplar INT;
-    SELECT id_ejemplar
-    INTO _id_ejemplar
-    FROM Prestamo
-    WHERE id_prestamo = _id_prestamo;
-    
-    UPDATE Prestamo 
-    SET fecha_devolucion = NOW(),
-        estado = 'FINALIZADO'
-    WHERE id_prestamo = _id_prestamo;
-    
-    UPDATE Ejemplar
-    SET estado = 'DISPONIBLE'
-    WHERE id_ejemplar = _id_ejemplar;
-    
-END$
-
-DELIMITER $
--- OBTENER_PRESTAMO_X_ID
-CREATE PROCEDURE OBTENER_PRESTAMO_X_ID(
-    IN _id_prestamo INT
-)
-BEGIN
-    SELECT id_prestamo, fecha_de_prestamo, fecha_vencimiento, fecha_devolucion, estado, id_ejemplar, id_usuario
-    FROM Prestamo 
-    WHERE id_prestamo = _id_prestamo;
-END$
-
-
-DELIMITER $
--- LISTAR_PRESTAMOS_TODOS
-CREATE PROCEDURE LISTAR_PRESTAMOS_TODOS()
-BEGIN
-    SELECT id_prestamo, fecha_de_prestamo, fecha_vencimiento, fecha_devolucion, estado, id_ejemplar, id_usuario
-    FROM Prestamo;
-END$
-
-DELIMITER $$
-CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_PRESTAMOS_X_USUARIO`(
-    IN p_id_usuario INT
-)
-BEGIN
-    SELECT 
-        id_prestamo,
-        fecha_de_prestamo,
-        fecha_vencimiento,
-        fecha_devolucion,
-        estado,
-        id_ejemplar,
-        id_usuario
-    FROM Prestamo
-    WHERE id_usuario = p_id_usuario;
-END $$
-
-DELIMITER $$
-CREATE DEFINER=`admin`@`%` PROCEDURE `sp_BuscarPrestamo`(
-    IN pIdUsuario INT,
-    IN pBusqueda VARCHAR(50)
-)
-BEGIN
-    SELECT *
-    FROM Prestamo
-    WHERE id_usuario = pIdUsuario
-      AND (
-            pBusqueda IS NULL
-         OR CAST(id_prestamo AS CHAR) LIKE CONCAT('%', pBusqueda, '%')
-      );
-END $$
-
-
-DELIMITER $
-CREATE PROCEDURE INSERTAR_SANCION(
-    OUT _id_sancion INT,
-    IN _tipo_sancion ENUM ('ENTREGA_TARDIA','DANHO'),
-    IN _duracion_dias INT,
-    IN _justificacion VARCHAR (255),
-    IN _id_prestamo INT
-)
-BEGIN
-	DECLARE _fecha_inicio  datetime;
-    DECLARE _fecha_fin DATETIME;
-    
-    SET _fecha_inicio = NOW();
-	SET _fecha_fin = date_add(_fecha_inicio, INTERVAL _duracion_dias DAY);
-	INSERT INTO Sancion(tipo_sancion, duracion_dias, fecha_inicio, fecha_fin,
-    justificacion, estado, id_prestamo)
-    VALUES (_tipo_sancion, _duracion_dias, _fecha_inicio, _fecha_fin, _justificacion,
-    'VIGENTE', _id_prestamo);
-    SET _id_sancion = @@last_insert_id;
-    
-END$
-
-DELIMITER $
-CREATE PROCEDURE MODIFICAR_SANCION(
-    IN _id_sancion INT,
-    IN _tipo_sancion ENUM ('ENTREGA_TARDIA','DANHO'),
-    IN _duracion_dias INT,
-    IN _justificacion VARCHAR (255)
-)
-BEGIN
-	DECLARE _fecha_inicio  datetime;
-    DECLARE _fecha_fin  datetime;
-    SELECT fecha_inicio
-    INTO _fecha_inicio
-    FROM Sancion
-    WHERE id_sancion =_id_sancion;
-    
-	SET _fecha_fin = date_add(_fecha_inicio, INTERVAL _duracion_dias DAY);
-    
-    UPDATE Sancion
-    SET 
-    tipo_sancion = _tipo_sancion,
-    duracion_dias = _duracion_dias,
-    justificacion = _justificacion,
-	fecha_fin = _fecha_fin
-    WHERE id_sancion = _id_sancion;
-END$
-DELIMITER $
-CREATE PROCEDURE FINALIZAR_SANCION(
-    IN _id_sancion INT
-)
-BEGIN
-    UPDATE Sancion
-    SET 
-    estado = 'FINALIZADA'
-    WHERE id_sancion = _id_sancion;
-END$
-
-
-DELIMITER $
--- OBTENER_PRESTAMO_X_ID
-CREATE PROCEDURE OBTENER_SANCION_X_ID(
-    IN _id_sancion INT
-)
-BEGIN
-    SELECT id_sancion, tipo_sancion, duracion_dias, fecha_inicio,
-    fecha_fin, justificacion, estado, id_prestamo
-    FROM Sancion 
-    WHERE id_sancion = _id_sancion;
-END$
-
-DELIMITER $
--- OBTENER_PRESTAMO_X_ID
-CREATE PROCEDURE LISTAR_SANCIONES_TODAS()
-BEGIN
-    SELECT s.id_sancion, s.tipo_sancion, s.duracion_dias, s.fecha_inicio,
-    s.fecha_fin, s.justificacion, s.estado, s.id_prestamo, u.codigo_universitario
-    FROM Sancion s, Usuario u, Prestamo p 
-    WHERE s.id_prestamo = p.id_prestamo and p.id_usuario = u.id_usuario;
-END$
-
-
-DELIMITER $$
-
-CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_SANCIONES_X_USUARIO`(IN p_id_usuario INT)
-BEGIN
-    SELECT 
-        s.id_sancion,
-        s.tipo_sancion,
-        s.duracion_dias,
-        s.fecha_inicio,
-        s.fecha_fin,
-        s.justificacion,
-        s.estado,
-        s.id_prestamo
-    FROM Sancion s
-    INNER JOIN Prestamo p ON s.id_prestamo = p.id_prestamo
-    WHERE p.id_usuario = p_id_usuario;
-END $$
-
-DELIMITER $$
-CREATE DEFINER=`admin`@`%` PROCEDURE `sp_BuscarSancion`(
-    IN pIdUsuario INT,
-    IN pBusqueda VARCHAR(50)
-)
-BEGIN
-    SELECT s.*
-    FROM Sancion s
-    INNER JOIN Prestamo p ON s.id_prestamo = p.id_prestamo
-    WHERE p.id_usuario = pIdUsuario
-      AND (
-            pBusqueda IS NULL
-         OR CAST(s.id_sancion AS CHAR) LIKE CONCAT('%', pBusqueda, '%')
-      );
-END $$
-
-
-DELIMITER $
-CREATE PROCEDURE LISTAR_MATERIALES_TODOS()
-BEGIN
-    SELECT 
-        m.id_material,
-        m.titulo,
-        m.anho_publicacion,
-        m.numero_paginas,
-        m.estado,
-        m.clasificacion_tematica,
-        m.idioma,
-        m.tipo,
-        m.editoriales,
-        IFNULL(
-            NULLIF(
-               GROUP_CONCAT(
-    DISTINCT TRIM(
-        CASE 
-            WHEN 
-                (IFNULL(c.nombre, '') = '' 
-                 AND IFNULL(c.primer_apellido, '') = '' 
-                 AND IFNULL(c.segundo_apellido, '') = '') 
-            THEN NULL
-            ELSE CONCAT_WS(' ',
-                NULLIF(c.nombre, ''),
-                NULLIF(c.primer_apellido, ''),
-                NULLIF(c.segundo_apellido, '')
-            )
-        END
-    ) SEPARATOR ', '
-), ''
-            ), 'No hay autores registrados'
-        ) AS autores,
-        -- Concatenamos los nombres de bibliotecas donde hay ejemplares disponibles, sin repetir
-        IFNULL(
-            NULLIF(
-                GROUP_CONCAT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN b.nombre END SEPARATOR ', '), 
-                ''
-            ), 'No hay ejemplares disponibles para préstamo'
-        ) AS bibliotecas,
-        -- Contamos los ejemplares disponibles
-        COUNT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN e.id_ejemplar END) AS ejemplares_disponibles
-    FROM MaterialBibliografico m
-    LEFT JOIN Contribuyente_Material cm ON m.id_material = cm.id_material
-    LEFT JOIN Contribuyente c ON cm.id_contribuyente = c.id_contribuyente AND c.tipo_contribuyente = 'AUTOR'
-    LEFT JOIN Ejemplar e ON m.id_material = e.id_material AND e.activo = 1
-    LEFT JOIN Biblioteca b ON e.id_biblioteca = b.id_biblioteca AND b.activo = 1
-    WHERE m.activo = 1
-    GROUP BY 
-        m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.idioma, m.tipo
-         ORDER BY ejemplares_disponibles DESC, m.titulo ASC;
-END $   
+END$$
 DELIMITER ;
 
-DELIMITER $
-CREATE PROCEDURE LISTAR_BIBLIOTECAS_DE_MATERIAL
-(IN _id_material INT)
-BEGIN
-SELECT DISTINCT b.nombre
-FROM Biblioteca b, Ejemplar e
-WHERE e.id_material = _id_material and b.id_biblioteca = e.id_biblioteca and estado = 'DISPONIBLE';
-END$
-
-
-
-
--- MODIFICAR
-DELIMITER $
--- idioma VARCHAR(40) NOT NULL,
-CREATE PROCEDURE EJEMPLARES_BIBLIOTECA(
-    IN _id_material INT
-    
-)
-BEGIN
-	select e.id_ejemplar,e.estado,e.ubicacion,b.nombre,b.id_biblioteca
-	from Ejemplar e
-	inner join Biblioteca b
-	on e.id_biblioteca=b.id_biblioteca
-	where e.id_material=_id_material;
-END$
-
 DELIMITER $$
-
-CREATE PROCEDURE sp_obtener_usuario_por_codigo (
-    IN p_codigo_universitario INT
-)
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_LIBROS_TODOS`()
 BEGIN
-    SELECT 
-        u.id_usuario,
-        u.codigo_universitario,
-        u.nombre,
-        u.primer_apellido, 
-        u.segundo_apellido,
-        u.DOI,
-        u.correo,
-        u.numero_de_telefono,
-        r.id_rol,
-        r.tipo AS rol,
-        r.cantidad_de_dias_por_prestamo
-    FROM Usuario u
-    INNER JOIN Rol r ON u.id_rol = r.id_rol
-    WHERE u.codigo_universitario = p_codigo_universitario
-      AND u.activo = TRUE;
-END $$
-
-DELIMITER $$
-CREATE  PROCEDURE ObtenerContribuyentesPorMaterial(
-    IN p_id_material INT
-)
-BEGIN
-    SELECT c.nombre,
-           c.primer_apellido,
-           c.segundo_apellido,
-           c.tipo_contribuyente
-    FROM Contribuyente_Material cm
-    INNER JOIN Contribuyente c
-        ON c.id_contribuyente = cm.id_contribuyente
-    WHERE cm.id_material = p_id_material;
-END $$
-
-DELIMITER $$
-
-CREATE PROCEDURE ObtenerEditorialesPorId(IN p_id_material INT)
-BEGIN
-    SELECT e.nombre
-    FROM Editorial_Material em
-    INNER JOIN Editorial e
-        ON e.id_editorial = em.id_editorial
-    WHERE em.id_material = p_id_material;
-END $$
-
-DELIMITER $$
-CREATE PROCEDURE sp_obtener_ejemplares_disponibles(
-    IN p_id_material INT,
-    IN p_id_biblioteca INT
-)
-BEGIN
-    SELECT *
-    FROM Ejemplar
-    WHERE id_material = p_id_material
-      AND id_biblioteca = p_id_biblioteca
-      AND estado = 'DISPONIBLE';
-END $$
-
-DELIMITER $$
-
-CREATE PROCEDURE SP_OBTENER_TIPO_MATERIAL (
-    IN _id_material INT
-)
-BEGIN
-    SELECT tipo
-    FROM MaterialBibliografico
-    WHERE id_material = _id_material;
+    SELECT l.id_libro, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo, l.ISBN, l.edicion, m.editoriales
+    FROM MaterialBibliografico m INNER JOIN Libro l
+    ON m.id_material=l.id_libro and m.activo=1;
 END$$
+DELIMITER ;
 
-DELIMITER $
-
-
-CREATE PROCEDURE LISTAR_MATERIALES_BUSQUEDA(IN _titulo_autor VARCHAR(150))
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_MATERIALES_BUSQUEDA`(IN _titulo_autor VARCHAR(150))
 BEGIN
     SELECT 
         m.id_material,
@@ -1123,11 +615,11 @@ BEGIN
         m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, 
         m.estado, m.clasificacion_tematica, m.idioma, m.tipo
     ORDER BY (m.estado = 'DISPONIBLE') DESC, m.titulo ASC;
-END $
+END$$
+DELIMITER ;
 
 DELIMITER $$
-
-CREATE PROCEDURE LISTAR_MATERIALES_BUSQUEDA_AVANZADA(
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_MATERIALES_BUSQUEDA_AVANZADA`(
     IN _titulo VARCHAR(150),
     IN _tipo_contribuyente VARCHAR(20),
     IN _nombre_contribuyente VARCHAR(60),
@@ -1201,36 +693,307 @@ BEGIN
     ORDER BY 
         (m.estado = 'DISPONIBLE') DESC,
         m.titulo ASC;
-END $$
-
-DELIMITER $$
-
-CREATE PROCEDURE SP_CONTAR_PRESTAMOS_VIGENTES_POR_USUARIO (
-    IN _id_usuario INT
-)
-BEGIN
-    SELECT COUNT(*) AS cantidad_prestamos_vigentes
-    FROM Prestamo p
-    WHERE p.id_usuario = _id_usuario
-      AND p.estado = 'VIGENTE';
-END $$
-
+END$$
 DELIMITER ;
 
---VERIFICAR CUENTA
-DELIMITER $
-CREATE PROCEDURE VERIFICAR_CUENTA(
-	IN _correo VARCHAR(100),
-	IN _contrasena VARCHAR(40)
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_MATERIALES_TODOS`()
+BEGIN
+    SELECT 
+        m.id_material,
+        m.titulo,
+        m.anho_publicacion,
+        m.numero_paginas,
+        m.estado,
+        m.clasificacion_tematica,
+        m.idioma,
+        m.tipo,
+        m.editoriales,
+        IFNULL(
+            NULLIF(
+               GROUP_CONCAT(
+    DISTINCT TRIM(
+        CASE 
+            WHEN 
+                (IFNULL(c.nombre, '') = '' 
+                 AND IFNULL(c.primer_apellido, '') = '' 
+                 AND IFNULL(c.segundo_apellido, '') = '') 
+            THEN NULL
+            ELSE CONCAT_WS(' ',
+                NULLIF(c.nombre, ''),
+                NULLIF(c.primer_apellido, ''),
+                NULLIF(c.segundo_apellido, '')
+            )
+        END
+    ) SEPARATOR ', '
+), ''
+            ), 'No hay autores registrados'
+        ) AS autores,
+        -- Concatenamos los nombres de bibliotecas donde hay ejemplares disponibles, sin repetir
+        IFNULL(
+            NULLIF(
+                GROUP_CONCAT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN b.nombre END SEPARATOR ', '), 
+                ''
+            ), 'No hay ejemplares disponibles para préstamo'
+        ) AS bibliotecas,
+        -- Contamos los ejemplares disponibles
+        COUNT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN e.id_ejemplar END) AS ejemplares_disponibles
+    FROM MaterialBibliografico m
+    LEFT JOIN Contribuyente_Material cm ON m.id_material = cm.id_material
+    LEFT JOIN Contribuyente c ON cm.id_contribuyente = c.id_contribuyente AND c.tipo_contribuyente = 'AUTOR'
+    LEFT JOIN Ejemplar e ON m.id_material = e.id_material AND e.activo = 1
+    LEFT JOIN Biblioteca b ON e.id_biblioteca = b.id_biblioteca AND b.activo = 1
+    WHERE m.activo = 1
+    GROUP BY 
+        m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.idioma, m.tipo
+         ORDER BY ejemplares_disponibles DESC, m.titulo ASC;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_PRESTAMO_BUSQUEDA_CODIGO_UNIVERSITARIO`(IN _codigo_universitario INT)
+BEGIN
+	 SELECT p.id_prestamo, p.fecha_de_prestamo, p.fecha_vencimiento,
+	p.fecha_devolucion, p.estado, p.id_ejemplar, u.codigo_universitario
+    FROM Prestamo p JOIN Usuario u ON u.id_usuario = p.id_usuario and u.codigo_universitario LIKE CONCAT('%', _codigo_universitario , '%');
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_PRESTAMOS_TODOS`()
+BEGIN
+    SELECT P.id_prestamo,
+           P.fecha_de_prestamo,
+           P.fecha_vencimiento,
+           P.fecha_devolucion,
+           P.estado,
+           P.id_ejemplar,
+           U.codigo_universitario
+    FROM Prestamo P
+    JOIN Usuario U ON U.id_usuario = P.id_usuario;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_PRESTAMOS_X_USUARIO`(
+    IN p_id_usuario INT
 )
 BEGIN
-	SELECT * FROM Usuario WHERE correo=_correo AND contrasena=MD5(_contrasena);
-END$
+    SELECT 
+        id_prestamo,
+        fecha_de_prestamo,
+        fecha_vencimiento,
+        fecha_devolucion,
+        estado,
+        id_ejemplar,
+        id_usuario
+    FROM Prestamo
+    WHERE id_usuario = p_id_usuario;
+END$$
+DELIMITER ;
 
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_ROLES_TODOS`()
+BEGIN
+    SELECT id_rol, tipo, activo, cantidad_de_dias_por_prestamo
+    FROM Rol
+    WHERE activo = 1;
+END$$
+DELIMITER ;
 
--- MODIFICAR
-DELIMITER $
-CREATE PROCEDURE MODIFICAR_PRESTAMO(
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_SANCIONES_BUSQUEDA_CODIGO_UNIVERSITARIO`(IN _codigo_universitario INT)
+BEGIN
+	SELECT s.id_sancion, s.tipo_sancion, s.duracion_dias, s.fecha_inicio,
+    s.fecha_fin, s.justificacion, s.estado, s.id_prestamo, u.codigo_universitario
+    FROM Sancion s, Prestamo p, Usuario u
+    WHERE s.id_prestamo = p.id_prestamo and u.id_usuario = p.id_usuario and u.codigo_universitario LIKE CONCAT('%', _codigo_universitario , '%');
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_SANCIONES_TODAS`()
+BEGIN
+    SELECT s.id_sancion, s.tipo_sancion, s.duracion_dias, s.fecha_inicio,
+    s.fecha_fin, s.justificacion, s.estado, s.id_prestamo, u.codigo_universitario
+    FROM Sancion s, Usuario u, Prestamo p 
+    WHERE s.id_prestamo = p.id_prestamo and p.id_usuario = u.id_usuario;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_SANCIONES_X_USUARIO`(IN p_id_usuario INT)
+BEGIN
+    SELECT 
+        s.id_sancion,
+        s.tipo_sancion,
+        s.duracion_dias,
+        s.fecha_inicio,
+        s.fecha_fin,
+        s.justificacion,
+        s.estado,
+        s.id_prestamo
+    FROM Sancion s
+    INNER JOIN Prestamo p ON s.id_prestamo = p.id_prestamo
+    WHERE p.id_usuario = p_id_usuario;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_TESIS_TODOS`()
+BEGIN
+    SELECT t.id_tesis, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo,
+    t.especialidad, t.asesor, t.grado, t.institucion_publicacion, m.editoriales
+    FROM MaterialBibliografico m INNER JOIN Tesis t
+    ON m.id_material=t.id_tesis and m.activo=1;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_USUARIOS_TODOS`()
+BEGIN
+    SELECT id_usuario,codigo_universitario, nombre, primer_apellido, segundo_apellido, DOI, contrasena, correo, numero_de_telefono, activo, id_rol
+    FROM Usuario 
+    WHERE activo = 1;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ListarTodosUsuariosDelSistema`()
+BEGIN
+SELECT * FROM Usuario;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `MODIFICAR_ARTICULO`(
+    IN _id_articulo INT,
+    IN _titulo VARCHAR(150),
+    IN _anho_publicacion INT,
+    IN _numero_paginas INT,
+    IN _clasificacion_tematica VARCHAR(100),
+    IN _idioma VARCHAR(40),
+    IN _ISSN VARCHAR(30),
+    IN _revista VARCHAR(100),
+    IN _volumen INT,
+    IN _numero INT,
+    IN _editoriales VARCHAR(300)
+)
+BEGIN
+	UPDATE MaterialBibliografico SET titulo=_titulo,
+        anho_publicacion=_anho_publicacion,numero_paginas=_numero_paginas,
+        clasificacion_tematica=_clasificacion_tematica,
+        idioma=_idioma, editoriales = _editoriales WHERE id_material=_id_articulo;
+    UPDATE Articulo SET ISSN = _ISSN, revista=_revista, volumen=_volumen, numero=_numero
+    WHERE id_articulo = _id_articulo;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `MODIFICAR_BIBLIOTECA`(
+    IN _id_biblioteca INT,
+    IN _nombre VARCHAR(80),
+    IN _ubicacion VARCHAR(60)
+)
+BEGIN
+    UPDATE Biblioteca
+    SET nombre = _nombre,
+        ubicacion = _ubicacion
+    WHERE id_biblioteca = _id_biblioteca;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `MODIFICAR_CONTRASENA`(
+    IN _id_usuario INT,
+    IN _nueva_contrasena VARCHAR(255)
+)
+BEGIN
+    -- Actualizar la contraseña del usuario en la base de datos
+    UPDATE Usuario
+    SET contrasena = MD5(_nueva_contrasena)
+    WHERE id_usuario = _id_usuario;
+    
+    -- Devolver el número de filas afectadas
+    SELECT ROW_COUNT() AS filas_afectadas;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `MODIFICAR_CONTRIBUYENTE`(
+    IN _id_contribuyente INT,
+    IN _nombre VARCHAR(60),
+    IN _primer_apellido VARCHAR(60),
+    IN _segundo_apellido VARCHAR(60),
+    IN _seudonimo VARCHAR(60),
+    IN _tipo_contribuyente ENUM('AUTOR', 'EDITOR', 'TRADUCTOR')
+)
+BEGIN
+    UPDATE Contribuyente
+    SET 
+        nombre = _nombre,
+        primer_apellido = _primer_apellido,
+        segundo_apellido = _segundo_apellido,
+        seudonimo = _seudonimo,
+        tipo_contribuyente = _tipo_contribuyente
+    WHERE id_contribuyente = _id_contribuyente;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `MODIFICAR_EDITORIAL`(
+	IN _id_editorial INT,
+    IN _nombre VARCHAR(100)
+)
+BEGIN
+	UPDATE Editorial
+    SET
+		nombre=_nombre
+    WHERE id_editorial = _id_editoral;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `MODIFICAR_EJEMPLAR`(
+    IN _id_ejemplar INT,
+    IN _estado ENUM('DISPONIBLE', 'PRESTADO', 'EN_REPARACION', 'PERDIDO'),
+    IN _ubicacion VARCHAR(50),
+    IN _id_biblioteca INT
+)
+BEGIN
+    UPDATE Ejemplar
+    SET estado = _estado,
+        ubicacion = _ubicacion,
+        id_biblioteca = _id_biblioteca
+    WHERE id_ejemplar = _id_ejemplar;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `MODIFICAR_LIBRO`(
+    IN _id_libro INT,
+    IN _titulo VARCHAR(150),
+    IN _anho_publicacion INT,
+    IN _numero_paginas INT,
+    IN _clasificacion_tematica VARCHAR(100),
+    IN _idioma VARCHAR(40),
+    IN _ISBN VARCHAR(30),
+    IN _edicion VARCHAR(20),
+    IN _editoriales VARCHAR(300)
+)
+BEGIN
+	UPDATE MaterialBibliografico SET titulo=_titulo,
+        anho_publicacion=_anho_publicacion,numero_paginas=_numero_paginas,
+        clasificacion_tematica=_clasificacion_tematica,
+        idioma=_idioma,editoriales=_editoriales WHERE id_material=_id_libro;
+    UPDATE Libro SET ISBN = _ISBN,
+        edicion = _edicion
+    WHERE id_libro = _id_libro;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `MODIFICAR_PRESTAMO`(
     IN _id_prestamo INT,
     IN _fecha_de_prestamo datetime,
     IN _fecha_vencimiento datetime,
@@ -1249,105 +1012,461 @@ BEGIN
         id_ejemplar = _id_ejemplar,
         id_usuario = _id_usuario
     WHERE id_prestamo = _id_prestamo;
-END$
-
-
-DELIMITER $
-
-CREATE PROCEDURE ELIMINAR_RELACION_MATERIAL_CONTRIBUYENTE(
-    IN _id_material INT,
-    IN _id_contribuyente INT
-)
-BEGIN
-    DELETE FROM Contribuyente_Material 
-    WHERE id_material = _id_material 
-    AND id_contribuyente = _id_contribuyente;
-END$
-
+END$$
 DELIMITER ;
-
-DELIMITER $
-
-CREATE PROCEDURE ELIMINAR_CONTRIBUYENTE(
-    IN _id_contribuyente INT
-)
-BEGIN
-    -- Primero eliminamos las relaciones
-    DELETE FROM Contribuyente_Material 
-    WHERE id_contribuyente = _id_contribuyente;
-    
-    -- Luego eliminamos el contribuyente
-    DELETE FROM Contribuyente 
-    WHERE id_contribuyente = _id_contribuyente;
-END$
-
-DELIMITER ;
-
-
-DELIMITER $
-
-CREATE PROCEDURE CONTAR_RELACIONES_CONTRIBUYENTE(
-    IN _id_contribuyente INT,
-    IN _excluir_material INT
-)
-BEGIN
-    SELECT COUNT(*) AS total_relaciones
-    FROM Contribuyente_Material 
-    WHERE id_contribuyente = _id_contribuyente 
-    AND id_material != _excluir_material;
-END$
-
-DELIMITER ;
-
-DELIMITER $
-CREATE PROCEDURE OBTENER_MATERIAL_X_ID(IN _id_material INT)
-BEGIN
-    SELECT id_material, titulo, anho_publicacion, numero_paginas, estado, clasificacion_tematica, idioma, tipo
-    FROM MaterialBibliografico
-    WHERE id_material = _id_material;
-END$
-
-
-DELIMITER $
-CREATE PROCEDURE LISTAR_EJEMPLARES_DISPONIBLES_POR_MATERIAL
-(IN _id_material INT)
-BEGIN
-SELECT  id_ejemplar, id_material, estado, ubicacion, activo, id_biblioteca
-FROM Ejemplar
-WHERE id_material = _id_material and activo = 1 and estado = 'DISPONIBLE';
-END$
-
-
-DELIMITER $
-CREATE PROCEDURE LISTAR_EJEMPLARES_POR_MATERIAL
-(IN _id_material INT)
-BEGIN
-SELECT  id_ejemplar, id_material, estado, ubicacion, activo, id_biblioteca
-FROM Ejemplar
-WHERE id_material = _id_material and activo = 1;
-END$
-
-DELIMITER $
-CREATE PROCEDURE LISTAR_AUTORES_POR_MATERIAL(IN _id_material INT)
-BEGIN
-    SELECT c.id_contribuyente, c.nombre, c.primer_apellido, c.segundo_apellido, c.seudonimo, c.tipo_contribuyente
-    FROM Contribuyente c, Contribuyente_Material m
-    WHERE m.id_material = _id_material and m.id_contribuyente = c.id_contribuyente and c.tipo_contribuyente = 'AUTOR';
-END$
-
-DELIMITER $
-
-CREATE PROCEDURE LISTAR_CONTRIBUYENTES_POR_MATERIAL(IN _id_material INT)
-BEGIN
-    SELECT c.id_contribuyente, c.nombre, c.primer_apellido, c.segundo_apellido, c.seudonimo, c.tipo_contribuyente
-    FROM Contribuyente c
-    JOIN Contribuyente_Material cm ON c.id_contribuyente = cm.id_contribuyente
-    WHERE cm.id_material = _id_material;
-END$
 
 DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `MODIFICAR_ROL`(
+    IN _id_rol INT,
+    IN _tipo VARCHAR(30),
+    IN _cantidad_de_dias_por_prestamo INT
+)
+BEGIN
+    UPDATE Rol 
+    SET tipo = _tipo, cantidad_de_dias_por_prestamo = _cantidad_de_dias_por_prestamo
+    WHERE id_rol = _id_rol;
+END$$
+DELIMITER ;
 
-CREATE PROCEDURE sp_prestamos_retrasados_usuario(IN p_id_usuario INT)
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `MODIFICAR_SANCION`(
+    IN _id_sancion INT,
+    IN _tipo_sancion ENUM ('ENTREGA_TARDIA','DANHO'),
+    IN _duracion_dias INT,
+    IN _justificacion VARCHAR (255)
+)
+BEGIN
+	DECLARE _fecha_inicio  datetime;
+    DECLARE _fecha_fin  datetime;
+    SELECT fecha_inicio
+    INTO _fecha_inicio
+    FROM Sancion
+    WHERE id_sancion =_id_sancion;
+    
+	SET _fecha_fin = date_add(_fecha_inicio, INTERVAL _duracion_dias DAY);
+    
+    UPDATE Sancion
+    SET 
+    tipo_sancion = _tipo_sancion,
+    duracion_dias = _duracion_dias,
+    justificacion = _justificacion,
+	fecha_fin = _fecha_fin
+    WHERE id_sancion = _id_sancion;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `MODIFICAR_TESIS`(
+    IN _id_tesis INT,
+    IN _titulo VARCHAR(150),
+    IN _anho_publicacion INT,
+    IN _numero_paginas INT,
+    IN _clasificacion_tematica VARCHAR(100),
+    IN _idioma VARCHAR(40),
+    IN _especialidad VARCHAR(100),
+    IN _asesor VARCHAR(60),
+    IN _grado VARCHAR(50),
+    IN _institucion_publicacion VARCHAR(150),
+    IN _editoriales VARCHAR(300)
+    
+)
+BEGIN
+	UPDATE MaterialBibliografico SET titulo=_titulo,
+        anho_publicacion=_anho_publicacion,numero_paginas=_numero_paginas,
+        clasificacion_tematica=_clasificacion_tematica,
+        idioma=_idioma,editoriales = _editoriales WHERE id_material=_id_tesis;
+    UPDATE Tesis SET especialidad = _especialidad, asesor=_asesor, grado=_grado, institucion_publicacion=_institucion_publicacion
+    WHERE id_tesis = _id_tesis;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `MODIFICAR_USUARIO`(
+    IN _id_usuario INT,
+    IN _codigo_universitario INT,
+    IN _nombre VARCHAR(50),
+    IN _primer_apellido VARCHAR(50),
+    IN _segundo_apellido VARCHAR(50),
+    IN _DOI VARCHAR(30),
+    IN _correo VARCHAR(100),
+    IN _contrasena VARCHAR(40),
+    IN _numero_de_telefono VARCHAR(12),
+    IN _id_rol INT
+)
+BEGIN
+    UPDATE Usuario 
+    SET 
+		codigo_universitario = _codigo_universitario,
+        nombre = _nombre,
+        primer_apellido = _primer_apellido,
+        segundo_apellido = _segundo_apellido,
+        DOI = _DOI,
+        correo = _correo,
+        contrasena = MD5(_contrasena),
+        numero_de_telefono = _numero_de_telefono,
+        id_rol = _id_rol
+    WHERE id_usuario = _id_usuario;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `OBTENER_ARTICULO_X_ID`(
+    IN _id_articulo INT
+)
+BEGIN
+
+	SELECT a.id_articulo, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo, 
+    a.ISSN, a.numero, a.revista, a.volumen, m.editoriales
+    FROM MaterialBibliografico m INNER JOIN Articulo a
+    ON m.id_material=a.id_articulo  WHERE a.id_articulo=_id_articulo;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `OBTENER_BIBLIOTECA_X_ID`(
+    IN _id_biblioteca INT
+)
+BEGIN
+    SELECT id_biblioteca, nombre, ubicacion, activo
+    FROM Biblioteca
+    WHERE id_biblioteca = _id_biblioteca;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `OBTENER_CONTRIBUYENTE_X_ID`(
+    IN _id_contribuyente INT
+)
+BEGIN
+    SELECT id_contribuyente, nombre, primer_apellido, segundo_apellido, seudonimo, tipo_contribuyente
+    FROM Contribuyente
+    WHERE id_contribuyente = _id_contribuyente;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `OBTENER_EDITORIAL_X_ID`(
+	IN _id_editorial INT
+)
+BEGIN
+	SELECT id_editorial, nombre
+    FROM Editorial
+    WHERE id_editorial = _id_editorial;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `OBTENER_EJEMPLAR_X_ID`(
+    IN _id_ejemplar INT
+)
+BEGIN
+    SELECT id_ejemplar, id_material, estado, ubicacion, activo, id_biblioteca
+    FROM Ejemplar
+    WHERE id_ejemplar = _id_ejemplar;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `OBTENER_LIBRO_X_ID`(
+    IN _id_libro INT
+)
+BEGIN
+
+	SELECT l.id_libro, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo, l.ISBN, l.edicion, m.editoriales
+    FROM MaterialBibliografico m INNER JOIN Libro l
+    ON m.id_material=l.id_libro  WHERE l.id_libro=_id_libro;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `OBTENER_MATERIAL_X_ID`(IN _id_material INT)
+BEGIN
+    SELECT 
+        m.id_material,
+        m.titulo,
+        m.anho_publicacion,
+        m.numero_paginas,
+        m.estado,
+        m.clasificacion_tematica,
+        m.idioma,
+        m.tipo,
+
+        -- Autores corregido para no generar coma al inicio
+        IFNULL(
+    GROUP_CONCAT(
+        DISTINCT 
+        CASE 
+            WHEN c.nombre IS NOT NULL AND c.nombre <> '' THEN 
+                TRIM(CONCAT_WS(' ', c.nombre, c.primer_apellido, c.segundo_apellido))
+            ELSE NULL
+        END
+        ORDER BY c.nombre, c.primer_apellido, c.segundo_apellido
+        SEPARATOR ', '
+    ), 'No hay autores registrados'
+) AS autores,
+
+        -- Bibliotecas
+        IFNULL(
+            NULLIF(
+                GROUP_CONCAT(
+                    DISTINCT CASE 
+                        WHEN e.estado = 'DISPONIBLE' THEN b.nombre 
+                        ELSE NULL 
+                    END SEPARATOR ', '
+                ), ''
+            ), 'No hay ejemplares disponibles para préstamo'
+        ) AS bibliotecas,
+
+        -- Cantidad de ejemplares disponibles
+        COUNT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN e.id_ejemplar END) AS ejemplares_disponibles
+
+    FROM MaterialBibliografico m
+    LEFT JOIN Contribuyente_Material cm 
+        ON m.id_material = cm.id_material
+    LEFT JOIN Contribuyente c 
+        ON cm.id_contribuyente = c.id_contribuyente 
+        AND c.tipo_contribuyente = 'AUTOR'
+    LEFT JOIN Ejemplar e 
+        ON m.id_material = e.id_material 
+        AND e.activo = 1
+    LEFT JOIN Biblioteca b 
+        ON e.id_biblioteca = b.id_biblioteca 
+        AND b.activo = 1
+    WHERE m.activo = 1
+      AND m.id_material = _id_material
+    GROUP BY 
+        m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, 
+        m.estado, m.clasificacion_tematica, m.idioma, m.tipo
+    ORDER BY ejemplares_disponibles DESC, m.titulo ASC;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `OBTENER_PRESTAMO_X_ID`(
+    IN _id_prestamo INT
+)
+BEGIN
+    SELECT P.id_prestamo,
+           P.fecha_de_prestamo,
+           P.fecha_vencimiento,
+           P.fecha_devolucion,
+           P.estado,
+           P.id_ejemplar,
+           U.id_usuario,
+           U.codigo_universitario
+    FROM Prestamo P
+    JOIN Usuario U ON U.id_usuario = P.id_usuario
+    WHERE P.id_prestamo = _id_prestamo;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `OBTENER_ROL_X_ID`(
+    IN _id_rol INT
+)
+BEGIN
+    SELECT id_rol, tipo, activo, cantidad_de_dias_por_prestamo
+    FROM Rol 
+    WHERE id_rol = _id_rol;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `OBTENER_SANCION_X_ID`(
+    IN _id_sancion INT
+)
+BEGIN
+    SELECT id_sancion, tipo_sancion, duracion_dias, fecha_inicio,
+    fecha_fin, justificacion, estado, id_prestamo
+    FROM Sancion 
+    WHERE id_sancion = _id_sancion;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `Obtener_Sanciones_Usuario`(IN p_id_usuario INT)
+BEGIN
+    SELECT 
+        s.id_sancion,
+        s.fecha_fin as fecha_vencimiento,
+        s.justificacion
+        
+    FROM Sancion s
+    INNER JOIN Prestamo p ON s.id_prestamo = p.id_prestamo
+    INNER JOIN Usuario u ON u.id_usuario = p.id_usuario
+    WHERE u.id_usuario = p_id_usuario
+    AND s.estado = 'VIGENTE'
+    and s.fecha_fin>sysdate()
+    LIMIT 1;  -- Para devolver solo 1 registro (coincide con tu código Java)
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `OBTENER_TESIS_X_ID`(
+    IN _id_tesis INT
+)
+BEGIN
+
+	SELECT t.id_tesis, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.activo, m.idioma,m.tipo,
+    t.especialidad, t.asesor, t.grado, t.institucion_publicacion, m.editoriales
+    FROM MaterialBibliografico m INNER JOIN Tesis t
+    ON m.id_material=t.id_tesis  WHERE t.id_tesis=_id_tesis;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `OBTENER_USUARIO_X_ID`(
+    IN _id_usuario INT
+)
+BEGIN
+    SELECT id_usuario,codigo_universitario, nombre, primer_apellido, segundo_apellido, DOI, contrasena, correo, numero_de_telefono, activo, id_rol 
+    FROM Usuario 
+    WHERE id_usuario = _id_usuario;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ObtenerContribuyentesPorMaterial`(
+    IN p_id_material INT
+)
+BEGIN
+    SELECT c.nombre,
+           c.primer_apellido,
+           c.segundo_apellido,
+           c.tipo_contribuyente
+    FROM Contribuyente_Material cm
+    INNER JOIN Contribuyente c
+        ON c.id_contribuyente = cm.id_contribuyente
+    WHERE cm.id_material = p_id_material;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `ObtenerEditorialesPorId`(IN p_id_material INT)
+BEGIN
+    SELECT e.nombre
+    FROM Editorial_Material em
+    INNER JOIN Editorial e
+        ON e.id_editorial = em.id_editorial
+    WHERE em.id_material = p_id_material;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `sp_BuscarPrestamo`(
+    IN pIdUsuario INT,
+    IN pBusqueda VARCHAR(50)
+)
+BEGIN
+    SELECT *
+    FROM Prestamo
+    WHERE id_usuario = pIdUsuario
+      AND (
+            pBusqueda IS NULL
+         OR CAST(id_prestamo AS CHAR) LIKE CONCAT('%', pBusqueda, '%')
+      );
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `sp_BuscarSancion`(
+    IN pIdUsuario INT,
+    IN pBusqueda VARCHAR(50)
+)
+BEGIN
+    SELECT s.*
+    FROM Sancion s
+    INNER JOIN Prestamo p ON s.id_prestamo = p.id_prestamo
+    WHERE p.id_usuario = pIdUsuario
+      AND (
+            pBusqueda IS NULL
+         OR CAST(s.id_sancion AS CHAR) LIKE CONCAT('%', pBusqueda, '%')
+      );
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `sp_BuscarUsuario`(
+    IN pBusqueda VARCHAR(50)
+)
+BEGIN
+    SELECT *
+    FROM Usuario
+    WHERE activo = 1
+      AND (
+            pBusqueda IS NULL
+         OR codigo_universitario LIKE CONCAT('%', pBusqueda, '%')
+         OR nombre LIKE CONCAT('%', pBusqueda, '%')
+         OR primer_apellido LIKE CONCAT('%', pBusqueda, '%')
+         OR segundo_apellido LIKE CONCAT('%', pBusqueda, '%')
+      );
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `SP_CONTAR_PRESTAMOS_VIGENTES_POR_USUARIO`(
+    IN _id_usuario INT
+)
+BEGIN
+    SELECT COUNT(*) AS cantidad_prestamos_vigentes
+    FROM Prestamo p
+    WHERE p.id_usuario = _id_usuario
+      AND p.estado = 'VIGENTE';
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `sp_obtener_ejemplares_disponibles`(
+    IN p_id_material INT,
+    IN p_id_biblioteca INT
+)
+BEGIN
+    SELECT *
+    FROM Ejemplar
+    WHERE id_material = p_id_material
+      AND id_biblioteca = p_id_biblioteca
+      AND estado = 'DISPONIBLE';
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `SP_OBTENER_TIPO_MATERIAL`(
+    IN _id_material INT
+)
+BEGIN
+    SELECT tipo
+    FROM MaterialBibliografico
+    WHERE id_material = _id_material;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `sp_obtener_usuario_por_codigo`(
+    IN p_codigo_universitario INT
+)
+BEGIN
+    SELECT 
+        u.id_usuario,
+        u.codigo_universitario,
+        u.nombre,
+        u.primer_apellido, 
+        u.segundo_apellido,
+        u.DOI,
+        u.correo,
+        u.numero_de_telefono,
+        r.id_rol,
+        r.tipo AS rol,
+        r.cantidad_de_dias_por_prestamo,
+        r.limite_prestamos
+    FROM Usuario u
+    INNER JOIN Rol r ON u.id_rol = r.id_rol
+    WHERE u.codigo_universitario = p_codigo_universitario
+      AND u.activo = TRUE;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `sp_prestamos_retrasados_usuario`(IN p_id_usuario INT)
 BEGIN
     SELECT 
         p.id_prestamo,
@@ -1363,57 +1482,28 @@ BEGIN
         AND p.estado = 'VIGENTE'
     ORDER BY p.fecha_vencimiento;
 END$$
-
 DELIMITER ;
 
 DELIMITER $$
-
-CREATE PROCEDURE ListarTodosUsuariosDelSistema()
-BEGIN
-SELECT * FROM Usuario;
-END $$
-
-DELIMITER ;
-
-
-DELIMITER $
-CREATE PROCEDURE LISTAR_SANCIONES_BUSQUEDA_CODIGO_UNIVERSITARIO
-(IN _codigo_universitario INT)
-
-BEGIN
-	SELECT s.id_sancion, s.tipo_sancion, s.duracion_dias, s.fecha_inicio,
-    s.fecha_fin, s.justificacion, s.estado, s.id_prestamo, u.codigo_universitario
-    FROM Sancion s, Prestamo p, Usuario u
-    WHERE s.id_prestamo = p.id_prestamo and u.id_usuario = p.id_usuario and u.codigo_universitario LIKE CONCAT('%', _codigo_universitario , '%');
-END $
-
-DELIMITER $
-CREATE PROCEDURE LISTAR_PRESTAMO_BUSQUEDA_CODIGO_UNIVERSITARIO
-(IN _codigo_universitario INT)
-
-BEGIN
-	 SELECT p.id_prestamo, p.fecha_de_prestamo, p.fecha_vencimiento,
-	p.fecha_devolucion, p.estado, p.id_ejemplar, u.codigo_universitario
-    FROM Prestamo p JOIN Usuario u ON u.id_usuario = p.id_usuario and u.codigo_universitario LIKE CONCAT('%', _codigo_universitario , '%');
-END $
-
-
-DELIMITER $$
-
-CREATE PROCEDURE sp_BuscarUsuario(
-    IN pBusqueda VARCHAR(50)
+CREATE DEFINER=`admin`@`%` PROCEDURE `VERIFICAR_CORREO_EXISTENTE`(
+    IN _correo VARCHAR(255)
 )
 BEGIN
-    SELECT *
+    -- Verificar si el correo existe en la tabla de usuarios
+    SELECT id_usuario
     FROM Usuario
-    WHERE activo = 1
-      AND (
-            pBusqueda IS NULL
-         OR codigo_universitario LIKE CONCAT('%', pBusqueda, '%')
-         OR nombre LIKE CONCAT('%', pBusqueda, '%')
-         OR primer_apellido LIKE CONCAT('%', pBusqueda, '%')
-         OR segundo_apellido LIKE CONCAT('%', pBusqueda, '%')
-      );
-END $$
+    WHERE correo = _correo
+    AND activo = 1;  -- ⚠️ ESTA LÍNEA FALTABA
+    
+END$$
+DELIMITER ;
 
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `VERIFICAR_CUENTA`(
+	IN _correo VARCHAR(100),
+	IN _contrasena VARCHAR(40)
+)
+BEGIN
+	SELECT * FROM Usuario WHERE correo=_correo AND contrasena=MD5(_contrasena);
+END$$
 DELIMITER ;

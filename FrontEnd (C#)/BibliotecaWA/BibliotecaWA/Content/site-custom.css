@@ -1,0 +1,156 @@
+﻿/*ESTILOS GENERALES*/
+
+/*================================CUADRO DE TEXTO===========================*/
+
+.form-control {
+    border: 1px solid #DBDFE9 !important;
+    background-color: #FCFCFC !important;
+    border-radius: 8px !important;
+    color: #4B5675 !important;
+    padding: 10px 12px !important;
+    transition: all 0.3s ease !important;
+}
+
+.form-group label {
+    color: #071437 !important;
+    margin-bottom: 4px !important;
+    display: block !important;
+}
+
+/* Estado hover */
+.form-control:hover {
+    background-color: #F9F9F9 !important;
+}
+
+/* Estado focus */
+.form-control:focus {
+    background-color: #FFFFFF !important;
+    border-color: #006DEB !important;
+    color: #252F4A !important;
+    box-shadow: none !important;
+}
+
+/* Estado filled */
+.form-control.filled {
+    background-color: #FFFFFF !important;
+    border-color: #DBDFE9 !important;
+    color: #4B5675 !important;
+}
+
+/* Estado disabled */
+.form-control:disabled {
+    background-color: #DBDFE9 !important;
+    border-color: #DBDFE9 !important;
+    color: #4B5675 !important;
+}
+
+/* Estado error */
+.form-control.error {
+    border-color: #EF4444 !important;
+    background-color: #FEF2F2 !important;
+    color: #EF4444 !important;
+}
+
+/*================================MENSAJES DE ERROR===========================*/
+
+.error-message {
+    color: #EF4444 !important;
+    font-size: 0.875rem !important;
+    margin-top: 4px !important;
+    display: none !important;
+}
+
+    .error-message.show {
+        display: flex !important;
+    }
+
+.error-message-content {
+    display: flex !important;
+    align-items: flex-start !important;
+    line-height: 1.4 !important;
+}
+
+.error-message i {
+    margin-right: 5px !important;
+    color: #EF4444 !important;
+    flex-shrink: 0 !important;
+    margin-top: 0.1em !important;
+}
+
+.error-text {
+    flex: 1 !important;
+}
+
+/*================================BOTONES===========================*/
+
+/* Botón primario */
+.btn-primary {
+    border-radius: 8px !important;
+    padding: 8px 20px !important;
+    transition: all 0.3s ease !important;
+    font-weight: 500 !important;
+}
+
+    .btn-primary:hover {
+        transform: translateY(-1px) !important;
+    }
+
+/* Botón deshabilitado */
+.btn.disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
+.btn-primary:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+}
+
+/* Botón de cancelar estilo secundario */
+.btn-cancel-secondary {
+    background-color: #FEF2F2 !important;
+    border: 1px solid #EF4444 !important;
+    color: #EF4444 !important;
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    font-weight: 500 !important;
+}
+
+    .btn-cancel-secondary:hover {
+        background-color: #FEE2E2 !important;
+        border-color: #DC2626 !important;
+        color: #DC2626 !important;
+        transform: translateY(-1px) !important;
+        text-decoration: none !important;
+    }
+
+    .btn-cancel-secondary:focus {
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+        outline: none !important;
+    }
+
+    .btn-cancel-secondary:active {
+        background-color: #FECACA !important;
+        border-color: #B91C1C !important;
+        color: #B91C1C !important;
+        transform: translateY(0) !important;
+    }
+
+/*================================ESPACIADO===========================*/
+
+/* Ajuste de espaciado entre campos */
+.form-group {
+    margin-bottom: 16px !important;
+}
+
+/*================================CARD===========================*/
+
+/* Contenedor de tarjeta con sombra */
+.card {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}

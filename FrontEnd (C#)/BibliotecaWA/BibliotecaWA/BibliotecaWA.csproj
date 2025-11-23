@@ -76,6 +76,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="BusquedaMaterialesEstudiante.aspx" />
+    <Content Include="CodigoVerificacion.aspx" />
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.articulo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -349,6 +350,12 @@
     <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.obtenerPrestamosRetrasadosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.verificarCorreoExistenteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BibliotecaServices\BibliotecaWA.BibliotecaServices.modificarContrasenaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\BibliotecaServices\ConstribuyenteWS.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -393,6 +400,7 @@
     <Content Include="Content\Images\file.png" />
     <Content Include="Content\Images\logo2.png" />
     <Content Include="Content\Images\tesis.png" />
+    <Content Include="Content\site-custom.css" />
     <Content Include="DetalleMaterial.aspx" />
     <Content Include="DetallePrestamo_Sancion.aspx" />
     <Content Include="Fonts\css\AdminUsuarios.css" />
@@ -436,9 +444,11 @@
     <Content Include="Images\tesis.png" />
     <Content Include="InicioSesion.aspx" />
     <Content Include="MiHistorial.aspx" />
+    <Content Include="NuevaContrasena.aspx" />
     <Content Include="Prestamo.aspx" />
     <Content Include="RegistrarMaterial.aspx" />
     <Content Include="Reportes.aspx" />
+    <Content Include="RestablecerContrasena.aspx" />
     <Content Include="Scripts\activarMenu.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -504,6 +514,7 @@
     <Content Include="Scripts\UtilsArmy\ModalNoUsuario.js" />
     <Content Include="Scripts\UtilsArmy\modalRetraso.js" />
     <Content Include="Scripts\UtilsArmy\ModalSancion.js" />
+    <Content Include="Scripts\UtilsArmy\RegistrarScripts.js" />
     <Content Include="Scripts\UtilsArmy\SolicitarPrestamo.js" />
     <Content Include="Scripts\UtilsArmy\ValidacionesPrestamo.js" />
     <Content Include="Scripts\validarCampos.js" />
@@ -530,6 +541,13 @@
     </Compile>
     <Compile Include="BusquedaMaterialesEstudiante.aspx.designer.cs">
       <DependentUpon>BusquedaMaterialesEstudiante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CodigoVerificacion.aspx.cs">
+      <DependentUpon>CodigoVerificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CodigoVerificacion.aspx.designer.cs">
+      <DependentUpon>CodigoVerificacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\BibliotecaServices\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -599,6 +617,13 @@
     <Compile Include="MiHistorial.aspx.designer.cs">
       <DependentUpon>MiHistorial.aspx</DependentUpon>
     </Compile>
+    <Compile Include="NuevaContrasena.aspx.cs">
+      <DependentUpon>NuevaContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NuevaContrasena.aspx.designer.cs">
+      <DependentUpon>NuevaContrasena.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Prestamo.aspx.cs">
       <DependentUpon>Prestamo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -620,6 +645,13 @@
     </Compile>
     <Compile Include="Reportes.aspx.designer.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RestablecerContrasena.aspx.cs">
+      <DependentUpon>RestablecerContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RestablecerContrasena.aspx.designer.cs">
+      <DependentUpon>RestablecerContrasena.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

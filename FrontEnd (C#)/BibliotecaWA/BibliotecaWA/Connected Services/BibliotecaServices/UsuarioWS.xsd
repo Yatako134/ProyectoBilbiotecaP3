@@ -11,6 +11,8 @@
   <xs:element name="listarTodosDelSistemaResponse" type="tns:listarTodosDelSistemaResponse" />
   <xs:element name="listarUsuarios" type="tns:listarUsuarios" />
   <xs:element name="listarUsuariosResponse" type="tns:listarUsuariosResponse" />
+  <xs:element name="modificarContrasena" type="tns:modificarContrasena" />
+  <xs:element name="modificarContrasenaResponse" type="tns:modificarContrasenaResponse" />
   <xs:element name="modificarUsuario" type="tns:modificarUsuario" />
   <xs:element name="modificarUsuarioResponse" type="tns:modificarUsuarioResponse" />
   <xs:element name="obtenerPrestamosRetrasados" type="tns:obtenerPrestamosRetrasados" />
@@ -23,6 +25,8 @@
   <xs:element name="obtener_prestamos_vigentesxUsuarioResponse" type="tns:obtener_prestamos_vigentesxUsuarioResponse" />
   <xs:element name="obtener_sancion_usuario" type="tns:obtener_sancion_usuario" />
   <xs:element name="obtener_sancion_usuarioResponse" type="tns:obtener_sancion_usuarioResponse" />
+  <xs:element name="verificarCorreoExistente" type="tns:verificarCorreoExistente" />
+  <xs:element name="verificarCorreoExistenteResponse" type="tns:verificarCorreoExistenteResponse" />
   <xs:element name="verificarCuenta" type="tns:verificarCuenta" />
   <xs:element name="verificarCuentaResponse" type="tns:verificarCuentaResponse" />
   <xs:complexType name="listarTodosDelSistema">
@@ -57,6 +61,62 @@
       <xs:element minOccurs="0" name="tipo" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="obtener_prestamos_vigentesxUsuario">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtener_prestamos_vigentesxUsuarioResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerUsuarioxCodigo">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerUsuarioxCodigoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verificarCuenta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cuenta" type="tns:usuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verificarCuentaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarUsuario">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarUsuarioResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarContrasena">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="nuevaContrasena" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarContrasenaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarPorPanelBusqueda">
     <xs:sequence>
       <xs:element minOccurs="0" name="filtro" type="xs:string" />
@@ -73,41 +133,6 @@
   <xs:complexType name="listarUsuariosResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:usuario" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="Exception">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="message" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtener_prestamos_vigentesxUsuario">
-    <xs:sequence>
-      <xs:element name="arg0" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtener_prestamos_vigentesxUsuarioResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="modificarUsuario">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="usuario" type="tns:usuario" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="modificarUsuarioResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtenerUsuarioPorId">
-    <xs:sequence>
-      <xs:element name="idUsuario" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtenerUsuarioPorIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:usuario" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="obtenerPrestamosRetrasados">
@@ -150,42 +175,42 @@
       <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="obtenerUsuarioPorId">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerUsuarioPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuario" type="tns:usuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarUsuarioResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verificarCorreoExistente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verificarCorreoExistenteResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="insertarUsuario">
     <xs:sequence>
       <xs:element minOccurs="0" name="usuario" type="tns:usuario" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarUsuarioResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtenerUsuarioxCodigo">
-    <xs:sequence>
-      <xs:element name="arg0" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtenerUsuarioxCodigoResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:usuario" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="verificarCuenta">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="cuenta" type="tns:usuario" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="verificarCuentaResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarUsuario">
-    <xs:sequence>
-      <xs:element name="idUsuario" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarUsuarioResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>

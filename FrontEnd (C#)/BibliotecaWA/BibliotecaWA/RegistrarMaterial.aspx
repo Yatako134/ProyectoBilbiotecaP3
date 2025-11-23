@@ -238,10 +238,10 @@
             const anho = parseInt(valor);
             const anhoActual = new Date().getFullYear();
 
-            if (anho < 1000 || anho > anhoActual + 1) {
+            if (anho < 868 || anho > anhoActual + 1) {
                 return {
                     esValido: false,
-                    mensaje: `El año de publicación debe estar entre 1000 y ${anhoActual + 1}`
+                    mensaje: `El año de publicación debe estar entre 868  y ${anhoActual + 1}`
                 };
             }
 
@@ -1313,6 +1313,16 @@
                     <asp:Label ID="lblErrorIdioma" runat="server" CssClass="text-danger small" style="display: none;"></asp:Label>
                 </div>
             </div>
+
+            <!-- Fila de EDITORIALES -->
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label for="Editores" class="form-label">Editoriales</label>
+                    <asp:TextBox ID="TextEditorial" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:Label ID="lblErrorEditorial" runat="server" CssClass="text-danger small" Style="display: none;"></asp:Label>
+                </div>
+            </div>
+
 
             <!-- Campos para "Libro" -->
             <div class="row">

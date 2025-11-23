@@ -14,23 +14,17 @@
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
   </message>
-  <message name="eliminarArticulo">
-    <part name="parameters" element="tns:eliminarArticulo" />
-  </message>
-  <message name="eliminarArticuloResponse">
-    <part name="parameters" element="tns:eliminarArticuloResponse" />
-  </message>
   <message name="listarArticulosTodos">
     <part name="parameters" element="tns:listarArticulosTodos" />
   </message>
   <message name="listarArticulosTodosResponse">
     <part name="parameters" element="tns:listarArticulosTodosResponse" />
   </message>
-  <message name="modificarArticulo">
-    <part name="parameters" element="tns:modificarArticulo" />
+  <message name="eliminarArticulo">
+    <part name="parameters" element="tns:eliminarArticulo" />
   </message>
-  <message name="modificarArticuloResponse">
-    <part name="parameters" element="tns:modificarArticuloResponse" />
+  <message name="eliminarArticuloResponse">
+    <part name="parameters" element="tns:eliminarArticuloResponse" />
   </message>
   <message name="insertarArticulo">
     <part name="parameters" element="tns:insertarArticulo" />
@@ -38,30 +32,36 @@
   <message name="insertarArticuloResponse">
     <part name="parameters" element="tns:insertarArticuloResponse" />
   </message>
+  <message name="modificarArticulo">
+    <part name="parameters" element="tns:modificarArticulo" />
+  </message>
+  <message name="modificarArticuloResponse">
+    <part name="parameters" element="tns:modificarArticuloResponse" />
+  </message>
   <portType name="ArticuloWS">
     <operation name="obtenerArticuloPorId">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorIdRequest" message="tns:obtenerArticuloPorId" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorIdResponse" message="tns:obtenerArticuloPorIdResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="eliminarArticulo">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/eliminarArticuloRequest" message="tns:eliminarArticulo" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/eliminarArticuloResponse" message="tns:eliminarArticuloResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/eliminarArticulo/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
     <operation name="listarArticulosTodos">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/listarArticulosTodosRequest" message="tns:listarArticulosTodos" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/listarArticulosTodosResponse" message="tns:listarArticulosTodosResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/listarArticulosTodos/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="modificarArticulo">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticuloRequest" message="tns:modificarArticulo" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticuloResponse" message="tns:modificarArticuloResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticulo/Fault/Exception" name="Exception" message="tns:Exception" />
+    <operation name="eliminarArticulo">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/eliminarArticuloRequest" message="tns:eliminarArticulo" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/eliminarArticuloResponse" message="tns:eliminarArticuloResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/eliminarArticulo/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="insertarArticulo">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloRequest" message="tns:insertarArticulo" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloResponse" message="tns:insertarArticuloResponse" />
+    </operation>
+    <operation name="modificarArticulo">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticuloRequest" message="tns:modificarArticulo" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticuloResponse" message="tns:modificarArticuloResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticulo/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
   </portType>
   <binding name="ArticuloWSPortBinding" type="tns:ArticuloWS">
@@ -78,18 +78,6 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="eliminarArticulo">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
     <operation name="listarArticulosTodos">
       <soap:operation soapAction="" />
       <input>
@@ -102,7 +90,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="modificarArticulo">
+    <operation name="eliminarArticulo">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -122,6 +110,18 @@
       <output>
         <soap:body use="literal" />
       </output>
+    </operation>
+    <operation name="modificarArticulo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
     </operation>
   </binding>
   <service name="ArticuloWS">
