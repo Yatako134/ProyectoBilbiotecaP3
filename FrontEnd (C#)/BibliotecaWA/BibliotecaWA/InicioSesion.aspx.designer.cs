@@ -33,15 +33,6 @@ namespace BibliotecaWA
         protected global::System.Web.UI.WebControls.TextBox txtUsername;
 
         /// <summary>
-        /// Control lblEmailError.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmailError;
-
-        /// <summary>
         /// Control txtPassword.
         /// </summary>
         /// <remarks>
@@ -51,22 +42,13 @@ namespace BibliotecaWA
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// Control lblPasswordError.
+        /// Control hfCredentialError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPasswordError;
-
-        /// <summary>
-        /// Control lblMensaje.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensaje;
+        protected global::System.Web.UI.WebControls.HiddenField hfCredentialError;
 
         /// <summary>
         /// Control btnLogin.

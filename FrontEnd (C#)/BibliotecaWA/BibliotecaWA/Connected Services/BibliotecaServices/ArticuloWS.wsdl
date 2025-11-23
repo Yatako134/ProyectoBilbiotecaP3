@@ -5,12 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/ArticuloWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
-  <message name="insertarArticulo">
-    <part name="parameters" element="tns:insertarArticulo" />
-  </message>
-  <message name="insertarArticuloResponse">
-    <part name="parameters" element="tns:insertarArticuloResponse" />
-  </message>
   <message name="obtenerArticuloPorId">
     <part name="parameters" element="tns:obtenerArticuloPorId" />
   </message>
@@ -32,6 +26,12 @@
   <message name="eliminarArticuloResponse">
     <part name="parameters" element="tns:eliminarArticuloResponse" />
   </message>
+  <message name="insertarArticulo">
+    <part name="parameters" element="tns:insertarArticulo" />
+  </message>
+  <message name="insertarArticuloResponse">
+    <part name="parameters" element="tns:insertarArticuloResponse" />
+  </message>
   <message name="modificarArticulo">
     <part name="parameters" element="tns:modificarArticulo" />
   </message>
@@ -39,10 +39,6 @@
     <part name="parameters" element="tns:modificarArticuloResponse" />
   </message>
   <portType name="ArticuloWS">
-    <operation name="insertarArticulo">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloRequest" message="tns:insertarArticulo" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloResponse" message="tns:insertarArticuloResponse" />
-    </operation>
     <operation name="obtenerArticuloPorId">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorIdRequest" message="tns:obtenerArticuloPorId" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/obtenerArticuloPorIdResponse" message="tns:obtenerArticuloPorIdResponse" />
@@ -58,6 +54,10 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/eliminarArticuloResponse" message="tns:eliminarArticuloResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/eliminarArticulo/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
+    <operation name="insertarArticulo">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloRequest" message="tns:insertarArticulo" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/insertarArticuloResponse" message="tns:insertarArticuloResponse" />
+    </operation>
     <operation name="modificarArticulo">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticuloRequest" message="tns:modificarArticulo" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/ArticuloWS/modificarArticuloResponse" message="tns:modificarArticuloResponse" />
@@ -66,15 +66,6 @@
   </portType>
   <binding name="ArticuloWSPortBinding" type="tns:ArticuloWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="insertarArticulo">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="obtenerArticuloPorId">
       <soap:operation soapAction="" />
       <input>
@@ -110,6 +101,15 @@
       <fault name="Exception">
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
+    </operation>
+    <operation name="insertarArticulo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
     </operation>
     <operation name="modificarArticulo">
       <soap:operation soapAction="" />

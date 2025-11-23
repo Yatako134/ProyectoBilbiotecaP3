@@ -400,6 +400,7 @@
     <Content Include="Content\Images\file.png" />
     <Content Include="Content\Images\logo2.png" />
     <Content Include="Content\Images\tesis.png" />
+    <Content Include="Content\site-custom.css" />
     <Content Include="DetalleMaterial.aspx" />
     <Content Include="DetallePrestamo_Sancion.aspx" />
     <Content Include="Fonts\css\AdminUsuarios.css" />
