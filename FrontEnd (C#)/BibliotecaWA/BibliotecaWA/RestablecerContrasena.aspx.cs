@@ -37,6 +37,7 @@ namespace BibliotecaWA
                 // El correo está registrado, podemos proceder con el restablecimiento de la contraseña
                 Session["UserId"] = idUsuario;
                 Session["CorreoValidado"] = true; // Marcar que el correo se validó
+                Session["CorreoReestablecimiento"] = correo;
                 Response.Redirect("CodigoVerificacion.aspx");
             }
             else

@@ -30,7 +30,7 @@ public class CorreoImpl {
     public CorreoImpl() {
         correoDeOrigen = "utilsarmysistemabiblioteca@gmail.com";
         contraseña16Digitos = "adze tffa borr ndbg";
-        rutaLogo= getClass().getResourceAsStream("/Isologo.png");
+        
     }
 
     private boolean envioDeMensajes() throws IOException {
@@ -91,6 +91,7 @@ public class CorreoImpl {
             this.correoDeDestino = destino;
             this.asunto = asunto;
             this.mensajeDeTexto = contenidoHTML;
+            rutaLogo= getClass().getResourceAsStream("/Isologo.png");
             if (rutaLogo == null && this.rutaLogo == null) {
                 throw new IOException("No se pudo cargar el logo desde los recursos.");
             }

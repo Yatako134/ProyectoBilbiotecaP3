@@ -42,8 +42,8 @@ public class Principal {
 
     public static void main(String[] args) throws Exception {
         CorreoImpl correo = new CorreoImpl();
-        String destino = "a20234943@pucp.edu.pe";               // <-- A donde quieres enviarlo
-        String asunto = "Luchex Backtracking";
+        String destino = "a20212519@pucp.edu.pe";               // <-- A donde quieres enviarlo
+        String asunto = "Buenas noches <3";
         String html = """
 <html>
   <body>
