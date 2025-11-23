@@ -5,7 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Windows;
+using System.Windows.Forms;
 namespace BibliotecaWA
 {
     public partial class Reportes : System.Web.UI.Page
@@ -62,6 +63,17 @@ namespace BibliotecaWA
             {
                 string fechaInicio = txtFechaInicio1.Text;
                 string fechaFin = txtFechaFin1.Text;
+                // 1️⃣ Validar que ambos campos tengan algo
+                if (string.IsNullOrEmpty(fechaInicio) || string.IsNullOrEmpty(fechaFin))
+                {
+                    MessageBox.Show(
+                        "Debes ingresar ambas fechas.",
+                        "Validación",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
                 string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaInicio}&fechaFin={fechaFin}";
                 Response.Redirect(url);
                 return;

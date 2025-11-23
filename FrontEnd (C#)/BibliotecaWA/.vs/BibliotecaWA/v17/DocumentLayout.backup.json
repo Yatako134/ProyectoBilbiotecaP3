@@ -1,14 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\YO_usuario\\Desktop\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\",
+  "WorkspaceRootPath": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|d:\\yo_usuario\\desktop\\p3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\iniciosesion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\repo_ta_prog3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\iniciosesion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\iniciosesion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|d:\\yo_usuario\\desktop\\p3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\iniciosesion.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\iniciosesion.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\repo_ta_prog3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\reportes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\reportes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\repo_ta_prog3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\reportes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\reportes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,33 +22,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "InicioSesion.aspx.cs",
-              "DocumentMoniker": "D:\\YO_usuario\\Desktop\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx.cs",
-              "RelativeDocumentMoniker": "BibliotecaWA\\InicioSesion.aspx.cs",
-              "ToolTip": "D:\\YO_usuario\\Desktop\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx.cs",
-              "RelativeToolTip": "BibliotecaWA\\InicioSesion.aspx.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T21:46:27.577Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "InicioSesion.aspx",
-              "DocumentMoniker": "D:\\YO_usuario\\Desktop\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx",
+              "DocumentMoniker": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\InicioSesion.aspx",
-              "ToolTip": "D:\\YO_usuario\\Desktop\\P3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx",
+              "ToolTip": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx",
               "RelativeToolTip": "BibliotecaWA\\InicioSesion.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-23T21:46:15.526Z",
+              "WhenOpened": "2025-11-23T22:34:58.058Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Reportes.aspx.cs",
+              "DocumentMoniker": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Reportes.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\Reportes.aspx.cs",
+              "ToolTip": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Reportes.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\Reportes.aspx.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAYwEQAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T22:25:32.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Reportes.aspx",
+              "DocumentMoniker": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Reportes.aspx",
+              "RelativeDocumentMoniker": "BibliotecaWA\\Reportes.aspx",
+              "ToolTip": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Reportes.aspx",
+              "RelativeToolTip": "BibliotecaWA\\Reportes.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-23T22:25:27.057Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1134,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }
