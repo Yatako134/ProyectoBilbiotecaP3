@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\iniciosesion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\iniciosesion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\busquedamaterialas.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\busquedamaterialas.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\codigoverificacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\codigoverificacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\codigoverificacion.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\codigoverificacion.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\codigoverificacion.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\iniciosesion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\iniciosesion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\busquedamaterialas.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
@@ -23,43 +27,39 @@
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\iniciosesion.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\busquedamaterialas.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\busquedamaterialas.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\scripts\\utilsarmy\\mensajeexito.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\scripts\\utilsarmy\\mensajeexito.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\scripts\\utilsarmy\\mensajeexito.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\scripts\\utilsarmy\\modalnousuario.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\scripts\\utilsarmy\\modalnousuario.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\scripts\\utilsarmy\\modalnousuario.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\scripts\\utilsarmy\\solicitarprestamo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\scripts\\utilsarmy\\solicitarprestamo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\scripts\\utilsarmy\\solicitarprestamo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\scripts\\utilsarmy\\validacionesprestamo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\scripts\\utilsarmy\\validacionesprestamo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\scripts\\utilsarmy\\validacionesprestamo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\scripts\\activarmenu.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\scripts\\activarmenu.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\scripts\\activarmenu.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\scripts\\usuarios-modal.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\scripts\\usuarios-modal.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\scripts\\usuarios-modal.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\scripts\\validarcampos.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\scripts\\validarcampos.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\scripts\\validarcampos.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\nuevacontrasena.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\nuevacontrasena.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\nuevacontrasena.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\restablecercontrasena.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\restablecercontrasena.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\restablecercontrasena.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
@@ -71,7 +71,7 @@
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\detalleprestamo_sancion.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\restablecercontrasena.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\restablecercontrasena.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\restablecercontrasena.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -174,7 +174,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Bookmark",
@@ -190,111 +190,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ModalNoUsuario.js",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\ModalNoUsuario.js",
-              "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\UtilsArmy\\ModalNoUsuario.js",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\ModalNoUsuario.js",
-              "RelativeToolTip": "BibliotecaWA\\Scripts\\UtilsArmy\\ModalNoUsuario.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-23T23:11:14.768Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SolicitarPrestamo.js",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\SolicitarPrestamo.js",
-              "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\UtilsArmy\\SolicitarPrestamo.js",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\SolicitarPrestamo.js",
-              "RelativeToolTip": "BibliotecaWA\\Scripts\\UtilsArmy\\SolicitarPrestamo.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-23T23:11:11.364Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ValidacionesPrestamo.js",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\ValidacionesPrestamo.js",
-              "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\UtilsArmy\\ValidacionesPrestamo.js",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\ValidacionesPrestamo.js",
-              "RelativeToolTip": "BibliotecaWA\\Scripts\\UtilsArmy\\ValidacionesPrestamo.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-23T23:11:09.946Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "activarMenu.js",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\activarMenu.js",
-              "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\activarMenu.js",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\activarMenu.js",
-              "RelativeToolTip": "BibliotecaWA\\Scripts\\activarMenu.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-23T23:11:08.544Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "usuarios-modal.js",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\usuarios-modal.js",
-              "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\usuarios-modal.js",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\usuarios-modal.js",
-              "RelativeToolTip": "BibliotecaWA\\Scripts\\usuarios-modal.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-23T23:11:04.283Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "validarCampos.js",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\validarCampos.js",
-              "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\validarCampos.js",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\validarCampos.js",
-              "RelativeToolTip": "BibliotecaWA\\Scripts\\validarCampos.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-23T23:10:55.088Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "RestablecerContrasena.aspx",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx",
-              "RelativeDocumentMoniker": "BibliotecaWA\\RestablecerContrasena.aspx",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx",
-              "RelativeToolTip": "BibliotecaWA\\RestablecerContrasena.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-23T22:59:03.743Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CodigoVerificacion.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\CodigoVerificacion.aspx.cs",
-              "RelativeDocumentMoniker": "BibliotecaWA\\CodigoVerificacion.aspx.cs",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\CodigoVerificacion.aspx.cs",
-              "RelativeToolTip": "BibliotecaWA\\CodigoVerificacion.aspx.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T22:45:06.546Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "CodigoVerificacion.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\CodigoVerificacion.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\CodigoVerificacion.aspx",
@@ -307,7 +203,103 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ModalNoUsuario.js",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\ModalNoUsuario.js",
+              "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\UtilsArmy\\ModalNoUsuario.js",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\ModalNoUsuario.js",
+              "RelativeToolTip": "BibliotecaWA\\Scripts\\UtilsArmy\\ModalNoUsuario.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-23T23:11:14.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SolicitarPrestamo.js",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\SolicitarPrestamo.js",
+              "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\UtilsArmy\\SolicitarPrestamo.js",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\SolicitarPrestamo.js",
+              "RelativeToolTip": "BibliotecaWA\\Scripts\\UtilsArmy\\SolicitarPrestamo.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-23T23:11:11.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ValidacionesPrestamo.js",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\ValidacionesPrestamo.js",
+              "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\UtilsArmy\\ValidacionesPrestamo.js",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\ValidacionesPrestamo.js",
+              "RelativeToolTip": "BibliotecaWA\\Scripts\\UtilsArmy\\ValidacionesPrestamo.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-23T23:11:09.946Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "activarMenu.js",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\activarMenu.js",
+              "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\activarMenu.js",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\activarMenu.js",
+              "RelativeToolTip": "BibliotecaWA\\Scripts\\activarMenu.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-23T23:11:08.544Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "usuarios-modal.js",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\usuarios-modal.js",
+              "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\usuarios-modal.js",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\usuarios-modal.js",
+              "RelativeToolTip": "BibliotecaWA\\Scripts\\usuarios-modal.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-23T23:11:04.283Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "validarCampos.js",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\validarCampos.js",
+              "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\validarCampos.js",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\validarCampos.js",
+              "RelativeToolTip": "BibliotecaWA\\Scripts\\validarCampos.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-23T23:10:55.088Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RestablecerContrasena.aspx",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx",
+              "RelativeDocumentMoniker": "BibliotecaWA\\RestablecerContrasena.aspx",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx",
+              "RelativeToolTip": "BibliotecaWA\\RestablecerContrasena.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-23T22:59:03.743Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "CodigoVerificacion.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\CodigoVerificacion.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\CodigoVerificacion.aspx.cs",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\CodigoVerificacion.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\CodigoVerificacion.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T22:45:06.546Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "BusquedaMaterialas.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\BusquedaMaterialas.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\BusquedaMaterialas.aspx",
@@ -315,12 +307,11 @@
               "RelativeToolTip": "BibliotecaWA\\BusquedaMaterialas.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-18T21:55:25.887Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T21:55:25.887Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "InicioSesion.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\InicioSesion.aspx",
@@ -333,46 +324,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "InicioSesion.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx.cs",
-              "RelativeDocumentMoniker": "BibliotecaWA\\InicioSesion.aspx.cs",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx.cs",
-              "RelativeToolTip": "BibliotecaWA\\InicioSesion.aspx.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T05:49:47.389Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "RestablecerContrasena.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx.cs",
-              "RelativeDocumentMoniker": "BibliotecaWA\\RestablecerContrasena.aspx.cs",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx.cs",
-              "RelativeToolTip": "BibliotecaWA\\RestablecerContrasena.aspx.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACcAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T22:59:06.934Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "NuevaContrasena.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\NuevaContrasena.aspx.cs",
-              "RelativeDocumentMoniker": "BibliotecaWA\\NuevaContrasena.aspx.cs",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\NuevaContrasena.aspx.cs",
-              "RelativeToolTip": "BibliotecaWA\\NuevaContrasena.aspx.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T22:42:58.41Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "BusquedaMaterialas.aspx.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\BusquedaMaterialas.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\BusquedaMaterialas.aspx.cs",
@@ -385,6 +337,42 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InicioSesion.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\InicioSesion.aspx.cs",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\InicioSesion.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T05:49:47.389Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RestablecerContrasena.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\RestablecerContrasena.aspx.cs",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\RestablecerContrasena.aspx.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T22:59:06.934Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "NuevaContrasena.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\NuevaContrasena.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\NuevaContrasena.aspx.cs",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\NuevaContrasena.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\NuevaContrasena.aspx.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T22:42:58.41Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 6,
               "Title": "MensajeExito.js",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\MensajeExito.js",
@@ -393,8 +381,7 @@
               "RelativeToolTip": "BibliotecaWA\\Scripts\\UtilsArmy\\MensajeExito.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-23T23:11:17.854Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T23:11:17.854Z"
             },
             {
               "$type": "Document",
@@ -406,8 +393,7 @@
               "RelativeToolTip": "BibliotecaWA\\DetallePrestamo_Sancion.aspx.cs",
               "ViewState": "AgIAAC8BAAAAAAAAAAAAAE4BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T23:55:01.68Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T23:55:01.68Z"
             },
             {
               "$type": "Document",
@@ -419,8 +405,7 @@
               "RelativeToolTip": "BibliotecaWA\\RegistrarMaterial.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-23T20:26:47.037Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T20:26:47.037Z"
             },
             {
               "$type": "Document",
@@ -493,8 +478,7 @@
               "RelativeToolTip": "BibliotecaWA\\DetalleMaterial.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-23T05:51:20.071Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T05:51:20.071Z"
             },
             {
               "$type": "Document",
@@ -518,8 +502,7 @@
               "RelativeToolTip": "BibliotecaWA\\HomeEstudiante.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-18T23:51:51.654Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T23:51:51.654Z"
             },
             {
               "$type": "Document",
@@ -651,8 +634,7 @@
               "RelativeToolTip": "BibliotecaWA\\Home.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-18T23:52:00.334Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T23:52:00.334Z"
             },
             {
               "$type": "Document",
