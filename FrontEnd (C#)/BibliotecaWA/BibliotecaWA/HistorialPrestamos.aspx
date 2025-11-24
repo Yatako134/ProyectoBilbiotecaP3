@@ -132,7 +132,6 @@
 
                     <asp:Button ID="btnVer" runat="server" OnClick="btnVer_Click" Style="display: none" />
                     <asp:Button ID="btnEditar" runat="server" OnClick="btnEditar_Click" Style="display: none" />
-                    <asp:Button ID="btnEliminar" runat="server" OnClick="btnEliminar_Click" Style="display: none" />
 
                 </div>
             </div>
@@ -167,7 +166,7 @@
                 <i class="fa-solid fa-eye me-2 text-primary"></i>Ver detalle
             </button>
             <button type="button" class="opcion" onclick="__doPostBack('<%= btnEditar.UniqueID %>', '')">
-                <i class="fa-solid fa-pen me-2 text-secondary"></i>Editar
+                <i class="fa-solid fa-pen me-2 text-secondary"></i>Finalizar
             </button>
         </div>
 
