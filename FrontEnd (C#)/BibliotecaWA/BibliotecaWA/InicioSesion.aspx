@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InicioSesion.aspx.cs" Inherits="BibliotecaWA.InicioSesion" %>
+﻿f<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InicioSesion.aspx.cs" Inherits="BibliotecaWA.InicioSesion" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,9 +9,8 @@
     <link href="Fonts/css/all.css" rel="stylesheet" />
     <link href="Content/site.css" rel="stylesheet" />
     <link href="Fonts/css/custom.css" rel="stylesheet" />
-    <!-- NUEVO ARCHIVO CSS CORREGIDO -->
     <link href="Content/site-custom.css" rel="stylesheet" />
-
+    
     <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/bootstrap.bundle.js"></script>
     <script src="Scripts/jquery-3.7.1.js"></script>
@@ -65,7 +64,9 @@
 
         // Validar el correo completo (para mostrar errores)
         function validateEmail() {
-            if (isCredentialError) return false;
+            if (isCredentialError) {
+                return false;
+            }
 
             var email = document.getElementById('<%= txtUsername.ClientID %>').value.trim();
             var emailError = document.getElementById('emailErrorContainer');
@@ -78,7 +79,7 @@
             }
 
             if (email === "") {
-                emailError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>Debe ingresar su correo electrónico institucional.</span></div>";
+                emailError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>Debe ingresar su correo electrónico.</span></div>";
                 emailError.classList.add("show");
                 emailField.classList.add("error");
                 return false;
@@ -123,7 +124,9 @@
 
         // Validar la contraseña (para mostrar errores)
         function validatePassword() {
-            if (isCredentialError) return false;
+            if (isCredentialError) {
+                return false;
+            }
 
             var password = document.getElementById('<%= txtPassword.ClientID %>').value;
             var passwordError = document.getElementById('passwordErrorContainer');
@@ -136,7 +139,7 @@
             }
 
             if (password === "") {
-                passwordError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>Debe ingresar su contraseña</span></div>";
+                passwordError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>Debe ingresar su contraseña.</span></div>";
                 passwordError.classList.add("show");
                 passwordField.classList.add("error");
                 return false;
@@ -273,6 +276,7 @@
         <!-- Contenedor del formulario (lado derecho) -->
         <div class="col-md-6 d-flex justify-content-center align-items-center form-container" style="padding-left: 80px; padding-right: 80px;">
             <form id="formLogin" runat="server" class="w-100">
+
                 <div class="text-center mb-4">
                     <h2 style="font-weight: 500;">¡Bienvenido al Sistema de Bibliotecas Universitario!</h2>
                 </div>
@@ -305,9 +309,9 @@
                     <button type="button" class="btn btn-link p-0" onclick="window.location.href='RestablecerContrasena.aspx'">¿Olvidaste tu contraseña?</button>
                 </div>
 
-                <!-- Botón de inicio de sesión -->
+                <!-- Botón de inicio de sesión con la nueva clase button-primary -->
                 <div class="form-group mt-3 d-flex justify-content-center">
-                    <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión" CssClass="btn btn-primary" OnClick="btnLogin_Click" Enabled="false" />
+                    <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión" CssClass="button-primary" OnClick="btnLogin_Click" Enabled="false" />
                 </div>
             </form>
         </div>

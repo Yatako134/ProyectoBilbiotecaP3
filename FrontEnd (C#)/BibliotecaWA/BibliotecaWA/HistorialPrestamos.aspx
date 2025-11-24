@@ -7,20 +7,25 @@
     <link href="Fonts/css/UsuariosOpciones.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
-    <!-- Superior -->
-    <div class="d-flex align-items-center mb-2">
-        <span class="fw-bold me-4">Gestion de préstamos </span>
+
+    <div class="d-flex align-items-center mb-4">
+        <!-- Icono -->
+        <i class="fas fa-th" style="margin-right: 10px; font-size: 24px;"></i>
+
+        <div style="border-right: 2px solid #ccc; height: 24px; margin-right: 10px;"></div>
+
+        <!-- Texto -->
+        <p1>Gestion de préstamos</p1>
     </div>
+    <hr />
 
-
-    <hr/>
 
     <div class="container-fluid">
 
         <!-- === CABECERA SUPERIOR === -->
 
         <div class="text-start mb-4">
-            <h2 class="fw-bold fs-2">Gestion de prestamos</h2>
+            <h1><strong>Gestion de prestamos</strong></h1>
         </div>
         <!-- Botones de pestaña -->
         <div class="row mb-2">

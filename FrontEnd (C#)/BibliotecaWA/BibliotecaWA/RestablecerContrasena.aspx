@@ -19,6 +19,9 @@
     <title>Restablecer contraseña</title>
 
     <script type="text/javascript">
+        // Variables para rastrear si los campos han sido interactuados
+        var emailInteracted = false;
+
         // Validar formato básico del correo
         function isValidEmailFormat(email) {
             var basicEmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -77,7 +80,7 @@
             }
 
             if (!isValidEmailFormat(email)) {
-                emailError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>El formato del correo no es válido. Verifica que tenga un formato correcto (ejemplo: usuario@dominio.com)</span></div>";
+                emailError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>El formato del correo no es válido. Verifica que tenga un formato correcto.</span></div>";
                 emailError.classList.add("show");
                 emailField.classList.add("error");
                 return false;
@@ -88,7 +91,7 @@
             var domain = parts[1];
 
             if (!isValidLocalPart(localPart)) {
-                emailError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>El formato del correo no es válido. No se permiten espacios ni caracteres especiales como !, #, $, %, &, *, etc.</span></div>";
+                emailError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>El formato del correo no es válido. Verifica que tenga un formato correcto.</span></div>";
                 emailError.classList.add("show");
                 emailField.classList.add("error");
                 return false;
@@ -128,9 +131,6 @@
             enableContinueButton();
         }
 
-        // Variables para rastrear si los campos han sido interactuados
-        var emailInteracted = false;
-
         // Validar en tiempo real mientras se digita
         function setupRealTimeValidation() {
             var emailField = document.getElementById('<%= txtEmail.ClientID %>');
@@ -152,9 +152,29 @@
             enableContinueButton();
         }
 
+        // Mostrar error de correo no encontrado
+        function showEmailNotFoundError() {
+            var emailError = document.getElementById('emailErrorContainer');
+            var emailField = document.getElementById('<%= txtEmail.ClientID %>');
+            
+            emailError.innerHTML = "<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>El correo electrónico no está asociado a ninguna cuenta.</span></div>";
+            emailError.classList.add("show");
+            emailField.classList.add("error");
+            
+            emailInteracted = true;
+            enableContinueButton();
+        }
+
         // Ejecutar cuando el documento esté listo
         document.addEventListener('DOMContentLoaded', function () {
             setupRealTimeValidation();
+            
+            // Verificar si hay un error del servidor para mostrar
+            var hfEmailError = document.getElementById('<%= hfEmailError.ClientID %>');
+            if (hfEmailError && hfEmailError.value === "true") {
+                showEmailNotFoundError();
+                hfEmailError.value = "";
+            }
         });
     </script>
 
@@ -176,16 +196,19 @@
                         <div id="emailErrorContainer" class="error-message"></div>
                     </div>
 
+                    <!-- Campo oculto para comunicar error desde el servidor -->
+                    <asp:HiddenField ID="hfEmailError" runat="server" Value="" />
+
                     <!-- Botones alineados a la derecha con espacio de 8px -->
                     <div class="form-group mt-4 d-flex justify-content-end" style="gap: 8px;">
-                        <!-- Botón Cancelar (secundario) -->
-                        <a href="InicioSesion.aspx" class="btn btn-cancel-secondary d-flex align-items-center">
-                            <i class="fa-solid fa-arrow-left me-2"></i>Cancelar
+                        <!-- Botón Cancelar (button-error-secondary) -->
+                        <a href="InicioSesion.aspx" class="button-error-secondary">
+                            Cancelar
                         </a>
                         
-                        <!-- Botón Continuar -->
+                        <!-- Botón Continuar (button-primary) -->
                         <asp:Button ID="btnContinue" runat="server" Text="Continuar" 
-                            CssClass="btn btn-primary" OnClick="btnContinue_Click" Enabled="false" />
+                            CssClass="button-primary" OnClick="btnContinue_Click" Enabled="false" />
                     </div>
                 </form>
             </div>

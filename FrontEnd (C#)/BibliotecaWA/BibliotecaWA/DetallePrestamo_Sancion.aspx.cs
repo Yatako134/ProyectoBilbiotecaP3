@@ -17,6 +17,7 @@ namespace BibliotecaWA
         private UsuarioWSClient userBO;
         private BibliotecaWSClient biblioBo;
         private SancionWSClient sancionBo;
+        private CorreoWSClient correoBO;
 
         public List<string> TiposDeSancion
         {
@@ -147,6 +148,8 @@ namespace BibliotecaWA
 
                 txtCodigo.Text = usuario.codigo.ToString();
                 txtNombre.Text = usuario.nombre + " " + usuario.primer_apellido + " " + usuario.segundo_apellido;
+                Session["UsuarioDetallePrestamo"] = usuario;
+                Session["MaterialDetallePrestamo"] = material;
             }
 
         }
@@ -211,7 +214,9 @@ namespace BibliotecaWA
 
             string modo = Request.QueryString["modo"];
             if (modo == "editar")
+                
             {
+                correoBO = new CorreoWSClient();
                 prestamo pre = (prestamo)Session["prestamo"];
                 // Lista para almacenar todas las sanciones
                 var sanciones = new List<sancion>();
@@ -222,6 +227,8 @@ namespace BibliotecaWA
                 pre.estado = estadoPrestamo.FINALIZADO;
                 // Iterar sobre los campos enviados
                 sancionBo = new SancionWSClient();
+                usuario usuarioSesion = (usuario)Session["UsuarioDetallePrestamo"];
+                materialBibliografico m = (materialBibliografico)Session["MaterialDetallePrestamo"];
                 if (pre.fecha_vencimiento < DateTime.Now)
                 {
                     pre.estado = estadoPrestamo.RETRASADO;
@@ -255,11 +262,77 @@ namespace BibliotecaWA
                             string justificacion = Request.Form[justificacionKey];
 
                             int valor = sancionBo.insertarSancion(tipo, Convert.ToInt32(duracion), justificacion, Convert.ToInt32(id));
+
+
+
+
+                            DateTime fecha_aa_san = DateTime.Now;
+                            string fechaActual_san = fecha_aa_san.ToString("dd/MM/yyyy");
+                            string fechaFinal_san = fecha_aa_san.AddDays(Convert.ToInt32(duracion)).ToString();
+                            string correo_san = usuarioSesion.correo.ToString();
+                            string asunto_san = "NOTIFICACIÓN DE SANCIONAMIENTO - SISTEMA DE BIBLIOTECAS UTILSARMY";
+                            string HTML_san = $@"
+<html>
+  <body style=""font-family: Arial, sans-serif;"">
+    <h2 style=""color:#004080;"">Detalles de la Sanción:</h2>
+
+    <p><strong>Fecha de inicio de sanción:</strong> {fechaActual_san}</p>
+    <p><strong>Fecha de fin de sanción:</strong> {fechaFinal_san}</p>
+    <p><strong>Código de usuario: </strong> {usuarioSesion.codigo}</p>
+    <p><strong>Nombre: </strong> {usuarioSesion.nombre.ToUpper()} {usuarioSesion.primer_apellido.ToUpper()} {usuarioSesion.segundo_apellido.ToUpper()}</p>
+    <p><strong>Justificación:</strong> {justificacion}</p>
+
+    <br>
+
+    <p style=""font-size:14px;"">
+      Por favor recuerde devolver el material antes del vencimiento para evitar retrasos.
+    </p>
+
+    <img src=""cid:logo"" style=""width:180px; height:auto;"">
+<p style='margin-top:25px; font-size:13px; color:#666;'>
+      Sistema de Bibliotecas UtilsArmy
+    </p>
+  </body>
+</html>";
+                            correoBO.enviar_correo(correo_san, asunto_san, HTML_san);
+
                         }
                     }
                 }
 
                 prestBO.modificarPrestamo(pre);
+                
+                
+                DateTime fecha_aa = DateTime.Now;
+                string fechaActual = fecha_aa.ToString("dd/MM/yyyy");
+                string fechaVencimiento = pre.fecha_vencimiento.ToString("dd/MM/yyyy");
+                string correo = usuarioSesion.correo.ToString();
+                string asunto = "COMPROBANTE DE DEVOLUCIÓN - SISTEMA DE BIBLIOTECAS UTILSARMY";
+                string HTML = $@"
+<html>
+  <body style=""font-family: Arial, sans-serif;"">
+    <h2 style=""color:#004080;"">Detalles de la Devolución:</h2>
+
+    <p><strong>Fecha de devolución:</strong> {fechaActual}</p>
+    <p><strong>Código de usuario: </strong> {usuarioSesion.codigo}</p>
+    <p><strong>Nombre: </strong> {usuarioSesion.nombre.ToUpper()} {usuarioSesion.primer_apellido.ToUpper()} {usuarioSesion.segundo_apellido.ToUpper()}</p>
+    <p><strong>Título:</strong> {m.titulo.ToUpper()}</p>
+    <p><strong>Fecha de vencimiento:</strong> {fechaVencimiento}</p>
+
+    <br>
+
+    <p style=""font-size:14px;"">
+      Por favor recuerde devolver el material antes del vencimiento para evitar retrasos.
+    </p>
+    
+    <img src=""cid:logo"" style=""width:180px; height:auto;"">
+    <p style='margin-top:25px; font-size:13px; color:#666;'>
+      Sistema de Bibliotecas UtilsArmy
+    </p>
+  </body>
+</html>";
+                correoBO.enviar_correo(correo,asunto, HTML);
+
                 Response.Redirect("HistorialPrestamos.aspx");
             }
             else

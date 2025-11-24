@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.awt.Image;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,19 +35,23 @@ public class ReporteReq24 extends HttpServlet {
                 JRLoader.loadObject(getClass().
                     getResourceAsStream
                     ("/pe/edu/pucp/utilsarmy/reports/"
-                            + "ReporteRF26.jasper"));
+                            + "ReporteRF24v.jasper"));
             
             //Logo de la web
             URL rutaImagen
                 = getClass().getResource
             ("/pe/edu/pucp/utilsarmy/images/logo2.png");
-            
+             URL rutaURLSubreporteGrafico = getClass().
+                     getResource("/pe/edu/pucp/utilsarmy/reports/SubReporteGrafico.jasper");
+             String rutaSubReporteGrafico = URLDecoder.decode(rutaURLSubreporteGrafico.getPath(), "UTF-8");
             Image imagen =
             (new ImageIcon(rutaImagen)).getImage();
             
             HashMap hm = new HashMap();
-            hm.put("nombre", "Luchex");
+            String nombre = request.getParameter("nombre");
+            hm.put("nombre", nombre);
             hm.put("logo", imagen);
+            hm.put("rutaSubRepGrafico",rutaSubReporteGrafico);
             //Fecha de inicio y fin
             String fechaInicioStr = request.getParameter("fechaInicio"); // yyyy-MM-dd
             String fechaFinStr = request.getParameter("fechaFin");
@@ -67,10 +72,10 @@ public class ReporteReq24 extends HttpServlet {
                 throw new ServletException("Error al parsear fechaFin: " + fechaFinStr, e);
             }
 
-            hm.put("FECHA_INICIO", new java.sql.Date(fechaInicio.getTime()));
-            hm.put("FECHA_FIN", new java.sql.Date(fechaFin.getTime()));
+            hm.put("Fecha_Inicio", new java.sql.Date(fechaInicio.getTime()));
+            hm.put("Fecha_Fin", new java.sql.Date(fechaFin.getTime()));
             System.out.println("RUTA .jasper = " + 
-                getClass().getResource("/pe/edu/pucp/utilsarmy/reports/ReporteRF24.jasper"));
+                getClass().getResource("/pe/edu/pucp/utilsarmy/reports/ReporteRF24v.jasper"));
 
             
             JasperPrint jp

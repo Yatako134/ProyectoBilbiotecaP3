@@ -12,7 +12,11 @@ namespace BibliotecaWA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // Verificar si el código fue validado
+            if (Session["CodigoValidado"] == null || !(bool)Session["CodigoValidado"])
+            {
+                Response.Redirect("CodigoVerificacion.aspx");
+            }
         }
 
         protected void btnRestablecer_Click(object sender, EventArgs e)
@@ -29,14 +33,20 @@ namespace BibliotecaWA
 
                 if (resultado == 1) // Si la contraseña se modificó con éxito
                 {
-                    // Redirigir a la página de éxito
+                    // Limpiar las variables de sesión del flujo de restablecimiento
+                    Session["CorreoValidado"] = null;
+                    Session["CodigoValidado"] = null;
+                    Session["UserId"] = null;
+
+                    // Redirigir a la página de inicio de sesión
                     Response.Redirect("InicioSesion.aspx");
                 }
                 else
                 {
                     // Mostrar un mensaje de error si hubo un problema
-                    lblPasswordError.Text = "Hubo un problema al restablecer la contraseña.";
-                    lblPasswordError.Visible = true;
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorScript",
+                        "document.getElementById('passwordErrorContainer').innerHTML = \"<div class='error-message-content'><i class='fa-solid fa-circle-exclamation'></i><span class='error-text'>Hubo un problema al restablecer la contraseña.</span></div>\"; " +
+                        "document.getElementById('passwordErrorContainer').classList.add('show');", true);
                 }
             }
             else
