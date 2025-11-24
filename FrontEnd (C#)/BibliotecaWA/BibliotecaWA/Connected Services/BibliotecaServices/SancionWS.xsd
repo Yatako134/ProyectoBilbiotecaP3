@@ -3,6 +3,8 @@
   <xs:element name="BusquedaSanciones" type="tns:BusquedaSanciones" />
   <xs:element name="BusquedaSancionesResponse" type="tns:BusquedaSancionesResponse" />
   <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="contarSancionesPorFechas" type="tns:contarSancionesPorFechas" />
+  <xs:element name="contarSancionesPorFechasResponse" type="tns:contarSancionesPorFechasResponse" />
   <xs:element name="finalizar_sancion" type="tns:finalizar_sancion" />
   <xs:element name="finalizar_sancionResponse" type="tns:finalizar_sancionResponse" />
   <xs:element name="insertarSancion" type="tns:insertarSancion" />
@@ -17,14 +19,14 @@
   <xs:element name="modificar_sancionResponse" type="tns:modificar_sancionResponse" />
   <xs:element name="obtener_por_id" type="tns:obtener_por_id" />
   <xs:element name="obtener_por_idResponse" type="tns:obtener_por_idResponse" />
-  <xs:complexType name="listarSancionesPorUsuario">
+  <xs:complexType name="obtener_por_id">
     <xs:sequence>
-      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element name="idSancion" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarSancionesPorUsuarioResponse">
+  <xs:complexType name="obtener_por_idResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
+      <xs:element minOccurs="0" name="return" type="tns:sancion" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="sancion">
@@ -100,14 +102,24 @@
       <xs:element minOccurs="0" name="message" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtener_por_id">
+  <xs:complexType name="listarSancionesPorUsuario">
     <xs:sequence>
-      <xs:element name="idSancion" type="xs:int" />
+      <xs:element name="idUsuario" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtener_por_idResponse">
+  <xs:complexType name="listarSancionesPorUsuarioResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:sancion" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusquedaSanciones">
+    <xs:sequence>
+      <xs:element name="codigo_universitario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusquedaSancionesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarSanciones">
@@ -139,14 +151,15 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="BusquedaSanciones">
+  <xs:complexType name="contarSancionesPorFechas">
     <xs:sequence>
-      <xs:element name="codigo_universitario" type="xs:int" />
+      <xs:element minOccurs="0" name="fechaInicio" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fechaFin" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="BusquedaSancionesResponse">
+  <xs:complexType name="contarSancionesPorFechasResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarSancion">

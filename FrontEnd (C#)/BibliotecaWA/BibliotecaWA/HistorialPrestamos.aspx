@@ -180,40 +180,52 @@
             </button>
         </div>
         <!-- MODAL: Correos enviados correctamente -->
-        <div class="modal fade" id="modalCorreosEnviados" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header bg-success text-white">
-                        <h5 class="modal-title">Notificación enviada</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        Se enviaron correctamente todos los correos de notificación.
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
-                    </div>
-                </div>
+<div class="modal fade" id="modalCorreosEnviados" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">Notificación enviada</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
+
+            <div class="modal-body">
+                Se enviaron correctamente todos los correos de notificación.
+            </div>
+
+            <div class="modal-footer text-end">
+                <button type="button" class="btn btn-outline-success btn-lg" data-bs-dismiss="modal">
+                    Aceptar
+                </button>
+            </div>
+
         </div>
+    </div>
+</div>
 
         <!-- MODAL: No hay correos por enviar -->
-        <div class="modal fade" id="modalSinCorreos" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header bg-warning text-dark">
-                        <h5 class="modal-title">Sin notificaciones pendientes</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        Ya no hay correos pendientes por enviar el día de hoy.
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
+<div class="modal fade" id="modalSinCorreos" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header bg-warning text-dark">
+                <h5 class="modal-title">Sin notificaciones pendientes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
+
+            <div class="modal-body">
+                Ya no hay correos pendientes por enviar el día de hoy.
+            </div>
+
+            <div class="modal-footer text-end">
+                <button type="button" class="btn btn-outline-warning btn-lg" data-bs-dismiss="modal">
+                    Cerrar
+                </button>
+            </div>
+
         </div>
+    </div>
+</div>
 
         <script>
             function mostrarModalEnviados() {
@@ -392,9 +404,6 @@
             </button>
             <button type="button" class="opcion" onclick="__doPostBack('<%= btnEditarSancion.UniqueID %>', '')">
                 <i class="fa-solid fa-pen me-2 text-secondary"></i>Editar
-            </button>
-            <button type="button" class="opcion eliminar" onclick="__doPostBack('<%= btnEliminarSancion.UniqueID %>', '')">
-                <i class="fa-solid fa-x me-2"></i>Finalizar sanción
             </button>
         </div>
 
