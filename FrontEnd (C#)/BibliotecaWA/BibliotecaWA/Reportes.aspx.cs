@@ -63,6 +63,37 @@ namespace BibliotecaWA
             {
                 string fechaInicio = txtFechaInicio1.Text;
                 string fechaFin = txtFechaFin1.Text;
+                if (string.IsNullOrEmpty(fechaInicio) || string.IsNullOrEmpty(fechaFin))
+                {
+                    ShowModal("Debes ingresar ambas fechas.");
+                    return;
+                }
+
+                if (!DateTime.TryParse(fechaInicio, out DateTime fechaIni))
+                {
+                    ShowModal("La fecha inicial no es válida.");
+                    return;
+                }
+
+                if (!DateTime.TryParse(fechaFin, out DateTime fechaF))
+                {
+                    ShowModal("La fecha final no es válida.");
+                    return;
+                }
+
+                if (fechaIni > fechaF)
+                {
+                    ShowModal("La fecha inicial no puede ser mayor que la fecha final.");
+                    return;
+                }
+
+                // Validación de fecha muy adelantada (opcional)
+                if ((fechaF - DateTime.Now).TotalDays > 365)
+                {
+                    ShowModal("La fecha final es demasiado adelantada.");
+                    return;
+                }
+                /*
                 // 1️⃣ Validar que ambos campos tengan algo
                 if (string.IsNullOrEmpty(fechaInicio) || string.IsNullOrEmpty(fechaFin))
                 {
@@ -114,8 +145,10 @@ namespace BibliotecaWA
                 // ✅ 4️⃣ Formato CORRECTO para el servlet
                 string fechaInicioFmt = fechaIni.ToString("yyyy-MM-dd");
                 string fechaFinFmt = fechaF.ToString("yyyy-MM-dd");
+                */
+                string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaIni:yyyy-MM-dd}&fechaFin={fechaF:yyyy-MM-dd}";
 
-                string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaInicioFmt}&fechaFin={fechaFinFmt}";
+                //string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaInicioFmt}&fechaFin={fechaFinFmt}";
                 Response.Redirect(url);
                 return;
             }
@@ -127,5 +160,14 @@ namespace BibliotecaWA
             }
 
         }
+        private void ShowModal(string mensaje)
+        {
+            string script = $@"
+            var modal = new bootstrap.Modal(document.getElementById('modalAlert'));
+            document.getElementById('modalBody').innerText = '{mensaje}';
+            modal.show();";
+            ScriptManager.RegisterStartupScript(this, GetType(), "showModal", script, true);
+        }
+
     }
 }
