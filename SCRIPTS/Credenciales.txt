@@ -1,0 +1,11 @@
+Cuenta estudiante:
+correo: maria.torres@pucp.edu.pe
+contraseña: 123
+
+Cuenta docente:
+correo: carmen.ruiz@pucp.edu.pe
+contraseña: profe2024
+
+Cuenta bibliotecario:
+correo: prueba@pucp.edu.pe
+contraseña: 123
