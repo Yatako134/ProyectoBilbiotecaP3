@@ -18,4 +18,5 @@ public interface UsuarioDAO extends IDAO<Usuario>{
      int verificarCorreoExistente(String correo);
      int modificarContrasena(int idUsuario, String nuevaContrasena);
      
+     
 }

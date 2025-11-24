@@ -6,6 +6,7 @@ public class Ejemplar {
     private String ubicacion;
     private Biblioteca blibioteca;
     private boolean activo;
+    private String tit;
     
     public Ejemplar() {
         this.estado = EstadoEjemplar.DISPONIBLE;//Por defecto disponible
@@ -97,6 +98,14 @@ public class Ejemplar {
 
     public void setBlibioteca(Biblioteca blibioteca) {
         this.blibioteca = blibioteca;
+    }
+
+    public String getTit() {
+        return tit;
+    }
+
+    public void setTit(String tit) {
+        this.tit = tit;
     }
 
     

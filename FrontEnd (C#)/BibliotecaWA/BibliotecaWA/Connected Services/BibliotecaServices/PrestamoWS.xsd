@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="pe.edu.pucp.utilsarmy.services" targetNamespace="pe.edu.pucp.utilsarmy.services" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="MarcarRecordatorioPrestamos" type="tns:MarcarRecordatorioPrestamos" />
+  <xs:element name="MarcarRecordatorioPrestamosResponse" type="tns:MarcarRecordatorioPrestamosResponse" />
+  <xs:element name="UsuariosProximoAVencerse" type="tns:UsuariosProximoAVencerse" />
+  <xs:element name="UsuariosProximoAVencerseResponse" type="tns:UsuariosProximoAVencerseResponse" />
   <xs:element name="buscarPrestamos" type="tns:buscarPrestamos" />
   <xs:element name="buscarPrestamosResponse" type="tns:buscarPrestamosResponse" />
   <xs:element name="eliminarPrestamo" type="tns:eliminarPrestamo" />
@@ -45,6 +49,7 @@
       <xs:element minOccurs="0" name="estado" type="tns:estadoEjemplar" />
       <xs:element name="idEjemplar" type="xs:int" />
       <xs:element name="id_material" type="xs:int" />
+      <xs:element minOccurs="0" name="tit" type="xs:string" />
       <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -127,6 +132,14 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:prestamo" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="UsuariosProximoAVencerse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="UsuariosProximoAVencerseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:prestamo" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="buscarPrestamos">
     <xs:sequence>
       <xs:element name="codigo" type="xs:int" />
@@ -151,6 +164,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarPrestamoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MarcarRecordatorioPrestamos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="MarcarRecordatorioPrestamosResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>

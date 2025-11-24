@@ -29,17 +29,27 @@
         </div>
         <!-- Botones de pestaña -->
         <div class="row mb-2">
-            <div class="col text-start">
-                <asp:LinkButton ID="btnPrestamos" runat="server" CssClass="btn btn-sm btn-outline-primary me-1"
-                    OnClick="btnPrestamos_Click">
-                    <i class="fa-solid fa-book pe-1"></i> Préstamos
-                </asp:LinkButton>
+    <div class="col d-flex justify-content-between">
+        <div>
+            <asp:LinkButton ID="btnPrestamos" runat="server" CssClass="btn btn-sm btn-outline-primary me-1"
+                OnClick="btnPrestamos_Click">
+                <i class="fa-solid fa-book pe-1"></i> Préstamos
+            </asp:LinkButton>
 
-                <asp:LinkButton ID="btnSanciones" runat="server" CssClass="btn btn-sm btn-outline-danger" OnClick="btnSanciones_Click">
-                    <i class="fa-solid fa-triangle-exclamation pe-1"></i> Sanciones
-                </asp:LinkButton>
-            </div>
+            <asp:LinkButton ID="btnSanciones" runat="server" CssClass="btn btn-sm btn-outline-danger"
+                OnClick="btnSanciones_Click">
+                <i class="fa-solid fa-triangle-exclamation pe-1"></i> Sanciones
+            </asp:LinkButton>
         </div>
+
+        <div>
+            <asp:LinkButton ID="btnRecordatorios" runat="server" CssClass="btn btn-sm btn-outline-success"
+                OnClick="btnRecordatorios_Click">
+                <i class="fa-solid fa-envelope pe-1"></i> Notificar
+            </asp:LinkButton>
+        </div>
+    </div>
+</div>
 
         <!-- === CONTENEDOR UNIFICADO === -->
         <asp:Panel ID="pnlPrestamos" runat="server" CssClass="tabla-container shadow-sm rounded-4 overflow-hidden">
@@ -170,7 +180,53 @@
                 <i class="fa-solid fa-pen me-2 text-secondary"></i>Editar
             </button>
         </div>
+        <!-- MODAL: Correos enviados correctamente -->
+        <div class="modal fade" id="modalCorreosEnviados" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title">Notificación enviada</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        Se enviaron correctamente todos los correos de notificación.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- MODAL: No hay correos por enviar -->
+        <div class="modal fade" id="modalSinCorreos" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-dark">
+                        <h5 class="modal-title">Sin notificaciones pendientes</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        Ya no hay correos pendientes por enviar el día de hoy.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function mostrarModalEnviados() {
+                var m = new bootstrap.Modal(document.getElementById('modalCorreosEnviados'));
+                m.show();
+            }
+
+            function mostrarModalSinCorreos() {
+                var m = new bootstrap.Modal(document.getElementById('modalSinCorreos'));
+                m.show();
+            }
+        </script>
         <div class="modal fade" id="modalAlerta" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">

@@ -58,6 +58,7 @@
       <xs:element minOccurs="0" name="estado" type="tns:estadoEjemplar" />
       <xs:element name="idEjemplar" type="xs:int" />
       <xs:element name="id_material" type="xs:int" />
+      <xs:element minOccurs="0" name="tit" type="xs:string" />
       <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -117,6 +118,17 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="modificar_sancion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idSancion" type="tns:sancion" />
+      <xs:element minOccurs="0" name="tipo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificar_sancionResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="finalizar_sancion">
     <xs:sequence>
       <xs:element name="idSancion" type="xs:int" />
@@ -135,17 +147,6 @@
   <xs:complexType name="BusquedaSancionesResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="modificar_sancion">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="idSancion" type="tns:sancion" />
-      <xs:element minOccurs="0" name="tipo" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="modificar_sancionResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarSancion">

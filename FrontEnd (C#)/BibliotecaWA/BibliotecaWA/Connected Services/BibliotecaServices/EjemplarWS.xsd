@@ -30,14 +30,9 @@
       <xs:element minOccurs="0" name="message" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtenerEjemplarPorId">
+  <xs:complexType name="insertarEjemplar">
     <xs:sequence>
-      <xs:element name="idEjemplar" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtenerEjemplarPorIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:ejemplar" />
+      <xs:element minOccurs="0" name="ejemplar" type="tns:ejemplar" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ejemplar">
@@ -47,6 +42,7 @@
       <xs:element minOccurs="0" name="estado" type="tns:estadoEjemplar" />
       <xs:element name="idEjemplar" type="xs:int" />
       <xs:element name="id_material" type="xs:int" />
+      <xs:element minOccurs="0" name="tit" type="xs:string" />
       <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -59,14 +55,19 @@
       <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="insertarEjemplar">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ejemplar" type="tns:ejemplar" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="insertarEjemplarResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerEjemplarPorId">
+    <xs:sequence>
+      <xs:element name="idEjemplar" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerEjemplarPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:ejemplar" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listar_por_material">
@@ -79,14 +80,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarEjemplaresTodos">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarEjemplaresTodosResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="modificarEjemplar">
     <xs:sequence>
       <xs:element minOccurs="0" name="ejemplar" type="tns:ejemplar" />
@@ -95,6 +88,14 @@
   <xs:complexType name="modificarEjemplarResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarEjemplaresTodos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarEjemplaresTodosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listar_disponibles_por_material">

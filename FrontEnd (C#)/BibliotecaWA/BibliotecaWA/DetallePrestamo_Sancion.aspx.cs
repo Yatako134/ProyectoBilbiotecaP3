@@ -284,10 +284,6 @@ namespace BibliotecaWA
 
     <br>
 
-    <p style=""font-size:14px;"">
-      Por favor recuerde devolver el material antes del vencimiento para evitar retrasos.
-    </p>
-
     <img src=""cid:logo"" style=""width:180px; height:auto;"">
 <p style='margin-top:25px; font-size:13px; color:#666;'>
       Sistema de Bibliotecas UtilsArmy
@@ -321,9 +317,6 @@ namespace BibliotecaWA
 
     <br>
 
-    <p style=""font-size:14px;"">
-      Por favor recuerde devolver el material antes del vencimiento para evitar retrasos.
-    </p>
     
     <img src=""cid:logo"" style=""width:180px; height:auto;"">
     <p style='margin-top:25px; font-size:13px; color:#666;'>

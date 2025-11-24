@@ -246,5 +246,49 @@ public class PrestamoImpl implements PrestamoDAO{
         }
         return prestamos;
     }
+     @Override
+    public ArrayList<Prestamo> UsuariosProximoAVencerse() {
+        ArrayList<Prestamo> prestamos = null;
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("UsuariosProximoAVencerse", null);
+        System.out.println("Lectura de préstamos...");
+        try {
+            while (rs.next()) {
+                if (prestamos == null) prestamos = new ArrayList<>();
+                Prestamo p = new Prestamo();
+
+                p.setIdPrestamo(rs.getInt("id_prestamo"));
+                p.setFecha_de_prestamo(rs.getTimestamp("fecha_de_prestamo"));
+                p.setFecha_vencimiento(rs.getTimestamp("fecha_vencimiento"));
+
+                
+                Ejemplar ejemplar = new Ejemplar();
+                ejemplar.setIdEjemplar(rs.getInt("id_ejemplar"));
+                ejemplar.setTit(rs.getString("titulo"));
+                p.setEjemplar(ejemplar);
+
+                Usuario usuario = new Usuario();
+                usuario.setCodigo(rs.getInt("codigo_universitario"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setPrimer_apellido(rs.getString("primer_apellido"));
+                usuario.setSegundo_apellido(rs.getString("segundo_apellido"));
+                usuario.setCorreo(rs.getString("correo"));
+                p.setUsuario(usuario);
+
+                prestamos.add(p);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return prestamos;
+    }
+
+    @Override
+    public int MarcarRecordatorioPrestamos() {
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MarcarRecordatorioPrestamos", null, null);
+        System.out.println("Se ha confirmado el recordatorio");
+        return resultado;
+    }
     
 }

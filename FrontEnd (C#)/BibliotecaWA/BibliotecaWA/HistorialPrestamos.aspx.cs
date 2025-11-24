@@ -14,7 +14,7 @@ namespace BibliotecaWA
     {
         private PrestamoWSClient boprestamo;
         private SancionWSClient bosancion;
-
+        private CorreoWSClient bocorreo;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -425,6 +425,67 @@ namespace BibliotecaWA
                 lblMensaje.Visible = true;
             }
             CargarSanciones();
+        }
+        protected void btnRecordatorios_Click(object sender, EventArgs e)
+        {
+            boprestamo = new PrestamoWSClient();
+            prestamo[] prestamos_reco = boprestamo.UsuariosProximoAVencerse();
+            if(prestamos_reco != null)
+            {
+                bocorreo = new CorreoWSClient();
+                foreach(prestamo p  in prestamos_reco)
+                {
+                    string correo = p.usuario.correo.ToString();
+                    string asunto = "RECORDATORIO DE DEVOLUCIÓN - SISTEMA DE BIBLIOTECAS UTILSARMY";
+                    string HTML = $@"
+<html>
+  <body style='font-family: Arial, sans-serif; color:#333;'>
+    
+    <h2 style='color:#004080;'>Recordatorio de Devolución</h2>
+
+    <p>Estimado(a) <strong>{p.usuario.nombre.ToString().ToUpper()} {p.usuario.primer_apellido.ToString().ToUpper()} {p.usuario.segundo_apellido.ToString().ToUpper()}</strong>,</p>
+
+    <p>
+      Este es un recordatorio de que uno de sus préstamos está próximo a vencer.
+      La devolución debe realizarse <strong>mañana</strong> para evitar sanciones.
+    </p>
+
+    <br>
+
+    <h3 style='color:#004080;'>Detalles del Préstamo</h3>
+
+    <p><strong>Fecha de préstamo:</strong> {p.fecha_de_prestamo.ToString("dd/MM/yyyy")}</p>
+    <p><strong>Código de usuario:</strong> {p.usuario.codigo}</p>
+    <p><strong>Nombre:</strong> {p.usuario.nombre.ToString().ToUpper()} {p.usuario.primer_apellido.ToString().ToUpper()} {p.usuario.segundo_apellido.ToString().ToUpper()}</p>
+    <p><strong>Título del material:</strong> {p.ejemplar.tit.ToString().ToUpper()}</p>
+    <p><strong>Fecha de vencimiento:</strong> {p.fecha_vencimiento.ToString("dd/MM/yyyy")}</p>
+
+    <br>
+
+    <p style='font-size:14px; color:#555;'>
+      Se recomienda devolver el material a tiempo para evitar sanciones futuras.
+    </p>
+
+    <img src='cid:logo' style='width:180px; height:auto; margin-top:20px;'>
+
+    <p style='margin-top:25px; font-size:13px; color:#666;'>
+      Sistema de Bibliotecas UtilsArmy
+    </p>
+
+  </body>
+</html>";
+                    bocorreo.enviar_correo(correo, asunto, HTML);
+
+                }
+                boprestamo.MarcarRecordatorioPrestamos();
+                ScriptManager.RegisterStartupScript(this, this.GetType(),
+            "modalEnviados", "mostrarModalEnviados();", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(),
+            "modalSinCorreos", "mostrarModalSinCorreos();", true);
+            }
         }
     }
 }
