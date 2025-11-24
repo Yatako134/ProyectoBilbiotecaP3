@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.awt.Image;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.HashMap;
@@ -25,30 +26,35 @@ public class ReporteReq26 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try{
-//            Connection con = DBManager.getInstance()
-//                    .getConnection();
+            Connection con = DBManager.getInstance()
+                    .getConnection();
             JasperReport jr
             = (JasperReport)
                 JRLoader.loadObject(getClass().
                     getResourceAsStream
         ("/pe/edu/pucp/utilsarmy/reports/"
-                + "ReporteRF26.jasper"));
+                + "ReporteReq26.jasper"));
             
             
-//            URL rutaImagen
-//            = getClass().getResource
-//        ("/pe/edu/pucp/softprog/images/pikachu.png");
+            URL rutaImagen1
+            = getClass().getResource
+        ("/pe/edu/pucp/utilsarmy/images/banner.png");
+            Image imagen1 =
+            (new ImageIcon(rutaImagen1)).getImage();
 //            
-//            Image imagen =
-//            (new ImageIcon(rutaImagen)).getImage();
-//            
-//            HashMap hm = new HashMap();
-//            hm.put("nombre", "FREDDY");
-//            hm.put("logo", imagen);
-//            
+            URL rutaImagen2
+            = getClass().getResource
+        ("/pe/edu/pucp/utilsarmy/images/Isologo.png");
+            Image imagen2 =
+            (new ImageIcon(rutaImagen2)).getImage();
+
+            HashMap hm = new HashMap();
+            hm.put("Nombre Usuario", "FREDDY");
+            hm.put("Banner", imagen1);
+            hm.put("Logo", imagen2);
             JasperPrint jp
-            = JasperFillManager.fillReport(jr,null,
-                    new JREmptyDataSource());
+            = JasperFillManager.fillReport(jr,hm,
+                    con);
             JasperExportManager.exportReportToPdfStream(jp,
                     response.getOutputStream());
         }catch(IOException | JRException ex){
@@ -57,6 +63,8 @@ public class ReporteReq26 extends HttpServlet {
         }finally{
             DBManager.getInstance().cerrarConexion();
         }
+
+
     }
 
     @Override
