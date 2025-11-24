@@ -128,6 +128,13 @@ namespace BibliotecaWA
                     ShowModal("La fecha final es demasiado adelantada.");
                     return;
                 }
+                SancionWSClient sancionbo = new SancionWSClient();
+                int cant = sancionbo.contarSancionesPorFechas(fechaIni, fechaF);
+                if (cant <= 0)
+                {
+                    ShowModal("No hay sanciones para mostrar en el rango de fecha seleccionado.");
+                    return;
+                }
                 string nombre = (String)Session["UserName"];
                 string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaIni:yyyy-MM-dd}&fechaFin={fechaF:yyyy-MM-dd}&nombre={nombre}";
 
