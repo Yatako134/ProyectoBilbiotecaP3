@@ -101,7 +101,7 @@
                 </script>
 
                 <!-- === GRIDVIEW === -->
-                <div class="tabla-datos">
+                <div class="tabla-datos" style="overflow-x: auto; width: 100%;">
 
                     <asp:HiddenField ID="hfPrestamoSeleccionado" runat="server" ClientIDMode="Static" />
 
@@ -322,7 +322,7 @@
 
             <!-- Panel de Sanciones -->
             <asp:Panel ID="pnlSanciones" runat="server" Visible="false" CssClass="d-flex flex-column">
-                <div class="tabla-container shadow-sm rounded-4 overflow-hidden ">
+                <div class="tabla-container shadow-sm rounded-4 overflow-hidden" style="overflow-x: auto; width: 100%;">
                     <!-- HiddenField requerido por el menú -->
                     <asp:HiddenField ID="HiddenField1" runat="server" ClientIDMode="Static" />
 
@@ -472,4 +472,3 @@
         </script>
     </div>
 </asp:Content>
-

@@ -82,7 +82,7 @@
                     </div>
                     <p class="text-muted mt-2 mb-0">
                         Informe en formato PDF con los materiales que han registrado
-                    el mayor número de préstamos dentro de un rango de fechas.
+                    préstamos dentro de un rango de fechas.
                     </p>
                 </div>
             </div>

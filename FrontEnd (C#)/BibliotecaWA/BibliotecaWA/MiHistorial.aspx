@@ -38,7 +38,7 @@
 
 
             <!-- Grid con scroll -->
-            <div class="tabla-container shadow-sm rounded-4 overflow-hidden ">
+            <div class="tabla-container shadow-sm rounded-4 overflow-hidden" style="overflow-x: auto; width: 100%;">
 
                 <!-- === BARRA DE BÚSQUEDA === -->
                 <div class="tabla-busqueda d-flex align-items-center p-3 border-bottom bg-white gap-2">
@@ -150,7 +150,7 @@
 
         <!-- Panel de Sanciones -->
         <asp:Panel ID="pnlSanciones" runat="server" Visible="false" CssClass="d-flex flex-column" Style="height: 500px;">
-            <div class="tabla-container shadow-sm rounded-4 overflow-hidden ">
+            <div class="tabla-container shadow-sm rounded-4 overflow-hidden" style="overflow-x: auto; width: 100%;">
 
                 <!-- === BARRA DE BÚSQUEDA === -->
                 <div class="tabla-busqueda d-flex align-items-center p-3 border-bottom bg-white gap-2">
