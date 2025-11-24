@@ -99,7 +99,8 @@ CREATE DEFINER=`admin`@`%` PROCEDURE `ELIMINAR_EJEMPLAR`(
     IN _id_ejemplar INT
 )
 BEGIN
-    DELETE FROM Ejemplar 
+    UPDATE Ejemplar
+    SET activo = 0
     WHERE id_ejemplar = _id_ejemplar;
 END$$
 DELIMITER ;
@@ -377,11 +378,12 @@ DELIMITER $$
 CREATE DEFINER=`admin`@`%` PROCEDURE `INSERTAR_ROL`(
     OUT _id_rol INT,
     IN _tipo VARCHAR(30),
-    IN _cantidad_de_dias_por_prestamo INT
+    IN _cantidad_de_dias_por_prestamo INT,
+    IN _limite_prestamos INT
 )
 BEGIN
-    INSERT INTO Rol(tipo, activo, cantidad_de_dias_por_prestamo)
-    VALUES(_tipo, 1, _cantidad_de_dias_por_prestamo);
+    INSERT INTO Rol(tipo, activo, cantidad_de_dias_por_prestamo, limite_prestamos)
+    VALUES(_tipo, 1, _cantidad_de_dias_por_prestamo, _limite_prestamos);
     SET _id_rol = @@last_insert_id;
 END$$
 DELIMITER ;
@@ -398,7 +400,7 @@ BEGIN
 	DECLARE _fecha_inicio  datetime;
     DECLARE _fecha_fin DATETIME;
     
-    SET _fecha_inicio = NOW();
+    SET _fecha_inicio = NOW() - INTERVAL 5 HOUR;
 	SET _fecha_fin = date_add(_fecha_inicio, INTERVAL _duracion_dias DAY);
 	INSERT INTO Sancion(tipo_sancion, duracion_dias, fecha_inicio, fecha_fin,
     justificacion, estado, id_prestamo)
@@ -582,13 +584,22 @@ BEGIN
         m.editoriales,
         IFNULL(
             NULLIF(
-                GROUP_CONCAT(
-                    CONCAT(
-                        IFNULL(c.nombre, ''), 
-                        CASE WHEN c.nombre IS NOT NULL AND c.nombre <> '' THEN ' ' ELSE '' END,
-                        IFNULL(c.primer_apellido, ''), ' ', IFNULL(c.segundo_apellido, '')
-                    ) SEPARATOR ', '
-                ), ''
+               GROUP_CONCAT(
+    DISTINCT TRIM(
+        CASE 
+            WHEN 
+                (IFNULL(c.nombre, '') = '' 
+                 AND IFNULL(c.primer_apellido, '') = '' 
+                 AND IFNULL(c.segundo_apellido, '') = '') 
+            THEN NULL
+            ELSE CONCAT_WS(' ',
+                NULLIF(c.nombre, ''),
+                NULLIF(c.primer_apellido, ''),
+                NULLIF(c.segundo_apellido, '')
+            )
+        END
+    ) SEPARATOR ', '
+), ''
             ), 'No hay autores registrados'
         ) AS autores,
         IFNULL(
@@ -644,13 +655,22 @@ BEGIN
         m.editoriales,
         IFNULL(
             NULLIF(
-                GROUP_CONCAT(
-                    CONCAT(
-                        IFNULL(c.nombre, ''), 
-                        CASE WHEN c.nombre IS NOT NULL AND c.nombre <> '' THEN ' ' ELSE '' END,
-                        IFNULL(c.primer_apellido, ''), ' ', IFNULL(c.segundo_apellido, '')
-                    ) SEPARATOR ', '
-                ), ''
+               GROUP_CONCAT(
+    DISTINCT TRIM(
+        CASE 
+            WHEN 
+                (IFNULL(c.nombre, '') = '' 
+                 AND IFNULL(c.primer_apellido, '') = '' 
+                 AND IFNULL(c.segundo_apellido, '') = '') 
+            THEN NULL
+            ELSE CONCAT_WS(' ',
+                NULLIF(c.nombre, ''),
+                NULLIF(c.primer_apellido, ''),
+                NULLIF(c.segundo_apellido, '')
+            )
+        END
+    ) SEPARATOR ', '
+), ''
             ), 'No hay autores registrados'
         ) AS autores,
         IFNULL(
@@ -751,6 +771,58 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_MATERIALES_TODOS_NORMAL`()
+BEGIN
+    SELECT 
+        m.id_material,
+        m.titulo,
+        m.anho_publicacion,
+        m.numero_paginas,
+        m.estado,
+        m.clasificacion_tematica,
+        m.idioma,
+        m.tipo,
+        m.editoriales,
+        IFNULL(
+            NULLIF(
+                GROUP_CONCAT(
+                    DISTINCT TRIM(
+                        CASE 
+                            WHEN 
+                                (IFNULL(c.nombre, '') = '' 
+                                 AND IFNULL(c.primer_apellido, '') = '' 
+                                 AND IFNULL(c.segundo_apellido, '') = '') 
+                            THEN NULL
+                            ELSE CONCAT_WS(' ',
+                                NULLIF(c.nombre, ''),
+                                NULLIF(c.primer_apellido, ''),
+                                NULLIF(c.segundo_apellido, '')
+                            )
+                        END
+                    ) SEPARATOR ', '
+                ), ''
+            ), 'No hay autores registrados'
+        ) AS autores,
+        IFNULL(
+            NULLIF(
+                GROUP_CONCAT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN b.nombre END SEPARATOR ', '), 
+                ''
+            ), 'No hay ejemplares disponibles para préstamo'
+        ) AS bibliotecas,
+        COUNT(DISTINCT CASE WHEN e.estado = 'DISPONIBLE' THEN e.id_ejemplar END) AS ejemplares_disponibles
+    FROM MaterialBibliografico m
+    LEFT JOIN Contribuyente_Material cm ON m.id_material = cm.id_material
+    LEFT JOIN Contribuyente c ON cm.id_contribuyente = c.id_contribuyente AND c.tipo_contribuyente = 'AUTOR'
+    LEFT JOIN Ejemplar e ON m.id_material = e.id_material AND e.activo = 1
+    LEFT JOIN Biblioteca b ON e.id_biblioteca = b.id_biblioteca AND b.activo = 1
+    WHERE m.activo = 1
+    GROUP BY 
+        m.id_material, m.titulo, m.anho_publicacion, m.numero_paginas, m.estado, m.clasificacion_tematica, m.idioma, m.tipo
+    ORDER BY m.id_material ASC;
+END$$
+DELIMITER ;
+
+DELIMITER $$
 CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_PRESTAMO_BUSQUEDA_CODIGO_UNIVERSITARIO`(IN _codigo_universitario INT)
 BEGIN
 	 SELECT p.id_prestamo, p.fecha_de_prestamo, p.fecha_vencimiento,
@@ -814,6 +886,11 @@ DELIMITER ;
 DELIMITER $$
 CREATE DEFINER=`admin`@`%` PROCEDURE `LISTAR_SANCIONES_TODAS`()
 BEGIN
+
+	UPDATE Sancion
+    SET estado = 'FINALIZADA'
+    WHERE fecha_fin <= NOW() - INTERVAL 5 HOUR and estado = 'VIGENTE' and  id_sancion>0;
+
     SELECT s.id_sancion, s.tipo_sancion, s.duracion_dias, s.fecha_inicio,
     s.fecha_fin, s.justificacion, s.estado, s.id_prestamo, u.codigo_universitario
     FROM Sancion s, Usuario u, Prestamo p 
@@ -995,14 +1072,15 @@ DELIMITER ;
 DELIMITER $$
 CREATE DEFINER=`admin`@`%` PROCEDURE `MODIFICAR_PRESTAMO`(
     IN _id_prestamo INT,
-    IN _fecha_de_prestamo datetime,
-    IN _fecha_vencimiento datetime,
-    IN _fecha_devolucion datetime,
+    IN _fecha_de_prestamo DATETIME,
+    IN _fecha_vencimiento DATETIME,
+    IN _fecha_devolucion DATETIME,
     IN _estado ENUM('VIGENTE', 'FINALIZADO', 'RETRASADO'),
     IN _id_ejemplar INT,
     IN _id_usuario INT
 )
 BEGIN
+    -- Actualizar los datos del préstamo
     UPDATE Prestamo
     SET 
         fecha_de_prestamo = _fecha_de_prestamo,
@@ -1012,6 +1090,14 @@ BEGIN
         id_ejemplar = _id_ejemplar,
         id_usuario = _id_usuario
     WHERE id_prestamo = _id_prestamo;
+
+    -- Si hay fecha de devolución, el ejemplar vuelve a estar disponible
+    IF _fecha_devolucion IS NOT NULL THEN
+        UPDATE Ejemplar
+        SET estado = 'DISPONIBLE'
+        WHERE id_ejemplar = _id_ejemplar;
+    END IF;
+
 END$$
 DELIMITER ;
 
@@ -1102,7 +1188,6 @@ BEGIN
         segundo_apellido = _segundo_apellido,
         DOI = _DOI,
         correo = _correo,
-        contrasena = MD5(_contrasena),
         numero_de_telefono = _numero_de_telefono,
         id_rol = _id_rol
     WHERE id_usuario = _id_usuario;
@@ -1507,6 +1592,7 @@ BEGIN
 	SELECT * FROM Usuario WHERE correo=_correo AND contrasena=MD5(_contrasena);
 END$$
 DELIMITER ;
+
 DELIMITER $$
 
 CREATE PROCEDURE sp_VerSancionesPorFecha(

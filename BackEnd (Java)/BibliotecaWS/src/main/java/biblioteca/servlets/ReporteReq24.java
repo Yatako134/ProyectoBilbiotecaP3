@@ -39,18 +39,28 @@ public class ReporteReq24 extends HttpServlet {
             
             //Logo de la web
             URL rutaImagen
-                = getClass().getResource
-            ("/pe/edu/pucp/utilsarmy/images/logo2.png");
+            = getClass().getResource
+                ("/pe/edu/pucp/utilsarmy/images/Isologo.png");
+            
+            URL rutaImagen2
+            = getClass().getResource
+                ("/pe/edu/pucp/utilsarmy/images/banner.png");
+            
              URL rutaURLSubreporteGrafico = getClass().
                      getResource("/pe/edu/pucp/utilsarmy/reports/SubReporteGrafico.jasper");
              String rutaSubReporteGrafico = URLDecoder.decode(rutaURLSubreporteGrafico.getPath(), "UTF-8");
+             
             Image imagen =
             (new ImageIcon(rutaImagen)).getImage();
+            
+            Image imagen2 =
+            (new ImageIcon(rutaImagen2)).getImage();
             
             HashMap hm = new HashMap();
             String nombre = request.getParameter("nombre");
             hm.put("nombre", nombre);
             hm.put("logo", imagen);
+            hm.put("banner", imagen2);
             hm.put("rutaSubRepGrafico",rutaSubReporteGrafico);
             //Fecha de inicio y fin
             String fechaInicioStr = request.getParameter("fechaInicio"); // yyyy-MM-dd

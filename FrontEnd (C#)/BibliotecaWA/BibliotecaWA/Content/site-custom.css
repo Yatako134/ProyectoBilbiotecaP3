@@ -125,6 +125,45 @@
         transform: none !important;
     }
 
+/* Botón secundario azul - flexible para iconos */
+.button-secondary {
+    background-color: #E0F0FF !important;
+    border: 1px solid #006DEB !important;
+    color: #006DEB !important;
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    font-weight: 500 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    cursor: pointer !important;
+}
+
+    .button-secondary:hover {
+        background-color: #C9E4FF !important;
+        border-color: #0056b3 !important;
+        color: #0056b3 !important;
+        transform: translateY(-1px) !important;
+        text-decoration: none !important;
+    }
+
+    .button-secondary:focus {
+        box-shadow: 0 0 0 3px rgba(0, 109, 235, 0.1) !important;
+        outline: none !important;
+    }
+
+    .button-secondary:active {
+        background-color: #B0D4FF !important;
+        border-color: #004494 !important;
+        color: #004494 !important;
+        transform: translateY(0) !important;
+    }
+
+
+
 /* Botón de error secundario rojo - flexible para iconos */
 .button-error-secondary {
     background-color: #FEF2F2 !important;

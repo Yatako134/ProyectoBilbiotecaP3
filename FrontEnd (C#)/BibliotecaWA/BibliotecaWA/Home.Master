@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HomeEstudiante.master.cs" Inherits="BibliotecaWA.HomeEstudiante" %>
+﻿<%--<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HomeEstudiante.master.cs" Inherits="BibliotecaWA.HomeEstudiante" %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -100,21 +100,7 @@
                     <br><span style="color: white; font-size: 22px;">Bibliotecas</span></p>
                 </div>
 
-                <!-- Listado de opciones para estudiantes -->
-                <%--<ul class="mynav nav nav-pills flex-column mb-auto">
-                    <li class="nav-item mb-1">
-                        <a href="BusquedaMaterialesEstudiante.aspx"><i class="fa-solid fa-book-open" style="margin-right: 10px;"></i>Búsqueda de materiales</a>
-                    </li>
-                    <li class="nav-item mb-1">
-                        <a href="MisPrestamos.aspx"><i class="fa-solid fa-book" style="margin-right: 10px;"></i>Mis préstamos</a>
-                    </li>
-                    <li class="nav-item mb-1">
-                        <a href="HistorialEstudiante.aspx"><i class="fa-solid fa-table" style="margin-right: 10px;"></i>Mi historial</a>
-                    </li>
-                    <li class="nav-item mb-1">
-                        <a href="ReservasEstudiante.aspx"><i class="fa-solid fa-calendar-check" style="margin-right: 10px;"></i>Mis reservas</a>
-                    </li>
-                </ul>--%>
+                
                 <ul class="mynav nav nav-pills flex-column mb-auto">
                     <li class="nav-item mb-1">
                         <a href="BusquedaMaterialas.aspx"><i class="fa-solid fa-book-open" style="margin-right: 10px;"></i>Búsqueda y préstamos</a>
@@ -197,6 +183,263 @@
                     event.stopPropagation();
                 });
             }
+        </script>
+    </form>
+</body>
+</html>--%>
+
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HomeEstudiante.master.cs" Inherits="BibliotecaWA.HomeEstudiante" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Fonts/css/all.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+    <link href="Fonts/css/custom.css" rel="stylesheet" />
+
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/bootstrap.bundle.js"></script>
+    <script src="Scripts/jquery-3.7.1.js"></script>
+    <script src="Scripts/activarMenu.js"></script>
+
+    <title>
+        <asp:ContentPlaceHolder ID="cph_Title" runat="server"></asp:ContentPlaceHolder>
+    </title>
+    <asp:ContentPlaceHolder ID="cph_Scripts" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+        /* ESTILOS GENERALES PARA ALTURA */
+        html, body, form {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #divGeneral {
+            height: 100vh;
+            min-height: 100vh;
+        }
+        
+        #bdSidebar {
+            height: 100vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+        }
+        
+        .bg-light.flex-fill {
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* RESALTAR ITEM ACTIVO EN SIDEBAR - TAMAÑOS UNIFICADOS */
+        .mynav .nav-item a {
+            display: block;
+            padding: 8px 12px !important;
+            margin: 2px 0 !important;
+            border-radius: 8px !important;
+            color: white !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease !important;
+            border: none !important;
+        }
+
+        .mynav .nav-item a.active {
+            background-color: #006DEB !important;
+            color: white !important;
+            /* Mismo padding que los items normales */
+            padding: 8px 12px !important;
+            margin: 2px 0 !important;
+        }
+
+        .mynav .nav-item a:hover:not(.active) {
+            background-color: rgba(0, 109, 235, 0.1) !important;
+            color: white !important;
+        }
+
+        /* Estilos para el menú desplegable del usuario */
+        .user-card {
+            position: relative;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .user-card:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .user-menu {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid #ddd;
+            z-index: 1000;
+            display: none;
+            margin-bottom: 5px;
+        }
+
+        .user-menu-item {
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            display: block;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .user-menu-item:hover {
+            background-color: #f5f5f5;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .user-menu-divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 0;
+        }
+
+        .user-menu i {
+            width: 16px;
+            margin-right: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="divGeneral" class="container-fluid d-flex p-0 h-100">
+            <!-- Sidebar -->
+            <div id="bdSidebar" class="d-flex flex-column flex-shrink-0 p-3">
+                <div class="brand">
+                    <a href="HomeEstudiante.aspx" class="navbar-brand">
+                        <img src="Images/logo2.png" alt="Logo" />
+                    </a>
+                    <p><span style="color: #8abcf6; font-size: 22px;">Sistema de</span> 
+                    <br><span style="color: white; font-size: 22px;">Bibliotecas</span></p>
+                </div>
+
+                <!-- Listado de opciones -->
+                <ul class="mynav nav nav-pills flex-column mb-auto">
+                    <li class="nav-item mb-1">
+                        <a href="BusquedaMaterialas.aspx"><i class="fa-solid fa-book-open" style="margin-right: 10px;"></i>Búsqueda y préstamos</a>
+                    </li>
+                    <li class="nav-item mb-1">
+                        <a href="GestMaterial.aspx"><i class="fa-solid fa-table-cells-large" style="margin-right: 10px;"></i>Gestión de materiales</a>
+                    </li>
+                    <li class="nav-item mb-1">
+                        <a href="GestUsuarios.aspx"><i class="fa-solid fa-users" style="margin-right: 10px;"></i>Gestión de usuarios</a>
+                    </li>
+                    <li class="nav-item mb-1">
+                        <a href="HistorialPrestamos.aspx"><i class="fa-solid fa-table" style="margin-right: 10px;"></i>Historial de préstamos</a>
+                    </li>
+                    <li class="nav-item mb-1">
+                        <a href="Reportes.aspx"><i class="fa-solid fa-file" style="margin-right: 10px;"></i>Reportes</a>
+                    </li>
+                </ul>
+
+                <!-- Usuario con menú desplegable -->
+                <div class="user-card mt-auto" onclick="toggleUserMenu()">
+                    <div class="user-info">
+                        <img src="Images/file.png" alt="Foto de perfil" style="margin-right: 10px;">
+                        <asp:Label ID="spnNombreUsuario" runat="server" Text="Nombre Apellido"></asp:Label>
+                    </div>
+                    
+                    <!-- Menú desplegable -->
+                    <div class="user-menu" id="userMenu">
+                        <asp:LinkButton ID="lnkCambiarContrasena" runat="server" CssClass="user-menu-item" OnClick="lnkCambiarContrasena_Click">
+                            <i class="fa-solid fa-key"></i>Cambiar contraseña
+                        </asp:LinkButton>
+                        
+                        <div class="user-menu-divider"></div>
+                        
+                        <asp:LinkButton ID="lnkCerrarSesion" runat="server" CssClass="user-menu-item" OnClick="lnkCerrarSesion_Click">
+                            <i class="fa-solid fa-right-from-bracket"></i>Cerrar sesión
+                        </asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido -->
+            <div class="bg-light flex-fill overflow-auto">
+                <!-- Barra superior para dispositivos pequeños -->
+                <div class="p-2 d-md-none d-flex text-white bg-primary">
+                    <a data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" class="text-white" href="#">
+                        <i class="fa-solid fa-bars"></i>
+                    </a>
+                </div>
+
+                <!-- Contenido principal -->
+                <div class="p-4">
+                    <asp:ContentPlaceHolder ID="cph_Contenido" runat="server"></asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function toggleUserMenu() {
+                var menu = document.getElementById('userMenu');
+                if (menu.style.display === 'block') {
+                    menu.style.display = 'none';
+                } else {
+                    menu.style.display = 'block';
+                }
+            }
+
+            // Cerrar el menú si se hace clic fuera de él
+            document.addEventListener('click', function (event) {
+                var userCard = document.querySelector('.user-card');
+                var userMenu = document.getElementById('userMenu');
+                if (userMenu && userCard && !userCard.contains(event.target)) {
+                    userMenu.style.display = 'none';
+                }
+            });
+
+            // Evitar que el menú se cierre al hacer clic en él
+            var userMenuElement = document.getElementById('userMenu');
+            if (userMenuElement) {
+                userMenuElement.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                });
+            }
+
+            // Resaltar página activa en el sidebar
+            function highlightActivePage() {
+                var currentPage = window.location.pathname.split('/').pop().toLowerCase();
+                var navLinks = document.querySelectorAll('.mynav .nav-item a');
+
+                navLinks.forEach(function (link) {
+                    var linkPage = link.getAttribute('href').toLowerCase();
+                    if (currentPage === linkPage) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Ejecutar cuando la página cargue
+            document.addEventListener('DOMContentLoaded', function () {
+                highlightActivePage();
+            });
         </script>
     </form>
 </body>
