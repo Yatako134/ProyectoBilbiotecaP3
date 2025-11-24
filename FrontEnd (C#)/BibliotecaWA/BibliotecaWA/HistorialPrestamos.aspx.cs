@@ -326,17 +326,6 @@ namespace BibliotecaWA
             }
         }
 
-        protected void btnEliminar_Click(object sender, EventArgs e)
-        {
-            int id = int.Parse(hfPrestamoSeleccionado.Value);
-            PrestamoWSClient boprestamo = new PrestamoWSClient();
-            boprestamo.eliminarPrestamo(id);
-
-            BindingList<prestamo> prestamos = new BindingList<prestamo>(boprestamo.listarPrestamos());
-            Session["prestamos"] = prestamos;
-            CargarPrestamos();
-        }
-
         protected void btnBuscarPrestamo_Click(object sender, EventArgs e)
         {
             boprestamo = new PrestamoWSClient();
@@ -387,17 +376,46 @@ namespace BibliotecaWA
         protected void btnEditarSancion_Click(object sender, EventArgs e)
         {
             int id = int.Parse(HiddenField1.Value);
-            Response.Redirect($"DetallePrestamo_Sancion.aspx?id={id}&modo=editarSancion");
+            bosancion = new SancionWSClient();
+            sancion san = new sancion();
+            san = bosancion.obtener_por_id(id);
+            if (san.estado != estadoSancion.FINALIZADA)
+            {
+                Response.Redirect($"DetallePrestamo_Sancion.aspx?id={id}&modo=editarSancion");
+            }
+            else
+            {
+                string mensaje = $"No se puede editar una sancion con estado: {san.estado}";
+                ScriptManager.RegisterStartupScript(this, this.GetType(),
+                    "alertaEstadoPrestamo",
+                    $"mostrarAlerta('{mensaje}');",
+                    true);
+            }
+            
         }
 
         protected void btnEliminarSancion_Click(object sender, EventArgs e)
         {
             bosancion = new SancionWSClient();
             int id = int.Parse(HiddenField1.Value);
-            bosancion.finalizar_sancion(id);
-            sancion[] sanciones = bosancion.listarSanciones();
-            Session["sanciones"] = new BindingList<sancion>(sanciones);
-            CargarSanciones();
+            sancion san = new sancion();
+            san = bosancion.obtener_por_id(id);
+            if (san.estado != estadoSancion.FINALIZADA)
+            {
+                bosancion.finalizar_sancion(id);
+                sancion[] sanciones = bosancion.listarSanciones();
+                Session["sanciones"] = new BindingList<sancion>(sanciones);
+                CargarSanciones();
+            }
+            else
+            {
+                string mensaje = $"No se puede finalizar una sancion con estado: {san.estado}";
+                ScriptManager.RegisterStartupScript(this, this.GetType(),
+                    "alertaEstadoPrestamo",
+                    $"mostrarAlerta('{mensaje}');",
+                    true);
+            }
+            
         }
         protected void btnBuscarSancion_Click(object sender, EventArgs e)
         {
