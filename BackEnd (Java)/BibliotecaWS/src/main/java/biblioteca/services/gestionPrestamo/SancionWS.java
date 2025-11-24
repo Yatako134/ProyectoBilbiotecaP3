@@ -6,6 +6,7 @@ import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import java.util.ArrayList;
+import java.util.Date;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Prestamo;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Sancion;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Tipo_sancion;
@@ -52,6 +53,11 @@ public class SancionWS {
     @WebMethod(operationName = "obtener_por_id")
     public Sancion obtener_sancion_por_id(@WebParam(name = "idSancion") int id_sancion) throws Exception {
         return sancionboimpl.obtenerPorId(id_sancion);
+    }
+    @WebMethod(operationName = "contarSancionesPorFechas")
+    public int contarSancionesPorFechas( @WebParam(name = "fechaInicio") Date fechaInicio,
+            @WebParam(name = "fechaFin") Date fechaFin) throws Exception {
+        return sancionboimpl.contarSancionesPorFechas(fechaInicio, fechaFin);
     }
     @WebMethod(operationName = "finalizar_sancion")
     public int finalizar_sancion(@WebParam(name = "idSancion") int id_sancion) throws Exception {
