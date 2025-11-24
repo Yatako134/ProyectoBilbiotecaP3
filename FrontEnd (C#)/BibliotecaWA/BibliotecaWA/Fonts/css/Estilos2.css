@@ -195,38 +195,75 @@
 .tabla-container {
     position: relative;
     overflow: visible !important;
+    z-index: 1;
 }
 
 .tabla-datos {
     position: relative;
     z-index: 1;
+    overflow: visible !important; /* Permitir que elementos hijos se muestren fuera */
 }
 
-    /* DROPDOWN CORREGIDO */
+    /* CONTENEDOR DEL DROPDOWN */
     .tabla-datos .dropdown {
-        position: relative !important;
+        position: static !important; /* Cambio crucial */
     }
 
+    /* MENÚ DROPDOWN */
     .tabla-datos .dropdown-menu {
         z-index: 9999 !important;
         position: absolute !important;
         right: 0 !important;
         left: auto !important;
+        top: 0 !important; /* Cambiar de top: 100% a top: 0 */
+        margin-top: 25px !important; /* Ajustar para que quede justo debajo */
         transform: none !important;
-        margin-top: 5px !important;
+        /* Estilos de diseño */
+        background: white !important;
+        border: 1px solid #dee2e6 !important;
+        border-radius: 6px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        min-width: 180px !important;
+        padding: 8px 0 !important;
     }
 
     .tabla-datos .dropdown-toggle::after {
         display: none !important;
     }
+    /* BOTÓN DEL DROPDOWN */
+    /* === ESTILO SOLO PARA LOS 3 PUNTOS === */
+    .tabla-datos .dropdown-toggle .fa-ellipsis-vertical {
+        font-size: 16px;
+        color: #6c757d;
+    }
 
-/* Asegurar que se muestre correctamente */
-.dropdown-menu.show {
-    display: block !important;
-    z-index: 10000 !important;
-}
+        .tabla-datos .dropdown-toggle:hover .fa-ellipsis-vertical {
+            color: #495057;
+        }
 
-/* Prevenir que el contenedor corte el dropdown */
-.tabla-container .table-responsive {
-    overflow: visible !important;
-}
+    /* ITEMS DEL DROPDOWN */
+    .tabla-datos .dropdown-item {
+        padding: 8px 16px !important;
+        font-size: 14px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+        .tabla-datos .dropdown-item:hover {
+            background-color: #f8f9fa !important;
+        }
+
+    /* CELDA DE ACCIONES - ESPECÍFICA */
+    .tabla-datos td:last-child {
+        position: relative;
+        overflow: visible !important;
+    }
+
+    /* ASEGURAR QUE EL DROPDOWN SE VEA POR ENCIMA */
+    .tabla-datos tr {
+        position: relative;
+    }
+
+        .tabla-datos tr td:last-child .dropdown-menu {
+            z-index: 10000 !important;
+        }

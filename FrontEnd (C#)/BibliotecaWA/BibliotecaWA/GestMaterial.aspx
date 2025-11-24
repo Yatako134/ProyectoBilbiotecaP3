@@ -113,13 +113,14 @@
 
         <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
             <ItemTemplate>
-                <div class="dropdown" style="position: static !important;">
+                <div class="dropdown">
                     <button class="btn btn-link text-dark dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false"
-                        style="z-index: 1000; position: relative;">
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        style="border: none; background: transparent; padding: 4px 8px;">
+                        <!-- SOLO LOS 3 PUNTOS -->
+                        <i class="fa-solid fa-ellipsis-vertical" style="font-size: 16px;"></i>
                     </button>
-                    <ul class="dropdown-menu" style="z-index: 9999 !important; position: fixed !important; background: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1); min-width: 200px;">
+                    <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <asp:LinkButton runat="server" CssClass="dropdown-item"
                                 CommandArgument='<%# Eval("IdMaterial") %>'
