@@ -14,6 +14,24 @@
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
   </message>
+  <message name="contarSancionesPorFechas">
+    <part name="parameters" element="tns:contarSancionesPorFechas" />
+  </message>
+  <message name="contarSancionesPorFechasResponse">
+    <part name="parameters" element="tns:contarSancionesPorFechasResponse" />
+  </message>
+  <message name="BusquedaSanciones">
+    <part name="parameters" element="tns:BusquedaSanciones" />
+  </message>
+  <message name="BusquedaSancionesResponse">
+    <part name="parameters" element="tns:BusquedaSancionesResponse" />
+  </message>
+  <message name="finalizar_sancion">
+    <part name="parameters" element="tns:finalizar_sancion" />
+  </message>
+  <message name="finalizar_sancionResponse">
+    <part name="parameters" element="tns:finalizar_sancionResponse" />
+  </message>
   <message name="listarSancionesPorUsuario">
     <part name="parameters" element="tns:listarSancionesPorUsuario" />
   </message>
@@ -25,18 +43,6 @@
   </message>
   <message name="modificar_sancionResponse">
     <part name="parameters" element="tns:modificar_sancionResponse" />
-  </message>
-  <message name="finalizar_sancion">
-    <part name="parameters" element="tns:finalizar_sancion" />
-  </message>
-  <message name="finalizar_sancionResponse">
-    <part name="parameters" element="tns:finalizar_sancionResponse" />
-  </message>
-  <message name="BusquedaSanciones">
-    <part name="parameters" element="tns:BusquedaSanciones" />
-  </message>
-  <message name="BusquedaSancionesResponse">
-    <part name="parameters" element="tns:BusquedaSancionesResponse" />
   </message>
   <message name="obtener_por_id">
     <part name="parameters" element="tns:obtener_por_id" />
@@ -62,6 +68,21 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesResponse" message="tns:listarSancionesResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSanciones/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
+    <operation name="contarSancionesPorFechas">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/contarSancionesPorFechasRequest" message="tns:contarSancionesPorFechas" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/contarSancionesPorFechasResponse" message="tns:contarSancionesPorFechasResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/contarSancionesPorFechas/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="BusquedaSanciones">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesRequest" message="tns:BusquedaSanciones" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesResponse" message="tns:BusquedaSancionesResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSanciones/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="finalizar_sancion">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/finalizar_sancionRequest" message="tns:finalizar_sancion" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/finalizar_sancionResponse" message="tns:finalizar_sancionResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/finalizar_sancion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
     <operation name="listarSancionesPorUsuario">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesPorUsuarioRequest" message="tns:listarSancionesPorUsuario" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/listarSancionesPorUsuarioResponse" message="tns:listarSancionesPorUsuarioResponse" />
@@ -71,16 +92,6 @@
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/modificar_sancionRequest" message="tns:modificar_sancion" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/modificar_sancionResponse" message="tns:modificar_sancionResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/modificar_sancion/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="finalizar_sancion">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/finalizar_sancionRequest" message="tns:finalizar_sancion" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/finalizar_sancionResponse" message="tns:finalizar_sancionResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/finalizar_sancion/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="BusquedaSanciones">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesRequest" message="tns:BusquedaSanciones" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSancionesResponse" message="tns:BusquedaSancionesResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/BusquedaSanciones/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="obtener_por_id">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/SancionWS/obtener_por_idRequest" message="tns:obtener_por_id" />
@@ -112,7 +123,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="listarSancionesPorUsuario">
+    <operation name="contarSancionesPorFechas">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -124,7 +135,7 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="modificar_sancion">
+    <operation name="BusquedaSanciones">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -148,7 +159,19 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="BusquedaSanciones">
+    <operation name="listarSancionesPorUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="modificar_sancion">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
