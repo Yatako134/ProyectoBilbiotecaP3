@@ -70,7 +70,7 @@
         </div>
 
 
-        <!-- ======= REPORTE 2: Materiales más prestados ======= -->
+        <!-- ======= REPORTE 2: Materiales prestados ======= -->
         <div class="row mb-4">
             <div class="col-md-4">
                 <div class="p-3 border rounded shadow-sm bg-white">
