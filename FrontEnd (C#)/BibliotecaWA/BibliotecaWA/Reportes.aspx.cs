@@ -12,6 +12,7 @@ namespace BibliotecaWA
     public partial class Reportes : System.Web.UI.Page
     {
         UsuarioWSClient bousuario = new UsuarioWSClient();
+        EjemplarWSClient boejemplar = new EjemplarWSClient();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -30,8 +31,8 @@ namespace BibliotecaWA
             if (seleccionados == 0)
             {
                 ScriptManager.RegisterStartupScript(
-                    this, GetType(), "alerta",
-                    "alert('Por favor, seleccione un tipo de reporte antes de descargar.');",
+                    this, GetType(), "modal",
+                    "mostrarModal('Advertencia', 'Por favor, seleccione un tipo de reporte antes de descargar.');",
                     true
                 );
                 return;
@@ -41,8 +42,8 @@ namespace BibliotecaWA
             if (seleccionados > 1)
             {
                 ScriptManager.RegisterStartupScript(
-                    this, GetType(), "alerta",
-                    "alert('Seleccione solo un reporte a la vez.');",
+                    this, GetType(), "modal",
+                    "mostrarModal('Advertencia', 'Seleccione solo un reporte a la vez.');",
                     true
                 );
                 return;
@@ -51,12 +52,46 @@ namespace BibliotecaWA
             // 4. Solo si hay EXACTAMENTE uno → hacemos redirect
             if (chkReporteEjemplares.Checked)
             {
-                usuario user = new usuario();
-                user = bousuario.obtenerUsuarioPorId(2);
-                //string nombre = "Luchexx";
-                string nombre = user.nombre;
-                Response.Redirect($"http://localhost:8080/BibliotecaWS/ReporteReq25?nombre={nombre}");
-                return;
+                //BindingList<ejemplar> ejemplares = boejemplar.listarEjemplaresTodos();
+                ejemplar[] ejemp = boejemplar.listarEjemplaresTodos();
+
+                // Validar que la lista no sea null
+                if (ejemp == null)
+                {
+                    ScriptManager.RegisterStartupScript(
+                        this, GetType(), "modal",
+                        "mostrarModal('Advertencia', 'No hay ejemplares en reparacion.');",
+                        true
+                    );
+                    return;
+                }
+
+                int cantEnReparacion = ejemp.Count(ejem => ejem.estado == estadoEjemplar.EN_REPARACION);
+
+                if (cantEnReparacion > 0)
+                {
+                    usuario user = new usuario();
+                    user = bousuario.obtenerUsuarioPorId(21);
+                    //string nombre = "Luchexx";
+                    string nombre = user.nombre;
+                    Response.Redirect($"http://localhost:8080/BibliotecaWS/ReporteReq25?nombre={nombre}");
+                    return;
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(
+                        this, GetType(), "modal",
+                        "mostrarModal('Advertencia', 'No hay ejemplares en reparacion.');",
+                        true
+                    );
+                    return;
+                }
+                //usuario user = new usuario();
+                //user = bousuario.obtenerUsuarioPorId(21);
+                ////string nombre = "Luchexx";
+                //string nombre = user.nombre;
+                //Response.Redirect($"http://localhost:8080/BibliotecaWS/ReporteReq25?nombre={nombre}");
+                //return;
             }
 
             if (chkReporteUsuarios.Checked)
@@ -93,62 +128,10 @@ namespace BibliotecaWA
                     ShowModal("La fecha final es demasiado adelantada.");
                     return;
                 }
-                /*
-                // 1️⃣ Validar que ambos campos tengan algo
-                if (string.IsNullOrEmpty(fechaInicio) || string.IsNullOrEmpty(fechaFin))
-                {
-                    MessageBox.Show(
-                        "Debes ingresar ambas fechas.",
-                        "Validación",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-                    return;
-                }
+                string nombre = (String)Session["UserName"];
+                string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaIni:yyyy-MM-dd}&fechaFin={fechaF:yyyy-MM-dd}&nombre={nombre}";
 
-                // 2️⃣ Intentar convertir a fecha
-                DateTime fechaIni, fechaF;
 
-                if (!DateTime.TryParse(fechaInicio, out fechaIni))
-                {
-                    MessageBox.Show(
-                        "La fecha inicial no es válida.",
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                    return;
-                }
-
-                if (!DateTime.TryParse(fechaFin, out fechaF))
-                {
-                    MessageBox.Show(
-                        "La fecha final no es válida.",
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                    return;
-                }
-
-                // 3️⃣ Validar rango
-                if (fechaIni > fechaF)
-                {
-                    MessageBox.Show(
-                        "La fecha inicial no puede ser mayor que la fecha final.",
-                        "Rango inválido",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                    return;
-                }
-                // ✅ 4️⃣ Formato CORRECTO para el servlet
-                string fechaInicioFmt = fechaIni.ToString("yyyy-MM-dd");
-                string fechaFinFmt = fechaF.ToString("yyyy-MM-dd");
-                */
-                string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaIni:yyyy-MM-dd}&fechaFin={fechaF:yyyy-MM-dd}";
-
-                //string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaInicioFmt}&fechaFin={fechaFinFmt}";
                 Response.Redirect(url);
                 return;
             }

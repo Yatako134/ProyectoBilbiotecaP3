@@ -5,6 +5,7 @@ import biblioteca.gestionPrestamo.bo.SancionBO;
 import biblioteca.gestionPrestamo.dao.SancionDAO;
 import biblioteca.gestionPrestamo.mysql.SancionImpl;
 import java.util.ArrayList;
+import java.util.Date;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Sancion;
 
 public class SancionBOImpl implements SancionBO{
@@ -56,6 +57,11 @@ private final SancionDAO daoSancion;
     @Override
     public ArrayList<Sancion> listarPorUsuario_X_ID(int idUsuario, String filtro) {
         return daoSancion.listarPorUsuario_X_ID(idUsuario, filtro);
+    }
+
+    @Override
+    public int contarSancionesPorFechas(Date fechaInicio, Date fechaFin) {
+        return daoSancion.contarSancionesPorFechas(fechaInicio, fechaFin);
     }
     
 }
