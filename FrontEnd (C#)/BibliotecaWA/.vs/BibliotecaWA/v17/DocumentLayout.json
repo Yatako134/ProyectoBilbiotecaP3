@@ -3,11 +3,23 @@
   "WorkspaceRootPath": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\historialprestamos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\administrarusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\administrarusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\administrarusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\administrarusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\gestusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\gestusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\historialprestamos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\historialprestamos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\historialprestamos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\historialprestamos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\historialprestamos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -131,10 +143,6 @@
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\gestmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\administrarusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\administrarusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\gestmaterial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\gestmaterial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -153,10 +161,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\busquedamaterialesestudiante.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\busquedamaterialesestudiante.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\gestusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\gestusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\mihistorial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -178,7 +182,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -194,20 +198,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HistorialPrestamos.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HistorialPrestamos.aspx.cs",
-              "RelativeDocumentMoniker": "BibliotecaWA\\HistorialPrestamos.aspx.cs",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HistorialPrestamos.aspx.cs",
-              "RelativeToolTip": "BibliotecaWA\\HistorialPrestamos.aspx.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAQAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "AdministrarUsuarios.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\AdministrarUsuarios.aspx.cs",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\AdministrarUsuarios.aspx.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAwwDgAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T01:05:42.483Z",
+              "WhenOpened": "2025-11-24T06:16:58.569Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "HistorialPrestamos.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HistorialPrestamos.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\HistorialPrestamos.aspx",
@@ -220,7 +224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "activarMenu.js",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\activarMenu.js",
               "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\activarMenu.js",
@@ -232,7 +236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "InicioSesion.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\InicioSesion.aspx",
@@ -240,12 +244,11 @@
               "RelativeToolTip": "BibliotecaWA\\InicioSesion.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-19T00:45:42.239Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-19T00:45:42.239Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "DetallePrestamo_Sancion.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\DetallePrestamo_Sancion.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\DetallePrestamo_Sancion.aspx",
@@ -253,12 +256,11 @@
               "RelativeToolTip": "BibliotecaWA\\DetallePrestamo_Sancion.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-23T19:25:23.446Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T19:25:23.446Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "CodigoVerificacion.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\CodigoVerificacion.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\CodigoVerificacion.aspx",
@@ -270,7 +272,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 2,
+              "Title": "GestUsuarios.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestUsuarios.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\GestUsuarios.aspx.cs",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestUsuarios.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\GestUsuarios.aspx.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T23:54:33.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdministrarUsuarios.aspx",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx",
+              "RelativeDocumentMoniker": "BibliotecaWA\\AdministrarUsuarios.aspx",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx",
+              "RelativeToolTip": "BibliotecaWA\\AdministrarUsuarios.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-19T00:57:42.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HistorialPrestamos.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HistorialPrestamos.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\HistorialPrestamos.aspx.cs",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HistorialPrestamos.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\HistorialPrestamos.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T01:05:42.483Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "usuarios-modal.js",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\usuarios-modal.js",
               "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\usuarios-modal.js",
@@ -282,7 +322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "validarCampos.js",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\validarCampos.js",
               "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\validarCampos.js",
@@ -294,7 +334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "RestablecerContrasena.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\RestablecerContrasena.aspx",
@@ -306,7 +346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "CodigoVerificacion.aspx.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\CodigoVerificacion.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\CodigoVerificacion.aspx.cs",
@@ -318,7 +358,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Prestamo.aspx.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Prestamo.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\Prestamo.aspx.cs",
@@ -331,7 +371,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "RestablecerContrasena.aspx.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RestablecerContrasena.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\RestablecerContrasena.aspx.cs",
@@ -343,7 +383,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "DetallePrestamo_Sancion.aspx.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\DetallePrestamo_Sancion.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\DetallePrestamo_Sancion.aspx.cs",
@@ -355,7 +395,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "ValidacionesPrestamo.js",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\ValidacionesPrestamo.js",
               "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\UtilsArmy\\ValidacionesPrestamo.js",
@@ -367,7 +407,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "InicioSesion.aspx.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\InicioSesion.aspx.cs",
@@ -379,7 +419,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "BusquedaMaterialas.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\BusquedaMaterialas.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\BusquedaMaterialas.aspx",
@@ -391,7 +431,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Prestamo.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Prestamo.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\Prestamo.aspx",
@@ -403,7 +443,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "BusquedaMaterialas.aspx.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\BusquedaMaterialas.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\BusquedaMaterialas.aspx.cs",
@@ -415,7 +455,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "SolicitarPrestamo.js",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\SolicitarPrestamo.js",
               "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\UtilsArmy\\SolicitarPrestamo.js",
@@ -427,7 +467,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "ModalNoUsuario.js",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\ModalNoUsuario.js",
               "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\UtilsArmy\\ModalNoUsuario.js",
@@ -439,7 +479,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "NuevaContrasena.aspx.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\NuevaContrasena.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\NuevaContrasena.aspx.cs",
@@ -451,7 +491,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "MensajeExito.js",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\MensajeExito.js",
               "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\UtilsArmy\\MensajeExito.js",
@@ -463,7 +503,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "RegistrarMaterial.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RegistrarMaterial.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\RegistrarMaterial.aspx",
@@ -475,7 +515,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "BusquedaMaterialesEstudiante.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\BusquedaMaterialesEstudiante.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\BusquedaMaterialesEstudiante.aspx",
@@ -487,7 +527,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "Prestamo.aspx.designer.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Prestamo.aspx.designer.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\Prestamo.aspx.designer.cs",
@@ -499,7 +539,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "DetalleMaterial.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\DetalleMaterial.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\DetalleMaterial.aspx",
@@ -511,7 +551,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "MiHistorial.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\MiHistorial.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\MiHistorial.aspx",
@@ -523,7 +563,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "HomeEstudiante.Master",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HomeEstudiante.Master",
               "RelativeDocumentMoniker": "BibliotecaWA\\HomeEstudiante.Master",
@@ -535,7 +575,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "DetallePrestamo_Sancion.aspx.designer.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\DetallePrestamo_Sancion.aspx.designer.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\DetallePrestamo_Sancion.aspx.designer.cs",
@@ -547,7 +587,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "DetalleMaterial.aspx.designer.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\DetalleMaterial.aspx.designer.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\DetalleMaterial.aspx.designer.cs",
@@ -559,7 +599,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "DetalleMaterial.aspx.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\DetalleMaterial.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\DetalleMaterial.aspx.cs",
@@ -571,7 +611,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "BusquedaMaterialesEstudiante.aspx.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\BusquedaMaterialesEstudiante.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\BusquedaMaterialesEstudiante.aspx.cs",
@@ -583,7 +623,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "Reportes.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Reportes.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\Reportes.aspx",
@@ -595,7 +635,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "GestMaterial.aspx.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestMaterial.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\GestMaterial.aspx.cs",
@@ -607,19 +647,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "GestUsuarios.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestUsuarios.aspx.cs",
-              "RelativeDocumentMoniker": "BibliotecaWA\\GestUsuarios.aspx.cs",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestUsuarios.aspx.cs",
-              "RelativeToolTip": "BibliotecaWA\\GestUsuarios.aspx.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T23:54:33.592Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "GestUsuarios.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestUsuarios.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\GestUsuarios.aspx",
@@ -631,7 +659,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": "GestMaterial.aspx",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestMaterial.aspx",
               "RelativeDocumentMoniker": "BibliotecaWA\\GestMaterial.aspx",
@@ -643,7 +671,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "Home.Master",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Home.Master",
               "RelativeDocumentMoniker": "BibliotecaWA\\Home.Master",
@@ -656,19 +684,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "AdministrarUsuarios.aspx",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx",
-              "RelativeDocumentMoniker": "BibliotecaWA\\AdministrarUsuarios.aspx",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx",
-              "RelativeToolTip": "BibliotecaWA\\AdministrarUsuarios.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-19T00:57:42.218Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "MiHistorial.aspx.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\MiHistorial.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\MiHistorial.aspx.cs",
@@ -680,7 +696,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "Reportes.aspx.cs",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Reportes.aspx.cs",
               "RelativeDocumentMoniker": "BibliotecaWA\\Reportes.aspx.cs",
@@ -692,7 +708,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "modalRetraso.js",
               "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\modalRetraso.js",
               "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\UtilsArmy\\modalRetraso.js",

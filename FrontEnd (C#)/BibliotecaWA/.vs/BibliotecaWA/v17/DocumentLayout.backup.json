@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\historialprestamos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\historialprestamos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\historialprestamos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\renat\\onedrive\\documentos\\trabajo_programacion3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\historialprestamos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\historialprestamos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\historialprestamos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -178,8 +178,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HistorialPrestamos.aspx",
+              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HistorialPrestamos.aspx",
+              "RelativeDocumentMoniker": "BibliotecaWA\\HistorialPrestamos.aspx",
+              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HistorialPrestamos.aspx",
+              "RelativeToolTip": "BibliotecaWA\\HistorialPrestamos.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-19T00:57:47.538Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
@@ -202,21 +215,7 @@
               "RelativeToolTip": "BibliotecaWA\\HistorialPrestamos.aspx.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T01:05:42.483Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HistorialPrestamos.aspx",
-              "DocumentMoniker": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HistorialPrestamos.aspx",
-              "RelativeDocumentMoniker": "BibliotecaWA\\HistorialPrestamos.aspx",
-              "ToolTip": "C:\\Users\\renat\\OneDrive\\Documentos\\TRABAJO_PROGRAMACION3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\HistorialPrestamos.aspx*",
-              "RelativeToolTip": "BibliotecaWA\\HistorialPrestamos.aspx*",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-19T00:57:47.538Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-24T01:05:42.483Z"
             },
             {
               "$type": "Document",
@@ -240,8 +239,7 @@
               "RelativeToolTip": "BibliotecaWA\\InicioSesion.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-19T00:45:42.239Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-19T00:45:42.239Z"
             },
             {
               "$type": "Document",
@@ -253,8 +251,7 @@
               "RelativeToolTip": "BibliotecaWA\\DetallePrestamo_Sancion.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-23T19:25:23.446Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T19:25:23.446Z"
             },
             {
               "$type": "Document",
@@ -326,8 +323,7 @@
               "RelativeToolTip": "BibliotecaWA\\Prestamo.aspx.cs",
               "ViewState": "AgIAAKcAAAAAAAAAAAAiwLsAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T21:59:04.424Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T21:59:04.424Z"
             },
             {
               "$type": "Document",
