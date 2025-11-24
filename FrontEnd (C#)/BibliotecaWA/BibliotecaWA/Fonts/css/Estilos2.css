@@ -190,3 +190,43 @@
 .colSeparada {
     padding-right: 25px; /* ajusta el espacio según necesites */
 }
+
+/* === SOLUCIÓN DEFINITIVA PARA DROPDOWNS === */
+.tabla-container {
+    position: relative;
+    overflow: visible !important;
+}
+
+.tabla-datos {
+    position: relative;
+    z-index: 1;
+}
+
+    /* DROPDOWN CORREGIDO */
+    .tabla-datos .dropdown {
+        position: relative !important;
+    }
+
+    .tabla-datos .dropdown-menu {
+        z-index: 9999 !important;
+        position: absolute !important;
+        right: 0 !important;
+        left: auto !important;
+        transform: none !important;
+        margin-top: 5px !important;
+    }
+
+    .tabla-datos .dropdown-toggle::after {
+        display: none !important;
+    }
+
+/* Asegurar que se muestre correctamente */
+.dropdown-menu.show {
+    display: block !important;
+    z-index: 10000 !important;
+}
+
+/* Prevenir que el contenedor corte el dropdown */
+.tabla-container .table-responsive {
+    overflow: visible !important;
+}

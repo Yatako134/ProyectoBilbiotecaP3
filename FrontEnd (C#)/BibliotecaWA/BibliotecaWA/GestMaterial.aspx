@@ -25,7 +25,7 @@
     </div>
 
     <!-- === CONTENEDOR UNIFICADO === -->
-<div class="tabla-container shadow-sm rounded-4 overflow-hidden ">
+<div class="tabla-container shadow-sm rounded-4" style="overflow: visible !important;">
 
     <!-- === BARRA DE BÚSQUEDA === -->
     <div class="tabla-busqueda d-flex justify-content-between align-items-center p-3 border-bottom bg-light">
@@ -113,12 +113,13 @@
 
         <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
             <ItemTemplate>
-                <div class="dropdown">
+                <div class="dropdown" style="position: static !important;">
                     <button class="btn btn-link text-dark dropdown-toggle" type="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                        data-bs-toggle="dropdown" aria-expanded="false"
+                        style="z-index: 1000; position: relative;">
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </button>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" style="z-index: 9999 !important; position: fixed !important; background: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1); min-width: 200px;">
                         <li>
                             <asp:LinkButton runat="server" CssClass="dropdown-item"
                                 CommandArgument='<%# Eval("IdMaterial") %>'

@@ -1357,9 +1357,10 @@ namespace BibliotecaWA
             {
                 BibliotecaWSClient bobiblioteca = new BibliotecaWSClient();
                 var bibliotecas = bobiblioteca.ListarTodas();
-                if (bibliotecas == null || bibliotecas.Any())
+                
+                if (bibliotecas == null)
                     return "<option value=''>No hay bibliotecas</option>";
-
+                
                 string options = "";
                 foreach (var biblioteca in bibliotecas)
                 {
