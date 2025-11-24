@@ -5,6 +5,86 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Scripts" runat="server">
     <link href="Fonts/css/GestUsuarios.css" rel="stylesheet" />
     <link href="Fonts/css/UsuariosOpciones.css" rel="stylesheet" />
+
+    <style>
+        /* === ESTILOS PARA PAGINACIÓN CORREGIDA === */
+        .pagination-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Estilos para la paginación del GridView */
+        .gridview-pager {
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+            .gridview-pager table {
+                margin: 0;
+            }
+
+            .gridview-pager td {
+                padding: 0 5px;
+            }
+
+            .gridview-pager a,
+            .gridview-pager span {
+                display: inline-block;
+                padding: 6px 12px;
+                border: 1px solid #dee2e6;
+                border-radius: 4px;
+                text-decoration: none;
+                color: #006DEB;
+                background: white;
+            }
+
+            .gridview-pager span {
+                background: #006DEB;
+                color: white;
+                border-color: #006DEB;
+            }
+
+            .gridview-pager a:hover {
+                background: #e9ecef;
+            }
+
+        @media (max-width: 768px) {
+            .tabla-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .tabla-busqueda {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+                .tabla-busqueda .form-control {
+                    min-width: 200px;
+                }
+
+            .pagination-container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .gridview-pager {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .tabla-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
 
@@ -107,11 +187,12 @@
 
                     <asp:GridView ID="gvPrestamos" runat="server"
                         AutoGenerateColumns="False"
-                        AllowPaging="true" PageSize="10"
+                        AllowPaging="true"
+                        PageSize="10"
                         CssClass="table table-borderless text-center align-middle m-0"
                         OnPageIndexChanging="gvPrestamos_PageIndexChanging"
                         OnRowDataBound="dgvPrestamo_RowDataBound"
-                        PagerSettings-Visible="False">
+                        PagerStyle-CssClass="gridview-pager">
 
                         <Columns>
                             <asp:BoundField HeaderText="Código" />
@@ -340,11 +421,12 @@
 
                     <asp:GridView ID="gvSanciones" runat="server"
                         AutoGenerateColumns="False"
-                        AllowPaging="true" PageSize="8"
+                        AllowPaging="true" 
+                        PageSize="8"
                         CssClass="table table-borderless text-center align-middle m-0"
                         OnPageIndexChanging="gvSanciones_PageIndexChanging"
                         OnRowDataBound="dgvSanciones_RowDataBound"
-                        PagerSettings-Visible="False">
+                        PagerStyle-CssClass="gridview-pager">
 
                         <Columns>
                             <asp:BoundField HeaderText="Código" />

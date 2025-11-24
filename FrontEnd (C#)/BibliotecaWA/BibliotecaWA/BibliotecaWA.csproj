@@ -412,11 +412,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="Content\Images\article.png" />
-    <Content Include="Content\Images\book.png" />
-    <Content Include="Content\Images\file.png" />
-    <Content Include="Content\Images\logo2.png" />
-    <Content Include="Content\Images\tesis.png" />
     <Content Include="Content\site-custom.css" />
     <Content Include="DetalleMaterial.aspx" />
     <Content Include="DetalleMaterialEstudiante.aspx" />
@@ -717,6 +712,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\BibliotecaServices\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\Images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
