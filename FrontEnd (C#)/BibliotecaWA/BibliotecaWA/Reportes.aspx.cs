@@ -102,39 +102,63 @@ namespace BibliotecaWA
                 string fechaFin = txtFechaFin1.Text;
                 if (string.IsNullOrEmpty(fechaInicio) || string.IsNullOrEmpty(fechaFin))
                 {
-                    ShowModal("Debes ingresar ambas fechas.");
+                    ScriptManager.RegisterStartupScript(
+                        this, GetType(), "modal",
+                        "mostrarModal('Advertencia', 'Debes ingresar ambas fechas.');",
+                        true
+                    );
                     return;
                 }
 
                 if (!DateTime.TryParse(fechaInicio, out DateTime fechaIni))
                 {
-                    ShowModal("La fecha inicial no es válida.");
+                    ScriptManager.RegisterStartupScript(
+                        this, GetType(), "modal",
+                        "mostrarModal('Advertencia', 'La fecha inicial no es válida.');",
+                        true
+                    );
                     return;
                 }
 
                 if (!DateTime.TryParse(fechaFin, out DateTime fechaF))
                 {
-                    ShowModal("La fecha final no es válida.");
+                    ScriptManager.RegisterStartupScript(
+                       this, GetType(), "modal",
+                       "mostrarModal('Advertencia', 'La fecha final no es válida.');",
+                       true
+                   );
                     return;
                 }
 
                 if (fechaIni > fechaF)
                 {
-                    ShowModal("La fecha inicial no puede ser mayor que la fecha final.");
+                    ScriptManager.RegisterStartupScript(
+                       this, GetType(), "modal",
+                       "mostrarModal('Advertencia', 'La fecha inicial no puede ser mayor que la fecha final.');",
+                       true
+                   );
                     return;
                 }
 
                 // Validación de fecha muy adelantada (opcional)
                 if ((fechaF - DateTime.Now).TotalDays > 365)
                 {
-                    ShowModal("La fecha final es demasiado adelantada.");
+                    ScriptManager.RegisterStartupScript(
+                       this, GetType(), "modal",
+                       "mostrarModal('Advertencia', 'La fecha final es demasiado adelantada.');",
+                       true
+                   );
                     return;
                 }
                 SancionWSClient sancionbo = new SancionWSClient();
                 int cant = sancionbo.contarSancionesPorFechas(fechaIni, fechaF);
                 if (cant <= 0)
                 {
-                    ShowModal("No hay sanciones para mostrar en el rango de fecha seleccionado.");
+                    ScriptManager.RegisterStartupScript(
+                       this, GetType(), "modal",
+                       "mostrarModal('Advertencia', 'No hay sanciones para mostrar en el rango de fecha seleccionado.');",
+                       true
+                   );
                     return;
                 }
                 string nombre = (String)Session["UserName"];
