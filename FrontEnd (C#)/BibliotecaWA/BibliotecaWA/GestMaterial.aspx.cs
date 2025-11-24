@@ -11,7 +11,7 @@ namespace BibliotecaWA
 {
     public partial class GestMaterial : System.Web.UI.Page
     {
-        //private BibliotecaWSClient bobiblioteca;
+        
         private MaterialWSClient materialBO;
         private LibroWSClient libroBO;
         private TesisWSClient tesisBO;
@@ -24,7 +24,7 @@ namespace BibliotecaWA
             {
                 materialBO = new MaterialWSClient();
 
-                var listaWS = materialBO.ListarTodos();
+                var listaWS = materialBO.ListarMaterialesNormal();
 
                 Session["materiales"] = listaWS != null
                     ? new BindingList<materialBibliografico>(listaWS)
@@ -34,6 +34,7 @@ namespace BibliotecaWA
                 CargarBibliotecas();
                 ActualizarPaginacion();
             }
+            
         }
         private void CargarBibliotecas()
         {
@@ -77,8 +78,9 @@ namespace BibliotecaWA
                 e.Row.Cells[0].Text = material.idMaterial.ToString();
                 e.Row.Cells[1].Text = material.titulo.ToString();
                 e.Row.Cells[2].Text = material.tipo.ToString();
-                int cant = materialBO.ContarMateriales(material.idMaterial);
-                //int cant = 0;
+                
+                int cant = material.cantidadDisponible;
+                
                 if (cant > 0)
                 {
                     material.estado = estadoMaterial.DISPONIBLE;
@@ -91,7 +93,7 @@ namespace BibliotecaWA
                 e.Row.Cells[3].Text = material.estado.ToString();
                 string estado = material.estado.ToString();
 
-                e.Row.Cells[4].Text = cant.ToString();
+                e.Row.Cells[4].Text = material.cantidadDisponible.ToString();
 
                 e.Row.Cells[2].Text = "<span class='pill pill-info'>" + material.tipo + "</span>";
                 // Aplicar clase CSS según el estado
@@ -130,6 +132,7 @@ namespace BibliotecaWA
 
                 lblResultados.Text = "No se encontraron resultados.";
                 lblResultados.Visible = true;
+                ActualizarPaginacion();
             }
             else
             {
@@ -140,7 +143,8 @@ namespace BibliotecaWA
                 dgvUsuario.DataSource = lista;
                 dgvUsuario.DataBind();
 
-                lblResultados.Visible = false;
+                lblResultados.Visible = true;
+                ActualizarContador();
 
                 ActualizarPaginacion(); // tu método normal
             }
@@ -178,6 +182,7 @@ namespace BibliotecaWA
                 dgvUsuario.DataBind();
                 lblResultados.Text = "No se encontraron resultados.";
                 lblResultados.Visible = true;
+                ActualizarPaginacion();
             }
             else
             {
@@ -187,7 +192,9 @@ namespace BibliotecaWA
                 dgvUsuario.PageIndex = 0;
                 dgvUsuario.DataSource = listaMateriales;
                 dgvUsuario.DataBind();
-                lblResultados.Visible = false;
+                ActualizarContador();
+                lblResultados.Visible = true;
+                ActualizarPaginacion();
             }
         }
 
@@ -256,7 +263,16 @@ namespace BibliotecaWA
 
         private void ActualizarPaginacion()
         {
-            int totalRecords = ((BindingList<materialBibliografico>)Session["materiales"]).Count;
+            int totalRecords;
+            if ((BindingList<materialBibliografico>)Session["materiales"] == null)
+            {
+                totalRecords = 0;
+            }
+            else
+            {
+                totalRecords = ((BindingList<materialBibliografico>)Session["materiales"]).Count;
+            }
+                
             int pageSize = dgvUsuario.PageSize;
             int currentPage = dgvUsuario.PageIndex + 1;
             int totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
@@ -327,14 +343,12 @@ namespace BibliotecaWA
         // ======= BOTONES DE OPCIONES =======
         protected void btnVer_Click(object sender, EventArgs e)
         {
-            int idmaterial = int.Parse(hfIdUsuarioSeleccionado.Value);
-            Response.Redirect($"AdmistrarUsuarios.aspx?id={idmaterial}&modo=ver");
+            
         }
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
-            int idmaterial = int.Parse(hfIdUsuarioSeleccionado.Value);
-            Response.Redirect($"AdmistrarUsuarios.aspx?id={idmaterial}&modo=editar");
+            
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

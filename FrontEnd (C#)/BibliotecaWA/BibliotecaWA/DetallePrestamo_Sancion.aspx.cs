@@ -117,6 +117,17 @@ namespace BibliotecaWA
                     lblCabecera.Text = "Modificacion de sanción";
                     LabelInicioFecha.Text = sanc.fecha_inicio.ToString("dd/MM/yyyy - hh:mm tt");
                     LabelFinFecha.Text = sanc.fecha_fin.ToString("dd/MM/yyyy - hh:mm tt");
+                    txtDuracionUnica.Text = sanc.duracion_dias.ToString();
+                    txtJustificacionUnica.Text = sanc.justificacion.ToString();
+                    string tipoSanc = sanc.tipo_sancion.ToString();
+                    if(tipoSanc == "DANHO")
+                    {
+                        ddlTipoSancionUnica.SelectedValue = "Daño de material";
+                    }
+                    else
+                    {
+                        ddlTipoSancionUnica.SelectedValue = "Entrega tardía";
+                    }
                 }
 
 
