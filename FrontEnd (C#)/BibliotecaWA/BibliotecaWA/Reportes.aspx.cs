@@ -71,9 +71,11 @@ namespace BibliotecaWA
                 if (cantEnReparacion > 0)
                 {
                     usuario user = new usuario();
-                    user = bousuario.obtenerUsuarioPorId(21);
-                    //string nombre = "Luchexx";
-                    string nombre = user.nombre;
+                    //int id = (int)Session["UserId"];
+                    //user = bousuario.obtenerUsuarioPorId(id);
+                    ////string nombre = "Luchexx";
+                    //string nombre = user.nombre;
+                    string nombre = (String)Session["UserName"];
                     Response.Redirect($"http://localhost:8080/BibliotecaWS/ReporteReq25?nombre={nombre}");
                     return;
                 }
