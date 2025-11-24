@@ -97,6 +97,14 @@
       <xs:element minOccurs="0" name="tipo_contribuyente" type="tns:tipoContribuyente" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="listarTesisTodos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarTesisTodosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:tesis" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="modificarTesis">
     <xs:sequence>
       <xs:element minOccurs="0" name="tesis" type="tns:tesis" />
@@ -105,14 +113,6 @@
   <xs:complexType name="modificarTesisResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarTesisTodos">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarTesisTodosResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:tesis" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarTesis">
