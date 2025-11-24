@@ -39,16 +39,27 @@ public class ReporteReq25 extends HttpServlet {
             
             URL rutaImagen
             = getClass().getResource
-        ("/pe/edu/pucp/utilsarmy/images/logo2.png");
+        ("/pe/edu/pucp/utilsarmy/images/Isologo.png");
+            
+            URL rutaImagen2
+            = getClass().getResource
+        ("/pe/edu/pucp/utilsarmy/images/banner.png");
+            
             
             Image imagen =
             (new ImageIcon(rutaImagen)).getImage();
+            
+            Image imagen2 =
+            (new ImageIcon(rutaImagen2)).getImage();
+            
+            
             
             HashMap hm = new HashMap();
             //hm.put("nombre", "Jorge");
             String nombre = request.getParameter("nombre");
             hm.put("nombre", nombre);
             hm.put("logo", imagen);
+            hm.put("banner", imagen2);
             
             JasperPrint jp
             = JasperFillManager.fillReport(jr,hm,
