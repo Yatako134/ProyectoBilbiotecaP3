@@ -280,4 +280,29 @@ public class SancionImpl implements SancionDAO{
         System.out.println("📋 Total sanciones leídas para usuario " + idUsuario + ": " + (sanciones == null ? 0 : sanciones.size()));
         return sanciones;        
     }
+
+    @Override
+    public int contarSancionesPorFechas(java.util.Date fechaInicio, java.util.Date fechaFin) {
+        int total = 0;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, fechaInicio);
+        parametrosEntrada.put(2, fechaFin);
+
+         rs = DBManager.getInstance().ejecutarProcedimientoLectura("sp_VerSancionesPorFecha", parametrosEntrada);
+         try {
+
+            if (rs.next()) {
+                total = rs.getInt(1); // El primer campo es el count(*)
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+
+        return total;
+    }
+
+    
 }

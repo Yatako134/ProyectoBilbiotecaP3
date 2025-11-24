@@ -33,6 +33,15 @@ namespace BibliotecaWA
         protected global::System.Web.UI.WebControls.LinkButton btnSanciones;
 
         /// <summary>
+        /// Control btnRecordatorios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnRecordatorios;
+
+        /// <summary>
         /// Control pnlPrestamos.
         /// </summary>
         /// <remarks>
@@ -121,15 +130,6 @@ namespace BibliotecaWA
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEditar;
-
-        /// <summary>
-        /// Control btnEliminar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminar;
 
         /// <summary>
         /// Control ddlCantidad.

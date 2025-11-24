@@ -84,4 +84,13 @@ public class PrestamoWS {
         if (filtro == null) filtro = "";
         return prestamoboimpl.listarPorUsuario_X_ID(idUsuario,filtro);
     }
+    @WebMethod(operationName = "UsuariosProximoAVencerse")
+    public ArrayList<Prestamo> UsuariosProximoAVencerse() throws Exception {
+        return prestamoboimpl.UsuariosProximoAVencerse();
+    }
+    @WebMethod(operationName = "MarcarRecordatorioPrestamos")
+    public int MarcarRecordatorioPrestamos() throws Exception {
+        prestamobo =new PrestamoBOImpl();
+        return prestamobo.MarcarRecordatorioPrestamos();
+    }
 }

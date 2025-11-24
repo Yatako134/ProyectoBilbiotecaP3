@@ -751,9 +751,6 @@ namespace BibliotecaWA
                 var segundoApellidoList = Request.Form.GetValues("segundo_apellido[]");
                 var seudonimoList = Request.Form.GetValues("seudonimo[]");
 
-                System.Diagnostics.Debug.WriteLine($"=== MODO EDICIÓN CONTRIBUYENTES ===");
-                System.Diagnostics.Debug.WriteLine($"IDs recibidos: {idsContribuyentes?.Length}");
-
                 List<int> idsContribuyentesEnFormulario = new List<int>();
 
                 // === MODIFICACIÓN: Permitir formulario sin contribuyentes ===
@@ -788,7 +785,7 @@ namespace BibliotecaWA
 
                                     if (idContribuyente > 0)
                                     {
-                                        System.Diagnostics.Debug.WriteLine($"🔄 ACTUALIZANDO contribuyente ID: {idContribuyente}");
+                                        
 
                                         idsContribuyentesEnFormulario.Add(idContribuyente);
 
@@ -802,13 +799,11 @@ namespace BibliotecaWA
                                             contribuyenteExistente.tipo_contribuyente = tipoContribuyente;
 
                                             contribuyenteBO.modificarContribuyente(contribuyenteExistente);
-                                            System.Diagnostics.Debug.WriteLine($"✅ ACTUALIZADO: {contribuyenteExistente.nombre} {contribuyenteExistente.primer_apellido}");
+                                            //System.Diagnostics.Debug.WriteLine($"Lo q actualice pe :v : {contribuyenteExistente.nombre} {contribuyenteExistente.primer_apellido}");
                                         }
                                     }
                                     else
                                     {
-                                        System.Diagnostics.Debug.WriteLine($"➕ NUEVO contribuyente");
-
                                         var nuevoContribuyente = new contribuyente
                                         {
                                             nombre = nombreList[i],
@@ -824,14 +819,13 @@ namespace BibliotecaWA
                                         contribuyenteBO.asignarContribuyente(idMaterial, nuevoId);
 
                                         idsContribuyentesEnFormulario.Add(nuevoId);
-
-                                        System.Diagnostics.Debug.WriteLine($"✅ NUEVO GUARDADO: {nuevoContribuyente.nombre} -> ID: {nuevoId}");
+                                        //System.Diagnostics.Debug.WriteLine($"contribuyente nuevo p :v : {nuevoContribuyente.nombre} -> ID: {nuevoId}");
                                     }
                                 }
                             }
                             catch (Exception ex)
                             {
-                                System.Diagnostics.Debug.WriteLine($"❌ Error procesando contribuyente {i}: {ex.Message}");
+                                System.Diagnostics.Debug.WriteLine($" Error procesando contribuyente {i}: {ex.Message}");
                             }
                         }
                     }
@@ -859,17 +853,17 @@ namespace BibliotecaWA
                 {
                     if (!idsContribuyentesEnFormulario.Contains(contribuyente.idContribuyente))
                     {
-                        System.Diagnostics.Debug.WriteLine($"🗑️ ELIMINANDO contribuyente removido: {contribuyente.nombre} (ID: {contribuyente.idContribuyente})");
+                        
 
                         if (contribuyenteBO.tiene_otras_relaciones(contribuyente.idContribuyente, idMaterial))
                         {
                             contribuyenteBO.eliminar_relacion_material_contribuyente(idMaterial, contribuyente.idContribuyente);
-                            System.Diagnostics.Debug.WriteLine($"➖ Solo se eliminó la relación del contribuyente ID: {contribuyente.idContribuyente}");
+                            
                         }
                         else
                         {
                             contribuyenteBO.eliminarContribuyente(contribuyente.idContribuyente);
-                            System.Diagnostics.Debug.WriteLine($"✅ Contribuyente eliminado completamente: {contribuyente.nombre}");
+                            
                         }
                     }
                 }
@@ -892,7 +886,7 @@ namespace BibliotecaWA
                 var bibliotecasList = Request.Form.GetValues("biblioteca[]");
                 var ubicacionesList = Request.Form.GetValues("ubicacion[]");
 
-                System.Diagnostics.Debug.WriteLine($"=== ACTUALIZAR EJEMPLARES EXISTENTES ===");
+                System.Diagnostics.Debug.WriteLine($"=== ACTUALIZAR EJEMPLARES EXISTENTES  que funcione :(( (no he dormido 3 dias)===");
 
                 List<int> idsEjemplaresEnFormulario = new List<int>();
 
@@ -920,7 +914,7 @@ namespace BibliotecaWA
 
                                 if (idEjemplar > 0)
                                 {
-                                    System.Diagnostics.Debug.WriteLine($"🔄 ACTUALIZANDO ejemplar ID: {idEjemplar}, Estado: {estado}");
+                                    //System.Diagnostics.Debug.WriteLine($"Actualizando el ejemplar ID: {idEjemplar}, Estado: {estado}");
 
                                     idsEjemplaresEnFormulario.Add(idEjemplar);
 
@@ -941,7 +935,7 @@ namespace BibliotecaWA
                                         ejemplarExistente.blibioteca = bib;
 
                                         ejemplarBO.modificarEjemplar(ejemplarExistente);
-                                        System.Diagnostics.Debug.WriteLine($"✅ EJEMPLAR ACTUALIZADO: ID {idEjemplar}");
+                                        //System.Diagnostics.Debug.WriteLine($" EJEMPLAR actualizado o.o : ID {idEjemplar}");
                                     }
                                 }
                                 else
@@ -960,12 +954,12 @@ namespace BibliotecaWA
 
                                     idsEjemplaresEnFormulario.Add(nuevoId);
 
-                                    System.Diagnostics.Debug.WriteLine($"✅ NUEVO EJEMPLAR GUARDADO: ID {nuevoId}");
+                                   // System.Diagnostics.Debug.WriteLine($" NUEVO EJEMPLAR xd : ID {nuevoId}");
                                 }
                             }
                             catch (Exception ex)
                             {
-                                System.Diagnostics.Debug.WriteLine($"❌ Error procesando ejemplar {i}: {ex.Message}");
+                                System.Diagnostics.Debug.WriteLine($" Error procesando ejemplar {i}: {ex.Message}");
                             }
                         }
                     }
@@ -995,16 +989,16 @@ namespace BibliotecaWA
                 {
                     if (!idsEjemplaresEnFormulario.Contains(ejemplar.idEjemplar))
                     {
-                        System.Diagnostics.Debug.WriteLine($"🗑️ VERIFICANDO ejemplar para eliminar: ID {ejemplar.idEjemplar}, Estado en BD: {ejemplar.estado}");
+                        //System.Diagnostics.Debug.WriteLine($"VERIFICANDO ejemplar para eliminar: ID {ejemplar.idEjemplar}, Estado en la base datos xd: {ejemplar.estado}");
 
                         if (ejemplar.estado.ToString() == "DISPONIBLE")
                         {
                             ejemplarBO.eliminarEjemplar(ejemplar.idEjemplar);
-                            System.Diagnostics.Debug.WriteLine($"✅ Ejemplar ELIMINADO: ID {ejemplar.idEjemplar}");
+                            //System.Diagnostics.Debug.WriteLine($" Ejemplar ELIMINADO: ID {ejemplar.idEjemplar}");
                         }
                         else
                         {
-                            System.Diagnostics.Debug.WriteLine($"⚠️ Ejemplar NO eliminado (no estaba DISPONIBLE en BD): ID {ejemplar.idEjemplar}, Estado en BD: {ejemplar.estado}");
+                            System.Diagnostics.Debug.WriteLine($"Ejemplar NO eliminado (no estaba DISPONIBLE en BD) no seas loco p : ID {ejemplar.idEjemplar}, Estado en BD: {ejemplar.estado}");
                         }
                     }
                 }
@@ -1047,7 +1041,7 @@ namespace BibliotecaWA
                     libro.numero_paginas = int.Parse(txtPaginas.Text);
                     libro.clasificacion_tematica = TextTema.Text;
                     libro.idioma = TextIdioma.Text;
-                    libro.ISBN = txtISBN.Text; // ← GUARDA CON GUIONES
+                    libro.ISBN = txtISBN.Text; 
                     libro.edicion = txtEdicion.Text;
                     libro.editoriales = TextEditorial.Text;
                     libroBO.modificarLibro(libro);
@@ -1101,7 +1095,7 @@ namespace BibliotecaWA
                     articulo.numero_paginas = int.Parse(txtPaginas.Text);
                     articulo.clasificacion_tematica = TextTema.Text;
                     articulo.idioma = TextIdioma.Text;
-                    articulo.ISSN = txtISSN.Text; // ← GUARDA CON GUIONES
+                    articulo.ISSN = txtISSN.Text; 
                     articulo.revista = txtRevista.Text;
                     articulo.volumen = int.Parse(txtVolumen.Text);
                     articulo.numero = int.Parse(txtNumero.Text);
@@ -1148,7 +1142,7 @@ namespace BibliotecaWA
                 libro.numero_paginas = Convert.ToInt32(txtPaginas.Text);
                 libro.clasificacion_tematica = TextTema.Text;
                 libro.idioma = TextIdioma.Text;
-                libro.ISBN = txtISBN.Text; // ← GUARDA CON GUIONES
+                libro.ISBN = txtISBN.Text; 
                 libro.edicion = txtEdicion.Text;
                 libro.editoriales = TextEditorial.Text;
                 return libroDAO.insertarLibro(libro);
@@ -1196,7 +1190,7 @@ namespace BibliotecaWA
                 art.numero_paginas = Convert.ToInt32(txtPaginas.Text);
                 art.clasificacion_tematica = TextTema.Text;
                 art.idioma = TextIdioma.Text;
-                art.ISSN = txtISSN.Text; // ← GUARDA CON GUIONES
+                art.ISSN = txtISSN.Text; 
                 art.revista = txtRevista.Text;
                 art.volumen = Convert.ToInt32(txtVolumen.Text);
                 art.numero = Convert.ToInt32(txtNumero.Text);
@@ -1228,18 +1222,13 @@ namespace BibliotecaWA
                 int minLength = Math.Min(tipoContribuyenteList.Length,
                                         Math.Min(nombreList.Length, primerApellidoList.Length));
 
-                System.Diagnostics.Debug.WriteLine($"Usando longitud mínima: {minLength}");
-
                 for (int i = 0; i < minLength; i++)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Contribuyente {i}: autor='{tipoContribuyenteList[i]}', nombre='{nombreList[i]}'");
-
                     // === MODIFICACIÓN: Solo procesar contribuyentes con datos completos ===
                     bool tieneDatosCompletos = !string.IsNullOrEmpty(tipoContribuyenteList[i]) &&
                                               !string.IsNullOrEmpty(nombreList[i]) &&
                                               !string.IsNullOrEmpty(primerApellidoList[i]) &&
                                               !string.IsNullOrEmpty(segundoApellidoList?[i] ?? "");
-
                     if (tieneDatosCompletos)
                     {
                         try
@@ -1260,17 +1249,16 @@ namespace BibliotecaWA
                                 };
 
                                 contribuyentes.Add(contribuyente);
-                                System.Diagnostics.Debug.WriteLine($"✅ AGREGADO: {contribuyente.nombre} {contribuyente.primer_apellido}");
                             }
                         }
                         catch (ArgumentException ex)
                         {
-                            System.Diagnostics.Debug.WriteLine($"❌ Error de conversión: {ex.Message}");
+                            System.Diagnostics.Debug.WriteLine($" Error de conversión: {ex.Message}");
                         }
                     }
                     else
                     {
-                        System.Diagnostics.Debug.WriteLine($"❌ FILTRADO: Posición {i} - Campos incompletos");
+                        System.Diagnostics.Debug.WriteLine($" FILTRADO: Posición {i} - Campos incompletos");
                     }
                 }
 
@@ -1285,24 +1273,24 @@ namespace BibliotecaWA
                             int idcon = bocontribuyente.insertarContribuyente(contribuyente.nombre, contribuyente.primer_apellido
                                                 , contribuyente.segundo_apellido, contribuyente.seudonimo, contribuyente.tipo_contribuyente.ToString());
                             bocontribuyente.asignarContribuyente(idMaterial, idcon);
-                            System.Diagnostics.Debug.WriteLine($"💾 GUARDADO EN BD: {contribuyente.nombre} -> ID: {idcon}");
+                            System.Diagnostics.Debug.WriteLine($" GUARDADO EN  LA BD: {contribuyente.nombre} -> ID: {idcon}");
                         }
                         catch (Exception ex)
                         {
-                            System.Diagnostics.Debug.WriteLine($"💥 ERROR BD: {contribuyente.nombre} - {ex.Message}");
+                            System.Diagnostics.Debug.WriteLine($" ERROR EN LA BD: {contribuyente.nombre} - {ex.Message}");
                         }
                     }
 
-                    System.Diagnostics.Debug.WriteLine($"=== RESUMEN: {contribuyentes.Count} contribuyentes guardados ===");
+                    System.Diagnostics.Debug.WriteLine($" {contribuyentes.Count} contribuyentes guardados ===");
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine($"=== RESUMEN: 0 contribuyentes guardados (opcional) ===");
+                    System.Diagnostics.Debug.WriteLine($"0 contribuyentes guardados (opcional) ===");
                 }
             }
             else
             {
-                System.Diagnostics.Debug.WriteLine($"=== RESUMEN: No hay contribuyentes en el formulario ===");
+                System.Diagnostics.Debug.WriteLine($" No hay contribuyentes en el formulario ===");
             }
         }
 
@@ -1369,7 +1357,10 @@ namespace BibliotecaWA
             {
                 BibliotecaWSClient bobiblioteca = new BibliotecaWSClient();
                 var bibliotecas = bobiblioteca.ListarTodas();
-
+                
+                if (bibliotecas == null)
+                    return "<option value=''>No hay bibliotecas</option>";
+                
                 string options = "";
                 foreach (var biblioteca in bibliotecas)
                 {

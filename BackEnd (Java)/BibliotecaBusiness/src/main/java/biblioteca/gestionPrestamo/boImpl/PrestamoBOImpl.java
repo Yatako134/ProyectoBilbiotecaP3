@@ -58,5 +58,15 @@ public class PrestamoBOImpl implements PrestamoBO{
     public ArrayList<Prestamo> listarPorUsuario_X_ID(int idUsuario, String filtro) {
         return daoPrestamo.listarPorUsuario_X_ID(idUsuario, filtro);
     }
+
+    @Override
+    public ArrayList<Prestamo> UsuariosProximoAVencerse() {
+        return  daoPrestamo.UsuariosProximoAVencerse();
+    }
+
+    @Override
+    public int MarcarRecordatorioPrestamos() {
+        return daoPrestamo.MarcarRecordatorioPrestamos();
+    }
     
 }

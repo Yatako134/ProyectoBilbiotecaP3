@@ -65,6 +65,7 @@
       <xs:element minOccurs="0" name="estado" type="tns:estadoEjemplar" />
       <xs:element name="idEjemplar" type="xs:int" />
       <xs:element name="id_material" type="xs:int" />
+      <xs:element minOccurs="0" name="tit" type="xs:string" />
       <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

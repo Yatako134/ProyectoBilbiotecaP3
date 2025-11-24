@@ -25,7 +25,7 @@
     </div>
 
     <!-- === CONTENEDOR UNIFICADO === -->
-<div class="tabla-container shadow-sm rounded-4 overflow-hidden ">
+<div class="tabla-container shadow-sm rounded-4" style="overflow: visible !important;">
 
     <!-- === BARRA DE BÚSQUEDA === -->
     <div class="tabla-busqueda d-flex justify-content-between align-items-center p-3 border-bottom bg-light">
@@ -115,10 +115,12 @@
             <ItemTemplate>
                 <div class="dropdown">
                     <button class="btn btn-link text-dark dropdown-toggle" type="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        data-bs-toggle="dropdown" aria-expanded="false"
+                        style="border: none; background: transparent; padding: 4px 8px;">
+                        <!-- SOLO LOS 3 PUNTOS -->
+                        <i class="fa-solid fa-ellipsis-vertical" style="font-size: 16px;"></i>
                     </button>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <asp:LinkButton runat="server" CssClass="dropdown-item"
                                 CommandArgument='<%# Eval("IdMaterial") %>'

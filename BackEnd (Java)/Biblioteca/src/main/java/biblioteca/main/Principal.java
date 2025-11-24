@@ -41,7 +41,8 @@ import pe.edu.pucp.utilsarmy.usuarios.model.Usuario;
 public class Principal {
 
     public static void main(String[] args) throws Exception {
-        CorreoImpl correo = new CorreoImpl();
+       /*
+        //CorreoImpl correo = new CorreoImpl();
         String destino = "a20234943@pucp.edu.pe";               // <-- A donde quieres enviarlo
         String asunto = "Luchex Backtracking";
         String html = """
@@ -53,6 +54,8 @@ public class Principal {
   </body>
 </html>
 """;
-        correo.envioDeCorreos(destino, asunto, html);
+        //correo.envioDeCorreos(destino, asunto, html);
+        */
     }
+
 }

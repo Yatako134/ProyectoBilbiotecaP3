@@ -1,14 +1,18 @@
-﻿using System;
+﻿using BibliotecaWA.BibliotecaServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Windows;
+using System.Windows.Forms;
 namespace BibliotecaWA
 {
     public partial class Reportes : System.Web.UI.Page
     {
+        UsuarioWSClient bousuario = new UsuarioWSClient();
+        EjemplarWSClient boejemplar = new EjemplarWSClient();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -27,8 +31,8 @@ namespace BibliotecaWA
             if (seleccionados == 0)
             {
                 ScriptManager.RegisterStartupScript(
-                    this, GetType(), "alerta",
-                    "alert('Por favor, seleccione un tipo de reporte antes de descargar.');",
+                    this, GetType(), "modal",
+                    "mostrarModal('Advertencia', 'Por favor, seleccione un tipo de reporte antes de descargar.');",
                     true
                 );
                 return;
@@ -38,8 +42,8 @@ namespace BibliotecaWA
             if (seleccionados > 1)
             {
                 ScriptManager.RegisterStartupScript(
-                    this, GetType(), "alerta",
-                    "alert('Seleccione solo un reporte a la vez.');",
+                    this, GetType(), "modal",
+                    "mostrarModal('Advertencia', 'Seleccione solo un reporte a la vez.');",
                     true
                 );
                 return;
@@ -48,15 +52,119 @@ namespace BibliotecaWA
             // 4. Solo si hay EXACTAMENTE uno → hacemos redirect
             if (chkReporteEjemplares.Checked)
             {
-                Response.Redirect("http://localhost:8080/BibliotecaWS/ReporteReq25");
-                return;
+                //BindingList<ejemplar> ejemplares = boejemplar.listarEjemplaresTodos();
+                ejemplar[] ejemp = boejemplar.listarEjemplaresTodos();
+
+                // Validar que la lista no sea null
+                if (ejemp == null)
+                {
+                    ScriptManager.RegisterStartupScript(
+                        this, GetType(), "modal",
+                        "mostrarModal('Advertencia', 'No hay ejemplares en reparacion.');",
+                        true
+                    );
+                    return;
+                }
+
+                int cantEnReparacion = ejemp.Count(ejem => ejem.estado == estadoEjemplar.EN_REPARACION);
+
+                if (cantEnReparacion > 0)
+                {
+                    usuario user = new usuario();
+                    //int id = (int)Session["UserId"];
+                    //user = bousuario.obtenerUsuarioPorId(id);
+                    ////string nombre = "Luchexx";
+                    //string nombre = user.nombre;
+                    string nombre = (String)Session["UserName"];
+                    Response.Redirect($"http://localhost:8080/BibliotecaWS/ReporteReq25?nombre={nombre}");
+                    return;
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(
+                        this, GetType(), "modal",
+                        "mostrarModal('Advertencia', 'No hay ejemplares en reparacion.');",
+                        true
+                    );
+                    return;
+                }
+                //usuario user = new usuario();
+                //user = bousuario.obtenerUsuarioPorId(21);
+                ////string nombre = "Luchexx";
+                //string nombre = user.nombre;
+                //Response.Redirect($"http://localhost:8080/BibliotecaWS/ReporteReq25?nombre={nombre}");
+                //return;
             }
 
             if (chkReporteUsuarios.Checked)
             {
                 string fechaInicio = txtFechaInicio1.Text;
                 string fechaFin = txtFechaFin1.Text;
-                string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaInicio}&fechaFin={fechaFin}";
+                if (string.IsNullOrEmpty(fechaInicio) || string.IsNullOrEmpty(fechaFin))
+                {
+                    ScriptManager.RegisterStartupScript(
+                        this, GetType(), "modal",
+                        "mostrarModal('Advertencia', 'Debes ingresar ambas fechas.');",
+                        true
+                    );
+                    return;
+                }
+
+                if (!DateTime.TryParse(fechaInicio, out DateTime fechaIni))
+                {
+                    ScriptManager.RegisterStartupScript(
+                        this, GetType(), "modal",
+                        "mostrarModal('Advertencia', 'La fecha inicial no es válida.');",
+                        true
+                    );
+                    return;
+                }
+
+                if (!DateTime.TryParse(fechaFin, out DateTime fechaF))
+                {
+                    ScriptManager.RegisterStartupScript(
+                       this, GetType(), "modal",
+                       "mostrarModal('Advertencia', 'La fecha final no es válida.');",
+                       true
+                   );
+                    return;
+                }
+
+                if (fechaIni > fechaF)
+                {
+                    ScriptManager.RegisterStartupScript(
+                       this, GetType(), "modal",
+                       "mostrarModal('Advertencia', 'La fecha inicial no puede ser mayor que la fecha final.');",
+                       true
+                   );
+                    return;
+                }
+
+                // Validación de fecha muy adelantada (opcional)
+                if ((fechaF - DateTime.Now).TotalDays > 365)
+                {
+                    ScriptManager.RegisterStartupScript(
+                       this, GetType(), "modal",
+                       "mostrarModal('Advertencia', 'La fecha final es demasiado adelantada.');",
+                       true
+                   );
+                    return;
+                }
+                SancionWSClient sancionbo = new SancionWSClient();
+                int cant = sancionbo.contarSancionesPorFechas(fechaIni, fechaF);
+                if (cant <= 0)
+                {
+                    ScriptManager.RegisterStartupScript(
+                       this, GetType(), "modal",
+                       "mostrarModal('Advertencia', 'No hay sanciones para mostrar en el rango de fecha seleccionado.');",
+                       true
+                   );
+                    return;
+                }
+                string nombre = (String)Session["UserName"];
+                string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaIni:yyyy-MM-dd}&fechaFin={fechaF:yyyy-MM-dd}&nombre={nombre}";
+
+
                 Response.Redirect(url);
                 return;
             }
@@ -68,5 +176,14 @@ namespace BibliotecaWA
             }
 
         }
+        private void ShowModal(string mensaje)
+        {
+            string script = $@"
+            var modal = new bootstrap.Modal(document.getElementById('modalAlert'));
+            document.getElementById('modalBody').innerText = '{mensaje}';
+            modal.show();";
+            ScriptManager.RegisterStartupScript(this, GetType(), "showModal", script, true);
+        }
+
     }
 }

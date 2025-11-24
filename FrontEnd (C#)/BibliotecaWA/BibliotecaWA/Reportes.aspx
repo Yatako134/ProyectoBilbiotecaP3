@@ -1,8 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="Reportes.aspx.cs" Inherits="BibliotecaWA.Reportes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_Title" runat="server">
+    Reportes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Scripts" runat="server">
+    <!-- jQuery (requerido para usar modales) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap JS (activa los modales) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function mostrarModal(titulo, mensaje) {
+            document.getElementById("modalTitulo").innerText = titulo;
+            document.getElementById("modalCuerpo").innerText = mensaje;
+            $("#modalMensaje").modal("show");
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
     <div class="d-flex align-items-center mb-4">
@@ -108,6 +121,48 @@
             <div class="col-md-8"></div>
         </div>
 
+    </div>
+ <!-- Modal unificado para alertas -->
+    <div class="modal fade" id="modalAlert" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title" id="modalTitle">Aviso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    Mensaje
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- === MODAL GENÉRICO === -->
+    <div class="modal fade" id="modalMensaje" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title" id="modalTitulo">Mensaje</h5>
+                    <%--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>--%>
+                </div>
+
+                <div class="modal-body" id="modalCuerpo">
+                    Texto del mensaje aquí.
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal">Continuar</button>
+                </div>
+
+            </div>
+        </div>
     </div>
 
 </asp:Content>

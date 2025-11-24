@@ -23,17 +23,17 @@
   <message name="buscarEjemplaresResponse">
     <part name="parameters" element="tns:buscarEjemplaresResponse" />
   </message>
-  <message name="ListarMaterialesNormal">
-    <part name="parameters" element="tns:ListarMaterialesNormal" />
-  </message>
-  <message name="ListarMaterialesNormalResponse">
-    <part name="parameters" element="tns:ListarMaterialesNormalResponse" />
-  </message>
   <message name="ObtenerSoloMaterial">
     <part name="parameters" element="tns:ObtenerSoloMaterial" />
   </message>
   <message name="ObtenerSoloMaterialResponse">
     <part name="parameters" element="tns:ObtenerSoloMaterialResponse" />
+  </message>
+  <message name="ListarMaterialesNormal">
+    <part name="parameters" element="tns:ListarMaterialesNormal" />
+  </message>
+  <message name="ListarMaterialesNormalResponse">
+    <part name="parameters" element="tns:ListarMaterialesNormalResponse" />
   </message>
   <message name="ContarMateriales">
     <part name="parameters" element="tns:ContarMateriales" />
@@ -78,13 +78,13 @@
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresRequest" message="tns:buscarEjemplares" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/buscarEjemplaresResponse" message="tns:buscarEjemplaresResponse" />
     </operation>
-    <operation name="ListarMaterialesNormal">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalRequest" message="tns:ListarMaterialesNormal" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalResponse" message="tns:ListarMaterialesNormalResponse" />
-    </operation>
     <operation name="ObtenerSoloMaterial">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ObtenerSoloMaterialRequest" message="tns:ObtenerSoloMaterial" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ObtenerSoloMaterialResponse" message="tns:ObtenerSoloMaterialResponse" />
+    </operation>
+    <operation name="ListarMaterialesNormal">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalRequest" message="tns:ListarMaterialesNormal" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ListarMaterialesNormalResponse" message="tns:ListarMaterialesNormalResponse" />
     </operation>
     <operation name="ContarMateriales">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/MaterialWS/ContarMaterialesRequest" message="tns:ContarMateriales" />
@@ -136,7 +136,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="ListarMaterialesNormal">
+    <operation name="ObtenerSoloMaterial">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -145,7 +145,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="ObtenerSoloMaterial">
+    <operation name="ListarMaterialesNormal">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

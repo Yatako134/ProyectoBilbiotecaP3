@@ -48,3 +48,7 @@ VALUES
 ('Biblioteca Virtual', 'Online, Lima', TRUE);
 
 -- DATOS DE CONTRIBUYENTE
+
+
+call INSERTAR_USUARIO(@_id_usuario, '20244943', 'Alex', 'Sanchez', 
+'Antaurco', '60851142', 'alex.sanchez@pucp.edu.pe', 'backtracking', '934574504', 3);
