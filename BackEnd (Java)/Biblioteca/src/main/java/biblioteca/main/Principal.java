@@ -41,17 +41,21 @@ import pe.edu.pucp.utilsarmy.usuarios.model.Usuario;
 public class Principal {
 
     public static void main(String[] args) throws Exception {
-        CorreoImpl correo = new CorreoImpl();
-        String destino = "a20212519@pucp.edu.pe";               // <-- A donde quieres enviarlo
-        String asunto = "Buenas noches <3";
+       /*
+        //CorreoImpl correo = new CorreoImpl();
+        String destino = "a20234943@pucp.edu.pe";               // <-- A donde quieres enviarlo
+        String asunto = "Luchex Backtracking";
         String html = """
 <html>
   <body>
     <h1>Hola usuario</h1>
     <p>Este es un mensaje con imagen.</p>
+    <img src="cid:logo" style="width:180px; height:auto;">
   </body>
 </html>
 """;
-        correo.envioDeCorreos(destino, asunto, html);
+        //correo.envioDeCorreos(destino, asunto, html);
+        */
     }
+
 }

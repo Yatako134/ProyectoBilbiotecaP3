@@ -321,7 +321,7 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
     @Override
     public ArrayList<MaterialBibliografico> listartodosnormal() {
         ArrayList<MaterialBibliografico> materiales = null;
-        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_MATERIALES_TODOS", null);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_MATERIALES_TODOS_NORMAL", null);
         System.out.println("Lectura de materiales...");
         try {
             while (rs.next()) {
@@ -337,9 +337,13 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
                 material.setClasificacion_tematica(rs.getString("clasificacion_tematica"));
                 material.setIdioma(rs.getString("idioma"));
                 material.setTipo(TipoMaterial.valueOf(rs.getString("tipo")));
+                material.setAutoresTexto(rs.getString("autores"));
+                material.setBibliotecasTexto(rs.getString("bibliotecas"));
+                material.setCantidadDisponible(rs.getInt("ejemplares_disponibles"));
+                if(rs.getString("editoriales")!=null)material.setEditoriales(rs.getString("editoriales"));
                 materiales.add(material);
             }
-            
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         } finally {
