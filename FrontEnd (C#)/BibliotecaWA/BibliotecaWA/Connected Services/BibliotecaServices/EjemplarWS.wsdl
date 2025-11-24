@@ -5,20 +5,32 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/EjemplarWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
+  <message name="listar_disponibles_por_material">
+    <part name="parameters" element="tns:listar_disponibles_por_material" />
+  </message>
+  <message name="listar_disponibles_por_materialResponse">
+    <part name="parameters" element="tns:listar_disponibles_por_materialResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
   <message name="listar_por_material">
     <part name="parameters" element="tns:listar_por_material" />
   </message>
   <message name="listar_por_materialResponse">
     <part name="parameters" element="tns:listar_por_materialResponse" />
   </message>
-  <message name="Exception">
-    <part name="fault" element="tns:Exception" />
-  </message>
   <message name="insertarEjemplar">
     <part name="parameters" element="tns:insertarEjemplar" />
   </message>
   <message name="insertarEjemplarResponse">
     <part name="parameters" element="tns:insertarEjemplarResponse" />
+  </message>
+  <message name="listarEjemplaresTodos">
+    <part name="parameters" element="tns:listarEjemplaresTodos" />
+  </message>
+  <message name="listarEjemplaresTodosResponse">
+    <part name="parameters" element="tns:listarEjemplaresTodosResponse" />
   </message>
   <message name="modificarEjemplar">
     <part name="parameters" element="tns:modificarEjemplar" />
@@ -38,19 +50,12 @@
   <message name="eliminarEjemplarResponse">
     <part name="parameters" element="tns:eliminarEjemplarResponse" />
   </message>
-  <message name="listarEjemplaresTodos">
-    <part name="parameters" element="tns:listarEjemplaresTodos" />
-  </message>
-  <message name="listarEjemplaresTodosResponse">
-    <part name="parameters" element="tns:listarEjemplaresTodosResponse" />
-  </message>
-  <message name="listar_disponibles_por_material">
-    <part name="parameters" element="tns:listar_disponibles_por_material" />
-  </message>
-  <message name="listar_disponibles_por_materialResponse">
-    <part name="parameters" element="tns:listar_disponibles_por_materialResponse" />
-  </message>
   <portType name="EjemplarWS">
+    <operation name="listar_disponibles_por_material">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialRequest" message="tns:listar_disponibles_por_material" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialResponse" message="tns:listar_disponibles_por_materialResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_material/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
     <operation name="listar_por_material">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_por_materialRequest" message="tns:listar_por_material" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_por_materialResponse" message="tns:listar_por_materialResponse" />
@@ -59,6 +64,11 @@
     <operation name="insertarEjemplar">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarRequest" message="tns:insertarEjemplar" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/insertarEjemplarResponse" message="tns:insertarEjemplarResponse" />
+    </operation>
+    <operation name="listarEjemplaresTodos">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosRequest" message="tns:listarEjemplaresTodos" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosResponse" message="tns:listarEjemplaresTodosResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodos/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="modificarEjemplar">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/modificarEjemplarRequest" message="tns:modificarEjemplar" />
@@ -75,19 +85,21 @@
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/eliminarEjemplarResponse" message="tns:eliminarEjemplarResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/eliminarEjemplar/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
-    <operation name="listarEjemplaresTodos">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosRequest" message="tns:listarEjemplaresTodos" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodosResponse" message="tns:listarEjemplaresTodosResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listarEjemplaresTodos/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="listar_disponibles_por_material">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialRequest" message="tns:listar_disponibles_por_material" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_materialResponse" message="tns:listar_disponibles_por_materialResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/EjemplarWS/listar_disponibles_por_material/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
   </portType>
   <binding name="EjemplarWSPortBinding" type="tns:EjemplarWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listar_disponibles_por_material">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
     <operation name="listar_por_material">
       <soap:operation soapAction="" />
       <input>
@@ -108,6 +120,18 @@
       <output>
         <soap:body use="literal" />
       </output>
+    </operation>
+    <operation name="listarEjemplaresTodos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
     </operation>
     <operation name="modificarEjemplar">
       <soap:operation soapAction="" />
@@ -134,30 +158,6 @@
       </fault>
     </operation>
     <operation name="eliminarEjemplar">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
-    <operation name="listarEjemplaresTodos">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
-    <operation name="listar_disponibles_por_material">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

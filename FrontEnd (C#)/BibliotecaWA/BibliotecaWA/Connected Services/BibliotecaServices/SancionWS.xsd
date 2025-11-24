@@ -112,24 +112,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="BusquedaSanciones">
-    <xs:sequence>
-      <xs:element name="codigo_universitario" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="BusquedaSancionesResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarSanciones">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarSancionesResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="modificar_sancion">
     <xs:sequence>
       <xs:element minOccurs="0" name="idSancion" type="tns:sancion" />
@@ -141,6 +123,14 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="listarSanciones">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarSancionesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="finalizar_sancion">
     <xs:sequence>
       <xs:element name="idSancion" type="xs:int" />
@@ -149,6 +139,16 @@
   <xs:complexType name="finalizar_sancionResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusquedaSanciones">
+    <xs:sequence>
+      <xs:element name="codigo_universitario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusquedaSancionesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:sancion" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="contarSancionesPorFechas">

@@ -21,14 +21,15 @@
   <xs:element name="modificarPrestamoResponse" type="tns:modificarPrestamoResponse" />
   <xs:element name="obtenerPrestamoPorId" type="tns:obtenerPrestamoPorId" />
   <xs:element name="obtenerPrestamoPorIdResponse" type="tns:obtenerPrestamoPorIdResponse" />
-  <xs:complexType name="obtenerPrestamoPorId">
+  <xs:complexType name="listarPrestamosPorUsuarioPorPanel">
     <xs:sequence>
-      <xs:element name="name" type="xs:int" />
+      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="filtro" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtenerPrestamoPorIdResponse">
+  <xs:complexType name="listarPrestamosPorUsuarioPorPanelResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:prestamo" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:prestamo" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="prestamo">
@@ -91,15 +92,14 @@
       <xs:element minOccurs="0" name="message" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarPrestamosPorUsuarioPorPanel">
+  <xs:complexType name="obtenerPrestamoPorId">
     <xs:sequence>
-      <xs:element name="idUsuario" type="xs:int" />
-      <xs:element minOccurs="0" name="filtro" type="xs:string" />
+      <xs:element name="name" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarPrestamosPorUsuarioPorPanelResponse">
+  <xs:complexType name="obtenerPrestamoPorIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:prestamo" />
+      <xs:element minOccurs="0" name="return" type="tns:prestamo" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarPrestamo">

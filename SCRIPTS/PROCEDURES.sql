@@ -1507,3 +1507,17 @@ BEGIN
 	SELECT * FROM Usuario WHERE correo=_correo AND contrasena=MD5(_contrasena);
 END$$
 DELIMITER ;
+DELIMITER $$
+
+CREATE PROCEDURE sp_VerSancionesPorFecha(
+    IN p_fecha_inicio DATETIME,
+    IN p_fecha_fin DATETIME
+)
+BEGIN
+    SELECT count(*)
+    FROM Sancion
+    WHERE fecha_inicio >= p_fecha_inicio
+      AND fecha_inicio <= p_fecha_fin;
+END $$
+
+DELIMITER ;

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -169,13 +170,61 @@ namespace BibliotecaWA
                 return;
             }
 
+
             if (chkReporteLibros.Checked)
             {
-                Response.Redirect("http://localhost:8080/BibliotecaWS/ReporteLibros");
+                String nombre = (String)Session["UserName"];
+                string fechaInicio = txtFechaInicio2.Text;
+                string fechaFin = txtFechaFin2.Text;
+                if (string.IsNullOrEmpty(fechaInicio) || string.IsNullOrEmpty(fechaFin))
+                {
+                    ScriptManager.RegisterStartupScript(
+                        this, GetType(), "modal",
+                        "mostrarModal('Advertencia', 'Debes ingresar ambas fechas.');",
+                        true
+                    );
+                    return;
+                }
+
+                if (!DateTime.TryParse(fechaInicio, out DateTime fechaIni))
+                {
+                    ScriptManager.RegisterStartupScript(
+                        this, GetType(), "modal",
+                        "mostrarModal('Advertencia', 'La fecha inicial no es válida.');",
+                        true
+                    );
+                    return;
+                }
+
+                if (!DateTime.TryParse(fechaFin, out DateTime fechaF))
+                {
+                    ScriptManager.RegisterStartupScript(
+                       this, GetType(), "modal",
+                       "mostrarModal('Advertencia', 'La fecha final no es válida.');",
+                       true
+                   );
+                    return;
+                }
+
+                if (fechaIni > fechaF)
+                {
+                    ScriptManager.RegisterStartupScript(
+                       this, GetType(), "modal",
+                       "mostrarModal('Advertencia', 'La fecha inicial no puede ser mayor que la fecha final.');",
+                       true
+                   );
+                    return;
+                }
+
+                
+                string url = $"http://localhost:8080/BibliotecaWS/ReporteReq26?nombre={Uri.EscapeDataString(nombre)}&fechaInicio={fechaIni:yyyy-MM-dd}&fechaFin={fechaF:yyyy-MM-dd}";
+
+                Response.Redirect(url);
                 return;
             }
-
         }
+
+            
         private void ShowModal(string mensaje)
         {
             string script = $@"
