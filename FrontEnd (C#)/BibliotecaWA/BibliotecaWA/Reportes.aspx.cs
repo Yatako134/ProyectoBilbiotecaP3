@@ -128,62 +128,10 @@ namespace BibliotecaWA
                     ShowModal("La fecha final es demasiado adelantada.");
                     return;
                 }
-                /*
-                // 1️⃣ Validar que ambos campos tengan algo
-                if (string.IsNullOrEmpty(fechaInicio) || string.IsNullOrEmpty(fechaFin))
-                {
-                    MessageBox.Show(
-                        "Debes ingresar ambas fechas.",
-                        "Validación",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-                    return;
-                }
+                string nombre = (String)Session["UserName"];
+                string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaIni:yyyy-MM-dd}&fechaFin={fechaF:yyyy-MM-dd}&nombre={nombre}";
 
-                // 2️⃣ Intentar convertir a fecha
-                DateTime fechaIni, fechaF;
 
-                if (!DateTime.TryParse(fechaInicio, out fechaIni))
-                {
-                    MessageBox.Show(
-                        "La fecha inicial no es válida.",
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                    return;
-                }
-
-                if (!DateTime.TryParse(fechaFin, out fechaF))
-                {
-                    MessageBox.Show(
-                        "La fecha final no es válida.",
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                    return;
-                }
-
-                // 3️⃣ Validar rango
-                if (fechaIni > fechaF)
-                {
-                    MessageBox.Show(
-                        "La fecha inicial no puede ser mayor que la fecha final.",
-                        "Rango inválido",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                    return;
-                }
-                // ✅ 4️⃣ Formato CORRECTO para el servlet
-                string fechaInicioFmt = fechaIni.ToString("yyyy-MM-dd");
-                string fechaFinFmt = fechaF.ToString("yyyy-MM-dd");
-                */
-                string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaIni:yyyy-MM-dd}&fechaFin={fechaF:yyyy-MM-dd}";
-
-                //string url = $"http://localhost:8080/BibliotecaWS/ReporteReq24?fechaInicio={fechaInicioFmt}&fechaFin={fechaFinFmt}";
                 Response.Redirect(url);
                 return;
             }
