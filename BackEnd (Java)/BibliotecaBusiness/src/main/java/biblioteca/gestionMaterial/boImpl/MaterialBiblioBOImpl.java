@@ -5,6 +5,7 @@ import biblioteca.gestionMaterial.bo.MaterialBiblioBO;
 import biblioteca.gestionMaterial.dao.MaterialBiblioDAO;
 import biblioteca.gestionMaterial.mysql.MaterialBiblioImpl;
 import java.util.ArrayList;
+import java.util.Date;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Contribuyente;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Ejemplar;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
@@ -94,5 +95,10 @@ public class MaterialBiblioBOImpl implements MaterialBiblioBO{
     @Override
     public MaterialBibliografico obtener_por_id_solo_material(int idMaterial) {
         return matDao.obtener_por_id_solo_material(idMaterial);
+    }
+
+    @Override
+    public int ContarMaterialesPrestadosRango(Date fechaInicio, Date fechaFin) {
+        return matDao.ContarMaterialesPrestadosRango(fechaInicio, fechaFin);
     }
 }

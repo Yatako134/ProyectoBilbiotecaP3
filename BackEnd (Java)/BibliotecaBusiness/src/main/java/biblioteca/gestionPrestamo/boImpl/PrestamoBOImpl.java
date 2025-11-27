@@ -5,6 +5,7 @@ import biblioteca.gestionPrestamo.bo.PrestamoBO;
 import biblioteca.gestionPrestamo.dao.PrestamoDAO;
 import biblioteca.gestionPrestamo.mysql.PrestamoImpl;
 import java.util.ArrayList;
+import java.util.Date;
 import pe.edu.pucp.utilsarmy.gestion_de_prestamos.model.Prestamo;
 
 public class PrestamoBOImpl implements PrestamoBO{
@@ -68,5 +69,6 @@ public class PrestamoBOImpl implements PrestamoBO{
     public int MarcarRecordatorioPrestamos() {
         return daoPrestamo.MarcarRecordatorioPrestamos();
     }
+
     
 }

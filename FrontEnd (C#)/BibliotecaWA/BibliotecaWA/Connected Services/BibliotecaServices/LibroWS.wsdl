@@ -5,6 +5,15 @@
       <xsd:import schemaLocation="http://localhost:8080/BibliotecaWS/LibroWS?xsd=1" namespace="pe.edu.pucp.utilsarmy.services" />
     </xsd:schema>
   </types>
+  <message name="listarLibrosTodos">
+    <part name="parameters" element="tns:listarLibrosTodos" />
+  </message>
+  <message name="listarLibrosTodosResponse">
+    <part name="parameters" element="tns:listarLibrosTodosResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
   <message name="insertarLibro">
     <part name="parameters" element="tns:insertarLibro" />
   </message>
@@ -16,15 +25,6 @@
   </message>
   <message name="modificarLibroResponse">
     <part name="parameters" element="tns:modificarLibroResponse" />
-  </message>
-  <message name="Exception">
-    <part name="fault" element="tns:Exception" />
-  </message>
-  <message name="listarLibrosTodos">
-    <part name="parameters" element="tns:listarLibrosTodos" />
-  </message>
-  <message name="listarLibrosTodosResponse">
-    <part name="parameters" element="tns:listarLibrosTodosResponse" />
   </message>
   <message name="obtenerLibroPorId">
     <part name="parameters" element="tns:obtenerLibroPorId" />
@@ -39,6 +39,11 @@
     <part name="parameters" element="tns:eliminarLibroResponse" />
   </message>
   <portType name="LibroWS">
+    <operation name="listarLibrosTodos">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosRequest" message="tns:listarLibrosTodos" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosResponse" message="tns:listarLibrosTodosResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodos/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
     <operation name="insertarLibro">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/insertarLibroRequest" message="tns:insertarLibro" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/insertarLibroResponse" message="tns:insertarLibroResponse" />
@@ -47,11 +52,6 @@
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/modificarLibroRequest" message="tns:modificarLibro" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/modificarLibroResponse" message="tns:modificarLibroResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/modificarLibro/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="listarLibrosTodos">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosRequest" message="tns:listarLibrosTodos" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodosResponse" message="tns:listarLibrosTodosResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/listarLibrosTodos/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="obtenerLibroPorId">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/LibroWS/obtenerLibroPorIdRequest" message="tns:obtenerLibroPorId" />
@@ -66,16 +66,7 @@
   </portType>
   <binding name="LibroWSPortBinding" type="tns:LibroWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="insertarLibro">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="modificarLibro">
+    <operation name="listarLibrosTodos">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -87,7 +78,16 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
-    <operation name="listarLibrosTodos">
+    <operation name="insertarLibro">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarLibro">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

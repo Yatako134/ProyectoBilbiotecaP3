@@ -1,4 +1,3 @@
-
 package biblioteca.services.gestionMaterial;
 
 import biblioteca.gestionMaterial.boImpl.MaterialBiblioBOImpl;
@@ -14,11 +13,12 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
 public class MaterialWS {
 
     MaterialBiblioBOImpl materialBO;
+
     public MaterialWS() {
-         materialBO = new MaterialBiblioBOImpl();
+        materialBO = new MaterialBiblioBOImpl();
     }
 
-	 @WebMethod(operationName = "obtenerPorId")
+    @WebMethod(operationName = "obtenerPorId")
     public MaterialBibliografico obtenerPorId(@WebParam(name = "id") int id) {
         MaterialBibliografico material = null;
         try {
@@ -57,12 +57,11 @@ public class MaterialWS {
         return contribuyentes;
     }
 
-
     @WebMethod(operationName = "obtenerEjemplaresDisponibles")
     public ArrayList<Ejemplar> obtenerEjemplaresDisponibles(
             @WebParam(name = "idMaterial") int idMaterial,
             @WebParam(name = "idBiblioteca") int idBiblioteca) {
-         ArrayList<Ejemplar> ejemplares = new ArrayList<>();
+        ArrayList<Ejemplar> ejemplares = new ArrayList<>();
         try {
             ejemplares = materialBO.obtenerEjemplaresDisponibles(idMaterial, idBiblioteca);
             if (ejemplares == null) {
@@ -73,6 +72,7 @@ public class MaterialWS {
         }
         return ejemplares;
     }
+
     @WebMethod(operationName = "ListarTodos")
     public ArrayList<MaterialBibliografico> listarTodos() {
         materialBO = new MaterialBiblioBOImpl();
@@ -102,24 +102,23 @@ public class MaterialWS {
     }
 
     @WebMethod(operationName = "BusquedaAvanzada")
-    public ArrayList<MaterialBibliografico> listar_por_busqueda_avanzada
-        (@WebParam(name = "Titulo") String _titulo,
+    public ArrayList<MaterialBibliografico> listar_por_busqueda_avanzada(@WebParam(name = "Titulo") String _titulo,
             @WebParam(name = "Tipo_contribuyente") String _tipo_contribuyente,
-            @WebParam(name ="Nombre_contribuyente")String _nombre_contribuyente, 
-            @WebParam(name ="Tema")String _tema,
-            @WebParam(name ="Fecha_desde")Integer _fecha_desde,
-            @WebParam(name ="Fecha_hasta")Integer _fecha_hasta,
-            @WebParam(name ="Tipo_de_material")String _tipo_material, 
-            @WebParam(name ="Biblioteca")String _biblioteca, 
-            @WebParam(name ="Disponibilidad")String _disponibilidad,
-            @WebParam(name="Editoriales") String _editoriales) {
+            @WebParam(name = "Nombre_contribuyente") String _nombre_contribuyente,
+            @WebParam(name = "Tema") String _tema,
+            @WebParam(name = "Fecha_desde") Integer _fecha_desde,
+            @WebParam(name = "Fecha_hasta") Integer _fecha_hasta,
+            @WebParam(name = "Tipo_de_material") String _tipo_material,
+            @WebParam(name = "Biblioteca") String _biblioteca,
+            @WebParam(name = "Disponibilidad") String _disponibilidad,
+            @WebParam(name = "Editoriales") String _editoriales) {
         materialBO = new MaterialBiblioBOImpl();
         ArrayList<MaterialBibliografico> materiales = null;
         try {
 
-            materiales = materialBO.listar_busqueda_avanzada(_titulo, 
+            materiales = materialBO.listar_busqueda_avanzada(_titulo,
                     _tipo_contribuyente, _nombre_contribuyente, _tema,
-                    _fecha_desde, _fecha_hasta, _tipo_material, _biblioteca, 
+                    _fecha_desde, _fecha_hasta, _tipo_material, _biblioteca,
                     _disponibilidad, _editoriales);
             return materiales;
         } catch (Exception ex) {
@@ -127,18 +126,26 @@ public class MaterialWS {
         }
         return materiales;
     }
-        
+
     @WebMethod(operationName = "ContarMateriales")
-    public int ContarMateriales(@WebParam(name ="idmat")
-    int idmat) {
+    public int ContarMateriales(@WebParam(name = "idmat") int idmat) {
         return materialBO.ContarEjemplares(idmat);
     }
+
     @WebMethod(operationName = "ListarMaterialesNormal")
     public ArrayList<MaterialBibliografico> ListarMaterialesNormal() {
         return materialBO.listartodosnormal();
     }
+
     @WebMethod(operationName = "ObtenerSoloMaterial")
     public MaterialBibliografico ObtenerSoloMaterial(@WebParam(name = "idMaterial") int id) {
         return materialBO.obtener_por_id_solo_material(id);
     }
+
+    @WebMethod(operationName = "ContarMaterialesPrestadosRango")
+    public int ContarMaterialesPrestadosRango(@WebParam(name = "fechainicio") java.util.Date fechainicio,
+           @WebParam(name = "fechafin") java.util.Date fechafin ) {
+        return materialBO.ContarMaterialesPrestadosRango(fechainicio, fechafin);
+    }
+
 }

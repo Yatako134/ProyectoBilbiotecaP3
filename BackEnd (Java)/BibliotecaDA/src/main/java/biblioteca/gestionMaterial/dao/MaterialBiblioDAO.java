@@ -29,4 +29,6 @@ public interface MaterialBiblioDAO extends IDAO<MaterialBibliografico>{
     
     ArrayList<MaterialBibliografico> listartodosnormal();
     MaterialBibliografico obtener_por_id_solo_material(int idMaterial);
+    
+    int ContarMaterialesPrestadosRango(java.util.Date fechaInicio, java.util.Date fechaFin);
 }

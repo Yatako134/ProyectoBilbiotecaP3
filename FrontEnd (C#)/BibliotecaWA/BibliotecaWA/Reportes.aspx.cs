@@ -13,6 +13,7 @@ namespace BibliotecaWA
     public partial class Reportes : System.Web.UI.Page
     {
         UsuarioWSClient bousuario = new UsuarioWSClient();
+        MaterialWSClient bomaterial = new MaterialWSClient();
         EjemplarWSClient boejemplar = new EjemplarWSClient();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -216,6 +217,17 @@ namespace BibliotecaWA
                     return;
                 }
 
+                int cant_mat = bomaterial.ContarMaterialesPrestadosRango(fechaIni, fechaF);
+                if (cant_mat <= 0)
+                {
+                    cant_mat = 1;
+                    ScriptManager.RegisterStartupScript(
+                       this, GetType(), "modal",
+                       "mostrarModal('Advertencia', 'No hay materiales bibliográficos prestados en el rango de fecha ingresado.');",
+                       true
+                   );
+                    return;
+                }
                 
                 string url = $"http://localhost:8080/BibliotecaWS/ReporteReq26?nombre={Uri.EscapeDataString(nombre)}&fechaInicio={fechaIni:yyyy-MM-dd}&fechaFin={fechaF:yyyy-MM-dd}";
 

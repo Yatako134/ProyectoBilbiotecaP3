@@ -12,6 +12,7 @@ import biblioteca.gestionMaterial.dao.TesisDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import pe.edu.pucp.utilsarmy.gestion_de_material.model.Biblioteca;
@@ -381,6 +382,30 @@ public class MaterialBiblioImpl implements MaterialBiblioDAO{
             DBManager.getInstance().cerrarConexion();
         }
         return material;
+    }
+
+    @Override
+    public int ContarMaterialesPrestadosRango(Date fechaInicio, Date fechaFin) {
+        int cant=0;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, fechaInicio);
+        parametrosEntrada.put(2, fechaFin);
+
+         rs = DBManager.getInstance().ejecutarProcedimientoLectura("ContarMaterialesPrestadosRango", parametrosEntrada);
+         try {
+
+            if (rs.next()) {
+                cant = rs.getInt("total_materiales_prestados"); // El primer campo es el count(*)
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+         
+         
+         return cant;
     }
     
 }

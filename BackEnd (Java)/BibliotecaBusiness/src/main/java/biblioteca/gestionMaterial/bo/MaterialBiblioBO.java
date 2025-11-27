@@ -14,23 +14,29 @@ import pe.edu.pucp.utilsarmy.gestion_de_material.model.MaterialBibliografico;
  *
  * @author renat
  */
-public interface MaterialBiblioBO extends IBO<MaterialBibliografico>{
-	 ArrayList<Ejemplar> buscarEjemplares(int id);
+public interface MaterialBiblioBO extends IBO<MaterialBibliografico> {
+
+    ArrayList<Ejemplar> buscarEjemplares(int id);
 
     // Busca contribuyentes por ID
     ArrayList<Contribuyente> buscarContribuyente(int id);
 
-
     // Obtiene los ejemplares disponibles de un material en una biblioteca
     ArrayList<Ejemplar> obtenerEjemplaresDisponibles(int idMaterial, int idBiblioteca);
+
     ArrayList<MaterialBibliografico> listar_busqueda(String _parametro);
-    ArrayList<MaterialBibliografico> listar_busqueda_avanzada
-        (String _titulo, String _tipo_contribuyente, String _nombre_contribuyente,
-                String _tema, Integer _fecha_desde, Integer _fecha_hasta, 
-                String _tipo_material, String _biblioteca, String _disponibilidad,
-                String _editoriales);
-    
+
+    ArrayList<MaterialBibliografico> listar_busqueda_avanzada(String _titulo, String _tipo_contribuyente, String _nombre_contribuyente,
+            String _tema, Integer _fecha_desde, Integer _fecha_hasta,
+            String _tipo_material, String _biblioteca, String _disponibilidad,
+            String _editoriales);
+
     int ContarEjemplares(int idMaterial);
+
     ArrayList<MaterialBibliografico> listartodosnormal();
+
     MaterialBibliografico obtener_por_id_solo_material(int idMaterial);
+
+    int ContarMaterialesPrestadosRango(java.util.Date fechaInicio, java.util.Date fechaFin);
+
 }

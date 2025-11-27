@@ -5,6 +5,8 @@
   <xs:element name="BusquedaAvanzadaResponse" type="tns:BusquedaAvanzadaResponse" />
   <xs:element name="BusquedaResponse" type="tns:BusquedaResponse" />
   <xs:element name="ContarMateriales" type="tns:ContarMateriales" />
+  <xs:element name="ContarMaterialesPrestadosRango" type="tns:ContarMaterialesPrestadosRango" />
+  <xs:element name="ContarMaterialesPrestadosRangoResponse" type="tns:ContarMaterialesPrestadosRangoResponse" />
   <xs:element name="ContarMaterialesResponse" type="tns:ContarMaterialesResponse" />
   <xs:element name="ListarMaterialesNormal" type="tns:ListarMaterialesNormal" />
   <xs:element name="ListarMaterialesNormalResponse" type="tns:ListarMaterialesNormalResponse" />
@@ -163,6 +165,17 @@
   <xs:complexType name="buscarEjemplaresResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContarMaterialesPrestadosRango">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechainicio" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fechafin" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContarMaterialesPrestadosRangoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="obtenerEjemplaresDisponibles">

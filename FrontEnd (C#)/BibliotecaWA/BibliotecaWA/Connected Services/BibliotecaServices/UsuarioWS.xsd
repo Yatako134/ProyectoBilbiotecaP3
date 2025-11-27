@@ -176,14 +176,14 @@
       <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtenerUsuarioPorId">
+  <xs:complexType name="verificarCorreoExistente">
     <xs:sequence>
-      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtenerUsuarioPorIdResponse">
+  <xs:complexType name="verificarCorreoExistenteResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:usuario" />
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarUsuario">
@@ -196,14 +196,14 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="verificarCorreoExistente">
+  <xs:complexType name="obtenerUsuarioPorId">
     <xs:sequence>
-      <xs:element minOccurs="0" name="correo" type="xs:string" />
+      <xs:element name="idUsuario" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="verificarCorreoExistenteResponse">
+  <xs:complexType name="obtenerUsuarioPorIdResponse">
     <xs:sequence>
-      <xs:element name="return" type="xs:int" />
+      <xs:element minOccurs="0" name="return" type="tns:usuario" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarUsuario">
