@@ -215,6 +215,7 @@
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
 }
 
+
 /*================================CÓDIGO DE VERIFICACIÓN===========================*/
 
 .code-input {
@@ -227,6 +228,8 @@
     background-color: #FCFCFC !important;
     border-radius: 8px !important;
     transition: all 0.3s ease !important;
+    font-weight: 600 !important;
+    color: #071437 !important;
 }
 
     .code-input:focus {
@@ -234,11 +237,13 @@
         background-color: #FFFFFF !important;
         box-shadow: 0 0 0 2px rgba(0, 109, 235, 0.1) !important;
         outline: none !important;
+        transform: scale(1.05) !important;
     }
 
     .code-input.error {
         border-color: #EF4444 !important;
         background-color: #FEF2F2 !important;
+        animation: shake 0.5s ease-in-out !important;
     }
 
 .code-container {
@@ -246,4 +251,36 @@
     justify-content: center !important;
     gap: 8px !important;
     margin: 20px 0 !important;
+}
+
+/* Animación de shake para errores */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Animación de entrada */
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.code-input {
+    animation: popIn 0.3s ease-out !important;
 }
