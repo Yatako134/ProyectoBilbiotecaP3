@@ -182,7 +182,15 @@ namespace BibliotecaWA
         private void CargarContribuyentes()
         {
             BindingList<contribuyente> cs;
-            cs = new BindingList<contribuyente>(materialBiblioBO.buscarContribuyentes(materialBibliografico.idMaterial));
+             var contribuyentes = materialBiblioBO.buscarContribuyentes(materialBibliografico.idMaterial);
+            if(contribuyentes != null)
+            {
+                cs = new BindingList<contribuyente>(contribuyentes);
+            }
+            else
+            {
+                cs = new BindingList<contribuyente>();
+            }
             Session["contribuyentes"] = cs;
             if (cs != null && cs.Count > 0)
             {
