@@ -11,6 +11,15 @@
     <script src="Scripts/UtilsArmy/ModalNoUsuario.js"></script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
+        <div class="d-flex align-items-center mb-4">
+    <i class="fas fa-th fa-sm" style="margin-right: 10px; font-size: 24px;"></i>
+    <div style="border-right: 2px solid #ccc; height: 24px; margin-right: 10px;"></div>
+    <div class="me-3"> <p1>Búsqueda y Préstamos</p1> </div>
+    <i class="fa-solid fa-greater-than me-3 fa-xs"></i>
+    <div class="me-3"> <p1>Detalle del material y módulo de préstamo</p1> </div>
+    <i class="fa-solid fa-greater-than me-3 fa-xs"></i>
+    <p1 class="fw-bold">Módulo de préstamo</p1>
+</div>
     <div class="container mt-3">
 
         <!-- Encabezado del libro -->

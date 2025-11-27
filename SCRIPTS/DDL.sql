@@ -4,8 +4,6 @@ DROP TABLE IF EXISTS Sancion;
 DROP TABLE IF EXISTS Prestamo;
 DROP TABLE IF EXISTS Usuario;
 DROP TABLE IF EXISTS Rol;
-DROP TABLE IF EXISTS Editorial_Material;
-DROP TABLE IF EXISTS Editorial;
 DROP TABLE IF EXISTS Ejemplar;
 DROP TABLE IF EXISTS Biblioteca;
 DROP TABLE IF EXISTS Contribuyente;
@@ -60,12 +58,6 @@ CREATE TABLE `MaterialBibliografico` (
   PRIMARY KEY (`id_material`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-
-CREATE TABLE `Editorial` (
-  `id_editorial` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_editorial`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 CREATE TABLE `Articulo` (
@@ -122,16 +114,6 @@ CREATE TABLE `Contribuyente_Material` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-CREATE TABLE `Editorial_Material` (
-  `id_editorial` int NOT NULL,
-  `id_material` int NOT NULL,
-  PRIMARY KEY (`id_editorial`,`id_material`),
-  KEY `id_material` (`id_material`),
-  CONSTRAINT `Editorial_Material_ibfk_1` FOREIGN KEY (`id_editorial`) REFERENCES `Editorial` (`id_editorial`),
-  CONSTRAINT `Editorial_Material_ibfk_2` FOREIGN KEY (`id_material`) REFERENCES `MaterialBibliografico` (`id_material`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
 CREATE TABLE `Biblioteca` (
   `id_biblioteca` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(80) DEFAULT NULL,
@@ -164,6 +146,7 @@ CREATE TABLE `Prestamo` (
   `estado` enum('VIGENTE','FINALIZADO','RETRASADO') DEFAULT NULL,
   `id_ejemplar` int NOT NULL,
   `id_usuario` int NOT NULL,
+  `recordatorio` tinyint DEFAULT '0',
   PRIMARY KEY (`id_prestamo`),
   KEY `id_usuario` (`id_usuario`),
   KEY `id_ejemplar` (`id_ejemplar`),

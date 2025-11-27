@@ -1226,7 +1226,9 @@
     <div class="d-flex align-items-center mb-4">
         <i class="fas fa-th" style="margin-right: 10px; font-size: 24px;"></i>
         <div style="border-right: 2px solid #ccc; height: 24px; margin-right: 10px;"></div>
-        <p1>Gestión de materiales</p1>
+        <div class="me-3"> <p1>Gestión de materiales</p1> </div>
+        <i class="fa-solid fa-greater-than me-3 fa-xs"></i>
+        <p1 class="fw-bold">Registro de materiales </p1>
     </div>
     <hr />
 

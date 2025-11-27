@@ -267,3 +267,16 @@
         .tabla-datos tr td:last-child .dropdown-menu {
             z-index: 10000 !important;
         }
+
+.icon-title {
+    margin: 0;
+    padding: 0;
+    height: 24px; /* puedes ajustar */
+    display: flex;
+    align-items: center; /* centra vertical */
+    justify-content: center; /* centra horizontal */
+}
+
+.small-icon {
+    font-size: 1rem; /* opcional */
+}
