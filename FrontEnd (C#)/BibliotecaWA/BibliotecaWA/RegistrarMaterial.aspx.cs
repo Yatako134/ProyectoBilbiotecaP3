@@ -19,9 +19,10 @@ namespace BibliotecaWA
             if (!IsPostBack)
             {
                 string idMaterial = Request.QueryString["id"];
-                
+                lblTitulo.Text = "Registro de un nuevo material bibliográfico";
                 if (!string.IsNullOrEmpty(idMaterial))
                 {
+                    lblTitulo.Text = "Modificación del material bibliográfico";
                     CargarMaterialParaEdicion(int.Parse(idMaterial));
                     ddlTipoMaterial.Enabled = false;
                     ddlTipoMaterial.CssClass += " bg-light";
@@ -287,6 +288,7 @@ namespace BibliotecaWA
                 if (esEdicion)
                 {
                     // MODO EDICIÓN
+                    
                     idMaterial = int.Parse(hfIdMaterial.Value);
                     ActualizarMaterialExistente(idMaterial);
                     ManejarContribuyentesEnEdicion(idMaterial);
@@ -296,6 +298,7 @@ namespace BibliotecaWA
                 else
                 {
                     // MODO NUEVO
+                    
                     idMaterial = GuardarMaterialPorTipo();
                     GuardarContribuyentes(idMaterial);
                     GuardarEjemplares(idMaterial);
@@ -848,6 +851,12 @@ namespace BibliotecaWA
                 ConstribuyenteWSClient contribuyenteBO = new ConstribuyenteWSClient();
 
                 var contribuyentesActuales = contribuyenteBO.listar_contribuyentes_por_material(idMaterial);
+                // Si no hay contribuyentes actuales, no hay nada que eliminar
+                if (contribuyentesActuales == null)
+                {
+                    return; // Salir normalmente, no es un error
+                }
+
 
                 foreach (var contribuyente in contribuyentesActuales)
                 {
@@ -1385,6 +1394,10 @@ namespace BibliotecaWA
         {
             lblMensaje.Text = mensaje;
             lblMensaje.CssClass = "alert alert-success";
+        }
+        protected void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestMaterial.aspx");
         }
     }
 }

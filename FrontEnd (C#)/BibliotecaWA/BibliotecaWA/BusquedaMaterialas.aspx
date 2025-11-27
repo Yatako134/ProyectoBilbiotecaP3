@@ -243,7 +243,7 @@
 
 <%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="BusquedaMaterialas.aspx.cs" Inherits="BibliotecaWA.BusquedaMaterialas" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="cph_Title" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="cph_Title" runat="server"> 
     Busqueda de Material
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Scripts" runat="server">
@@ -255,7 +255,7 @@
         <i class="fas fa-th" style="margin-right: 10px; font-size: 24px;"></i>
         <div style="border-right: 2px solid #ccc; height: 24px; margin-right: 10px;"></div>
         <!-- Texto -->
-        <p1>Búsqueda y Préstamos</p1>
+        <p1> Búsqueda y Préstamos</p1>
     </div>
 
     <div class="tabla-header d-flex justify-content-between align-items-center p-3">

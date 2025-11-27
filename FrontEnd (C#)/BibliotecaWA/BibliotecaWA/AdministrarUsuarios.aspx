@@ -298,15 +298,18 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
-    <div class="titulo-usuarios">
-        <h6 class="ColorLetras">Gestión de Usuarios</h6>
-        <h6><i class="small-icon fa-solid fa-angle-right"></i></h6>
-        <asp:Label ID="LblGuia" runat="server" CssClass="h6 fw-bold" ClientIDMode="Static"></asp:Label>
-    </div>
+    <div class="d-flex align-items-center mb-4">
+    <i class="fas fa-th" style="margin-right: 10px; font-size: 24px;"></i>
+    <div style="border-right: 2px solid #ccc; height: 24px; margin-right: 10px;"></div>
+    <div class="me-3"> <p1>Gestión de usuarios</p1> </div>
+    <i class="fa-solid fa-greater-than me-3 fa-xs"></i>
+    <asp:Label ID="LblGuia" runat="server" CssClass="fw-bold" ClientIDMode="Static"></asp:Label>
+</div>
     <hr>
     <div class="container-fluid mt-4">
 
         <!-- Título con flecha de regreso -->
+
         <div class="d-flex align-items-center mb-4">
             <asp:LinkButton ID="btnRegresar" runat="server" CssClass="btn btn-link text-dark fs-4 me-3"
                 OnClick="btnRegresar_Click" ToolTip="Regresar">

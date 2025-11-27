@@ -6,6 +6,13 @@
     <script src="Scripts/UtilsArmy/MostrarSeleccionBiblio.js"></script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Contenido" runat="server">
+    <div class="d-flex align-items-center mb-4">
+    <i class="fas fa-th fa-sm" style="margin-right: 10px; font-size: 24px;"></i>
+    <div style="border-right: 2px solid #ccc; height: 24px; margin-right: 10px;"></div>
+    <div class="me-3"> <p1>Búsqueda y Préstamos</p1> </div>
+    <i class="fa-solid fa-greater-than me-3 fa-xs"></i>
+    <p1 class="fw-bold">Detalle del material y módulo de préstamo</p1>
+</div>
     <!-- CARD 1: Datos del Material -->
     <div class="card">
         <div class="card-header">
