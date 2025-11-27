@@ -14,6 +14,12 @@
   <message name="Exception">
     <part name="fault" element="tns:Exception" />
   </message>
+  <message name="obtenerTesisPorId">
+    <part name="parameters" element="tns:obtenerTesisPorId" />
+  </message>
+  <message name="obtenerTesisPorIdResponse">
+    <part name="parameters" element="tns:obtenerTesisPorIdResponse" />
+  </message>
   <message name="insertarTesis">
     <part name="parameters" element="tns:insertarTesis" />
   </message>
@@ -32,17 +38,16 @@
   <message name="eliminarTesisResponse">
     <part name="parameters" element="tns:eliminarTesisResponse" />
   </message>
-  <message name="obtenerTesisPorId">
-    <part name="parameters" element="tns:obtenerTesisPorId" />
-  </message>
-  <message name="obtenerTesisPorIdResponse">
-    <part name="parameters" element="tns:obtenerTesisPorIdResponse" />
-  </message>
   <portType name="TesisWS">
     <operation name="modificarTesis">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/modificarTesisRequest" message="tns:modificarTesis" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/modificarTesisResponse" message="tns:modificarTesisResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/modificarTesis/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerTesisPorId">
+      <input wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/obtenerTesisPorIdRequest" message="tns:obtenerTesisPorId" />
+      <output wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/obtenerTesisPorIdResponse" message="tns:obtenerTesisPorIdResponse" />
+      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/obtenerTesisPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
     <operation name="insertarTesis">
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/insertarTesisRequest" message="tns:insertarTesis" />
@@ -57,11 +62,6 @@
       <input wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/eliminarTesisRequest" message="tns:eliminarTesis" />
       <output wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/eliminarTesisResponse" message="tns:eliminarTesisResponse" />
       <fault wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/eliminarTesis/Fault/Exception" name="Exception" message="tns:Exception" />
-    </operation>
-    <operation name="obtenerTesisPorId">
-      <input wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/obtenerTesisPorIdRequest" message="tns:obtenerTesisPorId" />
-      <output wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/obtenerTesisPorIdResponse" message="tns:obtenerTesisPorIdResponse" />
-      <fault wsam:Action="pe.edu.pucp.utilsarmy.services/TesisWS/obtenerTesisPorId/Fault/Exception" name="Exception" message="tns:Exception" />
     </operation>
   </portType>
   <binding name="TesisWSPortBinding" type="tns:TesisWS">
@@ -78,6 +78,18 @@
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
     </operation>
+    <operation name="obtenerTesisPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
     <operation name="insertarTesis">
       <soap:operation soapAction="" />
       <input>
@@ -100,18 +112,6 @@
       </fault>
     </operation>
     <operation name="eliminarTesis">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="Exception">
-        <soap:fault use="literal" name="Exception" namespace="" />
-      </fault>
-    </operation>
-    <operation name="obtenerTesisPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

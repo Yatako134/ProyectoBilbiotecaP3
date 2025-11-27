@@ -44,6 +44,23 @@ namespace BibliotecaWA
 
         protected void btnContinue_Click(object sender, EventArgs e)
         {
+            //string codigoIngresado = string.Join("",
+            //    txtCodigo1.Text, txtCodigo2.Text, txtCodigo3.Text,
+            //    txtCodigo4.Text, txtCodigo5.Text, txtCodigo6.Text
+            //);
+
+            //string codigo_real = (string)Session["CodigoDeValidacionReest"];
+
+            //if (codigoIngresado == codigo_real)
+            //{
+            //    Session["CodigoValidado"] = true;
+            //    Response.Redirect("NuevaContrasena.aspx");
+            //}
+            //else
+            //{
+            //    lblError.Text = "El código ingresado no es válido. Intenta nuevamente.";
+            //    lblError.Visible = true;
+            //}
             string codigoIngresado = string.Join("",
                 txtCodigo1.Text, txtCodigo2.Text, txtCodigo3.Text,
                 txtCodigo4.Text, txtCodigo5.Text, txtCodigo6.Text
@@ -58,11 +75,25 @@ namespace BibliotecaWA
             }
             else
             {
-                lblError.Text = "El código ingresado no es válido. Intenta nuevamente.";
-                lblError.Visible = true;
+                // Mostrar error usando JavaScript
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowError", "showError();", true);
+
+                // Limpiar los campos para que el usuario ingrese de nuevo
+                ClearInputs();
+                txtCodigo1.Focus();
             }
         }
+        private void ClearInputs()
+        {
+            txtCodigo1.Text = "";
+            txtCodigo2.Text = "";
+            txtCodigo3.Text = "";
+            txtCodigo4.Text = "";
+            txtCodigo5.Text = "";
+            txtCodigo6.Text = "";
+        }
 
+        
         public string GenerarOTP()
         {
             byte[] bytes = new byte[4];

@@ -80,14 +80,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarEjemplaresTodos">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarEjemplaresTodosResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="modificarEjemplar">
     <xs:sequence>
       <xs:element minOccurs="0" name="ejemplar" type="tns:ejemplar" />
@@ -96,6 +88,14 @@
   <xs:complexType name="modificarEjemplarResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarEjemplaresTodos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarEjemplaresTodosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ejemplar" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listar_disponibles_por_material">

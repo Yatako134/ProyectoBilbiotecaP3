@@ -11,12 +11,9 @@
   <xs:element name="modificarArticuloResponse" type="tns:modificarArticuloResponse" />
   <xs:element name="obtenerArticuloPorId" type="tns:obtenerArticuloPorId" />
   <xs:element name="obtenerArticuloPorIdResponse" type="tns:obtenerArticuloPorIdResponse" />
-  <xs:complexType name="listarArticulosTodos">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarArticulosTodosResponse">
+  <xs:complexType name="modificarArticulo">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:articulo" />
+      <xs:element minOccurs="0" name="articulo" type="tns:articulo" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="articulo">
@@ -81,19 +78,22 @@
       <xs:element minOccurs="0" name="tipo_contribuyente" type="tns:tipoContribuyente" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="modificarArticuloResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="Exception">
     <xs:sequence>
       <xs:element minOccurs="0" name="message" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="modificarArticulo">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="articulo" type="tns:articulo" />
-    </xs:sequence>
+  <xs:complexType name="listarArticulosTodos">
+    <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="modificarArticuloResponse">
+  <xs:complexType name="listarArticulosTodosResponse">
     <xs:sequence>
-      <xs:element name="return" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:articulo" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarArticulo">

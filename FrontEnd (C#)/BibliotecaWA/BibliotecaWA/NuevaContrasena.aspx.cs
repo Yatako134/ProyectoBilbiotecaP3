@@ -12,11 +12,47 @@ namespace BibliotecaWA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Verificar si el código fue validado
-            if (Session["CodigoValidado"] == null || !(bool)Session["CodigoValidado"])
+            // Verificar si el usuario está logueado O si el código fue validado
+            bool usuarioLogueado = (Session["UserId"] != null && Session["UserRole"] != null);
+            bool codigoValidado = (Session["CodigoValidado"] != null && (bool)Session["CodigoValidado"]);
+
+            // Si no está logueado Y no tiene código validado, redirigir
+            if (!usuarioLogueado && !codigoValidado)
             {
-                Response.Redirect("CodigoVerificacion.aspx");
+                Response.Redirect("InicioSesion.aspx");
             }
+
+            // Configurar el botón Cancelar según el contexto
+            if (usuarioLogueado && !codigoValidado)
+            {
+                // Usuario logueado - Cancelar va a la página según su rol
+                string redirectUrl = GetRedirectUrlByRole();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "UpdateCancelButton",
+                    $"document.querySelector('.button-error-secondary').href = '{redirectUrl}';", true);
+            }
+            // Si es restablecimiento (con código), mantiene el href original a InicioSesion.aspx
+        }
+
+        private string GetRedirectUrlByRole()
+        {
+            if (Session["UserRole"] != null)
+            {
+                int userRole = (int)Session["UserRole"];
+
+                // Rol 3 = Bibliotecario
+                if (userRole == 3)
+                {
+                    return "BusquedaMaterialas.aspx";
+                }
+                // Otros roles (Estudiante, Docente, etc.)
+                else
+                {
+                    return "BusquedaMaterialesEstudiante.aspx";
+                }
+            }
+
+            // Por defecto, redirigir a inicio de sesión
+            return "InicioSesion.aspx";
         }
 
         protected void btnRestablecer_Click(object sender, EventArgs e)
