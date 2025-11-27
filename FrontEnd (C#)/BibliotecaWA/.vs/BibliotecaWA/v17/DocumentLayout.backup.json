@@ -1,18 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\",
+  "WorkspaceRootPath": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\iniciosesion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\iniciosesion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\usuario\\desktop\\gitnuevo\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\administrarusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\administrarusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\repo_ta_prog3\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\prestamo.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\prestamo.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\usuario\\desktop\\gitnuevo\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\registrarmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\registrarmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\bibliotecawa\\scripts\\utilsarmy\\mensajeexito.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\scripts\\utilsarmy\\mensajeexito.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\usuario\\desktop\\gitnuevo\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\gestusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\gestusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\usuario\\desktop\\gitnuevo\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\detallematerial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\detallematerial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\usuario\\desktop\\gitnuevo\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\gestmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\gestmaterial.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\usuario\\desktop\\gitnuevo\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\registrarmaterial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\registrarmaterial.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|c:\\users\\usuario\\desktop\\gitnuevo\\proyectobilbiotecap3\\frontend (c#)\\bibliotecawa\\bibliotecawa\\administrarusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD265EA-3539-4D43-A950-7B086E51F651}|BibliotecaWA\\BibliotecaWA.csproj|solutionrelative:bibliotecawa\\administrarusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,59 +38,98 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DetalleMaterial.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\DetalleMaterial.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\DetalleMaterial.aspx.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\DetalleMaterial.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\DetalleMaterial.aspx.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAjwDIAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T17:59:03.043Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "MensajeExito.js",
-              "DocumentMoniker": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\MensajeExito.js",
-              "RelativeDocumentMoniker": "BibliotecaWA\\Scripts\\UtilsArmy\\MensajeExito.js",
-              "ToolTip": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Scripts\\UtilsArmy\\MensajeExito.js",
-              "RelativeToolTip": "BibliotecaWA\\Scripts\\UtilsArmy\\MensajeExito.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-26T20:25:19.648Z"
+              "Title": "GestUsuarios.aspx",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestUsuarios.aspx",
+              "RelativeDocumentMoniker": "BibliotecaWA\\GestUsuarios.aspx",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestUsuarios.aspx",
+              "RelativeToolTip": "BibliotecaWA\\GestUsuarios.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-27T17:57:43.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GestMaterial.aspx",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestMaterial.aspx",
+              "RelativeDocumentMoniker": "BibliotecaWA\\GestMaterial.aspx",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\GestMaterial.aspx",
+              "RelativeToolTip": "BibliotecaWA\\GestMaterial.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-27T17:42:26.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AdministrarUsuarios.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\AdministrarUsuarios.aspx.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\AdministrarUsuarios.aspx.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAANoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T17:34:46.827Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Prestamo.aspx.cs",
-              "DocumentMoniker": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Prestamo.aspx.cs",
-              "RelativeDocumentMoniker": "BibliotecaWA\\Prestamo.aspx.cs",
-              "ToolTip": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\Prestamo.aspx.cs",
-              "RelativeToolTip": "BibliotecaWA\\Prestamo.aspx.cs",
-              "ViewState": "AgIAANwAAAAAAAAAAAAWwNkAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T20:24:35.741Z",
+              "Title": "RegistrarMaterial.aspx",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RegistrarMaterial.aspx",
+              "RelativeDocumentMoniker": "BibliotecaWA\\RegistrarMaterial.aspx",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RegistrarMaterial.aspx",
+              "RelativeToolTip": "BibliotecaWA\\RegistrarMaterial.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-27T17:36:28.856Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "InicioSesion.aspx",
-              "DocumentMoniker": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx",
-              "RelativeDocumentMoniker": "BibliotecaWA\\InicioSesion.aspx",
-              "ToolTip": "C:\\Repo_TA_Prog3\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\InicioSesion.aspx",
-              "RelativeToolTip": "BibliotecaWA\\InicioSesion.aspx",
+              "Title": "AdministrarUsuarios.aspx",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx",
+              "RelativeDocumentMoniker": "BibliotecaWA\\AdministrarUsuarios.aspx",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\AdministrarUsuarios.aspx",
+              "RelativeToolTip": "BibliotecaWA\\AdministrarUsuarios.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-26T20:18:12.473Z",
+              "WhenOpened": "2025-11-27T17:34:09.877Z",
               "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 1134,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RegistrarMaterial.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RegistrarMaterial.aspx.cs",
+              "RelativeDocumentMoniker": "BibliotecaWA\\RegistrarMaterial.aspx.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\gitnuevo\\ProyectoBilbiotecaP3\\FrontEnd (C#)\\BibliotecaWA\\BibliotecaWA\\RegistrarMaterial.aspx.cs",
+              "RelativeToolTip": "BibliotecaWA\\RegistrarMaterial.aspx.cs",
+              "ViewState": "AgIAANsDAAAAAAAAAAAAAO0DAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T17:19:24.767Z",
+              "EditorCaption": ""
             }
           ]
         }

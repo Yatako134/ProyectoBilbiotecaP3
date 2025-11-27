@@ -1230,11 +1230,17 @@
     </div>
     <hr />
 
-    <div class="tabla-header d-flex justify-content-between align-items-center p-3">
-        <h1><strong>Registro de nuevo material bibliográfico</strong></h1>
+    <!-- Título con flecha de regreso -->
+    <div class="d-flex align-items-center mb-4">
+        <asp:LinkButton ID="btnRegresar" runat="server" CssClass="btn btn-link text-dark fs-4 me-3"
+            OnClick="btnRegresar_Click" ToolTip="Regresar">
+        <i class="fa-solid fa-arrow-left"></i>
+        </asp:LinkButton>
+        <asp:Label ID="lblTitulo" runat="server" CssClass="h3 m-0" ClientIDMode="Static"></asp:Label>
+
     </div>
 
-    <div class="card" style="width: 100rem;">
+    <div class="card">
         <div class="card-body">
             <!-- Fila de Código y Título -->
             <div class="row">
@@ -1400,8 +1406,13 @@
 
 
         </div>
-    </div>
 
+
+        
+
+
+
+    </div>
     <div class="row mt-3 mb-4">
         <div class="col-md-12 text-end">
             <asp:Button
@@ -1414,6 +1425,7 @@
                 Enabled="false" />
         </div>
     </div>
+    
     
     <asp:Label ID="lblMensaje" runat="server" CssClass="mt-3" style="display: block;"></asp:Label>
 </asp:Content>
