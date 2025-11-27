@@ -215,6 +215,9 @@ namespace BibliotecaWA
             correoBO = new CorreoWSClient();
             correoBO.enviar_correo(correo, asunto, HTML);
             //Modal para la confirmación del prestamo
+            //ESTO SERIA LO NUEVO
+            btnSolicitarPrestamo.Enabled = false;
+            btnSolicitarPrestamo.CssClass = "btn btn-secondary disabled";
             string script = $"mostrarModalPrestamoExitoso('{codigoPrestamo:D5}');";
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", script, true);
         }
